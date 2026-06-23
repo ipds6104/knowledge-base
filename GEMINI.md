@@ -13,6 +13,8 @@ Setiap kali pengguna menanyakan status progres, evaluasi, atau intervensi harian
 3.  **SOP Khusus Sensus Ekonomi 2026 (Aktif Juni-Agustus 2026)**:
     *   Jika pengguna menanyakan: *"oke di mana posisi kita hari ini untuk SE 2026 dan apakah ada yang perlu diintervensi agar on target?"* (atau variannya).
     *   **Wajib** secara otomatis menjalankan `./scripts/kb.py se-monitor -r` dan menyajikan laporan 6-seksi baku secara utuh.
+4.  **Format Analisis Ad-Hoc PML-PPL (SE 2026)**:
+    *   Apabila pengguna meminta pemeriksaan detail kinerja PML tertentu, asisten AI **wajib** menyajikan laporan dalam dua tabel standar (Tabel 1: Klasemen Makro PML vs Rata-rata/Lainnya, Tabel 2: Detail PPL di bawah PML tersebut diurutkan berdasarkan `Done %` terkecil) beserta diagnosis bottleneck dan rekomendasi tindakan taktis.
 
 ---
 

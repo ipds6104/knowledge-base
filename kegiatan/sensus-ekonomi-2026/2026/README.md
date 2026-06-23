@@ -86,6 +86,15 @@ Ketika ditanya hal tersebut, asisten AI (Antigravity) secara otomatis wajib meny
 6. **Rekomendasi Aksi Cepat PJ-Kuda**:
    - Langkah konkret harian untuk PJ-Kuda dalam melakukan pembinaan petugas tim masing-masing.
 
+### SOP Analisis & Perbandingan PML-PPL (Ad-Hoc)
+Apabila dilakukan pengecekan mendalam terhadap PML tertentu, laporan wajib disajikan dalam bentuk dua tabel berikut:
+1.  **Tabel 1: Perbandingan Makro Kinerja PML**
+    *   Kolom: `Dimensi Perbandingan`, `PML TARGET`, `PML PEMBANDING / LAINNYA`, `Rata-rata Kabupaten`.
+    *   Metrik wajib: Target unit, Completed Rate (Done %), Rank Completed, Worked Rate (Mulai %), Rank Worked, Approval Rate (Verifikasi %), Antrean Pending, dan Status Bottleneck.
+2.  **Tabel 2: Detail Kinerja PPL di Bawah PML Terkait**
+    *   Kolom: `Nama PPL`, `SLS`, `Target`, `OPEN`, `DRAFT`, `SUBMIT`, `APPROVE`, `Done %`, `Status / Tindakan`.
+    *   Diurutkan dari `Done %` terkecil untuk mempermudah identifikasi PPL kritis.
+
 ## Diagram Alur Monitoring hingga Intervensi
 
 Diagram di bawah ini menggambarkan alur kerja harian terstandarisasi untuk memantau progres lapangan dan mengeksekusi intervensi taktis secara cepat:
