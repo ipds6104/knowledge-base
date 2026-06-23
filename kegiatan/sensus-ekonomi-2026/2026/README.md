@@ -80,7 +80,7 @@ Ketika ditanya hal tersebut, asisten AI (Antigravity) secara otomatis wajib meny
    - Menampilkan selisih kenaikan progres Kalbar, Mempawah, dan tim PJ Ihza sejak pengecekan terakhir, serta perubahan antrean PML.
 4. **Daftar Intervensi Taktis Mempawah**:
    - **PML Bottleneck**: Daftar PML dengan antrean berkas pending kritis (>20 pending, approval < 20%).
-   - **PPL Terlambat**: Daftar PPL dengan progres selesai di bawah 3.00% dan target > 200.
+   - **PPL Terlambat**: Daftar PPL dengan progres selesai di bawah batas dinamis (dihitung sebagai $\text{max}(3.00\%, \text{expected\_pct} \times 0.25)$) dan target > 200.
 5. **Rekomendasi Taktis untuk Ketua Sensus Ekonomi BPS Kabupaten Mempawah**:
    - Rekomendasi kebijakan tingkat kabupaten (misal: penegakan sanksi/evaluasi kinerja PML Mitra, rapat koordinasi luar biasa, penugasan staf organik) berdasarkan status dan tren bottleneck secara akumulatif.
 6. **Rekomendasi Aksi Cepat PJ-Kuda**:
@@ -101,7 +101,7 @@ flowchart TD
         A["Run: kb se-monitor -r"]:::morning --> B{"Bandingkan Progres vs Target Ideal"}:::morning
         B --> C["Identifikasi Masalah & Bottleneck"]:::morning
         C --> D1{"Ada PML Bottleneck?\nPending > 20, App Rate < 20%"}:::morning
-        C --> D2{"Ada PPL Lambat?\nSelesai < 3%, Target > 200"}:::morning
+        C --> D2{"Ada PPL Lambat?\nSelesai < Batas Dinamis\n(min. 3%) & Target > 200"}:::morning
         
         D1 -- Ya --> E1["Teguran Keras / Koordinasi via PJ-Kuda"]:::critical
         D2 -- Ya --> E2["PML Turun Mendampingi ke Lapangan"]:::critical
@@ -137,7 +137,7 @@ flowchart TD
 
 ### Pedoman Intervensi PJ-Kuda
 1.  **Intervensi PML (Bottleneck)**: Hubungi PML yang memiliki antrean berkas tinggi (misal Abang Handri, Seliana, Prabowo). Mintalah mereka melakukan persetujuan massal minimal dua kali sehari (pagi sebelum lapangan, malam setelah entrian masuk).
-2.  **Intervensi PPL (Keterlambatan)**: Jika PPL memiliki progres di bawah 3%, PML terkait harus melakukan *kunjungan pendampingan* ke lapangan untuk memecah kendala teknis (login SSO, sinyal, atau penolakan responden).
+2.  **Intervensi PPL (Keterlambatan)**: Jika PPL memiliki progres di bawah batas dinamis harian (Batas Merah / Fail), PML terkait harus melakukan *kunjungan pendampingan* ke lapangan untuk memecah kendala teknis (login SSO, sinyal, atau penolakan responden).
 3.  **Target Waktu Lapangan**: Meskipun jadwal resmi lapangan berlangsung hingga **31 Agustus 2026**, Ketua Sensus Ekonomi BPS Kabupaten Mempawah menargetkan **seluruh dokumen CAPI selesai disubmit pada 15 Agustus 2026**. Oleh karena itu, percepatan di tingkat PPL dan PML sangat penting untuk dicapai sebelum tenggat waktu internal ini.
 4.  **Update Berkala**: Data ditarik otomatis dari Google Sheets **Tarikan 6104** (`Realisasi - 6104.csv`). Gunakan perintah **`./scripts/kb.py se-monitor -r`** setiap pagi dan sore untuk laporan baku 6-seksi. Untuk tabel mentah intervensi, gunakan `./scripts/kb.py se-monitor -i`.
 
