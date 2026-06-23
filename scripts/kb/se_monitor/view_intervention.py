@@ -34,10 +34,12 @@ def print_intervention(
                 pml_sls.extend(sls_list)
             pml_metrics[pml] = aggregate_fn(pml_sls)
 
-    # PPL terlambat: completed < 3% dan target > 200
+    # PPL terlambat: completed < ppl_threshold dan target > 200
+    # Batas kritis PPL: max(3.0%, 25% dari target ideal harian)
+    ppl_threshold = max(0.03, (expected_pct / 100) * 0.25)
     low_ppls = [
         (name, m) for name, m in ppl_metrics.items()
-        if m["target"] > 200 and m["completed_rate"] < 0.03
+        if m["target"] > 200 and m["completed_rate"] < ppl_threshold
     ]
     low_ppls.sort(key=lambda x: x[1]["completed_rate"])
 
@@ -66,7 +68,7 @@ def print_intervention(
     )
 
     # Tabel PPL terlambat
-    print(f"\n{Colors.BOLD}{Colors.FAIL}1. DAFTAR PPL TERLAMBAT (Progres Selesai < 3.00% & Target > 200){Colors.ENDC}")
+    print(f"\n{Colors.BOLD}{Colors.FAIL}1. DAFTAR PPL TERLAMBAT (Progres Selesai < {ppl_threshold*100:.2f}% & Target > 200){Colors.ENDC}")
     print(sep)
     print(f"{'No':<3} | {'Nama PPL':<25} | {'Target':<6} | {'Selesai':<8} | {'Open':<5} | {'Nama PML':<20} | {'PJ-Kuda':<25}")
     print(sep)

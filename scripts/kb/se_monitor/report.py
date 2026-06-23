@@ -186,9 +186,10 @@ def print_report(
          if m["submitted"] > 20 and m["approval_rate"] < 0.20],
         key=lambda x: x[1]["approval_rate"],
     )
+    ppl_threshold = max(0.03, (expected_pct / 100) * 0.25)
     low_ppls = sorted(
         [(n, m, ppl_to_sup.get(n, ("-", "-"))) for n, m in ppl_metrics.items()
-         if m["target"] > 200 and m["completed_rate"] < 0.03],
+         if m["target"] > 200 and m["completed_rate"] < ppl_threshold],
         key=lambda x: x[1]["completed_rate"],
     )
 
@@ -209,7 +210,7 @@ def print_report(
             f"{m['submitted']} berkas pending | Approval: {m['approval_rate']*100:.2f}%{diff_note} {flag}"
         )
 
-    print(f"\n   B. PPL Terlambat Terkritis (Selesai < 3.00% & Target > 200)")
+    print(f"\n   B. PPL Terlambat Terkritis (Selesai < {ppl_threshold*100:.2f}% & Target > 200)")
     for idx, (name, m, sup) in enumerate(low_ppls[:10], 1):
         pml_v, pj_v = sup
         print(
@@ -277,13 +278,14 @@ def print_report(
             )
             rec2 += 1
 
+    ppl_warn_threshold = max(0.05, (expected_pct / 100) * 0.50)
     my_low_ppls = sorted(
         [(ppl_name, ppl_metrics[ppl_name])
          for pml_name, ppls in my_pmls.items()
          for ppl_name in ppls
          if ppl_name in ppl_metrics
          and ppl_metrics[ppl_name]["target"] > 100
-         and ppl_metrics[ppl_name]["completed_rate"] < 0.05],
+         and ppl_metrics[ppl_name]["completed_rate"] < ppl_warn_threshold],
         key=lambda x: x[1]["completed_rate"],
     )
     for ppl_name, ppl_m in my_low_ppls[:3]:

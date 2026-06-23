@@ -93,20 +93,24 @@ def print_pj(
             ppl_list.append(ppl_agg)
         ppl_list.sort(key=lambda x: x["completed_rate"])
 
+        # Batas dinamis status PPL: Hijau jika >= 70% dari expected_pct (min 10%), Merah jika < 25% (min 3%)
+        threshold_green = max(0.10, (expected_pct / 100) * 0.70)
+        threshold_fail  = max(0.03, (expected_pct / 100) * 0.25)
+
         for ppl in ppl_list:
             done_color = (
-                Colors.GREEN if ppl["completed_rate"] >= 0.1
-                else (Colors.FAIL if ppl["completed_rate"] < 0.03 else Colors.WARNING)
+                Colors.GREEN if ppl["completed_rate"] >= threshold_green
+                else (Colors.FAIL if ppl["completed_rate"] < threshold_fail else Colors.WARNING)
             )
             print(
                 f"  {ppl['name']:<25} | {ppl['sls_count']:<3} | {ppl['target']:<6} "
                 f"| {ppl['open']:<5} | {ppl['draft']:<5} | {ppl['submitted']:<6} "
                 f"| {ppl['approved']:<7} | {done_color}{ppl['completed_rate']*100:>6.2f}%{Colors.ENDC}"
             )
-            if ppl["completed_rate"] < 0.03:
+            if ppl["completed_rate"] < threshold_fail:
                 warnings.append(
                     f"PPL {Colors.BOLD}{ppl['name']}{Colors.ENDC} di bawah PML {pml} "
-                    f"lambat memulai pencacahan ({ppl['completed_rate']*100:.2f}% Selesai, {ppl['open']} Open)"
+                    f"lambat pencacahan ({ppl['completed_rate']*100:.2f}% Selesai, {ppl['open']} Open, Batas Kritis: {threshold_fail*100:.2f}%)"
                 )
 
         if pml_agg["approval_rate"] < 0.2 and pml_agg["submitted"] > 5:
