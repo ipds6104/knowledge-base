@@ -1,28 +1,29 @@
 # BPS Kabupaten Mempawah Knowledge Base - AI Agent Guidelines (GEMINI.md)
 
-Dokumen ini berisi pedoman perilaku persisten, standar teknis, dan SOP operasional bagi AI agent (Gemini, Antigravity, dll.) yang bekerja di repositori ini.
+Dokumen ini berisi pedoman perilaku persisten, standar teknis, dan SOP operasional bagi AI agent (Gemini, Antigravity, dll.) yang bekerja di repositori ini. Repositori ini menampung multi-kegiatan statistik BPS (Sensus, Survei, Evaluasi) di berbagai periode waktu.
 
 ---
 
-## 📋 SOP Monitoring Harian (Sensus Ekonomi 2026)
+## 📋 SOP Monitoring & Evaluasi Multi-Kegiatan
 
-Setiap pagi dan sore, apabila pengguna menanyakan:
-> **"oke di mana posisi kita hari ini untuk SE 2026 dan apakah ada yang perlu diintervensi agar on target?"** (atau varian serupa)
+Setiap kali pengguna menanyakan status progres, evaluasi, atau intervensi harian (misal: *"bagaimana progres kita hari ini?"* atau *"apa yang perlu diintervensi?"*):
 
-Agen AI **wajib** secara otomatis memproses alur evaluasi berikut:
-1.  **Tarik Data Terbaru**: Jalankan `./scripts/kb.py se-monitor -r` untuk mendapatkan laporan 6-seksi yang baku.
-2.  **Sajikan Laporan 6-Seksi**: Tampilkan laporan secara utuh kepada pengguna (termasuk status target harian, posisi makro Kalbar & Mempawah, delta perbandingan, daftar intervensi kritis, rekomendasi taktis Ketua SE, dan rekomendasi aksi cepat PJ-Kuda).
+1.  **Deteksi Konteks Kegiatan**: Identifikasi kegiatan mana yang dimaksud oleh pengguna (misal: *Sensus Ekonomi 2026*, *Sakernas*, *Susenas*, dll.) beserta periode aktifnya.
+2.  **Rujuk README Kegiatan**: Buka dan baca berkas `README.md` di dalam folder kegiatan terkait (misal: `kegiatan/sensus-ekonomi-2026/2026/README.md`) untuk mencari tahu apakah ada SOP monitoring terstandardisasi atau perintah CLI khusus yang wajib dijalankan.
+3.  **SOP Khusus Sensus Ekonomi 2026 (Aktif Juni-Agustus 2026)**:
+    *   Jika pengguna menanyakan: *"oke di mana posisi kita hari ini untuk SE 2026 dan apakah ada yang perlu diintervensi agar on target?"* (atau variannya).
+    *   **Wajib** secara otomatis menjalankan `./scripts/kb.py se-monitor -r` dan menyajikan laporan 6-seksi baku secara utuh.
 
 ---
 
-## ⚙️ Logika Bisnis & Batas Kritis Dinamis (Dynamic Thresholds)
+## ⚙️ Logika Bisnis & Batas Kritis Dinamis (SE 2026)
 
-Agen AI wajib mematuhi formula kalkulasi berikut yang telah terstandardisasi di dalam kode:
+Logika di bawah ini ter-isolasi khusus di dalam sub-package monitoring Sensus Ekonomi 2026 (`kb/se_monitor/`):
 
 ### 1. Deteksi PPL Terlambat Terkritis
 Batas progres PPL lambat dihitung secara **dinamis** terhadap target ideal hari ini (`expected_pct`):
 $$\text{ppl\_threshold} = \text{max}(3.00\%, \frac{\text{expected\_pct}}{100} \times 0.25)$$
-*   Petugas disaring jika memiliki `target > 200` dan `completed_rate < ppl_threshold`.
+*   Petugas disaring jika memiliki `target > 200` and `completed_rate < ppl_threshold`.
 
 ### 2. Diagnosis Warna Status Progres PPL
 *   **🟢 Hijau**: Progres $\ge$ $\text{max}(10.00\%, \frac{\text{expected\_pct}}{100} \times 0.70)$ (Sehat).
@@ -38,7 +39,8 @@ PML dianggap menumpuk verifikasi berkas (*bottleneck*) jika:
 
 ## 🛠️ Standar Kode & Struktur Proyek
 
-*   **Thin Entrypoint**: Berkas `scripts/kb.py` adalah entrypoint CLI tipis. Semua logika bisnis didelegasikan ke package `kb/` dan sub-package `kb/se_monitor/`.
-*   **Epistemological Source**: Penentuan relasi struktural PJ-Kuda $\rightarrow$ PML $\rightarrow$ PPL **wajib** diimpor dari `kb/se_monitor/hierarchy.py` yang mem-parse `Alokasi Petugas.csv`. Jangan pernah menebak relasi ini secara mandiri.
+*   **Thin Entrypoint**: Berkas `scripts/kb.py` adalah entrypoint CLI tipis. Semua logika bisnis didelegasikan ke package `kb/`.
+*   **Isolasi Modul Kegiatan**: Setiap kegiatan yang membutuhkan skrip pemantauan/logika khusus **wajib** dibuatkan sub-package tersendiri di bawah `kb/` (seperti `kb/se_monitor/`) untuk menghindari pencampuran logika bisnis (*spaghetti code*) antar kegiatan.
+*   **Epistemological Source**: Penentuan relasi struktural/hierarki petugas dalam kegiatan **wajib** dibaca dari file alokasi resmi kegiatan (seperti `Alokasi Petugas.csv` untuk SE2026). Jangan pernah menebak relasi ini secara mandiri.
 *   **Batas Ukuran File**: Maksimal **500 baris** per berkas Python (diawasi oleh pre-commit hook di `.githooks/pre-commit`). Jaga modul tetap kecil, terfokus, dan modular (di bawah 300 baris).
 *   **Analisis Repo**: Gunakan `python3 ./scripts/dump_tree.py` untuk memantau struktur direktori dan baris kode.
