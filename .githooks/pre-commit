@@ -1,0 +1,190 @@
+#!/usr/bin/env python3
+"""
+.githooks/pre-commit
+Pre-commit hook: tolak commit jika ada file staged yang melebihi MAX_LINES baris.
+File data, generated, dan binary dikecualikan secara otomatis.
+
+Instalasi (sekali saja per clone):
+    git config core.hooksPath .githooks
+
+Bypass untuk keadaan darurat (tidak disarankan):
+    git commit --no-verify
+"""
+
+import subprocess
+import sys
+from pathlib import Path
+
+# ─── Konfigurasi ──────────────────────────────────────────────────────────────
+
+MAX_LINES = 500
+
+# Ekstensi yang dikecualikan dari pengecekan (data, generated, binary, dll.)
+SKIP_EXTENSIONS = {
+    # Data mentah & database
+    ".csv", ".tsv", ".json", ".jsonl", ".parquet", ".feather",
+    ".pkl", ".pickle", ".h5", ".hdf5", ".db", ".sqlite", ".sqlite3",
+    # Log & lock
+    ".log", ".lock",
+    # Arsip & compress
+    ".zip", ".tar", ".gz", ".bz2", ".xz", ".rar", ".7z",
+    # Office & dokumen
+    ".xlsx", ".xls", ".ods", ".pdf", ".docx", ".doc", ".pptx", ".ppt",
+    # Gambar & media
+    ".png", ".jpg", ".jpeg", ".gif", ".svg", ".ico", ".webp", ".bmp",
+    ".mp3", ".mp4", ".wav", ".avi", ".mov", ".mkv",
+    # Binary Python & distribusi
+    ".whl", ".egg", ".pyc", ".pyo",
+    # Lainnya
+    ".ipynb",  # Notebook (bisa sangat panjang karena output)
+    ".min.js", ".min.css",  # Minified assets
+}
+
+# Nama file spesifik yang dikecualikan (persis)
+SKIP_FILES = {
+    ".env", ".env.local", ".env.example", ".env.production",
+    ".DS_Store", ".gitignore", ".gitkeep", ".gitattributes",
+    "package-lock.json", "yarn.lock", "poetry.lock", "Pipfile.lock",
+    "Thumbs.db", "desktop.ini",
+}
+
+# Prefix path yang dikecualikan (relatif ke root repo)
+SKIP_PATH_PREFIXES = (
+    "node_modules/",
+    ".venv/",
+    "venv/",
+    "__pycache__/",
+    "dist/",
+    "build/",
+    ".mypy_cache/",
+)
+
+# ─── ANSI Colors ──────────────────────────────────────────────────────────────
+
+RED    = "\033[91m"
+YELLOW = "\033[93m"
+GREEN  = "\033[92m"
+CYAN   = "\033[96m"
+BOLD   = "\033[1m"
+DIM    = "\033[2m"
+RESET  = "\033[0m"
+
+# ─── Helpers ──────────────────────────────────────────────────────────────────
+
+def get_staged_files() -> list[str]:
+    """Ambil daftar file yang di-stage (ditambah/dimodifikasi), bukan dihapus."""
+    result = subprocess.run(
+        ["git", "diff", "--cached", "--name-only", "--diff-filter=ACM"],
+        capture_output=True, text=True
+    )
+    return [f.strip() for f in result.stdout.splitlines() if f.strip()]
+
+
+def should_skip(filepath: str) -> tuple[bool, str]:
+    """Tentukan apakah file perlu dilewati beserta alasannya."""
+    path = Path(filepath)
+
+    if path.name in SKIP_FILES:
+        return True, f"nama file dikecualikan"
+
+    suffix = path.suffix.lower()
+    # Handle double extensions seperti .min.js
+    if len(path.suffixes) >= 2:
+        double_ext = "".join(path.suffixes[-2:]).lower()
+        if double_ext in SKIP_EXTENSIONS:
+            return True, f"ekstensi {double_ext} dikecualikan"
+
+    if suffix in SKIP_EXTENSIONS:
+        return True, f"ekstensi {suffix} dikecualikan"
+
+    for prefix in SKIP_PATH_PREFIXES:
+        if filepath.startswith(prefix):
+            return True, f"path dalam direktori dikecualikan"
+
+    return False, ""
+
+
+def count_staged_lines(filepath: str) -> int | None:
+    """Hitung jumlah baris dari versi staged file (bukan working tree)."""
+    try:
+        result = subprocess.run(
+            ["git", "show", f":{filepath}"],
+            capture_output=True
+        )
+        if result.returncode != 0:
+            return None
+        # Cek apakah binary
+        content = result.stdout
+        if b"\x00" in content:
+            return None  # File binary
+        return content.decode("utf-8", errors="replace").count("\n")
+    except Exception:
+        return None
+
+
+# ─── Main ─────────────────────────────────────────────────────────────────────
+
+def main():
+    staged = get_staged_files()
+    if not staged:
+        sys.exit(0)
+
+    print(f"\n{CYAN}🔍 pre-commit: Memeriksa {len(staged)} file staged...{RESET}")
+
+    violations = []
+    skipped    = []
+    ok_files   = []
+
+    for filepath in staged:
+        skip, reason = should_skip(filepath)
+        if skip:
+            skipped.append((filepath, reason))
+            continue
+
+        lines = count_staged_lines(filepath)
+
+        if lines is None:
+            # Binary atau tidak terbaca — lewati
+            skipped.append((filepath, "binary"))
+            continue
+
+        if lines > MAX_LINES:
+            violations.append((filepath, lines))
+        else:
+            ok_files.append((filepath, lines))
+
+    # Tampilkan ringkasan file OK
+    for fp, ln in ok_files:
+        print(f"  {GREEN}✔{RESET} {fp} {DIM}({ln} baris){RESET}")
+
+    # Tampilkan file yang dilewati
+    if skipped:
+        for fp, reason in skipped:
+            print(f"  {DIM}⊘ {fp} ({reason}){RESET}")
+
+    # Tampilkan violations
+    if violations:
+        print(f"\n{BOLD}{RED}{'━'*60}{RESET}")
+        print(f"{BOLD}{RED}  ✘ COMMIT DITOLAK — File melebihi batas {MAX_LINES} baris{RESET}")
+        print(f"{BOLD}{RED}{'━'*60}{RESET}\n")
+
+        for fp, lines in violations:
+            excess = lines - MAX_LINES
+            print(f"  {RED}✘ {fp}{RESET}")
+            print(f"    {YELLOW}{lines} baris{RESET} (melebihi batas {MAX_LINES} sebanyak {RED}+{excess}{RESET})\n")
+
+        print(f"{BOLD}Solusi:{RESET}")
+        print(f"  1. Pecah file menjadi modul-modul yang lebih kecil.")
+        print(f"  2. Pindahkan data besar ke file terpisah (data/, output/).")
+        print(f"  3. Jika file memang harus besar, tambahkan ekstensinya ke")
+        print(f"     SKIP_EXTENSIONS di {CYAN}.githooks/pre-commit{RESET}.")
+        print(f"  4. Bypass darurat (tidak disarankan): {YELLOW}git commit --no-verify{RESET}\n")
+
+        sys.exit(1)
+
+    print(f"\n{GREEN}✔ Semua file dalam batas. Commit dilanjutkan.{RESET}\n")
+    sys.exit(0)
+
+
+if __name__ == "__main__":
+    main()

@@ -2900,5 +2900,1434 @@
         "pj": "Firmansyah"
       }
     }
+  },
+  {
+    "timestamp": "2026-06-23 08:02:27",
+    "prov": {
+      "completed": 136777,
+      "worked": 171871,
+      "target": 2025027,
+      "approved": 43015,
+      "submitted": 93651
+    },
+    "kab": {
+      "SAMBAS": {
+        "completed": 13547,
+        "worked": 17037,
+        "target": 226730,
+        "approved": 3950,
+        "submitted": 9594
+      },
+      "BENGKAYANG": {
+        "completed": 8060,
+        "worked": 10597,
+        "target": 102070,
+        "approved": 3353,
+        "submitted": 4686
+      },
+      "LANDAK": {
+        "completed": 9202,
+        "worked": 11469,
+        "target": 131853,
+        "approved": 1764,
+        "submitted": 7419
+      },
+      "MEMPAWAH": {
+        "completed": 8776,
+        "worked": 12907,
+        "target": 109355,
+        "approved": 2765,
+        "submitted": 5997
+      },
+      "SANGGAU": {
+        "completed": 11549,
+        "worked": 13272,
+        "target": 175606,
+        "approved": 3712,
+        "submitted": 7832
+      },
+      "KETAPANG": {
+        "completed": 12803,
+        "worked": 14257,
+        "target": 198087,
+        "approved": 2724,
+        "submitted": 10076
+      },
+      "SINTANG": {
+        "completed": 11753,
+        "worked": 14012,
+        "target": 151928,
+        "approved": 2565,
+        "submitted": 9181
+      },
+      "KAPUAS HULU": {
+        "completed": 7921,
+        "worked": 9937,
+        "target": 103224,
+        "approved": 3497,
+        "submitted": 4422
+      },
+      "SEKADAU": {
+        "completed": 7521,
+        "worked": 8654,
+        "target": 80713,
+        "approved": 2460,
+        "submitted": 5060
+      },
+      "MELAWI": {
+        "completed": 5137,
+        "worked": 6262,
+        "target": 74850,
+        "approved": 1182,
+        "submitted": 3950
+      },
+      "KAYONG UTARA": {
+        "completed": 3318,
+        "worked": 4215,
+        "target": 45588,
+        "approved": 1080,
+        "submitted": 2225
+      },
+      "KUBU RAYA": {
+        "completed": 21856,
+        "worked": 26827,
+        "target": 240020,
+        "approved": 10510,
+        "submitted": 11340
+      },
+      "PONTIANAK": {
+        "completed": 11145,
+        "worked": 15851,
+        "target": 269067,
+        "approved": 2628,
+        "submitted": 8510
+      },
+      "SINGKAWANG": {
+        "completed": 4189,
+        "worked": 6574,
+        "target": 115936,
+        "approved": 825,
+        "submitted": 3359
+      }
+    },
+    "pj": {
+      "Abdul Karim": {
+        "completed": 536,
+        "worked": 576,
+        "target": 3867,
+        "approved": 116,
+        "submitted": 420
+      },
+      "Safira Nurrosyid, S.Tr.Stat.": {
+        "completed": 977,
+        "worked": 1241,
+        "target": 8148,
+        "approved": 540,
+        "submitted": 435
+      },
+      "Listio Jati Nandhiko": {
+        "completed": 715,
+        "worked": 899,
+        "target": 6612,
+        "approved": 381,
+        "submitted": 334
+      },
+      "Wantri": {
+        "completed": 476,
+        "worked": 676,
+        "target": 4557,
+        "approved": 0,
+        "submitted": 473
+      },
+      "Yulfi Ramanda": {
+        "completed": 692,
+        "worked": 915,
+        "target": 6763,
+        "approved": 489,
+        "submitted": 201
+      },
+      "Briggita Vaya Difa": {
+        "completed": 261,
+        "worked": 350,
+        "target": 2581,
+        "approved": 9,
+        "submitted": 252
+      },
+      "Muhammad Syihabuddin Alhaq": {
+        "completed": 434,
+        "worked": 602,
+        "target": 4597,
+        "approved": 65,
+        "submitted": 369
+      },
+      "Syarifah Apriani": {
+        "completed": 755,
+        "worked": 1106,
+        "target": 8049,
+        "approved": 37,
+        "submitted": 718
+      },
+      "Ahmad Aulia Rahman": {
+        "completed": 798,
+        "worked": 973,
+        "target": 8764,
+        "approved": 250,
+        "submitted": 548
+      },
+      "Najia Helmiah": {
+        "completed": 532,
+        "worked": 849,
+        "target": 7409,
+        "approved": 83,
+        "submitted": 446
+      },
+      "Akma Batrisyia Jazima": {
+        "completed": 303,
+        "worked": 486,
+        "target": 4502,
+        "approved": 14,
+        "submitted": 289
+      },
+      "Ihza Fikri Zaki Karunia": {
+        "completed": 456,
+        "worked": 786,
+        "target": 6829,
+        "approved": 172,
+        "submitted": 283
+      },
+      "Aller Budiman Silaban": {
+        "completed": 445,
+        "worked": 670,
+        "target": 6671,
+        "approved": 104,
+        "submitted": 341
+      },
+      "Rifky Mullah Syadriawan, A.Md.Stat": {
+        "completed": 488,
+        "worked": 790,
+        "target": 8028,
+        "approved": 126,
+        "submitted": 362
+      },
+      "Firmansyah": {
+        "completed": 127,
+        "worked": 175,
+        "target": 2504,
+        "approved": 0,
+        "submitted": 127
+      },
+      "Vaniya Dewi Wulandari": {
+        "completed": 168,
+        "worked": 381,
+        "target": 3345,
+        "approved": 28,
+        "submitted": 140
+      },
+      "Arini Faurizah": {
+        "completed": 385,
+        "worked": 728,
+        "target": 8358,
+        "approved": 285,
+        "submitted": 99
+      },
+      "Sukma": {
+        "completed": 116,
+        "worked": 302,
+        "target": 3958,
+        "approved": 52,
+        "submitted": 64
+      },
+      "Clara Diva": {
+        "completed": 111,
+        "worked": 354,
+        "target": 4024,
+        "approved": 13,
+        "submitted": 96
+      }
+    },
+    "pml_pending": {
+      "Dandy": {
+        "pending": 192,
+        "pj": "Yulfi Ramanda"
+      },
+      "Mulyadi": {
+        "pending": 9,
+        "pj": "Yulfi Ramanda"
+      },
+      "Vika Rizkiani": {
+        "pending": 286,
+        "pj": "Listio Jati Nandhiko"
+      },
+      "Pitra": {
+        "pending": 48,
+        "pj": "Listio Jati Nandhiko"
+      },
+      "Syarifah Desti Pratiwi": {
+        "pending": 128,
+        "pj": "Najia Helmiah"
+      },
+      "Yudi Wahyudi": {
+        "pending": 318,
+        "pj": "Najia Helmiah"
+      },
+      "Prabowo": {
+        "pending": 247,
+        "pj": "Ihza Fikri Zaki Karunia"
+      },
+      "Jamaluddin": {
+        "pending": 36,
+        "pj": "Ihza Fikri Zaki Karunia"
+      },
+      "Novi Sri Wulandari": {
+        "pending": 140,
+        "pj": "Vaniya Dewi Wulandari"
+      },
+      "Mat Tohir": {
+        "pending": 83,
+        "pj": "Aller Budiman Silaban"
+      },
+      "Seliana": {
+        "pending": 258,
+        "pj": "Aller Budiman Silaban"
+      },
+      "Lina Agustin Widya Siwi": {
+        "pending": 160,
+        "pj": "Syarifah Apriani"
+      },
+      "Yusron": {
+        "pending": 558,
+        "pj": "Syarifah Apriani"
+      },
+      "Sulis Tri Handayani": {
+        "pending": 167,
+        "pj": "Ahmad Aulia Rahman"
+      },
+      "Ridha Nur Mitha": {
+        "pending": 381,
+        "pj": "Ahmad Aulia Rahman"
+      },
+      "Haris Rosi": {
+        "pending": 23,
+        "pj": "Arini Faurizah"
+      },
+      "Nanda Ariska": {
+        "pending": 76,
+        "pj": "Arini Faurizah"
+      },
+      "Sukmawati": {
+        "pending": 120,
+        "pj": "Safira Nurrosyid, S.Tr.Stat."
+      },
+      "Veti Ningsi": {
+        "pending": 315,
+        "pj": "Safira Nurrosyid, S.Tr.Stat."
+      },
+      "Yusimianto": {
+        "pending": 95,
+        "pj": "Rifky Mullah Syadriawan, A.Md.Stat"
+      },
+      "Zaini": {
+        "pending": 267,
+        "pj": "Rifky Mullah Syadriawan, A.Md.Stat"
+      },
+      "Abang Handri": {
+        "pending": 473,
+        "pj": "Wantri"
+      },
+      "Nelly Nalita": {
+        "pending": 64,
+        "pj": "Sukma"
+      },
+      "Wandi Syafari": {
+        "pending": 289,
+        "pj": "Akma Batrisyia Jazima"
+      },
+      "Yuyun Antoni,Se": {
+        "pending": 420,
+        "pj": "Abdul Karim"
+      },
+      "Syamsul": {
+        "pending": 96,
+        "pj": "Clara Diva"
+      },
+      "Fransiska Romana": {
+        "pending": 252,
+        "pj": "Briggita Vaya Difa"
+      },
+      "Abdul Aziz": {
+        "pending": 167,
+        "pj": "Muhammad Syihabuddin Alhaq"
+      },
+      "Alip Susanto": {
+        "pending": 202,
+        "pj": "Muhammad Syihabuddin Alhaq"
+      },
+      "Handoko Tuah Sabarman Sipayung": {
+        "pending": 127,
+        "pj": "Firmansyah"
+      }
+    },
+    "ppl_completed": {
+      "Rima Melati": {
+        "completed": 25,
+        "pml": "Dandy",
+        "pj": "Yulfi Ramanda"
+      },
+      "Nurmala": {
+        "completed": 18,
+        "pml": "Yusimianto",
+        "pj": "Rifky Mullah Syadriawan, A.Md.Stat"
+      },
+      "Darma Purmitasari": {
+        "completed": 80,
+        "pml": "Dandy",
+        "pj": "Yulfi Ramanda"
+      },
+      "Ayu Rizki Insani": {
+        "completed": 33,
+        "pml": "Dandy",
+        "pj": "Yulfi Ramanda"
+      },
+      "Putri Maulisa": {
+        "completed": 18,
+        "pml": "Dandy",
+        "pj": "Yulfi Ramanda"
+      },
+      "Lisa Safitri": {
+        "completed": 99,
+        "pml": "Dandy",
+        "pj": "Yulfi Ramanda"
+      },
+      "Muhammad Adriyansyah": {
+        "completed": 43,
+        "pml": "Dandy",
+        "pj": "Yulfi Ramanda"
+      },
+      "Yudha Riani": {
+        "completed": 50,
+        "pml": "Mulyadi",
+        "pj": "Yulfi Ramanda"
+      },
+      "Yuliani": {
+        "completed": 18,
+        "pml": "Mulyadi",
+        "pj": "Yulfi Ramanda"
+      },
+      "Masita": {
+        "completed": 19,
+        "pml": "Mulyadi",
+        "pj": "Yulfi Ramanda"
+      },
+      "Andika Putra": {
+        "completed": 27,
+        "pml": "Mulyadi",
+        "pj": "Yulfi Ramanda"
+      },
+      "Yusra": {
+        "completed": 109,
+        "pml": "Mulyadi",
+        "pj": "Yulfi Ramanda"
+      },
+      "Adi": {
+        "completed": 59,
+        "pml": "Mulyadi",
+        "pj": "Yulfi Ramanda"
+      },
+      "Nurlan Wahyuni": {
+        "completed": 48,
+        "pml": "Vika Rizkiani",
+        "pj": "Listio Jati Nandhiko"
+      },
+      "Guntur Tri Perkasa": {
+        "completed": 65,
+        "pml": "Vika Rizkiani",
+        "pj": "Listio Jati Nandhiko"
+      },
+      "Utami Angraini": {
+        "completed": 31,
+        "pml": "Vika Rizkiani",
+        "pj": "Listio Jati Nandhiko"
+      },
+      "Neng Sevy Aristi Ramida": {
+        "completed": 83,
+        "pml": "Vika Rizkiani",
+        "pj": "Listio Jati Nandhiko"
+      },
+      "Issa Maulidiah": {
+        "completed": 55,
+        "pml": "Vika Rizkiani",
+        "pj": "Listio Jati Nandhiko"
+      },
+      "Nanda Erwinsyah": {
+        "completed": 3,
+        "pml": "Vika Rizkiani",
+        "pj": "Listio Jati Nandhiko"
+      },
+      "Dea Syafira": {
+        "completed": 21,
+        "pml": "Vika Rizkiani",
+        "pj": "Listio Jati Nandhiko"
+      },
+      "Sabani": {
+        "completed": 89,
+        "pml": "Pitra",
+        "pj": "Listio Jati Nandhiko"
+      },
+      "Denisa": {
+        "completed": 85,
+        "pml": "Pitra",
+        "pj": "Listio Jati Nandhiko"
+      },
+      "Desy Fitriyani": {
+        "completed": 49,
+        "pml": "Pitra",
+        "pj": "Listio Jati Nandhiko"
+      },
+      "Munandar": {
+        "completed": 22,
+        "pml": "Pitra",
+        "pj": "Listio Jati Nandhiko"
+      },
+      "Yuly Wacaningtias": {
+        "completed": 69,
+        "pml": "Pitra",
+        "pj": "Listio Jati Nandhiko"
+      },
+      "Nur Anisa": {
+        "completed": 69,
+        "pml": "Pitra",
+        "pj": "Listio Jati Nandhiko"
+      },
+      "Amrullah": {
+        "completed": 39,
+        "pml": "Yudi Wahyudi",
+        "pj": "Najia Helmiah"
+      },
+      "Risma Shayrani": {
+        "completed": 35,
+        "pml": "Syarifah Desti Pratiwi",
+        "pj": "Najia Helmiah"
+      },
+      "Puput Hellya Syahbina": {
+        "completed": 51,
+        "pml": "Syarifah Desti Pratiwi",
+        "pj": "Najia Helmiah"
+      },
+      "Reza Apriyani": {
+        "completed": 22,
+        "pml": "Syarifah Desti Pratiwi",
+        "pj": "Najia Helmiah"
+      },
+      "Adibtya Novair": {
+        "completed": 59,
+        "pml": "Syarifah Desti Pratiwi",
+        "pj": "Najia Helmiah"
+      },
+      "Royadi": {
+        "completed": 24,
+        "pml": "Syarifah Desti Pratiwi",
+        "pj": "Najia Helmiah"
+      },
+      "Syafaat": {
+        "completed": 13,
+        "pml": "Syarifah Desti Pratiwi",
+        "pj": "Najia Helmiah"
+      },
+      "Yuniarti": {
+        "completed": 33,
+        "pml": "Yudi Wahyudi",
+        "pj": "Najia Helmiah"
+      },
+      "Ramdani, Shi": {
+        "completed": 31,
+        "pml": "Yudi Wahyudi",
+        "pj": "Najia Helmiah"
+      },
+      "Fatmawati": {
+        "completed": 64,
+        "pml": "Yudi Wahyudi",
+        "pj": "Najia Helmiah"
+      },
+      "Abi Hidayatullah": {
+        "completed": 32,
+        "pml": "Yudi Wahyudi",
+        "pj": "Najia Helmiah"
+      },
+      "Hesty Herawati Amin": {
+        "completed": 42,
+        "pml": "Yudi Wahyudi",
+        "pj": "Najia Helmiah"
+      },
+      "Indah Jesica Addawiyah": {
+        "completed": 26,
+        "pml": "Yudi Wahyudi",
+        "pj": "Najia Helmiah"
+      },
+      "Kardilah": {
+        "completed": 61,
+        "pml": "Yudi Wahyudi",
+        "pj": "Najia Helmiah"
+      },
+      "Luthpia Assura": {
+        "completed": 38,
+        "pml": "Prabowo",
+        "pj": "Ihza Fikri Zaki Karunia"
+      },
+      "Syifa Febrianti": {
+        "completed": 26,
+        "pml": "Prabowo",
+        "pj": "Ihza Fikri Zaki Karunia"
+      },
+      "Yulia Cahya Ramadhani": {
+        "completed": 38,
+        "pml": "Prabowo",
+        "pj": "Ihza Fikri Zaki Karunia"
+      },
+      "Boy Zikri Imam Khairudin": {
+        "completed": 34,
+        "pml": "Prabowo",
+        "pj": "Ihza Fikri Zaki Karunia"
+      },
+      "Aris Munandar": {
+        "completed": 57,
+        "pml": "Prabowo",
+        "pj": "Ihza Fikri Zaki Karunia"
+      },
+      "Diva Arum Sahada": {
+        "completed": 47,
+        "pml": "Prabowo",
+        "pj": "Ihza Fikri Zaki Karunia"
+      },
+      "Ela Hamdari": {
+        "completed": 38,
+        "pml": "Prabowo",
+        "pj": "Ihza Fikri Zaki Karunia"
+      },
+      "Putri Ayu": {
+        "completed": 26,
+        "pml": "Jamaluddin",
+        "pj": "Ihza Fikri Zaki Karunia"
+      },
+      "Nia Satunnisa": {
+        "completed": 17,
+        "pml": "Jamaluddin",
+        "pj": "Ihza Fikri Zaki Karunia"
+      },
+      "Feri Firdaus": {
+        "completed": 14,
+        "pml": "Jamaluddin",
+        "pj": "Ihza Fikri Zaki Karunia"
+      },
+      "Fatia Ameliyana": {
+        "completed": 34,
+        "pml": "Jamaluddin",
+        "pj": "Ihza Fikri Zaki Karunia"
+      },
+      "Khairunnisa": {
+        "completed": 25,
+        "pml": "Jamaluddin",
+        "pj": "Ihza Fikri Zaki Karunia"
+      },
+      "Jihan Renika Sari": {
+        "completed": 29,
+        "pml": "Jamaluddin",
+        "pj": "Ihza Fikri Zaki Karunia"
+      },
+      "Muriyeh": {
+        "completed": 33,
+        "pml": "Jamaluddin",
+        "pj": "Ihza Fikri Zaki Karunia"
+      },
+      "Echa Wulandari": {
+        "completed": 59,
+        "pml": "Novi Sri Wulandari",
+        "pj": "Vaniya Dewi Wulandari"
+      },
+      "Herdinatara Febria": {
+        "completed": 14,
+        "pml": "Novi Sri Wulandari",
+        "pj": "Vaniya Dewi Wulandari"
+      },
+      "Hawasi": {
+        "completed": 24,
+        "pml": "Novi Sri Wulandari",
+        "pj": "Vaniya Dewi Wulandari"
+      },
+      "Dinda Sekar Fonnseka": {
+        "completed": 22,
+        "pml": "Novi Sri Wulandari",
+        "pj": "Vaniya Dewi Wulandari"
+      },
+      "Anisah": {
+        "completed": 8,
+        "pml": "Novi Sri Wulandari",
+        "pj": "Vaniya Dewi Wulandari"
+      },
+      "Difa Faradifa": {
+        "completed": 38,
+        "pml": "Novi Sri Wulandari",
+        "pj": "Vaniya Dewi Wulandari"
+      },
+      "Hartono": {
+        "completed": 3,
+        "pml": "Novi Sri Wulandari",
+        "pj": "Vaniya Dewi Wulandari"
+      },
+      "Muhammad Ade Riyadi": {
+        "completed": 49,
+        "pml": "Mat Tohir",
+        "pj": "Aller Budiman Silaban"
+      },
+      "Aura Abidah": {
+        "completed": 16,
+        "pml": "Mat Tohir",
+        "pj": "Aller Budiman Silaban"
+      },
+      "Beyyinah": {
+        "completed": 34,
+        "pml": "Mat Tohir",
+        "pj": "Aller Budiman Silaban"
+      },
+      "Fahmi": {
+        "completed": 8,
+        "pml": "Mat Tohir",
+        "pj": "Aller Budiman Silaban"
+      },
+      "Cici Purnamasari": {
+        "completed": 15,
+        "pml": "Mat Tohir",
+        "pj": "Aller Budiman Silaban"
+      },
+      "Mezekki": {
+        "completed": 10,
+        "pml": "Mat Tohir",
+        "pj": "Aller Budiman Silaban"
+      },
+      "Uswatun Hasanah": {
+        "completed": 28,
+        "pml": "Mat Tohir",
+        "pj": "Aller Budiman Silaban"
+      },
+      "Vicky Maulaya Warsi": {
+        "completed": 26,
+        "pml": "Mat Tohir",
+        "pj": "Aller Budiman Silaban"
+      },
+      "Bibiliyanti": {
+        "completed": 54,
+        "pml": "Seliana",
+        "pj": "Aller Budiman Silaban"
+      },
+      "Hefrry Augustrio": {
+        "completed": 20,
+        "pml": "Seliana",
+        "pj": "Aller Budiman Silaban"
+      },
+      "Vene Randa Mirda": {
+        "completed": 19,
+        "pml": "Seliana",
+        "pj": "Aller Budiman Silaban"
+      },
+      "Nur Hayani": {
+        "completed": 47,
+        "pml": "Seliana",
+        "pj": "Aller Budiman Silaban"
+      },
+      "Susan Kessy": {
+        "completed": 47,
+        "pml": "Seliana",
+        "pj": "Aller Budiman Silaban"
+      },
+      "NORPINA NITA": {
+        "completed": 72,
+        "pml": "Seliana",
+        "pj": "Aller Budiman Silaban"
+      },
+      "Syamsul Arifin": {
+        "completed": 21,
+        "pml": "Lina Agustin Widya Siwi",
+        "pj": "Syarifah Apriani"
+      },
+      "Afra Nur": {
+        "completed": 19,
+        "pml": "Lina Agustin Widya Siwi",
+        "pj": "Syarifah Apriani"
+      },
+      "Ibrahim": {
+        "completed": 28,
+        "pml": "Lina Agustin Widya Siwi",
+        "pj": "Syarifah Apriani"
+      },
+      "Cici Wahyuni": {
+        "completed": 41,
+        "pml": "Lina Agustin Widya Siwi",
+        "pj": "Syarifah Apriani"
+      },
+      "Nova Rahma Rani": {
+        "completed": 21,
+        "pml": "Lina Agustin Widya Siwi",
+        "pj": "Syarifah Apriani"
+      },
+      "Sri Rahmadaniya": {
+        "completed": 32,
+        "pml": "Lina Agustin Widya Siwi",
+        "pj": "Syarifah Apriani"
+      },
+      "Muhaneb Febriansyah": {
+        "completed": 16,
+        "pml": "Lina Agustin Widya Siwi",
+        "pj": "Syarifah Apriani"
+      },
+      "Aswati Ningsih,Se": {
+        "completed": 239,
+        "pml": "Yusron",
+        "pj": "Syarifah Apriani"
+      },
+      "Yeni Lestari": {
+        "completed": 75,
+        "pml": "Yusron",
+        "pj": "Syarifah Apriani"
+      },
+      "Imam Bustomi": {
+        "completed": 34,
+        "pml": "Yusron",
+        "pj": "Syarifah Apriani"
+      },
+      "Nadillah": {
+        "completed": 15,
+        "pml": "Yusron",
+        "pj": "Syarifah Apriani"
+      },
+      "Harun Al Rasyid": {
+        "completed": 32,
+        "pml": "Yusron",
+        "pj": "Syarifah Apriani"
+      },
+      "Siti Oktavia Wulandari": {
+        "completed": 25,
+        "pml": "Yusron",
+        "pj": "Syarifah Apriani"
+      },
+      "Muhammad Wisnu": {
+        "completed": 98,
+        "pml": "Yusron",
+        "pj": "Syarifah Apriani"
+      },
+      "Desilia Putri Miranti": {
+        "completed": 59,
+        "pml": "Yusron",
+        "pj": "Syarifah Apriani"
+      },
+      "Eva Lutfianti": {
+        "completed": 87,
+        "pml": "Sulis Tri Handayani",
+        "pj": "Ahmad Aulia Rahman"
+      },
+      "Sri Ratna Dewi": {
+        "completed": 114,
+        "pml": "Sulis Tri Handayani",
+        "pj": "Ahmad Aulia Rahman"
+      },
+      "Laras Nanda Julita": {
+        "completed": 82,
+        "pml": "Sulis Tri Handayani",
+        "pj": "Ahmad Aulia Rahman"
+      },
+      "Triesna Dinda Saputra": {
+        "completed": 22,
+        "pml": "Sulis Tri Handayani",
+        "pj": "Ahmad Aulia Rahman"
+      },
+      "Nafisah Ismatul Faizah": {
+        "completed": 16,
+        "pml": "Sulis Tri Handayani",
+        "pj": "Ahmad Aulia Rahman"
+      },
+      "Arie Maulana": {
+        "completed": 20,
+        "pml": "Sulis Tri Handayani",
+        "pj": "Ahmad Aulia Rahman"
+      },
+      "Fuulanah Aniskurlillah": {
+        "completed": 18,
+        "pml": "Sulis Tri Handayani",
+        "pj": "Ahmad Aulia Rahman"
+      },
+      "Suci Pratiwi": {
+        "completed": 41,
+        "pml": "Sulis Tri Handayani",
+        "pj": "Ahmad Aulia Rahman"
+      },
+      "Rika": {
+        "completed": 45,
+        "pml": "Ridha Nur Mitha",
+        "pj": "Ahmad Aulia Rahman"
+      },
+      "Bagus Setiawan": {
+        "completed": 42,
+        "pml": "Ridha Nur Mitha",
+        "pj": "Ahmad Aulia Rahman"
+      },
+      "Ismail": {
+        "completed": 43,
+        "pml": "Ridha Nur Mitha",
+        "pj": "Ahmad Aulia Rahman"
+      },
+      "Tri Ramadianti": {
+        "completed": 83,
+        "pml": "Ridha Nur Mitha",
+        "pj": "Ahmad Aulia Rahman"
+      },
+      "Dwi Febrianti": {
+        "completed": 45,
+        "pml": "Ridha Nur Mitha",
+        "pj": "Ahmad Aulia Rahman"
+      },
+      "Vivi Yatul Islamiah": {
+        "completed": 31,
+        "pml": "Ridha Nur Mitha",
+        "pj": "Ahmad Aulia Rahman"
+      },
+      "Ridhawati": {
+        "completed": 39,
+        "pml": "Ridha Nur Mitha",
+        "pj": "Ahmad Aulia Rahman"
+      },
+      "Muhammad Fredi Ramschie, St": {
+        "completed": 70,
+        "pml": "Ridha Nur Mitha",
+        "pj": "Ahmad Aulia Rahman"
+      },
+      "Misdi": {
+        "completed": 14,
+        "pml": "Haris Rosi",
+        "pj": "Arini Faurizah"
+      },
+      "Rafli Haikal": {
+        "completed": 32,
+        "pml": "Haris Rosi",
+        "pj": "Arini Faurizah"
+      },
+      "Ropi'A": {
+        "completed": 15,
+        "pml": "Haris Rosi",
+        "pj": "Arini Faurizah"
+      },
+      "Astuti": {
+        "completed": 34,
+        "pml": "Haris Rosi",
+        "pj": "Arini Faurizah"
+      },
+      "Abdullah Sholihin": {
+        "completed": 43,
+        "pml": "Haris Rosi",
+        "pj": "Arini Faurizah"
+      },
+      "Andreansyah": {
+        "completed": 27,
+        "pml": "Haris Rosi",
+        "pj": "Arini Faurizah"
+      },
+      "Yenik Lidiawati": {
+        "completed": 10,
+        "pml": "Haris Rosi",
+        "pj": "Arini Faurizah"
+      },
+      "Saidah": {
+        "completed": 64,
+        "pml": "Haris Rosi",
+        "pj": "Arini Faurizah"
+      },
+      "Lilis Suryani": {
+        "completed": 4,
+        "pml": "Nanda Ariska",
+        "pj": "Arini Faurizah"
+      },
+      "Arfi Arfaqiyah": {
+        "completed": 67,
+        "pml": "Nanda Ariska",
+        "pj": "Arini Faurizah"
+      },
+      "Hafit": {
+        "completed": 9,
+        "pml": "Nanda Ariska",
+        "pj": "Arini Faurizah"
+      },
+      "Mirza": {
+        "completed": 7,
+        "pml": "Nanda Ariska",
+        "pj": "Arini Faurizah"
+      },
+      "Firna Agustia": {
+        "completed": 2,
+        "pml": "Nanda Ariska",
+        "pj": "Arini Faurizah"
+      },
+      "Muhamad Andre Akbar": {
+        "completed": 20,
+        "pml": "Nanda Ariska",
+        "pj": "Arini Faurizah"
+      },
+      "Rahmayani": {
+        "completed": 37,
+        "pml": "Nanda Ariska",
+        "pj": "Arini Faurizah"
+      },
+      "Sefty Eca Putri": {
+        "completed": 12,
+        "pml": "Sukmawati",
+        "pj": "Safira Nurrosyid, S.Tr.Stat."
+      },
+      "Dimas Syahputra": {
+        "completed": 20,
+        "pml": "Sukmawati",
+        "pj": "Safira Nurrosyid, S.Tr.Stat."
+      },
+      "Hosea Albert Juliansyah": {
+        "completed": 399,
+        "pml": "Sukmawati",
+        "pj": "Safira Nurrosyid, S.Tr.Stat."
+      },
+      "Sri Mardalena Tahapary": {
+        "completed": 46,
+        "pml": "Sukmawati",
+        "pj": "Safira Nurrosyid, S.Tr.Stat."
+      },
+      "Eny Rohyati": {
+        "completed": 20,
+        "pml": "Sukmawati",
+        "pj": "Safira Nurrosyid, S.Tr.Stat."
+      },
+      "Hilda Aulia": {
+        "completed": 23,
+        "pml": "Sukmawati",
+        "pj": "Safira Nurrosyid, S.Tr.Stat."
+      },
+      "Ilham Ridwansyah": {
+        "completed": 8,
+        "pml": "Sukmawati",
+        "pj": "Safira Nurrosyid, S.Tr.Stat."
+      },
+      "Ayu Agustin": {
+        "completed": 116,
+        "pml": "Sukmawati",
+        "pj": "Safira Nurrosyid, S.Tr.Stat."
+      },
+      "Siti Nailulmuna": {
+        "completed": 46,
+        "pml": "Veti Ningsi",
+        "pj": "Safira Nurrosyid, S.Tr.Stat."
+      },
+      "Taufik": {
+        "completed": 8,
+        "pml": "Veti Ningsi",
+        "pj": "Safira Nurrosyid, S.Tr.Stat."
+      },
+      "Irfan Faozi Sunaryo": {
+        "completed": 15,
+        "pml": "Veti Ningsi",
+        "pj": "Safira Nurrosyid, S.Tr.Stat."
+      },
+      "Suryansah": {
+        "completed": 32,
+        "pml": "Veti Ningsi",
+        "pj": "Safira Nurrosyid, S.Tr.Stat."
+      },
+      "Titin Sopiana": {
+        "completed": 108,
+        "pml": "Veti Ningsi",
+        "pj": "Safira Nurrosyid, S.Tr.Stat."
+      },
+      "Sri Wahyuni": {
+        "completed": 82,
+        "pml": "Veti Ningsi",
+        "pj": "Safira Nurrosyid, S.Tr.Stat."
+      },
+      "Faridh Ade Maiza Kusuma": {
+        "completed": 42,
+        "pml": "Veti Ningsi",
+        "pj": "Safira Nurrosyid, S.Tr.Stat."
+      },
+      "Shofyansyah": {
+        "completed": 59,
+        "pml": "Yusimianto",
+        "pj": "Rifky Mullah Syadriawan, A.Md.Stat"
+      },
+      "Amanda Dwi Kartika": {
+        "completed": 43,
+        "pml": "Yusimianto",
+        "pj": "Rifky Mullah Syadriawan, A.Md.Stat"
+      },
+      "Sukris Novi Karini": {
+        "completed": 13,
+        "pml": "Yusimianto",
+        "pj": "Rifky Mullah Syadriawan, A.Md.Stat"
+      },
+      "Boni Pernandus": {
+        "completed": 37,
+        "pml": "Yusimianto",
+        "pj": "Rifky Mullah Syadriawan, A.Md.Stat"
+      },
+      "Mika Lasni Roha Saragih": {
+        "completed": 9,
+        "pml": "Yusimianto",
+        "pj": "Rifky Mullah Syadriawan, A.Md.Stat"
+      },
+      "Aulia Fitriani": {
+        "completed": 7,
+        "pml": "Yusimianto",
+        "pj": "Rifky Mullah Syadriawan, A.Md.Stat"
+      },
+      "Septia Rahma Wanti": {
+        "completed": 56,
+        "pml": "Zaini",
+        "pj": "Rifky Mullah Syadriawan, A.Md.Stat"
+      },
+      "Fairuz Restu Sadewo": {
+        "completed": 13,
+        "pml": "Zaini",
+        "pj": "Rifky Mullah Syadriawan, A.Md.Stat"
+      },
+      "Marfirah": {
+        "completed": 16,
+        "pml": "Zaini",
+        "pj": "Rifky Mullah Syadriawan, A.Md.Stat"
+      },
+      "Gerhan Lantara Ryandi": {
+        "completed": 51,
+        "pml": "Zaini",
+        "pj": "Rifky Mullah Syadriawan, A.Md.Stat"
+      },
+      "Novita Diana Lestari": {
+        "completed": 27,
+        "pml": "Zaini",
+        "pj": "Rifky Mullah Syadriawan, A.Md.Stat"
+      },
+      "Khoirul Anwar": {
+        "completed": 16,
+        "pml": "Zaini",
+        "pj": "Rifky Mullah Syadriawan, A.Md.Stat"
+      },
+      "Fairuztia Atiqah Putri": {
+        "completed": 16,
+        "pml": "Zaini",
+        "pj": "Rifky Mullah Syadriawan, A.Md.Stat"
+      },
+      "Rohmi": {
+        "completed": 107,
+        "pml": "Zaini",
+        "pj": "Rifky Mullah Syadriawan, A.Md.Stat"
+      },
+      "Yeti Kurnia Dewi": {
+        "completed": 69,
+        "pml": "Abang Handri",
+        "pj": "Wantri"
+      },
+      "Syarifah Febriyana": {
+        "completed": 45,
+        "pml": "Abang Handri",
+        "pj": "Wantri"
+      },
+      "Dofir": {
+        "completed": 94,
+        "pml": "Abang Handri",
+        "pj": "Wantri"
+      },
+      "Dini Maulana": {
+        "completed": 45,
+        "pml": "Abang Handri",
+        "pj": "Wantri"
+      },
+      "Jamilah": {
+        "completed": 58,
+        "pml": "Abang Handri",
+        "pj": "Wantri"
+      },
+      "Mita Kurniasari": {
+        "completed": 54,
+        "pml": "Abang Handri",
+        "pj": "Wantri"
+      },
+      "Elva Gustia": {
+        "completed": 30,
+        "pml": "Abang Handri",
+        "pj": "Wantri"
+      },
+      "Sartika": {
+        "completed": 81,
+        "pml": "Abang Handri",
+        "pj": "Wantri"
+      },
+      "Septiana Jumakhirus Siska, S.Sos": {
+        "completed": 28,
+        "pml": "Nelly Nalita",
+        "pj": "Sukma"
+      },
+      "Suyehdi": {
+        "completed": 13,
+        "pml": "Nelly Nalita",
+        "pj": "Sukma"
+      },
+      "Imamul Akhyar": {
+        "completed": 20,
+        "pml": "Nelly Nalita",
+        "pj": "Sukma"
+      },
+      "Ayu Melja Wahyuni": {
+        "completed": 26,
+        "pml": "Nelly Nalita",
+        "pj": "Sukma"
+      },
+      "Andi Saputra": {
+        "completed": 12,
+        "pml": "Nelly Nalita",
+        "pj": "Sukma"
+      },
+      "Abdul Khairulyani": {
+        "completed": 11,
+        "pml": "Nelly Nalita",
+        "pj": "Sukma"
+      },
+      "Hendrika Fitri": {
+        "completed": 6,
+        "pml": "Nelly Nalita",
+        "pj": "Sukma"
+      },
+      "Arya Daffa Dewansyah": {
+        "completed": 33,
+        "pml": "Wandi Syafari",
+        "pj": "Akma Batrisyia Jazima"
+      },
+      "Nur Wanda Ismaulia": {
+        "completed": 46,
+        "pml": "Wandi Syafari",
+        "pj": "Akma Batrisyia Jazima"
+      },
+      "Akhirul Buldan Z": {
+        "completed": 56,
+        "pml": "Wandi Syafari",
+        "pj": "Akma Batrisyia Jazima"
+      },
+      "Depy Anggraini": {
+        "completed": 43,
+        "pml": "Wandi Syafari",
+        "pj": "Akma Batrisyia Jazima"
+      },
+      "Nurul Imam": {
+        "completed": 19,
+        "pml": "Wandi Syafari",
+        "pj": "Akma Batrisyia Jazima"
+      },
+      "Mitha Rizky Amalia": {
+        "completed": 40,
+        "pml": "Wandi Syafari",
+        "pj": "Akma Batrisyia Jazima"
+      },
+      "Cindi": {
+        "completed": 13,
+        "pml": "Wandi Syafari",
+        "pj": "Akma Batrisyia Jazima"
+      },
+      "Muhammad Sulhan": {
+        "completed": 53,
+        "pml": "Wandi Syafari",
+        "pj": "Akma Batrisyia Jazima"
+      },
+      "Wilhelmina Halim": {
+        "completed": 206,
+        "pml": "Yuyun Antoni,Se",
+        "pj": "Abdul Karim"
+      },
+      "Ivan Aulia": {
+        "completed": 106,
+        "pml": "Yuyun Antoni,Se",
+        "pj": "Abdul Karim"
+      },
+      "Mustakim.": {
+        "completed": 73,
+        "pml": "Yuyun Antoni,Se",
+        "pj": "Abdul Karim"
+      },
+      "Dina Fitri Wahyuni": {
+        "completed": 20,
+        "pml": "Yuyun Antoni,Se",
+        "pj": "Abdul Karim"
+      },
+      "Sintia Febiola": {
+        "completed": 83,
+        "pml": "Yuyun Antoni,Se",
+        "pj": "Abdul Karim"
+      },
+      "Mustari": {
+        "completed": 16,
+        "pml": "Yuyun Antoni,Se",
+        "pj": "Abdul Karim"
+      },
+      "Elman": {
+        "completed": 32,
+        "pml": "Yuyun Antoni,Se",
+        "pj": "Abdul Karim"
+      },
+      "Dini Fitriani": {
+        "completed": 7,
+        "pml": "Syamsul",
+        "pj": "Clara Diva"
+      },
+      "Norma Aspri Yani": {
+        "completed": 9,
+        "pml": "Syamsul",
+        "pj": "Clara Diva"
+      },
+      "Siti Nadia Azhari": {
+        "completed": 14,
+        "pml": "Syamsul",
+        "pj": "Clara Diva"
+      },
+      "Siti Nurizki": {
+        "completed": 21,
+        "pml": "Syamsul",
+        "pj": "Clara Diva"
+      },
+      "Siti Utari Fitriani": {
+        "completed": 19,
+        "pml": "Syamsul",
+        "pj": "Clara Diva"
+      },
+      "Windi Rati Fritiwi": {
+        "completed": 20,
+        "pml": "Syamsul",
+        "pj": "Clara Diva"
+      },
+      "Pramudya Hadista Priyandanu": {
+        "completed": 14,
+        "pml": "Syamsul",
+        "pj": "Clara Diva"
+      },
+      "Amalia Faisya": {
+        "completed": 7,
+        "pml": "Syamsul",
+        "pj": "Clara Diva"
+      },
+      "Sopia Lina": {
+        "completed": 37,
+        "pml": "Fransiska Romana",
+        "pj": "Briggita Vaya Difa"
+      },
+      "Yeni Rianti": {
+        "completed": 68,
+        "pml": "Fransiska Romana",
+        "pj": "Briggita Vaya Difa"
+      },
+      "Sukmawati": {
+        "completed": 52,
+        "pml": "Fransiska Romana",
+        "pj": "Briggita Vaya Difa"
+      },
+      "Veronika Puya": {
+        "completed": 46,
+        "pml": "Fransiska Romana",
+        "pj": "Briggita Vaya Difa"
+      },
+      "Henita": {
+        "completed": 43,
+        "pml": "Fransiska Romana",
+        "pj": "Briggita Vaya Difa"
+      },
+      "Lisnawati": {
+        "completed": 15,
+        "pml": "Fransiska Romana",
+        "pj": "Briggita Vaya Difa"
+      },
+      "Muhammad Akbar Bintang": {
+        "completed": 36,
+        "pml": "Abdul Aziz",
+        "pj": "Muhammad Syihabuddin Alhaq"
+      },
+      "Seruni": {
+        "completed": 30,
+        "pml": "Abdul Aziz",
+        "pj": "Muhammad Syihabuddin Alhaq"
+      },
+      "Florentina Nalista": {
+        "completed": 38,
+        "pml": "Abdul Aziz",
+        "pj": "Muhammad Syihabuddin Alhaq"
+      },
+      "Desta Dara Ayu Lestari": {
+        "completed": 22,
+        "pml": "Abdul Aziz",
+        "pj": "Muhammad Syihabuddin Alhaq"
+      },
+      "Rara Shati": {
+        "completed": 22,
+        "pml": "Abdul Aziz",
+        "pj": "Muhammad Syihabuddin Alhaq"
+      },
+      "Irenia Dina": {
+        "completed": 25,
+        "pml": "Abdul Aziz",
+        "pj": "Muhammad Syihabuddin Alhaq"
+      },
+      "Juniati": {
+        "completed": 10,
+        "pml": "Abdul Aziz",
+        "pj": "Muhammad Syihabuddin Alhaq"
+      },
+      "Agnes": {
+        "completed": 58,
+        "pml": "Alip Susanto",
+        "pj": "Muhammad Syihabuddin Alhaq"
+      },
+      "ANDRE": {
+        "completed": 58,
+        "pml": "Alip Susanto",
+        "pj": "Muhammad Syihabuddin Alhaq"
+      },
+      "Natalia": {
+        "completed": 47,
+        "pml": "Alip Susanto",
+        "pj": "Muhammad Syihabuddin Alhaq"
+      },
+      "Nengsih": {
+        "completed": 75,
+        "pml": "Alip Susanto",
+        "pj": "Muhammad Syihabuddin Alhaq"
+      },
+      "Maldini": {
+        "completed": 13,
+        "pml": "Alip Susanto",
+        "pj": "Muhammad Syihabuddin Alhaq"
+      },
+      "Stepiana": {
+        "completed": 6,
+        "pml": "Handoko Tuah Sabarman Sipayung",
+        "pj": "Firmansyah"
+      },
+      "Bella": {
+        "completed": 53,
+        "pml": "Handoko Tuah Sabarman Sipayung",
+        "pj": "Firmansyah"
+      },
+      "Epraim": {
+        "completed": 7,
+        "pml": "Handoko Tuah Sabarman Sipayung",
+        "pj": "Firmansyah"
+      },
+      "Feryansyah Rudy Kisara": {
+        "completed": 29,
+        "pml": "Handoko Tuah Sabarman Sipayung",
+        "pj": "Firmansyah"
+      },
+      "Grafirat Christian": {
+        "completed": 16,
+        "pml": "Handoko Tuah Sabarman Sipayung",
+        "pj": "Firmansyah"
+      },
+      "Selvia": {
+        "completed": 16,
+        "pml": "Handoko Tuah Sabarman Sipayung",
+        "pj": "Firmansyah"
+      }
+    }
   }
 ]

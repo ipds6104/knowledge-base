@@ -86,6 +86,50 @@ Ketika ditanya hal tersebut, asisten AI (Antigravity) secara otomatis wajib meny
 6. **Rekomendasi Aksi Cepat PJ-Kuda**:
    - Langkah konkret harian untuk PJ-Kuda dalam melakukan pembinaan petugas tim masing-masing.
 
+## Diagram Alur Monitoring hingga Intervensi
+
+Diagram di bawah ini menggambarkan alur kerja harian terstandarisasi untuk memantau progres lapangan dan mengeksekusi intervensi taktis secara cepat:
+
+```mermaid
+flowchart TD
+    classDef morning fill:#e1f5fe,stroke:#039be5,stroke-width:2px,color:#01579b;
+    classDef afternoon fill:#fff3e0,stroke:#ffb74d,stroke-width:2px,color:#e65100;
+    classDef evening fill:#ede7f6,stroke:#b39ddb,stroke-width:2px,color:#4a148c;
+    classDef critical fill:#ffebee,stroke:#ef5350,stroke-width:2px,color:#b71c1c;
+
+    subgraph Pagi ["🌅 EVALUASI PAGI (SOP Mulai Hari)"]
+        A["Run: kb se-monitor -r"]:::morning --> B{"Bandingkan Progres vs Target Ideal"}:::morning
+        B --> C["Identifikasi Masalah & Bottleneck"]:::morning
+        C --> D1{"Ada PML Bottleneck?\nPending > 20, App Rate < 20%"}:::morning
+        C --> D2{"Ada PPL Lambat?\nSelesai < 3%, Target > 200"}:::morning
+        
+        D1 -- Ya --> E1["Teguran Keras / Koordinasi via PJ-Kuda"]:::critical
+        D2 -- Ya --> E2["PML Turun Mendampingi ke Lapangan"]:::critical
+        
+        E1 --> F["Mulai Pencacahan & Verifikasi Lapangan"]:::afternoon
+        E2 --> F
+        D1 -- Tidak --> F
+        D2 -- Tidak --> F
+    end
+
+    subgraph Siang ["☀️ OPERASIONAL LAPANGAN & PENGOLAHAN"]
+        F --> G["PPL melakukan Pencacahan Door-to-Door"]:::afternoon
+        G --> H["PPL Entri Data ke CAPI"]:::afternoon
+        H --> I{"PML Verifikasi Berkas\n(Minimal 2x Sehari)"}:::afternoon
+        I -->|Approved| J["Data Masuk Progres Selesai"]:::afternoon
+        I -->|Rejected| K["Dikembalikan ke PPL untuk Perbaikan"]:::afternoon
+    end
+
+    subgraph Sore ["🌇 EVALUASI SORE (SOP Akhir Hari)"]
+        J --> L["Run: kb se-monitor -r"]:::evening
+        K --> L
+        L --> M["Kalkulasi Delta Kemajuan & Simpan Snapshot"]:::evening
+        M --> N{"Apakah Intervensi Pagi Efektif?"}:::evening
+        N -->|Ya| O["Apresiasi Petugas & PML Mitra"]:::evening
+        N -->|Tidak| P["Rekomendasi Aksi Cepat PJ / Eskalasi Ketua SE"]:::critical
+    end
+```
+
 ### Buku Catatan Intervensi Aktif
 *Simpan catatan intervensi taktis (seperti hasil telepon atau kunjungan lapangan) di bagian ini untuk pemantauan berkelanjutan:*
 *   **[2026-06-22 Pagi]**: Menemukan bottleneck besar pada PML Prabowo (tim Ihza) yang memiliki 211 kiriman pending (Approval Rate: 7.86%). PPL Nia Satunnisa dan Feri Firdaus juga diidentifikasi terlambat memulai lapangan (< 3% selesai).
