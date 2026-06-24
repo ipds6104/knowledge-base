@@ -52,30 +52,42 @@ Untuk melakukan evaluasi kesehatan progres dan intervensi, jalankan perintah ber
 ```
 
 ### Indikator Kesehatan Progres
-Utilitas monitoring mengukur 3 indikator utama:
+Utilitas monitoring mengukur beberapa indikator utama:
 1.  **Worked Rate** (Rasio Mulai): `(DRAFT + SUBMITTED + APPROVED) / Target`. Mengukur keaktifan PPL di lapangan.
 2.  **Completed Rate** (Rasio Selesai): `(SUBMITTED + APPROVED) / Target`. Rata-rata kabupaten saat ini menjadi acuan batas minimal kesehatan progres.
 3.  **Approval Rate** (Rasio Pemeriksaan): `APPROVED / (APPROVED + SUBMITTED)`. Mengukur seberapa aktif PML memeriksa data.
+4.  **Target Harian PPL (Target Submit/Hari)**: Jumlah dokumen yang harus disubmit PPL per hari agar selesai pada target internal 15 Agustus 2026.
+    $$\text{ppl\_daily\_target} = \text{max}(0.0, \frac{\text{Target} - \text{Completed}}{\text{Sisa Hari}})$$
+5.  **Target Harian PML (Target Approve/Hari)**: Jumlah berkas yang harus disetujui PML per hari agar verifikasi selesai pada target internal 15 Agustus 2026.
+    $$\text{pml\_daily\_target} = \text{max}(0.0, \frac{\text{Target} - \text{Approved}}{\text{Sisa Hari}})$$
 
 ## Catatan Evaluasi & Rencana Intervensi Lapangan
 Mengingat **seluruh PML adalah mitra** (bukan staf organik BPS), tantangan utama lapangan adalah komitmen waktu dan kedisiplinan pemeriksaan harian. Oleh karena itu, monitoring pagi & sore menjadi sangat krusial.
 
 ### SOP Monitoring Harian (Pagi & Sore)
 Proses monitoring telah dibakukan secara harian. Pengguna cukup menanyakan hal berikut pada pagi (sebelum lapangan) dan sore (sebelum pulang kerja):
-> **"oke di mana posisi kita hari ini untuk SE 2026 dan apakah ada yang perlu diintervensi agar on target?"**
+> **"oke di mana posisi kita hari ini untuk SE 2026 dan apakah ada yang perlu diintervensi agar on target?"** (atau variannya)
+> **"bagaimana kondisi SE 2026 mempawah saat ini"** (atau variannya)
 
-Ketika ditanya hal tersebut, asisten AI (Antigravity) secara otomatis wajib menyajikan laporan dengan format baku berikut:
+Ketika membahas monitoring atau menyajikan laporan progres, asisten AI **wajib** sebisa mungkin menyajikan data dalam bentuk **tabel** demi kejelasan dan keterbacaan informasi. Laporan harian disajikan dengan format baku berikut:
 
 1. **Status Target Harian (Tenggat 15 Agustus 2026)**:
    - **Target Progres Ideal Hari Ini**: `[Expected Progress]%` (Dihitung berdasarkan hari lapangan yang sudah berjalan dari total 61 hari lapangan sejak 15 Juni hingga target selesai 15 Agustus 2026).
+   - **Target Harian Kabupaten Mempawah**: PPL wajib submit `[PPL Daily Target]` dokumen/hari dan PML wajib approve `[PML Daily Target]` dokumen/hari secara akumulatif.
 2. **Posisi Makro Provinsi Kalbar & Mempawah**:
    - **Progres Kalbar**: `[Progres]%` (Status: `ON TARGET` / `BEHIND TARGET` / `WARNING`).
      - *Estimasi Selesai PPL (Worked)*: `[Tanggal]`
      - *Estimasi Selesai PML (Done)*: `[Tanggal]`
+     - *Estimasi Selesai Terlama Kabupaten di Kalbar*: `[Nama Kabupaten]` (`[Tanggal]`)
    - **Progres Mempawah**: `[Progres]%` (Status: `ON TARGET` / `BEHIND TARGET` / `WARNING`).
      - *Estimasi Selesai PPL (Worked)*: `[Tanggal]`
      - *Estimasi Selesai PML (Done)*: `[Tanggal]`
+     - *Estimasi Selesai Terlama PPL di Mempawah*: `[Nama PPL]` (PML: `[Nama PML]`, PJ: `[Nama PJ]`) pada `[Tanggal]`
    - **Peringkat Mempawah**: Peringkat `[Rank]` dari 14 Kabupaten/Kota se-Kalbar.
+   - **Metode & Formula Kalkulasi Estimasi**: Menjelaskan secara transparan bahwa estimasi dihitung real secara matematis oleh sistem berdasarkan data, bukan menerka-nerka:
+     $$\text{Kecepatan Harian} = \frac{\text{Done \%}}{\text{Hari Lapangan Berjalan}}$$
+     $$\text{Sisa Hari} = \frac{100\% - \text{Done \%}}{\text{Kecepatan Harian}}$$
+     $$\text{Est. Tanggal Selesai} = \text{Hari Ini} + \text{Sisa Hari}$$
 3. **Perbandingan dengan Pengecekan Sebelumnya (Delta)**:
    - Menampilkan selisih kenaikan progres Kalbar, Mempawah, dan tim PJ Ihza sejak pengecekan terakhir, serta perubahan antrean PML.
 4. **Daftar Intervensi Taktis Mempawah**:
@@ -90,10 +102,15 @@ Ketika ditanya hal tersebut, asisten AI (Antigravity) secara otomatis wajib meny
 Apabila dilakukan pengecekan mendalam terhadap PML tertentu, laporan wajib disajikan dalam bentuk dua tabel berikut:
 1.  **Tabel 1: Perbandingan Makro Kinerja PML**
     *   Kolom: `Dimensi Perbandingan`, `PML TARGET`, `PML PEMBANDING / LAINNYA`, `Rata-rata Kabupaten`.
-    *   Metrik wajib: Target unit, Completed Rate (Done %), Rank Completed, Worked Rate (Mulai %), Rank Worked, Approval Rate (Verifikasi %), Antrean Pending, dan Status Bottleneck.
+    *   Metrik wajib: Target unit, Completed Rate (Done %), Rank Completed, Worked Rate (Mulai %), Rank Worked, Approval Rate (Verifikasi %), Antrean Pending, Target Harian (Approve/Hari), dan Status Bottleneck.
 2.  **Tabel 2: Detail Kinerja PPL di Bawah PML Terkait**
-    *   Kolom: `Nama PPL`, `SLS`, `Target`, `OPEN`, `DRAFT`, `SUBMIT`, `APPROVE`, `Done %`, `Status / Tindakan`.
+    *   Kolom: `Nama PPL`, `SLS`, `Target`, `OPEN`, `DRAFT`, `SUBMIT`, `APPROVE`, `Tgt Submit/Hari`, `Done %`, `Est. Selesai`, `Status / Tindakan`.
     *   Diurutkan dari `Done %` terkecil untuk mempermudah identifikasi PPL kritis.
+    *   Kolom `Done %` wajib dilengkapi dengan emoji status warna (`🟢`, `🟡`, `🔴`) sesuai kriteria batas dinamis.
+3.  **Kueri Petugas Terkritis (Proyeksi Selesai Paling Lama)**
+    *   Jika ditanyakan: *"siapa yang kemungkinan paling lama selesainya?"* atau *"siapa petugas paling kritis?"*
+    *   **Prosedur**: Jalankan `python3 scratch/run_worst_projections.py`.
+    *   **Penyajian**: Tampilkan tabel berisi PPL dengan proyeksi selesai paling lama, diprioritaskan dari petugas yang belum mulai (`done_rate == 0` / `Tdk Terproyeksi`) lalu diurutkan berdasarkan tanggal estimasi selesai terjauh (descending).
 
 ## Diagram Alur Monitoring hingga Intervensi
 
@@ -150,7 +167,7 @@ flowchart TD
 3.  **Target Waktu Lapangan**: Meskipun jadwal resmi lapangan berlangsung hingga **31 Agustus 2026**, Ketua Sensus Ekonomi BPS Kabupaten Mempawah menargetkan **seluruh dokumen CAPI selesai disubmit pada 15 Agustus 2026**. Oleh karena itu, percepatan di tingkat PPL dan PML sangat penting untuk dicapai sebelum tenggat waktu internal ini.
 4.  **Update Berkala**: Data ditarik otomatis dari Google Sheets **Tarikan 6104** (`Realisasi - 6104.csv`). Gunakan perintah **`./scripts/kb.py se-monitor -r`** setiap pagi dan sore untuk laporan baku 6-seksi. Untuk tabel mentah intervensi, gunakan `./scripts/kb.py se-monitor -i`.
 
-## Kendala Lapangan Spesifik & Studi Kasus (Segedong / Purun Sungai Burung)
+## Kendala Lapangan Spesifik & Karakteristik Wilayah (Segedong / Purun / Toho / Sadaniang)
 Berdasarkan diskusi koordinasi antara PJ-Kuda Ihza dan PML Jamaluddin (22 Juni 2026), diidentifikasi beberapa kendala operasional lapangan riil yang bernilai tinggi bagi manajemen:
 1.  **Dilema Mitra Baru & Pemahaman Konsep**:
     -   Hampir seluruh PPL di bawah pengawasan PML Jamaluddin adalah **mitra baru** (kecuali Feri Firdaus). Ini menyebabkan adaptasi minggu pertama berjalan lambat.
@@ -164,6 +181,11 @@ Berdasarkan diskusi koordinasi antara PJ-Kuda Ihza dan PML Jamaluddin (22 Juni 2
     -   Karena PML terkuras waktunya membimbing konsep dasar PPL baru, terdapat risiko PML kelelahan sehingga kualitas pemeriksaan (*approval*) data menurun. Keseimbangan kuantitas dan kualitas harus dipantau ketat.
 5.  **Pendataan Perusahaan Besar (Aquarnass)**:
     -   Entitas besar seperti **Aquarnass** di wilayah Segedong menuntut surat pengantar resmi khusus (IPD/surat pengantar perusahaan) dari BPS Kabupaten Mempawah agar bersedia kooperatif dalam pendataan.
+6.  **Daerah Blank Spot Sinyal Internet (Kecamatan Toho & Sadaniang)**:
+    -   Kecamatan Toho dan Sadaniang secara historis merupakan wilayah dengan sinyal internet terburuk di Kabupaten Mempawah.
+    -   Kendala ini menyebabkan progres PPL di daerah tersebut tidak terdeteksi secara real-time di server. Meskipun PPL sudah melakukan pencacahan offline dalam jumlah besar, data baru terkirim secara bertahap saat mereka mendapatkan sinyal stabil, sehingga progres di dashboard/Google Sheets seringkali terlihat sangat rendah atau diam (delay progress).
+    -   **Pengecualian Lokal (Oase Internet)**: Walaupun daerah tersebut dikategorikan blank spot secara makro, masih terdapat 1 atau 2 desa di dalam kecamatan tersebut yang memiliki sinyal internet terbatas (hanya cukup untuk berkirim pesan/media ringan via WhatsApp). PPL dapat diarahkan untuk berpindah sementara ke desa-desa oase sinyal ini secara berkala guna melakukan sinkronisasi/unggah data CAPI atau sekadar melaporkan progres cepat ke PML.
+    -   Tindakan PJ-Kuda/PML: Jangan terburu-buru menjatuhkan sanksi atau menganggap PPL tidak bekerja. Manfaatkan komunikasi via WhatsApp pada desa-desa oase sinyal tersebut, atau lakukan konfirmasi offline (via telepon biasa/SMS, atau kunjungan tatap muka/koordinasi rutin) untuk memverifikasi jumlah dokumen fisik/lokal di perangkat CAPI mereka.
 
 
 

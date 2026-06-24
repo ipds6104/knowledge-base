@@ -58,9 +58,9 @@ def print_intervention(
         f"(Hari ke-{elapsed_days} dari {total_days})"
     )
     print(f"Status Kab. Mempawah: {get_target_status(kab_pct, expected_pct)}")
-    print(f"Estimasi PPL Selesai (Worked): {get_est_completion(kab_avg_worked * 100, elapsed_days)}")
-    print(f"Estimasi PML Selesai (Done)  : {get_est_completion(kab_pct, elapsed_days)}")
-    sep = "-" * 115
+    print(f"Estimasi PPL Selesai (Agregat): {get_est_completion(kab_avg_worked * 100, elapsed_days)}")
+    print(f"Estimasi PML Selesai (Agregat): {get_est_completion(kab_pct, elapsed_days)}")
+    sep = "-" * 128
     print(sep)
     print(
         f"Rata-rata Kabupaten : Worked={kab_avg_worked*100:.2f}%, "
@@ -70,26 +70,26 @@ def print_intervention(
     # Tabel PPL terlambat
     print(f"\n{Colors.BOLD}{Colors.FAIL}1. DAFTAR PPL TERLAMBAT (Progres Selesai < {ppl_threshold*100:.2f}% & Target > 200){Colors.ENDC}")
     print(sep)
-    print(f"{'No':<3} | {'Nama PPL':<25} | {'Target':<6} | {'Selesai':<8} | {'Open':<5} | {'Nama PML':<20} | {'PJ-Kuda':<25}")
+    print(f"{'No':<3} | {'Nama PPL':<25} | {'Target':<6} | {'Tgt/Hari':<8} | {'Selesai':<8} | {'Open':<5} | {'Nama PML':<20} | {'PJ-Kuda':<25}")
     print(sep)
     for idx, (name, m) in enumerate(low_ppls, 1):
         pml, pj = ppl_to_supervisors[name]
         print(
-            f"{idx:<3} | {name:<25} | {m['target']:<6} | {m['completed_rate']*100:>6.2f}% "
+            f"{idx:<3} | {name:<25} | {m['target']:<6} | {m['ppl_daily_target']:>8.1f} | {Colors.FAIL}🔴 {m['completed_rate']*100:>5.2f}%{Colors.ENDC} "
             f"| {m['open']:<5} | {pml:<20} | {pj:<25}"
         )
     print(sep)
 
     # Tabel PML bottleneck
     print(f"\n{Colors.BOLD}{Colors.WARNING}2. DAFTAR PML BOTTLENECK (Pending > 20 & Approval Rate < 20.00%){Colors.ENDC}")
-    sep2 = "-" * 105
+    sep2 = "-" * 118
     print(sep2)
-    print(f"{'No':<3} | {'Nama PML':<20} | {'Pending':<8} | {'Approved':<8} | {'Approval %':<10} | {'PJ-Kuda':<25}")
+    print(f"{'No':<3} | {'Nama PML':<20} | {'Pending':<8} | {'Tgt Approve':<11} | {'Approved':<8} | {'Approval %':<10} | {'PJ-Kuda':<25}")
     print(sep2)
     for idx, (name, m) in enumerate(bottleneck_pmls, 1):
         pj = pml_to_pj[name]
         print(
-            f"{idx:<3} | {name:<20} | {m['submitted']:<8} | {m['approved']:<8} "
+            f"{idx:<3} | {name:<20} | {m['submitted']:<8} | {m['pml_daily_target']:>11.1f} | {m['approved']:<8} "
             f"| {m['approval_rate']*100:>8.2f}% | {pj:<25}"
         )
     print(sep2)

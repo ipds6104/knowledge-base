@@ -80,22 +80,48 @@ def download_sheet(
     return sheet_map, csv_text, data_source_info
 
 
+def get_csv_reader(csv_text: str) -> csv.DictReader:
+    """Helper untuk mendapatkan DictReader, otomatis mengisi fieldnames jika header hilang."""
+    lines = csv_text.splitlines()
+    if not lines:
+        return csv.DictReader(io.StringIO(csv_text))
+    
+    first_line = lines[0]
+    is_header = "Kode Wilayah" in first_line or "Kab/Kota" in first_line
+    
+    if is_header:
+        return csv.DictReader(io.StringIO(csv_text))
+    else:
+        fieldnames = [
+            "No", "Kab/Kota", "Kode Wilayah (Sub-SLS)", "Username Petugas", "Email Petugas", "Role",
+            "Total Target", "DRAFT", "OPEN", "SUBMITTED RESPONDENT", "SUBMITTED BY Pencacah",
+            "APPROVED BY Pengawas", "REJECTED BY Pengawas", "REVOKED BY Pengawas", "EDITED BY Pengawas",
+            "empty_col1", "empty_col2", "empty_col3", "empty_col4", "Total Submit PPL",
+            "Total Submit Seluruh SLS per Petugas", "empty_col5", "Target", "Persentase_Done",
+            "empty_col6", "empty_col7", "Ranking", "Status Target"
+        ]
+        return csv.DictReader(io.StringIO(csv_text), fieldnames=fieldnames)
+
+
 def _parse_sheet_csv(csv_text: str) -> dict:
     """Parse raw CSV Google Sheets menjadi sheet_map {kode: {field: int}}."""
     sheet_map: dict = {}
-    reader = csv.DictReader(io.StringIO(csv_text))
+    reader = get_csv_reader(csv_text)
     for row in reader:
         code = row.get("Kode Wilayah (Sub-SLS)", "").strip()
-        if code:
-            sheet_map[code] = {
-                "Total Target":             int(row.get("Total Target", 0) or 0),
-                "OPEN":                     int(row.get("OPEN", 0) or 0),
-                "DRAFT":                    int(row.get("DRAFT", 0) or 0),
-                "SUBMITTED BY Pencacah":    int(row.get("SUBMITTED BY Pencacah", 0) or 0),
-                "APPROVED BY Pengawas":     int(row.get("APPROVED BY Pengawas", 0) or 0),
-                "SUBMITTED RESPONDENT":     int(row.get("SUBMITTED RESPONDENT", 0) or 0),
-                "REJECTED BY Pengawas":     int(row.get("REJECTED BY Pengawas", 0) or 0),
-            }
+        if not code or code == "Kode Wilayah (Sub-SLS)":
+            continue
+        sheet_map[code] = {
+            "Total Target":             int(row.get("Total Target", 0) or 0),
+            "OPEN":                     int(row.get("OPEN", 0) or 0),
+            "DRAFT":                    int(row.get("DRAFT", 0) or 0),
+            "SUBMITTED BY Pencacah":    int(row.get("SUBMITTED BY Pencacah", 0) or 0),
+            "APPROVED BY Pengawas":     int(row.get("APPROVED BY Pengawas", 0) or 0),
+            "SUBMITTED RESPONDENT":     int(row.get("SUBMITTED RESPONDENT", 0) or 0),
+            "REJECTED BY Pengawas":     int(row.get("REJECTED BY Pengawas", 0) or 0),
+            "REVOKED BY Pengawas":      int(row.get("REVOKED BY Pengawas", 0) or 0),
+            "EDITED BY Pengawas":       int(row.get("EDITED BY Pengawas", 0) or 0),
+        }
     return sheet_map
 
 
@@ -114,15 +140,18 @@ def get_sls_metrics(sheet_map: dict, idsls: str, idsubsls: str) -> dict:
         return {
             "target": 0, "open": 0, "draft": 0, "submitted": 0,
             "approved": 0, "resp_submitted": 0, "rejected": 0,
-            "completed": 0, "worked": 0,
+            "revoked": 0, "edited": 0, "completed": 0, "worked": 0,
         }
 
     submitted = row["SUBMITTED BY Pencacah"]
     approved  = row["APPROVED BY Pengawas"]
     resp_sub  = row["SUBMITTED RESPONDENT"]
     draft     = row["DRAFT"]
-    completed = submitted + approved + resp_sub
-    worked    = completed + draft
+    rejected  = row["REJECTED BY Pengawas"]
+    revoked   = row.get("REVOKED BY Pengawas", 0)
+    edited    = row.get("EDITED BY Pengawas", 0)
+    completed = submitted + approved + resp_sub + rejected + revoked + edited
+    worked    = completed  # Tidak lagi menggunakan draft sebagai progres
 
     return {
         "target":        row["Total Target"],
@@ -131,7 +160,9 @@ def get_sls_metrics(sheet_map: dict, idsls: str, idsubsls: str) -> dict:
         "submitted":     submitted,
         "approved":      approved,
         "resp_submitted": resp_sub,
-        "rejected":      row["REJECTED BY Pengawas"],
+        "rejected":      rejected,
+        "revoked":       revoked,
+        "edited":        edited,
         "completed":     completed,
         "worked":        worked,
     }
@@ -156,6 +187,10 @@ def aggregate_metrics(sls_list: list, sls_info: dict, sheet_map: dict) -> dict:
     agg["worked_rate"]    = agg["worked"]    / t if t > 0 else 0.0
     sub_plus_app = agg["approved"] + agg["submitted"]
     agg["approval_rate"]  = agg["approved"] / sub_plus_app if sub_plus_app > 0 else 0.0
+    
+    rem_days = get_remaining_days()
+    agg["ppl_daily_target"] = max(0.0, (agg["target"] - agg["completed"]) / rem_days)
+    agg["pml_daily_target"] = max(0.0, (agg["target"] - agg["approved"]) / rem_days)
     return agg
 
 
@@ -170,30 +205,38 @@ def compute_kab_stats(csv_text: str) -> tuple[dict, list, dict]:
         prov_agg:  aggregated province metrics dict
     """
     kab_data: dict = {}
-    reader = csv.DictReader(io.StringIO(csv_text))
+    reader = get_csv_reader(csv_text)
     for row in reader:
         kab = row.get("Kab/Kota", "").strip()
-        if not kab:
+        if not kab or kab == "Kab/Kota":
             continue
         target      = int(row.get("Total Target", 0) or 0)
         draft       = int(row.get("DRAFT", 0) or 0)
         submitted   = int(row.get("SUBMITTED BY Pencacah", 0) or 0)
         approved    = int(row.get("APPROVED BY Pengawas", 0) or 0)
         resp_sub    = int(row.get("SUBMITTED RESPONDENT", 0) or 0)
-        completed   = submitted + approved + resp_sub
-        worked      = completed + draft
+        rejected    = int(row.get("REJECTED BY Pengawas", 0) or 0)
+        revoked     = int(row.get("REVOKED BY Pengawas", 0) or 0)
+        edited      = int(row.get("EDITED BY Pengawas", 0) or 0)
+        completed   = submitted + approved + resp_sub + rejected + revoked + edited
+        worked      = completed  # Tidak lagi menggunakan draft sebagai progres
 
         kab_data.setdefault(kab, {
             "target": 0, "open": 0, "draft": 0, "submitted": 0,
-            "approved": 0, "completed": 0, "worked": 0,
+            "approved": 0, "rejected": 0, "revoked": 0, "edited": 0,
+            "completed": 0, "worked": 0,
         })
         kab_data[kab]["target"]    += target
         kab_data[kab]["draft"]     += draft
         kab_data[kab]["submitted"] += submitted
         kab_data[kab]["approved"]  += approved
+        kab_data[kab]["rejected"]  += rejected
+        kab_data[kab]["revoked"]   += revoked
+        kab_data[kab]["edited"]    += edited
         kab_data[kab]["completed"] += completed
         kab_data[kab]["worked"]    += worked
 
+    rem_days = get_remaining_days()
     kab_list = []
     for kab, m in kab_data.items():
         if m["target"] == 0:
@@ -202,6 +245,8 @@ def compute_kab_stats(csv_text: str) -> tuple[dict, list, dict]:
         m["worked_rate"]    = m["worked"]    / m["target"]
         sub_app = m["approved"] + m["submitted"]
         m["approval_rate"]  = m["approved"] / sub_app if sub_app > 0 else 0.0
+        m["ppl_daily_target"] = max(0.0, (m["target"] - m["completed"]) / rem_days)
+        m["pml_daily_target"] = max(0.0, (m["target"] - m["approved"]) / rem_days)
         kab_list.append((kab, m))
 
     kab_list.sort(key=lambda x: x[1]["completed_rate"], reverse=True)
@@ -218,11 +263,19 @@ def compute_kab_stats(csv_text: str) -> tuple[dict, list, dict]:
     prov_agg["worked_rate"]   = prov_agg["worked"]    / t if t > 0 else 0.0
     sa = prov_agg["approved"] + prov_agg["submitted"]
     prov_agg["approval_rate"] = prov_agg["approved"]  / sa if sa > 0 else 0.0
+    prov_agg["ppl_daily_target"] = max(0.0, (prov_agg["target"] - prov_agg["completed"]) / rem_days)
+    prov_agg["pml_daily_target"] = max(0.0, (prov_agg["target"] - prov_agg["approved"]) / rem_days)
 
     return kab_data, kab_list, prov_agg
 
 
 # ─── Timeline Helpers ─────────────────────────────────────────────────────────
+
+def get_remaining_days() -> int:
+    """Hitung sisa hari lapangan secara dinamis terhadap tanggal target internal 15 Agustus 2026."""
+    today = datetime.now().date()
+    return max(1, (TARGET_DATE - today).days)
+
 
 def compute_timeline() -> tuple[int, int, float]:
     """Hitung elapsed_days, total_days, expected_pct berdasarkan tanggal hari ini."""

@@ -14,6 +14,7 @@ def print_prov(
 ) -> None:
     """Cetak tabel peringkat seluruh Kabupaten/Kota di Kalbar."""
     prov_pct = prov_agg["done_rate"] * 100
+    prov_approved_pct = prov_agg["approved"] / prov_agg["target"] * 100 if prov_agg.get("target", 0) > 0 else 0.0
 
     print(f"\n{Colors.BOLD}{Colors.HEADER}=== MONITORING PROGRES SE-2026 PROVINSI KALBAR ==={Colors.ENDC}")
     print(f"Sumber Data         : {Colors.BOLD}{data_source_info}{Colors.ENDC}")
@@ -22,15 +23,27 @@ def print_prov(
         f"Expected Progress   : {Colors.BOLD}{expected_pct:.2f}%{Colors.ENDC} "
         f"(Hari ke-{elapsed_days} dari {total_days} hari lapangan)"
     )
-    print(f"Status Prov. Kalbar : {get_target_status(prov_pct, expected_pct)}")
-    print(f"Estimasi PPL Selesai (Worked): {get_est_completion(prov_agg['worked_rate'] * 100, elapsed_days)}")
-    print(f"Estimasi PML Selesai (Done)  : {get_est_completion(prov_pct, elapsed_days)}")
+    # Hitung kabupaten terlama di Kalbar
+    if kab_list:
+        slowest_kab, slowest_m = kab_list[-1]
+        slowest_pct = slowest_m["completed_rate"] * 100
+        slowest_est = get_est_completion(slowest_pct, elapsed_days)
+        import re
+        visible_slowest_est = re.sub(r'\033\[[0-9;]*m', '', slowest_est)
+        prov_worst_str = f"{slowest_kab} ({visible_slowest_est}, progres {slowest_pct:.2f}%)"
+    else:
+        prov_worst_str = "-"
 
-    sep = "-" * 120
+    print(f"Status Prov. Kalbar : {get_target_status(prov_pct, expected_pct)}")
+    print(f"Estimasi PPL Selesai (Agregat): {get_est_completion(prov_pct, elapsed_days)}")
+    print(f"Estimasi Kabupaten Terlama    : {prov_worst_str}")
+    print(f"Estimasi PML Selesai (Agregat): {get_est_completion(prov_approved_pct, elapsed_days)}")
+
+    sep = "-" * 125
     print(sep)
     print(
         f"{'Rank':<4} | {'Kabupaten/Kota':<25} | {'Target':<7} | {'Done %':<8} "
-        f"| {'Worked %':<8} | {'Approval %':<10} | {'Status':<30} | {'Est. Selesai'}"
+        f"| {'Approval %':<10} | {'Tgt PPL/PML':<11} | {'Status':<30} | {'Est. Selesai'}"
     )
     print(sep)
 
@@ -40,14 +53,16 @@ def print_prov(
         est     = get_est_completion(kab_pct, elapsed_days)
         print(
             f"{idx:<4} | {kab:<25} | {m['target']:<7} | {kab_pct:>6.2f}% "
-            f"| {m['worked_rate']*100:>8.2f}% | {m['approval_rate']*100:>10.2f}% "
+            f"| {m['approval_rate']*100:>10.2f}% "
+            f"| {m['ppl_daily_target']:>4.1f}/{m['pml_daily_target']:<6.1f} "
             f"| {status:<41} | {est}"
         )
 
     print(sep)
     print(
         f"{'TOTAL PROVINSI KALBAR':<30} | {prov_agg['target']:<7} | {prov_pct:>6.2f}% "
-        f"| {prov_agg['worked_rate']*100:>8.2f}% | {prov_agg['approval_rate']*100:>10.2f}% "
+        f"| {prov_agg['approval_rate']*100:>10.2f}% "
+        f"| {prov_agg['ppl_daily_target']:>4.1f}/{prov_agg['pml_daily_target']:<6.1f} "
         f"| {get_target_status(prov_pct, expected_pct):<41} | {get_est_completion(prov_pct, elapsed_days)}"
     )
     print(sep)

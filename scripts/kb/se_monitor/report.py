@@ -1,6 +1,7 @@
 """kb/se_monitor/report.py — Laporan 6-seksi baku (--report / -r)."""
 
-from datetime import datetime
+from datetime import datetime, timedelta
+import re
 
 from ..colors import Colors
 from .data import get_target_status, get_est_completion
@@ -24,6 +25,7 @@ def print_report(
     """Cetak laporan 6-seksi baku SE-2026."""
     now_str = datetime.now().strftime("%d %B %Y, pukul %H:%M WIB")
     prov_pct = prov_agg["done_rate"] * 100
+    prov_approved_pct = prov_agg["approved"] / prov_agg["target"] * 100 if prov_agg.get("target", 0) > 0 else 0.0
 
     # Kalbar rank of Mempawah
     memp_rank  = next((i + 1 for i, (k, _) in enumerate(kab_list) if k == "MEMPAWAH"), "?")
@@ -32,7 +34,7 @@ def print_report(
     # Mempawah metrics
     memp_m = kab_data.get("MEMPAWAH", {})
     memp_done_pct   = memp_m["completed"] / memp_m["target"] * 100 if memp_m.get("target", 0) > 0 else 0.0
-    memp_worked_pct = memp_m["worked"]    / memp_m["target"] * 100 if memp_m.get("target", 0) > 0 else 0.0
+    memp_approved_pct = memp_m["approved"] / memp_m["target"] * 100 if memp_m.get("target", 0) > 0 else 0.0
 
     # Target PJ metrics
     target_pj_data = next((p for p in pj_summaries if p["pj"].lower() == target_pj_name.lower()), None)
@@ -69,17 +71,74 @@ def print_report(
         f"{Colors.BOLD}{expected_pct:.2f}%{Colors.ENDC} "
         f"(Hari ke-{elapsed_days} dari {total_days} hari lapangan)"
     )
+    print(
+        f"   Target Harian Kab. Mempawah   : "
+        f"PPL: {Colors.BOLD}{memp_m['ppl_daily_target']:.1f}/hari{Colors.ENDC} (submit), "
+        f"PML: {Colors.BOLD}{memp_m['pml_daily_target']:.1f}/hari{Colors.ENDC} (approve)"
+    )
 
     # ─── Section 2: Posisi Makro ──────────────────────────────────────────────
+    # Hitung kabupaten terlama di Kalbar
+    if kab_list:
+        slowest_kab, slowest_m = kab_list[-1]
+        slowest_pct = slowest_m["completed_rate"] * 100
+        slowest_est = get_est_completion(slowest_pct, elapsed_days)
+        visible_slowest_est = re.sub(r'\033\[[0-9;]*m', '', slowest_est)
+        prov_worst_str = f"{slowest_kab} ({visible_slowest_est}, progres {slowest_pct:.2f}%)"
+    else:
+        prov_worst_str = "-"
+
+    # Hitung PPL terlama di Mempawah
+    worst_ppl_name = None
+    worst_ppl_date = None
+    worst_ppl_pct = 0.0
+    today_dt = datetime.now().date()
+    for ppl_name, m in ppl_metrics.items():
+        pct = m["completed_rate"] * 100
+        if elapsed_days > 0 and pct > 0:
+            daily_speed = pct / elapsed_days
+            days_needed = (100.0 - pct) / daily_speed
+            est_date = today_dt + timedelta(days=days_needed)
+        else:
+            est_date = None
+            
+        if est_date is None:
+            if m["target"] > 0 and (worst_ppl_date is not None or worst_ppl_name is None):
+                worst_ppl_name = ppl_name
+                worst_ppl_date = None
+                worst_ppl_pct = pct
+        else:
+            if worst_ppl_name is None:
+                worst_ppl_name = ppl_name
+                worst_ppl_date = est_date
+                worst_ppl_pct = pct
+            elif worst_ppl_date is not None and est_date > worst_ppl_date:
+                worst_ppl_name = ppl_name
+                worst_ppl_date = est_date
+                worst_ppl_pct = pct
+
+    if worst_ppl_name:
+        if worst_ppl_date is None:
+            memp_worst_str = f"Tdk Terproyeksi ({worst_ppl_name}, progres 0.00%)"
+        else:
+            date_str = worst_ppl_date.strftime("%d %b %Y")
+            memp_worst_str = f"{date_str} ({worst_ppl_name}, progres {worst_ppl_pct:.2f}%)"
+    else:
+        memp_worst_str = "-"
+
     print(f"\n{'─'*80}")
     print(f" 📊 2. POSISI MAKRO PROVINSI KALBAR & MEMPAWAH")
     print(f"{'─'*80}")
     print(f"   Progres Kalbar    : {Colors.BOLD}{prov_pct:.2f}%{Colors.ENDC} | Status: {get_target_status(prov_pct, expected_pct)}")
-    print(f"     Est. PPL Selesai (Worked) : {get_est_completion(prov_agg['worked_rate'] * 100, elapsed_days)}")
-    print(f"     Est. PML Selesai (Done)   : {get_est_completion(prov_pct, elapsed_days)}")
+    print(f"     Target Harian Kalbar      : PPL: {prov_agg['ppl_daily_target']:.1f}/hari | PML: {prov_agg['pml_daily_target']:.1f}/hari")
+    print(f"     Est. PPL Selesai (Agregat): {get_est_completion(prov_pct, elapsed_days)}")
+    print(f"     Est. Kabupaten Terlama    : {prov_worst_str}")
+    print(f"     Est. PML Selesai (Agregat): {get_est_completion(prov_approved_pct, elapsed_days)}")
     print(f"   Progres Mempawah  : {Colors.BOLD}{memp_done_pct:.2f}%{Colors.ENDC} | Status: {get_target_status(memp_done_pct, expected_pct)}")
-    print(f"     Est. PPL Selesai (Worked) : {get_est_completion(memp_worked_pct, elapsed_days)}")
-    print(f"     Est. PML Selesai (Done)   : {get_est_completion(memp_done_pct, elapsed_days)}")
+    print(f"     Target Harian Mempawah    : PPL: {memp_m['ppl_daily_target']:.1f}/hari | PML: {memp_m['pml_daily_target']:.1f}/hari")
+    print(f"     Est. PPL Selesai (Agregat): {get_est_completion(memp_done_pct, elapsed_days)}")
+    print(f"     Est. PPL Selesai Terlama  : {memp_worst_str}")
+    print(f"     Est. PML Selesai (Agregat): {get_est_completion(memp_approved_pct, elapsed_days)}")
     print(f"   Peringkat Mempawah: {Colors.BOLD}#{memp_rank} dari {memp_total}{Colors.ENDC} Kab/Kota se-Kalbar")
 
     # ─── Section 3: Delta ─────────────────────────────────────────────────────
@@ -207,7 +266,8 @@ def print_report(
         flag = f"{Colors.FAIL}*(Naik Kritis){Colors.ENDC} " if diff_note.startswith(" (+") else ""
         print(
             f"   {idx}. {Colors.BOLD}{name}{Colors.ENDC} (PJ: {pj_lbl}) → "
-            f"{m['submitted']} berkas pending | Approval: {m['approval_rate']*100:.2f}%{diff_note} {flag}"
+            f"{m['submitted']} berkas pending | Approval: {m['approval_rate']*100:.2f}% | "
+            f"Tgt Approve: {m['pml_daily_target']:.1f}/hari{diff_note} {flag}"
         )
 
     print(f"\n   B. PPL Terlambat Terkritis (Selesai < {ppl_threshold*100:.2f}% & Target > 200)")
@@ -215,7 +275,7 @@ def print_report(
         pml_v, pj_v = sup
         print(
             f"   {idx}. {Colors.BOLD}{name}{Colors.ENDC} "
-            f"(Selesai: {m['completed_rate']*100:.2f}% | PML: {pml_v} | PJ: {pj_first_name(pj_v)})"
+            f"({Colors.FAIL}🔴 Selesai: {m['completed_rate']*100:.2f}%{Colors.ENDC} | Tgt Submit: {m['ppl_daily_target']:.1f}/hari | PML: {pml_v} | PJ: {pj_first_name(pj_v)})"
         )
 
     # ─── Section 5: Rekomendasi Ketua ─────────────────────────────────────────
@@ -227,7 +287,7 @@ def print_report(
     if bottleneck:
         worst2    = bottleneck[:2]
         names_str = " & ".join(f"{n} (PJ {pj_first_name(pj_v)})" for n, _, pj_v in worst2)
-        pend_str  = " & ".join(f"{m['submitted']} pending" for _, m, _ in worst2)
+        pend_str  = " & ".join(f"{m['submitted']} pending (Tgt: {m['pml_daily_target']:.1f}/hari)" for _, m, _ in worst2)
         print(
             f"   {rec}. Tegur PML {names_str}: {pend_str} namun approval rate < 5%. "
             "Hubungi PJ-Kuda masing-masing untuk mendesak pembersihan antrean siang ini."
@@ -244,7 +304,8 @@ def print_report(
         pml_v, pj_v = ppl_sup
         print(
             f"   {rec}. PPL terlambat kritis: {Colors.BOLD}{ppl_name}{Colors.ENDC} "
-            f"(PML {pml_v}, PJ {pj_first_name(pj_v)}) baru {ppl_m['completed_rate']*100:.2f}% selesai. "
+            f"(PML {pml_v}, PJ {pj_first_name(pj_v)}) baru {ppl_m['completed_rate']*100:.2f}% selesai "
+            f"(harus submit {Colors.BOLD}{ppl_m['ppl_daily_target']:.1f}/hari{Colors.ENDC}). "
             "Minta PML turun lapangan mendampingi."
         )
         rec += 1
@@ -273,7 +334,7 @@ def print_report(
             print(
                 f"   {rec2}. PML {Colors.BOLD}{pml_name}{Colors.ENDC}: "
                 f"{pml_m['submitted']} berkas pending "
-                f"(Approval: {pml_m['approval_rate']*100:.2f}%{delta_note}). "
+                f"(Approval: {pml_m['approval_rate']*100:.2f}%, Tgt Approve: {pml_m['pml_daily_target']:.1f}/hari{delta_note}). "
                 f"Segera hubungi {pml_name} untuk mempercepat verifikasi."
             )
             rec2 += 1
@@ -292,7 +353,7 @@ def print_report(
         pml_v = ppl_to_sup.get(ppl_name, ("-", "-"))[0]
         print(
             f"   {rec2}. PPL {Colors.BOLD}{ppl_name}{Colors.ENDC} (PML {pml_v}): "
-            f"baru {ppl_m['completed_rate']*100:.2f}% selesai. "
+            f"baru {ppl_m['completed_rate']*100:.2f}% selesai (harus submit {ppl_m['ppl_daily_target']:.1f}/hari). "
             "Beri semangat atau tanya kendala lapangan."
         )
         rec2 += 1

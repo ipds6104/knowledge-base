@@ -25,11 +25,11 @@ def print_all_pj(
     )
     print(f"Status Kab. Mempawah: {get_target_status(kab_pct, expected_pct)}")
 
-    sep = "-" * 88
+    sep = "-" * 95
     print(sep)
     print(
         f"{'No':<3} | {'Nama PJ-Kuda':<28} | {'SLS':<4} | {'Target':<6} "
-        f"| {'Worked %':<10} | {'Done %':<10} | {'Approved %':<10}"
+        f"| {'Done %':<10} | {'Approved %':<10} | {'Tgt PPL/PML':<11}"
     )
     print(sep)
 
@@ -39,8 +39,8 @@ def print_all_pj(
         end_c = Colors.ENDC if is_me else ""
         print(
             f"{row_c}{idx:<3} | {pj['pj']:<28} | {pj['sls_count']:<4} | {pj['target']:<6} "
-            f"| {pj['worked_rate']*100:>8.2f}% | {pj['completed_rate']*100:>8.2f}% "
-            f"| {pj['approval_rate']*100:>8.2f}%{end_c}"
+            f"| {pj['completed_rate']*100:>8.2f}% "
+            f"| {pj['approval_rate']*100:>8.2f}% | {pj['ppl_daily_target']:>4.1f}/{pj['pml_daily_target']:<6.1f}{end_c}"
         )
 
     print(sep)
