@@ -131,6 +131,7 @@ def cmd_se_monitor(args) -> None:
             kab_list,
             pj_summaries,
             pj_kuda_groups,
+            sls_info,
             aggregate_fn,
             elapsed_days,
             total_days,
@@ -142,6 +143,7 @@ def cmd_se_monitor(args) -> None:
     elif args.intervention:
         print_intervention(
             pj_kuda_groups,
+            sls_info,
             aggregate_fn,
             kab_avg_completed,
             kab_avg_worked,

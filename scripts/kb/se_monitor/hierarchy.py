@@ -44,6 +44,7 @@ def build_hierarchy(
                 pml = row.get("PML", "").strip()
                 ppl = row.get("PPL", "").strip()
                 nmsls = row.get("nmsls", "").strip()
+                kec = row.get("nmkec", "").strip()
 
                 sls_info[idsls] = {
                     "nmsls": nmsls,
@@ -51,6 +52,7 @@ def build_hierarchy(
                     "pml": pml,
                     "pj": pj,
                     "idsubsls": idsubsls,
+                    "kecamatan": kec,
                 }
 
                 pj_kuda_groups.setdefault(pj, {})

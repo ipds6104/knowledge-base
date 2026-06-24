@@ -67,7 +67,7 @@ Apabila pengguna menanyakan siapa petugas PPL yang diproyeksikan selesai paling 
     1.  **Prioritas 1 (Belum Mulai)**: Petugas dengan progres $0.00\%$ (`Tdk Terproyeksi`), diurutkan berdasarkan beban target unit terbesar.
     2.  **Prioritas 2 (Sedang Berjalan)**: Petugas dengan progres $> 0.00\%$ tetapi memiliki proyeksi tanggal selesai terjauh (diurutkan berdasarkan estimasi tanggal selesai secara descending).
 *   **Penyajian Tabel**:
-    *   Wajib disajikan dalam bentuk **tabel** dengan kolom: `No`, `Nama PPL`, `PML Pengawas`, `PJ-Kuda`, `Target`, `Selesai`, `Done %`, dan `Est. Selesai`.
+    *   Wajib disajikan dalam bentuk **tabel** dengan kolom: `No`, `Nama PPL`, `Kecamatan`, `PML Pengawas`, `PJ-Kuda`, `Target`, `Selesai`, `Done %`, dan `Est. Selesai`.
     *   Kolom `Done %` wajib menggunakan emoji status warna (`🟢`, `🟡`, `🔴`).
 *   **Prosedur Pengecekan**: Jalankan perintah `python3 scratch/run_worst_projections.py` untuk mendapatkan daftar petugas dengan proyeksi selesai paling lama secara real-time dari Google Sheets.
 
