@@ -6,6 +6,7 @@ from .data import get_target_status, get_est_completion
 
 def print_intervention(
     pj_kuda_groups: dict,
+    sls_info: dict,
     aggregate_fn,
     kab_avg_completed: float,
     kab_avg_worked: float,

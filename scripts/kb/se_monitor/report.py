@@ -14,6 +14,7 @@ def print_report(
     kab_list: list,
     pj_summaries: list,
     pj_kuda_groups: dict,
+    sls_info: dict,
     aggregate_fn,
     elapsed_days: int,
     total_days: int,
@@ -271,13 +272,25 @@ def print_report(
         )
 
     print(f"\n   B. PPL Terlambat Terkritis (Selesai < {ppl_threshold*100:.2f}% & Target > 200)")
+    print(f"   {'No':<3} {'Nama PPL':<25} {'Kec':<16} {'Target':<7} {'Worked':<20} {'Done %':<9} {'Tgt/Hari':<10} {'PML':<22} {'PJ'}")
+    print(f"   {'-'*145}")
     for idx, (name, m, sup) in enumerate(low_ppls[:10], 1):
         pml_v, pj_v = sup
         worked_pct = m["worked_rate"] * 100
         worked_emoji = "🟢" if worked_pct >= expected_pct * 0.70 else ("🔴" if worked_pct < expected_pct * 0.25 else "🟡")
+        sls_list = pj_kuda_groups.get(pj_v, {}).get(pml_v, {}).get(name, [])
+        kecs = sorted(list(set(
+            sls_info[s].get("kecamatan", "") for s in sls_list if s in sls_info
+        )))
+        kec_str = "/".join(kecs) if kecs else "-"
+        # Format worked text (strip ANSI for width calc)
+        worked_raw = f"{worked_emoji} {m['worked']} ({worked_pct:.1f}%)"
+        worked_padded = f"{worked_raw:<20}"
+        done_pct = m['completed_rate'] * 100
         print(
-            f"   {idx}. {Colors.BOLD}{name}{Colors.ENDC} "
-            f"({Colors.FAIL}🔴 Selesai: {m['completed_rate']*100:.2f}%{Colors.ENDC} | Worked: {worked_emoji} {m['worked']} ({worked_pct:.1f}%) | Tgt Submit: {m['ppl_daily_target']:.1f}/hari | PML: {pml_v} | PJ: {pj_first_name(pj_v)})"
+            f"   {idx:<3} {name:<25} {kec_str:<16} {m['target']:<7} {worked_padded} "
+            f"{Colors.FAIL}🔴 {done_pct:>5.2f}%{Colors.ENDC}   "
+            f"{m['ppl_daily_target']:>6.1f}/hari  {pml_v:<22} {pj_first_name(pj_v)}"
         )
 
     # ─── Section 5: Rekomendasi Ketua ─────────────────────────────────────────
