@@ -1,5 +1,6 @@
 import sys
 import json
+import re
 from pathlib import Path
 from datetime import datetime
 
@@ -13,11 +14,15 @@ from scripts.kb.se_monitor.data import (
     aggregate_metrics,
     get_remaining_days,
     compute_timeline,
-    get_est_completion
+    get_est_completion,
+    download_alokasi
 )
 from scripts.kb.se_monitor.hierarchy import build_hierarchy, build_lookup_maps
 
 def main():
+    # Download latest alokasi first
+    download_alokasi()
+    
     # 1. Download sheet and build hierarchy
     sheet_map, csv_text, data_source_info = download_sheet()
     pj_kuda_groups, sls_info, has_alokasi = build_hierarchy()
@@ -114,12 +119,19 @@ def main():
                 if "Tidak Terprediksi" in est_val or done_pct == 0:
                     est_val = f"{Colors.FAIL}Tdk Terproyeksi{Colors.ENDC}"
 
+                draft_pct = ppl_m["draft"] / ppl_m["target"] * 100 if ppl_m["target"] > 0 else 0.0
+                worked_pct = ppl_m["worked_rate"] * 100
+                worked_count = ppl_m["worked"]
+
                 ppl_details.append({
                     "name": ppl,
                     "sls": ppl_m["sls_count"],
                     "target": ppl_m["target"],
                     "open": ppl_m["open"],
                     "draft": ppl_m["draft"],
+                    "draft_pct": draft_pct,
+                    "worked": worked_count,
+                    "worked_pct": worked_pct,
                     "submit": ppl_m["submitted"],
                     "approve": ppl_m["approved"],
                     "daily_tgt": ppl_m["ppl_daily_target"],
@@ -130,8 +142,34 @@ def main():
         
         # Sort by done_pct ascending
         ppl_details.sort(key=lambda x: x["done_pct"])
+        
+        header_line = (
+            f"  {'Nama PPL':<25} | {'SLS':<3} | {'Target':<6} | {'Open':<5} "
+            f"| {'Draft':<5} | {'Draft %':<7} | {'Worked (Drf+Dn)':<16} | {'Submit':<6} | {'Approve':<7} | {'Tgt/Hari':<8} | {'Done %':<8} | {'Est. Selesai':<15}"
+        )
+        sep = "  " + "-" * (len(header_line) - 2)
+        print(sep)
+        print(header_line)
+        print(sep)
+        
         for p in ppl_details:
-            print(f" - {p['name']} | SLS: {p['sls']} | Target: {p['target']} | Open: {p['open']} | Draft: {p['draft']} | Submit: {p['submit']} | Approve: {p['approve']} | Tgt Submit: {p['daily_tgt']:.1f}/hari | Done: {p['done_pct']:.2f}% ({p['color']}) | Est. Selesai: {p['est_selesai']}")
+            done_emoji = p["color"]
+            done_text = f"{done_emoji} {p['done_pct']:>6.2f}%"
+            draft_pct_str = f"{p['draft_pct']:>6.2f}%"
+            
+            worked_emoji = "🟢" if p["worked_pct"] >= expected_pct * 0.70 else ("🔴" if p["worked_pct"] < expected_pct * 0.25 else "🟡")
+            worked_text = f"{worked_emoji} {p['worked']} ({p['worked_pct']:.1f}%)"
+            
+            visible_est = re.sub(r'\033\[[0-9;]*m', '', p['est_selesai'])
+            padding = 15 - len(visible_est)
+            est_formatted = p['est_selesai'] + " " * max(0, padding)
+            
+            print(
+                f"  {p['name']:<25} | {p['sls']:<3} | {p['target']:<6} "
+                f"| {p['open']:<5} | {p['draft']:<5} | {draft_pct_str:<7} | {worked_text:<16} | {p['submit']:<6} "
+                f"| {p['approve']:<7} | {p['daily_tgt']:>8.1f} | {done_text:<8} | {est_formatted}"
+            )
+        print(sep)
 
     # Output averages for Table 1
     print("\n==================== RATA-RATA KABUPATEN ====================")

@@ -60,7 +60,7 @@ def print_intervention(
     print(f"Status Kab. Mempawah: {get_target_status(kab_pct, expected_pct)}")
     print(f"Estimasi PPL Selesai (Agregat): {get_est_completion(kab_avg_worked * 100, elapsed_days)}")
     print(f"Estimasi PML Selesai (Agregat): {get_est_completion(kab_pct, elapsed_days)}")
-    sep = "-" * 128
+    sep = "-" * 146
     print(sep)
     print(
         f"Rata-rata Kabupaten : Worked={kab_avg_worked*100:.2f}%, "
@@ -70,12 +70,33 @@ def print_intervention(
     # Tabel PPL terlambat
     print(f"\n{Colors.BOLD}{Colors.FAIL}1. DAFTAR PPL TERLAMBAT (Progres Selesai < {ppl_threshold*100:.2f}% & Target > 200){Colors.ENDC}")
     print(sep)
-    print(f"{'No':<3} | {'Nama PPL':<25} | {'Target':<6} | {'Tgt/Hari':<8} | {'Selesai':<8} | {'Open':<5} | {'Nama PML':<20} | {'PJ-Kuda':<25}")
+    print(f"{'No':<3} | {'Nama PPL':<25} | {'Target':<6} | {'Tgt/Hari':<8} | {'Worked (Drf+Dn)':<16} | {'Selesai':<8} | {'Open':<5} | {'Nama PML':<20} | {'PJ-Kuda':<25}")
     print(sep)
     for idx, (name, m) in enumerate(low_ppls, 1):
         pml, pj = ppl_to_supervisors[name]
+        
+        # Worked % status color
+        if m["worked_rate"] >= expected_pct * 0.70 / 100:
+            worked_color = Colors.GREEN
+            worked_emoji = "🟢"
+        elif m["worked_rate"] < expected_pct * 0.25 / 100:
+            worked_color = Colors.FAIL
+            worked_emoji = "🔴"
+        else:
+            worked_color = Colors.WARNING
+            worked_emoji = "🟡"
+            
+        worked_text = f"{worked_color}{worked_emoji} {m['worked']} ({m['worked_rate']*100:.1f}%){Colors.ENDC}"
+        # We need to compute visible width for format alignment
+        import re
+        visible_worked = re.sub(r'\033\[[0-9;]*m', '', worked_text)
+        # Length of visible_worked has 2 chars emoji + spaces
+        # Let's write helper or simple padding
+        pad_len = 16 - len(visible_worked)
+        worked_formatted = worked_text + " " * max(0, pad_len)
+        
         print(
-            f"{idx:<3} | {name:<25} | {m['target']:<6} | {m['ppl_daily_target']:>8.1f} | {Colors.FAIL}🔴 {m['completed_rate']*100:>5.2f}%{Colors.ENDC} "
+            f"{idx:<3} | {name:<25} | {m['target']:<6} | {m['ppl_daily_target']:>8.1f} | {worked_formatted} | {Colors.FAIL}🔴 {m['completed_rate']*100:>5.2f}%{Colors.ENDC} "
             f"| {m['open']:<5} | {pml:<20} | {pj:<25}"
         )
     print(sep)

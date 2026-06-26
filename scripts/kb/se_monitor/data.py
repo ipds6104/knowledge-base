@@ -16,12 +16,48 @@ SHEET_URL = (
 )
 CACHE_PATH = Path("kegiatan/sensus-ekonomi-2026/2026/Realisasi - 6104.csv")
 
+ALOKASI_URL = (
+    "https://docs.google.com/spreadsheets/d/"
+    "1JNwyb7TsPmSsGl3o1zNTSc-3wzFwIr_t3HPz_a1CVVQ/"
+    "export?format=csv&gid=191266181"
+)
+ALOKASI_CACHE_PATH = Path("kegiatan/sensus-ekonomi-2026/2026/Alokasi Petugas.csv")
+
 START_DATE  = datetime.strptime("2026-06-15", "%Y-%m-%d").date()
 TARGET_DATE = datetime.strptime("2026-08-15", "%Y-%m-%d").date()
 SOFT_DEADLINE = datetime.strptime("2026-08-31", "%Y-%m-%d").date()
 
 
 # ─── Download & Parse ─────────────────────────────────────────────────────────
+
+def download_alokasi(
+    url: str = ALOKASI_URL,
+    cache_path: Path = ALOKASI_CACHE_PATH,
+) -> bool:
+    """Unduh data alokasi petugas terbaru dari Google Sheets."""
+    try:
+        print(f"{Colors.BLUE}Mengunduh alokasi petugas terbaru dari Google Sheets...{Colors.ENDC}")
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req, timeout=10) as response:
+            csv_text = response.read().decode('utf-8-sig')
+
+        # Verifikasi kolom penting sebelum menulis
+        reader = csv.reader(io.StringIO(csv_text))
+        header = next(reader)
+        required = ['idsls', 'idsubsls', 'Pj-Kuda', 'PML', 'PPL', 'nmsls']
+        missing = [col for col in required if col not in header]
+        if missing:
+            print(f"{Colors.FAIL}Error: Berkas alokasi di spreadsheet kekurangan kolom wajib: {missing}{Colors.ENDC}")
+            return False
+
+        cache_path.parent.mkdir(parents=True, exist_ok=True)
+        cache_path.write_text(csv_text, encoding='utf-8')
+        print(f"{Colors.GREEN}Sukses memperbarui berkas alokasi petugas.{Colors.ENDC}")
+        return True
+    except Exception as e:
+        print(f"{Colors.WARNING}Peringatan: Gagal memperbarui alokasi petugas dari Google Sheets ({e}). Menggunakan cache lokal.{Colors.ENDC}")
+        return False
+
 
 def download_sheet(
     url: str = SHEET_URL,
@@ -151,7 +187,7 @@ def get_sls_metrics(sheet_map: dict, idsls: str, idsubsls: str) -> dict:
     revoked   = row.get("REVOKED BY Pengawas", 0)
     edited    = row.get("EDITED BY Pengawas", 0)
     completed = submitted + approved + resp_sub + rejected + revoked + edited
-    worked    = completed  # Tidak lagi menggunakan draft sebagai progres
+    worked    = completed + draft
 
     return {
         "target":        row["Total Target"],
@@ -219,7 +255,7 @@ def compute_kab_stats(csv_text: str) -> tuple[dict, list, dict]:
         revoked     = int(row.get("REVOKED BY Pengawas", 0) or 0)
         edited      = int(row.get("EDITED BY Pengawas", 0) or 0)
         completed   = submitted + approved + resp_sub + rejected + revoked + edited
-        worked      = completed  # Tidak lagi menggunakan draft sebagai progres
+        worked      = completed + draft
 
         kab_data.setdefault(kab, {
             "target": 0, "open": 0, "draft": 0, "submitted": 0,

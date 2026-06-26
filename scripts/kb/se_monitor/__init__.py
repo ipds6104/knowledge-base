@@ -8,6 +8,7 @@ from .data import (
     compute_kab_stats,
     compute_timeline,
     aggregate_metrics,
+    download_alokasi,
 )
 from .hierarchy import build_hierarchy, build_lookup_maps, pj_first_name
 from .history import (
@@ -26,8 +27,12 @@ from .view_pj import print_pj
 
 def cmd_se_monitor(args) -> None:
     """Implementasi perintah `kb se-monitor`."""
+    # Download/update alokasi petugas terlebih dahulu jika terhubung internet
+    download_alokasi()
+
     # 1. Bangun hierarki petugas
     pj_kuda_groups, sls_info, has_alokasi = build_hierarchy()
+
 
     # 2. Ambil data dari Google Sheets (atau fallback ke cache lokal)
     sheet_map, csv_text, data_source_info = download_sheet()

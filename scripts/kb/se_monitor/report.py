@@ -273,9 +273,11 @@ def print_report(
     print(f"\n   B. PPL Terlambat Terkritis (Selesai < {ppl_threshold*100:.2f}% & Target > 200)")
     for idx, (name, m, sup) in enumerate(low_ppls[:10], 1):
         pml_v, pj_v = sup
+        worked_pct = m["worked_rate"] * 100
+        worked_emoji = "🟢" if worked_pct >= expected_pct * 0.70 else ("🔴" if worked_pct < expected_pct * 0.25 else "🟡")
         print(
             f"   {idx}. {Colors.BOLD}{name}{Colors.ENDC} "
-            f"({Colors.FAIL}🔴 Selesai: {m['completed_rate']*100:.2f}%{Colors.ENDC} | Tgt Submit: {m['ppl_daily_target']:.1f}/hari | PML: {pml_v} | PJ: {pj_first_name(pj_v)})"
+            f"({Colors.FAIL}🔴 Selesai: {m['completed_rate']*100:.2f}%{Colors.ENDC} | Worked: {worked_emoji} {m['worked']} ({worked_pct:.1f}%) | Tgt Submit: {m['ppl_daily_target']:.1f}/hari | PML: {pml_v} | PJ: {pj_first_name(pj_v)})"
         )
 
     # ─── Section 5: Rekomendasi Ketua ─────────────────────────────────────────

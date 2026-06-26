@@ -129,6 +129,7 @@ def print_pj(
             pml_sls.extend(sls_list)
         pml_agg = aggregate_fn(pml_sls)
 
+        pml_worked_color = Colors.GREEN if pml_agg["worked_rate"] >= kab_avg_worked else Colors.WARNING
         pml_done_color = Colors.GREEN if pml_agg["completed_rate"] >= kab_avg_completed else Colors.WARNING
         pml_app_color = (
             Colors.GREEN if pml_agg["approval_rate"] >= 0.7
@@ -138,13 +139,14 @@ def print_pj(
 
         print(f"\n{Colors.BOLD}▶ PML: {pml}{Colors.ENDC} (SLS: {pml_agg['sls_count']}, Target: {pml_agg['target']})")
         print(
-            f"  └─ Progres: {pml_done_color}{pml_agg['completed_rate']*100:.2f}%{Colors.ENDC} "
-            f"Selesai, Approval: {pml_app_color}{pml_agg['approval_rate']*100:.2f}%{Colors.ENDC}, "
+            f"  └─ Worked (Draft+Done): {pml_worked_color}{pml_agg['worked']} ({pml_agg['worked_rate']*100:.2f}%){Colors.ENDC}, "
+            f"Selesai: {pml_done_color}{pml_agg['completed_rate']*100:.2f}%{Colors.ENDC}, "
+            f"Approval: {pml_app_color}{pml_agg['approval_rate']*100:.2f}%{Colors.ENDC}, "
             f"Tgt Approve: {Colors.BOLD}{pml_agg['pml_daily_target']:.1f}/hari{Colors.ENDC}"
         )
         header_line = (
             f"  {'Nama PPL':<25} | {'SLS':<3} | {'Target':<6} | {'Open':<5} "
-            f"| {'Draft':<5} | {'Submit':<6} | {'Approve':<7} | {'Tgt/Hari':<8} | {'Done %':<8} | {'Est. Selesai':<15}"
+            f"| {'Draft':<5} | {'Draft %':<7} | {'Worked (Drf+Dn)':<16} | {'Submit':<6} | {'Approve':<7} | {'Tgt/Hari':<8} | {'Done %':<8} | {'Est. Selesai':<15}"
         )
         sep = "  " + "-" * (len(header_line) - 2)
         print(sep)
@@ -176,6 +178,23 @@ def print_pj(
             done_text = f"{done_color}{emoji} {ppl['completed_rate']*100:>6.2f}%{Colors.ENDC}"
             done_formatted = format_visible(done_text, 8, "<")
 
+            # Draft %
+            ppl_draft_pct = ppl["draft"] / ppl["target"] * 100 if ppl["target"] > 0 else 0.0
+            draft_pct_str = f"{ppl_draft_pct:>6.2f}%"
+
+            # Worked %
+            if ppl["worked_rate"] >= threshold_green:
+                worked_color = Colors.GREEN
+                worked_emoji = "🟢"
+            elif ppl["worked_rate"] < threshold_fail:
+                worked_color = Colors.FAIL
+                worked_emoji = "🔴"
+            else:
+                worked_color = Colors.WARNING
+                worked_emoji = "🟡"
+            worked_text = f"{worked_color}{worked_emoji} {ppl['worked']} ({ppl['worked_rate']*100:.1f}%){Colors.ENDC}"
+            worked_formatted = format_visible(worked_text, 16, "<")
+
             est_val = get_est_completion(ppl["completed_rate"] * 100, elapsed_days)
             if "Tidak Terprediksi" in est_val or ppl["completed_rate"] == 0:
                 est_val = f"{Colors.FAIL}Tdk Terproyeksi{Colors.ENDC}"
@@ -183,7 +202,7 @@ def print_pj(
 
             print(
                 f"  {ppl['name']:<25} | {ppl['sls_count']:<3} | {ppl['target']:<6} "
-                f"| {ppl['open']:<5} | {ppl['draft']:<5} | {ppl['submitted']:<6} "
+                f"| {ppl['open']:<5} | {ppl['draft']:<5} | {draft_pct_str:<7} | {worked_formatted} | {ppl['submitted']:<6} "
                 f"| {ppl['approved']:<7} | {ppl['ppl_daily_target']:>8.1f} | {done_formatted} | {est_formatted}"
             )
             if ppl["completed_rate"] < threshold_fail:

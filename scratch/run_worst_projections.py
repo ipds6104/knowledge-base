@@ -1,4 +1,5 @@
 import sys
+import re
 from pathlib import Path
 from datetime import datetime, timedelta
 
@@ -11,11 +12,15 @@ from scripts.kb.se_monitor.data import (
     aggregate_metrics,
     compute_timeline,
     get_est_completion,
-    TARGET_DATE
+    TARGET_DATE,
+    download_alokasi
 )
 from scripts.kb.se_monitor.hierarchy import build_hierarchy
 
 def main():
+    # Download latest alokasi first
+    download_alokasi()
+
     # 1. Download data & hierarchy
     sheet_map, _, _ = download_sheet()
     pj_kuda_groups, sls_info, has_alokasi = build_hierarchy()
@@ -51,6 +56,8 @@ def main():
                     "target": ppl_m["target"],
                     "completed": ppl_m["completed"],
                     "done_pct": done_pct,
+                    "worked": ppl_m["worked"],
+                    "worked_rate": ppl_m["worked_rate"],
                     "est_date": est_date,
                 })
 
@@ -65,9 +72,10 @@ def main():
     print(f"\n==================== PPL DENGAN PROYEKSI SELESAI PALING LAMBAT ====================")
     print(f"Hari Lapangan Berjalan: {elapsed_days} hari | Progress Ideal Hari Ini: {expected_pct:.2f}%")
     print(f"Batas Target Internal : 15 Agustus 2026")
-    print("-" * 125)
-    print(f"{'No':<3} | {'Nama PPL':<25} | {'PML Pengawas':<20} | {'PJ-Kuda':<15} | {'Target':<6} | {'Selesai':<8} | {'Done %':<8} | {'Est. Selesai':<15}")
-    print("-" * 125)
+    sep_line = "-" * 142
+    print(sep_line)
+    print(f"{'No':<3} | {'Nama PPL':<25} | {'PML Pengawas':<20} | {'PJ-Kuda':<15} | {'Target':<6} | {'Selesai':<8} | {'Worked (Drf+Dn)':<16} | {'Done %':<8} | {'Est. Selesai':<15}")
+    print(sep_line)
 
     for idx, p in enumerate(ppl_list[:15], 1):
         if p["est_date"] is None:
@@ -79,12 +87,23 @@ def main():
 
         done_color = Colors.GREEN if p["done_pct"] >= expected_pct * 0.70 else (Colors.FAIL if p["done_pct"] < expected_pct * 0.25 else Colors.WARNING)
         
-        # Strip color code to align
-        visible_est = est_str.replace(Colors.GREEN, '').replace(Colors.WARNING, '').replace(Colors.FAIL, '').replace(Colors.ENDC, '')
+        # Worked % status color
+        worked_pct = p["worked_rate"] * 100
+        worked_color = Colors.GREEN if worked_pct >= expected_pct * 0.70 else (Colors.FAIL if worked_pct < expected_pct * 0.25 else Colors.WARNING)
+        worked_emoji = "🟢" if worked_pct >= expected_pct * 0.70 else ("🔴" if worked_pct < expected_pct * 0.25 else "🟡")
+        worked_str = f"{worked_color}{worked_emoji} {p['worked']} ({worked_pct:.1f}%){Colors.ENDC}"
+        
+        # Strip color code to align Worked
+        visible_worked = re.sub(r'\033\[[0-9;]*m', '', worked_str)
+        pad_len_w = 16 - len(visible_worked)
+        worked_padded = worked_str + " " * max(0, pad_len_w)
+
+        # Strip color code to align Est Selesai
+        visible_est = re.sub(r'\033\[[0-9;]*m', '', est_str)
         padding = 15 - len(visible_est)
         est_padded = est_str + " " * padding
 
-        print(f"{idx:<3} | {p['name']:<25} | {p['pml']:<20} | {p['pj'].split()[0]:<15} | {p['target']:<6} | {p['completed']:<8} | {done_color}{p['done_pct']:>6.2f}%{Colors.ENDC} | {est_padded}")
+        print(f"{idx:<3} | {p['name']:<25} | {p['pml']:<20} | {p['pj'].split()[0]:<15} | {p['target']:<6} | {p['completed']:<8} | {worked_padded} | {done_color}{p['done_pct']:>6.2f}%{Colors.ENDC} | {est_padded}")
 
 if __name__ == "__main__":
     main()
