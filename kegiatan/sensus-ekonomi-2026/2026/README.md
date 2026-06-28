@@ -159,7 +159,11 @@ flowchart TD
 ### Buku Catatan Intervensi Aktif
 *Simpan catatan intervensi taktis (seperti hasil telepon atau kunjungan lapangan) di bagian ini untuk pemantauan berkelanjutan:*
 *   **[2026-06-22 Pagi]**: Menemukan bottleneck besar pada PML Prabowo (tim Ihza) yang memiliki 211 kiriman pending (Approval Rate: 7.86%). PPL Nia Satunnisa dan Feri Firdaus juga diidentifikasi terlambat memulai lapangan (< 3% selesai).
-*   *Silakan tambahkan catatan intervensi harian Anda di sini...*
+*   **[2026-06-28 Pagi]**: Laporan status lapangan terkini:
+    *   **PML Abang Handri (690 berkas pending)**: Penyebab approval rate rendah (7.26%) diketahui bukan karena PML tidak aktif. Abang Handri sedang membantu PPL-PPL yang lambat dengan **mendampingi dan menggunakan akun PPL** tersebut untuk mengakselerasi pencacahan. Ini menyebabkan waktu verifikasinya tersita. PJ-Kuda Wantri perlu mengingatkan bahwa prioritas verifikasi harus tetap berjalan paralel agar 690 berkas tidak semakin menumpuk.
+    *   **PPL Stepiana (TOHO, 2.18% Done)**: Kendala utama tetap **blank spot sinyal internet** Kecamatan Toho. Telah diarahkan menggunakan fitur **"Simpan sementara ke server"** agar data terhitung sebagai Draft (Worked) dan progres terlihat di dashboard. Strategi ini perlu terus diperkuat dengan arahan ke oase sinyal terdekat untuk sinkronisasi berkala.
+    *   **PPL Khairunnisa (SEGEDONG, 4.94% Done)**: Dua faktor sekaligus — (1) **kesulitan memahami konsep isian kuesioner** sehingga banyak dokumen yang disubmit ditolak verifikasi berulang, dan (2) **kondisi personal: anak sakit**, sehingga intensitas lapangan menurun. PML Jamaluddin perlu melakukan pendampingan konsep via video call lebih intensif.
+    *   **PPL yang mundur**: Sudah dicarikan pengganti. Status pengganti perlu dipantau onboarding-nya.
 
 ### Pedoman Intervensi PJ-Kuda
 1.  **Intervensi PML (Bottleneck)**: Hubungi PML yang memiliki antrean berkas tinggi (misal Abang Handri, Seliana, Prabowo). Mintalah mereka melakukan persetujuan massal minimal dua kali sehari (pagi sebelum lapangan, malam setelah entrian masuk).
@@ -184,8 +188,20 @@ Berdasarkan diskusi koordinasi antara PJ-Kuda Ihza dan PML Jamaluddin (22 Juni 2
 6.  **Daerah Blank Spot Sinyal Internet (Kecamatan Toho & Sadaniang)**:
     -   Kecamatan Toho dan Sadaniang secara historis merupakan wilayah dengan sinyal internet terburuk di Kabupaten Mempawah.
     -   Kendala ini menyebabkan progres PPL di daerah tersebut tidak terdeteksi secara real-time di server. Meskipun PPL sudah melakukan pencacahan offline dalam jumlah besar, data baru terkirim secara bertahap saat mereka mendapatkan sinyal stabil, sehingga progres di dashboard/Google Sheets seringkali terlihat sangat rendah atau diam (delay progress).
+    -   **Workaround aktif (28 Jun 2026)**: PPL diarahkan menggunakan fitur **"Simpan sementara ke server"** sehingga data terhitung sebagai Draft di server dan progres terlihat di dashboard meski belum submitted secara penuh.
     -   **Pengecualian Lokal (Oase Internet)**: Walaupun daerah tersebut dikategorikan blank spot secara makro, masih terdapat 1 atau 2 desa di dalam kecamatan tersebut yang memiliki sinyal internet terbatas (hanya cukup untuk berkirim pesan/media ringan via WhatsApp). PPL dapat diarahkan untuk berpindah sementara ke desa-desa oase sinyal ini secara berkala guna melakukan sinkronisasi/unggah data CAPI atau sekadar melaporkan progres cepat ke PML.
     -   Tindakan PJ-Kuda/PML: Jangan terburu-buru menjatuhkan sanksi atau menganggap PPL tidak bekerja. Manfaatkan komunikasi via WhatsApp pada desa-desa oase sinyal tersebut, atau lakukan konfirmasi offline (via telepon biasa/SMS, atau kunjungan tatap muka/koordinasi rutin) untuk memverifikasi jumlah dokumen fisik/lokal di perangkat CAPI mereka.
+7.  **Bug Kritis Aplikasi FASIH — Data Hilang Saat Draft/Simpan ke Server** *(Dilaporkan 28 Juni 2026)*:
+    -   **Deskripsi Bug**: Banyak dokumen yang sudah di-draft, disimpan lokal, atau disimpan ke server mengalami **kehilangan data kritis** — termasuk data geotagging, nama pengusaha, dan tanda tangan responden — sehingga dokumen tersebut **tidak dapat disubmit** oleh PPL.
+    -   **Dampak**: Ini merupakan kendala sistemik berskala kabupaten yang mempengaruhi seluruh PPL, bukan hanya wilayah tertentu. Banyak dokumen yang secara visual sudah "dikerjakan" namun tidak bisa masuk ke antrean submission akibat data hilang ini.
+    -   **Tindak Lanjut**: Kendala ini telah **dilaporkan secara resmi ke tim developer FASIH di BPS Pusat**. Menunggu perbaikan dari sisi server dan/atau rilis versi template form yang diperbaiki. Informasi update perbaikan akan diteruskan ke grup WhatsApp petugas begitu tersedia.
+    -   **Implikasi Monitoring**: Kolom `Worked %` pada dashboard yang tinggi namun `Done %` rendah tidak selalu berarti PPL malas — bisa merupakan dampak dari bug ini. Analisis gap (Worked - Done) harus mempertimbangkan faktor bug FASIH ini sebelum menjatuhkan penilaian negatif pada PPL.
+    -   ⚠️ **Catatan Interpretasi Data**: Selama bug ini belum diperbaiki, estimasi tanggal selesai (Est. Selesai) di laporan monitoring kemungkinan lebih pesimistis dari kondisi riil, karena sejumlah dokumen yang sudah dikerjakan belum terhitung sebagai Done.
+8.  **Karakteristik Positif Responden Mempawah**:
+    -   Berdasarkan pengalaman lapangan tim BPS Mempawah, mayoritas responden di Kabupaten Mempawah bersikap **ramah dan kooperatif** terhadap petugas sensus.
+    -   Tingkat keramahan ini jauh lebih baik dibandingkan daerah perkotaan seperti Pontianak dan Singkawang, yang dikenal memiliki tingkat penolakan responden lebih tinggi.
+    -   Ini merupakan keunggulan operasional nyata bagi tim BPS Mempawah — hambatan lapangan cenderung bersifat teknis (sinyal, aplikasi) bukan resistensi sosial responden.
+
 
 
 
