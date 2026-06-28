@@ -195,6 +195,12 @@ Berdasarkan diskusi koordinasi antara PJ-Kuda Ihza dan PML Jamaluddin (22 Juni 2
     -   **Deskripsi Bug**: Banyak dokumen yang sudah di-draft, disimpan lokal, atau disimpan ke server mengalami **kehilangan data kritis** — termasuk data geotagging, nama pengusaha, dan tanda tangan responden — sehingga dokumen tersebut **tidak dapat disubmit** oleh PPL.
     -   **Dampak**: Ini merupakan kendala sistemik berskala kabupaten yang mempengaruhi seluruh PPL, bukan hanya wilayah tertentu. Banyak dokumen yang secara visual sudah "dikerjakan" namun tidak bisa masuk ke antrean submission akibat data hilang ini.
     -   **Tindak Lanjut**: Kendala ini telah **dilaporkan secara resmi ke tim developer FASIH di BPS Pusat**. Menunggu perbaikan dari sisi server dan/atau rilis versi template form yang diperbaiki. Informasi update perbaikan akan diteruskan ke grup WhatsApp petugas begitu tersedia.
+    -   **Respons BPS Pusat & Kegagalan Mekanisme Recovery** *(28 Juni 2026)*:
+        -   BPS Pusat telah menyediakan **fitur history geotagging** di aplikasi FASIH sebagai mekanisme pemulihan data yang hilang.
+        -   Namun, fitur ini **hadir terlambat** — pada saat fitur tersedia dan tim lapangan mencoba menggunakannya, **history geotagging sudah tidak tersedia** (telah terhapus dari server).
+        -   Petugas PPL yang terdampak pun **terlanjur melakukan geotagging ulang** secara manual di lapangan untuk menambal data yang hilang.
+        -   **Konsekuensi**: Data geotagging yang tersimpan bukan merupakan data asli dari kunjungan pertama, melainkan data ulang. Ini berpotensi menimbulkan pertanyaan tentang integritas data spasial dalam dokumen yang bersangkutan.
+        -   **Pembelajaran untuk Protokol ke Depan**: Jika terjadi insiden serupa, langkah pertama adalah segera cek fitur history *sebelum* melakukan geotagging ulang, dan eskalasi ke pusat agar history tidak terhapus dari server.
     -   **Implikasi Monitoring**: Kolom `Worked %` pada dashboard yang tinggi namun `Done %` rendah tidak selalu berarti PPL malas — bisa merupakan dampak dari bug ini. Analisis gap (Worked - Done) harus mempertimbangkan faktor bug FASIH ini sebelum menjatuhkan penilaian negatif pada PPL.
     -   ⚠️ **Catatan Interpretasi Data**: Selama bug ini belum diperbaiki, estimasi tanggal selesai (Est. Selesai) di laporan monitoring kemungkinan lebih pesimistis dari kondisi riil, karena sejumlah dokumen yang sudah dikerjakan belum terhitung sebagai Done.
 8.  **Karakteristik Positif Responden Mempawah**:
