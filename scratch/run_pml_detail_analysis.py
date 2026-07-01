@@ -82,10 +82,16 @@ def main():
         else:
             return "🟡"
 
-    for target_pml in ["Prabowo", "Jamaluddin"]:
+    target_pmls = sys.argv[1:] if len(sys.argv) > 1 else ["Prabowo", "Jamaluddin"]
+    for target_pml in target_pmls:
         if target_pml not in pml_metrics:
-            print(f"\nError: PML '{target_pml}' tidak ditemukan.")
-            continue
+            # Let's try case-insensitive partial match
+            match = next((p for p in pml_metrics if target_pml.lower() in p.lower()), None)
+            if match:
+                target_pml = match
+            else:
+                print(f"\nError: PML '{target_pml}' tidak ditemukan.")
+                continue
         
         m = pml_metrics[target_pml]
         pj = pml_to_pj[target_pml]

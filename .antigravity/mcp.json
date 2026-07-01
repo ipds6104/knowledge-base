@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "antigravity-nb": {
+      "command": "/home/ihza/.local/bin/antigravity-nb",
+      "args": ["serve-agent", "--workspace-root", "/home/ihza/projects/bps/knowledge-base"]
+    }
+  }
+}
