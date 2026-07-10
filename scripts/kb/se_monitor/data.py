@@ -52,6 +52,11 @@ def download_alokasi(
 
         cache_path.parent.mkdir(parents=True, exist_ok=True)
         cache_path.write_text(csv_text, encoding='utf-8')
+
+        # Arsip harian
+        archive_dir = cache_path.parent / "archive" / datetime.now().strftime("%Y-%m-%d")
+        archive_dir.mkdir(parents=True, exist_ok=True)
+        (archive_dir / cache_path.name).write_text(csv_text, encoding='utf-8')
         print(f"{Colors.GREEN}Sukses memperbarui berkas alokasi petugas.{Colors.ENDC}")
         return True
     except Exception as e:
@@ -77,13 +82,20 @@ def download_sheet(
     try:
         print(f"{Colors.BLUE}Mengunduh progres terbaru dari Google Sheets...{Colors.ENDC}")
         req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-        with urllib.request.urlopen(req, timeout=8) as response:
+        with urllib.request.urlopen(req, timeout=30) as response:
             csv_text = response.read().decode('utf-8')
 
         sheet_map = _parse_sheet_csv(csv_text)
 
         try:
+            cache_path.parent.mkdir(parents=True, exist_ok=True)
             cache_path.write_text(csv_text, encoding='utf-8')
+            
+            # Arsip harian
+            archive_dir = cache_path.parent / "archive" / datetime.now().strftime("%Y-%m-%d")
+            archive_dir.mkdir(parents=True, exist_ok=True)
+            (archive_dir / cache_path.name).write_text(csv_text, encoding='utf-8')
+            
             data_source_info = "Google Sheets (Real-time)"
         except Exception as cache_err:
             print(

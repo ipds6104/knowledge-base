@@ -18,6 +18,8 @@ from scripts.kb.se_monitor.data import (
 from scripts.kb.se_monitor.hierarchy import build_hierarchy
 
 def main():
+    # Reconfigure stdout to support UTF-8 on Windows
+    sys.stdout.reconfigure(encoding='utf-8')
     # Download latest alokasi first
     download_alokasi()
 
@@ -77,7 +79,7 @@ def main():
     print(f"{'No':<3} | {'Nama PPL':<25} | {'PML Pengawas':<20} | {'PJ-Kuda':<15} | {'Target':<6} | {'Selesai':<8} | {'Worked (Drf+Dn)':<16} | {'Done %':<8} | {'Est. Selesai':<15}")
     print(sep_line)
 
-    for idx, p in enumerate(ppl_list[:15], 1):
+    for idx, p in enumerate(ppl_list[:30], 1):
         if p["est_date"] is None:
             est_str = f"{Colors.FAIL}Tdk Terproyeksi{Colors.ENDC}"
         else:

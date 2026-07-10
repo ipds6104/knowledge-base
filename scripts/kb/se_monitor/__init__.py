@@ -23,6 +23,7 @@ from .view_prov import print_prov
 from .view_all_pj import print_all_pj
 from .view_intervention import print_intervention
 from .view_pj import print_pj
+from .timeseries import print_trend_main
 
 
 def cmd_se_monitor(args) -> None:
@@ -104,6 +105,10 @@ def cmd_se_monitor(args) -> None:
         )
 
     # 6. Render Output berdasarkan Flags
+    if getattr(args, 'trend', None):
+        print_trend_main(args)
+        return
+
     if args.prov:
         print_prov(
             kab_list,

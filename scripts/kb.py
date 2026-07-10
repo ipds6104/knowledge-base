@@ -24,6 +24,8 @@ from kb import (
 
 
 def main():
+    # Reconfigure stdout to support UTF-8 on Windows
+    sys.stdout.reconfigure(encoding='utf-8')
     parser = argparse.ArgumentParser(
         description="BPS Kabupaten Mempawah Knowledge Base Management Utility",
         formatter_class=argparse.RawTextHelpFormatter,
@@ -137,6 +139,11 @@ def main():
         "--report",
         action="store_true",
         help="Cetak laporan 6-seksi baku (format standar pagi/sore).",
+    )
+    parser_mon.add_argument(
+        "--trend",
+        type=str,
+        help="Cari dan tampilkan tren harian untuk PPL tertentu berdasarkan arsip data.",
     )
 
     args = parser.parse_args()
