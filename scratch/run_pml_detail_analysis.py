@@ -20,6 +20,8 @@ from scripts.kb.se_monitor.data import (
 from scripts.kb.se_monitor.hierarchy import build_hierarchy, build_lookup_maps
 
 def main():
+    # Reconfigure stdout to support UTF-8 on Windows
+    sys.stdout.reconfigure(encoding='utf-8')
     # Download latest alokasi first
     download_alokasi()
     

@@ -143,8 +143,9 @@ def get_csv_reader(csv_text: str) -> csv.DictReader:
         fieldnames = [
             "No", "Kab/Kota", "Kode Wilayah (Sub-SLS)", "Username Petugas", "Email Petugas", "Role",
             "Total Target", "DRAFT", "OPEN", "SUBMITTED RESPONDENT", "SUBMITTED BY Pencacah",
-            "APPROVED BY Pengawas", "REJECTED BY Pengawas", "REVOKED BY Pengawas", "EDITED BY Pengawas",
-            "empty_col1", "empty_col2", "empty_col3", "empty_col4", "Total Submit PPL",
+            "APPROVED BY Pengawas", "REJECTED BY Pengawas", "REVOKED BY Pengawas", 
+            "COMPLETED BY Admin Kabupaten", "EDITED BY Admin Kabupaten", "EDITED BY Pengawas", 
+            "REJECTED BY Admin Kabupaten", "REVOKED BY Admin Kabupaten", "Total Submit PPL",
             "Total Submit Seluruh SLS per Petugas", "empty_col5", "Target", "Persentase_Done",
             "empty_col6", "empty_col7", "Ranking", "Status Target"
         ]
@@ -169,6 +170,10 @@ def _parse_sheet_csv(csv_text: str) -> dict:
             "REJECTED BY Pengawas":     int(row.get("REJECTED BY Pengawas", 0) or 0),
             "REVOKED BY Pengawas":      int(row.get("REVOKED BY Pengawas", 0) or 0),
             "EDITED BY Pengawas":       int(row.get("EDITED BY Pengawas", 0) or 0),
+            "COMPLETED BY Admin Kabupaten": int(row.get("COMPLETED BY Admin Kabupaten", 0) or 0),
+            "EDITED BY Admin Kabupaten":    int(row.get("EDITED BY Admin Kabupaten", 0) or 0),
+            "REJECTED BY Admin Kabupaten": int(row.get("REJECTED BY Admin Kabupaten", 0) or 0),
+            "REVOKED BY Admin Kabupaten":  int(row.get("REVOKED BY Admin Kabupaten", 0) or 0),
         }
     return sheet_map
 
@@ -198,7 +203,11 @@ def get_sls_metrics(sheet_map: dict, idsls: str, idsubsls: str) -> dict:
     rejected  = row["REJECTED BY Pengawas"]
     revoked   = row.get("REVOKED BY Pengawas", 0)
     edited    = row.get("EDITED BY Pengawas", 0)
-    completed = submitted + approved + resp_sub + rejected + revoked + edited
+    comp_adm  = row.get("COMPLETED BY Admin Kabupaten", 0)
+    edit_adm  = row.get("EDITED BY Admin Kabupaten", 0)
+    rej_adm   = row.get("REJECTED BY Admin Kabupaten", 0)
+    rev_adm   = row.get("REVOKED BY Admin Kabupaten", 0)
+    completed = submitted + approved + resp_sub + rejected + revoked + edited + comp_adm + edit_adm + rej_adm + rev_adm
     worked    = completed + draft
 
     return {
@@ -266,7 +275,11 @@ def compute_kab_stats(csv_text: str) -> tuple[dict, list, dict]:
         rejected    = int(row.get("REJECTED BY Pengawas", 0) or 0)
         revoked     = int(row.get("REVOKED BY Pengawas", 0) or 0)
         edited      = int(row.get("EDITED BY Pengawas", 0) or 0)
-        completed   = submitted + approved + resp_sub + rejected + revoked + edited
+        comp_adm    = int(row.get("COMPLETED BY Admin Kabupaten", 0) or 0)
+        edit_adm    = int(row.get("EDITED BY Admin Kabupaten", 0) or 0)
+        rej_adm     = int(row.get("REJECTED BY Admin Kabupaten", 0) or 0)
+        rev_adm     = int(row.get("REVOKED BY Admin Kabupaten", 0) or 0)
+        completed   = submitted + approved + resp_sub + rejected + revoked + edited + comp_adm + edit_adm + rej_adm + rev_adm
         worked      = completed + draft
 
         kab_data.setdefault(kab, {
