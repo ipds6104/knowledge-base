@@ -8,3 +8,7 @@ __pycache__/
 
 # Environment files
 .env
+
+# Google OAuth secrets
+credentials.json
+token.json
