@@ -1,234 +1,342 @@
+﻿"""kb/cmd_chat.py — Analisis obrolan WhatsApp ekspor ZIP.
+
+Subcommand:
+  list      Daftar semua ZIP chat di folder kegiatan
+  info      Statistik obrolan & pengirim teraktif
+  tail      Tampilkan N pesan terbaru
+  links     Ekstrak semua tautan/URL
+  search    Cari pesan berdasarkan kata kunci
+  extract   Deteksi jadwal/milestone potensial
+  digest    Ringkasan komprehensif periode tertentu (default: 7 hari)
+
+Filter waktu (berlaku untuk semua subcommand kecuali list/info):
+  --days N      Filter pesan N hari terakhir (contoh: --days 7)
+  --since DATE  Filter pesan sejak tanggal (format: YYYY-MM-DD)
+  --limit N     Batasi N pesan terbaru (fallback jika --days tidak cukup)
+"""
+
 import zipfile
 import re
 import os
-import argparse
+from datetime import datetime, timedelta, date
 from pathlib import Path
 from collections import Counter
 from .colors import Colors
 
-# Pattern for Android format: "4/7/26, 10:30 - Sender: Message" or system message "4/7/26, 08:54 - Message"
+# Pattern Android: "4/7/26, 10:30 - Sender: Message"
 msg_pattern = re.compile(r'^(\d{1,2}/\d{1,2}/\d{2,4}),\s*(\d{2}:\d{2})\s*-\s*([^:]+):\s*(.*)$')
-sys_pattern = re.compile(r'^(\d{1,2}/\d{1,2}/\d{2,4}),\s*(\d{2}:\d{2})\s*-\s*(.*)$')
+sys_pattern  = re.compile(r'^(\d{1,2}/\d{1,2}/\d{2,4}),\s*(\d{2}:\d{2})\s*-\s*(.*)$')
+link_regex   = re.compile(r'https?://[^\s\)\]]+')
 
-# Search path for zip files
 REPO_ROOT = Path(".")
+TIMELINE_KEYWORDS = [
+    "deadline", "batas", "tenggat", "jadwal", "tanggal", "visitasi",
+    "interviu", "interview", "rapat", "zoom", "meeting", "selesai",
+    "pukul", "pkl", "jam", "besok", "lusa", "minggu", "bulan"
+]
 
-def parse_chat_messages(zip_path):
-    """Parses messages inside the first .txt file of a WhatsApp zip export."""
+
+# ─── Parsing ────────────────────────────────────────────────────────────────
+
+def _parse_wa_date(date_str: str) -> date | None:
+    """Parse tanggal format WA (M/D/YY atau M/D/YYYY) ke objek date."""
+    try:
+        parts = date_str.strip().split("/")
+        m, d, y = int(parts[0]), int(parts[1]), int(parts[2])
+        if y < 100:
+            y += 2000
+        return date(y, m, d)
+    except Exception:
+        return None
+
+
+def parse_chat_messages(zip_path) -> list[dict]:
+    """Parse semua pesan dalam ZIP ekspor WhatsApp."""
     messages = []
     if not os.path.exists(zip_path):
         return messages
-
-    with zipfile.ZipFile(zip_path, 'r') as z:
+    with zipfile.ZipFile(zip_path, "r") as z:
         for name in z.namelist():
             if name.endswith(".txt"):
                 with z.open(name) as f:
-                    content = f.read().decode('utf-8', errors='ignore')
-                    lines = content.splitlines()
-                    
-                    current_msg = None
-                    for line in lines:
-                        line = line.strip()
-                        if not line:
-                            continue
-                            
-                        # Try matching standard message
-                        match = msg_pattern.match(line)
-                        if match:
-                            if current_msg:
-                                messages.append(current_msg)
-                            date_str, time_str, sender, text = match.groups()
-                            current_msg = {
-                                "date": date_str,
-                                "time": time_str,
-                                "sender": sender.strip(),
-                                "text": text.strip(),
-                                "is_system": False
-                            }
-                            continue
-                            
-                        # Try matching system message
-                        sys_match = sys_pattern.match(line)
-                        if sys_match:
-                            if current_msg:
-                                messages.append(current_msg)
-                            date_str, time_str, text = sys_match.groups()
-                            current_msg = {
-                                "date": date_str,
-                                "time": time_str,
-                                "sender": "System",
-                                "text": text.strip(),
-                                "is_system": True
-                            }
-                            continue
-                            
-                        # Multiline continuation
+                    content = f.read().decode("utf-8", errors="ignore")
+                current_msg = None
+                for line in content.splitlines():
+                    line = line.strip()
+                    if not line:
+                        continue
+                    m = msg_pattern.match(line)
+                    if m:
                         if current_msg:
-                            current_msg["text"] += "\n" + line
-                            
+                            messages.append(current_msg)
+                        d, t, sender, text = m.groups()
+                        current_msg = {
+                            "date": d, "time": t,
+                            "sender": sender.strip(), "text": text.strip(),
+                            "is_system": False,
+                            "date_obj": _parse_wa_date(d),
+                        }
+                        continue
+                    sm = sys_pattern.match(line)
+                    if sm:
+                        if current_msg:
+                            messages.append(current_msg)
+                        d, t, text = sm.groups()
+                        current_msg = {
+                            "date": d, "time": t,
+                            "sender": "System", "text": text.strip(),
+                            "is_system": True,
+                            "date_obj": _parse_wa_date(d),
+                        }
+                        continue
                     if current_msg:
-                        messages.append(current_msg)
+                        current_msg["text"] += "\n" + line
+                if current_msg:
+                    messages.append(current_msg)
                 break
     return messages
 
-def get_zip_files():
-    """Gets all zip files under the kegiatan directory recursively."""
+
+# ─── Helpers ────────────────────────────────────────────────────────────────
+
+def get_zip_files() -> list[Path]:
     kegiatan_dir = REPO_ROOT / "kegiatan"
     if not kegiatan_dir.exists():
         return []
-    # Search recursively for *.zip files
-    zips = sorted(list(kegiatan_dir.glob("**/*.zip")), key=lambda p: p.name)
-    return zips
+    return sorted(kegiatan_dir.glob("**/*.zip"), key=lambda p: p.name)
 
-def cmd_chat(args):
-    """Handler for the 'kb chat' command."""
-    zips = get_zip_files()
-    
-    if not zips:
-        print(f"{Colors.FAIL}Tidak ditemukan berkas WhatsApp Chat (.zip) di dalam direktori kegiatan.{Colors.ENDC}")
-        return
 
-    # Handle 'list' subcommand
-    if args.chat_subcommand == "list":
-        print(f"\n{Colors.BOLD}=== DAFTAR BERKAS EKSPOR WHATSAPP CHAT (REKURSIF) ==={Colors.ENDC}")
-        for idx, path in enumerate(zips):
-            size_kb = path.stat().st_size / 1024
-            rel_path = path.relative_to(REPO_ROOT)
-            print(f"[{Colors.GREEN}{idx + 1}{Colors.ENDC}] {Colors.CYAN}{path.name}{Colors.ENDC} ({size_kb:.1f} KB)")
-            print(f"    Lokasi: {Colors.WARNING}{rel_path.parent.as_posix()}{Colors.ENDC}")
-        print(f"\nGunakan {Colors.BOLD}kb chat info <index>{Colors.ENDC} untuk melihat ringkasan obrolan.")
-        return
+def _apply_filter(messages: list[dict], args) -> tuple[list[dict], str]:
+    """
+    Terapkan filter waktu ke daftar pesan.
+    Prioritas: --days > --since > --limit (jumlah).
+    Kembalikan (filtered_messages, label_keterangan).
+    """
+    days  = getattr(args, "days",  None)
+    since = getattr(args, "since", None)
+    limit = getattr(args, "limit", None)
 
-    # Get target ZIP file index
-    target_idx = -1
+    if days:
+        cutoff = date.today() - timedelta(days=days)
+        filtered = [m for m in messages if m["date_obj"] and m["date_obj"] >= cutoff]
+        label = f"(Menampilkan pesan {days} hari terakhir: sejak {cutoff.strftime('%d %b %Y')})"
+        return filtered, label
+
+    if since:
+        try:
+            cutoff = datetime.strptime(since, "%Y-%m-%d").date()
+            filtered = [m for m in messages if m["date_obj"] and m["date_obj"] >= cutoff]
+            label = f"(Menampilkan pesan sejak {cutoff.strftime('%d %b %Y')})"
+            return filtered, label
+        except ValueError:
+            print(f"{Colors.FAIL}Format --since tidak valid. Gunakan YYYY-MM-DD.{Colors.ENDC}")
+
+    if limit and limit > 0:
+        return messages[-limit:], f"(Menampilkan {limit} pesan terbaru)"
+
+    return messages, ""
+
+
+def _sender_color(sender: str, is_system: bool) -> str:
+    if is_system:
+        return Colors.WARNING
+    return Colors.BLUE if "Ihza" in sender else Colors.CYAN
+
+
+def _print_msg(m: dict) -> None:
+    color = _sender_color(m["sender"], m["is_system"])
+    print(f"{Colors.BOLD}[{m['date']} {m['time']}]{Colors.ENDC} {color}{m['sender']}{Colors.ENDC}:")
+    for line in m["text"].splitlines():
+        print("    " + line)
+    print("-" * 50)
+
+
+def _resolve_zip(args, zips: list[Path]) -> Path | None:
     try:
-        target_idx = int(args.target) - 1
-    except (ValueError, TypeError):
+        idx = int(args.target) - 1
+        if 0 <= idx < len(zips):
+            return zips[idx]
+    except (ValueError, TypeError, AttributeError):
         pass
+    for p in zips:
+        if args.target.lower() in p.name.lower():
+            return p
+    return None
 
-    target_zip = None
-    if 0 <= target_idx < len(zips):
-        target_zip = zips[target_idx]
-    else:
-        # Match by filename
-        for p in zips:
-            if args.target.lower() in p.name.lower():
-                target_zip = p
-                break
 
+# ─── Command Handler ─────────────────────────────────────────────────────────
+
+def cmd_chat(args) -> None:
+    zips = get_zip_files()
+    if not zips:
+        print(f"{Colors.FAIL}Tidak ditemukan berkas .zip di dalam direktori kegiatan.{Colors.ENDC}")
+        return
+
+    # LIST
+    if args.chat_subcommand == "list":
+        print(f"\n{Colors.BOLD}=== DAFTAR BERKAS EKSPOR WHATSAPP CHAT ==={Colors.ENDC}")
+        for i, p in enumerate(zips):
+            rel = p.relative_to(REPO_ROOT)
+            print(f"  [{Colors.GREEN}{i+1}{Colors.ENDC}] {Colors.CYAN}{p.name}{Colors.ENDC} ({p.stat().st_size/1024:.1f} KB)")
+            print(f"       {Colors.WARNING}{rel.parent.as_posix()}{Colors.ENDC}")
+        print(f"\nGunakan: kb chat info <index>  |  kb chat digest <index> --days 7")
+        return
+
+    # Resolve target ZIP
+    target_zip = _resolve_zip(args, zips)
     if not target_zip:
-        print(f"{Colors.FAIL}Berkas/Index '{args.target}' tidak ditemukan. Jalankan 'kb chat list' untuk melihat daftar.{Colors.ENDC}")
+        print(f"{Colors.FAIL}Tidak ditemukan: '{args.target}'. Jalankan 'kb chat list'.{Colors.ENDC}")
         return
 
     messages = parse_chat_messages(target_zip)
     if not messages:
-        print(f"{Colors.FAIL}Gagal membaca pesan atau format tidak sesuai di berkas {target_zip.name}{Colors.ENDC}")
+        print(f"{Colors.FAIL}Gagal membaca pesan dari {target_zip.name}{Colors.ENDC}")
         return
 
-    # Apply message limit if specified
-    limit = getattr(args, "limit", None)
-    total_messages_count = len(messages)
-    
-    # Slice messages from end if limit is set
-    sliced_messages = messages
-    if limit and limit > 0:
-        sliced_messages = messages[-limit:]
+    total = len(messages)
+    filtered, filter_label = _apply_filter(messages, args)
 
+    # INFO
     if args.chat_subcommand == "info":
-        senders = [m["sender"] for m in messages if not m["is_system"]]
-        system_msgs = [m for m in messages if m["is_system"]]
-        
-        sender_counts = Counter(senders)
-        start_date = messages[0]["date"] if messages else "-"
-        end_date = messages[-1]["date"] if messages else "-"
+        non_sys = [m for m in messages if not m["is_system"]]
+        sys_msgs = [m for m in messages if m["is_system"]]
+        counts = Counter(m["sender"] for m in non_sys)
+        print(f"\n{Colors.BOLD}=== INFO: {target_zip.name} ==={Colors.ENDC}")
+        print(f"Lokasi        : {target_zip.relative_to(REPO_ROOT).as_posix()}")
+        print(f"Rentang Waktu : {Colors.CYAN}{messages[0]['date']}{Colors.ENDC} s.d {Colors.CYAN}{messages[-1]['date']}{Colors.ENDC}")
+        print(f"Total Pesan   : {Colors.GREEN}{total}{Colors.ENDC} (Sistem: {len(sys_msgs)})")
+        print(f"Total Pengirim: {Colors.GREEN}{len(counts)}{Colors.ENDC}\n")
+        print(f"{Colors.BOLD}Top 5 Pengirim:{Colors.ENDC}")
+        for name, cnt in counts.most_common(5):
+            bar = "█" * (cnt * 20 // max(counts.values()))
+            print(f"  {Colors.CYAN}{name:<25}{Colors.ENDC} {bar:<20} {cnt}")
+        return
 
-        print(f"\n{Colors.BOLD}=== INFORMASI OBROLAN: {target_zip.name} ==={Colors.ENDC}")
-        print(f"Lokasi File   : {target_zip.relative_to(REPO_ROOT).as_posix()}")
-        print(f"Rentang Waktu : {Colors.CYAN}{start_date}{Colors.ENDC} s.d {Colors.CYAN}{end_date}{Colors.ENDC}")
-        print(f"Total Pesan   : {Colors.GREEN}{total_messages_count}{Colors.ENDC} (Pesan Sistem: {len(system_msgs)})")
-        print(f"Total Pengirim: {Colors.GREEN}{len(sender_counts)}{Colors.ENDC}\n")
-        
-        print(f"{Colors.BOLD}Keaktifan Pengirim (Top 5):{Colors.ENDC}")
-        for name, count in sender_counts.most_common(5):
-            print(f"  - {Colors.CYAN}{name:<25}{Colors.ENDC}: {count} pesan")
+    # Tampilkan header filter
+    if filter_label:
+        print(f"\n{Colors.WARNING}{filter_label}{Colors.ENDC}")
+        print(f"  → {Colors.GREEN}{len(filtered)}{Colors.ENDC} dari {total} total pesan.\n")
 
-    elif args.chat_subcommand == "tail":
-        show_limit = limit if limit else 100
-        print(f"\n{Colors.BOLD}=== {show_limit} PESAN TERBARU DARI: {target_zip.name} ==={Colors.ENDC}")
-        display_msgs = messages[-show_limit:]
-        
-        for m in display_msgs:
-            sender_color = Colors.BLUE if m["sender"] == "Ihza Karunia" else Colors.CYAN
-            if m["is_system"]:
-                sender_color = Colors.WARNING
-            print(f"{Colors.BOLD}[{m['date']} {m['time']}]{Colors.ENDC} {sender_color}{m['sender']}{Colors.ENDC}:")
-            indented_text = "\n".join("    " + line for line in m["text"].splitlines())
-            print(indented_text)
-            print("-" * 50)
+    # TAIL
+    if args.chat_subcommand == "tail":
+        limit = getattr(args, "limit", None)
+        display = filtered[-limit:] if limit else filtered
+        n = len(display)
+        print(f"\n{Colors.BOLD}=== {n} PESAN DARI: {target_zip.name} ==={Colors.ENDC}\n")
+        for m in display:
+            _print_msg(m)
 
+    # LINKS
     elif args.chat_subcommand == "links":
-        print(f"\n{Colors.BOLD}=== TAUTAN / LINKS YANG DIBAGIKAN DI GRUP ==={Colors.ENDC}")
-        link_regex = re.compile(r'https?://[^\s\)]+')
-        
-        found_links = []
-        for m in sliced_messages:
-            links = link_regex.findall(m["text"])
-            for link in links:
-                found_links.append((m["date"], m["sender"], link))
-
-        if not found_links:
-            print("  Tidak ditemukan tautan dalam obrolan.")
+        print(f"\n{Colors.BOLD}=== TAUTAN DI GRUP: {target_zip.name} ==={Colors.ENDC}\n")
+        found = []
+        for m in filtered:
+            for lnk in link_regex.findall(m["text"]):
+                found.append((m["date"], m["sender"], lnk))
+        if not found:
+            print("  Tidak ada tautan ditemukan.")
         else:
-            if limit:
-                print(f"  (Menampilkan hasil dari {limit} pesan terbaru)\n")
-            for idx, (date, sender, link) in enumerate(found_links):
-                print(f"[{Colors.GREEN}{idx + 1}{Colors.ENDC}] {Colors.BOLD}[{date}]{Colors.ENDC} {Colors.CYAN}{sender}{Colors.ENDC}:")
-                print(f"    {Colors.UNDERLINE}{link}{Colors.ENDC}\n")
+            for i, (d, sender, lnk) in enumerate(found):
+                print(f"  [{Colors.GREEN}{i+1}{Colors.ENDC}] {Colors.BOLD}[{d}]{Colors.ENDC} {Colors.CYAN}{sender}{Colors.ENDC}")
+                print(f"       {Colors.UNDERLINE}{lnk}{Colors.ENDC}\n")
 
+    # SEARCH
     elif args.chat_subcommand == "search":
-        query = args.query.lower()
-        print(f"\n{Colors.BOLD}=== HASIL PENCARIAN UNTUK: '{args.query}' ==={Colors.ENDC}")
-        if limit:
-            print(f"  (Mencari dalam {limit} pesan terbaru)\n")
-        
-        matches = []
-        for m in sliced_messages:
-            if query in m["text"].lower():
-                matches.append(m)
-
+        q = args.query.lower()
+        print(f"\n{Colors.BOLD}=== PENCARIAN: '{args.query}' di {target_zip.name} ==={Colors.ENDC}\n")
+        matches = [m for m in filtered if q in m["text"].lower()]
         if not matches:
-            print(f"  Tidak ditemukan pesan yang mengandung kata '{args.query}'.")
+            print(f"  Tidak ditemukan pesan mengandung '{args.query}'.")
         else:
-            print(f"Ditemukan {Colors.GREEN}{len(matches)}{Colors.ENDC} pesan cocok:\n")
+            print(f"Ditemukan {Colors.GREEN}{len(matches)}{Colors.ENDC} pesan:\n")
             for m in matches:
-                sender_color = Colors.BLUE if m["sender"] == "Ihza Karunia" else Colors.CYAN
-                if m["is_system"]:
-                    sender_color = Colors.WARNING
-                print(f"{Colors.BOLD}[{m['date']} {m['time']}]{Colors.ENDC} {sender_color}{m['sender']}{Colors.ENDC}:")
-                indented_text = "\n".join("    " + line for line in m["text"].splitlines())
-                print(indented_text)
-                print("-" * 50)
+                _print_msg(m)
 
+    # EXTRACT
     elif args.chat_subcommand == "extract":
-        print(f"\n{Colors.BOLD}=== DETEKSI MILESTONE & TIMELINE EPSS DARI CHAT ==={Colors.ENDC}")
-        if limit:
-            print(f"  (Memindai {limit} pesan terbaru)\n")
-        keywords = ["deadline", "batas", "tenggat", "jadwal", "tanggal", "waktu", "jam", "visitasi", "interviu", "harmon"]
-        
-        extracted = []
-        for m in sliced_messages:
-            text_lower = m["text"].lower()
-            if any(k in text_lower for k in keywords):
-                if re.search(r'\d', text_lower):
-                    extracted.append(m)
-
-        if not extracted:
-            print("  Tidak terdeteksi pesan jadwal/milestone potensial.")
+        print(f"\n{Colors.BOLD}=== DETEKSI JADWAL/MILESTONE: {target_zip.name} ==={Colors.ENDC}\n")
+        hits = [
+            m for m in filtered
+            if any(k in m["text"].lower() for k in TIMELINE_KEYWORDS)
+            and re.search(r'\d', m["text"])
+        ]
+        if not hits:
+            print("  Tidak ada pesan jadwal terdeteksi.")
         else:
-            print(f"Mendeteksi {Colors.GREEN}{len(extracted)}{Colors.ENDC} pesan terkait lini masa/jadwal:\n")
-            for m in extracted:
-                sender_color = Colors.BLUE if m["sender"] == "Ihza Karunia" else Colors.CYAN
-                print(f"{Colors.BOLD}[{m['date']} {m['time']}]{Colors.ENDC} {sender_color}{m['sender']}{Colors.ENDC}:")
-                indented_text = "\n".join("    " + line for line in m["text"].splitlines())
-                print(indented_text)
-                print("-" * 50)
+            print(f"Terdeteksi {Colors.GREEN}{len(hits)}{Colors.ENDC} pesan:\n")
+            for m in hits:
+                _print_msg(m)
+
+    # DIGEST — ringkasan otomatis periode tertentu
+    elif args.chat_subcommand == "digest":
+        days = getattr(args, "days", 7) or 7
+        cutoff = date.today() - timedelta(days=days)
+
+        # Hitung ulang filter hanya untuk digest (tidak pakai _apply_filter agar jelas)
+        period_msgs = [m for m in messages if m["date_obj"] and m["date_obj"] >= cutoff]
+        non_sys = [m for m in period_msgs if not m["is_system"]]
+
+        print(f"\n{Colors.BOLD}{'═' * 58}{Colors.ENDC}")
+        print(f"{Colors.BOLD}  📋 DIGEST CHAT — {days} HARI TERAKHIR{Colors.ENDC}")
+        print(f"{Colors.BOLD}  Grup : {target_zip.name}{Colors.ENDC}")
+        print(f"{Colors.BOLD}  Sejak: {cutoff.strftime('%d %b %Y')}  →  Hari ini{Colors.ENDC}")
+        print(f"{Colors.BOLD}{'═' * 58}{Colors.ENDC}\n")
+
+        if not period_msgs:
+            print(f"{Colors.WARNING}  Tidak ada pesan dalam {days} hari terakhir.{Colors.ENDC}")
+            print(f"  Pesan terakhir tercatat: {messages[-1]['date'] if messages else '-'}")
+            return
+
+        # Seksi 1: Statistik Keaktifan
+        counts = Counter(m["sender"] for m in non_sys)
+        print(f"{Colors.BOLD}📊 1. KEAKTIFAN ({len(non_sys)} pesan dari {len(counts)} orang){Colors.ENDC}")
+        for name, cnt in counts.most_common():
+            bar = "█" * min(cnt * 15 // max(counts.values()), 15)
+            print(f"  {Colors.CYAN}{name:<22}{Colors.ENDC} {bar:<15} {cnt} pesan")
+
+        # Seksi 2: Tautan Dibagikan
+        links_found = []
+        for m in period_msgs:
+            for lnk in link_regex.findall(m["text"]):
+                links_found.append((m["date"], m["sender"], lnk))
+
+        print(f"\n{Colors.BOLD}🔗 2. TAUTAN DIBAGIKAN ({len(links_found)} link){Colors.ENDC}")
+        if not links_found:
+            print(f"  {Colors.WARNING}Tidak ada tautan.{Colors.ENDC}")
+        else:
+            for d, sender, lnk in links_found:
+                print(f"  [{d}] {Colors.CYAN}{sender}{Colors.ENDC}")
+                print(f"   → {Colors.UNDERLINE}{lnk}{Colors.ENDC}")
+
+        # Seksi 3: Jadwal / Milestone Terdeteksi
+        hits = [
+            m for m in period_msgs
+            if any(k in m["text"].lower() for k in TIMELINE_KEYWORDS)
+            and re.search(r'\d', m["text"])
+            and not m["is_system"]
+        ]
+        print(f"\n{Colors.BOLD}📅 3. JADWAL / MILESTONE ({len(hits)} pesan){Colors.ENDC}")
+        if not hits:
+            print(f"  {Colors.WARNING}Tidak ada pesan jadwal terdeteksi.{Colors.ENDC}")
+        else:
+            for m in hits:
+                color = _sender_color(m["sender"], m["is_system"])
+                print(f"  {Colors.BOLD}[{m['date']} {m['time']}]{Colors.ENDC} {color}{m['sender']}{Colors.ENDC}:")
+                for line in m["text"].splitlines()[:4]:  # maks 4 baris per pesan
+                    print(f"    {line}")
+                print()
+
+        # Seksi 4: Aktivitas Per Hari
+        day_counts: dict[str, int] = {}
+        for m in non_sys:
+            day_counts[m["date"]] = day_counts.get(m["date"], 0) + 1
+        print(f"{Colors.BOLD}📆 4. AKTIVITAS PER HARI{Colors.ENDC}")
+        for d in sorted(day_counts.keys(), key=lambda x: _parse_wa_date(x) or date.min):
+            cnt = day_counts[d]
+            bar = "█" * min(cnt, 30)
+            print(f"  {d:<12} {bar} {cnt}")
+
+        print(f"\n{Colors.BOLD}{'═' * 58}{Colors.ENDC}")
+        print(f"{Colors.GREEN}  Digest selesai.{Colors.ENDC} Untuk detail: kb chat search/links/extract")
+        print(f"  Contoh: kb chat search {args.target} -q \"deadline\" --days {days}")
+        print(f"{Colors.BOLD}{'═' * 58}{Colors.ENDC}\n")

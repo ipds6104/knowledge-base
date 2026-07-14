@@ -197,7 +197,7 @@ def main():
     )
     parser_chat.add_argument(
         "chat_subcommand",
-        choices=["list", "info", "links", "search", "extract", "tail"],
+        choices=["list", "info", "links", "search", "extract", "tail", "digest"],
         help="Sub-command untuk analisis chat"
     )
     parser_chat.add_argument(
@@ -207,18 +207,24 @@ def main():
         help="Index atau nama file ZIP chat (default: '1')"
     )
     parser_chat.add_argument(
-        "--query",
-        "-q",
-        type=str,
-        default="",
+        "--query", "-q",
+        type=str, default="",
         help="Query pencarian untuk sub-command 'search'"
     )
     parser_chat.add_argument(
-        "--limit",
-        "-l",
-        type=int,
-        default=None,
-        help="Batasi jumlah pesan terbaru yang diproses/ditampilkan"
+        "--limit", "-l",
+        type=int, default=None,
+        help="Batasi jumlah pesan terbaru (fallback jika --days tidak digunakan)"
+    )
+    parser_chat.add_argument(
+        "--days", "-d",
+        type=int, default=None,
+        help="Filter pesan N hari terakhir (contoh: --days 7 untuk seminggu terakhir)"
+    )
+    parser_chat.add_argument(
+        "--since",
+        type=str, default=None,
+        help="Filter pesan sejak tanggal tertentu (format: YYYY-MM-DD)"
     )
 
     args = parser.parse_args()
