@@ -74,4 +74,12 @@ def whoami_str() -> str:
             f"{user['Panggilan']} ({user['Nama']}) — "
             f"{user['Jabatan']} | {user['Email']}"
         )
-    return "Pengguna tidak dikenali. Tambahkan KB_USER_EMAIL=<email@bps.go.id> ke file .env"
+    return (
+        "⚠  Pengguna belum terkonfigurasi di laptop ini.\n"
+        "   Jalankan: python scripts/kb.py setup"
+    )
+
+
+def is_first_run() -> bool:
+    """Mengembalikan True jika pengguna belum dikonfigurasi (perlu setup)."""
+    return get_current_user() is None

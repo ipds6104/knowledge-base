@@ -13,6 +13,7 @@ from .cmd_latsar import cmd_latsar
 from .cmd_sync_sheets import cmd_sync_sheets
 from .cmd_auto_update import cmd_auto_update
 from .cmd_chat import cmd_chat
+from .cmd_setup import cmd_setup
 
 __all__ = [
     "Colors",
@@ -29,6 +30,7 @@ __all__ = [
     "cmd_sync_sheets",
     "cmd_auto_update",
     "cmd_chat",
+    "cmd_setup",
     "get_current_user",
     "whoami_str",
 ]

@@ -24,6 +24,7 @@ from kb import (
     cmd_sync_sheets,
     cmd_auto_update,
     cmd_chat,
+    cmd_setup,
     whoami_str,
 )
 
@@ -40,6 +41,16 @@ def main():
     # 0. WHOAMI command
     subparsers.add_parser(
         "whoami", help="Tampilkan identitas pengguna aktif repo ini."
+    )
+
+    # 0b. SETUP command
+    parser_setup = subparsers.add_parser(
+        "setup", help="Wizard setup identitas pengguna di laptop ini (jalankan sekali setelah clone)."
+    )
+    parser_setup.add_argument(
+        "--force", "-f",
+        action="store_true",
+        help="Paksa ganti identitas meski sudah terkonfigurasi"
     )
 
     # 1. CREATE command
@@ -236,6 +247,8 @@ def main():
         cmd_chat(args)
     elif args.command == "whoami":
         print(whoami_str())
+    elif args.command == "setup":
+        cmd_setup(args)
 
 
 if __name__ == "__main__":

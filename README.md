@@ -4,6 +4,24 @@ Repositori ini digunakan sebagai basis pengetahuan (knowledge base) terstruktur 
 
 ---
 
+## 🚀 Setup Pertama Kali (Setelah Clone di Laptop Baru)
+
+Jalankan **satu perintah** ini setelah clone untuk mendaftarkan identitas Anda:
+
+```bash
+python scripts/kb.py setup
+```
+
+Wizard interaktif akan menampilkan daftar seluruh pegawai BPS Mempawah. Pilih nama Anda, konfirmasi, dan selesai — AI Agent akan mengenali Anda secara otomatis di semua sesi berikutnya.
+
+Verifikasi kapan saja dengan:
+```bash
+python scripts/kb.py whoami
+```
+
+---
+
+
 ## 📂 Struktur Folder Kegiatan
 
 Setiap kegiatan di periode tertentu memiliki foldernya masing-masing di bawah direktori `kegiatan/`:

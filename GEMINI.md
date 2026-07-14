@@ -4,6 +4,27 @@ Dokumen ini berisi pedoman perilaku persisten, standar teknis, dan SOP operasion
 
 ---
 
+## 👤 SOP Deteksi Identitas Pengguna (First-Run & Setiap Sesi)
+
+**WAJIB dijalankan sebagai langkah pertama di setiap sesi baru**, sebelum menjawab pertanyaan apapun:
+
+1. **Cek identitas pengguna** dengan menjalankan `python scripts/kb.py whoami`.
+2. **Jika hasilnya "belum terkonfigurasi"** (output mengandung kata "Jalankan: ... setup"):
+   - Informasikan kepada pengguna bahwa ini tampaknya adalah instalasi baru atau laptop yang belum dikonfigurasi.
+   - **Langsung arahkan** pengguna untuk menjalankan: `python scripts/kb.py setup`
+   - Tunggu hingga setup selesai sebelum melanjutkan permintaan apapun.
+3. **Jika berhasil dikenali**: Sapa pengguna dengan panggilan (`Panggilan`) yang sesuai dari data pegawai, dan lanjutkan dengan tugas yang diminta.
+4. **Cara update data pegawai** saat ada mutasi: edit `data/pegawai/Data_Pegawai.csv` — tambah baris baru (pegawai masuk), hapus baris (mutasi keluar), lalu commit.
+
+**Referensi modul:**
+- `scripts/kb/user_identity.py` — logika deteksi (cascade: `.env` → `git config`)
+- `scripts/kb/cmd_setup.py` — wizard interaktif setup pertama kali
+- `data/pegawai/Data_Pegawai.csv` — master data pegawai (Nama, Email, Jabatan, Panggilan)
+
+---
+
+
+
 ## 📋 SOP Monitoring & Evaluasi Multi-Kegiatan
 
 Setiap kali pengguna menanyakan status progres, evaluasi, atau intervensi harian (misal: *"bagaimana progres kita hari ini?"* atau *"apa yang perlu diintervensi?"*):
