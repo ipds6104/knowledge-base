@@ -78,5 +78,13 @@ Apabila pengguna menanyakan siapa petugas PPL yang diproyeksikan selesai paling 
 *   **Thin Entrypoint**: Berkas `scripts/kb.py` adalah entrypoint CLI tipis. Semua logika bisnis didelegasikan ke package `kb/`.
 *   **Isolasi Modul Kegiatan**: Setiap kegiatan yang membutuhkan skrip pemantauan/logika khusus **wajib** dibuatkan sub-package tersendiri di bawah `kb/` (seperti `kb/se_monitor/`) untuk menghindari pencampuran logika bisnis (*spaghetti code*) antar kegiatan.
 *   **Epistemological Source**: Penentuan relasi struktural/hierarki petugas dalam kegiatan **wajib** dibaca dari file alokasi resmi kegiatan (seperti `Alokasi Petugas.csv` untuk SE2026). Jangan pernah menebak relasi ini secara mandiri.
-*   **Batas Ukuran File**: Maksimal **500 baris** per berkas Python (diawasi oleh pre-commit hook di `.githooks/pre-commit`). Jaga modul tetap kecil, terfokus, dan modular (di bawah 300 baris).
-*   **Analisis Repo**: Gunakan `python3 ./scripts/dump_tree.py` untuk memantau struktur direktori dan baris kode.
+*   Batas Ukuran File: Maksimal **500 baris** per berkas Python (diawasi oleh pre-commit hook di `.githooks/pre-commit`). Jaga modul tetap kecil, terfokus, dan modular (di bawah 300 baris).
+*   Analisis Repo: Gunakan `python3 ./scripts/dump_tree.py` untuk memantau struktur direktori dan baris kode.
+
+---
+
+## Progress Log
+- **2026-07-10**: Memperbaiki modul data monitoring `data.py` untuk mengikutsertakan kolom tindakan admin kabupaten (`COMPLETED BY Admin Kabupaten` dan `EDITED BY Admin Kabupaten`) ke dalam metrik penyelesaian. Membuat modul baru `completed.py` yang otomatis berjalan di setiap eksekusi `kb se-monitor` untuk mengekspor daftar Sub-SLS yang sudah 100% Approved (total 56 wilayah) ke dalam berkas `kegiatan/sensus-ekonomi-2026/2026/subsls_selesai.csv`.
+- **2026-07-12**: Mengorganisasi surat dinas umum/administratif non-kegiatan statistik (Surat Pembinaan Pelanggaran Disiplin Laporan Perkawinan dan Perceraian B-415/61513/KP.380/2026) di bawah folder baru `kegiatan/kepegawaian/2026/` menggunakan tautan relatif. Verifikasi menunjukkan tenggat waktu (31 Juli 2026) berhasil dipindai dan ditampilkan oleh skrip CLI `kb.py schedule`. Merapikan nama berkas template menjadi `template-laporan-perkawinan-pertama.docx` (kebab-case tanpa spasi) dan mendokumentasikan aturan organisasi berkas administrasi dan template di dalam root `README.md`.
+
+

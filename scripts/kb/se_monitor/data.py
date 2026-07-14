@@ -161,19 +161,19 @@ def _parse_sheet_csv(csv_text: str) -> dict:
         if not code or code == "Kode Wilayah (Sub-SLS)":
             continue
         sheet_map[code] = {
-            "Total Target":             int(row.get("Total Target", 0) or 0),
-            "OPEN":                     int(row.get("OPEN", 0) or 0),
-            "DRAFT":                    int(row.get("DRAFT", 0) or 0),
-            "SUBMITTED BY Pencacah":    int(row.get("SUBMITTED BY Pencacah", 0) or 0),
-            "APPROVED BY Pengawas":     int(row.get("APPROVED BY Pengawas", 0) or 0),
-            "SUBMITTED RESPONDENT":     int(row.get("SUBMITTED RESPONDENT", 0) or 0),
-            "REJECTED BY Pengawas":     int(row.get("REJECTED BY Pengawas", 0) or 0),
-            "REVOKED BY Pengawas":      int(row.get("REVOKED BY Pengawas", 0) or 0),
-            "EDITED BY Pengawas":       int(row.get("EDITED BY Pengawas", 0) or 0),
+            "Total Target":                 int(row.get("Total Target", 0) or 0),
+            "OPEN":                         int(row.get("OPEN", 0) or 0),
+            "DRAFT":                        int(row.get("DRAFT", 0) or 0),
+            "SUBMITTED BY Pencacah":        int(row.get("SUBMITTED BY Pencacah", 0) or 0),
+            "APPROVED BY Pengawas":         int(row.get("APPROVED BY Pengawas", 0) or 0),
+            "SUBMITTED RESPONDENT":         int(row.get("SUBMITTED RESPONDENT", 0) or 0),
+            "REJECTED BY Pengawas":         int(row.get("REJECTED BY Pengawas", 0) or 0),
+            "REVOKED BY Pengawas":          int(row.get("REVOKED BY Pengawas", 0) or 0),
+            "EDITED BY Pengawas":           int(row.get("EDITED BY Pengawas", 0) or 0),
             "COMPLETED BY Admin Kabupaten": int(row.get("COMPLETED BY Admin Kabupaten", 0) or 0),
             "EDITED BY Admin Kabupaten":    int(row.get("EDITED BY Admin Kabupaten", 0) or 0),
-            "REJECTED BY Admin Kabupaten": int(row.get("REJECTED BY Admin Kabupaten", 0) or 0),
-            "REVOKED BY Admin Kabupaten":  int(row.get("REVOKED BY Admin Kabupaten", 0) or 0),
+            "REJECTED BY Admin Kabupaten":  int(row.get("REJECTED BY Admin Kabupaten", 0) or 0),
+            "REVOKED BY Admin Kabupaten":   int(row.get("REVOKED BY Admin Kabupaten", 0) or 0),
         }
     return sheet_map
 
@@ -194,21 +194,27 @@ def get_sls_metrics(sheet_map: dict, idsls: str, idsubsls: str) -> dict:
             "target": 0, "open": 0, "draft": 0, "submitted": 0,
             "approved": 0, "resp_submitted": 0, "rejected": 0,
             "revoked": 0, "edited": 0, "completed": 0, "worked": 0,
+            "comp_admin": 0, "edit_admin": 0, "rej_admin": 0, "rev_admin": 0,
         }
 
     submitted = row["SUBMITTED BY Pencacah"]
-    approved  = row["APPROVED BY Pengawas"]
+    approved_orig = row["APPROVED BY Pengawas"]
     resp_sub  = row["SUBMITTED RESPONDENT"]
     draft     = row["DRAFT"]
     rejected  = row["REJECTED BY Pengawas"]
     revoked   = row.get("REVOKED BY Pengawas", 0)
     edited    = row.get("EDITED BY Pengawas", 0)
-    comp_adm  = row.get("COMPLETED BY Admin Kabupaten", 0)
-    edit_adm  = row.get("EDITED BY Admin Kabupaten", 0)
-    rej_adm   = row.get("REJECTED BY Admin Kabupaten", 0)
-    rev_adm   = row.get("REVOKED BY Admin Kabupaten", 0)
-    completed = submitted + approved + resp_sub + rejected + revoked + edited + comp_adm + edit_adm + rej_adm + rev_adm
+    comp_admin = row.get("COMPLETED BY Admin Kabupaten", 0)
+    edit_admin = row.get("EDITED BY Admin Kabupaten", 0)
+    rej_admin  = row.get("REJECTED BY Admin Kabupaten", 0)
+    rev_admin  = row.get("REVOKED BY Admin Kabupaten", 0)
+
+    completed = (
+        submitted + approved_orig + resp_sub + rejected + revoked + edited +
+        comp_admin + edit_admin + rej_admin + rev_admin
+    )
     worked    = completed + draft
+    approved  = approved_orig + comp_admin + edit_admin
 
     return {
         "target":        row["Total Target"],
@@ -222,6 +228,10 @@ def get_sls_metrics(sheet_map: dict, idsls: str, idsubsls: str) -> dict:
         "edited":        edited,
         "completed":     completed,
         "worked":        worked,
+        "comp_admin":    comp_admin,
+        "edit_admin":    edit_admin,
+        "rej_admin":     rej_admin,
+        "rev_admin":     rev_admin,
     }
 
 
@@ -270,17 +280,22 @@ def compute_kab_stats(csv_text: str) -> tuple[dict, list, dict]:
         target      = int(row.get("Total Target", 0) or 0)
         draft       = int(row.get("DRAFT", 0) or 0)
         submitted   = int(row.get("SUBMITTED BY Pencacah", 0) or 0)
-        approved    = int(row.get("APPROVED BY Pengawas", 0) or 0)
+        approved_orig = int(row.get("APPROVED BY Pengawas", 0) or 0)
         resp_sub    = int(row.get("SUBMITTED RESPONDENT", 0) or 0)
         rejected    = int(row.get("REJECTED BY Pengawas", 0) or 0)
         revoked     = int(row.get("REVOKED BY Pengawas", 0) or 0)
         edited      = int(row.get("EDITED BY Pengawas", 0) or 0)
-        comp_adm    = int(row.get("COMPLETED BY Admin Kabupaten", 0) or 0)
-        edit_adm    = int(row.get("EDITED BY Admin Kabupaten", 0) or 0)
-        rej_adm     = int(row.get("REJECTED BY Admin Kabupaten", 0) or 0)
-        rev_adm     = int(row.get("REVOKED BY Admin Kabupaten", 0) or 0)
-        completed   = submitted + approved + resp_sub + rejected + revoked + edited + comp_adm + edit_adm + rej_adm + rev_adm
+        comp_admin  = int(row.get("COMPLETED BY Admin Kabupaten", 0) or 0)
+        edit_admin  = int(row.get("EDITED BY Admin Kabupaten", 0) or 0)
+        rej_admin   = int(row.get("REJECTED BY Admin Kabupaten", 0) or 0)
+        rev_admin   = int(row.get("REVOKED BY Admin Kabupaten", 0) or 0)
+
+        completed   = (
+            submitted + approved_orig + resp_sub + rejected + revoked + edited +
+            comp_admin + edit_admin + rej_admin + rev_admin
+        )
         worked      = completed + draft
+        approved    = approved_orig + comp_admin + edit_admin
 
         kab_data.setdefault(kab, {
             "target": 0, "open": 0, "draft": 0, "submitted": 0,

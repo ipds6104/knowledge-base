@@ -20,6 +20,22 @@ kegiatan/
 *   **Nama Kegiatan**: Disuguhkan dalam format slug (lowercase, spasi diganti `-`). Contoh: `sakernas`, `sensus-ekonomi`.
 *   **Periode**: Format waktu pelaksanaan. Contoh: `2026-06` (bulanan), `2026-Q2` (triwulanan), `2026` (tahunan).
 
+### 📂 Dokumen Administrasi Umum & Template
+
+Untuk dokumen yang tidak terikat pada survei/sensus spesifik (seperti surat dinas umum, kepegawaian, tata usaha, atau template laporan):
+
+1. **Pengelompokan Kegiatan**:
+   * Kelompokkan di bawah nama kategori umum seperti `kepegawaian` (untuk SDM/hukum/disiplin) atau `tata-usaha` (untuk persuratan umum).
+   * Gunakan periode tahunan (misalnya `2026`) sebagai folder periode agar terkonsolidasi dengan baik.
+
+2. **Aturan Penamaan File (Naming Conventions)**:
+   * **Hindari penggunaan spasi** pada nama berkas untuk mencegah masalah di terminal/Git. Gunakan format kebab-case (`-`) atau snake_case (`_`).
+   * **Surat Dinas**: Gunakan format `[Nomor_Surat].md` atau deskripsi singkat, misalnya `B-415_KP.380_2026.md`.
+   * **Berkas Template/Lampiran**: Berikan prefiks `template-` di depan nama berkas, misalnya `template-laporan-perkawinan-pertama.docx`.
+
+3. **Referensi Relative Path**:
+   * Semua tautan dokumen di dalam `README.md` **wajib menggunakan relative path** (misal `B-415_KP.380_2026.md` atau `template-laporan-perkawinan-pertama.docx`), bukan absolute path, agar tautan tetap bekerja ketika di-clone di komputer lain atau diakses via web Git.
+
 ---
 
 ## 📝 Format Metadata YAML (`README.md` Kegiatan)

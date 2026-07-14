@@ -39,6 +39,11 @@ def cmd_se_monitor(args) -> None:
     sheet_map, csv_text, data_source_info = download_sheet()
     elapsed_days, total_days, expected_pct = compute_timeline()
 
+    # 2b. Ekspor daftar Sub-SLS yang sudah 100% selesai (termasuk tindakan admin)
+    if has_alokasi:
+        from .completed import export_completed_subsls
+        export_completed_subsls(sls_info, sheet_map)
+
     # 3. Hitung statistik makro Kabupaten Mempawah & PJ
     pj_summaries = []
     kab_avg_completed = 0.0
