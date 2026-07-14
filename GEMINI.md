@@ -31,6 +31,29 @@ Setiap kali pengguna menanyakan status progres, evaluasi, atau intervensi harian
 
 ---
 
+## 💬 SOP Pemrosesan WhatsApp Chat Logs
+
+Untuk menganalisis, mengambil keputusan, atau menyinkronkan timeline berdasarkan riwayat obrolan grup WhatsApp kegiatan:
+
+1. **Penyimpanan Berkas**: 
+   - Berkas ekspor obrolan disimpan dalam format `.zip` langsung di dalam folder kegiatan terkait (contoh: `kegiatan/evaluasi-epss/2026/`).
+   - Format penamaan disarankan: `WhatsApp Chat with [Nama Grup].zip`.
+2. **Kueri Chat Melalui CLI**:
+   - Gunakan perintah `kb chat` untuk menganalisis isi obrolan.
+   - Pindai daftar chat yang tersedia dengan `kb chat list`.
+   - Lihat statistik keaktifan pengirim dengan `kb chat info [index]`.
+   - Tampilkan pesan terbaru dengan `kb chat tail [index] -l [jumlah]`.
+   - Ekstrak link yang dibagikan dengan `kb chat links [index]`.
+   - Lakukan kueri pencarian teks dengan `kb chat search [index] -q "[kata_kunci]"`.
+   - Deteksi tanggal/tenggat waktu potensial dengan `kb chat extract [index]`.
+3. **Membaca Chat Terbaru (Tail/Limit)**:
+   - Jika ingin membatasi analisis pada pesan-pesan terbaru untuk menghindari kebisingan data lama, gunakan argumen `--limit [jumlah]` atau subcommand `kb chat tail [index] -l [jumlah]`.
+   - Contoh untuk membaca 100 pesan terbaru: `kb chat tail [index] -l 100`.
+4. **Alur Tindak Lanjut**:
+   - Setelah menemukan tanggal tenggat waktu penting atau revisi juknis dari obrolan, asisten AI wajib memperbarui berkas `README.md` kegiatan di bagian `deadlines` atau `Catatan Pelaksanaan` dan memicu `kb sync-sheets` untuk memperbarui Google Sheets.
+
+---
+
 ## ⚙️ Logika Bisnis & Batas Kritis Dinamis (SE 2026)
 
 Logika di bawah ini ter-isolasi khusus di dalam sub-package monitoring Sensus Ekonomi 2026 (`kb/se_monitor/`):
@@ -80,6 +103,7 @@ Apabila pengguna menanyakan siapa petugas PPL yang diproyeksikan selesai paling 
 *   **Epistemological Source**: Penentuan relasi struktural/hierarki petugas dalam kegiatan **wajib** dibaca dari file alokasi resmi kegiatan (seperti `Alokasi Petugas.csv` untuk SE2026). Jangan pernah menebak relasi ini secara mandiri.
 *   Batas Ukuran File: Maksimal **500 baris** per berkas Python (diawasi oleh pre-commit hook di `.githooks/pre-commit`). Jaga modul tetap kecil, terfokus, dan modular (di bawah 300 baris).
 *   Analisis Repo: Gunakan `python3 ./scripts/dump_tree.py` untuk memantau struktur direktori dan baris kode.
+*   **Batasan Modifikasi Workspace (Read-Only)**: Agent di repositori ini (`knowledge-base`) hanya bertanggung jawab untuk mengelola/menulis berkas di dalam workspace `knowledge-base`. Agent diperbolehkan membaca berkas di repositori luar (seperti `sikendis`) untuk analisis dan pelaporan kesalahan, namun dilarang keras melakukan modifikasi atau penulisan langsung di luar workspace. Pekerjaan modifikasi di workspace eksternal didelegasikan ke AI lain atau pengguna sendiri.
 
 ---
 
@@ -87,4 +111,23 @@ Apabila pengguna menanyakan siapa petugas PPL yang diproyeksikan selesai paling 
 - **2026-07-10**: Memperbaiki modul data monitoring `data.py` untuk mengikutsertakan kolom tindakan admin kabupaten (`COMPLETED BY Admin Kabupaten` dan `EDITED BY Admin Kabupaten`) ke dalam metrik penyelesaian. Membuat modul baru `completed.py` yang otomatis berjalan di setiap eksekusi `kb se-monitor` untuk mengekspor daftar Sub-SLS yang sudah 100% Approved (total 56 wilayah) ke dalam berkas `kegiatan/sensus-ekonomi-2026/2026/subsls_selesai.csv`.
 - **2026-07-12**: Mengorganisasi surat dinas umum/administratif non-kegiatan statistik (Surat Pembinaan Pelanggaran Disiplin Laporan Perkawinan dan Perceraian B-415/61513/KP.380/2026) di bawah folder baru `kegiatan/kepegawaian/2026/` menggunakan tautan relatif. Verifikasi menunjukkan tenggat waktu (31 Juli 2026) berhasil dipindai dan ditampilkan oleh skrip CLI `kb.py schedule`. Merapikan nama berkas template menjadi `template-laporan-perkawinan-pertama.docx` (kebab-case tanpa spasi) dan mendokumentasikan aturan organisasi berkas administrasi dan template di dalam root `README.md`.
 - **2026-07-14**: Melakukan rebase branch lokal `main` ke `origin/main` terbaru. Menyelesaikan konflik merge pada `scripts/kb/se_monitor/data.py` (dengan mempertahankan perbaikan variabel `comp_admin` dkk. agar terhindar dari NameError) serta file CSV/JSON. Mengalihkan kredensial GitHub CLI (`gh`) aktif ke organisasi `ipds6104` dan berhasil melakukan push semua commit lokal ke repositori GitHub.
+- **2026-07-14**: Menambahkan modul `cmd_latsar.py` dan subcommand baru `kb latsar` pada skrip CLI `kb.py` untuk mengotomatiskan penarikan serta sinkronisasi jadwal Latsar CPNS Golongan III Angkatan 10 tahun 2026 dari Google Sheets (secara spesifik untuk Kelompok 2 tempat Akma Batrisyia Jazima berada). Menginisialisasi struktur folder kegiatan Latsar di `kegiatan/latsar-cpns/2026/` yang memuat folder data pendukung, log mentoring, rancangan, dan laporan aktualisasi untuk Akma Batrisyia Jazima dan CPNS Kedua.
+- **2026-07-14**: Mengimplementasikan perintah `kb sync-sheets` (didukung oleh `google_sheets.py` dan `cmd_sync_sheets.py`) untuk sinkronisasi massal seluruh milestones kegiatan dari basis pengetahuan ke Google Sheets pribadi pengguna. Melakukan konfigurasi OAuth 2.0 Credentials (Desktop App) dan memperbarui `.gitignore`. Menambahkan dokumentasi integrasi Google Sheets (`unified_milestones`) dan panduan pemanfaatan data JSON untuk developer visualisasi pada berkas `README.md`.
+- **2026-07-14**: Mengimplementasikan alur otomatisasi harian terpadu OS-Independent melalui perintah `kb auto-update` (menjalankan `git pull`, `latsar`, dan `sync-sheets` secara berurutan). Membuat berkas konfigurasi GitHub Actions di `.github/workflows/sync-sheets.yml` untuk memfasilitasi otomatisasi harian penuh berbasis cloud.
+- **2026-07-14**: Berhasil mengonfigurasi GitHub Secrets (`GOOGLE_CREDENTIALS`, `GOOGLE_TOKEN`, dan `SPREADSHEET_ID`) secara langsung ke repositori `ipds6104/knowledge-base` menggunakan GitHub CLI (`gh`) untuk mendukung workflow otomatisasi di cloud.
+- **2026-07-14**: Memperbarui status 3 milestone Evaluasi EPSS 2026 ke status 'selesai' dan menambahkan milestone interviu EPSS Pemkab Mempawah pada 15 Juli 2026 berdasarkan berkas undangan resmi. Mengoptimalkan modul `cmd_sync_sheets.py` agar secara dinamis menyertakan semua kunci tambahan dari frontmatter deadlines markdown ke dalam kolom `attributes_json` Google Sheets.
+- **2026-07-14**: Menambahkan milestone Penilaian Interviu EPSS Pemkab Kubu Raya oleh BPS Mempawah (selaku Penilai Badan) pada 15 Juli 2026 pukul 13.30 WIB beserta tautan Google Slides bahan tayang paparan.
+- **2026-07-14**: Menyalin dokumen keputusan Bupati Mempawah terkait Susunan Keanggotaan Tim Penilai Internal (TPI) EPSS Kabupaten Mempawah 2026 ke berkas `sk-tpi-mempawah-2026.md` dan menautkannya ke README utama kegiatan EPSS.
+- **2026-07-14**: Menyepakati batasan kerja Agent di mana Agent basis pengetahuan hanya bersifat Read-Only untuk repositori eksternal (seperti `sikendis`), melaporkan diagnosis kesalahan ke pengguna, dan menyerahkan penulisan/modifikasinya kepada AI khusus repositori bersangkutan.
+- **2026-07-14**: Menambahkan modul `cmd_chat.py` dan subcommand baru `kb chat` untuk mengurai berkas zip ekspor chat WhatsApp, menyaring tautan bersama, melakukan pencarian kontekstual, dan mengekstrak jadwal/milestone penting untuk menyokong proses pemeliharaan data.
+- **2026-07-14**: Memindahkan data pegawai dari root (`Data_Pegawai_2026-07-14.xlsx`) ke `data/pegawai/Data_Pegawai.csv` (hanya kolom Nama, Email, Jabatan, Panggilan — tanpa NIP/data sensitif). Mengimplementasikan modul `user_identity.py` dengan mekanisme deteksi pengguna aktif 2-lapis (cascade: `KB_USER_EMAIL` di `.env` → `git config user.email`). Menambahkan subcommand `kb whoami` dan file template `.env.example` untuk memudahkan setup di laptop baru.
+
+
+
+
+
+
+
+
+
 

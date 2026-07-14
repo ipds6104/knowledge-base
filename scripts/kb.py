@@ -20,6 +20,11 @@ from kb import (
     cmd_schedule,
     cmd_convert,
     cmd_se_monitor,
+    cmd_latsar,
+    cmd_sync_sheets,
+    cmd_auto_update,
+    cmd_chat,
+    whoami_str,
 )
 
 
@@ -31,6 +36,11 @@ def main():
         formatter_class=argparse.RawTextHelpFormatter,
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
+
+    # 0. WHOAMI command
+    subparsers.add_parser(
+        "whoami", help="Tampilkan identitas pengguna aktif repo ini."
+    )
 
     # 1. CREATE command
     parser_create = subparsers.add_parser(
@@ -146,6 +156,60 @@ def main():
         help="Cari dan tampilkan tren harian untuk PPL tertentu berdasarkan arsip data.",
     )
 
+    # 6. LATSAR command
+    parser_latsar = subparsers.add_parser(
+        "latsar", help="Penarikan dan sinkronisasi jadwal Latsar CPNS dari Google Sheets."
+    )
+    parser_latsar.add_argument(
+        "--kelompok",
+        type=int,
+        default=2,
+        help="Kelompok Latsar yang ingin dipantau (default: 2)",
+    )
+    parser_latsar.add_argument(
+        "--force", action="store_true", help="Paksa update berkas README.md."
+    )
+
+    # 7. SYNC-SHEETS command
+    subparsers.add_parser(
+        "sync-sheets", help="Sinkronisasi seluruh milestones kegiatan ke Google Sheets."
+    )
+
+    # 8. AUTO-UPDATE command
+    subparsers.add_parser(
+        "auto-update", help="Workflow harian terpadu (git pull + update latsar + sync-sheets)."
+    )
+
+    # 9. CHAT command
+    parser_chat = subparsers.add_parser(
+        "chat", help="Menganalisis obrolan WhatsApp grup kegiatan (EPSS)."
+    )
+    parser_chat.add_argument(
+        "chat_subcommand",
+        choices=["list", "info", "links", "search", "extract", "tail"],
+        help="Sub-command untuk analisis chat"
+    )
+    parser_chat.add_argument(
+        "target",
+        nargs="?",
+        default="1",
+        help="Index atau nama file ZIP chat (default: '1')"
+    )
+    parser_chat.add_argument(
+        "--query",
+        "-q",
+        type=str,
+        default="",
+        help="Query pencarian untuk sub-command 'search'"
+    )
+    parser_chat.add_argument(
+        "--limit",
+        "-l",
+        type=int,
+        default=None,
+        help="Batasi jumlah pesan terbaru yang diproses/ditampilkan"
+    )
+
     args = parser.parse_args()
 
     # Set cwd to repo root to make paths consistent
@@ -162,6 +226,16 @@ def main():
         cmd_convert(args)
     elif args.command == "se-monitor":
         cmd_se_monitor(args)
+    elif args.command == "latsar":
+        cmd_latsar(args)
+    elif args.command == "sync-sheets":
+        cmd_sync_sheets(args)
+    elif args.command == "auto-update":
+        cmd_auto_update(args)
+    elif args.command == "chat":
+        cmd_chat(args)
+    elif args.command == "whoami":
+        print(whoami_str())
 
 
 if __name__ == "__main__":
