@@ -226,6 +226,11 @@ def main():
         type=str, default=None,
         help="Filter pesan sejak tanggal tertentu (format: YYYY-MM-DD)"
     )
+    parser_chat.add_argument(
+        "--until",
+        type=str, default=None,
+        help="Filter pesan hingga tanggal tertentu — gunakan bersama --since (format: YYYY-MM-DD)"
+    )
 
     args = parser.parse_args()
 

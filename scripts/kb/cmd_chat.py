@@ -1,4 +1,4 @@
-﻿"""kb/cmd_chat.py — Analisis obrolan WhatsApp ekspor ZIP.
+"""kb/cmd_chat.py — Analisis obrolan WhatsApp ekspor ZIP.
 
 Subcommand:
   list      Daftar semua ZIP chat di folder kegiatan
@@ -109,28 +109,52 @@ def get_zip_files() -> list[Path]:
 def _apply_filter(messages: list[dict], args) -> tuple[list[dict], str]:
     """
     Terapkan filter waktu ke daftar pesan.
-    Prioritas: --days > --since > --limit (jumlah).
+    Prioritas: --days > --since[+--until] > --limit (jumlah).
     Kembalikan (filtered_messages, label_keterangan).
     """
     days  = getattr(args, "days",  None)
     since = getattr(args, "since", None)
+    until = getattr(args, "until", None)
     limit = getattr(args, "limit", None)
 
+    # Mode 1: --days N  (N hari terakhir dari hari ini)
     if days:
         cutoff = date.today() - timedelta(days=days)
         filtered = [m for m in messages if m["date_obj"] and m["date_obj"] >= cutoff]
-        label = f"(Menampilkan pesan {days} hari terakhir: sejak {cutoff.strftime('%d %b %Y')})"
+        label = f"(Pesan {days} hari terakhir: sejak {cutoff.strftime('%d %b %Y')})"
         return filtered, label
 
+    # Mode 2: --since [+ --until]  (rentang tanggal spesifik)
     if since:
         try:
-            cutoff = datetime.strptime(since, "%Y-%m-%d").date()
-            filtered = [m for m in messages if m["date_obj"] and m["date_obj"] >= cutoff]
-            label = f"(Menampilkan pesan sejak {cutoff.strftime('%d %b %Y')})"
-            return filtered, label
+            since_date = datetime.strptime(since, "%Y-%m-%d").date()
         except ValueError:
             print(f"{Colors.FAIL}Format --since tidak valid. Gunakan YYYY-MM-DD.{Colors.ENDC}")
+            return messages, ""
 
+        until_date = None
+        if until:
+            try:
+                until_date = datetime.strptime(until, "%Y-%m-%d").date()
+            except ValueError:
+                print(f"{Colors.FAIL}Format --until tidak valid. Gunakan YYYY-MM-DD.{Colors.ENDC}")
+
+        filtered = [
+            m for m in messages
+            if m["date_obj"]
+            and m["date_obj"] >= since_date
+            and (until_date is None or m["date_obj"] <= until_date)
+        ]
+        if until_date:
+            label = (
+                f"(Rentang: {since_date.strftime('%d %b %Y')} "
+                f"s.d. {until_date.strftime('%d %b %Y')})"
+            )
+        else:
+            label = f"(Pesan sejak {since_date.strftime('%d %b %Y')})"
+        return filtered, label
+
+    # Mode 3: --limit N  (N pesan terbaru, fallback)
     if limit and limit > 0:
         return messages[-limit:], f"(Menampilkan {limit} pesan terbaru)"
 
@@ -269,21 +293,21 @@ def cmd_chat(args) -> None:
 
     # DIGEST — ringkasan otomatis periode tertentu
     elif args.chat_subcommand == "digest":
-        days = getattr(args, "days", 7) or 7
-        cutoff = date.today() - timedelta(days=days)
-
-        # Hitung ulang filter hanya untuk digest (tidak pakai _apply_filter agar jelas)
-        period_msgs = [m for m in messages if m["date_obj"] and m["date_obj"] >= cutoff]
+        # Gunakan _apply_filter agar semua flag (--days, --since, --until) konsisten
+        # Default: 7 hari jika tidak ada flag
+        if not getattr(args, "days", None) and not getattr(args, "since", None) and not getattr(args, "limit", None):
+            args.days = 7
+        period_msgs, filter_label = _apply_filter(messages, args)
         non_sys = [m for m in period_msgs if not m["is_system"]]
 
         print(f"\n{Colors.BOLD}{'═' * 58}{Colors.ENDC}")
-        print(f"{Colors.BOLD}  📋 DIGEST CHAT — {days} HARI TERAKHIR{Colors.ENDC}")
-        print(f"{Colors.BOLD}  Grup : {target_zip.name}{Colors.ENDC}")
-        print(f"{Colors.BOLD}  Sejak: {cutoff.strftime('%d %b %Y')}  →  Hari ini{Colors.ENDC}")
+        print(f"{Colors.BOLD}  📋 DIGEST CHAT{Colors.ENDC}")
+        print(f"{Colors.BOLD}  Grup  : {target_zip.name}{Colors.ENDC}")
+        print(f"{Colors.BOLD}  Filter: {filter_label}{Colors.ENDC}")
         print(f"{Colors.BOLD}{'═' * 58}{Colors.ENDC}\n")
 
         if not period_msgs:
-            print(f"{Colors.WARNING}  Tidak ada pesan dalam {days} hari terakhir.{Colors.ENDC}")
+            print(f"{Colors.WARNING}  Tidak ada pesan dalam rentang yang dipilih.{Colors.ENDC}")
             print(f"  Pesan terakhir tercatat: {messages[-1]['date'] if messages else '-'}")
             return
 
@@ -322,7 +346,7 @@ def cmd_chat(args) -> None:
             for m in hits:
                 color = _sender_color(m["sender"], m["is_system"])
                 print(f"  {Colors.BOLD}[{m['date']} {m['time']}]{Colors.ENDC} {color}{m['sender']}{Colors.ENDC}:")
-                for line in m["text"].splitlines()[:4]:  # maks 4 baris per pesan
+                for line in m["text"].splitlines()[:4]:
                     print(f"    {line}")
                 print()
 
@@ -337,6 +361,6 @@ def cmd_chat(args) -> None:
             print(f"  {d:<12} {bar} {cnt}")
 
         print(f"\n{Colors.BOLD}{'═' * 58}{Colors.ENDC}")
-        print(f"{Colors.GREEN}  Digest selesai.{Colors.ENDC} Untuk detail: kb chat search/links/extract")
-        print(f"  Contoh: kb chat search {args.target} -q \"deadline\" --days {days}")
+        print(f"{Colors.GREEN}  Digest selesai.{Colors.ENDC}")
+        print(f"  Drill-down: kb chat search {args.target} -q \"<kata kunci>\" {filter_label.split('(')[-1].replace(')', '')}")
         print(f"{Colors.BOLD}{'═' * 58}{Colors.ENDC}\n")
