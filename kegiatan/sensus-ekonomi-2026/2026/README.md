@@ -208,7 +208,19 @@ Berdasarkan diskusi koordinasi antara PJ-Kuda Ihza dan PML Jamaluddin (22 Juni 2
     -   Tingkat keramahan ini jauh lebih baik dibandingkan daerah perkotaan seperti Pontianak dan Singkawang, yang dikenal memiliki tingkat penolakan responden lebih tinggi.
     -   Ini merupakan keunggulan operasional nyata bagi tim BPS Mempawah — hambatan lapangan cenderung bersifat teknis (sinyal, aplikasi) bukan resistensi sosial responden.
 
+## Rekap Kinerja Petugas Termin I (Per 15 Juli 2026 - Frozen)
 
+Tautan Google Sheets: [Kinerja Petugas DashSE (Frozen 15 Juli 2026)](https://docs.google.com/spreadsheets/d/1QWwKu8VMg3jwTW6q1SShMBzS10jkBy6Y4wEd7IDWzb0/edit?gid=1250724426#gid=1250724426)
 
+### Pengumuman Resmi Penyesuaian Kinerja
+Berikut adalah informasi/pengumuman resmi terkait Rekap SLS/SubSLS Petugas Termin I pada Dashboard SE2026:
+1. **Sumber Data**: Data capaian maupun target petugas bersumber dari FASIH dengan kondisi data per **15 Juli 2026 pukul 24.00**.
+2. **Capaian PPL**: Dihitung berdasarkan jumlah assignment berstatus `SUBMITTED BY PENCACAH`.
+3. **Capaian PML**: Dihitung berdasarkan jumlah assignment berstatus `APPROVED BY PENGAWAS` atau `REJECTED BY PENGAWAS`. Jika dalam satu Subsls terdapat lebih dari 1 baris PPL maka untuk capaian PML gunakan salah satu baris saja.
+4. **Nilai Target**: Merupakan jumlah assignment prelist awal pada subSLS terkini Fasih per 15 Juli 2026 pukul 24.00.
+5. **Reassignment**: Satu assignment ditugaskan pada lebih dari satu pencacah, hanya dihitung sebagai capaian PPL yang pertama kali melakukan submit.
+6. **Penggantian Petugas**: Jika pernah terjadi penggantian petugas dalam satu Subsls maka akan terdapat dua atau lebih baris petugas pada Subsls tersebut dengan capaian dari masing-masing petugas dan targetnya adalah target satu Subsls.
+7. **Penyesuaian Alokasi**: Telah dilakukan penyesuaian target dan capaian untuk SLS/SubSLS yang pernah dilakukan penyesuaian alokasi muatan awal (diperbarui per **17 Juli 2026 pukul 20.15**).
 
-
+### Analisis Kinerja PML (Sensus Ekonomi 2026 - Termin I)
+Berdasarkan data yang dibekukan per 15 Juli 2026, persentase penyelesaian verifikasi PML Kabupaten Mempawah baru berkisar antara **35,99% - 36,03%**, sehingga **belum mencapai target 40%** secara kabupaten.
