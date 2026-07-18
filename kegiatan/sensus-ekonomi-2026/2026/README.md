@@ -248,4 +248,51 @@ Berdasarkan data yang dibekukan per 15 Juli 2026, persentase penyelesaian verifi
     *   *Kebijakan*: Untuk menjaga keamanan informasi dan mematuhi UU Pelindungan Data Pribadi (UU PDP), akses ke raw database FASIH-DATA saat ini dinonaktifkan sementara oleh Direktorat SIS.
     *   *Tindakan*: Personel yang terdaftar sebagai Pengguna FASIH DATA wajib mengunduh, menandatangani, dan mengunggah dokumen Non-Disclosure Agreement (NDA) melalui tautan: [s.bps.go.id/ndasqllab](https://s.bps.go.id/ndasqllab) agar akses database diaktifkan kembali.
 
+### 3. Struktur Schema Database & SQL Lab (FASIH-DATA)
+Bagi pengguna terdaftar yang memerlukan akses query langsung pada database SQL Lab, berikut struktur data yang tersedia:
+
+*   **Schema Survei Sensus Ekonomi 2026 - Usaha Besar (UB)**: **`tcz_37526b20`**
+    *   *Tabel Utama*:
+        *   `base_table_assignment` → Data dasar penugasan.
+        *   `base_table_assignment_region` → Wilayah Sub-SLS.
+        *   `base_table_assignment_history` → Riwayat status dokumen.
+        *   `base_table_assignment_responsibility` → Alokasi penugasan PPL/PML.
+        *   `base_table_user_allocation` → Data alokasi wilayah petugas.
+        *   `root_table` → Isian kuesioner utama (di luar roster).
+        *   `pusat_nested` → Roster "Keterangan Kantor Cabang/Unit".
+*   **Schema Survei Sensus Ekonomi 2026 - Non-UB (Umum)**: **`tgr_fd68e454`**
+    *   *Tabel Utama*: Sama dengan tabel schema UB, ditambah:
+        *   `pair_label_value_0` & `pair_label_value_1` → Isian pertanyaan bertipe multi-value (luar/dalam roster).
+        *   `nested_dtsen` → Roster "Keterangan Anggota Keluarga".
+        *   `se2026_nested` → Roster "Keterangan Usaha/Perusahaan".
+        *   `nested_dtsen_var` → Roster "Keterangan Sosial Ekonomi Anggota Keluarga".
+        *   `kp_nested` → Roster "Kantor Cabang".
+        *   `T_USAHA` → *Combined view* gabungan seluruh usaha UB dan non-UB yang kolomnya sudah diseragamkan.
+*   **Tautan Rujukan Pengguna**:
+    *   *Registrasi & Ganti Akun Admin*: [s.bps.go.id/akun_sqllab_se2026](http://s.bps.go.id/akun_sqllab_se2026) (Provinsi max 2 admin, Kab/Kota max 1 admin).
+    *   *Spreadsheet Daftar Admin*: [Spreadsheet Admin SQL Lab Pusat](https://docs.google.com/spreadsheets/d/13lxyohIK_91HSvw7Fi-s56NaHp86GDfDOTPR0cyvTw8/edit?usp=sharing).
+    *   *Panduan Teknis FASIH DATA*: [s.bps.go.id/fasih_data_se2026](http://s.bps.go.id/fasih_data_se2026).
+
+### 4. Kebijakan Penanganan Anomali & Penilaian Ukuran Kualitas (UK)
+Penanganan anomali data SE2026 dipantau secara berkala pada Dashboard:
+*   **Mekanisme Penghapusan**: Anomali yang sudah diperbaiki akan **langsung hilang dari dashboard** (tidak berubah status menjadi "ditindaklanjuti").
+*   **Perubahan Dasar Perhitungan UK 4/5**:
+    *   Akibat penyesuaian sistem pemrosesan ulang data oleh SIS pada 6 Juli, data anomali 30 Juni tidak lagi dapat digunakan.
+    *   *Formula Baru*: Jumlah anomali yang ditindaklanjuti per **9 Juli 2026 (kumulatif)** dibandingkan dengan total anomali yang muncul per **6 Juli 2026 (kumulatif)**.
+    *   *Penilaian UK 6/7/8* (Kelengkapan identitas/NIK) tetap mengacu pada target data per **9 Juli 2026**.
+*   **Panduan Penanganan Anomali**: [s.bps.go.id/tl-anomalise26-fasih](https://s.bps.go.id/tl-anomalise26-fasih).
+*   **Folder Anomali Kalbar**: Unduhan berkas excel anomali per kabupaten di Kalbar disediakan di [Google Drive Anomali Kalbar](https://drive.google.com/drive/folders/1I1yAJKe6CmqVTj0IELjfxTFj180564r_?usp=sharing) (diperbarui berkala oleh Provinsi).
+
+### 5. Sejarah Pembaruan Versi Aplikasi & Validasi SE2026
+*   **Fasih Mobile v2.16.4 & Template v4.9.2 (25 Juni 2026)**: Rilis pembaruan awal penugasan.
+*   **Template v5.1.1 (06 Juli 2026)**: Penambahan kode *Data diperoleh dari KP* untuk kantor pusat, perbaikan alur *Tidak Eligible*, warning rules SOSEK (nama KK = P, umur KK < 10th, profesi PPPK, air sumur rusun, daya listrik <900W tapi ada kulkas/AC).
+*   **Template v5.3.0 (08 Juli 2026)**: Perbaikan nama usaha strip, total aset/pendapatan tidak tampil. **Penghapusan rincian tanda tangan** (diganti ceklist pernyataan).
+    *   *Solusi Data Strip*: Buka kuesioner draft lalu isi ulang. Untuk yang sudah submit, PML harus mengedit isian kuesioner agar data strip tampil kembali.
+*   **Template v5.4.1 (13 Juli 2026)**: Aturan email bisa diisi strip (-).
+    *   *Ngibar UB*: Status *Submitted by Responden* langsung **EDIT by Admin** (tidak perlu assign petugas). Jika terlanjur assign, approved by PML dahulu.
+    *   *Ngibar UM UMK*: Status *Submitted by Responden* **wajib direject oleh PML** untuk diisi nomor bangunan dan geotagging secara CAPI harian.
+*   **Fasih Mobile v2.16.6 (11 Juli 2026)**: Penambahan fitur dekripsi online, samakan versi code, switch mode ke CAWI via WA.
+*   **Fasih Mobile v2.16.7 & Template v5.5.0 (16 Juli 2026)**: Rilis CAWI Keluarga (unique link switch mode), perbaikan sql injection lookup, perbaikan bug logout, dan penetapan jeda minimum kunjungan I, II, III selama **4 jam**.
+
+
 
