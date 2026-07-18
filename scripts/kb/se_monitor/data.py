@@ -152,36 +152,62 @@ def get_csv_reader(csv_text: str) -> csv.DictReader:
         return csv.DictReader(io.StringIO(csv_text), fieldnames=fieldnames)
 
 
+def is_status_col(col_name: str) -> bool:
+    """Cek apakah nama kolom merupakan kolom status pendataan FASIH."""
+    c = col_name.upper()
+    keywords = {"DRAFT", "OPEN", "SUBMITTED", "APPROVED", "REJECTED", "REVOKED", "EDITED", "COMPLETED"}
+    return any(kw in c for kw in keywords)
+
+
+def is_approved_status(col_name: str) -> bool:
+    """Cek apakah nama kolom status merupakan berkas yang disetujui (Approved)."""
+    c = col_name.upper()
+    return "APPROVED" in c or "COMPLETED BY" in c or "EDITED BY ADMIN" in c
+
+
 def _parse_sheet_csv(csv_text: str) -> dict:
-    """Parse raw CSV Google Sheets menjadi sheet_map {kode: {field: int}}."""
+    """Parse raw CSV Google Sheets menjadi sheet_map {kode: {field: int}} secara dinamis."""
     sheet_map: dict = {}
     reader = get_csv_reader(csv_text)
+    
+    # Identifikasi kolom status secara dinamis
+    ignore_cols = {
+        "No", "Kab/Kota", "Kode Wilayah (Sub-SLS)", "Username Petugas", "Email Petugas", "Role",
+        "Total Target", "Total Submit PPL", "Total Submit Seluruh SLS per Petugas", "Target",
+        "Persentase_Done", "Ranking", "Status Target"
+    }
+    fieldnames = reader.fieldnames or []
+    status_cols = [
+        col for col in fieldnames 
+        if col and col not in ignore_cols and not col.startswith("empty_") and is_status_col(col)
+    ]
+    
     for row in reader:
         code = row.get("Kode Wilayah (Sub-SLS)", "").strip()
         if not code or code == "Kode Wilayah (Sub-SLS)":
             continue
-        sheet_map[code] = {
-            "Total Target":                 int(row.get("Total Target", 0) or 0),
-            "OPEN":                         int(row.get("OPEN", 0) or 0),
-            "DRAFT":                        int(row.get("DRAFT", 0) or 0),
-            "SUBMITTED BY Pencacah":        int(row.get("SUBMITTED BY Pencacah", 0) or 0),
-            "APPROVED BY Pengawas":         int(row.get("APPROVED BY Pengawas", 0) or 0),
-            "SUBMITTED RESPONDENT":         int(row.get("SUBMITTED RESPONDENT", 0) or 0),
-            "REJECTED BY Pengawas":         int(row.get("REJECTED BY Pengawas", 0) or 0),
-            "REVOKED BY Pengawas":          int(row.get("REVOKED BY Pengawas", 0) or 0),
-            "EDITED BY Pengawas":           int(row.get("EDITED BY Pengawas", 0) or 0),
-            "COMPLETED BY Admin Kabupaten": int(row.get("COMPLETED BY Admin Kabupaten", 0) or 0),
-            "EDITED BY Admin Kabupaten":    int(row.get("EDITED BY Admin Kabupaten", 0) or 0),
-            "REJECTED BY Admin Kabupaten":  int(row.get("REJECTED BY Admin Kabupaten", 0) or 0),
-            "REVOKED BY Admin Kabupaten":   int(row.get("REVOKED BY Admin Kabupaten", 0) or 0),
+            
+        raw_statuses = {}
+        for col in status_cols:
+            raw_statuses[col] = int(row.get(col, 0) or 0)
+            
+        entry = {
+            "Total Target": int(row.get("Total Target", 0) or 0),
+            "raw_statuses": raw_statuses
         }
+        
+        # Sediakan mapping flat di root untuk backward-compatibility
+        for col, val in raw_statuses.items():
+            entry[col] = val
+            
+        sheet_map[code] = entry
     return sheet_map
 
 
 # ─── Metrik SLS & Agregasi ────────────────────────────────────────────────────
 
 def get_sls_metrics(sheet_map: dict, idsls: str, idsubsls: str) -> dict:
-    """Ambil metrik untuk satu SLS dari sheet_map."""
+    """Ambil metrik untuk satu SLS dari sheet_map secara dinamis."""
     row = sheet_map.get(idsubsls)
     if not row:
         for k in sheet_map:
@@ -197,28 +223,33 @@ def get_sls_metrics(sheet_map: dict, idsls: str, idsubsls: str) -> dict:
             "comp_admin": 0, "edit_admin": 0, "rej_admin": 0, "rev_admin": 0,
         }
 
-    submitted = row["SUBMITTED BY Pencacah"]
-    approved_orig = row["APPROVED BY Pengawas"]
-    resp_sub  = row["SUBMITTED RESPONDENT"]
-    draft     = row["DRAFT"]
-    rejected  = row["REJECTED BY Pengawas"]
-    revoked   = row.get("REVOKED BY Pengawas", 0)
-    edited    = row.get("EDITED BY Pengawas", 0)
-    comp_admin = row.get("COMPLETED BY Admin Kabupaten", 0)
-    edit_admin = row.get("EDITED BY Admin Kabupaten", 0)
-    rej_admin  = row.get("REJECTED BY Admin Kabupaten", 0)
-    rev_admin  = row.get("REVOKED BY Admin Kabupaten", 0)
+    raw_statuses = row.get("raw_statuses")
+    if raw_statuses is None:
+        ignore_keys = {"Total Target", "open", "worked", "completed", "target"}
+        raw_statuses = {
+            k: v for k, v in row.items() 
+            if k not in ignore_keys and isinstance(v, (int, float))
+        }
 
-    completed = (
-        submitted + approved_orig + resp_sub + rejected + revoked + edited +
-        comp_admin + edit_admin + rej_admin + rev_admin
-    )
+    submitted = raw_statuses.get("SUBMITTED BY Pencacah", 0)
+    approved_orig = raw_statuses.get("APPROVED BY Pengawas", 0)
+    resp_sub  = raw_statuses.get("SUBMITTED RESPONDENT", 0)
+    draft     = raw_statuses.get("DRAFT", 0)
+    rejected  = raw_statuses.get("REJECTED BY Pengawas", 0)
+    revoked   = raw_statuses.get("REVOKED BY Pengawas", 0)
+    edited    = raw_statuses.get("EDITED BY Pengawas", 0)
+    comp_admin = raw_statuses.get("COMPLETED BY Admin Kabupaten", 0)
+    edit_admin = raw_statuses.get("EDITED BY Admin Kabupaten", 0)
+    rej_admin  = raw_statuses.get("REJECTED BY Admin Kabupaten", 0)
+    rev_admin  = raw_statuses.get("REVOKED BY Admin Kabupaten", 0)
+
+    completed = sum(val for col, val in raw_statuses.items() if col.upper() not in {"DRAFT", "OPEN"})
     worked    = completed + draft
-    approved  = approved_orig + comp_admin + edit_admin
+    approved  = sum(val for col, val in raw_statuses.items() if is_approved_status(col))
 
     return {
-        "target":        row["Total Target"],
-        "open":          row["OPEN"],
+        "target":        row.get("Total Target", 0),
+        "open":          raw_statuses.get("OPEN", 0),
         "draft":         draft,
         "submitted":     submitted,
         "approved":      approved,
@@ -264,7 +295,7 @@ def aggregate_metrics(sls_list: list, sls_info: dict, sheet_map: dict) -> dict:
 # ─── Kalbar Provinsi Aggregation ─────────────────────────────────────────────
 
 def compute_kab_stats(csv_text: str) -> tuple[dict, list, dict]:
-    """Hitung statistik per Kabupaten/Kota dari csv_text (baris-baris Realisasi).
+    """Hitung statistik per Kabupaten/Kota dari csv_text (baris-baris Realisasi) secara dinamis.
 
     Returns:
         kab_data:  {kab_name: {target, completed, worked, approved, submitted, ...}}
@@ -273,29 +304,34 @@ def compute_kab_stats(csv_text: str) -> tuple[dict, list, dict]:
     """
     kab_data: dict = {}
     reader = get_csv_reader(csv_text)
+    
+    ignore_cols = {
+        "No", "Kab/Kota", "Kode Wilayah (Sub-SLS)", "Username Petugas", "Email Petugas", "Role",
+        "Total Target", "Total Submit PPL", "Total Submit Seluruh SLS per Petugas", "Target",
+        "Persentase_Done", "Ranking", "Status Target"
+    }
+    fieldnames = reader.fieldnames or []
+    status_cols = [
+        col for col in fieldnames 
+        if col and col not in ignore_cols and not col.startswith("empty_") and is_status_col(col)
+    ]
+
     for row in reader:
         kab = row.get("Kab/Kota", "").strip()
         if not kab or kab == "Kab/Kota":
             continue
-        target      = int(row.get("Total Target", 0) or 0)
-        draft       = int(row.get("DRAFT", 0) or 0)
-        submitted   = int(row.get("SUBMITTED BY Pencacah", 0) or 0)
-        approved_orig = int(row.get("APPROVED BY Pengawas", 0) or 0)
-        resp_sub    = int(row.get("SUBMITTED RESPONDENT", 0) or 0)
-        rejected    = int(row.get("REJECTED BY Pengawas", 0) or 0)
-        revoked     = int(row.get("REVOKED BY Pengawas", 0) or 0)
-        edited      = int(row.get("EDITED BY Pengawas", 0) or 0)
-        comp_admin  = int(row.get("COMPLETED BY Admin Kabupaten", 0) or 0)
-        edit_admin  = int(row.get("EDITED BY Admin Kabupaten", 0) or 0)
-        rej_admin   = int(row.get("REJECTED BY Admin Kabupaten", 0) or 0)
-        rev_admin   = int(row.get("REVOKED BY Admin Kabupaten", 0) or 0)
+            
+        target = int(row.get("Total Target", 0) or 0)
+        
+        raw_statuses = {}
+        for col in status_cols:
+            raw_statuses[col] = int(row.get(col, 0) or 0)
 
-        completed   = (
-            submitted + approved_orig + resp_sub + rejected + revoked + edited +
-            comp_admin + edit_admin + rej_admin + rev_admin
-        )
-        worked      = completed + draft
-        approved    = approved_orig + comp_admin + edit_admin
+        draft     = raw_statuses.get("DRAFT", 0)
+        submitted = raw_statuses.get("SUBMITTED BY Pencacah", 0)
+        completed = sum(val for col, val in raw_statuses.items() if col.upper() not in {"DRAFT", "OPEN"})
+        worked    = completed + draft
+        approved  = sum(val for col, val in raw_statuses.items() if is_approved_status(col))
 
         kab_data.setdefault(kab, {
             "target": 0, "open": 0, "draft": 0, "submitted": 0,
@@ -306,9 +342,9 @@ def compute_kab_stats(csv_text: str) -> tuple[dict, list, dict]:
         kab_data[kab]["draft"]     += draft
         kab_data[kab]["submitted"] += submitted
         kab_data[kab]["approved"]  += approved
-        kab_data[kab]["rejected"]  += rejected
-        kab_data[kab]["revoked"]   += revoked
-        kab_data[kab]["edited"]    += edited
+        kab_data[kab]["rejected"]  += raw_statuses.get("REJECTED BY Pengawas", 0)
+        kab_data[kab]["revoked"]   += raw_statuses.get("REVOKED BY Pengawas", 0)
+        kab_data[kab]["edited"]    += raw_statuses.get("EDITED BY Pengawas", 0)
         kab_data[kab]["completed"] += completed
         kab_data[kab]["worked"]    += worked
 
