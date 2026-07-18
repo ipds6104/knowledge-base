@@ -189,6 +189,26 @@ Menjalankan seluruh rangkaian otomasi harian secara berurutan dan bebas OS (OS-i
 
 ### 8. Analisis Obrolan WhatsApp (`chat`)
 Menganalisis berkas ekspor obrolan WhatsApp (`.zip`) yang disimpan di folder kegiatan. Perintah ini mendukung pencarian tautan, pencarian kata kunci, visualisasi keaktifan pengirim, serta deteksi tenggat waktu/jadwal potensial dari obrolan secara instan.
+
+#### 📂 Aturan Penyimpanan & Penamaan Berkas Chat
+Untuk menggunakan fitur ini, berkas hasil ekspor obrolan grup WhatsApp harus diletakkan dengan ketentuan berikut:
+1.  **Format Berkas**: Wajib berupa berkas **`.zip`** hasil ekspor obrolan langsung dari WhatsApp (tanpa mengekstrak isinya).
+2.  **Format Penamaan**: Disarankan menggunakan format `WhatsApp Chat with [Nama Grup].zip` (misalnya `WhatsApp Chat with Tim Sakip BPS.zip`).
+
+#### 💡 Best Practice Manajemen Berkas Chat (Single vs Multi-Kegiatan)
+Karena satu grup WhatsApp bisa membahas satu kegiatan spesifik maupun gabungan beberapa kegiatan, berikut adalah aturan pengelolaannya:
+
+*   **Kasus 1: Grup Khusus Satu Kegiatan** (contoh: *Grup Sensus Ekonomi 2026 Mempawah*)
+    *   **Lokasi**: Simpan berkas `.zip` langsung di dalam folder periode kegiatan yang bersangkutan.
+    *   *Contoh Path*: `kegiatan/sensus-ekonomi-2026/2026/WhatsApp Chat with Sensus Ekonomi.zip`.
+*   **Kasus 2: Grup Koordinasi Multi-Kegiatan** (contoh: *Grup SAKIP Kalbar* atau *Grup Pegawai BPS Mempawah*)
+    *   **Lokasi**: Simpan berkas `.zip` di bawah folder administratif umum yang paling relevan (misalnya `kegiatan/kepegawaian/2026/` atau `kegiatan/evaluasi-sakip-dan-sinergi/2026/`).
+    *   **Prinsip Single Source of Truth**: Jangan pernah menyalin/menduplikasi berkas `.zip` yang sama di beberapa folder kegiatan untuk menghindari pembengkakan ukuran repositori (*binary bloat*).
+    *   **Tautan Relatif**: Pada berkas `README.md` kegiatan lain yang membutuhkan informasi dari chat tersebut, gunakan tautan relatif (relative path) ke berkas zip asli. Contoh di `kegiatan/evaluasi-epss/2026/README.md`:
+        ```markdown
+        Tindak lanjut dapat merujuk ke obrolan grup [SAKIP Kalbar](../../evaluasi-sakip-dan-sinergi/2026/WhatsApp Chat with Tim Sakip BPS Se Kalbar.zip).
+        ```
+
 *   **Menampilkan daftar berkas chat WhatsApp yang tersedia:**
     ```bash
     ./scripts/kb.py chat list
