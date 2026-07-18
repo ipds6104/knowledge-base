@@ -224,3 +224,23 @@ Berikut adalah informasi/pengumuman resmi terkait Rekap SLS/SubSLS Petugas Termi
 
 ### Analisis Kinerja PML (Sensus Ekonomi 2026 - Termin I)
 Berdasarkan data yang dibekukan per 15 Juli 2026, persentase penyelesaian verifikasi PML Kabupaten Mempawah baru berkisar antara **35,99% - 36,03%**, sehingga **belum mencapai target 40%** secara kabupaten.
+
+---
+
+## 💬 Rujukan Komunikasi & Catatan Penting Lapangan (Grup WhatsApp)
+
+### 1. Sumber Informasi Chat Ekspor
+*   **Grup Petugas SE2026 Mempawah**: Berkas ekspor obrolan disimpan langsung di folder ini sebagai [WhatsApp Chat with PETUGAS SENSUS EKONOMI 2026 BPS MEMPAWAH.zip](WhatsApp%20Chat%20with%20PETUGAS%20SENSUS%20EKONOMI%202026%20BPS%20MEMPAWAH.zip).
+*   **Grup Koordinator Wilayah (Provinsi)**: Terpusat di [data/chats/](file:///c:/projects/knowledge-base/data/chats/) pada berkas [WhatsApp Chat with PIC SPBE KALBAR.zip](../../../data/chats/pic-spbe-kalbar/WhatsApp%20Chat%20with%20PIC%20SPBE%20KALBAR.zip).
+
+### 2. Catatan Operasional Penting Lapangan (Triwulan II 2026)
+*   **Cutoff Evaluasi Honor Termin I (Target 40%)**:
+    *   *Ketetapan*: Pembayaran honor Termin I mensyaratkan **realisasi capaian pendataan minimal 40%** per **14 Juli 2026 pukul 23.59 WIB**.
+*   **Paket Data Tahap 2**:
+    *   *Deadline*: Paling lambat **13 Juli 2026 pukul 23.59 WIB** petugas wajib memperbarui nomor paket data mereka di link [s.bps.go.id/paketdatatahap2_6104](https://s.bps.go.id/paketdatatahap2_6104).
+*   **Perbaikan Administrasi Web Sobat Mitra**:
+    *   *Instruksi*: Petugas wajib memastikan nama sesuai KTP, NIK terverifikasi (centang hijau ✅), dan nomor rekening aktif (sama dengan pencairan sebelumnya) di [mitra.bps.go.id](https://mitra.bps.go.id).
+    *   *Deadline*: **15 Juli 2026 pukul 23.59 WIB**.
+*   **Dispensasi Khusus PPL**:
+    *   PPL Muhammad Ade Riyadi (wilayah pendataan Sungai Purun Kecil) mengalami duka cita (ayah kandung wafat per 16 Juli 2026). Sisa wilayah tinggal 2 RT dan diberikan permakluman keterlambatan penyelesaian tugas lapangan selama beberapa hari ke depan.
+

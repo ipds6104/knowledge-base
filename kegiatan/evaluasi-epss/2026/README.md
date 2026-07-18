@@ -71,4 +71,13 @@ Kegiatan ini mengacu pada **Surat Kepala BPS Provinsi Kalimantan Barat Nomor B-5
     1.  **Independensi & Kerahasiaan Satker:** Dalam melakukan interviu, Tim Penilai Badan (TPB) dari BPS Mempawah yang menilai Kubu Raya **tidak diperkenankan memperkenalkan asal satker** (Mempawah). Seluruh komunikasi hanya merepresentasikan nama "BPS" secara umum untuk menghindari *conflict of interest*.
     2.  **Tanpa Sanggah (Peluang Emas Perbaikan):** Mengingat EPSS 2026 tidak memiliki masa sanggah, TPI harus memaksimalkan waktu **2 hari pasca-interviu** untuk mengunggah berkas bukti dukung yang kurang atau diperbaiki. Bagi Pemkab Mempawah, tenggat waktu ini jatuh pada tanggal **17 Juli 2026**.
 
+---
+
+## 💬 Rujukan Komunikasi (Grup WhatsApp)
+*   **Grup EPSS Kabupaten Mempawah**: Berkas ekspor obrolan disimpan langsung di folder ini pada berkas [WhatsApp Chat with EPSS 6104.zip](WhatsApp%20Chat%20with%20EPSS%206104.zip).
+*   **Grup Regional (PIC SPBE Prov-Kabkot & Kalbar)**: Terpusat di [data/chats/](file:///c:/projects/knowledge-base/data/chats/):
+    *   [WhatsApp Chat with PIC SPBE (PROV & KABKOT).zip](../../../data/chats/pic-spbe-prov-kabkot/WhatsApp%20Chat%20with%20PIC%20SPBE%20%28PROV%20%26%20KABKOT%29.zip)
+    *   [WhatsApp Chat with PIC SPBE KALBAR.zip](../../../data/chats/pic-spbe-kalbar/WhatsApp%20Chat%20with%20PIC%20SPBE%20KALBAR.zip)
+
+
 
