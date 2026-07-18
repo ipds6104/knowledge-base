@@ -274,13 +274,24 @@ Bagi pengguna terdaftar yang memerlukan akses query langsung pada database SQL L
     *   *Panduan Teknis FASIH DATA*: [s.bps.go.id/fasih_data_se2026](http://s.bps.go.id/fasih_data_se2026).
 
 ### 4. Kebijakan Penanganan Anomali & Penilaian Ukuran Kualitas (UK)
-Penanganan anomali data SE2026 dipantau secara berkala pada Dashboard:
+Kebijakan penanganan missing values, anomali, dan indikator didasarkan pada Surat Dinas Resmi No. **B-69/07000/PR.100/2026** per tanggal 14 Juli 2026. (Salinan lengkap berkas dapat dibaca pada [surat-penanganan-anomali-kualitas-data-se2026.md](surat-penanganan-anomali-kualitas-data-se2026.md)).
+
+Berikut rangkuman ketentuan teknis penanganan kualitas data:
+*   **Ketentuan Missing Values**:
+    *   *Pendapatan & Pengeluaran*: Wajib diselesaikan di lapangan dengan revisit dan *probing* responden.
+    *   *Nilai Aset*: Harus terisi sesuai interval/kategori. Finalisasi missing value diselesaikan oleh BPS Pusat pasca-lapangan.
+    *   *NIK Kosong*: Diperbaiki dengan menanyakan ke keluarga lain/Ketua RT, mencocokkan dengan DTSEN kependudukan, atau jika tetap tidak ketemu, wajib mencantumkan **catatan tertulis** di Blok Catatan bahwa koordinasi RT sudah dilakukan.
+*   **Ketentuan Anomali Data**:
+    *   Diselesaikan melalui revisit dengan melakukan koreksi data riil ATAU menulis penjelasan di Blok Catatan bahwa data sudah sesuai kondisi sebenarnya.
+    *   Prosedur tindak lanjut anomali data merujuk pada: [s.bps.go.id/panduan-anomali](http://s.bps.go.id/panduan-anomali).
+*   **Ketentuan Ketidakwajaran Indikator**:
+    *   BPS Kabupaten wajib memantau 10 indikator di Card Kualitas Data terhadap data pembanding makro (PDRB 2025 untuk NTB, Sakernas Agustus 2025 untuk Tenaga Kerja) hingga level SLS.
+    *   Daftar perbandingan NTB sementara nasional dapat diakses di: [s.bps.go.id/Perbandingan_NTB_SE2026](http://s.bps.go.id/Perbandingan_NTB_SE2026).
 *   **Mekanisme Penghapusan**: Anomali yang sudah diperbaiki akan **langsung hilang dari dashboard** (tidak berubah status menjadi "ditindaklanjuti").
 *   **Perubahan Dasar Perhitungan UK 4/5**:
     *   Akibat penyesuaian sistem pemrosesan ulang data oleh SIS pada 6 Juli, data anomali 30 Juni tidak lagi dapat digunakan.
     *   *Formula Baru*: Jumlah anomali yang ditindaklanjuti per **9 Juli 2026 (kumulatif)** dibandingkan dengan total anomali yang muncul per **6 Juli 2026 (kumulatif)**.
     *   *Penilaian UK 6/7/8* (Kelengkapan identitas/NIK) tetap mengacu pada target data per **9 Juli 2026**.
-*   **Panduan Penanganan Anomali**: [s.bps.go.id/tl-anomalise26-fasih](https://s.bps.go.id/tl-anomalise26-fasih).
 *   **Folder Anomali Kalbar**: Unduhan berkas excel anomali per kabupaten di Kalbar disediakan di [Google Drive Anomali Kalbar](https://drive.google.com/drive/folders/1I1yAJKe6CmqVTj0IELjfxTFj180564r_?usp=sharing) (diperbarui berkala oleh Provinsi).
 
 ### 5. Sejarah Pembaruan Versi Aplikasi & Validasi SE2026
