@@ -6,6 +6,12 @@ frekuensi: "triwulanan"
 peran: "ketua"
 status: "aktif"
 deadlines:
+  - tanggal: "2026-07-18"
+    kegiatan: "Batas Akhir Pengisian Sheet Monitoring Internal (s.bps.go.id/Puncak6104)"
+    status: "belum"
+  - tanggal: "2026-07-21"
+    kegiatan: "Rencana Rapat Pemaparan Hasil Capaian Kinerja Bersama Pimpinan"
+    status: "belum"
   - tanggal: "2026-07-22"
     kegiatan: "Batas Akhir Rapat Monitoring & Input Progres TW II ke Aplikasi Sinergi oleh Operator"
     status: "belum"
@@ -112,3 +118,32 @@ flowchart TD
 4.  Klik **Kirim** (tombol kirim baru aktif setelah seluruh dokumen terunggah).
 5.  Setelah status berubah menjadi **Disetujui Admin Perencanaan**, masuk ke menu **Penetapan** dan klik **Penetapan** (Wajib dilakukan agar data terekam secara permanen).
 6.  Masuk ke menu **Upload Kertas Kerja** untuk mengunggah berkas Excel kertas kerja dan menyisipkan tautan (link) Google Drive dokumen rapat.
+
+---
+
+## 💬 Catatan Koordinasi Grup SAKIP 6104 (Triwulan II 2026)
+
+### 1. Tautan & Akses Pelaporan
+*   **Sheet Monitoring Internal**: [s.bps.go.id/puncak6104](https://s.bps.go.id/puncak6104) (digunakan untuk mengumpulkan isian per modul kegiatan sebelum di-entry oleh operator ke Sinergi).
+*   **Tautan Rapat Internalisasi**: [s.bps.go.id/InternalisasiSINERGI](https://s.bps.go.id/InternalisasiSINERGI) / [Rekaman YouTube](https://www.youtube.com/live/RRDgi3RGREM).
+
+### 2. Nilai Capaian Riil Indikator Kunci (TW II 2026)
+Berdasarkan diskusi koordinasi tim SAKIP:
+*   **Nilai Sektoral (Evaluasi Sektoral / EPSS)**: **64,92** (Dikonfirmasi oleh Ihza Karunia).
+*   **Nilai PEKPPP (Indeks Pelayanan Publik / IPP)**: **1,17934** (Dikonfirmasi oleh Ihza Karunia).
+*   **Nilai Self-Assessment SAKIP Mempawah**: **> 77,75** (Lebih tinggi dari BPS Kapuas Hulu yang bernilai 77,75).
+
+### 3. Monitoring Isian Sheet Internal (Kondisi 18 Juli 2026 Pagi)
+Terdapat 10 sub-kegiatan/bagian yang diingatkan oleh operator (Rifky) untuk segera melengkapi isian di sheet monitoring internal malam ini:
+1.  Sumber Daya Mineral
+2.  Sumber Daya Hayati
+3.  Industri
+4.  KTI
+5.  Nerpro
+6.  Nerpeng
+7.  Analis Pengembangan Stat
+8.  Sektoral *(Sudah diisi & dikonfirmasi oleh Ihza)*
+9.  Akses data
+10. Dukman
+*   *Staf Terkait*: Syarifah Apriani, Listio, Sarah, Ihza Karunia.
+
