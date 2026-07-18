@@ -64,12 +64,22 @@ Kegiatan ini mengacu pada **Surat Kepala BPS Provinsi Kalimantan Barat Nomor B-5
 *   **SK TPI Kabupaten Mempawah 2026:** [Keputusan Bupati Mempawah Nomor 500.14.1/133/DISKOMINFO/2026](sk-tpi-mempawah-2026.md)
 
 ## Catatan Pelaksanaan
+*   **12 Mei 2026**: *Insiden Teknis* - Terjadi pemadaman sistem kelistrikan dan pendingin di Data Center BPS Pusat, menyebabkan gangguan akses Simbatik/aplikasi EPSS secara nasional selama beberapa jam.
+*   **17 Juni 2026**: *Ekstensi Waktu* - Batas waktu Penilaian Dokumen oleh TPB (Tim Penilai Badan) diperpanjang dari 17 Juni menjadi **21 Juni 2026** untuk memberi kelonggaran karena bentrok dengan kesibukan lapangan Sensus Ekonomi 2026.
+*   **08 Juli 2026**: Batas Akhir Penilaian Dokumen Penyesuaian (pukul 23.59 WIB). Status penilaian di Simbatik wajib sudah berstatus **`PENDING INTERVIU`** sebelum memulai interviu.
 *   **14 Juli 2026**: Menandai selesai untuk tiga milestone sebelumnya (Penilaian Dokumen PK, Awal Penyesuaian, dan Batas Akhir Penyesuaian).
 *   **15 Juli 2026**: Penilaian Interviu EPSS Kabupaten Mempawah oleh BPS Kabupaten Ketapang (selaku Penilai Badan). Lokasi di Mempawah Command Centre (MCC) / Zoom link: http://s.bps.go.id/interview2026. Nomor Surat Undangan: B-337/61046/HM.310/2026.
 *   **15 Juli 2026**: Penilaian Interviu EPSS Kabupaten Kubu Raya oleh BPS Kabupaten Mempawah (selaku Penilai Badan). BPS Mempawah memaparkan bahan tayang/slide paparan: https://docs.google.com/presentation/d/1GF-Rw9Tl5gqeORCP8fstgXGP1bwN0UkUqc0dfZzUO20/edit?slide=id.g3f80872f5c2_0_2024. Lokasi online via Zoom link: http://s.bps.go.id/Zoom-EPSS-BPSKKR. Nomor Surat Undangan: B-204/61120/TS.160/2026.
-*   **Penting (Instruksi Provinsi):**
-    1.  **Independensi & Kerahasiaan Satker:** Dalam melakukan interviu, Tim Penilai Badan (TPB) dari BPS Mempawah yang menilai Kubu Raya **tidak diperkenankan memperkenalkan asal satker** (Mempawah). Seluruh komunikasi hanya merepresentasikan nama "BPS" secara umum untuk menghindari *conflict of interest*.
-    2.  **Tanpa Sanggah (Peluang Emas Perbaikan):** Mengingat EPSS 2026 tidak memiliki masa sanggah, TPI harus memaksimalkan waktu **2 hari pasca-interviu** untuk mengunggah berkas bukti dukung yang kurang atau diperbaiki. Bagi Pemkab Mempawah, tenggat waktu ini jatuh pada tanggal **17 Juli 2026**.
+
+### 📝 Aturan Penilaian Interviu & Bukti Dukung Tambahan (Hasil Rapat & Chat):
+1.  **Independensi & Kerahasiaan Satker:** Dalam melakukan interviu, TPB dari BPS Mempawah yang menilai Kubu Raya **tidak diperkenankan memperkenalkan asal satker** (Mempawah). Seluruh komunikasi hanya merepresentasikan nama "BPS" secara umum untuk menghindari *conflict of interest*.
+2.  **Mekanisme Unggah Bukti Dukung Tambahan**:
+    *   Yang mengunggah dokumen di aplikasi **Simbatik** adalah **TPB Penilai (BPS)**.
+    *   TPB (BPS) menyiapkan tautan/folder Google Drive (GD) khusus.
+    *   TPI (Pemda) mengunggah dokumen bukti dukung tambahan mereka ke folder GD tersebut, kemudian TPB akan mengunggahnya ke Simbatik.
+3.  **Perhitungan Tenggat Waktu (N+2 Hari)**:
+    *   Batas waktu 2 hari setelah interviu dihitung dari hari pelaksanaan interviu.
+    *   Contoh: Jika interviu dilaksanakan pada hari Senin, batas akhir TPI mengunggah bukti tambahan ke GD adalah hari **Rabu pukul 23.59 WIB**. Bagi Pemkab Mempawah, tenggat waktu ini jatuh pada tanggal **17 Juli 2026** (karena interviu pada Rabu, 15 Juli 2026).
 
 ---
 
