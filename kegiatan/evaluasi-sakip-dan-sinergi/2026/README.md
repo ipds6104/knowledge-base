@@ -121,7 +121,7 @@ flowchart TD
 
 ---
 
-## 💬 Catatan Koordinasi Grup SAKIP 6104 (Triwulan II 2026)
+## 💬 Catatan Koordinasi Grup SAKIP (Triwulan II 2026)
 
 ### 1. Tautan & Akses Pelaporan
 *   **Sheet Monitoring Internal**: [s.bps.go.id/puncak6104](https://s.bps.go.id/puncak6104) (digunakan untuk mengumpulkan isian per modul kegiatan sebelum di-entry oleh operator ke Sinergi).
@@ -146,4 +146,13 @@ Terdapat 10 sub-kegiatan/bagian yang diingatkan oleh operator (Rifky) untuk sege
 9.  Akses data
 10. Dukman
 *   *Staf Terkait*: Syarifah Apriani, Listio, Sarah, Ihza Karunia.
+
+### 4. Tindak Lanjut Rekomendasi LHE (Hasil Koordinasi Provinsi Kalbar)
+*   **Kekeliruan Dokumen Bukti RTL Triwulan I 2026**:
+    *   *Masalah*: Terdapat kekeliruan umum di mana Satker mengunggah tautan bukti dukung RTL TW IV 2025.
+    *   *Aturan*: Dokumen bukti pelaksanaan kegiatan rencana tindak lanjut atas capaian TW I 2026 harus berupa kegiatan pelaksanaan rencana aksi/RTL yang dilakukan di triwulan berikutnya, yaitu **Triwulan II 2026 (April–Juni 2026)**.
+    *   *Tautan Folder Google Drive Penyesuaian*: [Google Drive Folder Bukti RTL](https://drive.google.com/drive/folders/1WHbEXeyMdQm_XNAp5syh86VRTPkbP6Hs?usp=sharing).
+*   **Jawaban Rekomendasi Renstra**:
+    *   *Rekomendasi*: *"Meningkatkan kualitas perencanaan strategis dengan menyempurnakan notulen penetapan target Renstra melalui penambahan dasar hitung yang sistematis, basis data pendukung yang valid, dan alasan logis yang komprehensif untuk setiap target"*.
+    *   *Keputusan*: Dijawab **"Tidak"**, dikarenakan belum ada instruksi penyusunan dan penetapan Renstra di setiap unit kerja/satker daerah.
 
