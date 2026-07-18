@@ -170,9 +170,14 @@ Melakukan penarikan rekapitulasi progres pencacahan secara real-time dari data `
 
 ### 6. Sinkronisasi Google Sheets Terpadu (`sync-sheets`)
 Mengunggah dan menyinkronkan seluruh milestones kegiatan lokal di repositori ke Google Sheets pribadi untuk dashboard visualisasi eksternal.
+
+> [!IMPORTANT]
+> **Aturan Sinkronisasi**: Setiap kali ada perubahan pengetahuan (*knowledge*) di repositori yang menyebabkan **perubahan jadwal, tenggat waktu (*deadline*), atau milestone kegiatan**, operator/AI agent **wajib** segera memicu perintah `kb sync-sheets` ini (atau `kb auto-update`) agar Google Sheets dashboard eksternal selalu mutakhir dan sinkron.
+
 ```bash
 ./scripts/kb.py sync-sheets
 ```
+
 
 ---
 
