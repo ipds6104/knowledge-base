@@ -238,9 +238,14 @@ Berdasarkan data yang dibekukan per 15 Juli 2026, persentase penyelesaian verifi
     *   *Ketetapan*: Pembayaran honor Termin I mensyaratkan **realisasi capaian pendataan minimal 40%** per **14 Juli 2026 pukul 23.59 WIB**.
 *   **Paket Data Tahap 2**:
     *   *Deadline*: Paling lambat **13 Juli 2026 pukul 23.59 WIB** petugas wajib memperbarui nomor paket data mereka di link [s.bps.go.id/paketdatatahap2_6104](https://s.bps.go.id/paketdatatahap2_6104).
+    *   *Link Konfirmasi*: Setelah mendaftar, petugas wajib melakukan konfirmasi melalui link [s.bps.go.id/CONFIRM-PAKETDATASE6104](http://s.bps.go.id/CONFIRM-PAKETDATASE6104).
 *   **Perbaikan Administrasi Web Sobat Mitra**:
     *   *Instruksi*: Petugas wajib memastikan nama sesuai KTP, NIK terverifikasi (centang hijau ✅), dan nomor rekening aktif (sama dengan pencairan sebelumnya) di [mitra.bps.go.id](https://mitra.bps.go.id).
     *   *Deadline*: **15 Juli 2026 pukul 23.59 WIB**.
 *   **Dispensasi Khusus PPL**:
     *   PPL Muhammad Ade Riyadi (wilayah pendataan Sungai Purun Kecil) mengalami duka cita (ayah kandung wafat per 16 Juli 2026). Sisa wilayah tinggal 2 RT dan diberikan permakluman keterlambatan penyelesaian tugas lapangan selama beberapa hari ke depan.
+*   **Akses Database FASIH-DATA (NDA & Keamanan Informasi)**:
+    *   *Kebijakan*: Untuk menjaga keamanan informasi dan mematuhi UU Pelindungan Data Pribadi (UU PDP), akses ke raw database FASIH-DATA saat ini dinonaktifkan sementara oleh Direktorat SIS.
+    *   *Tindakan*: Personel yang terdaftar sebagai Pengguna FASIH DATA wajib mengunduh, menandatangani, dan mengunggah dokumen Non-Disclosure Agreement (NDA) melalui tautan: [s.bps.go.id/ndasqllab](https://s.bps.go.id/ndasqllab) agar akses database diaktifkan kembali.
+
 
