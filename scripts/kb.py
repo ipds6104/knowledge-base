@@ -162,6 +162,11 @@ def main():
         help="Cetak laporan 6-seksi baku (format standar pagi/sore).",
     )
     parser_mon.add_argument(
+        "--pml-compare",
+        action="store_true",
+        help="Tampilkan tabel perbandingan kinerja PML (Freeze 15 Juli vs Sekarang) beserta penjelasan kolomnya."
+    )
+    parser_mon.add_argument(
         "--trend",
         type=str,
         help="Cari dan tampilkan tren harian untuk PPL tertentu berdasarkan arsip data.",

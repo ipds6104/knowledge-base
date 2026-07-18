@@ -110,6 +110,11 @@ def cmd_se_monitor(args) -> None:
         )
 
     # 6. Render Output berdasarkan Flags
+    if getattr(args, 'pml_compare', False):
+        from .view_pml_compare import print_pml_compare
+        print_pml_compare()
+        return
+
     if getattr(args, 'trend', None):
         print_trend_main(args)
         return
