@@ -201,12 +201,12 @@ Karena satu grup WhatsApp bisa membahas satu kegiatan spesifik maupun gabungan b
 *   **Kasus 1: Grup Khusus Satu Kegiatan** (contoh: *Grup Sensus Ekonomi 2026 Mempawah*)
     *   **Lokasi**: Simpan berkas `.zip` langsung di dalam folder periode kegiatan yang bersangkutan.
     *   *Contoh Path*: `kegiatan/sensus-ekonomi-2026/2026/WhatsApp Chat with Sensus Ekonomi.zip`.
-*   **Kasus 2: Grup Koordinasi Multi-Kegiatan** (contoh: *Grup SAKIP Kalbar* atau *Grup Pegawai BPS Mempawah*)
-    *   **Lokasi**: Simpan berkas `.zip` di bawah folder administratif umum yang paling relevan (misalnya `kegiatan/kepegawaian/2026/` atau `kegiatan/evaluasi-sakip-dan-sinergi/2026/`).
-    *   **Prinsip Single Source of Truth**: Jangan pernah menyalin/menduplikasi berkas `.zip` yang sama di beberapa folder kegiatan untuk menghindari pembengkakan ukuran repositori (*binary bloat*).
-    *   **Tautan Relatif**: Pada berkas `README.md` kegiatan lain yang membutuhkan informasi dari chat tersebut, gunakan tautan relatif (relative path) ke berkas zip asli. Contoh di `kegiatan/evaluasi-epss/2026/README.md`:
+*   **Kasus 2: Grup Koordinasi Umum / Multi-Kegiatan / Berkelanjutan (Ongoing)** (contoh: *Grup SAKIP Kalbar*, *Grup HALOJIS*, atau *Grup Pegawai BPS Mempawah*)
+    *   **Lokasi**: Simpan berkas `.zip` di dalam direktori data terpusat khusus di tingkat repositori: `data/chats/[nama-grup-slug]/` (contoh: `data/chats/halojis/` atau `data/chats/pic-spbe-kalbar/`).
+    *   **Keberlanjutan Chat**: Karena grup ini terus berlanjut tanpa terikat tahun/kegiatan tertentu, ketika Anda mengekspor riwayat obrolan baru di masa depan, cukup **timpa/overwrite** berkas `.zip` di folder tersebut untuk memperbarui log pesan tanpa merusak struktur folder.
+    *   **Prinsip Single Source of Truth & Tautan Relatif**: Hindari duplikasi berkas `.zip` di folder-folder kegiatan untuk mencegah pembengkakan ukuran repositori (*binary bloat*). Gunakan tautan relatif (relative path) pada `README.md` kegiatan yang ingin merujuk chat tersebut. Contoh di `kegiatan/evaluasi-epss/2026/README.md`:
         ```markdown
-        Tindak lanjut dapat merujuk ke obrolan grup [SAKIP Kalbar](../../evaluasi-sakip-dan-sinergi/2026/WhatsApp Chat with Tim Sakip BPS Se Kalbar.zip).
+        Tindak lanjut dapat merujuk ke obrolan grup [PIC SPBE Kalbar](../../../data/chats/pic-spbe-kalbar/WhatsApp Chat with PIC SPBE KALBAR.zip).
         ```
 
 *   **Menampilkan daftar berkas chat WhatsApp yang tersedia:**

@@ -101,9 +101,13 @@ def parse_chat_messages(zip_path) -> list[dict]:
 
 def get_zip_files() -> list[Path]:
     kegiatan_dir = REPO_ROOT / "kegiatan"
-    if not kegiatan_dir.exists():
-        return []
-    return sorted(kegiatan_dir.glob("**/*.zip"), key=lambda p: p.name)
+    data_chats_dir = REPO_ROOT / "data" / "chats"
+    zips = []
+    if kegiatan_dir.exists():
+        zips.extend(kegiatan_dir.glob("**/*.zip"))
+    if data_chats_dir.exists():
+        zips.extend(data_chats_dir.glob("**/*.zip"))
+    return sorted(zips, key=lambda p: p.name)
 
 
 def _apply_filter(messages: list[dict], args) -> tuple[list[dict], str]:
