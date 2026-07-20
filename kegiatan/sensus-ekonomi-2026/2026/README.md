@@ -246,7 +246,7 @@ Berdasarkan data yang dibekukan per 15 Juli 2026, persentase penyelesaian verifi
     *   PPL Muhammad Ade Riyadi (wilayah pendataan Sungai Purun Kecil) mengalami duka cita (ayah kandung wafat per 16 Juli 2026). Sisa wilayah tinggal 2 RT dan diberikan permakluman keterlambatan penyelesaian tugas lapangan selama beberapa hari ke depan.
 *   **Akses Database FASIH-DATA (NDA & Keamanan Informasi)**:
     *   *Kebijakan*: Untuk menjaga keamanan informasi dan mematuhi UU Pelindungan Data Pribadi (UU PDP), akses ke raw database FASIH-DATA saat ini dinonaktifkan sementara oleh Direktorat SIS.
-    *   *Tindakan*: Personel yang terdaftar sebagai Pengguna FASIH DATA wajib mengunduh, menandatangani, dan mengunggah dokumen Non-Disclosure Agreement (NDA) melalui tautan: [s.bps.go.id/ndasqllab](https://s.bps.go.id/ndasqllab) agar akses database diaktifkan kembali.
+    *   *Tindakan*: Personel yang terdaftar sebagai Pengguna FASIH DATA wajib mengunduh, menandatangani, dan mengunggah dokumen Non-Disclosure Agreement (NDA) melalui tautan [s.bps.go.id/ndasqllab](https://s.bps.go.id/ndasqllab) agar akses database diaktifkan kembali. Rincian 10 klausul NDA, contoh dokumen Kabupaten Sanggau, dan panduan pengisian selengkapnya dapat dibaca di berkas [nda-fasih-data-se2026.md](nda-fasih-data-se2026.md).
 
 ### 3. Struktur Schema Database & SQL Lab (FASIH-DATA)
 Bagi pengguna terdaftar yang memerlukan akses query langsung pada database SQL Lab, berikut struktur data yang tersedia:

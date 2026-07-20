@@ -13,7 +13,7 @@ deadlines:
     kegiatan: "Rencana Rapat Pemaparan Hasil Capaian Kinerja Bersama Pimpinan"
     status: "belum"
   - tanggal: "2026-07-22"
-    kegiatan: "Batas Akhir Rapat Monitoring & Input Progres TW II ke Aplikasi Sinergi oleh Operator"
+    kegiatan: "Batas Akhir Entry (Satu per Satu per IKU PK) dan Upload Berkas Pengukuran Kinerja TW II di Sinergi"
     status: "belum"
   - tanggal: "2026-07-31"
     kegiatan: "Batas Akhir Perbaikan Hasil Entry oleh Operator Perencanaan"
@@ -38,7 +38,7 @@ Proses pelaporan Triwulan II tahun 2026 mengikuti jadwal penting berikut:
 
 | Tahapan Kegiatan | Batas Akhir | Pelaksana | Keterangan |
 | :--- | :---: | :--- | :--- |
-| **Rapat & Input Sinergi** | **22 Juli 2026** | Operator Perencanaan | Rapat monitoring selesai dilaksanakan dan data realisasi/analisis di-entry di Sinergi. |
+| **Rapat & Input Sinergi** | **22 Juli 2026** | Operator Perencanaan | Batas akhir entry data realisasi/analisis (satu per satu per IKU PK) dan upload berkas pendukung (Kertas Kerja, Notulen, dokumentasi, daftar hadir) di Sinergi. |
 | **Batas Perbaikan Entry** | **31 Juli 2026** | Operator Perencanaan | Melakukan perbaikan jika ada berkas yang ditolak oleh Admin Perencanaan. |
 | **Batas Akhir Penelaahan** | **04 Agustus 2026** | Admin Perencanaan | Pemeriksaan final oleh Biro Perencanaan (Pusat/Provinsi) atau Admin Provinsi (Kabupaten/Kota). |
 | **Penetapan Data** | **04 Agustus 2026** | Operator Perencanaan | Melakukan tombol penetapan di Sinergi setelah disetujui (Wajib agar terbaca sistem). |
@@ -51,9 +51,11 @@ Proses pelaporan Triwulan II tahun 2026 mengikuti jadwal penting berikut:
 Dibandingkan dengan Triwulan I, terdapat beberapa perubahan signifikan pada proses pelaporan Triwulan II 2026:
 
 1.  **Metode Input di Sinergi (Beralih ke Direct Entry)**:
-    *   *Sebelumnya (TW I)*: Satker hanya mengunggah file kertas kerja Excel ke Sinergi, kemudian sistem menarik data secara semi-otomatis.
-    *   *Sekarang (TW II)*: Operator wajib melakukan **input data secara manual (direct entry)** untuk realisasi dan analisis kinerja per indikator di menu Sinergi (mirip proses input Perjanjian Kinerja). Unggah kertas kerja tetap wajib dilakukan di akhir sebagai dokumen pembanding.
-2.  **Data Triwulan I Dikunci**:
+    *   *Sebelumnya (TW I)*: Satker hanya mengunggah file kertas kerja Excel, notulen, dokumentasi, dan daftar hadir rapat ke Sinergi, kemudian sistem menarik data secara semi-otomatis.
+    *   *Sekarang (TW II)*: Operator wajib melakukan **input data secara manual (direct entry) satu persatu sebanyak IKU PK** pada aplikasi Sinergi (seperti entry PK pada awal tahun). Untuk Pengukuran Kinerja Triwulan I yang sudah selesai dilakukan, **tidak perlu** entry seperti TW II.
+2.  **Kewajiban Unggah Berkas Pembanding (Mitigasi Risiko)**:
+    *   Kertas Kerja, Notulen, dokumentasi, dan daftar hadir rapat Pengukuran Kinerja Triwulan II **tetap wajib diunggah** seperti triwulan sebelumnya. Hal ini sangat penting untuk memitigasi hilangnya data entry pengukuran kinerja di aplikasi Sinergi.
+3.  **Data Triwulan I Dikunci**:
     *   Data TW I statusnya sudah ditetapkan dan **terkunci penuh** (tidak dapat diutak-atik lagi) karena sedang dievaluasi oleh Inspektorat. Satker langsung fokus pada entry data TW II.
 
 ---
@@ -88,10 +90,24 @@ Setiap rapat monitoring kinerja triwulanan wajib menyertakan bukti fisik akuntab
 *   Memuat informasi target, realisasi, capaian, analisis kendala, solusi, rencana tindak lanjut (RTL), PIC penanggung jawab, dan tenggat waktu per IKU.
 *   Memuat realisasi anggaran dan upaya efisiensi.
 *   **Realisasi Volume Rincian Output (RO)**: Melaporkan realisasi volume RO sesuai kondisi pada **tanggal pelaksanaan rapat** (jika ada perbedaan dengan Caput karena proses validasi dinamis, ikuti data per tanggal rapat dan tuliskan tanggal cutoff datanya di notulen).
-*   **Keterlibatan Program Strategis**: Notulen wajib memuat laporan keterlibatan/dukungan satker terhadap program nasional, prioritas presiden, dan isu strategis:
-    1.  *RO Prioritas Nasional*: Inflasi, pembinaan statistik sektoral (PN 07), big data, dll.
-    2.  *Prioritas Presiden*: Mandat tertulis (Inpres/Keppres) seperti Pensasaran Percepatan Penghapusan Kemiskinan Ekstrem (P3KE), ketahanan pangan, DTS (Data Terpadu Kesejahteraan Sosial), dll.
-    3.  *Isu Strategis*: Mandat subject matter BPS seperti Sensus Ekonomi 2026.
+*   **Keterlibatan Program Strategis**: Notulen Pengukuran Kinerja TW II 2026 wajib ditambahkan dengan penjelasan kegiatan Prioritas Nasional (RO Prioritas Nasional), Prioritas Presiden (PERPRES dan INPRES), dan Isu Strategis. Penjelasan ini harus berpegang pada RO kegiatan riil yang didukung oleh satker di triwulan berjalan (RO yang dimaksud sudah ada dalam template notulen resmi). Template Notulen dapat diunduh pada tautan [s.bps.go.id/sakipdaerah26](http://s.bps.go.id/sakipdaerah26) pada folder **Kelengkapan Monitoring Kinerja Triwulanan**. Penjelasan rinci program strategis yang ditambahkan meliputi:
+    1.  **RO Prioritas Nasional**:
+        *   Pemanfaatan Big Data untuk Statistik Resmi
+        *   Data 5 Sasaran Visi IE dan 5 IUP
+        *   Pembinaan Statistik Sektoral
+        *   Publikasi/Laporan Penyusunan Inflasi
+        *   Pembinaan Desa Cantik
+        *   Koordinasi Aksesi OECD Bidang Statistik
+    2.  **Prioritas Presiden (PERPRES dan INPRES)**:
+        *   Data Tunggal Sosial Ekonomi Nasional
+        *   KSA Padi, KSA Jagung, dan Survei Ubinan Padi
+        *   Kemiskinan Ekstrem
+        *   Survei Kesejahteraan Petani
+    3.  **Isu Strategis**:
+        *   Sensus Ekonomi 2026 (SE 2026)
+        *   Neraca Arus Energi dan Neraca Emisi Gas Rumah Kaca
+        *   Data Komoditas Gula, Pergaraman, Jagung, Beras, Daging Lembu, Perikanan, dan Bawang Putih
+        *   Satgas Percepatan Rehabilitas dan Rekonstruksi Pascabencana Alam di Provinsi Aceh, Sumut, dan Sumbar
     *   *Catatan*: Jika satker tidak memiliki aktivitas riil pendukung di triwulan berjalan, tabel RO prioritas dapat dihapus, atau narasinya digabung menjadi penjelasan umum dukungan administratif di bawah kesekretariatan.
 
 ---
