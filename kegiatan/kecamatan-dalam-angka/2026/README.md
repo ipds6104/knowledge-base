@@ -42,7 +42,7 @@ Berdasarkan surat edaran Kepala BPS Provinsi Kalimantan Barat, penyusunan KCDA 2
 
 1. **Struktur Tabel**:
    * Jumlah tabel wajib KCDA 2026 saat ini adalah **24 tabel**.
-   * Judul tabel, format tabel, template publikasi, daftar perubahan format tabel dari tahun 2025 ke 2026, serta aturan penyusunan selengkapnya dapat diunduh pada tautan resmi: **[https://linktr.ee/kcda2026_file](https://linktr.ee/kcda2026_file)**.
+   * Judul tabel, format tabel, template publikasi, daftar perubahan format tabel dari tahun 2025 ke 2026, serta aturan penyusunan selengkapnya dapat diunduh pada tautan resmi [https://linktr.ee/kcda2026_file](https://linktr.ee/kcda2026_file) atau diakses secara lokal di berkas [daftar-perubahan-dda-2026.md](daftar-perubahan-dda-2026.md).
 2. **Kewajiban Pengawasan Kualitas Konten (Pencegahan Temuan Pengguna)**:
    * ⚠️ **PENTING**: Kepala BPS Kabupaten/Kota penyusun KCDA **wajib memeriksa kebenaran naskah** yang tayang di website.
    * Langkah ini untuk memitigasi adanya temuan atau keluhan dari pengguna data mengenai isi publikasi KCDA yang tidak diperbarui (misalnya: petugas hanya mengganti kover publikasi sementara isi tabel di dalamnya kosong atau masih menggunakan data tahun sebelumnya).
