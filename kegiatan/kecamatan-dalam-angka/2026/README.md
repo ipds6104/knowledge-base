@@ -49,7 +49,7 @@ Berdasarkan surat edaran Kepala BPS Provinsi Kalimantan Barat, penyusunan KCDA 2
 
 ## 📊 Daftar Tabel Wajib KCDA 2026
 
-Berikut adalah daftar tabel wajib KCDA 2026 beserta tahun data, sumber, dan ketentuan khusus (halaman 1 dari daftar rujukan):
+Berikut adalah daftar lengkap 24 tabel wajib KCDA 2026 beserta tahun data, sumber, dan ketentuan khusus:
 
 | No Tabel | Judul Tabel | Tahun Data | Sumber Data | Keterangan / Catatan Khusus |
 | :---: | :--- | :---: | :--- | :--- |
@@ -66,5 +66,14 @@ Berikut adalah daftar tabel wajib KCDA 2026 beserta tahun data, sumber, dan kete
 | **4.4.2** | Banyaknya Desa/Kelurahan dengan Keberadaan Fasilitas/Upaya Antisipasi/Mitigasi Bencana Alam Menurut Jenis Fasilitas/Upaya Antisipasi/Mitigasi di Kecamatan XXX | 2025 | Podes | |
 | **5.1** | Luas Panen Tanaman Sayuran dan Buah-buahan Semusim Menurut Jenis Tanaman di Kecamatan XXX (ha) | 2022–2025 | BPS - Kementan (Ditjen Hortikultura) | Angka tetap. Data sudah tersedia di Simdasi Tabel 5.1.1 pada baris kecamatan bersesuaian |
 | **5.2** | Produksi Tanaman Sayuran dan Buah-buahan Semusim Menurut Jenis Tanaman di Kecamatan XXX (kuintal) | 2022–2025 | BPS - Kementan (Ditjen Hortikultura) | Angka tetap. Data sudah tersedia di Simdasi Tabel 5.1.2 pada baris kecamatan bersesuaian |
-
-*(Catatan: Daftar di atas memuat 13 tabel awal dari total 24 tabel wajib KCDA 2026. Halaman/tabel selanjutnya dapat ditambahkan setelah data tersedia).*
+| **5.3** | Luas Panen Tanaman Biofarmaka Menurut Jenis Tanaman di Kecamatan XXX (m2) | 2022–2025 | BPS - Kementan (Ditjen Hortikultura) | Angka tetap. Data sudah tersedia di Simdasi Tabel 5.1.5 pada baris kecamatan bersesuaian |
+| **5.4** | Produksi Tanaman Biofarmaka Menurut Jenis Tanaman di Kecamatan XXX (kg) | 2022–2025 | BPS - Kementan (Ditjen Hortikultura) | Angka tetap. Data sudah tersedia di Simdasi Tabel 5.1.6 pada baris kecamatan bersesuaian |
+| **5.5** | Luas Panen Tanaman Hias Menurut Jenis Tanaman di Kecamatan XXX (m2) | 2022–2025 | BPS - Kementan (Ditjen Hortikultura) | Angka tetap. Data sudah tersedia di Simdasi Tabel 5.1.9 pada baris kecamatan bersesuaian |
+| **5.6** | Produksi Tanaman Hias Menurut Jenis Tanaman di Kecamatan XXX (tangkai) | 2022–2025 | BPS - Kementan (Ditjen Hortikultura) | Angka tetap. Data sudah tersedia di Simdasi Tabel 5.1.10 pada baris kecamatan bersesuaian |
+| **5.7** | Produksi Buah-Buahan dan Sayuran Tahunan Menurut Jenis Tanaman di Kecamatan XXX (kuintal) | 2022–2025 | BPS - Kementan (Ditjen Hortikultura) | Angka tetap. Data sudah tersedia di Simdasi Tabel 5.1.13 pada baris kecamatan bersesuaian |
+| **6.1.1** | Banyaknya Desa/Kelurahan dengan Keberadaan Sarana Akomodasi Menurut Jenis Akomodasi di Kecamatan XXX | 2025 | Podes | |
+| **6.2.1** | Banyaknya Desa/Kelurahan Menurut Prasarana dan Sarana Transportasi Antardesa/Kelurahan di Kecamatan XXX | 2025 | Podes | |
+| **6.3.1** | Banyaknya Desa/Kelurahan Menurut Keberadaan Kantor Pos/Pos Pembantu/Rumah Pos, Pos Keliling, dan Perusahaan/Agen Jasa Ekspedisi Swasta di Kecamatan XXX | 2025 | Podes | |
+| **7.1** | Banyaknya Desa/Kelurahan dengan Keberadaan Sarana Lembaga Keuangan Bank Menurut Jenis Bank di Kecamatan XXX | 2025 | Podes | |
+| **7.2** | Banyaknya Desa/Kelurahan dengan Keberadaan Koperasi Aktif Menurut Jenis Koperasi di Kecamatan XXX | 2025 | Podes | |
+| **7.3** | Banyaknya Desa/Kelurahan dengan Keberadaan Sarana Perdagangan Menurut Jenis Sarana Perdagangan di Kecamatan XXX | 2025 | Podes | |
