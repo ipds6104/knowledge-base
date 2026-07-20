@@ -1,4 +1,4 @@
-"""kb/se_monitor/view_anomaly.py — Tampilkan analisis deteksi moral hazard / anomali PPL (Keluarga, Perusahaan, & Usaha Keluarga) serta proyeksi keterlambatan."""
+"""kb/se_monitor/view_anomaly.py - Tampilkan analisis deteksi moral hazard / anomali PPL (Keluarga, Perusahaan, & Usaha Keluarga) serta proyeksi keterlambatan."""
 
 import csv
 import sys
@@ -271,8 +271,8 @@ def print_anomaly() -> None:
     std_f = np.std(pct_f_vals) if pct_f_vals else 0
 
     print(f"\n{Colors.BOLD}{Colors.HEADER}=== DETEKSI ANOMALI PEMUTAKHIRAN KELUARGA (POTENSI MORAL HAZARD) ==={Colors.ENDC}")
-    print(f"Rata-rata Keluarga Td Ditemukan (μ) : {avg_f:.2f}% | Standar Deviasi (σ): {std_f:.2f}%")
-    print(f"Batas Anomali Kritis (μ + 2.0σ)     : {avg_f + 2*std_f:.2f}%")
+    print(f"Rata-rata Keluarga Td Ditemukan (Mean) : {avg_f:.2f}% | Standar Deviasi (StdDev): {std_f:.2f}%")
+    print(f"Batas Anomali Kritis (Mean + 2.0xStdDev): {avg_f + 2*std_f:.2f}%")
     print(sep)
     print(f" {'No':<3} | {'Nama PPL':<25} | {'Kecamatan':<15} | {'PML Pengawas':<25} | {'PJ-Kuda':<25} | {'Prelist':<7} | {'% Td Ditemukan':<15}")
     print(sep)
@@ -301,8 +301,8 @@ def print_anomaly() -> None:
     std_p = np.std(pct_p_vals) if pct_p_vals else 0
 
     print(f"\n{Colors.BOLD}{Colors.HEADER}=== DETEKSI ANOMALI USAHA/PERUSAHAAN (KONTRAKTOR/MITRA) ==={Colors.ENDC}")
-    print(f"Rata-rata Usaha Td Ditemukan (μ)    : {avg_p:.2f}% | Standar Deviasi (σ): {std_p:.2f}%")
-    print(f"Batas Anomali Kritis (μ + 1.5σ)     : {avg_p + 1.5*std_p:.2f}%")
+    print(f"Rata-rata Usaha Td Ditemukan (Mean)    : {avg_p:.2f}% | Standar Deviasi (StdDev): {std_p:.2f}%")
+    print(f"Batas Anomali Kritis (Mean + 1.5xStdDev): {avg_p + 1.5*std_p:.2f}%")
     print(sep)
     print(f" {'No':<3} | {'Nama PPL':<25} | {'Kecamatan':<15} | {'PML Pengawas':<25} | {'PJ-Kuda':<25} | {'Prelist':<7} | {'% Td Ditemukan':<15}")
     print(sep)
@@ -332,8 +332,8 @@ def print_anomaly() -> None:
     std_k = np.std(pct_k_vals) if pct_k_vals else 0
 
     print(f"\n{Colors.BOLD}{Colors.HEADER}=== DETEKSI ANOMALI USAHA KELUARGA (SEKTOR RUMAH TANGGA) ==={Colors.ENDC}")
-    print(f"Rata-rata Usaha Non-Aktif (μ)       : {avg_k:.2f}% | Standar Deviasi (σ): {std_k:.2f}%")
-    print(f"Batas Anomali Kritis (μ + 1.5σ)     : {avg_k + 1.5*std_k:.2f}%")
+    print(f"Rata-rata Usaha Non-Aktif (Mean)       : {avg_k:.2f}% | Standar Deviasi (StdDev): {std_k:.2f}%")
+    print(f"Batas Anomali Kritis (Mean + 1.5xStdDev): {avg_k + 1.5*std_k:.2f}%")
     print(sep)
     print(f" {'No':<3} | {'Nama PPL':<25} | {'Kecamatan':<15} | {'PML Pengawas':<25} | {'PJ-Kuda':<25} | {'Total Usaha':<11} | {'% Non-Aktif':<12}")
     print(sep)
@@ -361,7 +361,7 @@ def print_anomaly() -> None:
     print(sep)
     
     # Cetak Sorotan Pola PML
-    print(f"\n{Colors.BOLD}💡 TEMUAN POLA PENGAWASAN:{Colors.ENDC}")
+    print(f"\n{Colors.BOLD}[INFO] TEMUAN POLA PENGAWASAN:{Colors.ENDC}")
     print(f" * Ditemukan konsentrasi anomali tinggi pada kelompok PML {Colors.BOLD}HARIS ROSI{Colors.ENDC} (PJ-Kuda: {Colors.BOLD}ANDI NOVIANTONI{Colors.ENDC} / Sungai Pinyuh).")
     print(f"   Sebanyak 4 PPL di bawah pengawasannya memiliki persentase usaha keluarga non-aktif (Tutup/Tidak Ditemukan) ekstrem.")
     print(f" * PPL {Colors.BOLD}SELVIA{Colors.ENDC} (Kec. Toho, PML Handoko Tuah S., PJ-Kuda: {Colors.BOLD}LISTIO JATI NANDHIKO{Colors.ENDC}) mencatat persentase non-aktif tertinggi ({Colors.FAIL}96.32%{Colors.ENDC}).")
