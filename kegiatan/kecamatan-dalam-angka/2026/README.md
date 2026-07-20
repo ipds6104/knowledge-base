@@ -44,3 +44,27 @@ Berdasarkan surat edaran Kepala BPS Provinsi Kalimantan Barat, penyusunan KCDA 2
    * Langkah ini untuk memitigasi adanya temuan atau keluhan dari pengguna data mengenai isi publikasi KCDA yang tidak diperbarui (misalnya: petugas hanya mengganti kover publikasi sementara isi tabel di dalamnya kosong atau masih menggunakan data tahun sebelumnya).
 3. **Tahun Judul**:
    * Tahun judul untuk publikasi KCDA tahun ini diseragamkan menggunakan tahun **2026**.
+
+---
+
+## 📊 Daftar Tabel Wajib KCDA 2026
+
+Berikut adalah daftar tabel wajib KCDA 2026 beserta tahun data, sumber, dan ketentuan khusus (halaman 1 dari daftar rujukan):
+
+| No Tabel | Judul Tabel | Tahun Data | Sumber Data | Keterangan / Catatan Khusus |
+| :---: | :--- | :---: | :--- | :--- |
+| **1.1** | Luas Daerah Menurut Desa/Kelurahan di Kecamatan XXX | 2025 | Tergantung ketersediaan data di daerah | |
+| **3.1** | Penduduk, Distribusi Persentase Penduduk, Kepadatan Penduduk, Rasio Jenis Kelamin Penduduk Menurut Desa/Kelurahan di Kecamatan XXX | 2025 | Tergantung ketersediaan data di daerah | |
+| **4.1.1** | Banyaknya Desa/Kelurahan yang Memiliki Fasilitas Sekolah Menurut Tingkat Pendidikan di Kecamatan XXX | 2023–2025 | Data 2023 (daerah), Data 2024 & 2025 (Podes) | |
+| **4.1.2** | Jumlah Satuan Pendidikan Menurut Tingkat Pendidikan di Kecamatan XXX | 2024/2025 dan 2025/2026 | Kemendikbudristek dan Kemenag | Data semester genap |
+| **4.1.3** | Jumlah Kepala Sekolah dan Pendidik Menurut Tingkat Pendidikan di Kecamatan XXX | 2024/2025 dan 2025/2026 | Kemendikbudristek dan Kemenag | Data semester genap |
+| **4.1.4** | Jumlah Peserta Didik Menurut Tingkat Pendidikan di Kecamatan XXX | 2024/2025 dan 2025/2026 | Kemendikbudristek dan Kemenag | Data semester genap |
+| **4.2.1** | Banyaknya Desa/Kelurahan yang Memiliki Sarana Kesehatan Menurut Jenis Sarana Kesehatan di Kecamatan XXX | 2023–2025 | Data 2023 (daerah), Data 2024 & 2025 (Podes) | |
+| **4.3.1** | Banyaknya Desa/Kelurahan Menurut Sumber Penerangan Jalan Utama Desa/Kelurahan di Kecamatan XXX | 2023–2025 | Data 2023 (daerah), Data 2024 & 2025 (Podes) | Jika data 2023 tidak tersedia, tampilkan data 2024 dan 2025 saja dari Podes |
+| **4.3.2** | Banyaknya Desa/Kelurahan Menurut Jenis Bahan Bakar untuk Memasak yang Digunakan Sebagian Besar Keluarga di Kecamatan XXX | 2025 | Podes | |
+| **4.4.1** | Banyaknya Desa/Kelurahan yang Mengalami Kejadian Bencana Alam Menurut Jenis Bencana Alam di Kecamatan XXX | 2025 | Podes | Diberikan catatan kaki: hanya mencakup periode Januari–Mei 2025 |
+| **4.4.2** | Banyaknya Desa/Kelurahan dengan Keberadaan Fasilitas/Upaya Antisipasi/Mitigasi Bencana Alam Menurut Jenis Fasilitas/Upaya Antisipasi/Mitigasi di Kecamatan XXX | 2025 | Podes | |
+| **5.1** | Luas Panen Tanaman Sayuran dan Buah-buahan Semusim Menurut Jenis Tanaman di Kecamatan XXX (ha) | 2022–2025 | BPS - Kementan (Ditjen Hortikultura) | Angka tetap. Data sudah tersedia di Simdasi Tabel 5.1.1 pada baris kecamatan bersesuaian |
+| **5.2** | Produksi Tanaman Sayuran dan Buah-buahan Semusim Menurut Jenis Tanaman di Kecamatan XXX (kuintal) | 2022–2025 | BPS - Kementan (Ditjen Hortikultura) | Angka tetap. Data sudah tersedia di Simdasi Tabel 5.1.2 pada baris kecamatan bersesuaian |
+
+*(Catatan: Daftar di atas memuat 13 tabel awal dari total 24 tabel wajib KCDA 2026. Halaman/tabel selanjutnya dapat ditambahkan setelah data tersedia).*
