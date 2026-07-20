@@ -86,16 +86,16 @@ Berikut adalah daftar lengkap 24 tabel wajib KCDA 2026 beserta tahun data, sumbe
 
 ## 🏢 Daftar Publikasi KCDA Kabupaten Mempawah (9 Kecamatan)
 
-Berdasarkan sistem pemantauan **Upload Publikasi ARC**, berikut adalah daftar 9 publikasi KCDA kecamatan yang wajib diunggah dan dirilis oleh BPS Kabupaten Mempawah:
+Berdasarkan data acuan pengerjaan tahun lalu (2025), berikut adalah daftar pembagian PIC, estimasi nomor publikasi, serta jadwal pengunggahan dan rilis untuk 9 kecamatan di Kabupaten Mempawah pada KCDA 2026:
 
-| No | Judul Publikasi KCDA 2026 | Batas Akhir Upload (ARC) | Jadwal Rilis Resmi | Status |
-| :---: | :--- | :---: | :---: | :---: |
-| 1 | Kecamatan Sungai Pinyuh Dalam Angka 2026 | 23 Sep 2026 | 28 Sep 2026 | `belum` |
-| 2 | Kecamatan Sungai Kunyit Dalam Angka 2026 | 23 Sep 2026 | 28 Sep 2026 | `belum` |
-| 3 | Kecamatan Toho Dalam Angka 2026 | 23 Sep 2026 | 28 Sep 2026 | `belum` |
-| 4 | Kecamatan Jongkat Dalam Angka 2026 | 23 Sep 2026 | 28 Sep 2026 | `belum` |
-| 5 | Kecamatan Segedong Dalam Angka 2026 | 23 Sep 2026 | 28 Sep 2026 | `belum` |
-| 6 | Kecamatan Anjongan Dalam Angka 2026 | 23 Sep 2026 | 28 Sep 2026 | `belum` |
-| 7 | Kecamatan Mempawah Hilir Dalam Angka 2026 | 23 Sep 2026 | 28 Sep 2026 | `belum` |
-| 8 | Kecamatan Mempawah Timur Dalam Angka 2026 | 23 Sep 2026 | 28 Sep 2026 | `belum` |
-| 9 | Kecamatan Sadaniang Dalam Angka 2026 | 23 Sep 2026 | 28 Sep 2026 | `belum` |
+| No | Kecamatan | Nomor Publikasi (Estimasi) | PIC Penanggung Jawab | Batas Akhir Upload (ARC) | Jadwal Rilis Resmi | Status |
+| :---: | :--- | :---: | :--- | :---: | :---: | :---: |
+| 1 | Kecamatan Mempawah Timur Dalam Angka 2026 | `61040.26004` | Ahmad Aulia Rahman, S.Tr.Stat. | 23 Sep 2026 | 28 Sep 2026 | `belum` |
+| 2 | Kecamatan Mempawah Hilir Dalam Angka 2026 | `61040.26012` | Sukma Andini, S.Tr.Stat. | 23 Sep 2026 | 28 Sep 2026 | `belum` |
+| 3 | Kecamatan Sungai Pinyuh Dalam Angka 2026 | `61040.26011` | Vaniya Dewi Wulandari, A.Md.Stat. | 23 Sep 2026 | 28 Sep 2026 | `belum` |
+| 4 | Kecamatan Sungai Kunyit Dalam Angka 2026 | `61040.26005` | Sarah Pratiwi, S.Tr.Stat. | 23 Sep 2026 | 28 Sep 2026 | `belum` |
+| 5 | Kecamatan Segedong Dalam Angka 2026 | `61040.26010` | Listio Jati Nandhiko, S.Tr.Stat. | 23 Sep 2026 | 28 Sep 2026 | `belum` |
+| 6 | Kecamatan Toho Dalam Angka 2026 | `61040.26006` | Arini Faurizah, S.Tr.Stat. | 23 Sep 2026 | 28 Sep 2026 | `belum` |
+| 7 | Kecamatan Jongkat Dalam Angka 2026 | `61040.26008` | Ihza Fikri Zaki Karunia, S.Tr.Stat. | 23 Sep 2026 | 28 Sep 2026 | `belum` |
+| 8 | Kecamatan Anjongan Dalam Angka 2026 | `61040.26009` | Rifky Mullah Syadriawan, A.Md.Stat. | 23 Sep 2026 | 28 Sep 2026 | `belum` |
+| 9 | Kecamatan Sadaniang Dalam Angka 2026 | `61040.26007` | Budiman Aller Silaban, S.Tr.Stat. | 23 Sep 2026 | 28 Sep 2026 | `belum` |
