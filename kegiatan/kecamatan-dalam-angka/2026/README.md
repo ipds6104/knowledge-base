@@ -9,6 +9,9 @@ deadlines:
   - tanggal: "2026-07-20"
     kegiatan: "Surat Edaran BPS Provinsi Kalbar (B-632/61000/KS.200/2026) tentang Penyusunan KCDA 2026"
     status: "selesai"
+  - tanggal: "2026-09-23"
+    kegiatan: "Batas Akhir Upload Publikasi KCDA 2026 ke Portal Web (Sistem ARC)"
+    status: "belum"
   - tanggal: "2026-09-28"
     kegiatan: "Batas Akhir Rilis Resmi Publikasi Kecamatan Dalam Angka (KCDA) 2026 di Website"
     status: "belum"
@@ -28,6 +31,7 @@ Kegiatan ini didasarkan pada Surat Dinas BPS Provinsi Kalimantan Barat Nomor **B
 | :--- | :---: | :--- | :--- |
 | **Surat Edaran & Persiapan** | **20 Juli 2026** | BPS Provinsi & Kab/Kota | Rilis surat edaran panduan penyusunan dan link unduhan template. |
 | **Penyusunan & Pemeriksaan** | Juli - September 2026 | Tim Penyusun Kabupaten | Pengumpulan data sektoral kecamatan, pengisian tabel, dan pembuatan naskah publikasi. |
+| **Batas Akhir Upload (ARC)** | **23 September 2026** | Operator/Penyusun KCDA | Batas akhir pengunggahan file publikasi KCDA 2026 ke portal web (sistem ARC). |
 | **Batas Akhir Rilis (Publikasi)** | **28 September 2026** | Kepala BPS Kabupaten/Kota | Rilis resmi publikasi KCDA 2026 di website BPS Kabupaten/Kota masing-masing. |
 
 ---
@@ -77,3 +81,21 @@ Berikut adalah daftar lengkap 24 tabel wajib KCDA 2026 beserta tahun data, sumbe
 | **7.1** | Banyaknya Desa/Kelurahan dengan Keberadaan Sarana Lembaga Keuangan Bank Menurut Jenis Bank di Kecamatan XXX | 2025 | Podes | |
 | **7.2** | Banyaknya Desa/Kelurahan dengan Keberadaan Koperasi Aktif Menurut Jenis Koperasi di Kecamatan XXX | 2025 | Podes | |
 | **7.3** | Banyaknya Desa/Kelurahan dengan Keberadaan Sarana Perdagangan Menurut Jenis Sarana Perdagangan di Kecamatan XXX | 2025 | Podes | |
+
+---
+
+## 🏢 Daftar Publikasi KCDA Kabupaten Mempawah (9 Kecamatan)
+
+Berdasarkan sistem pemantauan **Upload Publikasi ARC**, berikut adalah daftar 9 publikasi KCDA kecamatan yang wajib diunggah dan dirilis oleh BPS Kabupaten Mempawah:
+
+| No | Judul Publikasi KCDA 2026 | Batas Akhir Upload (ARC) | Jadwal Rilis Resmi | Status |
+| :---: | :--- | :---: | :---: | :---: |
+| 1 | Kecamatan Sungai Pinyuh Dalam Angka 2026 | 23 Sep 2026 | 28 Sep 2026 | `belum` |
+| 2 | Kecamatan Sungai Kunyit Dalam Angka 2026 | 23 Sep 2026 | 28 Sep 2026 | `belum` |
+| 3 | Kecamatan Toho Dalam Angka 2026 | 23 Sep 2026 | 28 Sep 2026 | `belum` |
+| 4 | Kecamatan Jongkat Dalam Angka 2026 | 23 Sep 2026 | 28 Sep 2026 | `belum` |
+| 5 | Kecamatan Segedong Dalam Angka 2026 | 23 Sep 2026 | 28 Sep 2026 | `belum` |
+| 6 | Kecamatan Anjongan Dalam Angka 2026 | 23 Sep 2026 | 28 Sep 2026 | `belum` |
+| 7 | Kecamatan Mempawah Hilir Dalam Angka 2026 | 23 Sep 2026 | 28 Sep 2026 | `belum` |
+| 8 | Kecamatan Mempawah Timur Dalam Angka 2026 | 23 Sep 2026 | 28 Sep 2026 | `belum` |
+| 9 | Kecamatan Sadaniang Dalam Angka 2026 | 23 Sep 2026 | 28 Sep 2026 | `belum` |
