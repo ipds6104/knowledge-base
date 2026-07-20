@@ -157,6 +157,8 @@ Apabila pengguna menanyakan siapa petugas PPL yang diproyeksikan selesai paling 
 - **2026-07-20**: Mendokumentasikan progres Pemutakhiran Keluarga Kabupaten Mempawah dan merumuskan kerangka kerja cerdas untuk deteksi moral hazard (shortcut data) menggunakan pendekatan Z-score statistik, uji konsistensi spasial kecamatan, dan korelasi keluarga baru. Menambahkan bagian analisis ini serta daftar 12 PPL anomali teratas ke dalam berkas [README.md](file:///c:/projects/knowledge-base/kegiatan/sensus-ekonomi-2026/2026/README.md) Sensus Ekonomi 2026.
 - **2026-07-20**: Melakukan analisis anomali terintegrasi pada lembar "Usaha/Perusahaan" dan "Usaha Keluarga" Google Sheets SE 2026 Mempawah. Menemukan pola bias non-aktif ekstrem (Z-Score $> 1.5\sigma$) dan mengidentifikasi anomali kritis berupa konsentrasi PPL anomali di bawah pengawasan PML Haris Rosi (4 PPL anomali) dan PPL Selvia (96.32% non-aktif). Mendokumentasikan temuan ini ke [README.md](file:///c:/projects/knowledge-base/kegiatan/sensus-ekonomi-2026/2026/README.md).
 - **2026-07-20**: Memperbarui dan menyatukan seluruh proses deteksi anomali (Keluarga, Usaha/Perusahaan, Usaha Keluarga) serta menambahkan visualisasi PPL Terlambat (Proyeksi > 15 Agustus) lengkap dengan kolom nama PJ-Kuda pada modul [view_anomaly.py](file:///c:/projects/knowledge-base/scripts/kb/se_monitor/view_anomaly.py) dan melakukan push perubahan ke GitHub.
+- **2026-07-20**: Memperbaiki typo *hardcoded* nama PJ-Kuda untuk PML Haris Rosi dari Andi Noviantoni menjadi Arini Faurizah pada berkas [view_anomaly.py](file:///c:/projects/knowledge-base/scripts/kb/se_monitor/view_anomaly.py) dan melakukan push ke GitHub.
+
 
 
 
