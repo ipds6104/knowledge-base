@@ -1,6 +1,6 @@
 import openpyxl
 
-wb = openpyxl.load_workbook("Daftar Perubahan Template DDA Kecamatan 2026.xlsx")
+wb = openpyxl.load_workbook("kegiatan/kecamatan-dalam-angka/2026/daftar-perubahan-template-dda-kecamatan-2026.xlsx")
 print("Sheets:", wb.sheetnames)
 
 for sheetname in wb.sheetnames:
