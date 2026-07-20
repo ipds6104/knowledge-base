@@ -9,14 +9,29 @@ deadlines:
   - tanggal: "2026-07-20"
     kegiatan: "Surat Edaran BPS Provinsi Kalbar (B-632/61000/KS.200/2026) tentang Penyusunan KCDA 2026"
     status: "selesai"
+  - tanggal: "2026-07-24"
+    kegiatan: "KCDA 2026: Target Inisiasi Folder Google Drive (PIC: Sukma)"
+    status: "belum"
+  - tanggal: "2026-07-28"
+    kegiatan: "KCDA 2026: Target Penyiapan Template Master DDA Keseluruhan"
+    status: "belum"
+  - tanggal: "2026-08-03"
+    kegiatan: "KCDA 2026: Target Finalisasi Penentuan PIC per Kecamatan"
+    status: "belum"
+  - tanggal: "2026-08-14"
+    kegiatan: "KCDA 2026: Target Batas Akhir Perjadin Kantor Camat & Pengumpulan Data"
+    status: "belum"
+  - tanggal: "2026-09-11"
+    kegiatan: "KCDA 2026: Target Selesai Pemeriksaan Silang (Peer Review) Antar PIC"
+    status: "belum"
   - tanggal: "2026-09-20"
-    kegiatan: "Target Batas Internal Upload KCDA 2026 (3 Hari Sebelum Batas ARC)"
+    kegiatan: "KCDA 2026: Target Batas Internal Upload KCDA (3 Hari Sebelum ARC)"
     status: "belum"
   - tanggal: "2026-09-23"
-    kegiatan: "Batas Akhir Upload Publikasi KCDA 2026 ke Portal Web (Sistem ARC)"
+    kegiatan: "KCDA 2026: Batas Akhir Upload Publikasi ke Portal Web (Sistem ARC)"
     status: "belum"
   - tanggal: "2026-09-28"
-    kegiatan: "Batas Akhir Rilis Resmi Publikasi Kecamatan Dalam Angka (KCDA) 2026 di Website"
+    kegiatan: "KCDA 2026: Batas Akhir Rilis Resmi Publikasi di Website"
     status: "belum"
 ---
 # Penyusunan Publikasi Kecamatan Dalam Angka (KCDA) 2026
@@ -33,29 +48,33 @@ Kegiatan ini didasarkan pada Surat Dinas BPS Provinsi Kalimantan Barat Nomor **B
 | Tahapan Kegiatan | Tanggal Penting / Batas Akhir | Pelaksana | Keterangan |
 | :--- | :---: | :--- | :--- |
 | **Surat Edaran & Persiapan** | **20 Juli 2026** | BPS Provinsi & Kab/Kota | Rilis surat edaran panduan penyusunan dan link unduhan template. |
-| **Penyusunan & Pemeriksaan** | Juli - September 2026 | Tim Penyusun Kabupaten | Pengumpulan data sektoral kecamatan, pengisian tabel, dan pembuatan naskah publikasi. |
+| **Inisiasi & Template Master**| **21–28 Juli 2026** | Sukma & Tim Koordinasi | Inisiasi Google Drive dan penyesuaian template Master DDA. |
+| **Finalisasi PIC Kecamatan** | **3 Agustus 2026** | Tim IPDS / Ketua | Finalisasi pembagian wilayah resmi di awal Agustus. |
+| **Perjadin & Kroscek Camat** | **3–14 Agustus 2026** | Seluruh PIC Kecamatan | Pengumpulan data ke Kantor Camat sebelum puncak CAPI Sakernas/SE. |
+| **Penyusunan Draft KCDA** | **18 Agt – 4 Sep 2026** | Seluruh PIC Kecamatan | Migrasi data (copy-paste) dan penulisan caption narasi bab. |
+| **Pemeriksaan Silang (Peer)** | **7–11 September 2026**| Saling Silang PIC | Peer review wajib rampung sebelum CPNS klasikal Latsar (12 Sep). |
 | **Batas Internal Upload** | **20 September 2026** | Tim Penyusun Kabupaten | Target unggah awal (3 hari sebelum batas ARC) untuk pemeriksaan internal. |
 | **Batas Akhir Upload (ARC)** | **23 September 2026** | Operator/Penyusun KCDA | Batas akhir pengunggahan file publikasi KCDA 2026 ke portal web (sistem ARC). |
-| **Batas Akhir Rilis (Publikasi)** | **28 September 2026** | Kepala BPS Kabupaten/Kota | Rilis resmi publikasi KCDA 2026 di website BPS Kabupaten/Kota masing-masing. |
+| **Batas Akhir Rilis (Publikasi)**| **28 September 2026** | Kepala BPS Kabupaten/Kota | Rilis resmi publikasi KCDA 2026 di website BPS Kabupaten/Kota masing-masing. |
 
 ---
 
 ## 🔄 Tahapan & Prosedur Kerja KCDA 2026
 
-Proses penyusunan publikasi KCDA 2026 mengikuti alur kerja sistematis berikut:
+Proses penyusunan publikasi KCDA 2026 mengikuti alur kerja sistematis berikut dengan tanggal pelaksanaan ideal:
 
-1. **Inisiasi Google Drive KCDA 2026**: Penyiapan folder kolaborasi disiapkan dan diinisiasi oleh **Sukma** (Sukma Andini, S.Tr.Stat.).
-2. **Penyiapan Template Keseluruhan**: Penyesuaian template Master DDA oleh tim koordinasi agar setiap kecamatan tinggal menggunakannya secara seragam.
-3. **Penyusunan Foto Pembatas Bab**: Pengumpulan dan pemilihan foto visual berkualitas sebagai pembatas antar bab dalam publikasi.
-4. **Penentuan PIC per Kecamatan**: Penugasan resmi penanggung jawab untuk 9 kecamatan di Kabupaten Mempawah (sebagaimana tercantum pada tabel di bawah).
-5. **Penentuan Data Cross-Check & Perjalanan Dinas (Perjadin)**: 
+1. **Inisiasi Google Drive KCDA 2026** (*21–24 Juli 2026*): Penyiapan folder kolaborasi disiapkan dan diinisiasi oleh **Sukma** (Sukma Andini, S.Tr.Stat.).
+2. **Penyiapan Template Keseluruhan** (*25–28 Juli 2026*): Penyesuaian template Master DDA oleh tim koordinasi agar setiap kecamatan tinggal menggunakannya secara seragam.
+3. **Penyusunan Foto Pembatas Bab** (*29–31 Juli 2026*): Pengumpulan dan pemilihan foto visual berkualitas sebagai pembatas antar bab dalam publikasi.
+4. **Penentuan PIC per Kecamatan** (*3 Agustus 2026*): Finalisasi dan penugasan resmi penanggung jawab untuk 9 kecamatan di Kabupaten Mempawah agar seluruh PIC langsung siap melakukan kroscek lapangan.
+5. **Penentuan Data Cross-Check & Perjalanan Dinas (Perjadin)** (*3–14 Agustus 2026*): 
    * Mengidentifikasi tabel/data sektoral yang meragukan atau belum lengkap untuk dicross-check langsung ke Kantor Camat.
    * PIC melakukan Perjadin ke Kantor Camat dan menginput hasilnya langsung ke Google Sheets di Google Drive KCDA 2026.
-6. **Migrasi Data (Copy-Paste)**: PIC menyalin data yang telah valid dari Google Sheets ke berkas template Microsoft Word/Excel masing-masing kecamatan.
-7. **Pengisian Narasi/Caption Bab**: PIC menyusun dan mengisi narasi pembuka serta analisis singkat (*caption*) pada setiap bab di publikasi.
-8. **Pemeriksaan Silang (Peer Review)**: Melakukan saling silang pemeriksaan draf KCDA antar PIC untuk memitigasi kesalahan ketik (*typo*) atau anomali data.
-9. **Target Unggah Awal (H-3 ARC)**: Mengunggah file publikasi KCDA ke sistem ARC pada tanggal **20 September 2026** (3 hari sebelum batas akhir resmi) untuk pengawasan kualitas awal.
-10. **Revisi Pasca Upload**: Melakukan revisi dan perbaikan jika ditemukan kesalahan cetak atau anomali data pasca pengunggahan awal di sistem ARC hingga batas akhir resmi.
+6. **Migrasi Data (Copy-Paste)** (*18–28 Agustus 2026*): PIC menyalin data yang telah valid dari Google Sheets ke berkas template Microsoft Word/Excel masing-masing kecamatan.
+7. **Pengisian Narasi/Caption Bab** (*31 Agustus – 4 September 2026*): PIC menyusun dan mengisi narasi pembuka serta analisis singkat (*caption*) pada setiap bab di publikasi.
+8. **Pemeriksaan Silang (Peer Review)** (*7–11 September 2026*): Melakukan saling silang pemeriksaan draf KCDA antar PIC untuk memitigasi kesalahan ketik (*typo*) atau anomali data. Tahap ini wajib rampung sebelum CPNS berangkat klasikal Latsar (12 September).
+9. **Target Unggah Awal (H-3 ARC)** (*18–20 September 2026*): Mengunggah file publikasi KCDA ke sistem ARC pada tanggal **20 September 2026** (3 hari sebelum batas akhir resmi) untuk pengawasan kualitas awal.
+10. **Revisi Pasca Upload** (*21–28 September 2026*): Melakukan revisi dan perbaikan jika ditemukan kesalahan cetak atau anomali data pasca pengunggahan awal di sistem ARC hingga batas akhir resmi (23 September) dan rilis resmi (28 September).
 
 ---
 
