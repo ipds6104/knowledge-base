@@ -4,9 +4,8 @@ Kode Wilayah (Sub-SLS),Nama SLS,Kecamatan,PPL Pencacah,PML Pengawas,PJ-Kuda,Targ
 6104091006001000,RT 010 RW 03 DUSUN PELADIS,ANJONGAN,Ayu Agustin,Sukmawati,"Safira Nurrosyid, S.Tr.Stat.",87,85,0,2,87
 6104091006001100,RT 011 RW 03 DUSUN PELADIS,ANJONGAN,Ayu Agustin,Sukmawati,"Safira Nurrosyid, S.Tr.Stat.",83,81,0,2,83
 6104091002002000,RT 012 RW 04,ANJONGAN,Sefty Eca Putri,Sukmawati,"Safira Nurrosyid, S.Tr.Stat.",57,36,0,21,57
-6104091002002100,RT 013 RW 04,ANJONGAN,Eny Rohyati,Sukmawati,"Safira Nurrosyid, S.Tr.Stat.",90,74,0,16,90
 6104091002002200,RT 014 RW 04,ANJONGAN,Shofyansyah,Yusimianto,"Rifky Mullah Syadriawan, A.Md.Stat",43,43,0,0,43
-6104091002000400,RT 017 RW 01,ANJONGAN,Sri Mardalena Tahapary,Sukmawati,"Safira Nurrosyid, S.Tr.Stat.",190,184,0,6,190
+6104091002000400,RT 017 RW 01,ANJONGAN,Sri Mardalena Tahapary,Sukmawati,"Safira Nurrosyid, S.Tr.Stat.",190,181,0,9,190
 6104080003200100,HUTAN,JONGKAT,Guntur Tri Perkasa,Vika Rizkiani,Listio Jati Nandhiko,1,1,0,0,1
 6104080004100100,KEBUN SAWIT,JONGKAT,Rima Melati,Dandy,Yulfi Ramanda,1,1,0,0,1
 6104080003100700,PERKEBUNAN SAWIT,JONGKAT,Hawasi,Novi Sri Wulandari,Vaniya Dewi Wulandari,1,1,0,0,1
@@ -18,6 +17,7 @@ Kode Wilayah (Sub-SLS),Nama SLS,Kecamatan,PPL Pencacah,PML Pengawas,PJ-Kuda,Targ
 6104080006001000,RT 001 RW 03 DUSUN PANCA BHAKTI,JONGKAT,Lisa Safitri,Dandy,Yulfi Ramanda,14,14,0,0,14
 6104080004000400,RT 001 RW 11 DUSUN BRAHIMA,JONGKAT,Herdinatara Febria,Novi Sri Wulandari,Vaniya Dewi Wulandari,115,111,0,4,115
 6104080002006300,RT 001 RW 20 DUSUN RADEN WIJAYA,JONGKAT,Darma Purmitasari,Dandy,Yulfi Ramanda,74,71,0,3,74
+6104080002004200,RT 002 RW 009 DUSUN ALIANYANG,JONGKAT,Neng Sevy Aristi Ramida,Vika Rizkiani,Listio Jati Nandhiko,104,103,0,1,104
 6104080002001600,RT 002 RW 012 DUSUN PANGERAN ADIPATI,JONGKAT,Puput Hellya Syahbina,Syarifah Desti Pratiwi,Najia Helmiah,132,128,0,4,132
 6104080002002400,RT 002 RW 013 DUSUN SULTAN ABDURRAHMAN,JONGKAT,Neng Sevy Aristi Ramida,Vika Rizkiani,Listio Jati Nandhiko,65,63,0,2,65
 6104080006001100,RT 002 RW 03 DUSUN PANCA BHAKTI,JONGKAT,Lisa Safitri,Dandy,Yulfi Ramanda,76,75,0,1,76
@@ -32,7 +32,8 @@ Kode Wilayah (Sub-SLS),Nama SLS,Kecamatan,PPL Pencacah,PML Pengawas,PJ-Kuda,Targ
 6104080002003100,RT 004 RW 005 DUSUN PANGSUMA,JONGKAT,Adibtya Novair,Syarifah Desti Pratiwi,Najia Helmiah,62,54,0,8,62
 6104080002002600,RT 004 RW 013 DUSUN SULTAN ABDURRAHMAN,JONGKAT,Utami Angraini,Vika Rizkiani,Listio Jati Nandhiko,68,68,0,0,68
 6104080006001300,RT 004 RW 03 DUSUN PANCA BHAKTI,JONGKAT,Muhammad Adriyansyah,Dandy,Yulfi Ramanda,53,53,0,0,53
-6104080004004300,RT 004 RW 05 DUSUN PANDAN,JONGKAT,Hartono,Novi Sri Wulandari,Vaniya Dewi Wulandari,62,62,0,0,62
+6104080004004300,RT 004 RW 05 DUSUN PANDAN,JONGKAT,Hartono,Novi Sri Wulandari,Vaniya Dewi Wulandari,63,63,0,0,63
+6104080004001900,RT 004 RW 06 DUSUN KUNYIT,JONGKAT,Anisah,Novi Sri Wulandari,Vaniya Dewi Wulandari,75,75,0,0,75
 6104080004001100,RT 004 RW 15 DUSUN DURIAN,JONGKAT,Hawasi,Novi Sri Wulandari,Vaniya Dewi Wulandari,48,48,0,0,48
 6104080002003200,RT 005 RW 005 DUSUN PANGSUMA,JONGKAT,Neng Sevy Aristi Ramida,Vika Rizkiani,Listio Jati Nandhiko,83,82,0,1,83
 6104080002001900,RT 005 RW 012 DUSUN PANGERAN ADIPATI,JONGKAT,Puput Hellya Syahbina,Syarifah Desti Pratiwi,Najia Helmiah,78,78,0,0,78
@@ -48,6 +49,7 @@ Kode Wilayah (Sub-SLS),Nama SLS,Kecamatan,PPL Pencacah,PML Pengawas,PJ-Kuda,Targ
 6104100007002400,RT 023 RW 08,MEMPAWAH HILIR,Rohmi,Zaini,"Rifky Mullah Syadriawan, A.Md.Stat",102,101,0,1,102
 6104100013000400,RT 04 RW 02 DUSUN RENJUANG,MEMPAWAH HILIR,Andi Saputra,Nelly Nalita,Sukma,80,80,0,0,80
 6104101003200100,BLOK PERSIAPAN,MEMPAWAH TIMUR,Bagus Setiawan,Ridha Nur Mitha,Ahmad Aulia Rahman,1,1,0,0,1
+6104101001001300,RT 013 RW 06,MEMPAWAH TIMUR,Rika,Ridha Nur Mitha,Ahmad Aulia Rahman,68,68,0,0,68
 6104121001200100,HUTAN,SADANIANG,Hefrry Augustrio,Seliana,Aller Budiman Silaban,1,1,0,0,1
 6104121004200100,HUTAN,SADANIANG,ANDRE,Alip Susanto,Muhammad Syihabuddin Alhaq,1,1,0,0,1
 6104121004200200,HUTAN,SADANIANG,ANDRE,Alip Susanto,Muhammad Syihabuddin Alhaq,1,1,0,0,1
@@ -63,6 +65,7 @@ Kode Wilayah (Sub-SLS),Nama SLS,Kecamatan,PPL Pencacah,PML Pengawas,PJ-Kuda,Targ
 6104121006100500,PERKEBUNAN KARET DI 0010P,SADANIANG,Maldini,Alip Susanto,Muhammad Syihabuddin Alhaq,1,1,0,0,1
 6104121006100300,PERKEBUNAN SAWIT DI 007P,SADANIANG,Maldini,Alip Susanto,Muhammad Syihabuddin Alhaq,1,1,0,0,1
 6104121006100400,PERKEBUNAN SAWIT DI 009P,SADANIANG,Maldini,Alip Susanto,Muhammad Syihabuddin Alhaq,1,1,0,0,1
+6104121003000100,RT 001 RW 01 DUSUN BUMBUN,SADANIANG,Agnes,Alip Susanto,Muhammad Syihabuddin Alhaq,63,62,0,1,63
 6104121003000300,RT 003 RW 01 DUSUN BUMBUN,SADANIANG,Agnes,Alip Susanto,Muhammad Syihabuddin Alhaq,81,81,0,0,81
 6104121001000300,RT 003 RW 06 DUSUN KUMPANG,SADANIANG,Bibiliyanti,Seliana,Aller Budiman Silaban,20,20,0,0,20
 6104121003001100,RT 012 RW 03 DUSUN BAWING,SADANIANG,Natalia,Alip Susanto,Muhammad Syihabuddin Alhaq,29,29,0,0,29

@@ -167,6 +167,18 @@ def main():
         help="Tampilkan tabel perbandingan kinerja PML (Freeze 15 Juli vs Sekarang) beserta penjelasan kolomnya."
     )
     parser_mon.add_argument(
+        "--pml-40",
+        action="store_true",
+        help="Tampilkan ringkasan PML yang mencapai progres 40% per kabupaten dan rincian detail PML Mempawah."
+    )
+    parser_mon.add_argument(
+        "--anomaly",
+        action="store_true",
+        help="Tampilkan analisis deteksi moral hazard dan PPL anomali di Kabupaten Mempawah."
+    )
+
+
+    parser_mon.add_argument(
         "--trend",
         type=str,
         help="Cari dan tampilkan tren harian untuk PPL tertentu berdasarkan arsip data.",

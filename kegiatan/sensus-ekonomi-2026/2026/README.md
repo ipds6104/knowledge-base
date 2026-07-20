@@ -318,3 +318,57 @@ Berikut adalah rekapitulasi kendala teknis harian yang dihadapi oleh Petugas Lap
 | **6** | **Validasi Alamat Email Mengalami Error / Galat** | Petugas memasukkan tanda hubung/strip (`-`) untuk responden yang tidak memiliki email, namun sistem mendeteksi error validasi sehingga dokumen tertahan di PML. | **Solusi (Rilis Template v5.4.1)**: <br>1. BPS Pusat memperbarui rule validasi sehingga email bisa menerima tanda strip (`-`).<br>2. Untuk dokumen lama yang telanjur *galat*, PML harus mereject dokumen tersebut agar PPL memperbaikinya di aplikasi (disarankan **dikosongkan saja** jika tidak memiliki email, daripada diisi strip). |
 | **7** | **Nama Pengusaha / Usaha Hilang Misterius di HP Petugas** | Data prelist nama pengusaha kosong di aplikasi, mencegah petugas melanjutkan pendataan. | **Solusi**: Lakukan backup, hapus cache, lalu *sync* template di wilayah yang sinyalnya bagus. Jika nama tetap hilang, PML harus melakukan **reject massal** terhadap Sub-SLS tersebut untuk memicu tarikan ulang prelist data secara bersih oleh sistem, lalu PPL mengedit ulang. |
 | **8** | **Ngibar UB (Usaha Besar) vs Ngibar UM UMK Hasil Responden** | Kebingungan petugas terkait tindakan yang harus diambil untuk hasil isian mandiri (Ngibar) yang masuk ke daftar tugas. | **Solusi (Rilis Template v5.4.1)**:<br>1. **Ngibar UB**: Status *Submitted by Responden* langsung **EDIT by Admin Kabupaten** (tidak perlu ditugaskan ke PPL). Jika telanjur di-assign, PML cukup klik *Approve*.<br>2. **Ngibar UM UMK**: Status *Submitted by Responden* **wajib direject oleh PML** ke PPL, agar PPL melakukan verifikasi lapangan untuk mengisi nomor bangunan dan geotagging. |
+
+## 🔍 6. Analisis Pemutakhiran Keluarga & Deteksi Moral Hazard
+
+Progres pemutakhiran keluarga dipantau secara berkala melalui Google Sheets: [Pemutakhiran Keluarga (Real-time)](https://docs.google.com/spreadsheets/d/1QWwKu8VMg3jwTW6q1SShMBzS10jkBy6Y4wEd7IDWzb0/edit?gid=51144941#gid=51144941).
+
+### A. Rangkuman Progres Kabupaten Mempawah (Per 20 Juli 2026)
+*   **Total Target Keluarga (Prelist Awal)**: 89.072 keluarga.
+*   **Keluarga Ditemukan**: 31.029 (34.84%).
+*   **Keluarga Baru**: 4.343 keluarga.
+*   **Keluarga Meninggal**: 1.071 (1.20%).
+*   **Tidak Eligible**: 47 (0.05%).
+*   **Tidak Dapat Ditemui**: 0 (0.00%).
+*   **Tidak Ditemukan**: 12.161 (13.65%).
+
+---
+
+### B. Kerangka Deteksi Moral Hazard (Shortcut Data)
+Moral hazard terjadi ketika petugas PPL secara sengaja melaporkan keluarga dengan status **"Tidak Ditemukan"**, **"Meninggal"**, atau **"Tidak Eligible"** tanpa melakukan kunjungan fisik ke lapangan. Hal ini dilakukan demi mempercepat progres penyelesaian beban wilayah karena status-status ini tidak memerlukan pengisian kuesioner karakteristik ekonomi yang panjang.
+
+Metode pengolahan data paling pintar untuk mendeteksi moral hazard ini meliputi:
+1.  **Outlier Analisis Z-Score**:
+    *   Hitung rasio $\frac{\text{Tidak Ditemukan}}{\text{Prelist}}$ untuk setiap PPL.
+    *   Tentukan rata-rata ($\mu$) dan standar deviasi ($\sigma$) untuk PPL dengan beban kerja representatif (prelist $\ge 50$ KK) guna menyaring gangguan variasi acak (noise).
+    *   PPL yang memiliki Z-score $> 1.5$ atau $> 2.0$ diidentifikasi sebagai **Anomali Kritis**.
+    *   *Kondisi Mempawah saat ini*: Rata-rata kabupaten $\mu = 13.58\%$, standar deviasi $\sigma = 6.61\%$. Batas anomali kritis ($+2\sigma$) adalah **$26.81\%$**.
+2.  **Uji Konsistensi Spasial (Neighborhood Peer Comparison)**:
+    *   Membandingkan persentase "Tidak Ditemukan" milik seorang PPL terhadap rata-rata PPL lain di **kecamatan yang sama**. Wilayah rural dengan mobilitas tinggi tentu berbeda dengan wilayah urban/perumahan baru, sehingga perbandingan berbasis kecamatan jauh lebih adil dan akurat.
+3.  **Korelasi "Tidak Ditemukan" vs "Keluarga Baru"**:
+    *   Petugas yang melakukan moral hazard (malas menjelajah wilayah) umumnya akan memiliki penambahan **Keluarga Baru mendekati 0%**, karena mereka mengabaikan proses sweeping fisik di lapangan.
+4.  **Revisit Pengawasan Terarah (Targeted Revisit)**:
+    *   PML diinstruksikan melakukan kroscek lapangan acak (sampling minimal 3-5 keluarga) khusus pada SLS yang dikelola oleh PPL dengan tingkat anomali tinggi.
+
+---
+
+### C. Daftar PPL dengan Tingkat Anomali "Tidak Ditemukan" Tertinggi (Outliers)
+Berdasarkan hasil pengolahan data alokasi dan realisasi pemutakhiran keluarga per **20 Juli 2026**, berikut adalah PPL dengan Z-score di atas $+1.5\sigma$ ($> 23.50\%$) yang sangat direkomendasikan untuk diawasi ketat dan dilakukan *revisit* oleh PML masing-masing:
+
+| No | Nama PPL | Kecamatan | PML Pengawas | Prelist | Tidak Ditemukan | % Tidak Ditemukan | Z-Score / Kategori |
+|---|---|---|---|---|---|---|---|
+| 1 | **ANDI SAPUTRA** | MEMPAWAH HILIR | NELLY NALITA | 455 | 266 | **58.46%** | $> +6\sigma$ (Sangat Kritis) |
+| 2 | **GERHAN LANTARA RYANDI** | MEMPAWAH HILIR | ZAINI | 526 | 173 | **32.89%** | $> +2.9\sigma$ (Kritis) |
+| 3 | **FATMAWATI** | SUNGAI PINYUH | YUDI WAHYUDI | 313 | 92 | **29.39%** | $> +2.3\sigma$ (Anomali) |
+| 4 | **ROHMI** | MEMPAWAH HILIR | ZAINI | 211 | 62 | **29.38%** | $> +2.3\sigma$ (Anomali) |
+| 5 | **BEYYINAH** | SUNGAI PINYUH | MAT TOHIR | 501 | 147 | **29.34%** | $> +2.3\sigma$ (Anomali) |
+| 6 | **HEFRRY AUGUSTRIO** | SADANIANG | SELIANA | 354 | 99 | **27.97%** | $> +2.1\sigma$ (Anomali) |
+| 7 | **LARAS NANDA JULITA** | SUNGAI PINYUH | SULIS TRI HANDAYANI | 546 | 148 | **27.11%** | $> +2.0\sigma$ (Batas Kritis $+2\sigma$) |
+| 8 | **STEPIANA** | TOHO | HANDOKO TUAH S. | 325 | 86 | **26.46%** | $> +1.9\sigma$ (Batas Kritis) |
+| 9 | **EVA LUTFIANTI** | SUNGAI PINYUH | SULIS TRI HANDAYANI | 507 | 129 | **25.44%** | $> +1.7\sigma$ (Anomali Ringan) |
+| 10 | **IMAMUL AKHYAR** | MEMPAWAH HILIR | NELLY NALITA | 540 | 137 | **25.37%** | $> +1.7\sigma$ (Anomali Ringan) |
+| 11 | **WILHELMINA HALIM** | SUNGAI KUNYIT | YUYUN ANTONI,SE | 485 | 123 | **25.36%** | $> +1.7\sigma$ (Anomali Ringan) |
+| 12 | **FAIRUZ RESTU SADEWO** | MEMPAWAH HILIR | ZAINI | 411 | 102 | **24.82%** | $> +1.7\sigma$ (Anomali Ringan) |
+
+*Catatan: PPL Andi Saputra menunjukkan deviasi ekstrem ($> 6\sigma$). PML Nelly Nalita wajib segera turun tangan mengevaluasi kebenaran isian lapangan di wilayah tugas Andi Saputra.*
+

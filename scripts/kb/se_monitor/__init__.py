@@ -115,6 +115,18 @@ def cmd_se_monitor(args) -> None:
         print_pml_compare()
         return
 
+    if getattr(args, 'pml_40', False):
+        from .view_pml_40 import print_pml_40
+        print_pml_40()
+        return
+
+    if getattr(args, 'anomaly', False):
+        from .view_anomaly import print_anomaly
+        print_anomaly()
+        return
+
+
+
     if getattr(args, 'trend', None):
         print_trend_main(args)
         return
