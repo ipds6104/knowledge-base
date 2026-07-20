@@ -372,3 +372,63 @@ Berdasarkan hasil pengolahan data alokasi dan realisasi pemutakhiran keluarga pe
 
 *Catatan: PPL Andi Saputra menunjukkan deviasi ekstrem ($> 6\sigma$). PML Nelly Nalita wajib segera turun tangan mengevaluasi kebenaran isian lapangan di wilayah tugas Andi Saputra.*
 
+---
+
+### D. Analisis Anomali Usaha/Perusahaan (Sektor Badan Usaha / Mitra)
+*   **Total Target Usaha/Perusahaan (Prelist)**: 16.155 usaha.
+*   **Tingkat Tidak Ditemukan (Kabupaten)**: **58.74%** (9.489 usaha).
+*   *Analisis Statistik PPL (Beban $\ge 10$ perusahaan)*:
+    *   Rata-rata % Tidak Ditemukan per PPL: **43.26%**
+    *   Standar Deviasi: **25.17%**
+    *   Batas Anomali Kritis ($\mu + 1.5\sigma$): **81.02%**
+
+Berikut adalah daftar PPL dengan persentase "Tidak Ditemukan" pada Usaha/Perusahaan yang melebihi batas kritis $81.02\%$ (Sangat Terindikasi Moral Hazard / Shortcut Data):
+
+| No | Nama PPL | Kecamatan | PML Pengawas | Prelist | Tidak Ditemukan | % Tidak Ditemukan | Z-Score / Status |
+|---|---|---|---|---|---|---|---|
+| 1 | **BIBILIYANTI** | - | SELIANA | 52 | 51 | **98.08%** | $> +2.1\sigma$ (Kritis) |
+| 2 | **AGNES** | SADANIANG | ALIP SUSANTO | 46 | 45 | **97.83%** | $> +2.1\sigma$ (Kritis) |
+| 3 | **ARFI ARFAQIYAH** | MEMPAWAH TIMUR | NANDA ARISKA | 332 | 323 | **97.29%** | $> +2.1\sigma$ (Kritis & Volume Besar) |
+| 4 | **NENGSIH** | SADANIANG | ALIP SUSANTO | 43 | 41 | **95.35%** | $> +2.0\sigma$ (Kritis) |
+| 5 | **RARA SHATI** | TOHO | ABDUL AZIZ | 123 | 116 | **94.31%** | $> +2.0\sigma$ (Kritis) |
+| 6 | **SERUNI** | TOHO | ABDUL AZIZ | 102 | 96 | **94.12%** | $> +2.0\sigma$ (Kritis) |
+| 7 | **PRAMUDYA HADISTA P.** | SUNGAI KUNYIT | SYAMSUL | 227 | 212 | **93.39%** | $> +1.9\sigma$ (Kritis) |
+| 8 | **GERHAN LANTARA RYANDI**| MEMPAWAH HILIR | ZAINI | 457 | 426 | **93.22%** | $> +1.9\sigma$ (Kritis) |
+| 9 | **HARUN AL RASYID** | MEMPAWAH TIMUR | YUSRON | 187 | 174 | **93.05%** | $> +1.9\sigma$ (Kritis) |
+| 10 | **ASWATI NINGSIH,SE** | MEMPAWAH TIMUR | YUSRON | 319 | 294 | **92.16%** | $> +1.9\sigma$ (Kritis) |
+
+---
+
+### E. Analisis Anomali Usaha Keluarga (Sektor Rumah Tangga)
+*   **Total Usaha Terdaftar (Ditemukan + Baru)**: 16.722 usaha (Ditemukan: 10.386, Baru: 6.336).
+*   **Tingkat Non-Aktif (Tutup + Tidak Ditemukan Kabupaten)**: **41.67%** (Tutup: 7.442, Tidak Ditemukan: 4.505).
+*   *Analisis Statistik PPL (Beban $\ge 30$ usaha)*:
+    *   Rata-rata % Usaha Non-Aktif (Tutup+Td Ditemukan): **40.07%**
+    *   Standar Deviasi: **15.44%**
+    *   Batas Anomali Kritis ($\mu + 1.5\sigma$): **63.23%**
+
+Berikut adalah daftar PPL dengan rasio usaha keluarga Non-Aktif (Closed / Not Found) melebihi batas kritis $63.23\%$:
+
+| No | Nama PPL | Kecamatan | PML Pengawas | Total Usaha Listed | Tutup + Td Ditemukan | % Non-Aktif | Z-Score / Status |
+|---|---|---|---|---|---|---|---|
+| 1 | **SELVIA** | TOHO | HANDOKO TUAH S. | 272 | 262 | **96.32%** | $> +3.6\sigma$ (Sangat Kritis) |
+| 2 | **ABDULLAH SHOLIHIN** | SUNGAI PINYUH | **HARIS ROSI** | 219 | 197 | **89.95%** | $> +3.2\sigma$ (Sangat Kritis) |
+| 3 | **SAIDAH** | SUNGAI PINYUH | **HARIS ROSI** | 197 | 166 | **84.26%** | $> +2.8\sigma$ (Kritis) |
+| 4 | **NORPINA NITA** | SADANIANG | SELIANA | 293 | 240 | **81.91%** | **81.91%** | $> +2.7\sigma$ (Kritis) |
+| 5 | **RAFLI HAIKAL** | SUNGAI PINYUH | **HARIS ROSI** | 193 | 152 | **78.76%** | $> +2.5\sigma$ (Kritis) |
+| 6 | **ANDREANSYAH** | SUNGAI PINYUH | **HARIS ROSI** | 41 | 32 | **78.05%** | $> +2.4\sigma$ (Kritis) |
+| 7 | **NURUL IMAM** | MEMPAWAH HILIR | WANDI SYAFARI | 127 | 99 | **77.95%** | $> +2.4\sigma$ (Kritis) |
+| 8 | **CINDI** | MEMPAWAH HILIR | WANDI SYAFARI | 202 | 155 | **76.73%** | $> +2.3\sigma$ (Kritis) |
+| 9 | **BIBILIYANTI** | - | SELIANA | 202 | 151 | **74.75%** | $> +2.2\sigma$ (Kritis) |
+
+---
+
+### F. Rekomendasi Terarah Penjaminan Kualitas (Quality Assurance)
+1.  **Pola PML Haris Rosi (Kec. Sungai Pinyuh)**:
+    *   Ditemukan konsentrasi anomali kritis yang sangat tinggi pada tim pengawasan PML **Haris Rosi**. Sebanyak **4 PPL** di bawah pengawasannya masuk ke dalam 10 besar pencetak "Usaha Keluarga Non-Aktif" tertinggi (Abdullah Sholihin 89.95%, Saidah 84.26%, Rafli Haikal 78.76%, Andreansyah 78.05%).
+    *   *Tindakan*: PJ-Kuda wilayah Sungai Pinyuh wajib memanggil PML Haris Rosi dan PPL binaannya untuk melakukan klarifikasi dan pemeriksaan silang isian dokumen, serta melakukan *revisit* lapangan bersama staf organik BPS untuk memastikan kebenaran status keberadaan usaha tersebut.
+2.  **PPL Selvia (Kec. Toho, PML Handoko Tuah S.S.)**:
+    *   Melaporkan **96.32%** usaha keluarga sebagai Non-Aktif (262 dari 272 usaha). Angka ini menunjukkan deviasi ekstrem sebesar $+3.6\sigma$.
+    *   *Tindakan*: Lakukan penahanan dokumen dan *reject* massal pada SLS yang dikelola Selvia untuk diteliti ulang di lapangan.
+
+
