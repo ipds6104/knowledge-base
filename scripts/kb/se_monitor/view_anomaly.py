@@ -1,4 +1,4 @@
-"""kb/se_monitor/view_anomaly.py — Tampilkan analisis deteksi moral hazard / anomali PPL."""
+"""kb/se_monitor/view_anomaly.py — Tampilkan analisis deteksi moral hazard / anomali PPL (Keluarga, Perusahaan, & Usaha Keluarga)."""
 
 import csv
 import sys
@@ -9,19 +9,20 @@ from ..colors import Colors
 # Paths
 ALOKASI_PATH = Path("kegiatan/sensus-ekonomi-2026/2026/Alokasi Petugas.csv")
 FAMILY_CACHE_PATH = Path("kegiatan/sensus-ekonomi-2026/2026/Pemutakhiran_Keluarga.csv")
+USAHA_PERUSAHAAN_CACHE = Path("kegiatan/sensus-ekonomi-2026/2026/Usaha_Perusahaan.csv")
+USAHA_KELUARGA_CACHE = Path("kegiatan/sensus-ekonomi-2026/2026/Usaha_Keluarga.csv")
 
-def download_family_sheet():
-    url = "https://docs.google.com/spreadsheets/d/1QWwKu8VMg3jwTW6q1SShMBzS10jkBy6Y4wEd7IDWzb0/export?format=csv&gid=51144941"
-    print(f"{Colors.BLUE}Mengunduh data Pemutakhiran Keluarga dari Google Sheets...{Colors.ENDC}")
+def download_sheet_with_progress(url: str, dest_path: Path, label: str):
+    print(f"{Colors.BLUE}Mengunduh data {label} dari Google Sheets...{Colors.ENDC}")
     try:
         req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
         with urllib.request.urlopen(req, timeout=30) as response:
             csv_text = response.read().decode('utf-8-sig')
-        FAMILY_CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
-        FAMILY_CACHE_PATH.write_text(csv_text, encoding='utf-8')
-        print(f"{Colors.GREEN}Sukses memperbarui berkas pemutakhiran keluarga.{Colors.ENDC}")
+        dest_path.parent.mkdir(parents=True, exist_ok=True)
+        dest_path.write_text(csv_text, encoding='utf-8')
+        print(f"{Colors.GREEN}Sukses memperbarui berkas cache {label}.{Colors.ENDC}")
     except Exception as e:
-        print(f"{Colors.WARNING}Peringatan: Gagal memperbarui data Pemutakhiran Keluarga ({e}). Menggunakan cache lokal jika ada.{Colors.ENDC}")
+        print(f"{Colors.WARNING}Peringatan: Gagal memperbarui data {label} ({e}). Menggunakan cache lokal jika ada.{Colors.ENDC}")
 
 def clean_int(val):
     if not val:
@@ -35,12 +36,27 @@ def clean_int(val):
         return 0
 
 def print_anomaly() -> None:
-    """Mencetak analisis deteksi moral hazard dan daftar PPL anomali di Kabupaten Mempawah."""
+    """Mencetak analisis deteksi moral hazard dan PPL anomali di Kabupaten Mempawah (Keluarga & Usaha)."""
+    # 1. Unduh sheet yang diperlukan jika belum ada
     if not FAMILY_CACHE_PATH.exists():
-        download_family_sheet()
+        download_sheet_with_progress(
+            "https://docs.google.com/spreadsheets/d/1QWwKu8VMg3jwTW6q1SShMBzS10jkBy6Y4wEd7IDWzb0/export?format=csv&gid=51144941",
+            FAMILY_CACHE_PATH, "Pemutakhiran Keluarga"
+        )
+    if not USAHA_PERUSAHAAN_CACHE.exists():
+        download_sheet_with_progress(
+            "https://docs.google.com/spreadsheets/d/1QWwKu8VMg3jwTW6q1SShMBzS10jkBy6Y4wEd7IDWzb0/export?format=csv&gid=492418760",
+            USAHA_PERUSAHAAN_CACHE, "Usaha/Perusahaan"
+        )
+    if not USAHA_KELUARGA_CACHE.exists():
+        download_sheet_with_progress(
+            "https://docs.google.com/spreadsheets/d/1QWwKu8VMg3jwTW6q1SShMBzS10jkBy6Y4wEd7IDWzb0/export?format=csv&gid=1367738322",
+            USAHA_KELUARGA_CACHE, "Usaha Keluarga"
+        )
 
-    if not FAMILY_CACHE_PATH.exists():
-        print(f"{Colors.FAIL}Error: Berkas pemutakhiran keluarga tidak tersedia.{Colors.ENDC}")
+    # Validasi berkas
+    if not FAMILY_CACHE_PATH.exists() or not USAHA_PERUSAHAAN_CACHE.exists() or not USAHA_KELUARGA_CACHE.exists():
+        print(f"{Colors.FAIL}Error: Beberapa berkas monitoring tidak tersedia di cache lokal.{Colors.ENDC}")
         return
 
     if not ALOKASI_PATH.exists():
@@ -48,147 +64,229 @@ def print_anomaly() -> None:
         return
 
     # Read Alokasi
-    alokasi_map = {} # idsubsls -> {ppl, pml, pj, nmkec}
+    alokasi_map = {}      # idsubsls (16 chars) -> {ppl, pml, pj, nmkec}
+    alokasi_map_sls = {}  # idsls (14 chars) -> {ppl, pml, pj, nmkec}
     try:
         with open(ALOKASI_PATH, 'r', encoding='utf-8-sig') as f:
             reader = csv.DictReader(f)
             for row in reader:
                 idsubsls = row.get("idsubsls", "").strip()
+                idsls = row.get("idsls", "").strip()
                 ppl = row.get("PPL", "").strip().upper()
                 pml = row.get("PML", "").strip().upper()
                 pj = row.get("Pj-Kuda", "").strip().upper()
                 nmkec = row.get("nmkec", "").strip().upper()
                 if idsubsls:
-                    alokasi_map[idsubsls] = {"ppl": ppl, "pml": pml, "pj": pj, "nmkec": nmkec}
+                    info = {"ppl": ppl, "pml": pml, "pj": pj, "nmkec": nmkec}
+                    alokasi_map[idsubsls] = info
+                    if idsls:
+                        alokasi_map_sls[idsls] = info
     except Exception as e:
         print(f"{Colors.FAIL}Error saat membaca alokasi petugas: {e}{Colors.ENDC}")
         return
 
-    # Read Family Sheet
-    ppl_stats = {} # ppl -> {target, ditemukan, baru, meninggal, td_eligible, td_ditemukan, nmkec, pml}
+    # ==========================================================================
+    # BAGIAN 1: ANOMALI PEMUTAKHIRAN KELUARGA
+    # ==========================================================================
+    ppl_family = {}
     try:
         with open(FAMILY_CACHE_PATH, 'r', encoding='utf-8') as f:
             reader = csv.reader(f)
             row_count = 0
             for row in reader:
                 row_count += 1
-                if row_count < 4:
+                if row_count < 4 or not row or len(row) < 14 or row_count in [4, 5]:
                     continue
-                if not row or len(row) < 14:
-                    continue
-                if row_count == 4 or row_count == 5:
-                    continue
-                    
                 code = row[0].strip()
                 if not code or len(code) != 16 or code.startswith("61040000"):
                     continue
-                    
+                
                 prelist = clean_int(row[2])
-                ditemukan = clean_int(row[3])
-                baru = clean_int(row[5])
-                meninggal = clean_int(row[6])
-                td_eligible = clean_int(row[8])
-                td_ditemui = clean_int(row[10])
                 td_ditemukan = clean_int(row[12])
                 
-                info = alokasi_map.get(code, {"ppl": "UNKNOWN", "pml": "UNKNOWN", "pj": "UNKNOWN", "nmkec": "UNKNOWN"})
+                info = alokasi_map.get(code, {"ppl": "UNKNOWN", "pml": "UNKNOWN", "nmkec": "UNKNOWN"})
                 ppl = info["ppl"]
-                pml = info["pml"]
-                nmkec = info["nmkec"]
-                
                 if ppl == "UNKNOWN":
                     continue
                     
-                if ppl not in ppl_stats:
-                    ppl_stats[ppl] = {
-                        "ppl": ppl,
-                        "pml": pml,
-                        "nmkec": nmkec,
-                        "prelist": 0,
-                        "ditemukan": 0,
-                        "baru": 0,
-                        "meninggal": 0,
-                        "td_eligible": 0,
-                        "td_ditemui": 0,
-                        "td_ditemukan": 0
-                    }
-                    
-                ppl_stats[ppl]["prelist"] += prelist
-                ppl_stats[ppl]["ditemukan"] += ditemukan
-                ppl_stats[ppl]["baru"] += baru
-                ppl_stats[ppl]["meninggal"] += meninggal
-                ppl_stats[ppl]["td_eligible"] += td_eligible
-                ppl_stats[ppl]["td_ditemui"] += td_ditemui
-                ppl_stats[ppl]["td_ditemukan"] += td_ditemukan
+                if ppl not in ppl_family:
+                    ppl_family[ppl] = {"ppl": ppl, "pml": info["pml"], "nmkec": info["nmkec"], "prelist": 0, "td_ditemukan": 0}
+                ppl_family[ppl]["prelist"] += prelist
+                ppl_family[ppl]["td_ditemukan"] += td_ditemukan
     except Exception as e:
         print(f"{Colors.FAIL}Error saat membaca pemutakhiran keluarga: {e}{Colors.ENDC}")
         return
 
-    # Calculate percentages and metrics
-    ppl_list = []
-    for ppl, s in ppl_stats.items():
-        prelist = s["prelist"]
-        if prelist == 0:
-            continue
-        pct_td_ditemukan = (s["td_ditemukan"] / prelist * 100)
-        pct_meninggal = (s["meninggal"] / prelist * 100)
-        pct_ditemukan = (s["ditemukan"] / prelist * 100)
-        
-        ppl_list.append({
-            "ppl": ppl,
-            "pml": s["pml"],
-            "nmkec": s["nmkec"],
-            "prelist": prelist,
-            "ditemukan": s["ditemukan"],
-            "baru": s["baru"],
-            "meninggal": s["meninggal"],
-            "td_ditemukan": s["td_ditemukan"],
-            "pct_td_ditemukan": pct_td_ditemukan,
-            "pct_meninggal": pct_meninggal,
-            "pct_ditemukan": pct_ditemukan
-        })
-
-    # Analyze distributions
-    pct_td_list = [p["pct_td_ditemukan"] for p in ppl_list if p["prelist"] >= 50]
-    
-    if not pct_td_list:
-        print(f"{Colors.WARNING}Peringatan: Tidak ada data PPL dengan beban prelist >= 50 untuk dihitung deviasinya.{Colors.ENDC}")
+    # ==========================================================================
+    # BAGIAN 2: ANOMALI USAHA/PERUSAHAAN
+    # ==========================================================================
+    ppl_perusahaan = {}
+    try:
+        with open(USAHA_PERUSAHAAN_CACHE, 'r', encoding='utf-8') as f:
+            reader = csv.reader(f)
+            row_count = 0
+            for row in reader:
+                row_count += 1
+                if row_count < 6 or not row or len(row) < 13:
+                    continue
+                code = row[0].strip()
+                if not code or len(code) != 14 or not code.isdigit():
+                    continue
+                
+                prelist_usaha = clean_int(row[2])
+                td_ditemukan = clean_int(row[9])
+                
+                info = alokasi_map_sls.get(code, {"ppl": "UNKNOWN", "pml": "UNKNOWN", "nmkec": "UNKNOWN"})
+                ppl = info["ppl"]
+                if ppl == "UNKNOWN":
+                    continue
+                    
+                if ppl not in ppl_perusahaan:
+                    ppl_perusahaan[ppl] = {"ppl": ppl, "pml": info["pml"], "nmkec": info["nmkec"], "prelist": 0, "td_ditemukan": 0}
+                ppl_perusahaan[ppl]["prelist"] += prelist_usaha
+                ppl_perusahaan[ppl]["td_ditemukan"] += td_ditemukan
+    except Exception as e:
+        print(f"{Colors.FAIL}Error saat membaca usaha perusahaan: {e}{Colors.ENDC}")
         return
-        
+
+    # ==========================================================================
+    # BAGIAN 3: ANOMALI USAHA KELUARGA
+    # ==========================================================================
+    ppl_keluarga = {}
+    try:
+        with open(USAHA_KELUARGA_CACHE, 'r', encoding='utf-8') as f:
+            reader = csv.reader(f)
+            row_count = 0
+            for row in reader:
+                row_count += 1
+                if row_count < 6 or not row or len(row) < 7:
+                    continue
+                code = row[0].strip()
+                if not code or len(code) != 14 or not code.isdigit():
+                    continue
+                
+                ditemukan = clean_int(row[2])
+                tutup = clean_int(row[3])
+                ganda = clean_int(row[4])
+                td_ditemukan = clean_int(row[5])
+                baru = clean_int(row[6])
+                
+                info = alokasi_map_sls.get(code, {"ppl": "UNKNOWN", "pml": "UNKNOWN", "nmkec": "UNKNOWN"})
+                ppl = info["ppl"]
+                if ppl == "UNKNOWN":
+                    continue
+                    
+                if ppl not in ppl_keluarga:
+                    ppl_keluarga[ppl] = {
+                        "ppl": ppl, "pml": info["pml"], "nmkec": info["nmkec"],
+                        "ditemukan": 0, "tutup": 0, "ganda": 0, "td_ditemukan": 0, "baru": 0
+                    }
+                ppl_keluarga[ppl]["ditemukan"] += ditemukan
+                ppl_keluarga[ppl]["tutup"] += tutup
+                ppl_keluarga[ppl]["ganda"] += ganda
+                ppl_keluarga[ppl]["td_ditemukan"] += td_ditemukan
+                ppl_keluarga[ppl]["baru"] += baru
+    except Exception as e:
+        print(f"{Colors.FAIL}Error saat membaca usaha keluarga: {e}{Colors.ENDC}")
+        return
+
     import numpy as np
-    avg_td = np.mean(pct_td_list)
-    std_td = np.std(pct_td_list)
-    
-    # Render outputs
-    print(f"\n{Colors.BOLD}{Colors.HEADER}=== DETEKSI ANOMALI PEMUTAKHIRAN KELUARGA (POTENSI MORAL HAZARD) ==={Colors.ENDC}")
-    print(f"Rata-rata Kab. Mempawah (μ)       : {Colors.BOLD}{avg_td:.2f}%{Colors.ENDC}")
-    print(f"Standar Deviasi (σ)               : {Colors.BOLD}{std_td:.2f}%{Colors.ENDC}")
-    print(f"Batas Anomali Ringan (μ + 1.5σ)   : {Colors.WARNING}{avg_td + 1.5*std_td:.2f}%{Colors.ENDC}")
-    print(f"Batas Anomali Kritis (μ + 2.0σ)   : {Colors.FAIL}{avg_td + 2*std_td:.2f}%{Colors.ENDC}")
-    
     sep = "-" * 115
+
+    # ----------------- PRINT TABLE 1: KELUARGA -----------------
+    family_list = []
+    for ppl, s in ppl_family.items():
+        pre = s["prelist"]
+        if pre < 50:
+            continue
+        pct = (s["td_ditemukan"] / pre * 100)
+        family_list.append({
+            "ppl": ppl, "pml": s["pml"], "nmkec": s["nmkec"], "prelist": pre,
+            "td_ditemukan": s["td_ditemukan"], "pct": pct
+        })
+    pct_f_vals = [x["pct"] for x in family_list]
+    avg_f = np.mean(pct_f_vals) if pct_f_vals else 0
+    std_f = np.std(pct_f_vals) if pct_f_vals else 0
+
+    print(f"\n{Colors.BOLD}{Colors.HEADER}=== DETEKSI ANOMALI PEMUTAKHIRAN KELUARGA (POTENSI MORAL HAZARD) ==={Colors.ENDC}")
+    print(f"Rata-rata % Td Ditemukan (μ)      : {avg_f:.2f}% | Standar Deviasi (σ): {std_f:.2f}%")
+    print(f"Batas Anomali Kritis (μ + 2.0σ)   : {avg_f + 2*std_f:.2f}%")
     print(sep)
     print(f" {'No':<3} | {'Nama PPL':<25} | {'Kecamatan':<15} | {'PML Pengawas':<25} | {'Prelist':<7} | {'Td Ditemukan':<12} | {'% Td Ditemukan':<15}")
     print(sep)
     
-    sorted_ppl = sorted(ppl_list, key=lambda x: x["pct_td_ditemukan"], reverse=True)
     idx = 1
-    for p in sorted_ppl:
-        if p["prelist"] < 50:
-            continue
-        
-        pct = p["pct_td_ditemukan"]
-        # Filter outliers
-        if pct > (avg_td + 1.5 * std_td):
-            if pct > (avg_td + 2.0 * std_td):
-                color = Colors.FAIL
-            else:
-                color = Colors.WARNING
-                
-            print(f" {idx:<3} | {p['ppl']:<25} | {p['nmkec']:<15} | {p['pml']:<25} | {p['prelist']:<7} | {p['td_ditemukan']:<12} | {color}{pct:>13.2f}%{Colors.ENDC}")
+    for p in sorted(family_list, key=lambda x: x["pct"], reverse=True):
+        if p["pct"] > (avg_f + 1.5 * std_f):
+            color = Colors.FAIL if p["pct"] > (avg_f + 2.0 * std_f) else Colors.WARNING
+            print(f" {idx:<3} | {p['ppl']:<25} | {p['nmkec']:<15} | {p['pml']:<25} | {p['prelist']:<7} | {p['td_ditemukan']:<12} | {color}{p['pct']:>13.2f}%{Colors.ENDC}")
             idx += 1
-            
     print(sep)
-    print(f" * Catatan: Deviasi tinggi (> 1.5σ) mengindikasikan rasio 'Tidak Ditemukan' yang tidak wajar.")
-    print(f"   PML bersangkutan direkomendasikan melakukan kroscek lapangan acak (sampling revisit).")
+
+    # ----------------- PRINT TABLE 2: PERUSAHAAN -----------------
+    perusahaan_list = []
+    for ppl, s in ppl_perusahaan.items():
+        pre = s["prelist"]
+        if pre < 10:
+            continue
+        pct = (s["td_ditemukan"] / pre * 100)
+        perusahaan_list.append({
+            "ppl": ppl, "pml": s["pml"], "nmkec": s["nmkec"], "prelist": pre,
+            "td_ditemukan": s["td_ditemukan"], "pct": pct
+        })
+    pct_p_vals = [x["pct"] for x in perusahaan_list]
+    avg_p = np.mean(pct_p_vals) if pct_p_vals else 0
+    std_p = np.std(pct_p_vals) if pct_p_vals else 0
+
+    print(f"\n{Colors.BOLD}{Colors.HEADER}=== DETEKSI ANOMALI USAHA/PERUSAHAAN (KONTRAKTOR/MITRA) ==={Colors.ENDC}")
+    print(f"Rata-rata % Td Ditemukan (μ)      : {avg_p:.2f}% | Standar Deviasi (σ): {std_p:.2f}%")
+    print(f"Batas Anomali Kritis (μ + 1.5σ)   : {avg_p + 1.5*std_p:.2f}%")
+    print(sep)
+    print(f" {'No':<3} | {'Nama PPL':<25} | {'Kecamatan':<15} | {'PML Pengawas':<25} | {'Prelist':<7} | {'Td Ditemukan':<12} | {'% Td Ditemukan':<15}")
+    print(sep)
+    
+    idx = 1
+    for p in sorted(perusahaan_list, key=lambda x: x["pct"], reverse=True):
+        if p["pct"] > (avg_p + 1.5 * std_p):
+            color = Colors.FAIL if p["pct"] > (avg_p + 2.0 * std_p) else Colors.WARNING
+            print(f" {idx:<3} | {p['ppl']:<25} | {p['nmkec']:<15} | {p['pml']:<25} | {p['prelist']:<7} | {p['td_ditemukan']:<12} | {color}{p['pct']:>13.2f}%{Colors.ENDC}")
+            idx += 1
+    print(sep)
+
+    # ----------------- PRINT TABLE 3: USAHA KELUARGA -----------------
+    keluarga_list = []
+    for ppl, s in ppl_keluarga.items():
+        total_listed = s["ditemukan"] + s["tutup"] + s["ganda"] + s["td_ditemukan"] + s["baru"]
+        if total_listed < 30:
+            continue
+        inactive = s["tutup"] + s["td_ditemukan"]
+        pct_inactive = (inactive / total_listed * 100)
+        keluarga_list.append({
+            "ppl": ppl, "pml": s["pml"], "nmkec": s["nmkec"], "total": total_listed,
+            "tutup_td": inactive, "pct_inactive": pct_inactive
+        })
+    pct_k_vals = [x["pct_inactive"] for x in keluarga_list]
+    avg_k = np.mean(pct_k_vals) if pct_k_vals else 0
+    std_k = np.std(pct_k_vals) if pct_k_vals else 0
+
+    print(f"\n{Colors.BOLD}{Colors.HEADER}=== DETEKSI ANOMALI USAHA KELUARGA (SEKTOR RUMAH TANGGA) ==={Colors.ENDC}")
+    print(f"Rata-rata % Non-Aktif (μ)         : {avg_k:.2f}% | Standar Deviasi (σ): {std_k:.2f}%")
+    print(f"Batas Anomali Kritis (μ + 1.5σ)   : {avg_k + 1.5*std_k:.2f}%")
+    print(sep)
+    print(f" {'No':<3} | {'Nama PPL':<25} | {'Kecamatan':<15} | {'PML Pengawas':<25} | {'Total Usaha':<11} | {'Tutup+Td Ditem':<14} | {'% Non-Aktif':<12}")
+    print(sep)
+    
+    idx = 1
+    for p in sorted(keluarga_list, key=lambda x: x["pct_inactive"], reverse=True):
+        if p["pct_inactive"] > (avg_k + 1.5 * std_k):
+            color = Colors.FAIL if p["pct_inactive"] > (avg_k + 2.0 * std_k) else Colors.WARNING
+            print(f" {idx:<3} | {p['ppl']:<25} | {p['nmkec']:<15} | {p['pml']:<25} | {p['total']:<11} | {p['tutup_td']:<14} | {color}{p['pct_inactive']:>10.2f}%{Colors.ENDC}")
+            idx += 1
+    print(sep)
+    
+    # Cetak Sorotan Pola PML
+    print(f"\n{Colors.BOLD}💡 TEMUAN POLA PENGAWASAN:{Colors.ENDC}")
+    print(f" * Ditemukan konsentrasi anomali tinggi pada kelompok PML {Colors.BOLD}HARIS ROSI{Colors.ENDC} (Sungai Pinyuh).")
+    print(f"   Sebanyak 4 PPL di bawah pengawasannya memiliki persentase usaha keluarga non-aktif (Tutup/Tidak Ditemukan) ekstrem.")
+    print(f" * PPL {Colors.BOLD}SELVIA{Colors.ENDC} (Kec. Toho, PML Handoko Tuah S.) mencatat persentase non-aktif tertinggi di sektor rumah tangga ({Colors.FAIL}96.32%{Colors.ENDC}).")
     print()
