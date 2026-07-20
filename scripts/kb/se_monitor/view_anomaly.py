@@ -362,7 +362,7 @@ def print_anomaly() -> None:
     
     # Cetak Sorotan Pola PML
     print(f"\n{Colors.BOLD}[INFO] TEMUAN POLA PENGAWASAN:{Colors.ENDC}")
-    print(f" * Ditemukan konsentrasi anomali tinggi pada kelompok PML {Colors.BOLD}HARIS ROSI{Colors.ENDC} (PJ-Kuda: {Colors.BOLD}ANDI NOVIANTONI{Colors.ENDC} / Sungai Pinyuh).")
+    print(f" * Ditemukan konsentrasi anomali tinggi pada kelompok PML {Colors.BOLD}HARIS ROSI{Colors.ENDC} (PJ-Kuda: {Colors.BOLD}ARINI FAURIZAH{Colors.ENDC} / Sungai Pinyuh).")
     print(f"   Sebanyak 4 PPL di bawah pengawasannya memiliki persentase usaha keluarga non-aktif (Tutup/Tidak Ditemukan) ekstrem.")
     print(f" * PPL {Colors.BOLD}SELVIA{Colors.ENDC} (Kec. Toho, PML Handoko Tuah S., PJ-Kuda: {Colors.BOLD}LISTIO JATI NANDHIKO{Colors.ENDC}) mencatat persentase non-aktif tertinggi ({Colors.FAIL}96.32%{Colors.ENDC}).")
     print()
