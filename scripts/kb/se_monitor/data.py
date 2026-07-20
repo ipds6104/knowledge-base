@@ -273,8 +273,8 @@ def aggregate_metrics(sls_list: list, sls_info: dict, sheet_map: dict) -> dict:
         "approved": 0, "resp_submitted": 0, "rejected": 0,
         "completed": 0, "worked": 0, "sls_count": len(sls_list),
     }
-    for idsls in sls_list:
-        idsubsls = sls_info[idsls]["idsubsls"]
+    for idsubsls in sls_list:
+        idsls = sls_info[idsubsls]["idsls"]
         m = get_sls_metrics(sheet_map, idsls, idsubsls)
         for k in agg:
             if k != "sls_count":

@@ -214,9 +214,9 @@ def print_anomaly() -> None:
             for ppl_name, sls_list in ppls.items():
                 total_target = 0
                 total_completed = 0
-                for idsls in sls_list:
-                    info = sls_info.get(idsls, {})
-                    idsubsls = info.get("idsubsls")
+                for idsubsls in sls_list:
+                    info = sls_info.get(idsubsls, {})
+                    idsls = info.get("idsls")
                     m = get_sls_metrics(sheet_map, idsls, idsubsls)
                     total_target += m["target"]
                     total_completed += m["completed"]

@@ -46,19 +46,19 @@ def build_hierarchy(
                 nmsls = row.get("nmsls", "").strip()
                 kec = row.get("nmkec", "").strip()
 
-                sls_info[idsls] = {
+                sls_info[idsubsls] = {
                     "nmsls": nmsls,
                     "ppl": ppl,
                     "pml": pml,
                     "pj": pj,
-                    "idsubsls": idsubsls,
+                    "idsls": idsls,
                     "kecamatan": kec,
                 }
 
                 pj_kuda_groups.setdefault(pj, {})
                 pj_kuda_groups[pj].setdefault(pml, {})
                 pj_kuda_groups[pj][pml].setdefault(ppl, [])
-                pj_kuda_groups[pj][pml][ppl].append(idsls)
+                pj_kuda_groups[pj][pml][ppl].append(idsubsls)
 
         has_alokasi = True
     except Exception as e:

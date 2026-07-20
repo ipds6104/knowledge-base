@@ -7,8 +7,8 @@ def export_completed_subsls(sls_info: dict, sheet_map: dict) -> None:
     from .data import get_sls_metrics
     
     completed_sls = []
-    for idsls, info in sls_info.items():
-        idsubsls = info["idsubsls"]
+    for idsubsls, info in sls_info.items():
+        idsls = info["idsls"]
         m = get_sls_metrics(sheet_map, idsls, idsubsls)
         if m["target"] > 0 and m["approved"] >= m["target"]:
             completed_sls.append({

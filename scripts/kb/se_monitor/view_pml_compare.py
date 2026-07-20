@@ -82,9 +82,9 @@ def print_pml_compare() -> None:
             total_approved_rejected = 0
             
             for ppl_name, sls_list in ppls.items():
-                for idsls in sls_list:
-                    info = sls_info.get(idsls, {})
-                    idsubsls = info.get("idsubsls")
+                for idsubsls in sls_list:
+                    info = sls_info.get(idsubsls, {})
+                    idsls = info.get("idsls")
                     m = get_sls_metrics(sheet_map, idsls, idsubsls)
                     
                     total_target += m["target"]
