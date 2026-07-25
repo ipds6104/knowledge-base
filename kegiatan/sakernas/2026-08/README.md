@@ -70,3 +70,18 @@ Berdasarkan dinamika teknis aplikasi FASIH SM menjelang pelaksanaan pemutakhiran
 * **Solusi Pendekatan Multi-Pihak**:
   * Melibatkan tokoh agama, tokoh masyarakat/cendikiawan, aparatur pemerintah (desa hingga kecamatan), dan media lokal untuk memberikan sosialisasi berkelanjutan mengenai sifat pendataan BPS yang bebas dari kaitannya dengan penyaluran bansos langsung.
 
+---
+
+## 🛠️ Pembakuan Penarikan Data Prelist Updating (Irisan SE2026)
+
+Untuk memanfaatkan data mikro hasil pencacahan SE2026 pada 48 Sub-SLS sampel Sakernas yang beririsan, penarikan data telah dibakukan menggunakan skrip otomatis SQL Lab API:
+
+* **Skrip Ekstraktor Otomatis**: [scripts/extract_sakernas_intersect.py](file:///home/ihza/Projects/knowledge-base/scripts/extract_sakernas_intersect.py)
+* **Kamus Data & Spesifikasi Query SQL**: Merujuk pada dokumentasi resmi [Panduan Integrasi Superset SQL Lab & Kamus Data FASIH SE 2026](file:///home/ihza/Projects/knowledge-base/kegiatan/sensus-ekonomi-2026/2026/panduan-sql-lab-fasih-se2026.md) (khususnya Tabel `nested_dtsen` untuk data Keluarga dan `nested_dtsen_var` untuk KRT/ART).
+* **Perintah Penarikan**:
+  ```bash
+  python3 scripts/extract_sakernas_intersect.py
+  ```
+* **Output Berkas**: Hasil ekstraksi otomatis disimpan ke `prelist_updating_sakernas_se2026_intersect.csv` di folder kegiatan ini.
+
+

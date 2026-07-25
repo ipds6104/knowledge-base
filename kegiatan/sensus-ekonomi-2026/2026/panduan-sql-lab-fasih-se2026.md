@@ -241,6 +241,40 @@ Variabel kuesioner disimpan dalam format **berpasangan**: `{nama_var}_value` (ni
 
 ---
 
+### C. Tabel `nested_dtsen` (Rincian Data Keluarga)
+
+Digunakan untuk mengekstraksi data tingkat keluarga/rumah tangga dalam pendataan SE2026 (pemutakhiran keluarga):
+
+| Nama Kolom | Tipe Data | Keterangan |
+| :--- | :--- | :--- |
+| `assignment_id` | VARCHAR | Foreign Key penugasan ke `base_table_assignment` |
+| `no_urut_keluarga` | VARCHAR / INT | Nomor Urut Keluarga dalam SLS |
+| `nama_kepala_keluarga` | VARCHAR | Nama Kepala Keluarga (KRT) |
+| `no_urut_bangunan` | VARCHAR | Nomor Urut Bangunan Fisik/Sensus |
+| `keberadaan_keluarga_label` | VARCHAR | Status Keberadaan Keluarga (`1. Ditemukan`, `2. Tidak Ditemukan`, `3. Meninggal`, dll.) |
+| `status_pengelolaan_label` | VARCHAR | Status Pengelolaan Usaha / Rumah Tangga |
+| `jumlah_art` | INT | Jumlah Anggota Rumah Tangga |
+
+---
+
+### D. Tabel `nested_dtsen_var` (Rincian Data Anggota Rumah Tangga / KRT)
+
+Digunakan untuk mengekstraksi data demografi & kontak individual per Anggota Rumah Tangga (ART):
+
+| Nama Kolom | Tipe Data | Keterangan |
+| :--- | :--- | :--- |
+| `assignment_id` | VARCHAR | Foreign Key penugasan ke `base_table_assignment` |
+| `no_art` | VARCHAR / INT | Nomor Urut ART (`1` = Kepala Rumah Tangga / KRT) |
+| `nama_art` | VARCHAR | Nama Anggota Rumah Tangga |
+| `hub_kk_label` | VARCHAR | Hubungan dengan Kepala Keluarga (`1. Kepala Keluarga`, `2. Istri/Suami`, dll.) |
+| `jk_label` | VARCHAR | Jenis Kelamin ART |
+| `ijazah_tertinggi_label` | VARCHAR | Pendidikan/Ijazah Tertinggi yang Dimiliki (`1. SD`, `5. SMP`, `6. SMA/SMK`, `9. S1`, dll.) |
+| `pekerjaan_label` | VARCHAR | Pekerjaan Utama ART |
+| `no_hp` | VARCHAR | Nomor HP / WhatsApp Kontak ART/KRT |
+| `nik` | VARCHAR | NIK Anggota Rumah Tangga |
+
+---
+
 ## 7. 🛠️ CLI Automated Workflow (`kb sqllab`)
 
 Alur kerja penarikan massal, analisis 2-view, dan penyiapan berkas verifikasi RT telah dibakukan dalam utility CLI `kb sqllab`:
