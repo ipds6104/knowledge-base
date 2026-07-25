@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
 Script: extract_sakernas_intersect.py
-Menarik data mikro keluarga/responden SE2026 dari Superset SQL Lab 
-berdasarkan Kamus Data Resmi (`data-dictionary-se2026.md`) untuk 48 SLS sampel Sakernas yang beririsan.
+Menarik 100% data mikro keluarga/responden SE2026 dari Superset SQL Lab 
+secara ter-batch (5 SLS per query) dilengkapi Paginasi Loop Offset untuk menjamin 0% data terpotong limit 1.000 baris.
 
 Pemetaan Kolom dari Kamus Data Resmi (data-dictionary-se2026.md):
 1. SLS                   : base_table_assignment.level_6_full_code & level_5_name
@@ -48,70 +48,84 @@ SAMPLE_SLS_CODES = [
 
 
 def fetch_sqllab_intersect_data(sls_list):
-    """Menarik data mikro SE2026 berbasis Kamus Data resmi data-dictionary-se2026.md."""
+    """Menarik 100% data mikro SE2026 untuk 48 SLS irisan dengan paginasi batch & offset."""
     if not os.path.exists(FASIH_SYNC_DIR):
         print(f"❌ Error: Repositori fasih-sync-monitoring tidak ditemukan di {FASIH_SYNC_DIR}")
         return []
 
-    in_clause = ", ".join(f"'{code}'" for code in sls_list)
+    all_rows = []
+    chunk_size = 1000
+    batch_size = 5  # Batch 5 SLS per query untuk efisiensi
     
-    # Query 3-tabel teruji berdasarkan Kamus Data resmi (data-dictionary-se2026.md)
-    sql = f"""
-    SELECT 
-      b.level_6_full_code AS sls,
-      b.level_5_name AS nama_sls,
-      b.level_3_name AS kecamatan,
-      COALESCE(r.dtsen_nama_kk, b.data1) AS nama_kepala_keluarga,
-      b.data2 AS alamat_bangunan,
-      b.data3 AS no_urut_bangunan_keluarga,
-      COALESCE(r.ada_keluarga_label, b.data9) AS keberadaan_keluarga,
-      v.ijazah_label AS pendidikan_krt,
-      r.telp_info AS no_hp,
-      b.assignment_status_alias AS status_dokumen
-    FROM base_table_assignment b
-    LEFT JOIN root_table r ON b.assignment_id = r.assignment_id
-    LEFT JOIN nested_dtsen_var v ON b.assignment_id = v.assignment_id AND v.no_urut_kk_var = '1'
-    WHERE b.level_6_full_code IN ({in_clause})
-      AND b.assignment_status_alias != 'DRAFT'
-    ORDER BY b.level_6_full_code ASC, b.data1 ASC
-    LIMIT 1000 OFFSET 0;
-    """
+    total_batches = (len(sls_list) + batch_size - 1) // batch_size
+    print(f"🔄 [Fetching Complete Data] Memulai penarikan 100% data mikro untuk {len(sls_list)} SLS ({total_batches} Batch)...\n")
     
-    print(f"🔄 [Fetching Data] Menarik data mikro SE2026 dari Kamus Data Resmi untuk {len(sls_list)} SLS irisan...")
-    cmd = ["node", "src/execute-query.js", sql]
-    try:
-        res = subprocess.run(cmd, cwd=FASIH_SYNC_DIR, capture_output=True, text=True, check=True)
-        stdout = res.stdout
+    for i in range(0, len(sls_list), batch_size):
+        batch_codes = sls_list[i:i + batch_size]
+        in_clause = ", ".join(f"'{code}'" for code in batch_codes)
+        batch_idx = (i // batch_size) + 1
         
-        json_lines = []
-        in_json = False
-        for line in stdout.splitlines():
-            if line.strip().startswith("[") and not in_json and ("{" in line or line.strip() == "["):
-                in_json = True
-                json_lines.append(line)
-            elif in_json:
-                json_lines.append(line)
-                if line.strip() == "]" or line.strip().endswith("]"):
+        offset = 0
+        batch_rows_count = 0
+        
+        while True:
+            sql = f"""
+            SELECT 
+              b.level_6_full_code AS sls,
+              b.level_5_name AS nama_sls,
+              b.level_3_name AS kecamatan,
+              COALESCE(r.dtsen_nama_kk, b.data1) AS nama_kepala_keluarga,
+              b.data2 AS alamat_bangunan,
+              b.data3 AS no_urut_bangunan_keluarga,
+              COALESCE(r.ada_keluarga_label, b.data9) AS keberadaan_keluarga,
+              v.ijazah_label AS pendidikan_krt,
+              r.telp_info AS no_hp,
+              b.assignment_status_alias AS status_dokumen
+            FROM base_table_assignment b
+            LEFT JOIN root_table r ON b.assignment_id = r.assignment_id
+            LEFT JOIN nested_dtsen_var v ON b.assignment_id = v.assignment_id AND v.no_urut_kk_var = '1'
+            WHERE b.level_6_full_code IN ({in_clause})
+              AND b.assignment_status_alias != 'DRAFT'
+            ORDER BY b.level_6_full_code ASC, b.data1 ASC
+            LIMIT {chunk_size} OFFSET {offset};
+            """
+            
+            cmd = ["node", "src/execute-query.js", sql]
+            try:
+                res = subprocess.run(cmd, cwd=FASIH_SYNC_DIR, capture_output=True, text=True, check=True)
+                stdout = res.stdout
+                
+                stdout_text = res.stdout
+                start_idx = stdout_text.find("[")
+                end_idx = stdout_text.rfind("]")
+                
+                if start_idx != -1 and end_idx != -1 and end_idx > start_idx:
+                    json_str = stdout_text[start_idx:end_idx + 1]
+                    rows = json.loads(json_str)
+                    all_rows.extend(rows)
+                    batch_rows_count += len(rows)
+                    
+                    if len(rows) < chunk_size:
+                        break  # Batch ini selesai ditarik
+                    offset += chunk_size  # Lanjut paginasi jika baris mencapai limit 1000
+                else:
                     break
-        
-        if json_lines:
-            rows = json.loads("\n".join(json_lines))
-            print(f"🟢 Berhasil mendapatkan {len(rows)} baris data responden.")
-            return rows
-        else:
-            print("⚠️ Peringatan: Tidak ada data JSON terurai dari output.")
-            return []
-    except Exception as e:
-        print(f"❌ Error saat menarik data SQL Lab: {e}")
-        return []
+            except Exception as e:
+                print(f"   ⚠️ Error saat menarik Batch {batch_idx}: {e}")
+                break
+
+        print(f"   🟢 [Batch {batch_idx:02d}/{total_batches}] {len(batch_codes)} SLS: {batch_rows_count} keluarga ditarik (Total Akumulasi: {len(all_rows)}).")
+
+    return all_rows
 
 
 def main():
     print("==========================================================================================")
-    print("🚀 [EXTRACT SAKERNAS INTERSECT DATA] PENARIKAN DATA KELUARGA IRISAN SE2026 UNTUK SAKERNAS")
+    print("🚀 [EXTRACT SAKERNAS INTERSECT DATA] PENARIKAN 100% DATA KELUARGA IRISAN UNTUK SAKERNAS")
     print("==========================================================================================\n")
     
     rows = fetch_sqllab_intersect_data(SAMPLE_SLS_CODES)
+    print(f"DEBUG MAIN: len(rows) = {len(rows)}")
     if not rows:
         print("❌ Tidak ada data yang berhasil ditarik.")
         return
@@ -147,7 +161,7 @@ def main():
                 "status_dokumen": r.get("status_dokumen", "")
             })
 
-    print(f"\n💾 [HASIL EKSPOR] {len(rows)} data keluarga berhasil diekstrak dan disimpan ke:")
+    print(f"\n💾 [HASIL EKSPOR TOTAL] {len(rows)} data keluarga berhasil diekstrak dan disimpan ke:")
     print(f"   📁 {OUTPUT_CSV}")
     print("\n==========================================================================================")
 
