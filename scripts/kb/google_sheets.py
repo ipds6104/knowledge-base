@@ -1,15 +1,15 @@
 """kb/google_sheets.py — Google Sheets API connections and operations."""
 
 import os
-from google_auth_oauthlib.flow import InstalledAppFlow
-from google.auth.transport.requests import Request
-from google.oauth2.credentials import Credentials
-from googleapiclient.discovery import build
-
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 
 def get_sheets_service():
     """Menginisialisasi Sheets API service dengan OAuth 2.0."""
+    from google_auth_oauthlib.flow import InstalledAppFlow
+    from google.auth.transport.requests import Request
+    from google.oauth2.credentials import Credentials
+    from googleapiclient.discovery import build
+
     creds = None
     if os.path.exists('token.json'):
         creds = Credentials.from_authorized_user_file('token.json', SCOPES)

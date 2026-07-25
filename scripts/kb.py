@@ -25,6 +25,7 @@ from kb import (
     cmd_auto_update,
     cmd_chat,
     cmd_setup,
+    cmd_sqllab,
     whoami_str,
 )
 
@@ -37,6 +38,22 @@ def main():
         formatter_class=argparse.RawTextHelpFormatter,
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
+
+    # 10. SQLLAB command
+    parser_sqllab = subparsers.add_parser(
+        "sqllab", help="Penarikan, analisis 2-view, dan penyiapan berkas verifikasi RT SQL Lab SE2026."
+    )
+    parser_sqllab.add_argument(
+        "sqllab_subcommand",
+        choices=["sync", "pull", "pull-microdata", "pull-completed", "report", "print-prep"],
+        help="Subcommand: 'sync' (workflow otomatis 5-step penuh), 'pull' (tarik massal agregat), 'pull-microdata' (tarik microdata CSV), 'pull-completed' (tarik CSV Sub-SLS selesai), 'report' (laporan 2-view), 'print-prep' (penyiapan PDF verifikasi RT)"
+    )
+    parser_sqllab.add_argument(
+        "--min-not-found", "-m",
+        type=int, default=5,
+        help="Batas minimal kasus Tidak Ditemukan untuk SLS Siap Cetak (default: 5)"
+    )
+
 
     # 0. WHOAMI command
     subparsers.add_parser(
@@ -169,7 +186,7 @@ def main():
     parser_mon.add_argument(
         "--pml-40",
         action="store_true",
-        help="Tampilkan ringkasan PML yang mencapai progres 40% per kabupaten dan rincian detail PML Mempawah."
+        help="Tampilkan ringkasan PML yang mencapai progres 40%% per kabupaten dan rincian detail PML Mempawah."
     )
     parser_mon.add_argument(
         "--anomaly",
@@ -277,6 +294,20 @@ def main():
         print(whoami_str())
     elif args.command == "setup":
         cmd_setup(args)
+    elif args.command == "sqllab":
+        if args.sqllab_subcommand == "sync":
+            cmd_sqllab.cmd_sqllab_sync(args)
+        elif args.sqllab_subcommand == "pull":
+            cmd_sqllab.cmd_sqllab_pull(args)
+        elif args.sqllab_subcommand == "pull-microdata":
+            cmd_sqllab.cmd_sqllab_pull_microdata(args)
+        elif args.sqllab_subcommand == "pull-completed":
+            cmd_sqllab.cmd_sqllab_pull_completed_subsls(args)
+        elif args.sqllab_subcommand == "report":
+            cmd_sqllab.cmd_sqllab_report(args)
+        elif args.sqllab_subcommand == "print-prep":
+            cmd_sqllab.cmd_sqllab_print_prep(args)
+
 
 
 if __name__ == "__main__":

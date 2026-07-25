@@ -431,4 +431,14 @@ Berikut adalah daftar PPL dengan rasio usaha keluarga Non-Aktif (Closed / Not Fo
     *   Melaporkan **96.32%** usaha keluarga sebagai Non-Aktif (262 dari 272 usaha). Angka ini menunjukkan deviasi ekstrem sebesar $+3.6\sigma$.
     *   *Tindakan*: Lakukan penahanan dokumen dan *reject* massal pada SLS yang dikelola Selvia untuk diteliti ulang di lapangan.
 
+---
+
+## Dokumen Referensi & Integrasi Teknis
+
+* 📄 **[Panduan Integrasi Superset SQL Lab & Kamus Data FASIH SE 2026](file:///home/ihza/Projects/knowledge-base/kegiatan/sensus-ekonomi-2026/2026/panduan-sql-lab-fasih-se2026.md)**  
+  Mekanisme teknis eksekusi SQL pada Superset API, limitasi kritis (`SELECT *` dilarang, max 1000 baris, max 25 kolom), strategi query paralel `Promise.all()`, serta Data Dictionary lengkap (12 tabel, 773 variabel kuesioner SE2026).
+* 📄 **[Ketentuan Non-Disclosure Agreement (NDA) FASIH-DATA SE2026](file:///home/ihza/Projects/knowledge-base/kegiatan/sensus-ekonomi-2026/2026/nda-fasih-data-se2026.md)**  
+  10 klausul pengamanan data dan aturan kerahasiaan BPS RI untuk aktivasi akun FASIH-DATA.
+
+
 

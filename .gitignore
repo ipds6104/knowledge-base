@@ -6,9 +6,32 @@ __pycache__/
 # C extensions
 *.so
 
-# Environment files
-.env
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Google OAuth secrets
+# Environment & Authentication Secrets
+.env
 credentials.json
 token.json
+data/cookies/
+*.cookie
+
+# Data Sensitif & Microdata By Name By Address (BNBA) — Sensus Ekonomi & Kegiatan BPS
+*_tidak_ditemukan_*.csv
+*keluarga_tidak_ditemukan*
+*usaha_tidak_ditemukan*
+subsls_selesai_sqllab_*.csv
+
+# Cache & Output Tergenerasi / PDF Verifikasi
+pdf_verifikasi_rt*/
+sqllab_monitoring/
+temp_html_rt/
+sample_lembar_verifikasi_*
+*_cache*.json
+*.pdf
+scratch/
+
+
