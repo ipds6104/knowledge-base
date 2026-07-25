@@ -188,7 +188,9 @@ async function fetchAllChunks(cookieStr, csrfToken, totalLimit = 3000) {
 
 ## 5. 📖 Kamus Data (Data Dictionary) Utama SE 2026
 
-Database Superset SE2026 (`tgr_fd68e454`) terdiri atas 12 tabel. Dua tabel utama yang paling sering digunakan untuk monitoring dan analisis responden adalah:
+Rujukan skema database lengkap 12 tabel dengan 1.000+ variabel dan contoh nilai (*sample data*) didokumentasikan secara terpisah pada **[Kamus Data Resmi FASIH SE2026 (data-dictionary-se2026.md)](file:///home/ihza/Projects/knowledge-base/kegiatan/sensus-ekonomi-2026/2026/data-dictionary-se2026.md)**.
+
+Empat tabel utama yang paling sering digunakan untuk monitoring dan ekstraksi responden adalah:
 
 ### A. Tabel `base_table_assignment` (Agregasi Progres & Petugas)
 
