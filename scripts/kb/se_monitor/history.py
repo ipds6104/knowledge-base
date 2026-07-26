@@ -6,7 +6,7 @@ from pathlib import Path
 
 from ..colors import Colors
 
-HISTORY_PATH = Path("kegiatan/sensus-ekonomi-2026/2026/monitoring_history.json")
+HISTORY_PATH = Path("kegiatan/sensus-ekonomi-2026/2026/outputs/monitoring_history.json")
 MAX_HISTORY  = 100
 
 

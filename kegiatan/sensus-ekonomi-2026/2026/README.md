@@ -12,11 +12,14 @@ deadlines:
   - tanggal: "2026-06-15"
     kegiatan: "Mulai Pendataan Lapangan (Door-to-Door / CAPI)"
     status: "selesai"
+  - tanggal: "2026-07-26"
+    kegiatan: "Rakornas Evaluasi & Monitoring Pelaksanaan Lapangan SE2026 di Surabaya"
+    status: "selesai"
   - tanggal: "2026-07-31"
     kegiatan: "Batas Akhir Pengisian Kuesioner Mandiri (Online)"
     status: "belum"
-  - tanggal: "2026-08-15"
-    kegiatan: "Target Ketua SE BPS Kab Mempawah: Selesai Submit Semua Dokumen CAPI"
+  - tanggal: "2026-08-17"
+    kegiatan: "Target Selesai Lapangan Internal Rakornas BPS RI (Buffer 2 Minggu)"
     status: "belum"
   - tanggal: "2026-08-31"
     kegiatan: "Batas Akhir Pendataan Lapangan (Door-to-Door / CAPI)"
@@ -26,6 +29,10 @@ deadlines:
 
 ## Deskripsi Kegiatan
 Sensus Ekonomi 2026 (SE2026) merupakan kegiatan 10-tahunan BPS yang bertujuan untuk menyajikan data dasar seluruh kegiatan ekonomi (kecuali sektor pertanian) di wilayah NKRI. Di tingkat Kabupaten Mempawah, pengorganisasian lapangan dipimpin oleh PJ-Kuda, yang membawahi beberapa PML (Pengawas/Pemeriksa), dan masing-masing PML membawahi beberapa PPL (Pencacah Lapangan).
+
+> [!IMPORTANT]
+> **Dokumen Arahan Rakornas Surabaya (26 Juli 2026)**:  
+> Untuk panduan operasional pergeseran ke penyisiran door-to-door, SOP re-validasi 7 jenis anomali data, formula IKS, dan penjadwalan query SQL Lab Superset, lihat [rakornas-surabaya-26-juli-2026.md](file:///home/ihza/Projects/knowledge-base/kegiatan/sensus-ekonomi-2026/2026/docs/rakornas-surabaya-26-juli-2026.md).
 
 ## Monitoring Progres Lapangan
 Guna memastikan kelancaran progres pendataan yang dilakukan oleh PPL serta ketepatan waktu verifikasi oleh PML, telah disediakan utilitas monitoring otomatis.
@@ -246,7 +253,7 @@ Berdasarkan data yang dibekukan per 15 Juli 2026, persentase penyelesaian verifi
     *   PPL Muhammad Ade Riyadi (wilayah pendataan Sungai Purun Kecil) mengalami duka cita (ayah kandung wafat per 16 Juli 2026). Sisa wilayah tinggal 2 RT dan diberikan permakluman keterlambatan penyelesaian tugas lapangan selama beberapa hari ke depan.
 *   **Akses Database FASIH-DATA (NDA & Keamanan Informasi)**:
     *   *Kebijakan*: Untuk menjaga keamanan informasi dan mematuhi UU Pelindungan Data Pribadi (UU PDP), akses ke raw database FASIH-DATA saat ini dinonaktifkan sementara oleh Direktorat SIS.
-    *   *Tindakan*: Personel yang terdaftar sebagai Pengguna FASIH DATA wajib mengunduh, menandatangani, dan mengunggah dokumen Non-Disclosure Agreement (NDA) melalui tautan [s.bps.go.id/ndasqllab](https://s.bps.go.id/ndasqllab) agar akses database diaktifkan kembali. Rincian 10 klausul NDA, contoh dokumen Kabupaten Sanggau, dan panduan pengisian selengkapnya dapat dibaca di berkas [nda-fasih-data-se2026.md](nda-fasih-data-se2026.md).
+    *   *Tindakan*: Personel yang terdaftar sebagai Pengguna FASIH DATA wajib mengunduh, menandatangani, dan mengunggah dokumen Non-Disclosure Agreement (NDA) melalui tautan [s.bps.go.id/ndasqllab](https://s.bps.go.id/ndasqllab) agar akses database diaktifkan kembali. Rincian 10 klausul NDA, contoh dokumen Kabupaten Sanggau, dan panduan pengisian selengkapnya dapat dibaca di berkas [nda-fasih-data-se2026.md](docs/nda-fasih-data-se2026.md).
 
 ### 3. Struktur Schema Database & SQL Lab (FASIH-DATA)
 Bagi pengguna terdaftar yang memerlukan akses query langsung pada database SQL Lab, berikut struktur data yang tersedia:
@@ -274,7 +281,7 @@ Bagi pengguna terdaftar yang memerlukan akses query langsung pada database SQL L
     *   *Panduan Teknis FASIH DATA*: [s.bps.go.id/fasih_data_se2026](http://s.bps.go.id/fasih_data_se2026).
 
 ### 4. Kebijakan Penanganan Anomali & Penilaian Ukuran Kualitas (UK)
-Kebijakan penanganan missing values, anomali, dan indikator didasarkan pada Surat Dinas Resmi No. **B-69/07000/PR.100/2026** per tanggal 14 Juli 2026. (Salinan lengkap berkas dapat dibaca pada [surat-penanganan-anomali-kualitas-data-se2026.md](surat-penanganan-anomali-kualitas-data-se2026.md)).
+Kebijakan penanganan missing values, anomali, dan indikator didasarkan pada Surat Dinas Resmi No. **B-69/07000/PR.100/2026** per tanggal 14 Juli 2026. (Salinan lengkap berkas dapat dibaca pada [surat-penanganan-anomali-kualitas-data-se2026.md](docs/surat-penanganan-anomali-kualitas-data-se2026.md)).
 
 Berikut rangkuman ketentuan teknis penanganan kualitas data:
 *   **Ketentuan Missing Values**:
@@ -435,9 +442,15 @@ Berikut adalah daftar PPL dengan rasio usaha keluarga Non-Aktif (Closed / Not Fo
 
 ## Dokumen Referensi & Integrasi Teknis
 
-* 📄 **[Panduan Integrasi Superset SQL Lab & Kamus Data FASIH SE 2026](file:///home/ihza/Projects/knowledge-base/kegiatan/sensus-ekonomi-2026/2026/panduan-sql-lab-fasih-se2026.md)**  
+* 📄 **[Kamus Data & Skema Database FASIH SE2026](file:///home/ihza/Projects/knowledge-base/kegiatan/sensus-ekonomi-2026/2026/docs/data-dictionary-se2026.md)**  
+  Dokumentasi 12 tabel database FASIH (`tgr_fd68e454`), tipe data kolom, keterangan rincian kuesioner, serta contoh data (*sample values*).
+* 📄 **[Template & Struktur Kuesioner SE2026](file:///home/ihza/Projects/knowledge-base/kegiatan/sensus-ekonomi-2026/2026/docs/template-kuesioner-se2026.md)**  
+  Struktur variabel kuesioner lengkap SE2026 beserta pengelompokannya.
+* 📄 **[Dokumentasi Superset SQL Crawler SE2026](file:///home/ihza/Projects/knowledge-base/kegiatan/sensus-ekonomi-2026/2026/docs/superset-sql-crawler-se2026.md)**  
+  Panduan dan skrip crawling otomatis metadata skema database dari Superset SQL Lab API.
+* 📄 **[Panduan Integrasi Superset SQL Lab & Kamus Data FASIH SE 2026](file:///home/ihza/Projects/knowledge-base/kegiatan/sensus-ekonomi-2026/2026/docs/panduan-sql-lab-fasih-se2026.md)**  
   Mekanisme teknis eksekusi SQL pada Superset API, limitasi kritis (`SELECT *` dilarang, max 1000 baris, max 25 kolom), strategi query paralel `Promise.all()`, serta Data Dictionary lengkap (12 tabel, 773 variabel kuesioner SE2026).
-* 📄 **[Ketentuan Non-Disclosure Agreement (NDA) FASIH-DATA SE2026](file:///home/ihza/Projects/knowledge-base/kegiatan/sensus-ekonomi-2026/2026/nda-fasih-data-se2026.md)**  
+* 📄 **[Ketentuan Non-Disclosure Agreement (NDA) FASIH-DATA SE2026](file:///home/ihza/Projects/knowledge-base/kegiatan/sensus-ekonomi-2026/2026/docs/nda-fasih-data-se2026.md)**  
   10 klausul pengamanan data dan aturan kerahasiaan BPS RI untuk aktivasi akun FASIH-DATA.
 
 

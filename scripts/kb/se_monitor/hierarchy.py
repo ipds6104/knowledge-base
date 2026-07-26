@@ -11,7 +11,7 @@ from pathlib import Path
 
 from ..colors import Colors
 
-ALOKASI_PATH = Path("kegiatan/sensus-ekonomi-2026/2026/Alokasi Petugas.csv")
+ALOKASI_PATH = Path("kegiatan/sensus-ekonomi-2026/2026/master_data/Alokasi Petugas.csv")
 
 
 def build_hierarchy(

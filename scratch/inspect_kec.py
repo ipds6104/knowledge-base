@@ -1,7 +1,7 @@
 import csv
 from pathlib import Path
 
-csv_path = Path("kegiatan/sensus-ekonomi-2026/2026/Alokasi Petugas.csv")
+csv_path = Path("kegiatan/sensus-ekonomi-2026/2026/master_data/Alokasi Petugas.csv")
 kec_counts = {}
 with open(csv_path, 'r', encoding='utf-8-sig') as f:
     reader = csv.DictReader(f)

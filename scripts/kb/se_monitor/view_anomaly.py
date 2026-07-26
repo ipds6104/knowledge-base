@@ -10,10 +10,10 @@ from .data import download_sheet, get_sls_metrics, compute_timeline, TARGET_DATE
 from .hierarchy import build_hierarchy
 
 # Paths
-ALOKASI_PATH = Path("kegiatan/sensus-ekonomi-2026/2026/Alokasi Petugas.csv")
-FAMILY_CACHE_PATH = Path("kegiatan/sensus-ekonomi-2026/2026/Pemutakhiran_Keluarga.csv")
-USAHA_PERUSAHAAN_CACHE = Path("kegiatan/sensus-ekonomi-2026/2026/Usaha_Perusahaan.csv")
-USAHA_KELUARGA_CACHE = Path("kegiatan/sensus-ekonomi-2026/2026/Usaha_Keluarga.csv")
+ALOKASI_PATH = Path("kegiatan/sensus-ekonomi-2026/2026/master_data/Alokasi Petugas.csv")
+FAMILY_CACHE_PATH = Path("kegiatan/sensus-ekonomi-2026/2026/master_data/Pemutakhiran_Keluarga.csv")
+USAHA_PERUSAHAAN_CACHE = Path("kegiatan/sensus-ekonomi-2026/2026/master_data/Usaha_Perusahaan.csv")
+USAHA_KELUARGA_CACHE = Path("kegiatan/sensus-ekonomi-2026/2026/master_data/Usaha_Keluarga.csv")
 
 def download_sheet_with_progress(url: str, dest_path: Path, label: str):
     print(f"{Colors.BLUE}Mengunduh data {label} dari Google Sheets...{Colors.ENDC}")

@@ -77,7 +77,7 @@ Berdasarkan dinamika teknis aplikasi FASIH SM menjelang pelaksanaan pemutakhiran
 Untuk memanfaatkan data mikro hasil pencacahan SE2026 pada 48 Sub-SLS sampel Sakernas yang beririsan, penarikan data telah dibakukan menggunakan skrip otomatis SQL Lab API:
 
 * **Skrip Ekstraktor Otomatis**: [scripts/extract_sakernas_intersect.py](file:///home/ihza/Projects/knowledge-base/scripts/extract_sakernas_intersect.py)
-* **Kamus Data & Spesifikasi Query SQL**: Merujuk pada dokumentasi resmi [Panduan Integrasi Superset SQL Lab & Kamus Data FASIH SE 2026](file:///home/ihza/Projects/knowledge-base/kegiatan/sensus-ekonomi-2026/2026/panduan-sql-lab-fasih-se2026.md) (khususnya Tabel `nested_dtsen` untuk data Keluarga dan `nested_dtsen_var` untuk KRT/ART).
+* **Kamus Data & Spesifikasi Query SQL**: Merujuk pada dokumentasi resmi [Panduan Integrasi Superset SQL Lab & Kamus Data FASIH SE 2026](file:///home/ihza/Projects/knowledge-base/kegiatan/sensus-ekonomi-2026/2026/docs/panduan-sql-lab-fasih-se2026.md) (khususnya Tabel `nested_dtsen` untuk data Keluarga dan `nested_dtsen_var` untuk KRT/ART).
 * **Perintah Penarikan**:
   ```bash
   python3 scripts/extract_sakernas_intersect.py

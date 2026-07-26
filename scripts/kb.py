@@ -201,6 +201,12 @@ def main():
         help="Cari dan tampilkan tren harian untuk PPL tertentu berdasarkan arsip data.",
     )
 
+    # 5b. SE-SCHEDULE command
+    subparsers.add_parser(
+        "se-schedule",
+        help="Evaluasi bentrokan jadwal, hari efektif, & penjadwalan query SQL Lab SE2026."
+    )
+
     # 6. LATSAR command
     parser_latsar = subparsers.add_parser(
         "latsar", help="Penarikan dan sinkronisasi jadwal Latsar CPNS dari Google Sheets."
@@ -282,6 +288,9 @@ def main():
         cmd_convert(args)
     elif args.command == "se-monitor":
         cmd_se_monitor(args)
+    elif args.command == "se-schedule":
+        from kb.se_monitor.schedule_checker import analyze_schedule_conflicts
+        analyze_schedule_conflicts()
     elif args.command == "latsar":
         cmd_latsar(args)
     elif args.command == "sync-sheets":

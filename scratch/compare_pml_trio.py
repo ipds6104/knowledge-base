@@ -23,7 +23,7 @@ def main():
     sheet_map, _, data_src = download_sheet()
     pj_kuda_groups, sls_info, has_alokasi = build_hierarchy()
     if not has_alokasi:
-        print("Error: Alokasi Petugas.csv tidak ditemukan."); return
+        print("Error: master_data/Alokasi Petugas.csv tidak ditemukan."); return
 
     elapsed_days, total_days, expected_pct = compute_timeline()
 

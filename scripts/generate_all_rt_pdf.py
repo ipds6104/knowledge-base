@@ -9,13 +9,13 @@ from collections import defaultdict
 from concurrent.futures import ProcessPoolExecutor, as_completed
 
 BASE_DIR = 'kegiatan/sensus-ekonomi-2026/2026'
-ALOKASI_CSV = os.path.join(BASE_DIR, 'Alokasi Petugas.csv')
+ALOKASI_CSV = os.path.join(BASE_DIR, 'master_data', 'Alokasi Petugas.csv')
 
 def get_latest_csv(pattern_filename, default_filename):
-    latest_path = os.path.join(BASE_DIR, pattern_filename)
+    latest_path = os.path.join(BASE_DIR, 'outputs', pattern_filename)
     if os.path.exists(latest_path):
         return latest_path
-    return os.path.join(BASE_DIR, default_filename)
+    return os.path.join(BASE_DIR, 'outputs', default_filename)
 
 KEL_CSV = get_latest_csv('microdata_tidak_ditemukan_6104_latest.csv', 'keluarga_tidak_ditemukan_6104_20260715030051.csv')
 USAHA_CSV = get_latest_csv('usaha_tidak_ditemukan_6104_latest.csv', 'usaha_tidak_ditemukan_6104_20260716030225.csv')
@@ -33,7 +33,7 @@ def clean_filename_part(text):
 
 def get_logo_html():
     import base64
-    logo_path = os.path.join(BASE_DIR, 'logo_bps.svg')
+    logo_path = os.path.join(BASE_DIR, 'assets', 'logo_bps.svg')
     if not os.path.exists(logo_path):
         logo_path = os.path.join(os.path.dirname(BASE_DIR), 'data', 'logo_bps.svg')
     if os.path.exists(logo_path):
@@ -462,7 +462,7 @@ def main():
 
     # Load daftar subsls_selesai.csv jika --only-completed aktif
     completed_codes = set()
-    subsls_selesai_file = os.path.join(BASE_DIR, 'subsls_selesai.csv')
+    subsls_selesai_file = os.path.join(BASE_DIR, 'outputs', 'subsls_selesai.csv')
     if args.only_completed and os.path.exists(subsls_selesai_file):
         with open(subsls_selesai_file, encoding='utf-8-sig') as f:
             for r in csv.DictReader(f):

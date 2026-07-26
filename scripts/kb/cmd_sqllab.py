@@ -22,7 +22,7 @@ for d in [SQLLAB_DIR, CSV_DIR, PDF_DIR, CACHE_DIR]:
 
 CACHE_FILE = os.path.join(CACHE_DIR, "monitoring_sqllab_cache.json")
 SUBSLS_SELESAI_CSV = os.path.join(CSV_DIR, "subsls_selesai.csv")
-SUBSLS_SELESAI_ROOT_CSV = os.path.join(SE26_DIR, "subsls_selesai.csv")
+SUBSLS_SELESAI_ROOT_CSV = os.path.join(SE26_DIR, "outputs", "subsls_selesai.csv")
 FASIH_SYNC_DIR = "/home/ihza/Projects/fasih-sync-monitoring"
 
 
@@ -76,14 +76,15 @@ def cmd_sqllab_pull(args):
     """Subcommand: kb sqllab pull — Penarikan massal data agregat SLS Mempawah dari SQL Lab BPS."""
     print("🔄 [SQL Lab Pull] Menarik data agregat real-time SLS Kabupaten Mempawah (6104)...")
 
-    # Query agregasi SLS memuat data submitted & external_done (Mengecualikan status DRAFT)
+    # Catatan Limitasi OLTP: Assignment berstatus OPEN belum ada di SQL Lab (baru ada jika minimal berstatus DRAFT).
+    # Oleh karena itu COUNT(assignment_id) merepresentasikan total_worked_assignments, BUKAN total target alokasi sejati.
     sql = """
     SELECT 
       level_6_full_code,
       MAX(level_5_full_code) AS level_5_full_code,
       MAX(level_3_name) AS kecamatan,
       MAX(level_5_name) AS nama_sls,
-      COUNT(assignment_id) AS total_target,
+      COUNT(assignment_id) AS total_worked_assignments,
       COUNT(CASE WHEN external_done = '1' THEN 1 END) AS total_external_done,
       COUNT(CASE WHEN assignment_status_alias = 'SUBMITTED BY Pencacah' THEN 1 END) AS submitted_pencacah,
       COUNT(CASE WHEN assignment_status_alias = 'APPROVED BY Pengawas' THEN 1 END) AS approved_pengawas,
@@ -164,7 +165,7 @@ def cmd_sqllab_pull_microdata(args):
     # Simpan ke CSV microdata
     assign_csv_list = [
         os.path.join(CSV_DIR, "microdata_tidak_ditemukan_6104_latest.csv"),
-        os.path.join(SE26_DIR, "microdata_tidak_ditemukan_6104_latest.csv")
+        os.path.join(SE26_DIR, "outputs", "microdata_tidak_ditemukan_6104_latest.csv")
     ]
     if all_assignment_rows:
         fieldnames = list(all_assignment_rows[0].keys())
@@ -215,7 +216,7 @@ def cmd_sqllab_pull_microdata(args):
 
     usaha_csv_list = [
         os.path.join(CSV_DIR, "usaha_tidak_ditemukan_6104_latest.csv"),
-        os.path.join(SE26_DIR, "usaha_tidak_ditemukan_6104_latest.csv")
+        os.path.join(SE26_DIR, "outputs", "usaha_tidak_ditemukan_6104_latest.csv")
     ]
     if all_usaha_rows:
         fieldnames = list(all_usaha_rows[0].keys())
@@ -237,7 +238,7 @@ def cmd_sqllab_pull_completed_subsls(args):
     
     # Load Alokasi Petugas untuk pengayaan PPL, PML, PJ-Kuda
     alokasi = {}
-    alokasi_file = os.path.join(SE26_DIR, "Alokasi Petugas.csv")
+    alokasi_file = os.path.join(SE26_DIR, "master_data", "Alokasi Petugas.csv")
     if os.path.exists(alokasi_file):
         with open(alokasi_file, encoding="utf-8-sig") as f:
             for r in csv.DictReader(f):
@@ -295,7 +296,7 @@ def cmd_sqllab_pull_completed_subsls(args):
     # Ekspor ke subsls_selesai.csv & subsls_selesai_sqllab_latest.csv
     out_files = [
         SUBSLS_SELESAI_CSV,
-        os.path.join(SE26_DIR, "subsls_selesai_sqllab_latest.csv")
+        os.path.join(SE26_DIR, "outputs", "subsls_selesai_sqllab_latest.csv")
     ]
 
     fieldnames = list(csv_rows[0].keys())
@@ -374,7 +375,7 @@ def cmd_sqllab_report(args):
     # Ekspor seluruh peringkat ke CSV subsls_tidak_ditemukan_ranking.csv
     import csv
     alokasi = {}
-    alokasi_file = os.path.join(SE26_DIR, "Alokasi Petugas.csv")
+    alokasi_file = os.path.join(SE26_DIR, "master_data", "Alokasi Petugas.csv")
     if os.path.exists(alokasi_file):
         with open(alokasi_file, encoding="utf-8-sig") as f:
             for r in csv.DictReader(f):
@@ -411,7 +412,7 @@ def cmd_sqllab_report(args):
 
     out_ranking_csv_list = [
         os.path.join(CSV_DIR, "subsls_tidak_ditemukan_ranking.csv"),
-        os.path.join(SE26_DIR, "subsls_tidak_ditemukan_ranking.csv")
+        os.path.join(SE26_DIR, "outputs", "subsls_tidak_ditemukan_ranking.csv")
     ]
     if ranking_csv_rows:
         fieldnames = list(ranking_csv_rows[0].keys())

@@ -7,8 +7,8 @@ from pathlib import Path
 from ..colors import Colors
 
 # Paths
-REALISASI_PATH = Path("kegiatan/sensus-ekonomi-2026/2026/Realisasi - 6104.csv")
-ALOKASI_6100_PATH = Path("kegiatan/sensus-ekonomi-2026/2026/Alokasi_6100.csv")
+REALISASI_PATH = Path("kegiatan/sensus-ekonomi-2026/2026/master_data/Realisasi - 6104.csv")
+ALOKASI_6100_PATH = Path("kegiatan/sensus-ekonomi-2026/2026/master_data/Alokasi_6100.csv")
 
 def download_alokasi_6100():
     url = "https://docs.google.com/spreadsheets/d/1JNwyb7TsPmSsGl3o1zNTSc-3wzFwIr_t3HPz_a1CVVQ/export?format=csv&gid=1206035192"

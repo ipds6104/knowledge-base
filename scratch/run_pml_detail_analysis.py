@@ -30,7 +30,7 @@ def main():
     pj_kuda_groups, sls_info, has_alokasi = build_hierarchy()
     
     if not has_alokasi:
-        print("Error: Alokasi Petugas.csv tidak ditemukan.")
+        print("Error: master_data/Alokasi Petugas.csv tidak ditemukan.")
         return
 
     # 2. Map SLS lists for each PML and each PPL

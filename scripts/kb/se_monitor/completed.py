@@ -28,7 +28,7 @@ def export_completed_subsls(sls_info: dict, sheet_map: dict) -> None:
     # Urutkan berdasarkan kecamatan dan nama SLS
     completed_sls.sort(key=lambda x: (x["Kecamatan"], x["Nama SLS"]))
     
-    export_path = Path("kegiatan/sensus-ekonomi-2026/2026/subsls_selesai.csv")
+    export_path = Path("kegiatan/sensus-ekonomi-2026/2026/outputs/subsls_selesai.csv")
     try:
         export_path.parent.mkdir(parents=True, exist_ok=True)
         with open(export_path, 'w', newline='', encoding='utf-8') as f:

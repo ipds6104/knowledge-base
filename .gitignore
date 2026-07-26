@@ -27,6 +27,7 @@ subsls_selesai_sqllab_*.csv
 prelist_updating_sakernas_se2026_intersect.csv
 *_intersect.csv
 kegiatan/sakernas/2026-08/*.csv
+kegiatan/sakernas/2026-08/sls_chunks/
 
 # Cache & Output Tergenerasi / PDF Verifikasi
 pdf_verifikasi_rt*/

@@ -14,14 +14,14 @@ SHEET_URL = (
     "1JNwyb7TsPmSsGl3o1zNTSc-3wzFwIr_t3HPz_a1CVVQ/"
     "export?format=csv&gid=1834012774"
 )
-CACHE_PATH = Path("kegiatan/sensus-ekonomi-2026/2026/Realisasi - 6104.csv")
+CACHE_PATH = Path("kegiatan/sensus-ekonomi-2026/2026/master_data/Realisasi - 6104.csv")
 
 ALOKASI_URL = (
     "https://docs.google.com/spreadsheets/d/"
     "1JNwyb7TsPmSsGl3o1zNTSc-3wzFwIr_t3HPz_a1CVVQ/"
     "export?format=csv&gid=191266181"
 )
-ALOKASI_CACHE_PATH = Path("kegiatan/sensus-ekonomi-2026/2026/Alokasi Petugas.csv")
+ALOKASI_CACHE_PATH = Path("kegiatan/sensus-ekonomi-2026/2026/master_data/Alokasi Petugas.csv")
 
 START_DATE  = datetime.strptime("2026-06-15", "%Y-%m-%d").date()
 TARGET_DATE = datetime.strptime("2026-08-15", "%Y-%m-%d").date()
