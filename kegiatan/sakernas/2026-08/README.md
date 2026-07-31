@@ -80,8 +80,15 @@ Untuk memanfaatkan data mikro hasil pencacahan SE2026 pada 48 Sub-SLS sampel Sak
 * **Kamus Data & Spesifikasi Query SQL**: Merujuk pada dokumentasi resmi [Panduan Integrasi Superset SQL Lab & Kamus Data FASIH SE 2026](file:///home/ihza/Projects/knowledge-base/kegiatan/sensus-ekonomi-2026/2026/docs/panduan-sql-lab-fasih-se2026.md) (khususnya Tabel `nested_dtsen` untuk data Keluarga dan `nested_dtsen_var` untuk KRT/ART).
 * **Perintah Penarikan**:
   ```bash
+  # Mode Cepat (Menggunakan cache lokal SLS chunks yang sudah ada)
   python3 scripts/extract_sakernas_intersect.py
+  
+  # Mode Force Refresh (Menarik data ulang secara utuh dari server Superset)
+  python3 scripts/extract_sakernas_intersect.py --force
   ```
-* **Output Berkas**: Hasil ekstraksi otomatis disimpan ke `prelist_updating_sakernas_se2026_intersect.csv` di folder kegiatan ini.
+* **Output Berkas**: Hasil penarikan otomatis disimpan ke:
+  * **CSV**: [prelist_updating_sakernas_se2026_intersect_final.csv](prelist_updating_sakernas_se2026_intersect_final.csv)
+  * **Excel (Styled)**: [prelist_updating_sakernas_se2026_intersect_final.xlsx](prelist_updating_sakernas_se2026_intersect_final.xlsx) (Dilengkapi format header slate-gray, gridlines, auto-column width, dan freeze-panes).
+
 
 

@@ -442,16 +442,50 @@ Berikut adalah daftar PPL dengan rasio usaha keluarga Non-Aktif (Closed / Not Fo
 
 ## Dokumen Referensi & Integrasi Teknis
 
-* 📄 **[Kamus Data & Skema Database FASIH SE2026](file:///home/ihza/Projects/knowledge-base/kegiatan/sensus-ekonomi-2026/2026/docs/data-dictionary-se2026.md)**  
+* 📄 **[Kamus Data & Skema Database FASIH SE2026](docs/data-dictionary-se2026.md)**  
   Dokumentasi 12 tabel database FASIH (`tgr_fd68e454`), tipe data kolom, keterangan rincian kuesioner, serta contoh data (*sample values*).
-* 📄 **[Template & Struktur Kuesioner SE2026](file:///home/ihza/Projects/knowledge-base/kegiatan/sensus-ekonomi-2026/2026/docs/template-kuesioner-se2026.md)**  
+* 📄 **[Template & Struktur Kuesioner SE2026](docs/template-kuesioner-se2026.md)**  
   Struktur variabel kuesioner lengkap SE2026 beserta pengelompokannya.
-* 📄 **[Dokumentasi Superset SQL Crawler SE2026](file:///home/ihza/Projects/knowledge-base/kegiatan/sensus-ekonomi-2026/2026/docs/superset-sql-crawler-se2026.md)**  
+* 📄 **[Dokumentasi Superset SQL Crawler SE2026](docs/superset-sql-crawler-se2026.md)**  
   Panduan dan skrip crawling otomatis metadata skema database dari Superset SQL Lab API.
-* 📄 **[Panduan Integrasi Superset SQL Lab & Kamus Data FASIH SE 2026](file:///home/ihza/Projects/knowledge-base/kegiatan/sensus-ekonomi-2026/2026/docs/panduan-sql-lab-fasih-se2026.md)**  
+* 📄 **[Panduan Integrasi Superset SQL Lab & Kamus Data FASIH SE 2026](docs/panduan-sql-lab-fasih-se2026.md)**  
   Mekanisme teknis eksekusi SQL pada Superset API, limitasi kritis (`SELECT *` dilarang, max 1000 baris, max 25 kolom), strategi query paralel `Promise.all()`, serta Data Dictionary lengkap (12 tabel, 773 variabel kuesioner SE2026).
-* 📄 **[Ketentuan Non-Disclosure Agreement (NDA) FASIH-DATA SE2026](file:///home/ihza/Projects/knowledge-base/kegiatan/sensus-ekonomi-2026/2026/docs/nda-fasih-data-se2026.md)**  
+* 📄 **[Ketentuan Non-Disclosure Agreement (NDA) FASIH-DATA SE2026](docs/nda-fasih-data-se2026.md)**  
   10 klausul pengamanan data dan aturan kerahasiaan BPS RI untuk aktivasi akun FASIH-DATA.
+
+---
+
+## 📈 Pembakuan Penarikan Data Progres Petugas (SE2026 Mempawah)
+
+Untuk melakukan pengawasan kualitas lapangan SE2026 di Kabupaten Mempawah, telah dibuat alur penarikan data progres terpadu berbasis model responsibilitas Pencacah. Penarikan data ini bersifat *seamless*, aman dari *timeout*, dan dilengkapi dengan sistem *auto-relogin* terintegrasi.
+
+### 1. Skrip Terlibat
+* **Skrip Utama**: [pull-progress-petugas.js](../../../../fasih-sync-monitoring/src/pull-progress-petugas.js)
+  * Bertanggung jawab untuk memvalidasi sesi, mendeteksi kedaluwarsa token/pengalihan Keycloak BPS SSO, login otomatis via Playwright headless browser, mengekstrak token CSRF baru dari halaman welcome superset (yang lebih ringan), mengeksekusi SQL ber-offset, melakukan rekonsiliasi data PPL, serta menyimpan hasilnya ke file CSV & Excel.
+* **Master Alokasi**: [Alokasi Petugas.csv](master_data/Alokasi%20Petugas.csv)
+  * Master alokasi unit tugas PPL untuk pembanding integritas jumlah SLS dan petugas di lapangan.
+* **Skrip Perbandingan**: [compare_allocation.py](../../../scratch/compare_allocation.py)
+  * Skrip analisis integrasi untuk memastikan keselarasan data tarikan dengan file master alokasi.
+
+### 2. Cara Eksekusi Penarikan Data
+Jalankan perintah berikut di direktori proyek pendukung:
+```bash
+# Pindah ke direktori project monitoring
+cd ../../../../fasih-sync-monitoring
+
+# Jalankan script utama (akan meng-update CSV dan Excel sekaligus)
+node src/pull-progress-petugas.js
+```
+
+### 3. Logika Ketahanan (Robustness Features)
+* **Auto-Relogin Pintar**: Jika query mendeteksi adanya pengalihan halaman Keycloak SSO (respons HTML) atau HTTP 401/403, skrip secara otomatis meluncurkan browser headless untuk memperbarui `storageState`, cookie, dan CSRF, lalu mengulangi query yang gagal secara transparan.
+* **Optimasi Kecepatan (Colocated Join & Filter Awal)**: Melakukan filter `level_2_full_code = '6104'` langsung di tingkat CTE kueri, sehingga proses sorting/grouping tabel besar responsibilitas hanya berjalan untuk regional Kabupaten Mempawah (mencegah *Gateway Timeout 504*).
+* **Fallback Draft (Anti-Missing SLS)**: Menggunakan logika `LEFT JOIN` dan `COALESCE` untuk memetakan penugasan berstatus `DRAFT` yang belum memiliki riwayat tugas di tabel responsibilitas. Hal ini menjamin tingkat kelengkapan data penarikan 100% cocok dengan master alokasi offline.
+
+### 4. Berkas Hasil Akhir
+* **CSV Progres**: [progress_petugas_se2026_mempawah.csv](outputs/progress_petugas_se2026_mempawah.csv)
+* **Excel Progres (Premium Styled)**: [progress_petugas_se2026_mempawah.xlsx](outputs/progress_petugas_se2026_mempawah.xlsx)
+
 
 
 

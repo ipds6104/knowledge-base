@@ -14,10 +14,14 @@ yarn-error.log*
 
 # Environment & Authentication Secrets
 .env
+.env.local
+.env.*.local
 credentials.json
 token.json
 data/cookies/
 *.cookie
+*.pem
+*.key
 
 # Data Sensitif & Microdata By Name By Address (BNBA) — Sensus Ekonomi & Kegiatan BPS
 *_tidak_ditemukan_*.csv
@@ -27,7 +31,15 @@ subsls_selesai_sqllab_*.csv
 prelist_updating_sakernas_se2026_intersect.csv
 *_intersect.csv
 kegiatan/sakernas/2026-08/*.csv
+kegiatan/sakernas/2026-08/*.xlsx
 kegiatan/sakernas/2026-08/sls_chunks/
+kegiatan/**/progress_petugas_se2026_mempawah*
+kegiatan/**/prelist_updating_sakernas_se2026_intersect_final*
+kegiatan/**/.~*
+kegiatan/**/*.xlsx
+kegiatan/sakernas/2026-08/test_write*
+kegiatan/sensus-ekonomi-2026/2026/master_data/archive/
+
 
 # Cache & Output Tergenerasi / PDF Verifikasi
 pdf_verifikasi_rt*/
@@ -38,4 +50,25 @@ sample_lembar_verifikasi_*
 *.pdf
 scratch/
 
+# Virtual Environments, Logs & Testing Artifacts
+.venv/
+venv/
+env/
+*.log
+.pytest_cache/
+.coverage
+htmlcov/
 
+# OS Junk & Editor Configurations
+.DS_Store
+Thumbs.db
+ehthumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Legacy Remote Agent Daemon & Scripts (Migrated to antigravity-repo-explorer Monorepo)
+agent-daemon/
+agent.py

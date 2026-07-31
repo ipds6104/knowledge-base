@@ -25,7 +25,7 @@ if os.path.basename(BASE_DIR) != "knowledge-base":
     if os.path.basename(BASE_DIR) == "scripts":
         BASE_DIR = os.path.dirname(BASE_DIR)
 
-FASIH_SYNC_DIR = "/home/ihza/Projects/fasih-sync-monitoring"
+FASIH_SYNC_DIR = os.path.abspath(os.path.join(BASE_DIR, "..", "fasih-sync-monitoring"))
 OUTPUT_DIR = os.path.join(BASE_DIR, "kegiatan", "sakernas", "2026-08")
 CHUNKS_DIR = os.path.join(OUTPUT_DIR, "sls_chunks")
 os.makedirs(CHUNKS_DIR, exist_ok=True)
@@ -53,6 +53,7 @@ FIELDNAMES = [
     "nama_sls",
     "kecamatan",
     "nama_kepala_keluarga",
+    "nik_kepala_keluarga",
     "no_urut_bangunan_keluarga",
     "keberadaan_keluarga",
     "pendidikan_krt",
@@ -103,6 +104,7 @@ def write_rows_to_chunk(sls_code, rows):
                 "nama_sls": r.get("nama_sls", ""),
                 "kecamatan": r.get("kecamatan", ""),
                 "nama_kepala_keluarga": r.get("nama_kepala_keluarga", ""),
+                "nik_kepala_keluarga": r.get("nik_kepala_keluarga", "-") or "-",
                 "no_urut_bangunan_keluarga": r.get("no_urut_bangunan_keluarga", ""),
                 "keberadaan_keluarga": r.get("keberadaan_keluarga", "1. Ditemukan") or "1. Ditemukan",
                 "pendidikan_krt": r.get("pendidikan_krt", "-") or "-",
@@ -115,22 +117,36 @@ def write_rows_to_chunk(sls_code, rows):
 def main():
     acquire_lock()
     try:
+        force_refresh = "--force" in sys.argv or "-f" in sys.argv
         print("==========================================================================================")
         print("🚀 [EXTRACT SAKERNAS INTERSECT DATA] HYBRID BATCH PIPELINE")
         print("==========================================================================================\n")
         print(f"📁 Folder Chunk Per-SLS : {CHUNKS_DIR}")
         print(f"📄 Berkas Akhir Gabungan : {OUTPUT_CSV}\n")
+        if force_refresh:
+            print("🔄 [FORCE REFRESH DETECTED] Membersihkan cache SLS chunks untuk penarikan data terbaru...\n")
+            for sls in SAMPLE_SLS_CODES:
+                chunk_file = os.path.join(CHUNKS_DIR, f"sls_{sls}.csv")
+                if os.path.exists(chunk_file):
+                    try:
+                        os.remove(chunk_file)
+                    except OSError:
+                        pass
 
         # Step 1: Filter SLS mana saja yang belum selesai ditarik (belum ada berkas chunk-nya atau isinya kosong)
         missing_sls = []
         for sls in SAMPLE_SLS_CODES:
             chunk_file = os.path.join(CHUNKS_DIR, f"sls_{sls}.csv")
-            if not os.path.exists(chunk_file) or os.path.getsize(chunk_file) < 150:
+            if not os.path.exists(chunk_file):
                 missing_sls.append(sls)
             else:
                 with open(chunk_file, encoding="utf-8-sig") as f:
-                    line_count = len(f.readlines()) - 1
-                print(f"   ⚡ Cache Hit: SLS {sls} ({line_count} keluarga)")
+                    lines = [line for line in f if line.strip()]
+                line_count = len(lines) - 1
+                if line_count <= 0:
+                    missing_sls.append(sls)
+                else:
+                    print(f"   ⚡ Cache Hit: SLS {sls} ({line_count} keluarga)")
 
         if missing_sls:
             print(f"\n🔄 Menarik data untuk {len(missing_sls)} SLS yang belum ter-cache...")
@@ -148,15 +164,17 @@ def main():
                   b.level_5_name AS nama_sls,
                   b.level_3_name AS kecamatan,
                   COALESCE(r.dtsen_nama_kk, b.data1) AS nama_kepala_keluarga,
+                  v.nik_dtsen AS nik_kepala_keluarga,
                   b.data2 AS alamat_bangunan,
                   b.data3 AS no_urut_bangunan_keluarga,
                   COALESCE(r.ada_keluarga_label, b.data9) AS keberadaan_keluarga,
-                  v.ijazah_label AS pendidikan_krt,
+                  va.ijazah_label AS pendidikan_krt,
                   r.telp_info AS no_hp,
                   b.assignment_status_alias AS status_dokumen
                 FROM base_table_assignment b
                 LEFT JOIN root_table r ON b.assignment_id = r.assignment_id
-                LEFT JOIN nested_dtsen_var v ON b.assignment_id = v.assignment_id AND v.no_urut_kk_var = '1'
+                LEFT JOIN nested_dtsen v ON b.assignment_id = v.assignment_id AND v.no_urut_kk = '1'
+                LEFT JOIN nested_dtsen_var va ON b.assignment_id = va.assignment_id AND va.no_urut_kk_var = '1'
                 WHERE b.level_6_full_code IN ({sls_in_clause})
                   AND b.assignment_status_alias != 'DRAFT'
                 ORDER BY b.level_6_full_code ASC, b.data1 ASC
@@ -170,19 +188,19 @@ def main():
                     try:
                         res = subprocess.run(cmd, cwd=FASIH_SYNC_DIR, capture_output=True, text=True, check=True)
                         stdout_text = res.stdout
-                        
-                        marker = "🟢 SQL Query berhasil dieksekusi!\n"
+                        marker = "🟢 SQL Query berhasil dieksekusi!"
                         marker_pos = stdout_text.find(marker)
-                        
                         if marker_pos != -1:
-                            json_text = stdout_text[marker_pos + len(marker):].strip()
-                            rows = json.loads(json_text)
+                            search_text = stdout_text[marker_pos:]
+                            start_idx = search_text.find("[")
+                            end_idx = search_text.rfind("]")
+                            if start_idx != -1 and end_idx != -1 and end_idx > start_idx:
+                                json_text = search_text[start_idx:end_idx + 1]
+                                rows = json.loads(json_text)
+                            else:
+                                raise ValueError("JSON array tidak ditemukan setelah marker eksekusi.")
                         else:
-                            start_idx = stdout_text.find("[\n  {")
-                            if start_idx == -1:
-                                start_idx = stdout_text.find("[{")
-                            end_idx = stdout_text.rfind("]")
-                            rows = json.loads(stdout_text[start_idx:end_idx + 1])
+                            raise ValueError(f"Marker SQL sukses tidak ditemukan dalam stdout: {stdout_text[:200]}")
                         
                         # Kelompokkan data per SLS lalu simpan ke chunk masing-masing
                         grouped_rows = {}
@@ -206,6 +224,9 @@ def main():
                             time.sleep(1)
                         else:
                             print(f"   ⚠️ Gagal menarik batch offset {offset} setelah 3 attempt: {e}", flush=True)
+                            if isinstance(e, subprocess.CalledProcessError):
+                                print(f"   [SUBPROCESS STDERR]:\n{e.stderr}", flush=True)
+                                print(f"   [SUBPROCESS STDOUT]:\n{e.stdout}", flush=True)
                             
                 if not success or (success and len(rows) < chunk_size):
                     break
@@ -241,6 +262,19 @@ def main():
             writer = csv.DictWriter(f, fieldnames=FIELDNAMES)
             writer.writeheader()
             writer.writerows(combined_rows)
+
+        # Konversi ke XLSX menggunakan Node.js script di fasih-sync-monitoring
+        print("\n📈 [EXCEL CONVERSION] Mengonversi berkas CSV ke Excel...", flush=True)
+        xlsx_file = os.path.join(OUTPUT_DIR, "prelist_updating_sakernas_se2026_intersect_final.xlsx")
+        node_script = os.path.join(FASIH_SYNC_DIR, "src", "csv-to-xlsx.js")
+        if os.path.exists(node_script):
+            try:
+                res = subprocess.run(["node", node_script, final_csv, xlsx_file], capture_output=True, text=True, check=True)
+                print(f"   🟢 {res.stdout.strip()}", flush=True)
+            except subprocess.CalledProcessError as e:
+                print(f"   ⚠️ Gagal melakukan konversi Excel: {e.stderr}", flush=True)
+        else:
+            print(f"   ⚠️ Skrip konversi Node.js tidak ditemukan di {node_script}", flush=True)
 
         # Hitung breakdown per Kecamatan
         kec_breakdown = {}

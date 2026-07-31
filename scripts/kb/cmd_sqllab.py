@@ -23,7 +23,7 @@ for d in [SQLLAB_DIR, CSV_DIR, PDF_DIR, CACHE_DIR]:
 CACHE_FILE = os.path.join(CACHE_DIR, "monitoring_sqllab_cache.json")
 SUBSLS_SELESAI_CSV = os.path.join(CSV_DIR, "subsls_selesai.csv")
 SUBSLS_SELESAI_ROOT_CSV = os.path.join(SE26_DIR, "outputs", "subsls_selesai.csv")
-FASIH_SYNC_DIR = "/home/ihza/Projects/fasih-sync-monitoring"
+FASIH_SYNC_DIR = os.path.abspath(os.path.join(BASE_DIR, "..", "fasih-sync-monitoring"))
 
 
 def run_node_sqllab_query(sql):

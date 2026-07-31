@@ -10,7 +10,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Prioritaskan credentials dari knowledge-base, fallback ke fasih-sync-monitoring
 const KB_ROOT = resolve(__dirname, "..");
-const FASIH_SYNC_DIR = "/home/ihza/Projects/fasih-sync-monitoring";
+const FASIH_SYNC_DIR = resolve(KB_ROOT, "..", "fasih-sync-monitoring");
 
 const CREDENTIALS_PATH = existsSync(resolve(KB_ROOT, "credentials.json"))
   ? resolve(KB_ROOT, "credentials.json")

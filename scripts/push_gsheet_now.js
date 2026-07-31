@@ -5,7 +5,7 @@ import { google } from "googleapis";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const KB_ROOT = resolve(__dirname, "..");
-const FASIH_SYNC_DIR = "/home/ihza/Projects/fasih-sync-monitoring";
+const FASIH_SYNC_DIR = resolve(KB_ROOT, "..", "fasih-sync-monitoring");
 
 const CREDENTIALS_PATH = resolve(FASIH_SYNC_DIR, "cerdas-486720-7bebb7cc9924.json");
 const SPREADSHEET_ID = "1QWwKu8VMg3jwTW6q1SShMBzS10jkBy6Y4wEd7IDWzb0";
