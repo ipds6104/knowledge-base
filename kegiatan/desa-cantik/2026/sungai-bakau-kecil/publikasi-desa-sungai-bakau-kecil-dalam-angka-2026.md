@@ -15,9 +15,9 @@ Data yang disajikan mencakup kondisi demografi kependudukan, tingkat pendidikan,
 Kepada semua pihak yang telah membantu terwujudnya publikasi ini, khususnya para Agen Statistik Desa dan Ketua RT se-Desa Sungai Bakau Kecil, kami sampaikan terima kasih dan penghargaan yang setinggi-tingginya.
 
 Sungai Bakau Kecil, Agustus 2026  
-**Plt. Kepala Desa Sungai Bakau Kecil**  
+**Pj. Kepala Desa Sungai Bakau Kecil**  
 
-<u>**RIANDI PRAYUDA**</u>
+<u>**AGUS JUNAIDI**</u>
 
 ---
 

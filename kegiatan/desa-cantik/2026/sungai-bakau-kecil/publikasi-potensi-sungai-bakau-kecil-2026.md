@@ -21,9 +21,9 @@ Data yang disajikan diharapkan dapat menjadi rujukan baku bagi Pemerintah Desa d
 Kami menyampaikan ucapan terima kasih dan penghargaan setinggi-tingginya kepada seluruh pihak yang telah membantu terwujudnya publikasi ini.
 
 Sungai Bakau Kecil, Agustus 2026  
-**PLT. KEPALA DESA SUNGAI BAKAU KECIL**  
+**PJ. KEPALA DESA SUNGAI BAKAU KECIL**  
 
-<u>**RIANDI PRAYUDA**</u>
+<u>**AGUS JUNAIDI**</u>
 
 ---
 
