@@ -23,7 +23,7 @@ Kami menyampaikan ucapan terima kasih dan penghargaan setinggi-tingginya kepada 
 Pasir Wan Salim, Agustus 2026  
 **LURAH PASIR WAN SALIM**  
 
-<u>**LURAH PASIR WAN SALIM**</u>
+<u>**H. MULYADI, S.H.I**</u>
 
 ---
 

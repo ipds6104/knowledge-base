@@ -80,7 +80,7 @@ DESA_CONFIGS = {
         "provinsi": "Kalimantan Barat",
         "kades_title": "Lurah Pasir Wan Salim",
         "kades_title_en": "Head of Pasir Wan Salim Urban Village",
-        "kades_name": "Lurah Pasir Wan Salim",
+        "kades_name": "H. Mulyadi, S.H.I",
         "gov_name": "Pemerintah Kelurahan Pasir Wan Salim",
         "gov_name_en": "Government of Pasir Wan Salim Urban Village",
         "pemberita": "Tim Pembina Desa Cantik BPS Kabupaten Mempawah",

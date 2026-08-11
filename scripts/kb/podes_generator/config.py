@@ -54,7 +54,7 @@ PODES_VILLAGE_CONFIGS = {
         "col_name": "Kelurahan Pasir Wan Salim (6104101001)",
         "kades_title": "Lurah Pasir Wan Salim",
         "kades_title_en": "Head of Pasir Wan Salim Urban Village",
-        "kades_name": "Lurah Pasir Wan Salim",
+        "kades_name": "H. Mulyadi, S.H.I",
         "gov_name": "Pemerintah Kelurahan Pasir Wan Salim",
         "gov_name_en": "Government of Pasir Wan Salim Urban Village",
         "kecamatan": "Mempawah Hilir",
