@@ -835,11 +835,7 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
         <tr><td>Sistem Informasi Desa (SID) / <i>Village Info System</i></td><td>{m.sistem_informasi_desa}</td></tr>
         <tr><td>Ketersediaan SPPG / <i>SPPG Status</i></td><td>{m.jumlah_sppg}</td></tr>
       </tbody>
-    </table>{meta_std}
-    <div style="margin-top: 40px; border-top: 2.5px solid #0b3c5d; padding-top: 20px; text-align: center;">
-      <h3 style="color: #0b3c5d; font-size: 13.5pt; font-weight: 900; tracking: 1px; margin: 0;">MENCERDASKAN BANGSA DENGAN DATA STATISTIK DESA</h3>
-      <p style="font-size: 8.8pt; color: #64748b; font-style: italic; margin-top: 2px;">Enlightening the Nation with Village Statistical Data</p>
-    </div>"""
+    </table>{meta_std}"""
 
     p_ch5_tbl1 = make_page_card("BAB V PEMERINTAHAN & KELEMBAGAAN", "CHAPTER V GOVT & INSTITUTIONS", "17", tbl_5_1, 27, show_header=True)
 
