@@ -1,7 +1,10 @@
 """kb/google_sheets.py — Google Sheets API connections and operations."""
 
 import os
-SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
+SCOPES = [
+    'https://www.googleapis.com/auth/spreadsheets',
+    'https://www.googleapis.com/auth/drive',
+]
 
 def get_sheets_service():
     """Menginisialisasi Sheets API service dengan OAuth 2.0."""

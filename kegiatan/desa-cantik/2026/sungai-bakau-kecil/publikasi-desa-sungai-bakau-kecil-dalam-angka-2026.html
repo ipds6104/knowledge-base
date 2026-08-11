@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Desa Sungai Bakau Kecil Dalam Angka 2026 / Sungai Bakau Kecil Village in Figures 2026</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    @page { size: A4; margin: 0; }
+
+    * { box-sizing: border-box; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      color: #2d3748;
+      background-color: #f8fafc;
+      margin: 0;
+      padding: 0;
+      font-size: 9pt;
+      line-height: 1.4;
+    }
+
+    p {
+      text-align: justify;
+      text-justify: inter-word;
+      line-height: 1.5;
+      margin-top: 0;
+    }
+
+    .page-container { max-width: 210mm; margin: 0 auto; background: #ffffff; }
+
+    .page-card {
+      width: 210mm;
+      height: 297mm;
+      padding: 15mm 20mm 15mm 20mm;
+      page-break-after: always;
+      page-break-inside: avoid;
+      position: relative;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .page-content { flex: 1; padding-bottom: 30px; position: relative; }
+
+    .running-header {
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: #eb8a3c;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+
+    .running-header.even { text-align: left; }
+    .running-header.odd { text-align: right; }
+
+    .running-header .en {
+      display: block;
+      font-style: italic;
+      font-weight: 600;
+      color: #eb8a3c;
+      margin-top: 1px;
+    }
+
+    .running-footer {
+      position: absolute;
+      bottom: 5mm;
+      left: 14mm;
+      right: 14mm;
+      font-size: 10.5pt;
+      font-weight: 800;
+      color: #eb8a3c;
+    }
+
+    .running-footer.even { text-align: left; }
+    .running-footer.odd { text-align: right; }
+
+    .cover-box {
+      background: linear-gradient(135deg, #0b3c5d 0%, #1e3a8a 50%, #eb8a3c 100%);
+      color: #ffffff;
+      padding: 45px 25px;
+      border-radius: 12px;
+      text-align: center;
+      margin-top: 15px;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover-title { font-size: 24pt; font-weight: 800; margin: 0 0 8px 0; line-height: 1.25; }
+    .cover-subtitle { font-size: 13pt; color: #fef08a; font-weight: 500; margin-bottom: 22px; font-style: italic; }
+
+    .narrative-box { background: transparent; border: none; padding: 0; margin-bottom: 12px; }
+    .narrative-box p { text-align: justify; text-justify: inter-word; margin-bottom: 8px; line-height: 1.45; }
+    .narrative-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .narrative-col-id { padding-right: 10px; }
+    .narrative-col-en { padding-left: 15px; font-style: italic; color: #475569; }
+    .narrative-title { font-weight: 800; color: #0b3c5d; font-size: 8.8pt; margin-bottom: 4px; text-transform: uppercase; }
+    .narrative-title.en { font-style: italic; }
+
+    .section-header { font-size: 11pt; font-weight: 800; color: #0b3c5d; margin-bottom: 8px; padding-bottom: 2px; text-transform: uppercase; }
+    .section-header .en { display: block; font-size: 10pt; font-weight: 800; font-style: italic; color: #0b3c5d; text-transform: uppercase; margin-top: 1px; }
+
+    .table-title-block { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 6px; }
+    .table-label { font-weight: 800; font-size: 9.5pt; color: #1a202c; white-space: nowrap; }
+    .table-label .id-lbl { text-decoration: underline; }
+    .table-label i { font-style: italic; font-weight: 700; text-decoration: none !important; }
+    .table-num { font-weight: 800; font-size: 9.5pt; color: #1a202c; }
+    .table-name { font-weight: 700; font-size: 9pt; color: #1a202c; line-height: 1.3; }
+    .table-name .en-title { display: block; font-weight: 700; font-style: italic; color: #1a202c; margin-top: 1px; }
+
+    .bps-table { width: 100%; border-collapse: collapse; font-size: 7.8pt; margin-bottom: 6px; }
+    .bps-table th.main-header { background-color: #eb8a3c; color: #ffffff; font-weight: 700; text-align: center; padding: 4.5px 6px; border: 1px solid #d97706; vertical-align: middle; font-size: 8pt; }
+    .bps-table th.col-num { background-color: #fdebd0; color: #1a202c; font-weight: 700; text-align: center; padding: 2.5px; border: 1px solid #d97706; font-size: 7.5pt; }
+    .bps-table td { padding: 3px 6px; border: 1px solid #cbd5e1; color: #1a202c; }
+    .bps-table tbody tr:nth-child(even) { background-color: #fff5eb; }
+    .bps-table tr.total-row td { background-color: #eb8a3c !important; color: #ffffff !important; font-weight: 800; border: 1px solid #d97706; }
+    .text-center { text-align: center; }
+    .text-right { text-align: right; }
+    .table-meta { font-size: 7.8pt; color: #475569; margin-top: 4px; line-height: 1.35; }
+    .meta-row { display: flex; gap: 6px; }
+    .meta-lbl { font-weight: 700; white-space: nowrap; }
+  </style>
+</head>
+<body>
+<div class="page-container">
+  <div class="page-card">
+    <div class="page-content">
+      <div class="cover-box">
+        <h1 class="cover-title">DESA SUNGAI BAKAU KECIL<br>DALAM ANGKA 2026</h1>
+        <div class="cover-subtitle">SUNGAI BAKAU KECIL VILLAGE IN FIGURES 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-card">
+    
+    <div class="page-content">
+      <div style="font-size: 8.5pt; line-height: 1.5; color: #1a202c; max-width: 92%; margin: 15px auto 0 auto;">
+        <div style="font-weight: 800; font-size: 11.5pt; color: #0b3c5d; margin-bottom: 2px;">DESA SUNGAI BAKAU KECIL DALAM ANGKA 2026</div>
+        <div style="font-style: italic; font-size: 10pt; color: #475569; margin-bottom: 16px;">Sungai Bakau Kecil Village in Figures 2026</div>
+        
+        <div style="margin-bottom: 14px;">
+          <strong>Ukuran Buku / <i>Book Size</i>:</strong> 21 cm x 29,7 cm (A4)<br>
+          <strong>Jumlah Halaman / <i>Number of Pages</i>:</strong> ix + 35 halaman/pages
+        </div>
+
+        <div style="margin-bottom: 14px; border-top: 1px solid #e2e8f0; padding-top: 12px;">
+          <strong>Penanggung Jawab / <i>Person in Charge</i>:</strong><br>
+          RIANDI PRAYUDA (Plt. Kepala Desa Sungai Bakau Kecil)
+        </div>
+
+        <div style="margin-bottom: 14px;">
+          <strong>Penyusun Naskah / <i>Manuscript Drafter</i>:</strong><br>
+          Tim Agen Statistik Desa Sungai Bakau Kecil & Tim Pembina Desa Cantik BPS Kabupaten Mempawah
+        </div>
+
+        <div style="margin-bottom: 14px;">
+          <strong>Penyunting & Penata Letak / <i>Editors & Layouters</i>:</strong><br>
+          Tim Pembina Desa Cantik BPS Kabupaten Mempawah
+        </div>
+
+        <div style="margin-bottom: 14px;">
+          <strong>Penerbit / <i>Publisher</i>:</strong><br>
+          © BPS Kabupaten Mempawah & Pemerintah Desa Sungai Bakau Kecil
+        </div>
+
+        <div style="margin-top: 35px; padding: 12px 15px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 6px; font-size: 7.8pt; line-height: 1.45;">
+          <strong>Dilarang mereproduksi dan/atau menggandakan sebagian atau seluruh isi buku ini untuk tujuan komersial tanpa izin tertulis dari Badan Pusat Statistik Kabupaten Mempawah dan Pemerintah Desa Sungai Bakau Kecil.</strong><br>
+          <span style="font-style: italic; color: #475569;">It is prohibited to reproduce and/or duplicate part or all of this book for commercial purposes without written permission from BPS-Statistics Mempawah Regency and Government of Sungai Bakau Kecil Village.</span>
+        </div>
+      </div>
+    </div>
+    <div class="running-footer even">ii</div>
+  </div>
+
+  <div class="page-card">
+    
+    <div class="page-content">
+      <h2 style="text-align: center; color: #0b3c5d; padding-bottom: 6px; font-size: 13pt; margin-bottom: 20px;">KONTRIBUTOR DATA / <i>DATA CONTRIBUTORS</i></h2>
+      <ol style="font-size: 9.5pt; line-height: 1.8; color: #2d3748; padding-left: 20px;">
+        <li>Pemerintah Desa Sungai Bakau Kecil / <i>Government of Sungai Bakau Kecil Village</i></li>
+        <li>Pengurus Rukun Tetangga (37 RT) Desa Sungai Bakau Kecil / <i>Management of 37 Neighborhood Units (RT) of Sungai Bakau Kecil Village</i></li>
+      </ol>
+    </div>
+    <div class="running-footer odd">iii</div>
+  </div>
+
+  <div class="page-card">
+    
+    <div class="page-content">
+      <h2 style="text-align: center; color: #0b3c5d; font-size: 14pt; font-weight: 800; margin-top: 10px; margin-bottom: 25px;">KATA PENGANTAR</h2>
+      <div style="font-size: 9.5pt; line-height: 1.6; color: #2d3748; max-width: 95%; margin: 0 auto;">
+        <p style="margin-bottom: 16px; text-align: justify; text-indent: 30px;">Puji dan syukur kita panjatkan ke hadirat Tuhan Yang Maha Esa atas rahmat dan karunia-Nya, publikasi resmi <strong>"Desa Sungai Bakau Kecil Dalam Angka 2026"</strong> dapat diselesaikan dengan baik. Publikasi ini merupakan wujud nyata pembinaan statistik sektoral melalui Program <strong>Desa Cantik (Desa Cinta Statistik)</strong> BPS Kabupaten Mempawah berkolaborasi dengan Pemerintah Desa Sungai Bakau Kecil.</p>
+        <p style="margin-bottom: 25px; text-align: justify; text-indent: 30px;">Data yang disajikan dihimpun secara langsung dari 37 Rukun Tetangga (RT) menggunakan metode <i>Computer-Assisted Personal Interviewing</i> (CAPI) berbasis aplikasi mobile AppSheet. Cakupan data meliputi kondisi demografi kependudukan, tingkat pendidikan, kepemilikan dokumen adminduk (KTP-el), sebaran penerima bantuan sosial, hingga kelayakan infrastruktur perumahan.</p>
+      </div>
+      <div style="margin-top: 35px; font-size: 9.5pt; text-align: right; padding-right: 20px;">
+        <div style="margin-bottom: 15px; font-weight: 500; color: #2d3748;">Sungai Bakau Kecil, Agustus 2026</div>
+        <div style="display: inline-block; text-align: center;">
+          <div style="font-weight: 700; color: #0b3c5d;">PLT. KEPALA DESA SUNGAI BAKAU KECIL</div>
+          <div style="font-weight: 800; color: #0b3c5d; text-decoration: underline; margin-top: 55px; font-size: 10.5pt;">RIANDI PRAYUDA</div>
+        </div>
+      </div>
+    </div>
+    <div class="running-footer even">iv</div>
+  </div>
+
+  <div class="page-card">
+    
+    <div class="page-content">
+      <h2 style="text-align: center; color: #0b3c5d; font-size: 14pt; font-weight: 800; font-style: italic; margin-top: 10px; margin-bottom: 25px;">PREFACE</h2>
+      <div style="font-size: 9.5pt; line-height: 1.6; font-style: italic; color: #475569; max-width: 95%; margin: 0 auto;">
+        <p style="margin-bottom: 16px; text-align: justify; text-indent: 30px;">Praise be to God Almighty for His blessings, the official publication <i>"Sungai Bakau Kecil Village in Figures 2026"</i> has been successfully completed. This publication is a concrete result of statistical development under the Desa Cantik Program by BPS-Statistics of Mempawah Regency in collaboration with Government of Sungai Bakau Kecil Village.</p>
+        <p style="margin-bottom: 25px; text-align: justify; text-indent: 30px;">The presented data was collected directly from 37 Neighborhood Units (RT) using the CAPI method via AppSheet mobile application. The coverage includes demographics, education, ID card ownership, social assistance distribution, and housing infrastructure.</p>
+      </div>
+      <div style="margin-top: 35px; font-size: 9.5pt; text-align: right; padding-right: 20px;">
+        <div style="margin-bottom: 15px; font-style: italic; color: #475569;">Sungai Bakau Kecil, August 2026</div>
+        <div style="display: inline-block; text-align: center;">
+          <div style="font-weight: 700; font-style: italic; color: #0b3c5d;">ACTING HEAD OF SUNGAI BAKAU KECIL VILLAGE</div>
+          <div style="font-weight: 800; color: #0b3c5d; text-decoration: underline; margin-top: 55px; font-size: 10.5pt;">RIANDI PRAYUDA</div>
+        </div>
+      </div>
+    </div>
+    <div class="running-footer odd">v</div>
+  </div>
+
+  <div class="page-card">
+    
+    <div class="page-content">
+      <div style="text-align: center; margin-top: 5px; margin-bottom: 20px;">
+        <h2 style="font-size: 13.5pt; font-weight: 800; color: #1a202c; margin: 0; text-transform: uppercase;">DAFTAR ISI/<i>CONTENTS</i></h2>
+        <div style="font-size: 10.5pt; font-weight: 700; color: #2d3748; margin-top: 4px;">Desa Sungai Bakau Kecil Dalam Angka 2026</div>
+        <div style="font-size: 10.5pt; font-weight: 700; font-style: italic; color: #475569;">Sungai Bakau Kecil Village in Figures 2026</div>
+      </div>
+      <style>
+        .toc-list { list-style: none; padding: 0; margin: 0; }
+        .toc-list li { position: relative; overflow: hidden; line-height: 1.5; font-size: 9.5pt; margin-bottom: 6px; clear: both; color: #2d3748; }
+        .toc-list li .toc-page { position: absolute; right: 0; bottom: 0; background: #fff; padding-left: 6px; z-index: 2; font-size: 9.5pt; }
+        .toc-list li .toc-title { background: #fff; padding-right: 6px; position: relative; z-index: 2; }
+        .toc-list li::after { content: ""; position: absolute; left: 0; right: 0; bottom: 4px; border-bottom: 1.2px dotted #777; z-index: 1; }
+      </style>
+      <ul class="toc-list">
+        <li><span class="toc-title">Kata Pengantar/<i>Preface</i></span><span class="toc-page">iv</span></li>
+        <li><span class="toc-title">Daftar Isi/<i>Contents</i></span><span class="toc-page">vi</span></li>
+        <li><span class="toc-title">Daftar Tabel/<i>List of Tables</i></span><span class="toc-page">vii</span></li>
+        <li><span class="toc-title">Penjelasan Umum/<i>Explanatory Notes</i></span><span class="toc-page">viii</span></li>
+        <li><span class="toc-title">Daftar Singkatan/<i>List of Abbreviations</i></span><span class="toc-page">ix</span></li>
+        <li><span class="toc-title">Statistik Kunci/<i>Key Statistics</i></span><span class="toc-page">1</span></li>
+        <li><span class="toc-title">1.&nbsp;&nbsp;&nbsp;Geografi dan Pemerintahan/<i>Geography and Government</i></span><span class="toc-page">3</span></li>
+        <li><span class="toc-title">2.&nbsp;&nbsp;&nbsp;Kependudukan dan Demografi/<i>Population and Demographics</i></span><span class="toc-page">9</span></li>
+        <li><span class="toc-title">3.&nbsp;&nbsp;&nbsp;Pendidikan dan Adminduk/<i>Education and Civil Registration</i></span><span class="toc-page">15</span></li>
+        <li><span class="toc-title">4.&nbsp;&nbsp;&nbsp;Sosial dan Kesejahteraan Rakyat/<i>Social and Welfare</i></span><span class="toc-page">21</span></li>
+        <li><span class="toc-title">5.&nbsp;&nbsp;&nbsp;Perumahan dan Lingkungan/<i>Housing and Infrastructure</i></span><span class="toc-page">27</span></li>
+      </ul>
+    </div>
+    <div class="running-footer even">vi</div>
+  </div>
+
+  <div class="page-card">
+    
+    <div class="page-content">
+      <div style="text-align: center; margin-top: 5px; margin-bottom: 20px;">
+        <h2 style="font-size: 13.5pt; font-weight: 800; color: #1a202c; margin: 0; text-transform: uppercase;">DAFTAR TABEL/<i>LIST OF TABLES</i></h2>
+      </div>
+      <style>
+        .lot-hdr { display: flex; justify-content: space-between; font-size: 8.8pt; color: #2d3748; margin-bottom: 12px; line-height: 1.3; font-weight: 700; border-bottom: 1px solid #e2e8f0; padding-bottom: 4px; }
+        .lot-hdr-no { width: 50px; }
+        .lot-hdr-pg { text-align: right; }
+        .lot-list { list-style: none; padding: 0; margin: 0; }
+        .lot-list li { display: flex; align-items: flex-start; position: relative; line-height: 1.4; font-size: 8.8pt; margin-bottom: 10px; color: #2d3748; }
+        .lot-list li .lot-no { width: 50px; flex-shrink: 0; font-weight: 700; background: #fff; z-index: 2; font-size: 8.8pt; }
+        .lot-list li .lot-title-wrap { flex: 1; position: relative; padding-right: 35px; min-height: 1.4em; }
+        .lot-list li .lot-title { background: #fff; padding-right: 6px; position: relative; z-index: 2; display: inline; }
+        .lot-list li .lot-dots { position: absolute; left: 0; right: 0; bottom: 3px; border-bottom: 1.2px dotted #777; z-index: 1; }
+        .lot-list li .lot-page { position: absolute; right: 0; bottom: 0; background: #fff; padding-left: 6px; z-index: 2; font-size: 8.8pt; font-weight: 600; }
+        .lot-sec { font-weight: 800; color: #0b3c5d; font-size: 9pt; margin-top: 12px; margin-bottom: 6px; text-transform: uppercase; }
+      </style>
+      <div class="lot-hdr"><span class="lot-hdr-no">Tabel<br><i>Table</i></span><span class="lot-hdr-pg">Halaman<br><i>Page</i></span></div>
+      <div class="lot-sec">0.&nbsp;&nbsp;STATISTIK KUNCI / <i>KEY STATISTICS</i></div>
+      <ul class="lot-list">
+        <li>
+          <span class="lot-no">0.1</span>
+          <div class="lot-title-wrap">
+            <span class="lot-title">Statistik Kunci Desa Sungai Bakau Kecil, 2026<br><i>Key Statistics of Sungai Bakau Kecil Village, 2026</i></span>
+            <span class="lot-dots"></span>
+            <span class="lot-page">1</span>
+          </div>
+        </li>
+      </ul>
+      <div class="lot-sec">1.&nbsp;&nbsp;GEOGRAFI DAN PEMERINTAHAN / <i>GEOGRAPHY AND GOVERNMENT</i></div>
+      <ul class="lot-list">
+        <li>
+          <span class="lot-no">1.1</span>
+          <div class="lot-title-wrap">
+            <span class="lot-title">Batas Wilayah Administrasi Desa Sungai Bakau Kecil<br><i>Administrative Boundary of Sungai Bakau Kecil Village</i></span>
+            <span class="lot-dots"></span>
+            <span class="lot-page">5</span>
+          </div>
+        </li>
+        <li>
+          <span class="lot-no">1.2</span>
+          <div class="lot-title-wrap">
+            <span class="lot-title">Daftar Nama Ketua RT dan Agen Statistik Desa Menurut Wilayah RT, 2026<br><i>List of Neighborhood Chairmen and Village Statistical Agents by RT, 2026</i></span>
+            <span class="lot-dots"></span>
+            <span class="lot-page">5</span>
+          </div>
+        </li>
+      </ul>
+      <div class="lot-sec">2.&nbsp;&nbsp;KEPENDUDUKAN DAN DEMOGRAFI / <i>POPULATION AND DEMOGRAPHICS</i></div>
+      <ul class="lot-list">
+        <li>
+          <span class="lot-no">2.1</span>
+          <div class="lot-title-wrap">
+            <span class="lot-title">Jumlah Penduduk dan Sex Ratio Menurut RT, 2026<br><i>Total Population and Sex Ratio by RT, 2026</i></span>
+            <span class="lot-dots"></span>
+            <span class="lot-page">11</span>
+          </div>
+        </li>
+      </ul>
+      <div class="lot-sec">3.&nbsp;&nbsp;PENDIDIKAN DAN ADMINDUK / <i>EDUCATION AND CIVIL REGISTRATION</i></div>
+      <ul class="lot-list">
+        <li>
+          <span class="lot-no">3.1</span>
+          <div class="lot-title-wrap">
+            <span class="lot-title">Jumlah Penduduk Putus Sekolah dan Kepemilikan KTP-el Menurut RT, 2026<br><i>Total Dropouts and ID Card Ownership by RT, 2026</i></span>
+            <span class="lot-dots"></span>
+            <span class="lot-page">17</span>
+          </div>
+        </li>
+      </ul>
+      <div class="lot-sec">4.&nbsp;&nbsp;SOSIAL DAN KESEJAHTERAAN RAKYAT / <i>SOCIAL AND WELFARE</i></div>
+      <ul class="lot-list">
+        <li>
+          <span class="lot-no">4.1</span>
+          <div class="lot-title-wrap">
+            <span class="lot-title">Jumlah Keluarga Penerima Bantuan Sosial Menurut Jenis Bantuan dan RT, 2026<br><i>Number of Social Assistance Recipient Families by Assistance Type and RT, 2026</i></span>
+            <span class="lot-dots"></span>
+            <span class="lot-page">23</span>
+          </div>
+        </li>
+      </ul>
+      <div class="lot-sec">5.&nbsp;&nbsp;PERUMAHAN DAN LINGKUNGAN / <i>HOUSING AND INFRASTRUCTURE</i></div>
+      <ul class="lot-list">
+        <li>
+          <span class="lot-no">5.1</span>
+          <div class="lot-title-wrap">
+            <span class="lot-title">Bumbung Rumah dan Rata-rata Kepadatan Hunian Menurut RT, 2026<br><i>Residential Buildings and Average Occupancy Density by RT, 2026</i></span>
+            <span class="lot-dots"></span>
+            <span class="lot-page">29</span>
+          </div>
+        </li>
+        <li>
+          <span class="lot-no">5.2</span>
+          <div class="lot-title-wrap">
+            <span class="lot-title">Sebaran Sarana Peribadatan, Pendidikan, dan Kesehatan Menurut RT, 2026<br><i>Distribution of Worship, Education, and Health Facilities by RT, 2026</i></span>
+            <span class="lot-dots"></span>
+            <span class="lot-page">30</span>
+          </div>
+        </li>
+        <li>
+          <span class="lot-no">5.3</span>
+          <div class="lot-title-wrap">
+            <span class="lot-title">Rekapitulasi Kondisi Bangunan dan Akses Infrastruktur Desa Menurut RT, 2026<br><i>Building Condition and Infrastructure Access Summary by RT, 2026</i></span>
+            <span class="lot-dots"></span>
+            <span class="lot-page">31</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="running-footer odd">vii</div>
+  </div>
+
+  <div class="page-card">
+    
+    <div class="page-content">
+      <div style="text-align: center; margin-top: 5px; margin-bottom: 20px;">
+        <h2 style="font-size: 13.5pt; font-weight: 800; color: #1a202c; margin: 0; text-transform: uppercase;">PENJELASAN UMUM/<i>EXPLANATORY NOTES</i></h2>
+      </div>
+      <div style="font-size: 9pt; line-height: 1.5; color: #2d3748; margin-bottom: 18px;">
+        <div>Tanda-tanda, satuan-satuan, dan lain-lainnya yang digunakan dalam publikasi ini adalah sebagai berikut:</div>
+        <div style="font-style: italic; color: #475569;">Symbols, measurement units, and acronyms which are used in this publication, are as follows:</div>
+      </div>
+      <table style="width: 100%; border-collapse: collapse; font-size: 8.8pt; line-height: 1.7; color: #2d3748;">
+        <tbody>
+          <tr><td style="border: none;">Data tidak tersedia/<i>Data not available</i></td><td style="border: none;">: ...</td></tr>
+          <tr><td style="border: none;">Tidak ada atau nol /<i>Null or zero</i></td><td style="border: none;">: -</td></tr>
+          <tr><td style="border: none;">Data dapat diabaikan/<i>Data negligible</i></td><td style="border: none;">: ~0</td></tr>
+          <tr><td style="border: none;">Tanda desimal/<i>Decimal point</i></td><td style="border: none;">: ,</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="running-footer even">viii</div>
+  </div>
+
+  <div class="page-card">
+    
+    <div class="page-content">
+      <h2 style="text-align: center; color: #0b3c5d; font-size: 13pt; margin-top: 0; margin-bottom: 20px;">DAFTAR SINGKATAN / <i>LIST OF ABBREVIATIONS</i></h2>
+      <table style="width: 100%; border-collapse: collapse; border: none; font-size: 8.5pt; line-height: 1.6; color: #2d3748;">
+        <tbody>
+          <tr><td style="width: 50%; border: none;"><strong>BPS:</strong> Badan Pusat Statistik</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>BPS:</strong> BPS-Statistics (Central Agency on Statistics)</td></tr>
+          <tr><td style="width: 50%; border: none;"><strong>CAPI:</strong> Computer-Assisted Personal Interviewing</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>CAPI:</strong> Computer-Assisted Personal Interviewing</td></tr>
+          <tr><td style="width: 50%; border: none;"><strong>RT:</strong> Rukun Tetangga</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>RT:</strong> Neighborhood Unit</td></tr>
+          <tr><td style="width: 50%; border: none;"><strong>KK:</strong> Kepala Keluarga</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>KK:</strong> Head of Household / Family Card</td></tr>
+          <tr><td style="width: 50%; border: none;"><strong>ART:</strong> Anggota Rumah Tangga</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>ART:</strong> Household Member</td></tr>
+          <tr><td style="width: 50%; border: none;"><strong>KTP-el:</strong> Kartu Tanda Penduduk Elektronik</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>KTP-el:</strong> Electronic Identity Card</td></tr>
+          <tr><td style="width: 50%; border: none;"><strong>PKH:</strong> Program Keluarga Harapan</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>PKH:</strong> Family Hope Program</td></tr>
+          <tr><td style="width: 50%; border: none;"><strong>BPNT:</strong> Bantuan Pangan Non-Tunai</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>BPNT:</strong> Non-Cash Food Assistance</td></tr>
+          <tr><td style="width: 50%; border: none;"><strong>BST:</strong> Bantuan Sosial Tunai</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>BST:</strong> Social Cash Assistance</td></tr>
+          <tr><td style="width: 50%; border: none;"><strong>BLT:</strong> Bantuan Langsung Tunai</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>BLT:</strong> Direct Cash Assistance</td></tr>
+          <tr><td style="width: 50%; border: none;"><strong>SD / SMP / SMA:</strong> Sekolah Dasar / Menengah / Atas</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>SD / SMP / SMA:</strong> Primary / Junior / Senior High School</td></tr>
+          <tr><td style="width: 50%; border: none;"><strong>PT:</strong> Perguruan Tinggi</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>PT:</strong> Higher Education / University</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="running-footer odd">ix</div>
+  </div>
+
+  <div class="page-card" style="justify-content: center; align-items: center;"><div style="color: #cbd5e1; font-style: italic; font-size: 9pt;">[ Halaman Ini Sengaja Dikosongkan / This Page Intentionally Left Blank ]</div></div>  <div class="page-card">
+    <div class="running-header odd">STATISTIK KUNCI 2026<span class="en">KEY STATISTICS 2026</span></div>
+    <div class="page-content">
+<div style="font-weight: 800; font-size: 9.5pt; color: #0b3c5d; margin-bottom: 2px;">Tabel 0.1 Statistik Kunci 2026</div>
+      <div style="font-weight: 800; font-size: 8.5pt; font-style: italic; color: #0b3c5d; margin-bottom: 8px;">Table Key Statistics, 2026</div>
+      <table class="bps-table">
+        <thead>
+          <tr><th class="main-header">Rincian / <i>Description</i></th><th class="main-header" style="width: 110px;">Satuan / <i>Unit</i></th><th class="main-header" style="width: 80px;">2026</th></tr>
+          <tr><th class="col-num">(1)</th><th class="col-num">(2)</th><th class="col-num">(3)</th></tr>
+        </thead>
+        <tbody>
+          
+          <tr style="background: #fff5eb; font-weight: 700; color: #0b3c5d;"><td colspan="3">DEMOGRAFI DAN KEPENDUDUKAN / <i>DEMOGRAPHICS AND POPULATION</i></td></tr>
+          <tr><td>Penduduk / <i>Population</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">5.744</td></tr>
+          <tr><td>Laki-laki / <i>Male</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">2.935</td></tr>
+          <tr><td>Perempuan / <i>Female</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">2.809</td></tr>
+          <tr><td>Rasio Jenis Kelamin / <i>Sex Ratio</i></td><td>-</td><td class="text-right">104,49</td></tr>
+          <tr><td>Kepala Keluarga / <i>Households</i></td><td>KK / <i>Households</i></td><td class="text-right">1.661</td></tr>
+          <tr style="background: #fff5eb; font-weight: 700; color: #0b3c5d;"><td colspan="3">SOSIAL DAN KESEJAHTERAAN / <i>SOCIAL AND WELFARE</i></td></tr>
+          <tr><td>Memiliki KTP-el / <i>ID Card Owners</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">4.088</td></tr>
+          <tr><td>Persentase KTP-el / <i>ID Card Ownership Rate</i></td><td>%</td><td class="text-right">71,17</td></tr>
+          <tr><td>Keluarga Penerima Bansos (PKH/BPNT/BLT) / <i>Assistance Recipients</i></td><td>Keluarga / <i>Families</i></td><td class="text-right">147</td></tr>
+          <tr style="background: #fff5eb; font-weight: 700; color: #0b3c5d;"><td colspan="3">PERUMAHAN DAN LINGKUNGAN / <i>HOUSING AND ENVIRONMENT</i></td></tr>
+          <tr><td>Bumbung Rumah (Hunian) / <i>Residential Buildings</i></td><td>Unit / <i>Units</i></td><td class="text-right">1.473</td></tr>
+          <tr><td>Kepadatan Hunian Rata-rata / <i>Housing Density</i></td><td>Jiwa per Unit / <i>Persons/Unit</i></td><td class="text-right">3,90</td></tr>
+        </tbody>
+      </table><div class="table-meta"><div class="meta-row"><div class="meta-lbl">Catatan/<i>Note:</i></div><div>Data keadaan Rukun Tetangga (RT) per Juni 2026 / <i>RT condition data as of June 2026</i></div></div><div class="meta-row"><div class="meta-lbl">Sumber/<i>Source:</i></div><div>Pemerintah Desa Sungai Bakau Kecil — Program Desa Cinta Statistik 2026 / <i>Government of Sungai Bakau Kecil Village — 2026 Desa Cinta Statistik Program</i></div></div></div>
+    </div>
+    <div class="running-footer odd">1</div>
+  </div>
+
+  <div class="page-card" style="justify-content: center; align-items: center;"><div style="color: #cbd5e1; font-style: italic; font-size: 9pt;">[ Halaman Ini Sengaja Dikosongkan / This Page Intentionally Left Blank ]</div></div>  <div class="page-card" style="justify-content: center;">
+    <div style="background: linear-gradient(135deg, #f97316 0%, #eb8a3c 45%, #ea580c 100%); border-radius: 18px; padding: 25px 30px; display: flex; align-items: center; gap: 25px; box-shadow: 0 10px 25px -5px rgba(234, 88, 12, 0.3); margin-bottom: 25px;">
+      <div style="width: 85px; height: 85px; background: #c2410c; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ffffff; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+        <span style="font-size: 36pt; font-weight: 900; line-height: 0.9; margin-top: -2px;">1</span>
+        <span style="font-size: 10pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1px;">BAB</span>
+        <span style="font-size: 8pt; font-style: italic; font-weight: 600; margin-top: -2px;">Chapter</span>
+      </div>
+      <div style="flex: 1;">
+        <h2 style="font-size: 17pt; font-weight: 900; color: #ffffff; margin: 0 0 8px 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.5px;">GEOGRAFI DAN PEMERINTAHAN</h2>
+        <div style="width: 100%; height: 2.5px; background: #ffffff; opacity: 0.9; margin-bottom: 8px;"></div>
+        <h3 style="font-size: 13pt; font-weight: 800; font-style: italic; color: #ffffff; margin: 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.5px;">GEOGRAPHY AND GOVERNMENT</h3>
+      </div>
+    </div>
+    <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+      <div style="font-weight: 800; font-size: 11pt; color: #0b3c5d; margin-bottom: 14px; border-bottom: 2.5px solid #eb8a3c; padding-bottom: 6px;">DISTRIBUSI WILAYAH ADMINISTRASI & CAKUPAN PENDATAAN / <i>ADMINISTRATIVE DISTRIBUTION & COVERAGE</i></div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 18px;">
+      <div style="background: #f0fdf4; border: 1.5px solid #86efac; border-left: 4px solid #16a34a; padding: 12px; border-radius: 8px; text-align: center;">
+        <div style="font-size: 22pt; font-weight: 800; color: #15803d; line-height: 1.1;">37</div>
+        <div style="font-weight: 700; font-size: 8.5pt; color: #166534; margin-top: 3px;">Rukun Tetangga (RT)<br><i>Neighborhood Units</i></div>
+      </div>
+      <div style="background: #eff6ff; border: 1.5px solid #93c5fd; border-left: 4px solid #2563eb; padding: 12px; border-radius: 8px; text-align: center;">
+        <div style="font-size: 22pt; font-weight: 800; color: #1d4ed8; line-height: 1.1;">8</div>
+        <div style="font-weight: 700; font-size: 8.5pt; color: #1e40af; margin-top: 3px;">Dusun Administrasi<br><i>Administrative Hamlets</i></div>
+      </div>
+      <div style="background: #fffbeb; border: 1.5px solid #fde68a; border-left: 4px solid #d97706; padding: 12px; border-radius: 8px; text-align: center;">
+        <div style="font-size: 22pt; font-weight: 800; color: #b45309; line-height: 1.1;">100%</div>
+        <div style="font-weight: 700; font-size: 8.5pt; color: #92400e; margin-top: 3px;">Cakupan CAPI AppSheet<br><i>CAPI Coverage</i></div>
+      </div>
+    </div>
+    <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; padding: 14px; margin-bottom: 12px;">
+      <div style="font-weight: 800; font-size: 8.8pt; color: #0b3c5d; margin-bottom: 8px; text-transform: uppercase;">Sebaran Rukun Tetangga (RT) per Dusun / <i>RT Distribution by Hamlet</i></div>
+      <div style="margin-bottom: 8px;">
+        <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 8.2pt; color: #334155;"><span>Dusun Benteng Raya</span><span>4 RT (10,8%)</span></div>
+        <div style="height: 12px; background: #e2e8f0; border-radius: 6px; overflow: hidden; margin-top: 3px;"><div style="width: 10.81081081081081%; height: 100%; background: #16a34a;"></div></div>
+      </div>
+<div style="margin-bottom: 8px;">
+        <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 8.2pt; color: #334155;"><span>Dusun Benteng Timur</span><span>5 RT (13,5%)</span></div>
+        <div style="height: 12px; background: #e2e8f0; border-radius: 6px; overflow: hidden; margin-top: 3px;"><div style="width: 13.513513513513514%; height: 100%; background: #2563eb;"></div></div>
+      </div>
+<div style="margin-bottom: 8px;">
+        <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 8.2pt; color: #334155;"><span>Dusun Kedaung</span><span>3 RT (8,1%)</span></div>
+        <div style="height: 12px; background: #e2e8f0; border-radius: 6px; overflow: hidden; margin-top: 3px;"><div style="width: 8.108108108108109%; height: 100%; background: #d97706;"></div></div>
+      </div>
+<div style="margin-bottom: 8px;">
+        <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 8.2pt; color: #334155;"><span>Dusun Konsasi</span><span>3 RT (8,1%)</span></div>
+        <div style="height: 12px; background: #e2e8f0; border-radius: 6px; overflow: hidden; margin-top: 3px;"><div style="width: 8.108108108108109%; height: 100%; background: #9333ea;"></div></div>
+      </div>
+<div style="margin-bottom: 8px;">
+        <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 8.2pt; color: #334155;"><span>Dusun Senambang</span><span>4 RT (10,8%)</span></div>
+        <div style="height: 12px; background: #e2e8f0; border-radius: 6px; overflow: hidden; margin-top: 3px;"><div style="width: 10.81081081081081%; height: 100%; background: #16a34a;"></div></div>
+      </div>
+<div style="margin-bottom: 8px;">
+        <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 8.2pt; color: #334155;"><span>Dusun Senggiring</span><span>4 RT (10,8%)</span></div>
+        <div style="height: 12px; background: #e2e8f0; border-radius: 6px; overflow: hidden; margin-top: 3px;"><div style="width: 10.81081081081081%; height: 100%; background: #2563eb;"></div></div>
+      </div>
+<div style="margin-bottom: 8px;">
+        <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 8.2pt; color: #334155;"><span>Dusun Sepakat Darat</span><span>6 RT (16,2%)</span></div>
+        <div style="height: 12px; background: #e2e8f0; border-radius: 6px; overflow: hidden; margin-top: 3px;"><div style="width: 16.216216216216218%; height: 100%; background: #d97706;"></div></div>
+      </div>
+<div style="margin-bottom: 8px;">
+        <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 8.2pt; color: #334155;"><span>Dusun Sepakat Tengah</span><span>8 RT (21,6%)</span></div>
+        <div style="height: 12px; background: #e2e8f0; border-radius: 6px; overflow: hidden; margin-top: 3px;"><div style="width: 21.62162162162162%; height: 100%; background: #9333ea;"></div></div>
+      </div>
+    </div>
+    </div>
+  </div>  <div class="page-card">
+    <div class="running-header even">DESA SUNGAI BAKAU KECIL DALAM ANGKA 2026<span class="en">SUNGAI BAKAU KECIL VILLAGE IN FIGURES 2026</span></div>
+    <div class="page-content">
+<div style="text-align: center; margin-bottom: 20px;">
+          <h2 style="font-size: 14pt; font-weight: 800; margin: 0; color: #0b3c5d; text-transform: uppercase;">PENJELASAN TEKNIS</h2>
+          <h2 style="font-size: 11pt; font-weight: 800; font-style: italic; margin: 2px 0 0 0; color: #0b3c5d; text-transform: uppercase;">TECHNICAL NOTES</h2>
+        </div>
+        <table style="width: 100%; border-collapse: collapse; border: none; font-size: 8.8pt; line-height: 1.5; color: #2d3748;">
+          <tbody>
+            <tr>
+              <td style="width: 50%; vertical-align: top; padding-right: 15px; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">1. <strong>Desa/Kelurahan Pesisir</strong> adalah desa/kelurahan yang sebagian wilayahnya bersentuhan/berbatasan langsung dengan laut.</td>
+              <td style="width: 50%; vertical-align: top; padding-left: 15px; font-style: italic; color: #475569; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">1. <strong>Coastal Village/Sub-District</strong> is a village/sub-district which some areas intersect/directly adjacent to the sea.</td>
+            </tr>
+<tr>
+              <td style="width: 50%; vertical-align: top; padding-right: 15px; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">2. <strong>Desa/Kelurahan Bukan Pesisir</strong> adalah desa/kelurahan yang seluruh wilayahnya tidak bersentuhan/berbatasan langsung dengan laut.</td>
+              <td style="width: 50%; vertical-align: top; padding-left: 15px; font-style: italic; color: #475569; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">2. <strong>Non Coastal Village/Sub-District</strong> is a village which has no area that intersects/directly adjacent to the sea.</td>
+            </tr>
+<tr>
+              <td style="width: 50%; vertical-align: top; padding-right: 15px; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">3. <strong>Rukun Tetangga (RT)</strong> adalah lembaga masyarakat yang dibentuk melalui musyawarah masyarakat setempat dalam rangka pelayanan pemerintahan.</td>
+              <td style="width: 50%; vertical-align: top; padding-left: 15px; font-style: italic; color: #475569; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">3. <strong>Neighborhood Unit (RT)</strong> is a community institution formed through local community consultation.</td>
+            </tr>
+<tr>
+              <td style="width: 50%; vertical-align: top; padding-right: 15px; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">4. <strong>Agen Statistik Desa</strong> adalah aparat Desa yang ditunjuk untuk melakukan pendaftaran dan pendataan potensi wilayah secara langsung di lapangan.</td>
+              <td style="width: 50%; vertical-align: top; padding-left: 15px; font-style: italic; color: #475569; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">4. <strong>Village Statistical Agent</strong> is a village official appointed to conduct direct field registration and data collection.</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <div class="running-footer even">1</div>
+  </div>  <div class="page-card">
+    <div class="running-header odd">GEOGRAFI DAN PEMERINTAHAN<span class="en">GEOGRAPHY AND GOVERNMENT</span></div>
+    <div class="page-content">
+<div class="section-header">1.1 WILAYAH ADMINISTRATIF<span class="en">ADMINISTRATIVE AREA</span></div><div class="narrative-box"><div class="narrative-grid"><div class="narrative-col-id"><div class="narrative-title">ULASAN GEOGRAFI DAN PEMERINTAHAN</div><p>Desa Sungai Bakau Kecil secara administratif terbagi menjadi <strong>37 Rukun Tetangga (RT)</strong>. Seluruh wilayah pendataan didata secara penuh (sensus) oleh Agen Statistik Desa yang terdiri dari aparat Desa Sungai Bakau Kecil.</p></div><div class="narrative-col-en"><div class="narrative-title en">GEOGRAPHY & GOVERNMENT HIGHLIGHTS</div><p class="en">Sungai Bakau Kecil Village is administratively divided into 37 Neighborhood Units (RT). All enumeration areas were fully enumerated by Village Statistical Agents consisting of village officials.</p></div></div></div><div class="table-title-block"><div class="table-label"><span class="id-lbl">Tabel</span><br><i>Table</i></div><div class="table-num">1.1</div><div class="table-name">Batas Wilayah Administrasi Desa Sungai Bakau Kecil<br><span class="en-title">Administrative Boundary of Sungai Bakau Kecil Village</span></div></div>
+                <table class="bps-table">
+                  <thead><tr><th class="main-header">Batas Wilayah<br><i>Boundary</i></th><th class="main-header">Desa / Kelurahan / Laut<br><i>Village / Sea</i></th><th class="main-header">Kecamatan<br><i>District</i></th></tr><tr><th class="col-num">(1)</th><th class="col-num">(2)</th><th class="col-num">(3)</th></tr></thead>
+                  <tbody>
+                    <tr><td>Sebelah Utara / North</td><td>Desa Pasir Palembang</td><td>Mempawah Timur</td></tr>
+                    <tr><td>Sebelah Selatan / South</td><td>Laut Natuna / Selat Karimata</td><td>-</td></tr>
+                    <tr><td>Sebelah Timur / East</td><td>Desa Sungai Bakau Besar</td><td>Mempawah Timur</td></tr>
+                    <tr><td>Sebelah Barat / West</td><td>Kelurahan Pasir Wan Salim</td><td>Mempawah Timur</td></tr>
+                  </tbody>
+                </table>
+                <br><div class="table-title-block"><div class="table-label"><span class="id-lbl">Tabel</span><br><i>Table</i></div><div class="table-num">1.2</div><div class="table-name">Daftar Nama Ketua RT dan Agen Statistik Desa Menurut Wilayah RT, 2026<br><span class="en-title">List of Neighborhood Chairmen and Village Statistical Agents by RT, 2026</span></div></div>
+            <table class="bps-table">
+              <thead><tr><th class="main-header">Nama RT<br><i>RT Name</i></th><th class="main-header">Nama Ketua RT<br><i>Neighborhood Chairman</i></th><th class="main-header">Agen Statistik Desa<br><i>Village Statistical Agent</i></th></tr><tr><th class="col-num">(1)</th><th class="col-num">(2)</th><th class="col-num">(3)</th></tr></thead>
+              <tbody><tr><td>RT 001 RW 01 DUSUN SENGGIRING</td><td>SY. JAMALUDDIN</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 002 RW 01 DUSUN SENGGIRING</td><td>MURSID, S.Pd</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 003 RW 01 DUSUN SENGGIRING</td><td>M. NAWI</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 004 RW 02 DUSUN BENTENG RAYA</td><td>HARFANSYAH</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 005 RW 02 DUSUN BENTENG RAYA</td><td>SATIAT</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 006 RW 02 DUSUN BENTENG RAYA</td><td>EFFENDI RAUPE</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 007 RW 03 DUSUN BENTENG TIMUR</td><td>SULAIMAN</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 008 RW 03 DUSUN BENTENG TIMUR</td><td>NURHAYATI</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 009 RW 03 DUSUN BENTENG TIMUR</td><td>BURHANI</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 010 RW 03 DUSUN SEPAKAT TENGAH</td><td>HARIANTO</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 011 RW 03 DUSUN SEPAKAT TENGAH</td><td>JUNAIDI</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 012 RW 04 DUSUN SEPAKAT TENGAH</td><td>MARINO</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 013 RW 04 DUSUN SEPAKAT TENGAH</td><td>KHOLIS</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 014 RW 04 DUSUN SEPAKAT TENGAH</td><td>MARTILAM</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 015 RW 05 DUSUN SEPAKAT DARAT</td><td>MAHRUJI</td><td>Sahrul Rozi</td></tr>
+<tr><td>RT 016 RW 05 DUSUN SEPAKAT DARAT</td><td>SIRI</td><td>Sahrul Rozi</td></tr></tbody>
+            </table><div class="table-meta"><div class="meta-row"><div class="meta-lbl">Catatan/<i>Note:</i></div><div>Data keadaan Rukun Tetangga (RT) per Juni 2026 / <i>RT condition data as of June 2026</i></div></div><div class="meta-row"><div class="meta-lbl">Sumber/<i>Source:</i></div><div>Pemerintah Desa Sungai Bakau Kecil — Program Desa Cinta Statistik 2026 / <i>Government of Sungai Bakau Kecil Village — 2026 Desa Cinta Statistik Program</i></div></div></div>
+    </div>
+    <div class="running-footer odd">1</div>
+  </div>  <div class="page-card">
+    <div class="running-header even">DESA SUNGAI BAKAU KECIL DALAM ANGKA 2026<span class="en">SUNGAI BAKAU KECIL VILLAGE IN FIGURES 2026</span></div>
+    <div class="page-content">
+<p style="font-weight: 800; font-style: italic; font-size: 9pt; color: #1a202c; margin: 0 0 8px 0;">Lanjutan Tabel/<em>Continued Table</em> 1.2</p>
+                <table class="bps-table">
+                  <thead><tr><th class="main-header">Nama RT<br><i>RT Name</i></th><th class="main-header">Nama Ketua RT<br><i>Neighborhood Chairman</i></th><th class="main-header">Agen Statistik Desa<br><i>Village Statistical Agent</i></th></tr><tr><th class="col-num">(1)</th><th class="col-num">(2)</th><th class="col-num">(3)</th></tr></thead>
+                  <tbody><tr><td>RT 017 RW 05 DUSUN SEPAKAT DARAT</td><td>SAFURI</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 018 RW 03 DUSUN BENTENG TIMUR</td><td>EFENDI</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 019 RW 04 DUSUN SEPAKAT TENGAH</td><td>MARJUKI</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 020 RW 01 DUSUN SENGGIRING</td><td>DG. RIVA'IE</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 021 RW 06 DUSUN KEDAUNG</td><td>PULIAN</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 022 RW 06 DUSUN KEDAUNG</td><td>MARSULI</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 023 RW 06 DUSUN KEDAUNG</td><td>SYAHRUDDIN</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 024 RW 07 DUSUN SENAMBANG</td><td>MAT RAIS</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 025 RW 07 DUSUN SENAMBANG</td><td>HASANUDIN</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 026 RW 07 DUSUN SENAMBANG</td><td>SAHRUJI</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 027 RW 08 DUSUN KONSASI</td><td>MARSYAD</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 028 RW 08 DUSUN KONSASI</td><td>SARUKI</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 029 RW 08 DUSUN KONSASI</td><td>MARSYAD</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 030 RW 05 DUSUN SEPAKAT DARAT</td><td>MARSALIM</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 031 RW 02 DUSUN BENTENG RAYA</td><td>RUDHI KHAIRUDDIN</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 032 RW 07 DUSUN SENAMBANG</td><td>M. ALI</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 033 RW 04 DUSUN SEPAKAT TENGAH</td><td>FIRDAUS</td><td>Sahrul Rozi</td></tr>
+<tr><td>RT 034 RW 05 DUSUN SEPAKAT DARAT</td><td>SADRA'I</td><td>Sahrul Rozi</td></tr>
+<tr><td>RT 035 RW 04 DUSUN SEPAKAT TENGAH</td><td>JOHAN</td><td>Sahrul Rozi</td></tr>
+<tr><td>RT 036 RW 03 DUSUN BENTENG TIMUR</td><td>JULIADI</td><td>Haqqi Wirakaryadi</td></tr>
+<tr><td>RT 037 RW 05 DUSUN SEPAKAT DARAT</td><td>MUNAKI</td><td>Haqqi Wirakaryadi</td></tr></tbody>
+                </table><div class="table-meta"><div class="meta-row"><div class="meta-lbl">Catatan/<i>Note:</i></div><div>Data keadaan Rukun Tetangga (RT) per Juni 2026 / <i>RT condition data as of June 2026</i></div></div><div class="meta-row"><div class="meta-lbl">Sumber/<i>Source:</i></div><div>Pemerintah Desa Sungai Bakau Kecil — Program Desa Cinta Statistik 2026 / <i>Government of Sungai Bakau Kecil Village — 2026 Desa Cinta Statistik Program</i></div></div></div>
+    </div>
+    <div class="running-footer even">1</div>
+  </div>  <div class="page-card" style="justify-content: center;">
+    <div style="background: linear-gradient(135deg, #f97316 0%, #eb8a3c 45%, #ea580c 100%); border-radius: 18px; padding: 25px 30px; display: flex; align-items: center; gap: 25px; box-shadow: 0 10px 25px -5px rgba(234, 88, 12, 0.3); margin-bottom: 25px;">
+      <div style="width: 85px; height: 85px; background: #c2410c; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ffffff; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+        <span style="font-size: 36pt; font-weight: 900; line-height: 0.9; margin-top: -2px;">2</span>
+        <span style="font-size: 10pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1px;">BAB</span>
+        <span style="font-size: 8pt; font-style: italic; font-weight: 600; margin-top: -2px;">Chapter</span>
+      </div>
+      <div style="flex: 1;">
+        <h2 style="font-size: 17pt; font-weight: 900; color: #ffffff; margin: 0 0 8px 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.5px;">KEPENDUDUKAN DAN DEMOGRAFI</h2>
+        <div style="width: 100%; height: 2.5px; background: #ffffff; opacity: 0.9; margin-bottom: 8px;"></div>
+        <h3 style="font-size: 13pt; font-weight: 800; font-style: italic; color: #ffffff; margin: 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.5px;">POPULATION AND DEMOGRAPHICS</h3>
+      </div>
+    </div>
+    <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+      <div style="font-weight: 800; font-size: 11pt; color: #0b3c5d; margin-bottom: 12px; border-bottom: 2.5px solid #eb8a3c; padding-bottom: 5px;">KOMPOSISI PENDUDUK MENURUT JENIS KELAMIN & DEMOGRAFI / <i>POPULATION BY GENDER & DEMOGRAPHICS</i></div>
+    <div style="display: grid; grid-template-columns: 160px 1fr; gap: 18px; align-items: center; margin-bottom: 12px;">
+      <div style="position: relative; width: 140px; height: 140px; margin: 0 auto;">
+        <svg viewBox="0 0 36 36" style="width: 100%; height: 100%; transform: rotate(-90deg); border-radius: 50%;">
+          <circle cx="18" cy="18" r="15.915" fill="none" stroke="#e2e8f0" stroke-width="4.5"/>
+          <circle cx="18" cy="18" r="15.915" fill="none" stroke="#2563eb" stroke-width="4.5" stroke-dasharray="51.10 48.90" stroke-dashoffset="0"/>
+        </svg>
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+          <span style="font-size: 13pt; font-weight: 800; color: #0b3c5d;">5.744 Jiwa</span>
+          <span style="font-size: 7.2pt; font-weight: 700; color: #475569;">Total Penduduk<br><i>Total Population</i></span>
+        </div>
+      </div>
+      <div style="font-size: 8.8pt; line-height: 1.7;">
+        <div style="display: flex; align-items: center; justify-content: space-between; background: #eff6ff; padding: 6px 12px; border-radius: 6px; margin-bottom: 6px; border: 1px solid #bfdbfe;">
+          <span><span style="width: 12px; height: 12px; background: #2563eb; border-radius: 3px; display: inline-block; vertical-align: middle; margin-right: 6px;"></span><strong>Laki-laki / <i>Male</i>:</strong></span>
+          <span style="font-weight: 800; color: #1d4ed8;">2.935 Jiwa (51,1%)</span>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; background: #f8fafc; padding: 6px 12px; border-radius: 6px; margin-bottom: 8px; border: 1px solid #e2e8f0;">
+          <span><span style="width: 12px; height: 12px; background: #cbd5e1; border-radius: 3px; display: inline-block; vertical-align: middle; margin-right: 6px;"></span><strong>Perempuan / <i>Female</i>:</strong></span>
+          <span style="font-weight: 800; color: #475569;">2.809 Jiwa (48,9%)</span>
+        </div>
+        <div style="background: #fff7ed; border: 1px solid #ffedd5; padding: 7px 12px; border-radius: 6px; font-weight: 700; color: #c2410c; font-size: 8.2pt; text-align: center;">
+          Rasio Jenis Kelamin (Sex Ratio): 104,49 (Laki-laki per 100 Perempuan / <i>Males per 100 Females</i>)
+        </div>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+      <div style="background: #faf5ff; border: 1px solid #e9d5ff; border-left: 3.5px solid #9333ea; padding: 8px 10px; border-radius: 6px; text-align: center;">
+        <div style="font-size: 14pt; font-weight: 800; color: #7e22ce;">464 Jiwa</div>
+        <div style="font-size: 7.5pt; font-weight: 700; color: #6b21a8;">Penduduk Lansia (60+ thn)<br><i>Elderly Population (60+ yrs)</i></div>
+      </div>
+      <div style="background: #f0fdfa; border: 1px solid #99f6e4; border-left: 3.5px solid #0d9488; padding: 8px 10px; border-radius: 6px; text-align: center;">
+        <div style="font-size: 14pt; font-weight: 800; color: #0f766e;">199 Anak</div>
+        <div style="font-size: 7.5pt; font-weight: 700; color: #115e59;">Usia Balita (0-5 thn)<br><i>Toddlers (0-5 yrs)</i></div>
+      </div>
+      <div style="background: #fefce8; border: 1px solid #fef08a; border-left: 3.5px solid #ca8a04; padding: 8px 10px; border-radius: 6px; text-align: center;">
+        <div style="font-size: 14pt; font-weight: 800; color: #854d0e;">1.661 KK</div>
+        <div style="font-size: 7.5pt; font-weight: 700; color: #854d0e;">Total Kepala Keluarga<br><i>Total Households</i></div>
+      </div>
+    </div>
+    </div>
+  </div>  <div class="page-card">
+    <div class="running-header even">DESA SUNGAI BAKAU KECIL DALAM ANGKA 2026<span class="en">SUNGAI BAKAU KECIL VILLAGE IN FIGURES 2026</span></div>
+    <div class="page-content">
+<div style="text-align: center; margin-bottom: 20px;">
+          <h2 style="font-size: 14pt; font-weight: 800; margin: 0; color: #0b3c5d; text-transform: uppercase;">PENJELASAN TEKNIS</h2>
+          <h2 style="font-size: 11pt; font-weight: 800; font-style: italic; margin: 2px 0 0 0; color: #0b3c5d; text-transform: uppercase;">TECHNICAL NOTES</h2>
+        </div>
+        <table style="width: 100%; border-collapse: collapse; border: none; font-size: 8.8pt; line-height: 1.5; color: #2d3748;">
+          <tbody>
+            <tr>
+              <td style="width: 50%; vertical-align: top; padding-right: 15px; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">1. <strong>Penduduk</strong> adalah semua orang yang berdomisili di wilayah Indonesia selama 6 bulan atau lebih.</td>
+              <td style="width: 50%; vertical-align: top; padding-left: 15px; font-style: italic; color: #475569; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">1. <strong>Population</strong> refers to all persons residing in Indonesia for 6 months or more.</td>
+            </tr>
+<tr>
+              <td style="width: 50%; vertical-align: top; padding-right: 15px; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">2. <strong>Rasio Jenis Kelamin (Sex Ratio)</strong> adalah perbandingan antara jumlah penduduk laki-laki dan perempuan per 100 perempuan.</td>
+              <td style="width: 50%; vertical-align: top; padding-left: 15px; font-style: italic; color: #475569; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">2. <strong>Sex Ratio</strong> is the ratio of male population to female population per 100 females.</td>
+            </tr>
+<tr>
+              <td style="width: 50%; vertical-align: top; padding-right: 15px; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">3. <strong>Kepala Keluarga (KK)</strong> adalah seseorang yang bertanggung jawab atas kebutuhan sehari-hari dalam keluarga.</td>
+              <td style="width: 50%; vertical-align: top; padding-left: 15px; font-style: italic; color: #475569; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">3. <strong>Head of Household</strong> is a person responsible for the daily living needs of the family.</td>
+            </tr>
+<tr>
+              <td style="width: 50%; vertical-align: top; padding-right: 15px; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">4. <strong>Anggota Rumah Tangga (ART)</strong> adalah semua orang yang biasanya bertempat tinggal di suatu rumah tangga.</td>
+              <td style="width: 50%; vertical-align: top; padding-left: 15px; font-style: italic; color: #475569; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">4. <strong>Household Member</strong> refers to all persons who usually reside in a household.</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <div class="running-footer even">2</div>
+  </div>  <div class="page-card">
+    <div class="running-header odd">KEPENDUDUKAN DAN DEMOGRAFI<span class="en">POPULATION AND DEMOGRAPHICS</span></div>
+    <div class="page-content">
+<div class="section-header">2.1 KEPENDUDUKAN DAN DEMOGRAFI<span class="en">POPULATION AND DEMOGRAPHICS</span></div><div class="narrative-box"><div class="narrative-grid"><div class="narrative-col-id"><div class="narrative-title">ULASAN KEPENDUDUKAN & DEMOGRAFI</div><p>Jumlah penduduk Desa Sungai Bakau Kecil hasil pendaftaran Desa Cantik 2026 tercatat sebanyak <strong>5.744 jiwa</strong>, terdiri dari 2.935 laki-laki dan 2.809 perempuan dengan <i>sex ratio</i> sebesar <strong>104,49</strong>.</p></div><div class="narrative-col-en"><div class="narrative-title en">DEMOGRAPHIC HIGHLIGHTS</div><p class="en">Total population of Sungai Bakau Kecil Village based on 2026 Desa Cantik registration reached 5.744 persons, comprising 2.935 males and 2.809 females with a sex ratio of 104,49.</p></div></div></div><div class="table-title-block"><div class="table-label"><span class="id-lbl">Tabel</span><br><i>Table</i></div><div class="table-num">2.1</div><div class="table-name">Jumlah Penduduk dan Sex Ratio Menurut RT, 2026<br><span class="en-title">Total Population and Sex Ratio by RT, 2026</span></div></div>
+            <table class="bps-table">
+              <thead><tr><th class="main-header">Nama RT<br><i>RT Name</i></th><th class="main-header">Laki-laki<br><i>Male</i></th><th class="main-header">Perempuan<br><i>Female</i></th><th class="main-header">Total Penduduk<br><i>Total Population</i></th><th class="main-header">Sex Ratio<br><i>Sex Ratio</i></th></tr><tr><th class="col-num">(1)</th><th class="col-num">(2)</th><th class="col-num">(3)</th><th class="col-num">(4)</th><th class="col-num">(5)</th></tr></thead>
+              <tbody><tr><td>RT 001 RW 01 DUSUN SENGGIRING</td><td class="text-right">98</td><td class="text-right">96</td><td class="text-right"><strong>194</strong></td><td class="text-right">102,08</td></tr>
+<tr><td>RT 002 RW 01 DUSUN SENGGIRING</td><td class="text-right">67</td><td class="text-right">73</td><td class="text-right"><strong>140</strong></td><td class="text-right">91,78</td></tr>
+<tr><td>RT 003 RW 01 DUSUN SENGGIRING</td><td class="text-right">59</td><td class="text-right">64</td><td class="text-right"><strong>123</strong></td><td class="text-right">92,19</td></tr>
+<tr><td>RT 004 RW 02 DUSUN BENTENG RAYA</td><td class="text-right">57</td><td class="text-right">64</td><td class="text-right"><strong>121</strong></td><td class="text-right">89,06</td></tr>
+<tr><td>RT 005 RW 02 DUSUN BENTENG RAYA</td><td class="text-right">143</td><td class="text-right">106</td><td class="text-right"><strong>249</strong></td><td class="text-right">134,91</td></tr>
+<tr><td>RT 006 RW 02 DUSUN BENTENG RAYA</td><td class="text-right">108</td><td class="text-right">92</td><td class="text-right"><strong>200</strong></td><td class="text-right">117,39</td></tr>
+<tr><td>RT 007 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">76</td><td class="text-right">81</td><td class="text-right"><strong>157</strong></td><td class="text-right">93,83</td></tr>
+<tr><td>RT 008 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">52</td><td class="text-right">77</td><td class="text-right"><strong>129</strong></td><td class="text-right">67,53</td></tr>
+<tr><td>RT 009 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">64</td><td class="text-right">74</td><td class="text-right"><strong>138</strong></td><td class="text-right">86,49</td></tr>
+<tr><td>RT 010 RW 03 DUSUN SEPAKAT TENGAH</td><td class="text-right">66</td><td class="text-right">72</td><td class="text-right"><strong>138</strong></td><td class="text-right">91,67</td></tr>
+<tr><td>RT 011 RW 03 DUSUN SEPAKAT TENGAH</td><td class="text-right">54</td><td class="text-right">51</td><td class="text-right"><strong>105</strong></td><td class="text-right">105,88</td></tr>
+<tr><td>RT 012 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">146</td><td class="text-right">124</td><td class="text-right"><strong>270</strong></td><td class="text-right">117,74</td></tr>
+<tr><td>RT 013 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">70</td><td class="text-right">62</td><td class="text-right"><strong>132</strong></td><td class="text-right">112,90</td></tr>
+<tr><td>RT 014 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">71</td><td class="text-right">83</td><td class="text-right"><strong>154</strong></td><td class="text-right">85,54</td></tr>
+<tr><td>RT 015 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">82</td><td class="text-right">76</td><td class="text-right"><strong>158</strong></td><td class="text-right">107,89</td></tr>
+<tr><td>RT 016 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">92</td><td class="text-right">105</td><td class="text-right"><strong>197</strong></td><td class="text-right">87,62</td></tr>
+<tr><td>RT 017 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">95</td><td class="text-right">90</td><td class="text-right"><strong>185</strong></td><td class="text-right">105,56</td></tr>
+<tr><td>RT 018 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">105</td><td class="text-right">85</td><td class="text-right"><strong>190</strong></td><td class="text-right">123,53</td></tr></tbody>
+            </table><div class="table-meta"><div class="meta-row"><div class="meta-lbl">Catatan/<i>Note:</i></div><div>Data keadaan Rukun Tetangga (RT) per Juni 2026 / <i>RT condition data as of June 2026</i></div></div><div class="meta-row"><div class="meta-lbl">Sumber/<i>Source:</i></div><div>Pemerintah Desa Sungai Bakau Kecil — Program Desa Cinta Statistik 2026 / <i>Government of Sungai Bakau Kecil Village — 2026 Desa Cinta Statistik Program</i></div></div></div>
+    </div>
+    <div class="running-footer odd">2</div>
+  </div>  <div class="page-card">
+    <div class="running-header even">DESA SUNGAI BAKAU KECIL DALAM ANGKA 2026<span class="en">SUNGAI BAKAU KECIL VILLAGE IN FIGURES 2026</span></div>
+    <div class="page-content">
+<p style="font-weight: 800; font-style: italic; font-size: 9pt; color: #1a202c; margin: 0 0 8px 0;">Lanjutan Tabel/<em>Continued Table</em> 2.1</p>
+                <table class="bps-table">
+                  <thead><tr><th class="main-header">Nama RT<br><i>RT Name</i></th><th class="main-header">Laki-laki<br><i>Male</i></th><th class="main-header">Perempuan<br><i>Female</i></th><th class="main-header">Total Penduduk<br><i>Total Population</i></th><th class="main-header">Sex Ratio<br><i>Sex Ratio</i></th></tr><tr><th class="col-num">(1)</th><th class="col-num">(2)</th><th class="col-num">(3)</th><th class="col-num">(4)</th><th class="col-num">(5)</th></tr></thead>
+                  <tbody><tr><td>RT 019 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">79</td><td class="text-right">60</td><td class="text-right"><strong>139</strong></td><td class="text-right">131,67</td></tr>
+<tr><td>RT 020 RW 01 DUSUN SENGGIRING</td><td class="text-right">82</td><td class="text-right">75</td><td class="text-right"><strong>157</strong></td><td class="text-right">109,33</td></tr>
+<tr><td>RT 021 RW 06 DUSUN KEDAUNG</td><td class="text-right">66</td><td class="text-right">66</td><td class="text-right"><strong>132</strong></td><td class="text-right">100,00</td></tr>
+<tr><td>RT 022 RW 06 DUSUN KEDAUNG</td><td class="text-right">44</td><td class="text-right">36</td><td class="text-right"><strong>80</strong></td><td class="text-right">122,22</td></tr>
+<tr><td>RT 023 RW 06 DUSUN KEDAUNG</td><td class="text-right">111</td><td class="text-right">95</td><td class="text-right"><strong>206</strong></td><td class="text-right">116,84</td></tr>
+<tr><td>RT 024 RW 07 DUSUN SENAMBANG</td><td class="text-right">57</td><td class="text-right">51</td><td class="text-right"><strong>108</strong></td><td class="text-right">111,76</td></tr>
+<tr><td>RT 025 RW 07 DUSUN SENAMBANG</td><td class="text-right">71</td><td class="text-right">67</td><td class="text-right"><strong>138</strong></td><td class="text-right">105,97</td></tr>
+<tr><td>RT 026 RW 07 DUSUN SENAMBANG</td><td class="text-right">101</td><td class="text-right">111</td><td class="text-right"><strong>212</strong></td><td class="text-right">90,99</td></tr>
+<tr><td>RT 027 RW 08 DUSUN KONSASI</td><td class="text-right">65</td><td class="text-right">54</td><td class="text-right"><strong>119</strong></td><td class="text-right">120,37</td></tr>
+<tr><td>RT 028 RW 08 DUSUN KONSASI</td><td class="text-right">86</td><td class="text-right">70</td><td class="text-right"><strong>156</strong></td><td class="text-right">122,86</td></tr>
+<tr><td>RT 029 RW 08 DUSUN KONSASI</td><td class="text-right">56</td><td class="text-right">52</td><td class="text-right"><strong>108</strong></td><td class="text-right">107,69</td></tr>
+<tr><td>RT 030 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">54</td><td class="text-right">38</td><td class="text-right"><strong>92</strong></td><td class="text-right">142,11</td></tr>
+<tr><td>RT 031 RW 02 DUSUN BENTENG RAYA</td><td class="text-right">39</td><td class="text-right">38</td><td class="text-right"><strong>77</strong></td><td class="text-right">102,63</td></tr>
+<tr><td>RT 032 RW 07 DUSUN SENAMBANG</td><td class="text-right">71</td><td class="text-right">68</td><td class="text-right"><strong>139</strong></td><td class="text-right">104,41</td></tr>
+<tr><td>RT 033 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">95</td><td class="text-right">100</td><td class="text-right"><strong>195</strong></td><td class="text-right">95,00</td></tr>
+<tr><td>RT 034 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">86</td><td class="text-right">115</td><td class="text-right"><strong>201</strong></td><td class="text-right">74,78</td></tr>
+<tr><td>RT 035 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">79</td><td class="text-right">79</td><td class="text-right"><strong>158</strong></td><td class="text-right">100,00</td></tr>
+<tr><td>RT 036 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">115</td><td class="text-right">98</td><td class="text-right"><strong>213</strong></td><td class="text-right">117,35</td></tr>
+<tr><td>RT 037 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">73</td><td class="text-right">61</td><td class="text-right"><strong>134</strong></td><td class="text-right">119,67</td></tr>
+<tr class="total-row"><td>DESA SUNGAI BAKAU KECIL</td><td class="text-right">2.935</td><td class="text-right">2.809</td><td class="text-right">5.744</td><td class="text-right">104,49</td></tr></tbody>
+                </table><div class="table-meta"><div class="meta-row"><div class="meta-lbl">Catatan/<i>Note:</i></div><div>Data keadaan Rukun Tetangga (RT) per Juni 2026 / <i>RT condition data as of June 2026</i></div></div><div class="meta-row"><div class="meta-lbl">Sumber/<i>Source:</i></div><div>Pemerintah Desa Sungai Bakau Kecil — Program Desa Cinta Statistik 2026 / <i>Government of Sungai Bakau Kecil Village — 2026 Desa Cinta Statistik Program</i></div></div></div>
+    </div>
+    <div class="running-footer even">2</div>
+  </div>  <div class="page-card" style="justify-content: center;">
+    <div style="background: linear-gradient(135deg, #f97316 0%, #eb8a3c 45%, #ea580c 100%); border-radius: 18px; padding: 25px 30px; display: flex; align-items: center; gap: 25px; box-shadow: 0 10px 25px -5px rgba(234, 88, 12, 0.3); margin-bottom: 25px;">
+      <div style="width: 85px; height: 85px; background: #c2410c; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ffffff; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+        <span style="font-size: 36pt; font-weight: 900; line-height: 0.9; margin-top: -2px;">3</span>
+        <span style="font-size: 10pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1px;">BAB</span>
+        <span style="font-size: 8pt; font-style: italic; font-weight: 600; margin-top: -2px;">Chapter</span>
+      </div>
+      <div style="flex: 1;">
+        <h2 style="font-size: 17pt; font-weight: 900; color: #ffffff; margin: 0 0 8px 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.5px;">PENDIDIKAN DAN ADMINDUK</h2>
+        <div style="width: 100%; height: 2.5px; background: #ffffff; opacity: 0.9; margin-bottom: 8px;"></div>
+        <h3 style="font-size: 13pt; font-weight: 800; font-style: italic; color: #ffffff; margin: 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.5px;">EDUCATION AND CIVIL REGISTRATION</h3>
+      </div>
+    </div>
+    <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+      <div style="font-weight: 800; font-size: 11pt; color: #0b3c5d; margin-bottom: 12px; border-bottom: 2.5px solid #eb8a3c; padding-bottom: 5px;">TINGKAT KEPEMILIKAN KTP-EL & CAKUPAN PENDIDIKAN / <i>ID CARD & EDUCATION COVERAGE</i></div>
+        <div style="display: grid; grid-template-columns: 160px 1fr; gap: 18px; align-items: center; margin-bottom: 12px;">
+          <div style="position: relative; width: 140px; height: 140px; margin: 0 auto;">
+            <svg viewBox="0 0 36 36" style="width: 100%; height: 100%; transform: rotate(-90deg); border-radius: 50%;">
+              <circle cx="18" cy="18" r="15.915" fill="none" stroke="#fee2e2" stroke-width="4.5"/>
+              <circle cx="18" cy="18" r="15.915" fill="none" stroke="#2563eb" stroke-width="4.5" stroke-dasharray="71.17 28.83" stroke-dashoffset="0"/>
+            </svg>
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+              <span style="font-size: 14pt; font-weight: 800; color: #1d4ed8;">71,17%</span>
+              <span style="font-size: 7.2pt; font-weight: 700; color: #475569;">Punya KTP-el<br><i>E-ID Card</i></span>
+            </div>
+          </div>
+          <div style="font-size: 8.8pt; line-height: 1.7;">
+            <div style="display: flex; align-items: center; justify-content: space-between; background: #eff6ff; padding: 6px 12px; border-radius: 6px; margin-bottom: 6px; border: 1px solid #bfdbfe;">
+              <span><strong>Memiliki KTP-el / <i>Electronic ID Card</i>:</strong></span>
+              <span style="font-weight: 800; color: #1d4ed8;">4.088 Jiwa (71,17%)</span>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; background: #fef2f2; padding: 6px 12px; border-radius: 6px; margin-bottom: 8px; border: 1px solid #fecaca;">
+              <span><strong>Putus Sekolah (7-18 thn) / <i>Dropouts (7-18 yrs)</i>:</strong></span>
+              <span style="font-weight: 800; color: #dc2626;">32 Anak</span>
+            </div>
+            <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 7px 12px; border-radius: 6px; font-weight: 700; color: #15803d; font-size: 8.2pt; text-align: center;">
+              Kepemilikan Adminduk Sangat Tinggi (Cakupan Layanan 71,17%) / <i>Civil Registration Coverage is Very High (71,17%)</i>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>  <div class="page-card">
+    <div class="running-header even">DESA SUNGAI BAKAU KECIL DALAM ANGKA 2026<span class="en">SUNGAI BAKAU KECIL VILLAGE IN FIGURES 2026</span></div>
+    <div class="page-content">
+<div style="text-align: center; margin-bottom: 20px;">
+          <h2 style="font-size: 14pt; font-weight: 800; margin: 0; color: #0b3c5d; text-transform: uppercase;">PENJELASAN TEKNIS</h2>
+          <h2 style="font-size: 11pt; font-weight: 800; font-style: italic; margin: 2px 0 0 0; color: #0b3c5d; text-transform: uppercase;">TECHNICAL NOTES</h2>
+        </div>
+        <table style="width: 100%; border-collapse: collapse; border: none; font-size: 8.8pt; line-height: 1.5; color: #2d3748;">
+          <tbody>
+            <tr>
+              <td style="width: 50%; vertical-align: top; padding-right: 15px; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">1. <strong>Penduduk Putus Sekolah</strong> adalah penduduk usia 7-18 tahun yang saat ini tidak sedang bersekolah dan belum menyelesaikan jenjang pendidikan dasar/menengah.</td>
+              <td style="width: 50%; vertical-align: top; padding-left: 15px; font-style: italic; color: #475569; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">1. <strong>School Dropouts</strong> are population aged 7-18 years who are currently not attending school.</td>
+            </tr>
+<tr>
+              <td style="width: 50%; vertical-align: top; padding-right: 15px; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">2. <strong>Kepemilikan KTP-el</strong> mencakup penduduk wajib KTP yang memiliki fisik kartu tanda penduduk elektronik.</td>
+              <td style="width: 50%; vertical-align: top; padding-left: 15px; font-style: italic; color: #475569; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">2. <strong>Electronic ID Ownership</strong> covers ID-obligated population who possess physical electronic identity cards.</td>
+            </tr>
+<tr>
+              <td style="width: 50%; vertical-align: top; padding-right: 15px; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">3. <strong>Pendidikan Terakhir</strong> adalah jenjang pendidikan formal tertinggi yang pernah ditamatkan oleh seseorang.</td>
+              <td style="width: 50%; vertical-align: top; padding-left: 15px; font-style: italic; color: #475569; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">3. <strong>Highest Educational Attainment</strong> refers to the highest formal education level completed by a person.</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <div class="running-footer even">3</div>
+  </div>  <div class="page-card">
+    <div class="running-header odd">PENDIDIKAN DAN ADMINDUK<span class="en">EDUCATION AND CIVIL REGISTRATION</span></div>
+    <div class="page-content">
+<div class="section-header">3.1 PENDIDIKAN DAN ADMINISTRASI KEPENDUDUKAN<span class="en">EDUCATION AND CIVIL REGISTRATION</span></div><div class="narrative-box"><div class="narrative-grid"><div class="narrative-col-id"><div class="narrative-title">ULASAN PENDIDIKAN & ADMINDUK</div><p>Kepemilikan KTP elektronik di Desa Sungai Bakau Kecil mencapai <strong>4.088 jiwa (71,17%)</strong>. Sementara itu, tercatat <strong>32 anak usia 7-18 tahun</strong> yang dikategori putus sekolah.</p></div><div class="narrative-col-en"><div class="narrative-title en">EDUCATION & CIVIL REGISTRATION HIGHLIGHTS</div><p class="en">Electronic ID card ownership reached 4.088 persons (71,17%). Meanwhile, 32 children aged 7-18 years were recorded as school dropouts.</p></div></div></div><div class="table-title-block"><div class="table-label"><span class="id-lbl">Tabel</span><br><i>Table</i></div><div class="table-num">3.1</div><div class="table-name">Jumlah Penduduk Putus Sekolah dan Kepemilikan KTP-el Menurut RT, 2026<br><span class="en-title">Number of School Dropouts and ID Card Ownership by RT, 2026</span></div></div>
+            <table class="bps-table">
+              <thead><tr><th class="main-header">Nama RT<br><i>RT Name</i></th><th class="main-header">Total Penduduk<br><i>Total Population</i></th><th class="main-header">Putus Sekolah (7-18 thn)<br><i>Dropouts (7-18 yrs)</i></th><th class="main-header">Memiliki KTP-el<br><i>ID Card Owners</i></th><th class="main-header">Persentase KTP-el (%)<br><i>ID Card Pct (%)</i></th></tr><tr><th class="col-num">(1)</th><th class="col-num">(2)</th><th class="col-num">(3)</th><th class="col-num">(4)</th><th class="col-num">(5)</th></tr></thead>
+              <tbody><tr><td>RT 001 RW 01 DUSUN SENGGIRING</td><td class="text-right">194</td><td class="text-right">-</td><td class="text-right">160</td><td class="text-right">82,47</td></tr>
+<tr><td>RT 002 RW 01 DUSUN SENGGIRING</td><td class="text-right">140</td><td class="text-right">3</td><td class="text-right">105</td><td class="text-right">75,00</td></tr>
+<tr><td>RT 003 RW 01 DUSUN SENGGIRING</td><td class="text-right">123</td><td class="text-right">-</td><td class="text-right">85</td><td class="text-right">69,11</td></tr>
+<tr><td>RT 004 RW 02 DUSUN BENTENG RAYA</td><td class="text-right">121</td><td class="text-right">-</td><td class="text-right">83</td><td class="text-right">68,60</td></tr>
+<tr><td>RT 005 RW 02 DUSUN BENTENG RAYA</td><td class="text-right">249</td><td class="text-right">-</td><td class="text-right">109</td><td class="text-right">43,78</td></tr>
+<tr><td>RT 006 RW 02 DUSUN BENTENG RAYA</td><td class="text-right">200</td><td class="text-right">-</td><td class="text-right">156</td><td class="text-right">78,00</td></tr>
+<tr><td>RT 007 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">157</td><td class="text-right">2</td><td class="text-right">125</td><td class="text-right">79,62</td></tr>
+<tr><td>RT 008 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">129</td><td class="text-right">-</td><td class="text-right">74</td><td class="text-right">57,36</td></tr>
+<tr><td>RT 009 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">138</td><td class="text-right">-</td><td class="text-right">102</td><td class="text-right">73,91</td></tr>
+<tr><td>RT 010 RW 03 DUSUN SEPAKAT TENGAH</td><td class="text-right">138</td><td class="text-right">-</td><td class="text-right">104</td><td class="text-right">75,36</td></tr>
+<tr><td>RT 011 RW 03 DUSUN SEPAKAT TENGAH</td><td class="text-right">105</td><td class="text-right">-</td><td class="text-right">78</td><td class="text-right">74,29</td></tr>
+<tr><td>RT 012 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">270</td><td class="text-right">-</td><td class="text-right">229</td><td class="text-right">84,81</td></tr>
+<tr><td>RT 013 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">132</td><td class="text-right">5</td><td class="text-right">84</td><td class="text-right">63,64</td></tr>
+<tr><td>RT 014 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">154</td><td class="text-right">1</td><td class="text-right">84</td><td class="text-right">54,55</td></tr>
+<tr><td>RT 015 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">158</td><td class="text-right">5</td><td class="text-right">109</td><td class="text-right">68,99</td></tr>
+<tr><td>RT 016 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">197</td><td class="text-right">6</td><td class="text-right">152</td><td class="text-right">77,16</td></tr>
+<tr><td>RT 017 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">185</td><td class="text-right">2</td><td class="text-right">146</td><td class="text-right">78,92</td></tr>
+<tr><td>RT 018 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">190</td><td class="text-right">-</td><td class="text-right">137</td><td class="text-right">72,11</td></tr></tbody>
+            </table><div class="table-meta"><div class="meta-row"><div class="meta-lbl">Catatan/<i>Note:</i></div><div>Data keadaan Rukun Tetangga (RT) per Juni 2026 / <i>RT condition data as of June 2026</i></div></div><div class="meta-row"><div class="meta-lbl">Sumber/<i>Source:</i></div><div>Pemerintah Desa Sungai Bakau Kecil — Program Desa Cinta Statistik 2026 / <i>Government of Sungai Bakau Kecil Village — 2026 Desa Cinta Statistik Program</i></div></div></div>
+    </div>
+    <div class="running-footer odd">3</div>
+  </div>  <div class="page-card">
+    <div class="running-header even">DESA SUNGAI BAKAU KECIL DALAM ANGKA 2026<span class="en">SUNGAI BAKAU KECIL VILLAGE IN FIGURES 2026</span></div>
+    <div class="page-content">
+<p style="font-weight: 800; font-style: italic; font-size: 9pt; color: #1a202c; margin: 0 0 8px 0;">Lanjutan Tabel/<em>Continued Table</em> 3.1</p>
+                <table class="bps-table">
+                  <thead><tr><th class="main-header">Nama RT<br><i>RT Name</i></th><th class="main-header">Total Penduduk<br><i>Total Population</i></th><th class="main-header">Putus Sekolah (7-18 thn)<br><i>Dropouts (7-18 yrs)</i></th><th class="main-header">Memiliki KTP-el<br><i>ID Card Owners</i></th><th class="main-header">Persentase KTP-el (%)<br><i>ID Card Pct (%)</i></th></tr><tr><th class="col-num">(1)</th><th class="col-num">(2)</th><th class="col-num">(3)</th><th class="col-num">(4)</th><th class="col-num">(5)</th></tr></thead>
+                  <tbody><tr><td>RT 019 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">139</td><td class="text-right">-</td><td class="text-right">102</td><td class="text-right">73,38</td></tr>
+<tr><td>RT 020 RW 01 DUSUN SENGGIRING</td><td class="text-right">157</td><td class="text-right">-</td><td class="text-right">121</td><td class="text-right">77,07</td></tr>
+<tr><td>RT 021 RW 06 DUSUN KEDAUNG</td><td class="text-right">132</td><td class="text-right">-</td><td class="text-right">95</td><td class="text-right">71,97</td></tr>
+<tr><td>RT 022 RW 06 DUSUN KEDAUNG</td><td class="text-right">80</td><td class="text-right">-</td><td class="text-right">58</td><td class="text-right">72,50</td></tr>
+<tr><td>RT 023 RW 06 DUSUN KEDAUNG</td><td class="text-right">206</td><td class="text-right">-</td><td class="text-right">128</td><td class="text-right">62,14</td></tr>
+<tr><td>RT 024 RW 07 DUSUN SENAMBANG</td><td class="text-right">108</td><td class="text-right">-</td><td class="text-right">98</td><td class="text-right">90,74</td></tr>
+<tr><td>RT 025 RW 07 DUSUN SENAMBANG</td><td class="text-right">138</td><td class="text-right">-</td><td class="text-right">111</td><td class="text-right">80,43</td></tr>
+<tr><td>RT 026 RW 07 DUSUN SENAMBANG</td><td class="text-right">212</td><td class="text-right">-</td><td class="text-right">172</td><td class="text-right">81,13</td></tr>
+<tr><td>RT 027 RW 08 DUSUN KONSASI</td><td class="text-right">119</td><td class="text-right">-</td><td class="text-right">80</td><td class="text-right">67,23</td></tr>
+<tr><td>RT 028 RW 08 DUSUN KONSASI</td><td class="text-right">156</td><td class="text-right">-</td><td class="text-right">117</td><td class="text-right">75,00</td></tr>
+<tr><td>RT 029 RW 08 DUSUN KONSASI</td><td class="text-right">108</td><td class="text-right">7</td><td class="text-right">59</td><td class="text-right">54,63</td></tr>
+<tr><td>RT 030 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">92</td><td class="text-right">-</td><td class="text-right">78</td><td class="text-right">84,78</td></tr>
+<tr><td>RT 031 RW 02 DUSUN BENTENG RAYA</td><td class="text-right">77</td><td class="text-right">-</td><td class="text-right">55</td><td class="text-right">71,43</td></tr>
+<tr><td>RT 032 RW 07 DUSUN SENAMBANG</td><td class="text-right">139</td><td class="text-right">-</td><td class="text-right">115</td><td class="text-right">82,73</td></tr>
+<tr><td>RT 033 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">195</td><td class="text-right">-</td><td class="text-right">105</td><td class="text-right">53,85</td></tr>
+<tr><td>RT 034 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">201</td><td class="text-right">-</td><td class="text-right">87</td><td class="text-right">43,28</td></tr>
+<tr><td>RT 035 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">158</td><td class="text-right">1</td><td class="text-right">143</td><td class="text-right">90,51</td></tr>
+<tr><td>RT 036 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">213</td><td class="text-right">-</td><td class="text-right">137</td><td class="text-right">64,32</td></tr>
+<tr><td>RT 037 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">134</td><td class="text-right">-</td><td class="text-right">105</td><td class="text-right">78,36</td></tr>
+<tr class="total-row"><td>DESA SUNGAI BAKAU KECIL</td><td class="text-right">5.744</td><td class="text-right">32</td><td class="text-right">4.088</td><td class="text-right">71,17</td></tr></tbody>
+                </table><div class="table-meta"><div class="meta-row"><div class="meta-lbl">Catatan/<i>Note:</i></div><div>Data keadaan Rukun Tetangga (RT) per Juni 2026 / <i>RT condition data as of June 2026</i></div></div><div class="meta-row"><div class="meta-lbl">Sumber/<i>Source:</i></div><div>Pemerintah Desa Sungai Bakau Kecil — Program Desa Cinta Statistik 2026 / <i>Government of Sungai Bakau Kecil Village — 2026 Desa Cinta Statistik Program</i></div></div></div>
+    </div>
+    <div class="running-footer even">3</div>
+  </div>  <div class="page-card" style="justify-content: center;">
+    <div style="background: linear-gradient(135deg, #f97316 0%, #eb8a3c 45%, #ea580c 100%); border-radius: 18px; padding: 25px 30px; display: flex; align-items: center; gap: 25px; box-shadow: 0 10px 25px -5px rgba(234, 88, 12, 0.3); margin-bottom: 25px;">
+      <div style="width: 85px; height: 85px; background: #c2410c; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ffffff; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+        <span style="font-size: 36pt; font-weight: 900; line-height: 0.9; margin-top: -2px;">4</span>
+        <span style="font-size: 10pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1px;">BAB</span>
+        <span style="font-size: 8pt; font-style: italic; font-weight: 600; margin-top: -2px;">Chapter</span>
+      </div>
+      <div style="flex: 1;">
+        <h2 style="font-size: 17pt; font-weight: 900; color: #ffffff; margin: 0 0 8px 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.5px;">SOSIAL DAN KESEJAHTERAAN RAKYAT</h2>
+        <div style="width: 100%; height: 2.5px; background: #ffffff; opacity: 0.9; margin-bottom: 8px;"></div>
+        <h3 style="font-size: 13pt; font-weight: 800; font-style: italic; color: #ffffff; margin: 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.5px;">SOCIAL AND WELFARE</h3>
+      </div>
+    </div>
+    <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+      <div style="font-weight: 800; font-size: 11pt; color: #0b3c5d; margin-bottom: 12px; border-bottom: 2.5px solid #eb8a3c; padding-bottom: 5px;">DISTRIBUSI KELUARGA PENERIMA BANTUAN SOSIAL / <i>ASSISTANCE RECIPIENTS</i></div>
+    <div style="font-size: 8.8pt; line-height: 1.7;">
+      <div style="margin-bottom: 8px;">
+        <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 8.2pt; color: #334155;"><span>PKH (Program Keluarga Harapan / <i>Family Hope Program</i>)</span><span>70 KK (47,6%)</span></div>
+        <div style="height: 12px; background: #e2e8f0; border-radius: 6px; overflow: hidden; margin-top: 2px;"><div style="width: 47.61904761904761%; height: 100%; background: #16a34a;"></div></div>
+      </div>
+      <div style="margin-bottom: 8px;">
+        <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 8.2pt; color: #334155;"><span>BPNT (Bantuan Pangan Non-Tunai / <i>Non-Cash Food Assistance</i>)</span><span>62 KK (42,2%)</span></div>
+        <div style="height: 12px; background: #e2e8f0; border-radius: 6px; overflow: hidden; margin-top: 2px;"><div style="width: 42.17687074829932%; height: 100%; background: #d97706;"></div></div>
+      </div>
+      <div style="margin-bottom: 12px;">
+        <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 8.2pt; color: #334155;"><span>BST / BLT (Bantuan Langsung Tunai / <i>Direct Cash Transfer</i>)</span><span>15 KK (10,2%)</span></div>
+        <div style="height: 12px; background: #e2e8f0; border-radius: 6px; overflow: hidden; margin-top: 2px;"><div style="width: 10.204081632653061%; height: 100%; background: #2563eb;"></div></div>
+      </div>
+      <div style="background: #f0fdf4; border: 1px solid #86efac; padding: 10px 14px; border-radius: 6px; text-align: center; font-weight: 700; color: #166534; font-size: 8.5pt;">
+        Total Keluarga Penerima Bantuan Sosial: 147 KK (8,85% dari Total 1.661 KK) / <i>Total Social Assistance Recipient Households: 147 HH</i>
+      </div>
+    </div>
+    </div>
+  </div>  <div class="page-card">
+    <div class="running-header even">DESA SUNGAI BAKAU KECIL DALAM ANGKA 2026<span class="en">SUNGAI BAKAU KECIL VILLAGE IN FIGURES 2026</span></div>
+    <div class="page-content">
+<div style="text-align: center; margin-bottom: 20px;">
+          <h2 style="font-size: 14pt; font-weight: 800; margin: 0; color: #0b3c5d; text-transform: uppercase;">PENJELASAN TEKNIS</h2>
+          <h2 style="font-size: 11pt; font-weight: 800; font-style: italic; margin: 2px 0 0 0; color: #0b3c5d; text-transform: uppercase;">TECHNICAL NOTES</h2>
+        </div>
+        <table style="width: 100%; border-collapse: collapse; border: none; font-size: 8.8pt; line-height: 1.5; color: #2d3748;">
+          <tbody>
+            <tr>
+              <td style="width: 50%; vertical-align: top; padding-right: 15px; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">1. <strong>Program Keluarga Harapan (PKH)</strong> adalah program pemberian bantuan sosial bersyarat kepada Keluarga Miskin (KM).</td>
+              <td style="width: 50%; vertical-align: top; padding-left: 15px; font-style: italic; color: #475569; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">1. <strong>Family Hope Program (PKH)</strong> is a conditional cash transfer social assistance program.</td>
+            </tr>
+<tr>
+              <td style="width: 50%; vertical-align: top; padding-right: 15px; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">2. <strong>Bantuan Pangan Non-Tunai (BPNT)</strong> adalah bantuan sosial pangan dari pemerintah yang disalurkan secara non-tunai.</td>
+              <td style="width: 50%; vertical-align: top; padding-left: 15px; font-style: italic; color: #475569; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">2. <strong>Non-Cash Food Assistance (BPNT)</strong> is a food social assistance from the government distributed non-cash.</td>
+            </tr>
+<tr>
+              <td style="width: 50%; vertical-align: top; padding-right: 15px; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">3. <strong>Bantuan Langsung Tunai (BLT) Desa</strong> adalah bantuan uang tunai kepada keluarga miskin.</td>
+              <td style="width: 50%; vertical-align: top; padding-left: 15px; font-style: italic; color: #475569; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">3. <strong>Village Direct Cash Assistance (BLT)</strong> is cash assistance provided to poor families.</td>
+            </tr>
+<tr>
+              <td style="width: 50%; vertical-align: top; padding-right: 15px; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">4. <strong>Penduduk Lansia</strong> adalah penduduk yang telah mencapai usia 60 tahun ke atas.</td>
+              <td style="width: 50%; vertical-align: top; padding-left: 15px; font-style: italic; color: #475569; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">4. <strong>Elderly Population</strong> refers to population who have reached the age of 60 years or above.</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <div class="running-footer even">4</div>
+  </div>  <div class="page-card">
+    <div class="running-header odd">SOSIAL DAN KESEJAHTERAAN RAKYAT<span class="en">SOCIAL AND WELFARE</span></div>
+    <div class="page-content">
+<div class="section-header">4.1 BANTUAN SOSIAL DAN KESEJAHTERAAN RAKYAT<span class="en">SOCIAL ASSISTANCE AND WELFARE</span></div><div class="narrative-box"><div class="narrative-grid"><div class="narrative-col-id"><div class="narrative-title">ULASAN BANTUAN SOSIAL</div><p>Sebanyak <strong>147 keluarga</strong> di Desa Sungai Bakau Kecil menerima program bantuan sosial pemerintah (PKH, BPNT, BST, atau BLT).</p></div><div class="narrative-col-en"><div class="narrative-title en">SOCIAL WELFARE HIGHLIGHTS</div><p class="en">A total of 147 households in Sungai Bakau Kecil Village receive government social assistance programs.</p></div></div></div><div class="table-title-block"><div class="table-label"><span class="id-lbl">Tabel</span><br><i>Table</i></div><div class="table-num">4.1</div><div class="table-name">Jumlah Keluarga Penerima Bantuan Sosial Menurut Jenis Bantuan dan RT, 2026<br><span class="en-title">Number of Social Assistance Recipient Households by Type and RT, 2026</span></div></div>
+            <table class="bps-table">
+              <thead><tr><th class="main-header">Nama RT<br><i>RT Name</i></th><th class="main-header">Penerima PKH<br><i>PKH Recipients</i></th><th class="main-header">Penerima BPNT<br><i>BPNT Recipients</i></th><th class="main-header">Penerima BST/BLT<br><i>BST/BLT Recipients</i></th><th class="main-header">Total Penerima Bansos<br><i>Total Assistance Recipient</i></th></tr><tr><th class="col-num">(1)</th><th class="col-num">(2)</th><th class="col-num">(3)</th><th class="col-num">(4)</th><th class="col-num">(5)</th></tr></thead>
+              <tbody><tr><td>RT 001 RW 01 DUSUN SENGGIRING</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 002 RW 01 DUSUN SENGGIRING</td><td class="text-right">3</td><td class="text-right">-</td><td class="text-right">1</td><td class="text-right"><strong>4</strong></td></tr>
+<tr><td>RT 003 RW 01 DUSUN SENGGIRING</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 004 RW 02 DUSUN BENTENG RAYA</td><td class="text-right">4</td><td class="text-right">4</td><td class="text-right">1</td><td class="text-right"><strong>9</strong></td></tr>
+<tr><td>RT 005 RW 02 DUSUN BENTENG RAYA</td><td class="text-right">4</td><td class="text-right">2</td><td class="text-right">-</td><td class="text-right"><strong>6</strong></td></tr>
+<tr><td>RT 006 RW 02 DUSUN BENTENG RAYA</td><td class="text-right">2</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>2</strong></td></tr>
+<tr><td>RT 007 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 008 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 009 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 010 RW 03 DUSUN SEPAKAT TENGAH</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 011 RW 03 DUSUN SEPAKAT TENGAH</td><td class="text-right">1</td><td class="text-right">5</td><td class="text-right">-</td><td class="text-right"><strong>6</strong></td></tr>
+<tr><td>RT 012 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 013 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">7</td><td class="text-right">5</td><td class="text-right">-</td><td class="text-right"><strong>12</strong></td></tr>
+<tr><td>RT 014 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">4</td><td class="text-right">10</td><td class="text-right">-</td><td class="text-right"><strong>14</strong></td></tr>
+<tr><td>RT 015 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">8</td><td class="text-right">14</td><td class="text-right">1</td><td class="text-right"><strong>23</strong></td></tr>
+<tr><td>RT 016 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">3</td><td class="text-right">-</td><td class="text-right">1</td><td class="text-right"><strong>4</strong></td></tr>
+<tr><td>RT 017 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 018 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr></tbody>
+            </table><div class="table-meta"><div class="meta-row"><div class="meta-lbl">Catatan/<i>Note:</i></div><div>Data keadaan Rukun Tetangga (RT) per Juni 2026 / <i>RT condition data as of June 2026</i></div></div><div class="meta-row"><div class="meta-lbl">Sumber/<i>Source:</i></div><div>Pemerintah Desa Sungai Bakau Kecil — Program Desa Cinta Statistik 2026 / <i>Government of Sungai Bakau Kecil Village — 2026 Desa Cinta Statistik Program</i></div></div></div>
+    </div>
+    <div class="running-footer odd">4</div>
+  </div>  <div class="page-card">
+    <div class="running-header even">DESA SUNGAI BAKAU KECIL DALAM ANGKA 2026<span class="en">SUNGAI BAKAU KECIL VILLAGE IN FIGURES 2026</span></div>
+    <div class="page-content">
+<p style="font-weight: 800; font-style: italic; font-size: 9pt; color: #1a202c; margin: 0 0 8px 0;">Lanjutan Tabel/<em>Continued Table</em> 4.1</p>
+                <table class="bps-table">
+                  <thead><tr><th class="main-header">Nama RT<br><i>RT Name</i></th><th class="main-header">Penerima PKH<br><i>PKH Recipients</i></th><th class="main-header">Penerima BPNT<br><i>BPNT Recipients</i></th><th class="main-header">Penerima BST/BLT<br><i>BST/BLT Recipients</i></th><th class="main-header">Total Penerima Bansos<br><i>Total Assistance Recipient</i></th></tr><tr><th class="col-num">(1)</th><th class="col-num">(2)</th><th class="col-num">(3)</th><th class="col-num">(4)</th><th class="col-num">(5)</th></tr></thead>
+                  <tbody><tr><td>RT 019 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 020 RW 01 DUSUN SENGGIRING</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 021 RW 06 DUSUN KEDAUNG</td><td class="text-right">2</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>2</strong></td></tr>
+<tr><td>RT 022 RW 06 DUSUN KEDAUNG</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 023 RW 06 DUSUN KEDAUNG</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 024 RW 07 DUSUN SENAMBANG</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 025 RW 07 DUSUN SENAMBANG</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 026 RW 07 DUSUN SENAMBANG</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 027 RW 08 DUSUN KONSASI</td><td class="text-right">4</td><td class="text-right">-</td><td class="text-right">1</td><td class="text-right"><strong>5</strong></td></tr>
+<tr><td>RT 028 RW 08 DUSUN KONSASI</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 029 RW 08 DUSUN KONSASI</td><td class="text-right">4</td><td class="text-right">8</td><td class="text-right">8</td><td class="text-right"><strong>20</strong></td></tr>
+<tr><td>RT 030 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 031 RW 02 DUSUN BENTENG RAYA</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 032 RW 07 DUSUN SENAMBANG</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 033 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">12</td><td class="text-right">4</td><td class="text-right">1</td><td class="text-right"><strong>17</strong></td></tr>
+<tr><td>RT 034 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">5</td><td class="text-right">8</td><td class="text-right">1</td><td class="text-right"><strong>14</strong></td></tr>
+<tr><td>RT 035 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">7</td><td class="text-right">2</td><td class="text-right">-</td><td class="text-right"><strong>9</strong></td></tr>
+<tr><td>RT 036 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 037 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr class="total-row"><td>DESA SUNGAI BAKAU KECIL</td><td class="text-right">70</td><td class="text-right">62</td><td class="text-right">15</td><td class="text-right">147</td></tr></tbody>
+                </table><div class="table-meta"><div class="meta-row"><div class="meta-lbl">Catatan/<i>Note:</i></div><div>Data keadaan Rukun Tetangga (RT) per Juni 2026 / <i>RT condition data as of June 2026</i></div></div><div class="meta-row"><div class="meta-lbl">Sumber/<i>Source:</i></div><div>Pemerintah Desa Sungai Bakau Kecil — Program Desa Cinta Statistik 2026 / <i>Government of Sungai Bakau Kecil Village — 2026 Desa Cinta Statistik Program</i></div></div></div>
+    </div>
+    <div class="running-footer even">4</div>
+  </div>  <div class="page-card" style="justify-content: center;">
+    <div style="background: linear-gradient(135deg, #f97316 0%, #eb8a3c 45%, #ea580c 100%); border-radius: 18px; padding: 25px 30px; display: flex; align-items: center; gap: 25px; box-shadow: 0 10px 25px -5px rgba(234, 88, 12, 0.3); margin-bottom: 25px;">
+      <div style="width: 85px; height: 85px; background: #c2410c; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ffffff; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+        <span style="font-size: 36pt; font-weight: 900; line-height: 0.9; margin-top: -2px;">5</span>
+        <span style="font-size: 10pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1px;">BAB</span>
+        <span style="font-size: 8pt; font-style: italic; font-weight: 600; margin-top: -2px;">Chapter</span>
+      </div>
+      <div style="flex: 1;">
+        <h2 style="font-size: 17pt; font-weight: 900; color: #ffffff; margin: 0 0 8px 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.5px;">PERUMAHAN DAN LINGKUNGAN</h2>
+        <div style="width: 100%; height: 2.5px; background: #ffffff; opacity: 0.9; margin-bottom: 8px;"></div>
+        <h3 style="font-size: 13pt; font-weight: 800; font-style: italic; color: #ffffff; margin: 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.5px;">HOUSING AND INFRASTRUCTURE</h3>
+      </div>
+    </div>
+    <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+      <div style="font-weight: 800; font-size: 11pt; color: #0b3c5d; margin-bottom: 12px; border-bottom: 2.5px solid #eb8a3c; padding-bottom: 5px;">BUMBUNG RUMAH & KEPADATAN PEMUKIMAN / <i>RESIDENTIAL BUILDINGS & HOUSING DENSITY</i></div>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 12px;">
+          <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-left: 4px solid #0b3c5d; padding: 12px; border-radius: 8px; text-align: center;">
+            <div style="font-size: 22pt; font-weight: 800; color: #0b3c5d; line-height: 1.1;">1.473 Unit</div>
+            <div style="font-weight: 700; font-size: 8.5pt; color: #334155; margin-top: 3px;">Total Bumbung Rumah (Hunian)<br><i>Total Residential Buildings</i></div>
+          </div>
+          <div style="background: #fff7ed; border: 1.5px solid #fed7aa; border-left: 4px solid #c2410c; padding: 12px; border-radius: 8px; text-align: center;">
+            <div style="font-size: 22pt; font-weight: 800; color: #c2410c; line-height: 1.1;">3,90</div>
+            <div style="font-weight: 700; font-size: 8.5pt; color: #9a3412; margin-top: 3px;">Rata-rata Kepadatan (Jiwa/Rumah)<br><i>Average Housing Density</i></div>
+          </div>
+        </div>
+    </div>
+  </div>  <div class="page-card">
+    <div class="running-header even">DESA SUNGAI BAKAU KECIL DALAM ANGKA 2026<span class="en">SUNGAI BAKAU KECIL VILLAGE IN FIGURES 2026</span></div>
+    <div class="page-content">
+<div style="text-align: center; margin-bottom: 20px;">
+          <h2 style="font-size: 14pt; font-weight: 800; margin: 0; color: #0b3c5d; text-transform: uppercase;">PENJELASAN TEKNIS</h2>
+          <h2 style="font-size: 11pt; font-weight: 800; font-style: italic; margin: 2px 0 0 0; color: #0b3c5d; text-transform: uppercase;">TECHNICAL NOTES</h2>
+        </div>
+        <table style="width: 100%; border-collapse: collapse; border: none; font-size: 8.8pt; line-height: 1.5; color: #2d3748;">
+          <tbody>
+            <tr>
+              <td style="width: 50%; vertical-align: top; padding-right: 15px; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">1. <strong>Bumbung Rumah (Hunian)</strong> adalah tempat tinggal berupa bangunan fisik berbentuk rumah yang dihuni oleh satu atau lebih rumah tangga.</td>
+              <td style="width: 50%; vertical-align: top; padding-left: 15px; font-style: italic; color: #475569; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">1. <strong>Residential Buildings</strong> refers to physical building structures functioning as dwelling units inhabited by one or more households.</td>
+            </tr>
+<tr>
+              <td style="width: 50%; vertical-align: top; padding-right: 15px; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">2. <strong>Kepadatan Hunian</strong> adalah rata-rata jumlah penghuni (jiwa) yang tinggal pada satu unit bumbung rumah tempat tinggal.</td>
+              <td style="width: 50%; vertical-align: top; padding-left: 15px; font-style: italic; color: #475569; border: none; padding-bottom: 12px; text-align: justify; text-justify: inter-word;">2. <strong>Housing Density</strong> is the average number of occupants (persons) residing in a single residential building unit.</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <div class="running-footer even">5</div>
+  </div>  <div class="page-card">
+    <div class="running-header odd">PERUMAHAN DAN LINGKUNGAN<span class="en">HOUSING AND INFRASTRUCTURE</span></div>
+    <div class="page-content">
+<div class="section-header">5.1 PERUMAHAN DAN LINGKUNGAN HIDUP<span class="en">HOUSING AND ENVIRONMENT</span></div><div class="narrative-box"><div class="narrative-grid"><div class="narrative-col-id"><div class="narrative-title">ULASAN PERUMAHAN & LINGKUNGAN</div><p>Terdapat <strong>1.473 bumbung rumah hunian</strong> di Desa Sungai Bakau Kecil dengan rata-rata kepadatan <strong>3,90 jiwa per rumah</strong>.</p></div><div class="narrative-col-en"><div class="narrative-title en">HOUSING & ENVIRONMENT HIGHLIGHTS</div><p class="en">There are 1.473 residential buildings in Sungai Bakau Kecil Village with an average density of 3,90 persons per building.</p></div></div></div><div class="table-title-block"><div class="table-label"><span class="id-lbl">Tabel</span><br><i>Table</i></div><div class="table-num">5.1</div><div class="table-name">Bumbung Rumah dan Rata-rata Kepadatan Hunian Menurut RT, 2026<br><span class="en-title">Number of Buildings and Average Housing Density by RT, 2026</span></div></div>
+            <table class="bps-table">
+              <thead><tr><th class="main-header">Nama RT<br><i>RT Name</i></th><th class="main-header">Total Penduduk<br><i>Total Population</i></th><th class="main-header">Bumbung Rumah (Hunian)<br><i>Residential Buildings</i></th><th class="main-header">Rata-rata Jiwa/Rumah<br><i>Avg Persons/Building</i></th></tr><tr><th class="col-num">(1)</th><th class="col-num">(2)</th><th class="col-num">(3)</th><th class="col-num">(4)</th></tr></thead>
+              <tbody><tr><td>RT 001 RW 01 DUSUN SENGGIRING</td><td class="text-right">194</td><td class="text-right">40</td><td class="text-right">4,85</td></tr>
+<tr><td>RT 002 RW 01 DUSUN SENGGIRING</td><td class="text-right">140</td><td class="text-right">32</td><td class="text-right">4,38</td></tr>
+<tr><td>RT 003 RW 01 DUSUN SENGGIRING</td><td class="text-right">123</td><td class="text-right">38</td><td class="text-right">3,24</td></tr>
+<tr><td>RT 004 RW 02 DUSUN BENTENG RAYA</td><td class="text-right">121</td><td class="text-right">32</td><td class="text-right">3,78</td></tr>
+<tr><td>RT 005 RW 02 DUSUN BENTENG RAYA</td><td class="text-right">249</td><td class="text-right">42</td><td class="text-right">5,93</td></tr>
+<tr><td>RT 006 RW 02 DUSUN BENTENG RAYA</td><td class="text-right">200</td><td class="text-right">56</td><td class="text-right">3,57</td></tr>
+<tr><td>RT 007 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">157</td><td class="text-right">46</td><td class="text-right">3,41</td></tr>
+<tr><td>RT 008 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">129</td><td class="text-right">43</td><td class="text-right">3,00</td></tr>
+<tr><td>RT 009 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">138</td><td class="text-right">36</td><td class="text-right">3,83</td></tr>
+<tr><td>RT 010 RW 03 DUSUN SEPAKAT TENGAH</td><td class="text-right">138</td><td class="text-right">27</td><td class="text-right">5,11</td></tr>
+<tr><td>RT 011 RW 03 DUSUN SEPAKAT TENGAH</td><td class="text-right">105</td><td class="text-right">35</td><td class="text-right">3,00</td></tr>
+<tr><td>RT 012 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">270</td><td class="text-right">54</td><td class="text-right">5,00</td></tr>
+<tr><td>RT 013 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">132</td><td class="text-right">32</td><td class="text-right">4,12</td></tr>
+<tr><td>RT 014 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">154</td><td class="text-right">35</td><td class="text-right">4,40</td></tr>
+<tr><td>RT 015 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">158</td><td class="text-right">38</td><td class="text-right">4,16</td></tr>
+<tr><td>RT 016 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">197</td><td class="text-right">41</td><td class="text-right">4,80</td></tr>
+<tr><td>RT 017 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">185</td><td class="text-right">34</td><td class="text-right">5,44</td></tr>
+<tr><td>RT 018 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">190</td><td class="text-right">54</td><td class="text-right">3,52</td></tr></tbody>
+            </table><div class="table-meta"><div class="meta-row"><div class="meta-lbl">Catatan/<i>Note:</i></div><div>Data keadaan Rukun Tetangga (RT) per Juni 2026 / <i>RT condition data as of June 2026</i></div></div><div class="meta-row"><div class="meta-lbl">Sumber/<i>Source:</i></div><div>Pemerintah Desa Sungai Bakau Kecil — Program Desa Cinta Statistik 2026 / <i>Government of Sungai Bakau Kecil Village — 2026 Desa Cinta Statistik Program</i></div></div></div>
+    </div>
+    <div class="running-footer odd">5</div>
+  </div>  <div class="page-card">
+    <div class="running-header even">DESA SUNGAI BAKAU KECIL DALAM ANGKA 2026<span class="en">SUNGAI BAKAU KECIL VILLAGE IN FIGURES 2026</span></div>
+    <div class="page-content">
+<p style="font-weight: 800; font-style: italic; font-size: 9pt; color: #1a202c; margin: 0 0 8px 0;">Lanjutan Tabel/<em>Continued Table</em> 5.1</p>
+                <table class="bps-table">
+                  <thead><tr><th class="main-header">Nama RT<br><i>RT Name</i></th><th class="main-header">Total Penduduk<br><i>Total Population</i></th><th class="main-header">Bumbung Rumah (Hunian)<br><i>Residential Buildings</i></th><th class="main-header">Rata-rata Jiwa/Rumah<br><i>Avg Persons/Building</i></th></tr><tr><th class="col-num">(1)</th><th class="col-num">(2)</th><th class="col-num">(3)</th><th class="col-num">(4)</th></tr></thead>
+                  <tbody><tr><td>RT 019 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">139</td><td class="text-right">26</td><td class="text-right">5,35</td></tr>
+<tr><td>RT 020 RW 01 DUSUN SENGGIRING</td><td class="text-right">157</td><td class="text-right">50</td><td class="text-right">3,14</td></tr>
+<tr><td>RT 021 RW 06 DUSUN KEDAUNG</td><td class="text-right">132</td><td class="text-right">36</td><td class="text-right">3,67</td></tr>
+<tr><td>RT 022 RW 06 DUSUN KEDAUNG</td><td class="text-right">80</td><td class="text-right">34</td><td class="text-right">2,35</td></tr>
+<tr><td>RT 023 RW 06 DUSUN KEDAUNG</td><td class="text-right">206</td><td class="text-right">41</td><td class="text-right">5,02</td></tr>
+<tr><td>RT 024 RW 07 DUSUN SENAMBANG</td><td class="text-right">108</td><td class="text-right">28</td><td class="text-right">3,86</td></tr>
+<tr><td>RT 025 RW 07 DUSUN SENAMBANG</td><td class="text-right">138</td><td class="text-right">31</td><td class="text-right">4,45</td></tr>
+<tr><td>RT 026 RW 07 DUSUN SENAMBANG</td><td class="text-right">212</td><td class="text-right">41</td><td class="text-right">5,17</td></tr>
+<tr><td>RT 027 RW 08 DUSUN KONSASI</td><td class="text-right">119</td><td class="text-right">27</td><td class="text-right">4,41</td></tr>
+<tr><td>RT 028 RW 08 DUSUN KONSASI</td><td class="text-right">156</td><td class="text-right">36</td><td class="text-right">4,33</td></tr>
+<tr><td>RT 029 RW 08 DUSUN KONSASI</td><td class="text-right">108</td><td class="text-right">108</td><td class="text-right">1,00</td></tr>
+<tr><td>RT 030 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">92</td><td class="text-right">32</td><td class="text-right">2,88</td></tr>
+<tr><td>RT 031 RW 02 DUSUN BENTENG RAYA</td><td class="text-right">77</td><td class="text-right">38</td><td class="text-right">2,03</td></tr>
+<tr><td>RT 032 RW 07 DUSUN SENAMBANG</td><td class="text-right">139</td><td class="text-right">30</td><td class="text-right">4,63</td></tr>
+<tr><td>RT 033 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">195</td><td class="text-right">45</td><td class="text-right">4,33</td></tr>
+<tr><td>RT 034 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">201</td><td class="text-right">41</td><td class="text-right">4,90</td></tr>
+<tr><td>RT 035 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">158</td><td class="text-right">39</td><td class="text-right">4,05</td></tr>
+<tr><td>RT 036 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">213</td><td class="text-right">36</td><td class="text-right">5,92</td></tr>
+<tr><td>RT 037 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">134</td><td class="text-right">39</td><td class="text-right">3,44</td></tr>
+<tr class="total-row"><td>DESA SUNGAI BAKAU KECIL</td><td class="text-right">5.744</td><td class="text-right">1.473</td><td class="text-right">3,90</td></tr></tbody>
+                </table><div class="table-meta"><div class="meta-row"><div class="meta-lbl">Catatan/<i>Note:</i></div><div>Data keadaan Rukun Tetangga (RT) per Juni 2026 / <i>RT condition data as of June 2026</i></div></div><div class="meta-row"><div class="meta-lbl">Sumber/<i>Source:</i></div><div>Pemerintah Desa Sungai Bakau Kecil — Program Desa Cinta Statistik 2026 / <i>Government of Sungai Bakau Kecil Village — 2026 Desa Cinta Statistik Program</i></div></div></div>
+    </div>
+    <div class="running-footer even">5</div>
+  </div>  <div class="page-card">
+    <div class="running-header odd">PERUMAHAN DAN LINGKUNGAN<span class="en">HOUSING AND INFRASTRUCTURE</span></div>
+    <div class="page-content">
+<div class="section-header">5.2 SEBARAN SARANA PERIBADATAN, PENDIDIKAN, KESEHATAN DAN PEMERINTAHAN/EKONOMI<span class="en">DISTRIBUTION OF WORSHIP, EDUCATION, HEALTH, AND GOVT/ECONOMIC FACILITIES</span></div><div class="table-title-block"><div class="table-label"><span class="id-lbl">Tabel</span><br><i>Table</i></div><div class="table-num">5.2</div><div class="table-name">Sebaran Sarana Peribadatan, Pendidikan, Kesehatan, dan Pemerintahan/Ekonomi Menurut RT, 2026<br><span class="en-title">Distribution of Worship, Education, Health, and Govt/Economic Facilities by RT, 2026</span></div></div>
+                    <table class="bps-table">
+                      <thead><tr><th class="main-header">Nama RT<br><i>RT Name</i></th><th class="main-header">Peribadatan (Masjid/Surau)<br><i>Worship (Mosque/Surau)</i></th><th class="main-header">Pendidikan (TK/SD/SMP/SMA/Ponpes)<br><i>Education (School/Pesantren)</i></th><th class="main-header">Kesehatan (Posyandu/Polindes)<br><i>Health (Posyandu/Polindes)</i></th><th class="main-header">Pemerintahan & Ekonomi<br><i>Govt, Market & Utilities</i></th><th class="main-header">Total Sarana<br><i>Total Facilities</i></th></tr><tr><th class="col-num">(1)</th><th class="col-num">(2)</th><th class="col-num">(3)</th><th class="col-num">(4)</th><th class="col-num">(5)</th><th class="col-num">(6)</th></tr></thead>
+                      <tbody><tr><td>RT 001 RW 01 DUSUN SENGGIRING</td><td class="text-right">1</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">1</td><td class="text-right"><strong>2</strong></td></tr>
+<tr><td>RT 002 RW 01 DUSUN SENGGIRING</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">1</td><td class="text-right"><strong>1</strong></td></tr>
+<tr><td>RT 003 RW 01 DUSUN SENGGIRING</td><td class="text-right">1</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">1</td><td class="text-right"><strong>2</strong></td></tr>
+<tr><td>RT 004 RW 02 DUSUN BENTENG RAYA</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 005 RW 02 DUSUN BENTENG RAYA</td><td class="text-right">-</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right">2</td><td class="text-right"><strong>4</strong></td></tr>
+<tr><td>RT 006 RW 02 DUSUN BENTENG RAYA</td><td class="text-right">1</td><td class="text-right">2</td><td class="text-right">-</td><td class="text-right">2</td><td class="text-right"><strong>5</strong></td></tr>
+<tr><td>RT 007 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 008 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">1</td><td class="text-right">2</td><td class="text-right">-</td><td class="text-right">3</td><td class="text-right"><strong>6</strong></td></tr>
+<tr><td>RT 009 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 010 RW 03 DUSUN SEPAKAT TENGAH</td><td class="text-right">1</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">1</td><td class="text-right"><strong>2</strong></td></tr>
+<tr><td>RT 011 RW 03 DUSUN SEPAKAT TENGAH</td><td class="text-right">2</td><td class="text-right">2</td><td class="text-right">-</td><td class="text-right">4</td><td class="text-right"><strong>8</strong></td></tr>
+<tr><td>RT 012 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">2</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right">3</td><td class="text-right"><strong>7</strong></td></tr>
+<tr><td>RT 013 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">2</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right">3</td><td class="text-right"><strong>7</strong></td></tr>
+<tr><td>RT 014 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right">-</td><td class="text-right">2</td><td class="text-right"><strong>4</strong></td></tr>
+<tr><td>RT 015 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right">-</td><td class="text-right">1</td><td class="text-right"><strong>3</strong></td></tr>
+<tr><td>RT 016 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">1</td><td class="text-right">4</td><td class="text-right">1</td><td class="text-right">4</td><td class="text-right"><strong>10</strong></td></tr>
+<tr><td>RT 017 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">-</td><td class="text-right">1</td><td class="text-right">-</td><td class="text-right">1</td><td class="text-right"><strong>2</strong></td></tr>
+<tr><td>RT 018 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">1</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">1</td><td class="text-right"><strong>2</strong></td></tr></tbody>
+                    </table><div class="table-meta"><div class="meta-row"><div class="meta-lbl">Catatan/<i>Note:</i></div><div>Data keadaan Rukun Tetangga (RT) per Juni 2026 / <i>RT condition data as of June 2026</i></div></div><div class="meta-row"><div class="meta-lbl">Sumber/<i>Source:</i></div><div>Pemerintah Desa Sungai Bakau Kecil — Program Desa Cinta Statistik 2026 / <i>Government of Sungai Bakau Kecil Village — 2026 Desa Cinta Statistik Program</i></div></div></div>
+    </div>
+    <div class="running-footer odd">5</div>
+  </div>  <div class="page-card">
+    <div class="running-header even">DESA SUNGAI BAKAU KECIL DALAM ANGKA 2026<span class="en">SUNGAI BAKAU KECIL VILLAGE IN FIGURES 2026</span></div>
+    <div class="page-content">
+<p style="font-weight: 800; font-style: italic; font-size: 9pt; color: #1a202c; margin: 0 0 8px 0;">Lanjutan Tabel/<em>Continued Table</em> 5.2</p>
+                        <table class="bps-table">
+                          <thead><tr><th class="main-header">Nama RT<br><i>RT Name</i></th><th class="main-header">Peribadatan (Masjid/Surau)<br><i>Worship (Mosque/Surau)</i></th><th class="main-header">Pendidikan (TK/SD/SMP/SMA/Ponpes)<br><i>Education (School/Pesantren)</i></th><th class="main-header">Kesehatan (Posyandu/Polindes)<br><i>Health (Posyandu/Polindes)</i></th><th class="main-header">Pemerintahan & Ekonomi<br><i>Govt, Market & Utilities</i></th><th class="main-header">Total Sarana<br><i>Total Facilities</i></th></tr><tr><th class="col-num">(1)</th><th class="col-num">(2)</th><th class="col-num">(3)</th><th class="col-num">(4)</th><th class="col-num">(5)</th><th class="col-num">(6)</th></tr></thead>
+                          <tbody><tr><td>RT 019 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">1</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">1</td><td class="text-right"><strong>2</strong></td></tr>
+<tr><td>RT 020 RW 01 DUSUN SENGGIRING</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right"><strong>2</strong></td></tr>
+<tr><td>RT 021 RW 06 DUSUN KEDAUNG</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 022 RW 06 DUSUN KEDAUNG</td><td class="text-right">3</td><td class="text-right">3</td><td class="text-right">1</td><td class="text-right">6</td><td class="text-right"><strong>13</strong></td></tr>
+<tr><td>RT 023 RW 06 DUSUN KEDAUNG</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 024 RW 07 DUSUN SENAMBANG</td><td class="text-right">2</td><td class="text-right">1</td><td class="text-right">-</td><td class="text-right">2</td><td class="text-right"><strong>5</strong></td></tr>
+<tr><td>RT 025 RW 07 DUSUN SENAMBANG</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 026 RW 07 DUSUN SENAMBANG</td><td class="text-right">1</td><td class="text-right">2</td><td class="text-right">1</td><td class="text-right">3</td><td class="text-right"><strong>7</strong></td></tr>
+<tr><td>RT 027 RW 08 DUSUN KONSASI</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right"><strong>2</strong></td></tr>
+<tr><td>RT 028 RW 08 DUSUN KONSASI</td><td class="text-right">1</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">1</td><td class="text-right"><strong>2</strong></td></tr>
+<tr><td>RT 029 RW 08 DUSUN KONSASI</td><td class="text-right">1</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">1</td><td class="text-right"><strong>2</strong></td></tr>
+<tr><td>RT 030 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 031 RW 02 DUSUN BENTENG RAYA</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 032 RW 07 DUSUN SENAMBANG</td><td class="text-right">1</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">1</td><td class="text-right"><strong>2</strong></td></tr>
+<tr><td>RT 033 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right">-</td><td class="text-right">1</td><td class="text-right"><strong>3</strong></td></tr>
+<tr><td>RT 034 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 035 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 036 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right"><strong>-</strong></td></tr>
+<tr><td>RT 037 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right"><strong>2</strong></td></tr>
+<tr class="total-row"><td>DESA SUNGAI BAKAU KECIL</td><td class="text-right">26</td><td class="text-right">23</td><td class="text-right">9</td><td class="text-right">49</td><td class="text-right">107</td></tr></tbody>
+                        </table><div class="table-meta"><div class="meta-row"><div class="meta-lbl">Catatan/<i>Note:</i></div><div>Data keadaan Rukun Tetangga (RT) per Juni 2026 / <i>RT condition data as of June 2026</i></div></div><div class="meta-row"><div class="meta-lbl">Sumber/<i>Source:</i></div><div>Pemerintah Desa Sungai Bakau Kecil — Program Desa Cinta Statistik 2026 / <i>Government of Sungai Bakau Kecil Village — 2026 Desa Cinta Statistik Program</i></div></div></div>
+    </div>
+    <div class="running-footer even">5</div>
+  </div>  <div class="page-card">
+    <div class="running-header odd">PERUMAHAN DAN LINGKUNGAN<span class="en">HOUSING AND INFRASTRUCTURE</span></div>
+    <div class="page-content">
+<div class="section-header">5.3 KONDISI BANGUNAN DAN AKSES INFRASTRUKTUR DESA<span class="en">BUILDING CONDITION AND VILLAGE INFRASTRUCTURE ACCESS</span></div><div class="table-title-block"><div class="table-label"><span class="id-lbl">Tabel</span><br><i>Table</i></div><div class="table-num">5.3</div><div class="table-name">Rekapitulasi Kondisi Bangunan dan Akses Infrastruktur Desa Menurut RT, 2026<br><span class="en-title">Building Condition and Infrastructure Access Summary by RT, 2026</span></div></div>
+                    <table class="bps-table">
+                      <thead><tr><th class="main-header">Nama RT<br><i>RT Name</i></th><th class="main-header">Kondisi Baik<br><i>Good Condition</i></th><th class="main-header">Jalan Aspal/Beton<br><i>Paved/Concrete Road</i></th><th class="main-header">Listrik PLN 24 Jam<br><i>PLN Electricity</i></th><th class="main-header">Sinyal 4G/LTE<br><i>4G Signal</i></th></tr><tr><th class="col-num">(1)</th><th class="col-num">(2)</th><th class="col-num">(3)</th><th class="col-num">(4)</th><th class="col-num">(5)</th></tr></thead>
+                      <tbody><tr><td>RT 001 RW 01 DUSUN SENGGIRING</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right">1</td></tr>
+<tr><td>RT 002 RW 01 DUSUN SENGGIRING</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right">1</td></tr>
+<tr><td>RT 003 RW 01 DUSUN SENGGIRING</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right">1</td></tr>
+<tr><td>RT 004 RW 02 DUSUN BENTENG RAYA</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td></tr>
+<tr><td>RT 005 RW 02 DUSUN BENTENG RAYA</td><td class="text-right">2</td><td class="text-right">1</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+<tr><td>RT 006 RW 02 DUSUN BENTENG RAYA</td><td class="text-right">2</td><td class="text-right">2</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+<tr><td>RT 007 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td></tr>
+<tr><td>RT 008 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">3</td><td class="text-right">2</td><td class="text-right">3</td><td class="text-right">2</td></tr>
+<tr><td>RT 009 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td></tr>
+<tr><td>RT 010 RW 03 DUSUN SEPAKAT TENGAH</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right">1</td></tr>
+<tr><td>RT 011 RW 03 DUSUN SEPAKAT TENGAH</td><td class="text-right">4</td><td class="text-right">4</td><td class="text-right">4</td><td class="text-right">4</td></tr>
+<tr><td>RT 012 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">3</td><td class="text-right">3</td><td class="text-right">3</td><td class="text-right">2</td></tr>
+<tr><td>RT 013 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">2</td><td class="text-right">-</td><td class="text-right">3</td><td class="text-right">-</td></tr>
+<tr><td>RT 014 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">2</td><td class="text-right">2</td><td class="text-right">2</td><td class="text-right">1</td></tr>
+<tr><td>RT 015 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right">1</td></tr>
+<tr><td>RT 016 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">4</td><td class="text-right">4</td><td class="text-right">4</td><td class="text-right">2</td></tr>
+<tr><td>RT 017 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right">-</td></tr>
+<tr><td>RT 018 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right">1</td></tr></tbody>
+                    </table><div class="table-meta"><div class="meta-row"><div class="meta-lbl">Catatan/<i>Note:</i></div><div>Data keadaan Rukun Tetangga (RT) per Juni 2026 / <i>RT condition data as of June 2026</i></div></div><div class="meta-row"><div class="meta-lbl">Sumber/<i>Source:</i></div><div>Pemerintah Desa Sungai Bakau Kecil — Program Desa Cinta Statistik 2026 / <i>Government of Sungai Bakau Kecil Village — 2026 Desa Cinta Statistik Program</i></div></div></div>
+    </div>
+    <div class="running-footer odd">5</div>
+  </div>  <div class="page-card">
+    <div class="running-header even">DESA SUNGAI BAKAU KECIL DALAM ANGKA 2026<span class="en">SUNGAI BAKAU KECIL VILLAGE IN FIGURES 2026</span></div>
+    <div class="page-content">
+<p style="font-weight: 800; font-style: italic; font-size: 9pt; color: #1a202c; margin: 0 0 8px 0;">Lanjutan Tabel/<em>Continued Table</em> 5.3</p>
+                        <table class="bps-table">
+                          <thead><tr><th class="main-header">Nama RT<br><i>RT Name</i></th><th class="main-header">Kondisi Baik<br><i>Good Condition</i></th><th class="main-header">Jalan Aspal/Beton<br><i>Paved/Concrete Road</i></th><th class="main-header">Listrik PLN 24 Jam<br><i>PLN Electricity</i></th><th class="main-header">Sinyal 4G/LTE<br><i>4G Signal</i></th></tr><tr><th class="col-num">(1)</th><th class="col-num">(2)</th><th class="col-num">(3)</th><th class="col-num">(4)</th><th class="col-num">(5)</th></tr></thead>
+                          <tbody><tr><td>RT 019 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">1</td><td class="text-right">-</td></tr>
+<tr><td>RT 020 RW 01 DUSUN SENGGIRING</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right">1</td></tr>
+<tr><td>RT 021 RW 06 DUSUN KEDAUNG</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td></tr>
+<tr><td>RT 022 RW 06 DUSUN KEDAUNG</td><td class="text-right">6</td><td class="text-right">6</td><td class="text-right">6</td><td class="text-right">5</td></tr>
+<tr><td>RT 023 RW 06 DUSUN KEDAUNG</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td></tr>
+<tr><td>RT 024 RW 07 DUSUN SENAMBANG</td><td class="text-right">2</td><td class="text-right">2</td><td class="text-right">2</td><td class="text-right">-</td></tr>
+<tr><td>RT 025 RW 07 DUSUN SENAMBANG</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td></tr>
+<tr><td>RT 026 RW 07 DUSUN SENAMBANG</td><td class="text-right">3</td><td class="text-right">2</td><td class="text-right">3</td><td class="text-right">1</td></tr>
+<tr><td>RT 027 RW 08 DUSUN KONSASI</td><td class="text-right">1</td><td class="text-right">-</td><td class="text-right">1</td><td class="text-right">-</td></tr>
+<tr><td>RT 028 RW 08 DUSUN KONSASI</td><td class="text-right">1</td><td class="text-right">-</td><td class="text-right">1</td><td class="text-right">-</td></tr>
+<tr><td>RT 029 RW 08 DUSUN KONSASI</td><td class="text-right">1</td><td class="text-right">-</td><td class="text-right">1</td><td class="text-right">-</td></tr>
+<tr><td>RT 030 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td></tr>
+<tr><td>RT 031 RW 02 DUSUN BENTENG RAYA</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td></tr>
+<tr><td>RT 032 RW 07 DUSUN SENAMBANG</td><td class="text-right">1</td><td class="text-right">-</td><td class="text-right">1</td><td class="text-right">-</td></tr>
+<tr><td>RT 033 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right">-</td></tr>
+<tr><td>RT 034 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td></tr>
+<tr><td>RT 035 RW 04 DUSUN SEPAKAT TENGAH</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td></tr>
+<tr><td>RT 036 RW 03 DUSUN BENTENG TIMUR</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">-</td></tr>
+<tr><td>RT 037 RW 05 DUSUN SEPAKAT DARAT</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right">1</td><td class="text-right">-</td></tr>
+<tr class="total-row"><td>DESA SUNGAI BAKAU KECIL</td><td class="text-right">47</td><td class="text-right">38</td><td class="text-right">49</td><td class="text-right">28</td></tr></tbody>
+                        </table><div class="table-meta"><div class="meta-row"><div class="meta-lbl">Catatan/<i>Note:</i></div><div>Data keadaan Rukun Tetangga (RT) per Juni 2026 / <i>RT condition data as of June 2026</i></div></div><div class="meta-row"><div class="meta-lbl">Sumber/<i>Source:</i></div><div>Pemerintah Desa Sungai Bakau Kecil — Program Desa Cinta Statistik 2026 / <i>Government of Sungai Bakau Kecil Village — 2026 Desa Cinta Statistik Program</i></div></div></div>
+    </div>
+    <div class="running-footer even">5</div>
+  </div></div>
+</body>
+</html>

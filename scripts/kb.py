@@ -26,6 +26,9 @@ from kb import (
     cmd_chat,
     cmd_setup,
     cmd_sqllab,
+    cmd_metadata,
+    cmd_dda,
+    cmd_gdrive_mirror,
     whoami_str,
 )
 
@@ -231,6 +234,9 @@ def main():
         "auto-update", help="Workflow harian terpadu (git pull + update latsar + sync-sheets)."
     )
 
+    # 11. METADATA command
+    cmd_metadata.register_parser(subparsers)
+
     # 9. CHAT command
     parser_chat = subparsers.add_parser(
         "chat", help="Menganalisis obrolan WhatsApp grup kegiatan (EPSS)."
@@ -266,10 +272,56 @@ def main():
         type=str, default=None,
         help="Filter pesan sejak tanggal tertentu (format: YYYY-MM-DD)"
     )
-    parser_chat.add_argument(
-        "--until",
+    # DDA command
+    parser_dda = subparsers.add_parser(
+        "dda", help="Penyusunan dan kompilasi otomatis publikasi Desa Dalam Angka (DDA) berstandar BPS."
+    )
+    parser_dda.add_argument(
+        "nama_desa",
+        type=str,
+        help="Nama desa dalam format kebab-case (contoh: 'sungai-bakau-kecil', 'pasir-palembang', 'pasir-wan-salim')"
+    )
+    parser_dda.add_argument(
+        "--sheet-id", "-s",
         type=str, default=None,
-        help="Filter pesan hingga tanggal tertentu — gunakan bersama --since (format: YYYY-MM-DD)"
+        help="Google Sheet ID publikasi/AppSheet (opsional)"
+    )
+    parser_dda.add_argument(
+        "--year", "-y",
+        type=int, default=2026,
+        help="Tahun publikasi (default: 2026)"
+    )
+    parser_dda.add_argument(
+        "--no-upload",
+        action="store_true",
+        help="Jangan upload hasil ke Google Drive secara otomatis."
+    )
+
+    # 13. GDRIVE-MIRROR command
+    parser_gdrive = subparsers.add_parser(
+        "gdrive-mirror", help="Mirroring direktori lokal ke Google Drive secara rekursif."
+    )
+    parser_gdrive.add_argument(
+        "source_path",
+        nargs="?",
+        default="kegiatan/desa-cantik",
+        help="Path folder lokal yang ingin di-mirror (default: 'kegiatan/desa-cantik')"
+    )
+    parser_gdrive.add_argument(
+        "--folder-id", "-f",
+        type=str,
+        default=None,
+        help="Google Drive Folder ID atau URL target (default: dari GDRIVE_MIRROR_FOLDER_ID di .env)"
+    )
+    parser_gdrive.add_argument(
+        "--dry-run", "-n",
+        action="store_true",
+        help="Simulasi pemindaian tanpa mengunggah/membuat file di Google Drive"
+    )
+    parser_gdrive.add_argument(
+        "--force",
+        action="store_true",
+        help="Paksa unggah ulang seluruh file meskipun checksum cocok"
     )
 
     args = parser.parse_args()
@@ -303,6 +355,10 @@ def main():
         print(whoami_str())
     elif args.command == "setup":
         cmd_setup(args)
+    elif args.command == "metadata":
+        cmd_metadata.run(args)
+    elif args.command == "dda":
+        cmd_dda.handle_dda(args)
     elif args.command == "sqllab":
         if args.sqllab_subcommand == "sync":
             cmd_sqllab.cmd_sqllab_sync(args)
@@ -316,6 +372,8 @@ def main():
             cmd_sqllab.cmd_sqllab_report(args)
         elif args.sqllab_subcommand == "print-prep":
             cmd_sqllab.cmd_sqllab_print_prep(args)
+    elif args.command == "gdrive-mirror":
+        cmd_gdrive_mirror.run_gdrive_mirror(args)
 
 
 

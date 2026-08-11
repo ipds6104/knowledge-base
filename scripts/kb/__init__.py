@@ -15,6 +15,9 @@ from .cmd_auto_update import cmd_auto_update
 from .cmd_chat import cmd_chat
 from .cmd_setup import cmd_setup
 from . import cmd_sqllab
+from . import cmd_metadata
+from . import cmd_dda
+from . import cmd_gdrive_mirror
 
 __all__ = [
     "Colors",
@@ -33,6 +36,9 @@ __all__ = [
     "cmd_chat",
     "cmd_setup",
     "cmd_sqllab",
+    "cmd_metadata",
+    "cmd_dda",
+    "cmd_gdrive_mirror",
     "get_current_user",
     "whoami_str",
 ]

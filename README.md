@@ -168,6 +168,25 @@ Melakukan penarikan rekapitulasi progres pencacahan secara real-time dari data `
 
 ---
 
+### 6. Pembuatan Publikasi Desa Dalam Angka (`dda`)
+Menggenerasikan naskah publikasi **Desa Dalam Angka (DDA)** berstandar BPS 5 Bab (Markdown, HTML bilingual A4, dan PDF Siap Cetak via Headless Chrome) secara otomatis dari data live Google Sheets / AppSheet.
+
+```bash
+# Generate DDA untuk Desa Sungai Bakau Kecil
+python scripts/kb.py dda sungai-bakau-kecil
+
+# Generate DDA untuk Desa Pasir Palembang
+python scripts/kb.py dda pasir-palembang
+
+# Generate DDA untuk Desa Lain / Sheet ID Kustom
+python scripts/kb.py dda [nama-desa-kebab] --sheet-id [GOOGLE_SHEET_ID]
+```
+
+*Panduan Agentic Workflow:* [.agents/skills/dda-publication/SKILL.md](file:///home/ihza/Projects/knowledge-base/.agents/skills/dda-publication/SKILL.md)  
+*Pedoman Layout BPS:* [docs/pedoman-penyusunan-publikasi-bps.md](file:///home/ihza/Projects/knowledge-base/docs/pedoman-penyusunan-publikasi-bps.md)
+
+---
+
 ### 6. Sinkronisasi Google Sheets Terpadu (`sync-sheets`)
 Mengunggah dan menyinkronkan seluruh milestones kegiatan lokal di repositori ke Google Sheets pribadi untuk dashboard visualisasi eksternal.
 
@@ -192,7 +211,16 @@ Menjalankan seluruh rangkaian otomasi harian secara berurutan dan bebas OS (OS-i
 
 ---
 
-### 8. Analisis Obrolan WhatsApp (`chat`)
+### 8. Pedoman Penyusunan Publikasi BPS (`pedoman-penyusunan-publikasi-bps.md`)
+Pedoman teknis penyusunan publikasi statistik yang dibakukan berbasis standar BPS RI / BPS Provinsi Kalimantan Barat (*Kalimantan Barat Dalam Angka 2026*).
+*   **Dokumen Pedoman**: [docs/pedoman-penyusunan-publikasi-bps.md](docs/pedoman-penyusunan-publikasi-bps.md)
+*   **Opsi Mode Bahasa**: Mode 1 Bahasa (Bahasa Indonesia) & Mode 2 Bahasa / Bilingual (Bahasa Indonesia & English).
+*   **Fitur Utama**: Anatomi 14 bagian halaman baku, penulisan KDT/Tim Penyusun/Kontributor Data, layout foto Pimpinan di Kata Pengantar, ulasan deskriptif analisis narasi di setiap bab, serta alur build HTML -> Headless Chrome PDF A4 Print-ready.
+
+
+---
+
+### 9. Analisis Obrolan WhatsApp (`chat`)
 Menganalisis berkas ekspor obrolan WhatsApp (`.zip`) yang disimpan di folder kegiatan. Perintah ini mendukung pencarian tautan, pencarian kata kunci, visualisasi keaktifan pengirim, serta deteksi tenggat waktu/jadwal potensial dari obrolan secara instan.
 
 #### 📂 Aturan Penyimpanan & Penamaan Berkas Chat

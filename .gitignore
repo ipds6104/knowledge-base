@@ -39,6 +39,7 @@ kegiatan/**/.~*
 kegiatan/**/*.xlsx
 kegiatan/sakernas/2026-08/test_write*
 kegiatan/sensus-ekonomi-2026/2026/master_data/archive/
+kegiatan/**/se_data_yonif_yonzipur*
 
 
 # Cache & Output Tergenerasi / PDF Verifikasi
