@@ -87,23 +87,22 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
     def make_cover_card(
         ch_num: str, ch_title_id: str, ch_title_en: str, info_html: str
     ) -> str:
-        return f"""  <div class="page-card" style="justify-content: center; padding-top: 35mm; padding-bottom: 35mm;">
-    <div style="background: linear-gradient(135deg, #0b3c5d 0%, #1e3a8a 50%, #eb8a3c 100%); border-radius: 18px; padding: 25px 30px; display: flex; align-items: center; gap: 25px; box-shadow: 0 10px 25px -5px rgba(11, 60, 93, 0.3); margin-bottom: 25px;">
-      <div style="width: 85px; height: 85px; background: #0b3c5d; border: 2.5px solid #eb8a3c; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ffffff; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
-        <span style="font-size: 34pt; font-weight: 900; line-height: 0.9; margin-top: -2px;">{ch_num}</span>
-        <span style="font-size: 9.5pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1px; color: #eb8a3c;">BAB</span>
-        <span style="font-size: 7.5pt; font-style: italic; font-weight: 600; margin-top: -2px; color: #fef08a;">Chapter</span>
+        return f"""      <div style="background: linear-gradient(135deg, #0b3c5d 0%, #1e3a8a 50%, #eb8a3c 100%); border-radius: 14px; padding: 22px 25px; display: flex; align-items: center; gap: 22px; box-shadow: 0 8px 20px -4px rgba(11, 60, 93, 0.25); margin-top: 5px; margin-bottom: 22px; width: 100%;">
+        <div style="width: 78px; height: 78px; background: #0b3c5d; border: 2.5px solid #eb8a3c; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ffffff; flex-shrink: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+          <span style="font-size: 30pt; font-weight: 900; line-height: 0.9; margin-top: -2px;">{ch_num}</span>
+          <span style="font-size: 8.5pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1px; color: #eb8a3c;">BAB</span>
+          <span style="font-size: 7pt; font-style: italic; font-weight: 600; margin-top: -2px; color: #fef08a;">Chapter</span>
+        </div>
+        <div style="flex: 1;">
+          <h2 style="font-size: 15pt; font-weight: 900; color: #ffffff; margin: 0 0 6px 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.5px;">{ch_title_id}</h2>
+          <div style="width: 100%; height: 2px; background: #eb8a3c; opacity: 0.9; margin-bottom: 6px;"></div>
+          <h3 style="font-size: 11pt; font-weight: 800; font-style: italic; color: #fef08a; margin: 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.5px;">{ch_title_en}</h3>
+        </div>
       </div>
-      <div style="flex: 1;">
-        <h2 style="font-size: 16pt; font-weight: 900; color: #ffffff; margin: 0 0 8px 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.5px;">{ch_title_id}</h2>
-        <div style="width: 100%; height: 2.5px; background: #eb8a3c; opacity: 0.9; margin-bottom: 8px;"></div>
-        <h3 style="font-size: 12pt; font-weight: 800; font-style: italic; color: #fef08a; margin: 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.5px;">{ch_title_en}</h3>
-      </div>
-    </div>
-    <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 16px; padding: 22px; box-shadow: 0 4px 15px rgba(0,0,0,0.04);">
-      {info_html}
-    </div>
-  </div>"""
+      <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); width: 100%;">
+        <div style="font-size: 9pt; font-weight: 800; color: #0b3c5d; text-transform: uppercase; margin-bottom: 12px; border-bottom: 1.5px solid #e2e8f0; padding-bottom: 4px;">RINGKASAN INDIKATOR BAB {ch_num} / <i>CHAPTER {ch_num} HIGHLIGHTS</i></div>
+        {info_html}
+      </div>"""
 
     def make_blank_page() -> str:
         return """  <div class="page-card" style="justify-content: center; align-items: center;"><div style="color: #cbd5e1; font-style: italic; font-size: 9pt;">[ Halaman Ini Sengaja Dikosongkan / This Page Intentionally Left Blank ]</div></div>"""
@@ -579,13 +578,25 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
 
     # Chapters Construction
     # Chapter 1 Cover (Arab Page 3 - Page 13)
+    info_ch1 = f"""<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 14px;">
+      <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-left: 3.5px solid #16a34a; padding: 10px; border-radius: 6px;">
+        <div style="font-size: 7.5pt; font-weight: 800; color: #166534;">STATUS WILAYAH / REGIONAL STATUS</div>
+        <div style="font-size: 12pt; font-weight: 900; color: #15803d; margin-top: 2px;">{m.status_daerah}</div>
+        <div style="font-size: 7pt; color: #166534;">Kawasan Hutan: {m.kawasan_hutan}</div>
+      </div>
+      <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-left: 3.5px solid #2563eb; padding: 10px; border-radius: 6px;">
+        <div style="font-size: 7.5pt; font-weight: 800; color: #1e40af;">ADMINISTRASI RT / RW</div>
+        <div style="font-size: 12pt; font-weight: 900; color: #1d4ed8; margin-top: 2px;">{m.jumlah_rw} RW | {m.jumlah_rt} RT</div>
+        <div style="font-size: 7pt; color: #1e40af;">Wilayah Kerja Pembinaan Statis</div>
+      </div>
+    </div>
+    <p style="font-size: 8.8pt; line-height: 1.5; color: #334155; text-align: justify; margin: 0;">{admin_type} {name_title} berstatus sebagai wilayah <strong>{m.status_daerah}</strong> dengan lokasi kantor berada di <strong>{m.alamat_lengkap}</strong>. Jumlah penduduk tercatat sebanyak <strong>{tot_pop_str} jiwa</strong> ({l_str} laki-laki, {p_str} perempuan) dengan <i>sex ratio</i> <strong>{sr_str}</strong>. Total keluarga sebanyak <strong>{kk_str} KK</strong>, di mana <strong>{kk_pert_str} KK ({m.kk_pertanian_pct}%)</strong> bergerak di sektor pertanian.</p>"""
+
     cover_ch1 = make_cover_card(
         "1",
         "WILAYAH ADMINISTRASI, DEMOGRAFI & KAWASAN",
         "ADMINISTRATIVE AREA, DEMOGRAPHICS & REGION",
-        f"""<div style="font-size: 9.5pt; line-height: 1.6; color: #334155;">
-          <p>{admin_type} {name_title} berstatus sebagai wilayah <strong>{m.status_daerah}</strong> dengan jumlah penduduk sebanyak <strong>{tot_pop_str} jiwa</strong> ({l_str} laki-laki, {p_str} perempuan). Total keluarga tercatat sebanyak <strong>{kk_str} KK</strong> dengan keluarga pertanian sejumlah <strong>{kk_pert_str} KK ({m.kk_pertanian_pct}%)</strong>.</p>
-        </div>""",
+        info_ch1,
     )
     p_ch1_cover = make_page_card("BAB I WILAYAH ADMINISTRASI & DEMOGRAFI", "CHAPTER I ADMINISTRATIVE & DEMOGRAPHICS", "3", cover_ch1, 13, show_header=False)
 
@@ -629,13 +640,25 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
     p_ch1_tbl2 = make_page_card("BAB I WILAYAH ADMINISTRASI & DEMOGRAFI", "CHAPTER I ADMINISTRATIVE & DEMOGRAPHICS", "5", tbl_1_2, 15, show_header=True)
 
     # Chapter 2 Cover (Arab Page 6 - Page 16)
+    info_ch2 = f"""<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 14px;">
+      <div style="background: #fffbeb; border: 1px solid #fde68a; border-left: 3.5px solid #d97706; padding: 10px; border-radius: 6px;">
+        <div style="font-size: 7.5pt; font-weight: 800; color: #92400e;">LISTRIK PLN / PLN ELECTRICITY</div>
+        <div style="font-size: 12pt; font-weight: 900; color: #b45309; margin-top: 2px;">{fmt_val(m.listrik_pln)} KK</div>
+        <div style="font-size: 7pt; color: #78350f;">{((m.listrik_pln/max(1, m.jumlah_kk))*100):.1f}% Pelanggan Listrik PLN</div>
+      </div>
+      <div style="background: #f0fdfa; border: 1px solid #99f6e4; border-left: 3.5px solid #0d9488; padding: 10px; border-radius: 6px;">
+        <div style="font-size: 7.5pt; font-weight: 800; color: #115e59;">AIR MINUM UTAMA / DRINKING WATER</div>
+        <div style="font-size: 12pt; font-weight: 900; color: #0f766e; margin-top: 2px;">{m.air_minum}</div>
+        <div style="font-size: 7pt; color: #134e4a;">Sumber Air Utama Masyarakat</div>
+      </div>
+    </div>
+    <p style="font-size: 8.8pt; line-height: 1.5; color: #334155; text-align: justify; margin: 0;">Penggunaan daya listrik PLN mencakup <strong>{fmt_val(m.listrik_pln)} KK ({((m.listrik_pln/max(1, m.jumlah_kk))*100):.1f}%)</strong>. Sebagian besar keluarga memanfaatkan air minum utama berjenis <strong>{m.air_minum}</strong> dan bahan bakar utama memasak berjenis <strong>{m.bakar_masak}</strong>. Keberadaan upaya mitigasi bencana tercatat <strong>"{m.mitigasi_bencana}"</strong>.</p>"""
+
     cover_ch2 = make_cover_card(
         "2",
         "ENERGI, UTILITAS PERUMAHAN & MITIGASI BENCANA",
         "ENERGY, HOUSING UTILITIES & DISASTER MITIGATION",
-        f"""<div style="font-size: 9.5pt; line-height: 1.6; color: #334155;">
-          <p>Penggunaan listrik PLN mencakup <strong>{fmt_val(m.listrik_pln)} KK ({((m.listrik_pln/max(1, m.jumlah_kk))*100):.1f}%)</strong>. Sebagian besar keluarga menggunakan air minum berjenis <strong>{m.air_minum}</strong> dan memasak dengan <strong>{m.bakar_masak}</strong>.</p>
-        </div>""",
+        info_ch2,
     )
     p_ch2_cover = make_page_card("BAB II ENERGI & BENCANA", "CHAPTER II ENERGY & DISASTER", "6", cover_ch2, 16, show_header=False)
 
@@ -668,13 +691,25 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
     p_ch2_tbl2 = make_page_card("BAB II ENERGI & BENCANA", "CHAPTER II ENERGY & DISASTER", "8", tbl_2_2, 18, show_header=True)
 
     # Chapter 3 Cover (Arab Page 9 - Page 19)
+    info_ch3 = f"""<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 14px;">
+      <div style="background: #fdf2f8; border: 1px solid #fbcfe8; border-left: 3.5px solid #db2777; padding: 10px; border-radius: 6px;">
+        <div style="font-size: 7.5pt; font-weight: 800; color: #9d174d;">POSYANDU AKTIF / ACTIVE POSYANDU</div>
+        <div style="font-size: 12pt; font-weight: 900; color: #be185d; margin-top: 2px;">{m.posyandu_aktif} Unit</div>
+        <div style="font-size: 7pt; color: #9d174d;">Pemeriksaan Kesehatan Bulanan</div>
+      </div>
+      <div style="background: #faf5ff; border: 1px solid #e9d5ff; border-left: 3.5px solid #9333ea; padding: 10px; border-radius: 6px;">
+        <div style="font-size: 7.5pt; font-weight: 800; color: #6b21a8;">POSBINDU / POSBINDU UNITS</div>
+        <div style="font-size: 12pt; font-weight: 900; color: #7e22ce; margin-top: 2px;">{m.posbindu} Unit</div>
+        <div style="font-size: 7pt; color: #581c87;">Pos Pembinaan Terpadu Lansia</div>
+      </div>
+    </div>
+    <p style="font-size: 8.8pt; line-height: 1.5; color: #334155; text-align: justify; margin: 0;">Pelayanan kesehatan masyarakat berbasis komunitas didukung oleh keberadaan <strong>{m.posyandu_aktif} Posyandu aktif</strong> yang rutin menyelenggarakan pelayanan bulanan dan <strong>{m.posbindu} Posbindu</strong>. Fasilitas pendidikan formal & keagamaan yang tersedia meliputi <strong>{m.sarana_pendidikan}</strong>.</p>"""
+
     cover_ch3 = make_cover_card(
         "3",
         "FASILITAS SOSIAL (PENDIDIKAN & KESEHATAN)",
         "SOCIAL FACILITIES (EDUCATION & HEALTH)",
-        f"""<div style="font-size: 9.5pt; line-height: 1.6; color: #334155;">
-          <p>Ketersediaan sarana pendidikan formal/keagamaan dan pelayanan kesehatan meliputi <strong>{m.posyandu_aktif} Posyandu aktif</strong> dan <strong>{m.posbindu} Posbindu</strong>.</p>
-        </div>""",
+        info_ch3,
     )
     p_ch3_cover = make_page_card("BAB III FASILITAS SOSIAL", "CHAPTER III SOCIAL FACILITIES", "9", cover_ch3, 19, show_header=False)
 
@@ -703,13 +738,25 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
     p_ch3_tbl2 = make_page_card("BAB III FASILITAS SOSIAL", "CHAPTER III SOCIAL FACILITIES", "11", tbl_3_2, 21, show_header=True)
 
     # Chapter 4 Cover (Arab Page 12 - Page 22)
+    info_ch4 = f"""<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 14px;">
+      <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-left: 3.5px solid #2563eb; padding: 10px; border-radius: 6px;">
+        <div style="font-size: 7.5pt; font-weight: 800; color: #1e40af;">MENARA BTS & INTERNET / BTS TOWERS</div>
+        <div style="font-size: 12pt; font-weight: 900; color: #1d4ed8; margin-top: 2px;">{m.jumlah_bts} Menara ({m.sinyal_internet})</div>
+        <div style="font-size: 7pt; color: #1e40af;">Sinyal Telepon Seluler: {m.sinyal_hp}</div>
+      </div>
+      <div style="background: #f0fdfa; border: 1px solid #99f6e4; border-left: 3.5px solid #0d9488; padding: 10px; border-radius: 6px;">
+        <div style="font-size: 7.5pt; font-weight: 800; color: #115e59;">INDUSTRI MIKRO (IMK) / MICRO INDUSTRIES</div>
+        <div style="font-size: 12pt; font-weight: 900; color: #0f766e; margin-top: 2px;">{fmt_val(m.jumlah_imk)} Usaha</div>
+        <div style="font-size: 7pt; color: #134e4a;">Usaha Pengolahan Mikro & Kecil</div>
+      </div>
+    </div>
+    <p style="font-size: 8.8pt; line-height: 1.5; color: #334155; text-align: justify; margin: 0;">Prasarana jalan utama di {admin_type} {name_title} memiliki permukaan jalan berjenis <strong>{m.jenis_jalan}</strong>. Sarana telekomunikasi ditopang oleh <strong>{m.jumlah_bts} Menara BTS</strong> dengan sinyal <strong>{m.sinyal_internet}</strong>. Sektor perekonomian didukung ketersediaan <strong>{fmt_val(m.jumlah_imk)} unit usaha Industri Mikro dan Kecil (IMK)</strong>.</p>"""
+
     cover_ch4 = make_cover_card(
         "4",
         "TRANSPORTASI, KOMUNIKASI & EKONOMI",
         "TRANSPORTATION, COMMUNICATION & ECONOMY",
-        f"""<div style="font-size: 9.5pt; line-height: 1.6; color: #334155;">
-          <p>Dukungan telekomunikasi mencakup <strong>{m.jumlah_bts} Menara BTS</strong> dengan jaringan <strong>{m.sinyal_internet}</strong>. Sektor industri kecil didukung oleh <strong>{fmt_val(m.jumlah_imk)} unit Industri Mikro dan Kecil (IMK)</strong>.</p>
-        </div>""",
+        info_ch4,
     )
     p_ch4_cover = make_page_card("BAB IV TRANSPORTASI & EKONOMI", "CHAPTER IV TRANSPORT & ECONOMY", "12", cover_ch4, 22, show_header=False)
 
@@ -755,13 +802,25 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
     p_ch4_tbl3 = make_page_card("BAB IV TRANSPORTASI & EKONOMI", "CHAPTER IV TRANSPORT & ECONOMY", "15", tbl_4_3, 25, show_header=True)
 
     # Chapter 5 Cover (Arab Page 16 - Page 26)
+    info_ch5 = f"""<div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 14px;">
+      <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-left: 3.5px solid #16a34a; padding: 10px; border-radius: 6px;">
+        <div style="font-size: 7.5pt; font-weight: 800; color: #166534;">APARATUR DESA / APPARATUS</div>
+        <div style="font-size: 12pt; font-weight: 900; color: #15803d; margin-top: 2px;">{m.aparatur_pemdes} Orang</div>
+        <div style="font-size: 7pt; color: #166534;">Aparatur Pemerintah {admin_type}</div>
+      </div>
+      <div style="background: #fffbeb; border: 1px solid #fde68a; border-left: 3.5px solid #d97706; padding: 10px; border-radius: 6px;">
+        <div style="font-size: 7.5pt; font-weight: 800; color: #92400e;">SISTEM INFORMASI (SID) / INFO SYSTEM</div>
+        <div style="font-size: 12pt; font-weight: 900; color: #b45309; margin-top: 2px;">{m.sistem_informasi_desa}</div>
+        <div style="font-size: 7pt; color: #78350f;">Musyawarah Desa: {m.musyawarah_desa} kali/tahun</div>
+      </div>
+    </div>
+    <p style="font-size: 8.8pt; line-height: 1.5; color: #334155; text-align: justify; margin: 0;">Penyelenggaraan pemerintah desa didukung oleh <strong>{m.aparatur_pemdes} orang aparatur</strong>, keberadaan BPD/LMK tercatat <strong>"{m.keberadaan_bpd}"</strong>, frekuensi musyawarah desa sebanyak <strong>{m.musyawarah_desa} kali</strong>, serta pemanfaatan Sistem Informasi Desa (SID) bernomenklatur <strong>"{m.sistem_informasi_desa}"</strong>.</p>"""
+
     cover_ch5 = make_cover_card(
         "5",
         "PEMERINTAHAN, KELEMBAGAAN & INFORMASI DESA",
         "GOVERNMENT, INSTITUTIONS & VILLAGE INFORMATION",
-        f"""<div style="font-size: 9.5pt; line-height: 1.6; color: #334155;">
-          <p>Penyelenggaraan pemerintah desa didukung oleh <strong>{m.aparatur_pemdes} orang aparatur desa</strong>, keberadaan BPD/LMK tercatat <strong>"{m.keberadaan_bpd}"</strong>, serta pelaksanaan musyawarah desa sebanyak <strong>{m.musyawarah_desa} kali</strong>.</p>
-        </div>""",
+        info_ch5,
     )
     p_ch5_cover = make_page_card("BAB V PEMERINTAHAN & KELEMBAGAAN", "CHAPTER V GOVT & INSTITUTIONS", "16", cover_ch5, 26, show_header=False)
 
