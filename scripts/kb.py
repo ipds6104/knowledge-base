@@ -29,6 +29,7 @@ from kb import (
     cmd_metadata,
     cmd_dda,
     cmd_gdrive_mirror,
+    cmd_podes,
     whoami_str,
 )
 
@@ -324,6 +325,9 @@ def main():
         help="Paksa unggah ulang seluruh file meskipun checksum cocok"
     )
 
+    # 14. PODES command
+    cmd_podes.register_podes_subparser(subparsers)
+
     args = parser.parse_args()
 
     # Set cwd to repo root to make paths consistent
@@ -359,6 +363,8 @@ def main():
         cmd_metadata.run(args)
     elif args.command == "dda":
         cmd_dda.handle_dda(args)
+    elif args.command == "podes":
+        cmd_podes.handle_podes(args)
     elif args.command == "sqllab":
         if args.sqllab_subcommand == "sync":
             cmd_sqllab.cmd_sqllab_sync(args)

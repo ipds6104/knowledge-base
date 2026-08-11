@@ -18,6 +18,7 @@ from . import cmd_sqllab
 from . import cmd_metadata
 from . import cmd_dda
 from . import cmd_gdrive_mirror
+from . import cmd_podes
 
 __all__ = [
     "Colors",
@@ -39,6 +40,7 @@ __all__ = [
     "cmd_metadata",
     "cmd_dda",
     "cmd_gdrive_mirror",
+    "cmd_podes",
     "get_current_user",
     "whoami_str",
 ]
