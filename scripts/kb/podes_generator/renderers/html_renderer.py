@@ -1,214 +1,536 @@
-"""HTML Renderer Module for BPS Potensi Desa (PODES) Publication Engine."""
+"""BPS HTML Layout Renderer Module for PODES Generator Engine.
+Strictly adheres to BPS Dissemination Guidelines and Page Card Layout Engine.
+"""
 
 from pathlib import Path
+from typing import Any
 from ..schemas import PodesPublicationData
 
 
-def fmt_val(val: Any) -> str:
-    """Format angka atau string menjadi format Indonesia."""
-    if isinstance(val, (int, float)):
-        return f"{val:,}".replace(",", ".")
-    return str(val)
+def fmt_val(v: Any) -> str:
+    """Format angka untuk tampilan HTML BPS."""
+    if v is None or str(v).strip() in ("", "-", "0", "0.00", "0,00", "NA"):
+        return "-"
+    s = str(v).strip()
+    if "." in s:
+        s = s.replace(".", ",")
+    if s.isdigit() and int(s) >= 1000:
+        s = f"{int(s):,}".replace(",", ".")
+    return s
 
 
 def render_podes_html(pub_data: PodesPublicationData) -> Path:
-    """Menggenerasikan naskah HTML BPS A4 Bilingual Siap Cetak Publikasi Potensi Desa 2026 (Tahun Data 2025)."""
-    cfg = pub_data.config
+    """Menyusun halaman HTML bilingual A4 berstandar BPS dari PodesPublicationData DTO."""
+    config = pub_data.config
     m = pub_data.metrics
 
-    name_title = cfg["name_title"]
-    name_kebab = cfg["name_kebab"]
+    name_title = config["name_title"]
     name_upper = name_title.upper()
-    admin_type = cfg["admin_type"]
+    name_kebab = config["name_kebab"]
+    admin_type = config.get("admin_type", "Desa")
+    admin_type_en = config.get("admin_type_en", "Village")
     admin_upper = admin_type.upper()
-    admin_type_en = cfg["admin_type_en"]
-    pub_no = cfg["pub_no"]
-    kades_title = cfg["kades_title"]
-    kades_name = cfg["kades_name"]
-    kecamatan = cfg.get("kecamatan", "Mempawah")
-    kabupaten = cfg.get("kabupaten", "Mempawah")
-    provinsi = cfg.get("provinsi", "Kalimantan Barat")
+    gov_name = config.get("gov_name", f"Pemerintah {admin_type} {name_title}")
+    gov_name_en = config.get("gov_name_en", f"Government of {name_title} {admin_type_en}")
 
-    year = cfg.get("year", 2026)
-    data_year = cfg.get("data_year", 2025)
+    kecamatan = config.get("kecamatan", "Mempawah")
+    kabupaten = config.get("kabupaten", "Mempawah")
+    year = config.get("year", 2026)
+    data_year = config.get("data_year", 2025)
+    pub_no = config.get("pub_no", "61040.2026.101")
+    kades_title = config.get("kades_title", f"Kepala Desa {name_title}")
+    kades_title_en = config.get("kades_title_en", f"Head of {name_title} Village")
+    kades_name = config.get("kades_name", f"Kepala Desa {name_title}")
+
+    book_header_id = f"POTENSI {admin_upper} {name_upper} {year}"
+    book_header_en = f"POTENTIALS OF {name_upper} {admin_type_en.upper()} {year}"
 
     tot_pop_str = fmt_val(m.total_penduduk)
     l_str = fmt_val(m.penduduk_l)
     p_str = fmt_val(m.penduduk_p)
     sr_str = f"{m.sex_ratio:.2f}".replace(".", ",")
     kk_str = fmt_val(m.jumlah_kk)
+    kk_pert_str = fmt_val(m.kk_pertanian)
 
-    css = """
-    <style>
-      @page { size: A4; margin: 0; }
-      body { font-family: 'Inter', system-ui, -apple-system, sans-serif; margin: 0; padding: 0; background: #e2e8f0; color: #1e293b; -webkit-print-color-adjust: exact; }
-      .page { width: 210mm; min-height: 297mm; padding: 20mm 15mm; margin: 10px auto; background: #ffffff; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); position: relative; box-sizing: border-box; page-break-after: always; display: flex; flex-direction: column; }
-      .cover-page { padding: 0; background: linear-gradient(135deg, #0b3c5d 0%, #1d5c88 100%); color: #ffffff; justify-content: space-between; overflow: hidden; }
-      .cover-header { padding: 25mm 20mm 10mm; text-align: left; }
-      .cover-logo-box { display: flex; align-items: center; gap: 12px; margin-bottom: 25px; }
-      .cover-logo-text { font-size: 11pt; font-weight: 800; tracking: 1px; color: #f8fafc; text-transform: uppercase; }
-      .cover-badge { display: inline-block; background: #eb8a3c; color: #ffffff; font-size: 9pt; font-weight: 800; padding: 4px 14px; border-radius: 4px; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 0.5px; }
-      .cover-title { font-size: 26pt; font-weight: 900; line-height: 1.25; margin-bottom: 12px; text-transform: uppercase; color: #ffffff; }
-      .cover-subtitle { font-size: 14pt; font-weight: 500; color: #cbd5e1; font-style: italic; margin-bottom: 20px; }
-      .cover-meta { border-top: 2px solid rgba(255,255,255,0.2); padding-top: 15px; font-size: 10pt; color: #e2e8f0; }
-      .cover-footer { padding: 20mm; background: #072a42; border-top: 4px solid #eb8a3c; text-align: left; }
-      .cover-publisher { font-size: 12pt; font-weight: 800; color: #ffffff; text-transform: uppercase; }
-      .cover-publisher-sub { font-size: 9.5pt; color: #94a3b8; margin-top: 4px; }
-      
-      .chapter-header { border-bottom: 3px solid #0b3c5d; padding-bottom: 8px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: flex-end; }
-      .chapter-title-id { font-size: 14pt; font-weight: 800; color: #0b3c5d; text-transform: uppercase; }
-      .chapter-title-en { font-size: 10pt; font-weight: 600; color: #64748b; font-style: italic; }
-      
-      .section-box { margin-bottom: 18px; }
-      .section-title { font-size: 11pt; font-weight: 800; color: #0b3c5d; margin-bottom: 8px; border-left: 4px solid #eb8a3c; padding-left: 8px; text-transform: uppercase; }
-      
-      .narrative-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 14px; margin-bottom: 14px; font-size: 8.8pt; line-height: 1.6; }
-      .narrative-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-      .narrative-col-id p { margin: 0 0 6px; color: #1e293b; }
-      .narrative-col-en p { margin: 0 0 6px; color: #475569; font-style: italic; }
-      .narrative-title { font-weight: 800; font-size: 8pt; color: #0b3c5d; text-transform: uppercase; margin-bottom: 4px; }
-      .narrative-title.en { color: #64748b; }
-      
-      table.bps-table { width: 100%; border-collapse: collapse; margin-bottom: 12px; font-size: 8.2pt; }
-      table.bps-table th { background: #0b3c5d; color: #ffffff; font-weight: 700; text-align: center; padding: 7px 8px; border: 1px solid #072a42; vertical-align: middle; }
-      table.bps-table th.sub-header { background: #1d5c88; font-size: 7.5pt; }
-      table.bps-table th.col-num { background: #2c6e9b; font-size: 7pt; font-weight: 400; }
-      table.bps-table td { padding: 6px 8px; border: 1px solid #cbd5e1; color: #1e293b; vertical-align: middle; }
-      table.bps-table tr:nth-child(even) td { background: #f8fafc; }
-      table.bps-table tr.total-row td { background: #e2e8f0; font-weight: 800; border-top: 2px solid #0b3c5d; }
-      .text-center { text-align: center; }
-      .text-right { text-align: right; }
+    def make_page_card(
+        sec_title_id: str,
+        sec_title_en: str,
+        page_no_str: str,
+        content_html: str,
+        page_num: int,
+        show_header: bool = True,
+        show_footer: bool = True,
+    ) -> str:
+        is_even = page_num % 2 == 0
+        hdr_cls = "even" if is_even else "odd"
+        ftr_cls = "even" if is_even else "odd"
 
-      .page-footer { margin-top: auto; padding-top: 10px; border-top: 1px solid #cbd5e1; display: flex; justify-content: space-between; font-size: 7.5pt; color: #64748b; }
-      .dots-leader { flex: 1; border-bottom: 1px dotted #94a3b8; margin: 0 6px 4px; }
-      .toc-row { display: flex; align-items: baseline; font-size: 9pt; margin-bottom: 6px; }
-      .toc-title { font-weight: 700; color: #0b3c5d; }
-      .toc-sub { padding-left: 14px; font-weight: 400; color: #334155; }
-    </style>
-    """
+        hdr_html = ""
+        if show_header:
+            if is_even:
+                hdr_html = f"""<div class="running-header {hdr_cls}">{book_header_id}<span class="en">{book_header_en}</span></div>"""
+            else:
+                hdr_html = f"""<div class="running-header {hdr_cls}">{sec_title_id}<span class="en">{sec_title_en}</span></div>"""
 
-    # Page 1: Cover
-    p1_cover = f"""
-    <div class="page cover-page">
-      <div class="cover-header">
-        <div class="cover-logo-box">
-          <div class="cover-logo-text">BADAN PUSAT STATISTIK<br>KABUPATEN MEMPAWAH</div>
-        </div>
-        <div class="cover-badge">PUBLIKASI POTENSI DESA / PODES {data_year}</div>
-        <div class="cover-title">POTENSI {admin_upper}<br>{name_upper} {year}</div>
-        <div class="cover-subtitle">Potentials of {name_title} {admin_type_en} {year}</div>
-        <div class="cover-meta">
-          <strong>Kecamatan {kecamatan} — Kabupaten {kabupaten}</strong><br>
-          Hasil Pendataan Potensi Desa (PODES) Tahun {data_year}
-        </div>
+        ftr_html = ""
+        if show_footer:
+            ftr_html = f"""<div class="running-footer {ftr_cls}">{page_no_str}</div>"""
+
+        return f"""  <div class="page-card">
+    {hdr_html}
+    <div class="page-content">
+{content_html}
+    </div>
+    {ftr_html}
+  </div>"""
+
+    def make_cover_card(
+        ch_num: str, ch_title_id: str, ch_title_en: str, info_html: str
+    ) -> str:
+        return f"""  <div class="page-card" style="justify-content: center;">
+    <div style="background: linear-gradient(135deg, #f97316 0%, #eb8a3c 45%, #ea580c 100%); border-radius: 18px; padding: 25px 30px; display: flex; align-items: center; gap: 25px; box-shadow: 0 10px 25px -5px rgba(234, 88, 12, 0.3); margin-bottom: 25px;">
+      <div style="width: 85px; height: 85px; background: #c2410c; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ffffff; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+        <span style="font-size: 36pt; font-weight: 900; line-height: 0.9; margin-top: -2px;">{ch_num}</span>
+        <span style="font-size: 10pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1px;">BAB</span>
+        <span style="font-size: 8pt; font-style: italic; font-weight: 600; margin-top: -2px;">Chapter</span>
       </div>
-      <div class="cover-footer">
-        <div class="cover-publisher">BADAN PUSAT STATISTIK KABUPATEN MEMPAWAH</div>
-        <div class="cover-publisher-sub">BPS-Statistics Mempawah Regency</div>
+      <div style="flex: 1;">
+        <h2 style="font-size: 16pt; font-weight: 900; color: #ffffff; margin: 0 0 8px 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.5px;">{ch_title_id}</h2>
+        <div style="width: 100%; height: 2.5px; background: #ffffff; opacity: 0.9; margin-bottom: 8px;"></div>
+        <h3 style="font-size: 12pt; font-weight: 800; font-style: italic; color: #ffffff; margin: 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.5px;">{ch_title_en}</h3>
       </div>
     </div>
-    """
+    <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+      {info_html}
+    </div>
+  </div>"""
 
-    # Page 2: Catalog Page (Halaman ii)
-    p2_catalog = f"""
-    <div class="page">
-      <div style="font-size: 9pt; line-height: 1.6;">
-        <h3 style="color: #0b3c5d; border-bottom: 2px solid #0b3c5d; padding-bottom: 4px; text-transform: uppercase;">KATALOG PUBLIKASI BPS</h3>
+    def make_blank_page() -> str:
+        return """  <div class="page-card" style="justify-content: center; align-items: center;"><div style="color: #cbd5e1; font-style: italic; font-size: 9pt;">[ Halaman Ini Sengaja Dikosongkan / This Page Intentionally Left Blank ]</div></div>"""
+
+    meta_std = f"""<div class="table-meta"><div class="meta-row"><div class="meta-lbl">Catatan/<i>Note:</i></div><div>Data hasil Pendataan Potensi Desa (PODES) Tahun {data_year} / <i>Village Potential Survey Data {data_year}</i></div></div><div class="meta-row"><div class="meta-lbl">Sumber/<i>Source:</i></div><div>Badan Pusat Statistik Kabupaten Mempawah — PODES {data_year} / <i>BPS-Statistics Mempawah Regency — PODES {data_year}</i></div></div></div>"""
+
+    html_header = f"""<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Potensi {admin_type} {name_title} {year} / Potentials of {name_title} {admin_type_en} {year}</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+    @page {{ size: A4; margin: 0; }}
+
+    * {{ box-sizing: border-box; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }}
+
+    body {{
+      font-family: 'Inter', Arial, sans-serif;
+      color: #2d3748;
+      background-color: #f8fafc;
+      margin: 0;
+      padding: 0;
+      font-size: 9pt;
+      line-height: 1.4;
+    }}
+
+    p {{
+      text-align: justify;
+      text-justify: inter-word;
+      line-height: 1.5;
+      margin-top: 0;
+    }}
+
+    .page-container {{ max-width: 210mm; margin: 0 auto; background: #ffffff; }}
+
+    .page-card {{
+      width: 210mm;
+      height: 297mm;
+      padding: 15mm 20mm 15mm 20mm;
+      page-break-after: always;
+      page-break-inside: avoid;
+      position: relative;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      overflow: hidden;
+    }}
+
+    .page-content {{ flex: 1; padding-bottom: 30px; position: relative; }}
+
+    .running-header {{
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: #eb8a3c;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }}
+
+    .running-header.even {{ text-align: left; }}
+    .running-header.odd {{ text-align: right; }}
+
+    .running-header .en {{
+      display: block;
+      font-style: italic;
+      font-weight: 600;
+      color: #eb8a3c;
+      margin-top: 1px;
+    }}
+
+    .running-footer {{
+      position: absolute;
+      bottom: 5mm;
+      left: 14mm;
+      right: 14mm;
+      font-size: 10.5pt;
+      font-weight: 800;
+      color: #eb8a3c;
+    }}
+
+    .running-footer.even {{ text-align: left; }}
+    .running-footer.odd {{ text-align: right; }}
+
+    .cover-box {{
+      background: linear-gradient(135deg, #0b3c5d 0%, #1e3a8a 50%, #eb8a3c 100%);
+      color: #ffffff;
+      padding: 45px 25px;
+      border-radius: 12px;
+      text-align: center;
+      margin-top: 15px;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }}
+
+    .cover-title {{ font-size: 24pt; font-weight: 800; margin: 0 0 8px 0; line-height: 1.25; }}
+    .cover-subtitle {{ font-size: 13pt; color: #fef08a; font-weight: 500; margin-bottom: 22px; font-style: italic; }}
+
+    .narrative-box {{ background: transparent; border: none; padding: 0; margin-bottom: 12px; }}
+    .narrative-box p {{ text-align: justify; text-justify: inter-word; margin-bottom: 8px; line-height: 1.45; }}
+    .narrative-grid {{ display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }}
+    .narrative-col-id {{ padding-right: 10px; }}
+    .narrative-col-en {{ padding-left: 15px; font-style: italic; color: #475569; }}
+    .narrative-title {{ font-weight: 800; color: #0b3c5d; font-size: 8.8pt; margin-bottom: 4px; text-transform: uppercase; }}
+    .narrative-title.en {{ font-style: italic; }}
+
+    .section-header {{ font-size: 11pt; font-weight: 800; color: #0b3c5d; margin-bottom: 8px; padding-bottom: 2px; text-transform: uppercase; }}
+    .section-header .en {{ display: block; font-size: 10pt; font-weight: 800; font-style: italic; color: #0b3c5d; text-transform: uppercase; margin-top: 1px; }}
+
+    .table-title-block {{ display: flex; gap: 12px; align-items: flex-start; margin-bottom: 6px; }}
+    .table-label {{ font-weight: 800; font-size: 9.5pt; color: #1a202c; white-space: nowrap; }}
+    .table-label .id-lbl {{ text-decoration: underline; }}
+    .table-label i {{ font-style: italic; font-weight: 700; text-decoration: none !important; }}
+    .table-num {{ font-weight: 800; font-size: 9.5pt; color: #1a202c; }}
+    .table-title-text {{ font-weight: 800; font-size: 9.5pt; color: #1a202c; line-height: 1.25; }}
+    .table-title-text .en {{ display: block; font-weight: 700; font-style: italic; color: #475569; margin-top: 1px; }}
+
+    table.bps-table {{
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 6px;
+      font-size: 8.8pt;
+    }}
+
+    table.bps-table th, table.bps-table td {{
+      border: 1px solid #718096;
+      padding: 5px 8px;
+    }}
+
+    table.bps-table th {{
+      background-color: #0b3c5d;
+      color: #ffffff;
+      font-weight: 700;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 8.5pt;
+    }}
+
+    table.bps-table th.main-header i {{ font-style: italic; font-weight: 600; font-size: 8pt; }}
+    table.bps-table th.sub-header {{ background-color: #1d5c88; font-size: 8pt; }}
+    table.bps-table th.col-num {{ background-color: #2c6e9b; font-size: 7.5pt; font-weight: 400; padding: 2px; }}
+
+    table.bps-table td {{ vertical-align: middle; color: #1a202c; }}
+    table.bps-table tr:nth-child(even) {{ background-color: #f8fafc; }}
+
+    .text-center {{ text-align: center; }}
+    .text-right {{ text-align: right; }}
+
+    .table-meta {{ font-size: 7.5pt; color: #4a5568; margin-top: 6px; line-height: 1.35; }}
+    .table-meta .meta-row {{ display: flex; margin-bottom: 2px; }}
+    .table-meta .meta-lbl {{ font-weight: 700; width: 85px; flex-shrink: 0; color: #2d3748; }}
+
+    .tech-notes-card {{
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 15px;
+    }}
+
+    .tech-notes-title {{ font-size: 10pt; font-weight: 800; color: #0b3c5d; margin-bottom: 8px; text-transform: uppercase; border-bottom: 1.5px solid #cbd5e1; padding-bottom: 4px; }}
+    .tech-notes-list {{ list-style-type: decimal; padding-left: 18px; margin: 0; font-size: 8.2pt; line-height: 1.45; }}
+    .tech-notes-list li {{ margin-bottom: 6px; text-align: justify; color: #334155; }}
+    .tech-notes-list li .en {{ display: block; font-style: italic; color: #64748b; margin-top: 1px; }}
+  </style>
+</head>
+<body>
+<div class="page-container">
+"""
+
+    # Page 1 (Cover - ODD)
+    card_1_cover = f"""  <div class="page-card" style="padding: 0; background: linear-gradient(135deg, #0b3c5d 0%, #1d5c88 100%); color: #ffffff; justify-content: space-between;">
+    <div style="padding: 25mm 20mm 10mm; text-align: left;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 25px;">
+        <div style="font-size: 11pt; font-weight: 800; letter-spacing: 1px; color: #f8fafc; text-transform: uppercase;">BADAN PUSAT STATISTIK<br>KABUPATEN MEMPAWAH</div>
+      </div>
+      <div style="display: inline-block; background: #eb8a3c; color: #ffffff; font-size: 9pt; font-weight: 800; padding: 4px 14px; border-radius: 4px; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 0.5px;">PUBLIKASI POTENSI DESA / PODES {data_year}</div>
+      <div style="font-size: 26pt; font-weight: 900; line-height: 1.25; margin-bottom: 12px; text-transform: uppercase; color: #ffffff;">POTENSI {admin_upper}<br>{name_upper} {year}</div>
+      <div style="font-size: 14pt; font-weight: 500; color: #cbd5e1; font-style: italic; margin-bottom: 20px;">Potentials of {name_title} {admin_type_en} {year}</div>
+      <div style="border-top: 2px solid rgba(255,255,255,0.2); padding-top: 15px; font-size: 10pt; color: #e2e8f0;">
+        <strong>Kecamatan {kecamatan} — Kabupaten {kabupaten}</strong><br>
+        Hasil Pendataan Potensi Desa (PODES) Tahun {data_year}
+      </div>
+    </div>
+    <div style="padding: 20mm; background: #072a42; border-top: 4px solid #eb8a3c; text-align: left;">
+      <div style="font-size: 12pt; font-weight: 800; color: #ffffff; text-transform: uppercase;">BADAN PUSAT STATISTIK KABUPATEN MEMPAWAH</div>
+      <div style="font-size: 9.5pt; color: #94a3b8; margin-top: 4px;">BPS-Statistics Mempawah Regency</div>
+    </div>
+  </div>"""
+
+    # Page 2 (ii - EVEN)
+    card_2_catalog = make_page_card(
+        "KATALOG DALAM TERBITAN",
+        "KATALOG DALAM TERBITAN",
+        "ii",
+        f"""      <div style="text-align: center; margin-top: 5px; margin-bottom: 20px;">
+        <h2 style="font-size: 13pt; font-weight: 800; color: #0b3c5d; margin: 0; text-transform: uppercase;">POTENSI {admin_upper} {name_upper} {year}</h2>
+        <div style="font-size: 10.5pt; font-weight: 700; font-style: italic; color: #475569; margin-top: 4px;">Potentials of {name_title} {admin_type_en} {year}</div>
+      </div>
+      <div style="font-size: 9pt; line-height: 1.6; color: #2d3748; max-width: 95%; margin: 0 auto;">
         <table style="width: 100%; border: none; font-size: 8.8pt; margin-bottom: 20px;">
-          <tr><td style="width: 160px; font-weight: 700;">Judul Publikasi</td><td>: Potensi {admin_type} {name_title} {year}</td></tr>
-          <tr><td style="font-weight: 700;">Publication Title</td><td>: <i>Potentials of {name_title} {admin_type_en} {year}</i></td></tr>
-          <tr><td style="font-weight: 700;">Nomor Publikasi</td><td>: {pub_no}</td></tr>
-          <tr><td style="font-weight: 700;">Ukuran Buku</td><td>: 21 cm x 29,7 cm (A4)</td></tr>
-          <tr><td style="font-weight: 700;">Jumlah Halaman</td><td>: iv + 16 halaman</td></tr>
-          <tr><td style="font-weight: 700;">Naskah / Text</td><td>: BPS Kabupaten Mempawah</td></tr>
-          <tr><td style="font-weight: 700;">Penyunting / Editor</td><td>: BPS Kabupaten Mempawah</td></tr>
-          <tr><td style="font-weight: 700;">Penerbit / Publisher</td><td>: © BPS Kabupaten Mempawah</td></tr>
-          <tr><td style="font-weight: 700;">Sumber Data</td><td>: Pendataan Potensi Desa (PODES) Tahun {data_year}</td></tr>
+          <tr><td style="width: 160px; font-weight: 700;">Ukuran Buku / <i>Book Size</i></td><td>: 21 cm x 29,7 cm (A4)</td></tr>
+          <tr><td style="font-weight: 700;">Jumlah Halaman / <i>Pages</i></td><td>: ix + 15 halaman</td></tr>
+          <tr><td style="font-weight: 700;">Naskah / <i>Manuscript</i></td><td>: BPS Kabupaten Mempawah</td></tr>
+          <tr><td style="font-weight: 700;">Penyunting / <i>Editor</i></td><td>: BPS Kabupaten Mempawah</td></tr>
+          <tr><td style="font-weight: 700;">Penerbit / <i>Publisher</i></td><td>: © BPS Kabupaten Mempawah & {gov_name}</td></tr>
+          <tr><td style="font-weight: 700;">Sumber Data / <i>Source</i></td><td>: Pendataan Potensi Desa (PODES) Tahun {data_year}</td></tr>
         </table>
         
-        <div style="border: 1.5px solid #0b3c5d; padding: 12px; border-radius: 6px; background: #f8fafc; margin-top: 40px;">
+        <div style="border: 1.5px solid #0b3c5d; padding: 12px; border-radius: 6px; background: #f8fafc; margin-top: 30px;">
           <strong style="color: #0b3c5d; text-transform: uppercase;">KLAUSUL HAK CIPTA / COPYRIGHT NOTICE</strong><br>
           <p style="font-size: 8.2pt; color: #334155; margin-top: 6px; text-align: justify;">
-            Dilarang mengumumkan, mendistribusikan, mengomunikasikan, dan/atau menggandakan sebagian atau seluruh isi buku ini untuk tujuan komersial tanpa izin tertulis dari Badan Pusat Statistik Kabupaten Mempawah.<br>
-            <i>It is strictly forbidden to publish, distribute, communicate, and/or copy part or all of the contents of this book for commercial purposes without written permission from BPS-Statistics Mempawah Regency.</i>
+            Dilarang mengumumkan, mendistribusikan, mengomunikasikan, dan/atau menggandakan sebagian atau seluruh isi buku ini untuk tujuan komersial tanpa izin tertulis dari Badan Pusat Statistik Kabupaten Mempawah dan {gov_name}.<br>
+            <i>It is prohibited to publish, distribute, communicate, and/or duplicate part or all of this book for commercial purposes without written permission from BPS-Statistics Mempawah Regency and {gov_name_en}.</i>
           </p>
         </div>
-      </div>
-      <div class="page-footer">
-        <span>Potensi {admin_type} {name_title} {year}</span>
-        <span>ii</span>
-      </div>
-    </div>
-    """
+      </div>""",
+        2,
+        show_header=False,
+        show_footer=True,
+    )
 
-    # Page 3: Preface Page (Halaman iii)
-    p3_preface = f"""
-    <div class="page">
-      <h2 style="color: #0b3c5d; border-bottom: 2px solid #eb8a3c; padding-bottom: 6px; text-align: center; text-transform: uppercase;">KATA PENGANTAR / <i>PREFACE</i></h2>
-      <div style="font-size: 8.8pt; line-height: 1.7; color: #1e293b; margin-top: 15px;">
-        <p>Puji dan syukur kita panjatkan ke hadirat Tuhan Yang Maha Esa atas rahmat dan karunia-Nya, publikasi <strong>"Potensi {admin_type} {name_title} {year}"</strong> ini dapat diselesaikan dengan baik. Publikasi ini menyajikan gambaran komprehensif mengenai potensi kewilayahan, kependudukan, perumahan, energi, fasilitas sosial, prasarana komunikasi, hingga kelembagaan dan ekonomi masyarakat di {admin_type} {name_title} berdasarkan Pendataan Potensi Desa (PODES) Tahun {data_year}.</p>
-        <p>Data yang disajikan diharapkan dapat menjadi rujukan baku bagi Pemerintah {admin_type} dan para pemangku kepentingan dalam perencanaan pembangunan kewilayahan (<i>evidence-based policy</i>) demi meningkatkan kesejahteraan masyarakat.</p>
-        <p>Kami menyampaikan ucapan terima kasih dan penghargaan setinggi-tingginya kepada seluruh pihak yang telah membantu terwujudnya publikasi ini.</p>
-        <br>
-        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 30px;">
-          <div></div>
-          <div style="text-align: center;">
-            {name_title}, Agustus {year}<br>
-            <strong>{kades_title}</strong><br><br><br><br>
-            <u><strong>{kades_name.upper()}</strong></u>
-          </div>
+    # Page 3 (iii - ODD)
+    card_3_contrib = make_page_card(
+        "KONTRIBUTOR DATA",
+        "DATA CONTRIBUTORS",
+        "iii",
+        f"""      <h2 style="text-align: center; color: #0b3c5d; padding-bottom: 6px; font-size: 13pt; margin-bottom: 20px;">KONTRIBUTOR DATA / <i>DATA CONTRIBUTORS</i></h2>
+      <ol style="font-size: 9.5pt; line-height: 1.8; color: #2d3748; padding-left: 20px; max-width: 90%; margin: 0 auto;">
+        <li>{gov_name} / <i>{gov_name_en}</i></li>
+        <li>Tim Pendataan Potensi Desa (PODES {data_year}) BPS Kabupaten Mempawah / <i>PODES {data_year} Team of BPS-Statistics Mempawah Regency</i></li>
+      </ol>""",
+        3,
+        show_header=False,
+        show_footer=True,
+    )
+
+    # Page 4 (iv - EVEN)
+    card_4_preface_id = make_page_card(
+        "KATA PENGANTAR",
+        "PREFACE",
+        "iv",
+        f"""      <h2 style="text-align: center; color: #0b3c5d; font-size: 14pt; font-weight: 800; margin-top: 10px; margin-bottom: 25px;">KATA PENGANTAR</h2>
+      <div style="font-size: 9.5pt; line-height: 1.6; color: #2d3748; max-width: 95%; margin: 0 auto;">
+        <p style="margin-bottom: 16px; text-align: justify; text-indent: 30px;">Puji dan syukur kita panjatkan ke hadirat Tuhan Yang Maha Esa atas rahmat dan karunia-Nya, publikasi resmi <strong>"Potensi {admin_type} {name_title} {year}"</strong> dapat diselesaikan dengan baik. Publikasi ini menyajikan gambaran komprehensif mengenai potensi kewilayahan, kependudukan, perumahan, energi, fasilitas sosial, prasarana komunikasi, hingga kelembagaan dan ekonomi masyarakat di {admin_type} {name_title} berdasarkan hasil Pendataan Potensi Desa (PODES) Tahun {data_year}.</p>
+        <p style="margin-bottom: 25px; text-align: justify; text-indent: 30px;">Data yang disajikan diharapkan dapat menjadi rujukan baku bagi Pemerintah {admin_type} dan para pemangku kepentingan dalam perencanaan pembangunan kewilayahan berbasis bukti (<i>evidence-based policy</i>) demi meningkatkan kesejahteraan masyarakat.</p>
+      </div>
+      <div style="margin-top: 35px; font-size: 9.5pt; text-align: right; padding-right: 20px;">
+        <div style="margin-bottom: 15px; font-weight: 500; color: #2d3748;">{name_title}, Agustus {year}</div>
+        <div style="display: inline-block; text-align: center;">
+          <div style="font-weight: 700; color: #0b3c5d;">{kades_title.upper()}</div>
+          <div style="font-weight: 800; color: #0b3c5d; text-decoration: underline; margin-top: 55px; font-size: 10.5pt;">{kades_name.upper()}</div>
         </div>
-      </div>
-      <div class="page-footer">
-        <span>Potensi {admin_type} {name_title} {year}</span>
-        <span>iii</span>
-      </div>
-    </div>
-    """
+      </div>""",
+        4,
+        show_header=False,
+        show_footer=True,
+    )
 
-    # Page 4: TOC & LOT (Halaman iv)
-    p4_toc = f"""
-    <div class="page">
-      <h3 style="color: #0b3c5d; border-bottom: 2px solid #0b3c5d; padding-bottom: 4px; text-transform: uppercase; margin-bottom: 12px;">DAFTAR ISI / <i>TABLE OF CONTENTS</i></h3>
-      <div style="font-size: 8.5pt;">
-        <div class="toc-row"><span class="toc-title">KATA PENGANTAR / <i>PREFACE</i></span><span class="dots-leader"></span><span>iii</span></div>
-        <div class="toc-row"><span class="toc-title">DAFTAR ISI / <i>TABLE OF CONTENTS</i></span><span class="dots-leader"></span><span>iv</span></div>
-        <div class="toc-row"><span class="toc-title">PENJELASAN TEKNIS & KONSEP DEFINISI PODES</span><span class="dots-leader"></span><span>1</span></div>
-        <div class="toc-row"><span class="toc-title">RINGKASAN STATISTIK KUNCI PODES {data_year}</span><span class="dots-leader"></span><span>2</span></div>
-        
-        <div class="toc-row" style="margin-top: 6px;"><span class="toc-title">BAB I: WILAYAH ADMINISTRASI, DEMOGRAFI & KAWASAN</span><span class="dots-leader"></span><span>3</span></div>
-        <div class="toc-row"><span class="toc-sub">1.1 Status Wilayah, Kawasan Hutan & Administrasi RT/RW</span><span class="dots-leader"></span><span>3</span></div>
-        <div class="toc-row"><span class="toc-sub">1.2 Kependudukan, Sex Ratio & Keluarga Pertanian</span><span class="dots-leader"></span><span>4</span></div>
-        
-        <div class="toc-row" style="margin-top: 6px;"><span class="toc-title">BAB II: ENERGI, UTILITAS PERUMAHAN & MITIGASI BENCANA</span><span class="dots-leader"></span><span>5</span></div>
-        <div class="toc-row"><span class="toc-sub">2.1 Penggunaan Listrik, Penerangan Jalan & Bahan Bakar</span><span class="dots-leader"></span><span>5</span></div>
-        <div class="toc-row"><span class="toc-sub">2.2 Air Minum & Potensi/Mitigasi Bencana Alam</span><span class="dots-leader"></span><span>6</span></div>
-        
-        <div class="toc-row" style="margin-top: 6px;"><span class="toc-title">BAB III: FASILITAS SOSIAL (PENDIDIKAN & KESEHATAN)</span><span class="dots-leader"></span><span>7</span></div>
-        <div class="toc-row"><span class="toc-sub">3.1 Sarana Pendidikan Formal & Keagamaan</span><span class="dots-leader"></span><span>7</span></div>
-        <div class="toc-row"><span class="toc-sub">3.2 Sarana Kesehatan, Posyandu & Posbindu</span><span class="dots-leader"></span><span>8</span></div>
-        
-        <div class="toc-row" style="margin-top: 6px;"><span class="toc-title">BAB IV: TRANSPORTASI, KOMUNIKASI, EKONOMI & INDUSTRI</span><span class="dots-leader"></span><span>9</span></div>
-        <div class="toc-row"><span class="toc-sub">4.1 Prasarana Transportasi, Akses Jalan & Angkutan</span><span class="dots-leader"></span><span>9</span></div>
-        <div class="toc-row"><span class="toc-sub">4.2 Menara BTS, Layanan Seluler & Internet 4G/5G</span><span class="dots-leader"></span><span>10</span></div>
-        <div class="toc-row"><span class="toc-sub">4.3 Fasilitas Ekonomi, Mata Pencaharian & IMK</span><span class="dots-leader"></span><span>11</span></div>
-        
-        <div class="toc-row" style="margin-top: 6px;"><span class="toc-title">BAB V: PEMERINTAHAN, KELEMBAGAAN & INFORMASI DESA</span><span class="dots-leader"></span><span>12</span></div>
-        <div class="toc-row"><span class="toc-sub">5.1 Aparatur Desa, BPD/LMK & Sistem Informasi Desa</span><span class="dots-leader"></span><span>12</span></div>
+    # Page 5 (v - ODD)
+    card_4_preface_en = make_page_card(
+        "PREFACE",
+        "PREFACE",
+        "v",
+        f"""      <h2 style="text-align: center; color: #0b3c5d; font-size: 14pt; font-weight: 800; font-style: italic; margin-top: 10px; margin-bottom: 25px;">PREFACE</h2>
+      <div style="font-size: 9.5pt; line-height: 1.6; font-style: italic; color: #475569; max-width: 95%; margin: 0 auto;">
+        <p style="margin-bottom: 16px; text-align: justify; text-indent: 30px;">Praise be to God Almighty for His blessings, the official publication <i>"Potentials of {name_title} {admin_type_en} {year}"</i> has been successfully completed. This publication presents a comprehensive overview of regional potential, demographics, housing, energy, social facilities, telecommunication infrastructure, institutions, and local economy based on the Village Potential Survey (PODES) {data_year}.</p>
+        <p style="margin-bottom: 25px; text-align: justify; text-indent: 30px;">The presented data is expected to serve as a standard reference for the {admin_type_en} Government and stakeholders in evidence-based development planning.</p>
       </div>
-      <div class="page-footer">
-        <span>Potensi {admin_type} {name_title} {year}</span>
-        <span>iv</span>
-      </div>
-    </div>
-    """
+      <div style="margin-top: 35px; font-size: 9.5pt; text-align: right; padding-right: 20px;">
+        <div style="margin-bottom: 15px; font-style: italic; color: #475569;">{name_title}, August {year}</div>
+        <div style="display: inline-block; text-align: center;">
+          <div style="font-weight: 700; font-style: italic; color: #0b3c5d;">{kades_title_en.upper()}</div>
+          <div style="font-weight: 800; color: #0b3c5d; text-decoration: underline; margin-top: 55px; font-size: 10.5pt;">{kades_name.upper()}</div>
+        </div>
+      </div>""",
+        5,
+        show_header=False,
+        show_footer=True,
+    )
 
-    # Page 5: Key Stats Infographic (Arab Page 1)
-    p5_keystats = f"""
-    <div class="page">
-      <div class="chapter-header">
-        <div class="chapter-title-id">RINGKASAN STATISTIK KUNCI PODES {data_year}</div>
-        <div class="chapter-title-en">KEY STATISTICS SUMMARY OF PODES {data_year}</div>
+    # Page 6 (vi - EVEN)
+    card_5_toc = make_page_card(
+        "DAFTAR ISI",
+        "CONTENTS",
+        "vi",
+        f"""      <div style="text-align: center; margin-top: 5px; margin-bottom: 20px;">
+        <h2 style="font-size: 13.5pt; font-weight: 800; color: #1a202c; margin: 0; text-transform: uppercase;">DAFTAR ISI/<i>CONTENTS</i></h2>
+        <div style="font-size: 10.5pt; font-weight: 700; color: #2d3748; margin-top: 4px;">Potensi {admin_type} {name_title} {year}</div>
+        <div style="font-size: 10.5pt; font-weight: 700; font-style: italic; color: #475569;">Potentials of {name_title} {admin_type_en} {year}</div>
+      </div>
+      <style>
+        .toc-list {{ list-style: none; padding: 0; margin: 0; }}
+        .toc-list li {{ position: relative; overflow: hidden; line-height: 1.5; font-size: 9.5pt; margin-bottom: 6px; clear: both; color: #2d3748; }}
+        .toc-list li .toc-page {{ position: absolute; right: 0; bottom: 0; background: #fff; padding-left: 6px; z-index: 2; font-size: 9.5pt; }}
+        .toc-list li .toc-title {{ background: #fff; padding-right: 6px; position: relative; z-index: 2; }}
+        .toc-list li::after {{ content: ""; position: absolute; left: 0; right: 0; bottom: 4px; border-bottom: 1.2px dotted #777; z-index: 1; }}
+      </style>
+      <ul class="toc-list">
+        <li><span class="toc-title">Kata Pengantar/<i>Preface</i></span><span class="toc-page">iv</span></li>
+        <li><span class="toc-title">Daftar Isi/<i>Contents</i></span><span class="toc-page">vi</span></li>
+        <li><span class="toc-title">Daftar Tabel/<i>List of Tables</i></span><span class="toc-page">vii</span></li>
+        <li><span class="toc-title">Penjelasan Umum/<i>Explanatory Notes</i></span><span class="toc-page">viii</span></li>
+        <li><span class="toc-title">Daftar Singkatan/<i>List of Abbreviations</i></span><span class="toc-page">ix</span></li>
+        <li><span class="toc-title">Statistik Kunci PODES {data_year}/<i>Key Statistics</i></span><span class="toc-page">1</span></li>
+        <li><span class="toc-title">1.&nbsp;&nbsp;&nbsp;Wilayah Administrasi, Demografi & Kawasan</span><span class="toc-page">3</span></li>
+        <li><span class="toc-title">2.&nbsp;&nbsp;&nbsp;Energi, Utilitas Perumahan & Mitigasi Bencana</span><span class="toc-page">6</span></li>
+        <li><span class="toc-title">3.&nbsp;&nbsp;&nbsp;Fasilitas Sosial (Pendidikan & Kesehatan)</span><span class="toc-page">9</span></li>
+        <li><span class="toc-title">4.&nbsp;&nbsp;&nbsp;Transportasi, Komunikasi & Ekonomi</span><span class="toc-page">12</span></li>
+        <li><span class="toc-title">5.&nbsp;&nbsp;&nbsp;Pemerintahan, Kelembagaan & Informasi Desa</span><span class="toc-page">15</span></li>
+      </ul>""",
+        6,
+        show_header=False,
+        show_footer=True,
+    )
+
+    # Page 7 (vii - ODD)
+    card_5b_lot = make_page_card(
+        "DAFTAR TABEL",
+        "LIST OF TABLES",
+        "vii",
+        f"""      <div style="text-align: center; margin-top: 5px; margin-bottom: 20px;">
+        <h2 style="font-size: 13.5pt; font-weight: 800; color: #1a202c; margin: 0; text-transform: uppercase;">DAFTAR TABEL/<i>LIST OF TABLES</i></h2>
+      </div>
+      <style>
+        .lot-hdr {{ display: flex; justify-content: space-between; font-size: 8.8pt; color: #2d3748; margin-bottom: 12px; line-height: 1.3; font-weight: 700; border-bottom: 1px solid #e2e8f0; padding-bottom: 4px; }}
+        .lot-hdr-no {{ width: 50px; }}
+        .lot-hdr-pg {{ text-align: right; }}
+        .lot-list {{ list-style: none; padding: 0; margin: 0; }}
+        .lot-list li {{ display: flex; align-items: flex-start; position: relative; line-height: 1.4; font-size: 8.8pt; margin-bottom: 10px; color: #2d3748; }}
+        .lot-list li .lot-no {{ width: 50px; flex-shrink: 0; font-weight: 700; background: #fff; z-index: 2; font-size: 8.8pt; }}
+        .lot-list li .lot-title-wrap {{ flex: 1; position: relative; padding-right: 35px; min-height: 1.4em; }}
+        .lot-list li .lot-title {{ background: #fff; padding-right: 6px; position: relative; z-index: 2; display: inline; }}
+        .lot-list li .lot-dots {{ position: absolute; left: 0; right: 0; bottom: 3px; border-bottom: 1.2px dotted #777; z-index: 1; }}
+        .lot-list li .lot-page {{ position: absolute; right: 0; bottom: 0; background: #fff; padding-left: 6px; z-index: 2; font-size: 8.8pt; font-weight: 600; }}
+        .lot-sec {{ font-weight: 800; color: #0b3c5d; font-size: 9pt; margin-top: 12px; margin-bottom: 6px; text-transform: uppercase; }}
+      </style>
+      <div class="lot-hdr"><span class="lot-hdr-no">Tabel<br><i>Table</i></span><span class="lot-hdr-pg">Halaman<br><i>Page</i></span></div>
+      <div class="lot-sec">1.&nbsp;&nbsp;WILAYAH ADMINISTRASI & DEMOGRAFI</div>
+      <ul class="lot-list">
+        <li><span class="lot-no">1.1</span><div class="lot-title-wrap"><span class="lot-title">Identitas Wilayah, Kawasan Hutan, dan Pembagian RT/RW</span><span class="lot-dots"></span></div><span class="lot-page">4</span></li>
+        <li><span class="lot-no">1.2</span><div class="lot-title-wrap"><span class="lot-title">Jumlah Penduduk, Sex Ratio, dan Keluarga Pertanian</span><span class="lot-dots"></span></div><span class="lot-page">5</span></li>
+      </ul>
+      <div class="lot-sec">2.&nbsp;&nbsp;ENERGI, UTILITAS & MITIGASI BENCANA</div>
+      <ul class="lot-list">
+        <li><span class="lot-no">2.1</span><div class="lot-title-wrap"><span class="lot-title">Penggunaan Daya Listrik, Penerangan Jalan & Bahan Bakar</span><span class="lot-dots"></span></div><span class="lot-page">7</span></li>
+        <li><span class="lot-no">2.2</span><div class="lot-title-wrap"><span class="lot-title">Sumber Air Minum Utama dan Mitigasi Bencana Alam</span><span class="lot-dots"></span></div><span class="lot-page">8</span></li>
+      </ul>
+      <div class="lot-sec">3.&nbsp;&nbsp;FASILITAS SOSIAL</div>
+      <ul class="lot-list">
+        <li><span class="lot-no">3.1</span><div class="lot-title-wrap"><span class="lot-title">Ketersediaan Sarana Pendidikan Formal dan Keagamaan</span><span class="lot-dots"></span></div><span class="lot-page">10</span></li>
+        <li><span class="lot-no">3.2</span><div class="lot-title-wrap"><span class="lot-title">Ketersediaan Sarana Kesehatan, Posyandu Aktif, dan Posbindu</span><span class="lot-dots"></span></div><span class="lot-page">11</span></li>
+      </ul>
+      <div class="lot-sec">4.&nbsp;&nbsp;TRANSPORTASI, KOMUNIKASI & EKONOMI</div>
+      <ul class="lot-list">
+        <li><span class="lot-no">4.1</span><div class="lot-title-wrap"><span class="lot-title">Prasarana Transportasi, Akses Jalan, dan Angkutan Umum</span><span class="lot-dots"></span></div><span class="lot-page">13</span></li>
+        <li><span class="lot-no">4.2</span><div class="lot-title-wrap"><span class="lot-title">Menara BTS, Operator Seluler, dan Sinyal Internet</span><span class="lot-dots"></span></div><span class="lot-page">14</span></li>
+        <li><span class="lot-no">4.3</span><div class="lot-title-wrap"><span class="lot-title">Fasilitas Ekonomi Utama, Mata Pencaharian, dan IMK</span><span class="lot-dots"></span></div><span class="lot-page">15</span></li>
+      </ul>""",
+        7,
+        show_header=False,
+        show_footer=True,
+    )
+
+    # Page 8 (viii - EVEN)
+    card_6_tech_notes = make_page_card(
+        "PENJELASAN UMUM",
+        "EXPLANATORY NOTES",
+        "viii",
+        f"""      <div style="text-align: center; margin-top: 5px; margin-bottom: 20px;">
+        <h2 style="font-size: 13.5pt; font-weight: 800; color: #1a202c; margin: 0; text-transform: uppercase;">PENJELASAN UMUM/<i>EXPLANATORY NOTES</i></h2>
+      </div>
+      <div style="font-size: 9pt; line-height: 1.6; color: #2d3748; max-width: 95%; margin: 0 auto;">
+        <p style="margin-bottom: 12px;"><strong>1. Tanda-tanda Khusus / <i>Symbols:</i></strong></p>
+        <table style="width: 100%; border: none; font-size: 8.8pt; margin-bottom: 20px; line-height: 1.6;">
+          <tr><td style="width: 80px; font-weight: 700;">-</td><td>Data tidak ada / <i>Data not available</i></td></tr>
+          <tr><td style="font-weight: 700;">0 / 0,00</td><td>Data terkecil / <i>Data too small to be expressed</i></td></tr>
+          <tr><td style="font-weight: 700;">NA</td><td>Data tidak dapat diaplikasikan / <i>Not applicable</i></td></tr>
+        </table>
+        <p style="margin-bottom: 12px;"><strong>2. Satuan / <i>Units:</i></strong></p>
+        <p style="text-indent: 15px; margin-bottom: 15px;">Satuan berat, luas, dan volume yang digunakan dalam publikasi ini menggunakan Sistem Metrik Standar Internasional.</p>
+      </div>""",
+        8,
+        show_header=False,
+        show_footer=True,
+    )
+
+    # Page 9 (ix - ODD)
+    card_7_abbreviations = make_page_card(
+        "DAFTAR SINGKATAN",
+        "LIST OF ABBREVIATIONS",
+        "ix",
+        f"""      <div style="text-align: center; margin-top: 5px; margin-bottom: 20px;">
+        <h2 style="font-size: 13.5pt; font-weight: 800; color: #1a202c; margin: 0; text-transform: uppercase;">DAFTAR SINGKATAN/<i>ABBREVIATIONS</i></h2>
+      </div>
+      <div style="font-size: 8.8pt; line-height: 1.7; color: #2d3748; max-width: 95%; margin: 0 auto;">
+        <table style="width: 100%; border: none; font-size: 8.5pt;">
+          <tr><td style="width: 110px; font-weight: 700;">BPS</td><td>Badan Pusat Statistik / <i>BPS-Statistics Indonesia</i></td></tr>
+          <tr><td style="font-weight: 700;">PODES</td><td>Potensi Desa / <i>Village Potential Survey</i></td></tr>
+          <tr><td style="font-weight: 700;">RT / RW</td><td>Rukun Tetangga / Rukun Warga</td></tr>
+          <tr><td style="font-weight: 700;">KK</td><td>Kepala Keluarga / <i>Head of Household</i></td></tr>
+          <tr><td style="font-weight: 700;">PLN</td><td>Perusahaan Listrik Negara / <i>State Electricity Corporation</i></td></tr>
+          <tr><td style="font-weight: 700;">BTS</td><td>Base Transceiver Station</td></tr>
+          <tr><td style="font-weight: 700;">IMK</td><td>Industri Mikro dan Kecil / <i>Micro & Small Industries</i></td></tr>
+          <tr><td style="font-weight: 700;">SID</td><td>Sistem Informasi Desa / <i>Village Information System</i></td></tr>
+          <tr><td style="font-weight: 700;">BPD / LMK</td><td>Badan Permusyawaratan Desa / Lembaga Musyawarah Kelurahan</td></tr>
+        </table>
+      </div>""",
+        9,
+        show_header=False,
+        show_footer=True,
+    )
+
+    # Page 10 (x - EVEN): Blank Page
+    card_blank = make_blank_page()
+
+    # Page 11 (Arab 1 - ODD): Key Stats Infographic
+    card_8_keystats = make_page_card(
+        "STATISTIK KUNCI PODES 2025",
+        "KEY STATISTICS PODES 2025",
+        "1",
+        f"""      <div style="text-align: center; margin-top: 5px; margin-bottom: 18px;">
+        <h2 style="font-size: 13.5pt; font-weight: 800; color: #0b3c5d; margin: 0; text-transform: uppercase;">STATISTIK KUNCI PODES {data_year}</h2>
+        <div style="font-size: 10pt; font-weight: 700; font-style: italic; color: #475569;">Key Statistics of PODES {data_year}</div>
       </div>
       
       <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 14px;">
@@ -220,7 +542,7 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
         <div style="background: #eff6ff; border: 1.5px solid #93c5fd; border-left: 4px solid #2563eb; padding: 12px; border-radius: 8px;">
           <div style="font-size: 8pt; font-weight: 800; color: #1e40af; text-transform: uppercase;">Total Keluarga / Households</div>
           <div style="font-size: 18pt; font-weight: 900; color: #1d4ed8; margin: 4px 0;">{kk_str} KK</div>
-          <div style="font-size: 7.5pt; color: #1e40af;">Keluarga Pertanian: {fmt_val(m.kk_pertanian)} KK ({m.kk_pertanian_pct}%)</div>
+          <div style="font-size: 7.5pt; color: #1e40af;">Keluarga Pertanian: {kk_pert_str} KK ({m.kk_pertanian_pct}%)</div>
         </div>
       </div>
 
@@ -242,305 +564,258 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
         </div>
       </div>
 
-      <div class="narrative-box">
+      <div class="narrative-box" style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 10px; border-radius: 6px;">
         <div class="narrative-title">RINGKASAN PROFIL DESA PODES {data_year}</div>
-        <p style="margin-bottom: 4px;">{admin_type} {name_title} berstatus wilayah <strong>{m.status_daerah}</strong> dengan lokasi kantor di <strong>{m.alamat_lengkap}</strong>. Jumlah wilayah terbagi atas <strong>{m.jumlah_rw} RW</strong> dan <strong>{m.jumlah_rt} RT</strong>. Mata pencaharian utama sebagian besar masyarakat adalah <strong>{m.sumber_penghasilan_utama} ({m.subsektor_utama})</strong>.</p>
-      </div>
+        <p style="margin-bottom: 4px; font-size: 8.5pt;">{admin_type} {name_title} berstatus wilayah <strong>{m.status_daerah}</strong> dengan lokasi kantor di <strong>{m.alamat_lengkap}</strong>. Jumlah wilayah terbagi atas <strong>{m.jumlah_rw} RW</strong> dan <strong>{m.jumlah_rt} RT</strong>. Mata pencaharian utama sebagian besar masyarakat adalah <strong>{m.sumber_penghasilan_utama} ({m.subsektor_utama})</strong>.</p>
+      </div>""",
+        11,
+        show_header=True,
+        show_footer=True,
+    )
 
-      <div class="page-footer">
-        <span>Potensi {admin_type} {name_title} {year}</span>
-        <span>1</span>
-      </div>
-    </div>
-    """
+    # Chapters Construction
+    # Chapter 1
+    cover_ch1 = make_cover_card(
+        "1",
+        "WILAYAH ADMINISTRASI, DEMOGRAFI & KAWASAN",
+        "ADMINISTRATIVE AREA, DEMOGRAPHICS & REGION",
+        f"""<div style="font-size: 9.5pt; line-height: 1.6; color: #334155;">
+          <p>{admin_type} {name_title} berstatus sebagai wilayah <strong>{m.status_daerah}</strong> dengan jumlah penduduk sebanyak <strong>{tot_pop_str} jiwa</strong> ({l_str} laki-laki, {p_str} perempuan). Total keluarga tercatat sebanyak <strong>{kk_str} KK</strong> dengan keluarga pertanian sejumlah <strong>{kk_pert_str} KK ({m.kk_pertanian_pct}%)</strong>.</p>
+        </div>""",
+    )
+    p_ch1_cover = make_page_card("BAB I WILAYAH ADMINISTRASI & DEMOGRAFI", "CHAPTER I ADMINISTRATIVE & DEMOGRAPHICS", "3", cover_ch1, 13, show_header=True)
 
-    # Page 6: Chapter 1 (Wilayah & Demografi)
-    p6_ch1 = f"""
-    <div class="page">
-      <div class="chapter-header">
-        <div>
-          <div style="font-size: 9pt; font-weight: 800; color: #eb8a3c; text-transform: uppercase;">BAB I / CHAPTER I</div>
-          <div class="chapter-title-id">WILAYAH ADMINISTRASI, DEMOGRAFI & KAWASAN</div>
-          <div class="chapter-title-en">ADMINISTRATIVE AREA, DEMOGRAPHICS & REGION</div>
-        </div>
-      </div>
+    tech_ch1 = f"""<div class="tech-notes-card">
+      <div class="tech-notes-title">PENJELASAN TEKNIS BAB I / TECHNICAL NOTES CHAPTER I</div>
+      <ol class="tech-notes-list">
+        <li><strong>Status Daerah</strong>: Pengklasifikasian wilayah menjadi Perdesaan atau Perkotaan.<span class="en">Regional status classification into Rural or Urban areas.</span></li>
+        <li><strong>Keluarga Pertanian</strong>: Rumah tangga yang sekurang-kurangnya satu anggotanya mengelola usaha pertanian.<span class="en">Agricultural households with at least one member operating farming activities.</span></li>
+      </ol>
+    </div>"""
 
-      <div class="section-box">
-        <div class="section-title">1.1 STATUS WILAYAH, KAWASAN HUTAN & ADMINISTRASI RT/RW</div>
-        <div class="narrative-box">
-          <div class="narrative-grid">
-            <div class="narrative-col-id">
-              <p>{admin_type} {name_title} berstatus sebagai wilayah <strong>{m.status_daerah}</strong> dengan alamat kantor di {m.alamat_lengkap}. Keberadaan wilayah terhadap kawasan hutan tercatat <strong>{m.kawasan_hutan}</strong>. Wilayah terbagi menjadi <strong>{m.jumlah_rw} RW</strong> dan <strong>{m.jumlah_rt} RT</strong>.</p>
-            </div>
-            <div class="narrative-col-en">
-              <p>{name_title} {admin_type_en} is classified as a {m.status_daerah} area with office located at {m.alamat_lengkap}. The regional location relative to forest areas is {m.kawasan_hutan}. The area consists of {m.jumlah_rw} RWs and {m.jumlah_rt} RTs.</p>
-            </div>
-          </div>
-        </div>
+    tbl_1_1 = f"""<div class="section-header">1.1 STATUS WILAYAH & KAWASAN HUTAN<span class="en">1.1 REGIONAL STATUS & FOREST AREA</span></div>
+    <div class="table-title-block"><span class="table-num">Tabel 1.1</span><div class="table-title-text">Identitas Wilayah, Kawasan Hutan, dan Pembagian RT/RW Tahun {data_year}<span class="en">Regional Identity, Forest Area Relation, and RT/RW Breakdown {data_year}</span></div></div>
+    <table class="bps-table">
+      <thead><tr><th class="main-header">Indikator Kewilayahan<br><i>Regional Indicator</i></th><th class="main-header">Isian Data PODES {data_year}<br><i>Data Value</i></th></tr><tr><th class="col-num">(1)</th><th class="col-num">(2)</th></tr></thead>
+      <tbody>
+        <tr><td>Status Klasifikasi Wilayah / <i>Regional Status</i></td><td class="text-center"><strong>{m.status_daerah}</strong></td></tr>
+        <tr><td>Alamat Lengkap Kantor / <i>Office Address</i></td><td>{m.alamat_lengkap}</td></tr>
+        <tr><td>Lokasi Terhadap Kawasan Hutan / <i>Forest Relation</i></td><td>{m.kawasan_hutan}</td></tr>
+        <tr><td>Jumlah Rukun Warga (RW) / <i>Number of RWs</i></td><td class="text-center"><strong>{m.jumlah_rw} RW</strong></td></tr>
+        <tr><td>Jumlah Rukun Tetangga (RT) / <i>Number of RTs</i></td><td class="text-center"><strong>{m.jumlah_rt} RT</strong></td></tr>
+      </tbody>
+    </table>{meta_std}"""
 
-        <table class="bps-table">
-          <thead>
-            <tr><th>Indikator Kewilayahan / <i>Regional Indicator</i></th><th>Isian Data PODES {data_year} / <i>Data Value</i></th></tr>
-            <tr><th class="col-num">(1)</th><th class="col-num">(2)</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Status Klasifikasi Wilayah / <i>Regional Status</i></td><td class="text-center"><strong>{m.status_daerah}</strong></td></tr>
-            <tr><td>Alamat Lengkap Kantor / <i>Office Address</i></td><td>{m.alamat_lengkap}</td></tr>
-            <tr><td>Lokasi Terhadap Kawasan Hutan / <i>Forest Area Relation</i></td><td>{m.kawasan_hutan}</td></tr>
-            <tr><td>Jumlah Rukun Warga (RW) / <i>Number of RWs</i></td><td class="text-center"><strong>{m.jumlah_rw} RW</strong></td></tr>
-            <tr><td>Jumlah Rukun Tetangga (RT) / <i>Number of RTs</i></td><td class="text-center"><strong>{m.jumlah_rt} RT</strong></td></tr>
-          </tbody>
-        </table>
-      </div>
+    p_ch1_content = make_page_card("BAB I WILAYAH ADMINISTRASI & DEMOGRAFI", "CHAPTER I ADMINISTRATIVE & DEMOGRAPHICS", "4", tech_ch1 + tbl_1_1, 14, show_header=True)
 
-      <div class="section-box">
-        <div class="section-title">1.2 KEPENDUDUKAN & KELUARGA PERTANIAN</div>
-        <table class="bps-table">
-          <thead>
-            <tr><th>Indikator Kependudukan / <i>Demographic Indicator</i></th><th>Nilai / <i>Value</i></th></tr>
-            <tr><th class="col-num">(1)</th><th class="col-num">(2)</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Penduduk Laki-laki / <i>Male Population</i></td><td class="text-right">{l_str} jiwa ({m.male_pct}%)</td></tr>
-            <tr><td>Penduduk Perempuan / <i>Female Population</i></td><td class="text-right">{p_str} jiwa ({m.female_pct}%)</td></tr>
-            <tr class="total-row"><td>Total Penduduk / <i>Total Population</i></td><td class="text-right">{tot_pop_str} jiwa</td></tr>
-            <tr><td>Rasio Jenis Kelamin / <i>Sex Ratio</i></td><td class="text-right"><strong>{sr_str}</strong></td></tr>
-            <tr><td>Total Keluarga (KK) / <i>Total Households</i></td><td class="text-right">{kk_str} KK</td></tr>
-            <tr><td>Keluarga Pertanian / <i>Agricultural Households</i></td><td class="text-right"><strong>{fmt_val(m.kk_pertanian)} KK ({m.kk_pertanian_pct}%)</strong></td></tr>
-          </tbody>
-        </table>
-      </div>
+    tbl_1_2 = f"""<div class="section-header">1.2 KEPENDUDUKAN & KELUARGA PERTANIAN<span class="en">1.2 DEMOGRAPHICS & AGRICULTURAL HOUSEHOLDS</span></div>
+    <div class="table-title-block"><span class="table-num">Tabel 1.2</span><div class="table-title-text">Jumlah Penduduk Menurut Jenis Kelamin, Sex Ratio, dan Keluarga Pertanian Tahun {data_year}<span class="en">Population by Gender, Sex Ratio, and Agricultural Households {data_year}</span></div></div>
+    <table class="bps-table">
+      <thead><tr><th class="main-header">Indikator Demografi & Pertanian<br><i>Demographic & Agricultural Indicator</i></th><th class="main-header">Jumlah / Nilai<br><i>Value</i></th></tr><tr><th class="col-num">(1)</th><th class="col-num">(2)</th></tr></thead>
+      <tbody>
+        <tr><td>Penduduk Laki-laki / <i>Male Population</i></td><td class="text-right">{l_str} jiwa ({m.male_pct}%)</td></tr>
+        <tr><td>Penduduk Perempuan / <i>Female Population</i></td><td class="text-right">{p_str} jiwa ({m.female_pct}%)</td></tr>
+        <tr class="total-row"><td>Total Penduduk / <i>Total Population</i></td><td class="text-right">{tot_pop_str} jiwa</td></tr>
+        <tr><td>Rasio Jenis Kelamin / <i>Sex Ratio</i></td><td class="text-right"><strong>{sr_str}</strong></td></tr>
+        <tr><td>Total Keluarga (KK) / <i>Total Households</i></td><td class="text-right">{kk_str} KK</td></tr>
+        <tr><td>Keluarga Pertanian / <i>Agricultural Households</i></td><td class="text-right"><strong>{kk_pert_str} KK ({m.kk_pertanian_pct}%)</strong></td></tr>
+      </tbody>
+    </table>{meta_std}"""
 
-      <div class="page-footer">
-        <span>Potensi {admin_type} {name_title} {year}</span>
-        <span>3</span>
-      </div>
-    </div>
-    """
+    p_ch1_tbl2 = make_page_card("BAB I WILAYAH ADMINISTRASI & DEMOGRAFI", "CHAPTER I ADMINISTRATIVE & DEMOGRAPHICS", "5", tbl_1_2, 15, show_header=True)
 
-    # Page 7: Chapter 2 (Energi & Bencana)
-    p7_ch2 = f"""
-    <div class="page">
-      <div class="chapter-header">
-        <div>
-          <div style="font-size: 9pt; font-weight: 800; color: #eb8a3c; text-transform: uppercase;">BAB II / CHAPTER II</div>
-          <div class="chapter-title-id">ENERGI, UTILITAS PERUMAHAN & MITIGASI BENCANA</div>
-          <div class="chapter-title-en">ENERGY, HOUSING UTILITIES & DISASTER MITIGATION</div>
-        </div>
-      </div>
+    # Chapter 2
+    cover_ch2 = make_cover_card(
+        "2",
+        "ENERGI, UTILITAS PERUMAHAN & MITIGASI BENCANA",
+        "ENERGY, HOUSING UTILITIES & DISASTER MITIGATION",
+        f"""<div style="font-size: 9.5pt; line-height: 1.6; color: #334155;">
+          <p>Penggunaan listrik PLN mencakup <strong>{fmt_val(m.listrik_pln)} KK ({((m.listrik_pln/max(1, m.jumlah_kk))*100):.1f}%)</strong>. Sebagian besar keluarga menggunakan air minum berjenis <strong>{m.air_minum}</strong> dan memasak dengan <strong>{m.bakar_masak}</strong>.</p>
+        </div>""",
+    )
+    p_ch2_cover = make_page_card("BAB II ENERGI & BENCANA", "CHAPTER II ENERGY & DISASTER", "6", cover_ch2, 16, show_header=True)
 
-      <div class="section-box">
-        <div class="section-title">2.1 PENGGUNAAN LISTRIK & BAHAN BAKAR</div>
-        <table class="bps-table">
-          <thead>
-            <tr><th>Indikator Energi & Utilitas / <i>Energy & Utility Indicator</i></th><th>Isian Data PODES {data_year}</th></tr>
-            <tr><th class="col-num">(1)</th><th class="col-num">(2)</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Pengguna Listrik PLN / <i>PLN Electricity Users</i></td><td class="text-right"><strong>{fmt_val(m.listrik_pln)} KK</strong></td></tr>
-            <tr><td>Pengguna Listrik Non-PLN / <i>Non-PLN Users</i></td><td class="text-right">{fmt_val(m.listrik_non_pln)} KK</td></tr>
-            <tr><td>Bukan Pengguna Listrik / <i>Non-Electricity Users</i></td><td class="text-right">{fmt_val(m.bukan_listrik)} KK</td></tr>
-            <tr><td>Penerangan Jalan Utama / <i>Main Road Lighting</i></td><td>{m.penerangan_jalan}</td></tr>
-            <tr><td>Bahan Bakar Memasak / <i>Cooking Fuel</i></td><td><strong>{m.bakar_masak}</strong></td></tr>
-          </tbody>
-        </table>
-      </div>
+    tbl_2_1 = f"""<div class="section-header">2.1 PENGGUNAAN LISTRIK & BAHAN BAKAR<span class="en">2.1 ELECTRICITY & COOKING FUEL USAGE</span></div>
+    <div class="table-title-block"><span class="table-num">Tabel 2.1</span><div class="table-title-text">Penggunaan Daya Listrik, Penerangan Jalan Utama, dan Bahan Bakar Memasak Tahun {data_year}<span class="en">Electricity Power, Road Lighting, and Fuel Usage {data_year}</span></div></div>
+    <table class="bps-table">
+      <thead><tr><th class="main-header">Indikator Energi & Utilitas<br><i>Energy & Utility Indicator</i></th><th class="main-header">Isian Data PODES {data_year}<br><i>Data Value</i></th></tr><tr><th class="col-num">(1)</th><th class="col-num">(2)</th></tr></thead>
+      <tbody>
+        <tr><td>Pengguna Listrik PLN / <i>PLN Electricity Users</i></td><td class="text-right"><strong>{fmt_val(m.listrik_pln)} KK</strong></td></tr>
+        <tr><td>Pengguna Listrik Non-PLN / <i>Non-PLN Users</i></td><td class="text-right">{fmt_val(m.listrik_non_pln)} KK</td></tr>
+        <tr><td>Bukan Pengguna Listrik / <i>Non-Electricity Users</i></td><td class="text-right">{fmt_val(m.bukan_listrik)} KK</td></tr>
+        <tr><td>Penerangan Jalan Utama / <i>Main Road Lighting</i></td><td>{m.penerangan_jalan}</td></tr>
+        <tr><td>Bahan Bakar Memasak / <i>Cooking Fuel</i></td><td><strong>{m.bakar_masak}</strong></td></tr>
+      </tbody>
+    </table>{meta_std}"""
 
-      <div class="section-box">
-        <div class="section-title">2.2 AIR MINUM & KESIAPSIAGAAN BENCANA ALAM</div>
-        <table class="bps-table">
-          <thead>
-            <tr><th>Indikator Lingkungan & Bencana / <i>Environment & Disaster</i></th><th>Isian Data PODES {data_year}</th></tr>
-            <tr><th class="col-num">(1)</th><th class="col-num">(2)</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Sumber Air Minum Utama / <i>Main Drinking Water Source</i></td><td><strong>{m.air_minum}</strong></td></tr>
-            <tr><td>Kejadian Bencana Alam / <i>Natural Disaster Incident</i></td><td>{m.bencana_alam}</td></tr>
-            <tr><td>Upaya & Mitigasi Bencana / <i>Disaster Mitigation Facilities</i></td><td>{m.mitigasi_bencana}</td></tr>
-          </tbody>
-        </table>
-      </div>
+    p_ch2_tbl1 = make_page_card("BAB II ENERGI & BENCANA", "CHAPTER II ENERGY & DISASTER", "7", tbl_2_1, 17, show_header=True)
 
-      <div class="page-footer">
-        <span>Potensi {admin_type} {name_title} {year}</span>
-        <span>5</span>
-      </div>
-    </div>
-    """
+    tbl_2_2 = f"""<div class="section-header">2.2 AIR MINUM & MITIGASI BENCANA<span class="en">2.2 DRINKING WATER & DISASTER MITIGATION</span></div>
+    <div class="table-title-block"><span class="table-num">Tabel 2.2</span><div class="table-title-text">Sumber Air Minum Utama dan Keberadaan Mitigasi Bencana Alam Tahun {data_year}<span class="en">Main Drinking Water Source and Natural Disaster Mitigation {data_year}</span></div></div>
+    <table class="bps-table">
+      <thead><tr><th class="main-header">Indikator Lingkungan & Bencana<br><i>Environment & Disaster Indicator</i></th><th class="main-header">Isian Data PODES {data_year}<br><i>Data Value</i></th></tr><tr><th class="col-num">(1)</th><th class="col-num">(2)</th></tr></thead>
+      <tbody>
+        <tr><td>Sumber Air Minum Utama / <i>Main Water Source</i></td><td><strong>{m.air_minum}</strong></td></tr>
+        <tr><td>Kejadian Bencana Alam / <i>Natural Disaster Incident</i></td><td>{m.bencana_alam}</td></tr>
+        <tr><td>Upaya & Mitigasi Bencana / <i>Disaster Mitigation Facilities</i></td><td>{m.mitigasi_bencana}</td></tr>
+      </tbody>
+    </table>{meta_std}"""
 
-    # Page 8: Chapter 3 (Fasilitas Sosial)
-    p8_ch3 = f"""
-    <div class="page">
-      <div class="chapter-header">
-        <div>
-          <div style="font-size: 9pt; font-weight: 800; color: #eb8a3c; text-transform: uppercase;">BAB III / CHAPTER III</div>
-          <div class="chapter-title-id">FASILITAS SOSIAL (PENDIDIKAN & KESEHATAN)</div>
-          <div class="chapter-title-en">SOCIAL FACILITIES (EDUCATION & HEALTH)</div>
-        </div>
-      </div>
+    p_ch2_tbl2 = make_page_card("BAB II ENERGI & BENCANA", "CHAPTER II ENERGY & DISASTER", "8", tbl_2_2, 18, show_header=True)
 
-      <div class="section-box">
-        <div class="section-title">3.1 SARANA PENDIDIKAN FORMAL & KEAGAMAAN</div>
-        <div class="narrative-box">
-          <p><strong>Sarana Pendidikan Terdaftar:</strong> {m.sarana_pendidikan}</p>
-        </div>
-      </div>
+    # Chapter 3
+    cover_ch3 = make_cover_card(
+        "3",
+        "FASILITAS SOSIAL (PENDIDIKAN & KESEHATAN)",
+        "SOCIAL FACILITIES (EDUCATION & HEALTH)",
+        f"""<div style="font-size: 9.5pt; line-height: 1.6; color: #334155;">
+          <p>Ketersediaan sarana pendidikan formal/keagamaan dan pelayanan kesehatan meliputi <strong>{m.posyandu_aktif} Posyandu aktif</strong> dan <strong>{m.posbindu} Posbindu</strong>.</p>
+        </div>""",
+    )
+    p_ch3_cover = make_page_card("BAB III FASILITAS SOSIAL", "CHAPTER III SOCIAL FACILITIES", "9", cover_ch3, 19, show_header=True)
 
-      <div class="section-box">
-        <div class="section-title">3.2 SARANA KESEHATAN, POSYANDU & POSBINDU</div>
-        <table class="bps-table">
-          <thead>
-            <tr><th>Indikator Pelayanan Kesehatan / <i>Health Service Indicator</i></th><th>Jumlah / Keterangan</th></tr>
-            <tr><th class="col-num">(1)</th><th class="col-num">(2)</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Fasilitas Kesehatan Utama / <i>Main Health Facilities</i></td><td>{m.sarana_kesehatan}</td></tr>
-            <tr><td>Posyandu Aktif (Pelayanan Rutin Bulanan) / <i>Active Posyandu</i></td><td class="text-right"><strong>{m.posyandu_aktif} unit</strong></td></tr>
-            <tr><td>Posbindu / <i>Posbindu Units</i></td><td class="text-right"><strong>{m.posbindu} unit</strong></td></tr>
-          </tbody>
-        </table>
-      </div>
+    tbl_3_1 = f"""<div class="section-header">3.1 SARANA PENDIDIKAN FORMAL & KEAGAMAAN<span class="en">3.1 FORMAL & RELIGIOUS EDUCATION FACILITIES</span></div>
+    <div class="table-title-block"><span class="table-num">Tabel 3.1</span><div class="table-title-text">Rekapitulasi Ketersediaan Sarana Pendidikan Formal dan Keagamaan Tahun {data_year}<span class="en">Availability of Formal and Religious Education Facilities {data_year}</span></div></div>
+    <table class="bps-table">
+      <thead><tr><th class="main-header">Kategori Sarana / <i>Facility Category</i></th><th class="main-header">Rincian Ketersediaan Sarana / <i>Availability Details</i></th></tr><tr><th class="col-num">(1)</th><th class="col-num">(2)</th></tr></thead>
+      <tbody>
+        <tr><td>Fasilitas Pendidikan / <i>Education Facilities</i></td><td>{m.sarana_pendidikan}</td></tr>
+      </tbody>
+    </table>{meta_std}"""
 
-      <div class="page-footer">
-        <span>Potensi {admin_type} {name_title} {year}</span>
-        <span>7</span>
-      </div>
-    </div>
-    """
+    p_ch3_tbl1 = make_page_card("BAB III FASILITAS SOSIAL", "CHAPTER III SOCIAL FACILITIES", "10", tbl_3_1, 20, show_header=True)
 
-    # Page 9: Chapter 4 (Transportasi & Komunikasi & Ekonomi)
-    p9_ch4 = f"""
-    <div class="page">
-      <div class="chapter-header">
-        <div>
-          <div style="font-size: 9pt; font-weight: 800; color: #eb8a3c; text-transform: uppercase;">BAB IV / CHAPTER IV</div>
-          <div class="chapter-title-id">TRANSPORTASI, KOMUNIKASI & EKONOMI</div>
-          <div class="chapter-title-en">TRANSPORTATION, COMMUNICATION & ECONOMY</div>
-        </div>
-      </div>
+    tbl_3_2 = f"""<div class="section-header">3.2 SARANA KESEHATAN, POSYANDU & POSBINDU<span class="en">3.2 HEALTH FACILITIES, POSYANDU & POSBINDU</span></div>
+    <div class="table-title-block"><span class="table-num">Tabel 3.2</span><div class="table-title-text">Ketersediaan Sarana Kesehatan, Posyandu Aktif, dan Posbindu Tahun {data_year}<span class="en">Health Facilities, Active Posyandu, and Posbindu {data_year}</span></div></div>
+    <table class="bps-table">
+      <thead><tr><th class="main-header">Indikator Pelayanan Kesehatan<br><i>Health Service Indicator</i></th><th class="main-header">Jumlah / Keterangan<br><i>Value / Description</i></th></tr><tr><th class="col-num">(1)</th><th class="col-num">(2)</th></tr></thead>
+      <tbody>
+        <tr><td>Fasilitas Kesehatan Utama / <i>Main Health Facilities</i></td><td>{m.sarana_kesehatan}</td></tr>
+        <tr><td>Posyandu Aktif (Bulanan) / <i>Active Posyandu</i></td><td class="text-right"><strong>{m.posyandu_aktif} unit</strong></td></tr>
+        <tr><td>Posbindu / <i>Posbindu Units</i></td><td class="text-right"><strong>{m.posbindu} unit</strong></td></tr>
+      </tbody>
+    </table>{meta_std}"""
 
-      <div class="section-box">
-        <div class="section-title">4.1 TRANSPORTASI & PRASARANA JALAN</div>
-        <table class="bps-table">
-          <thead>
-            <tr><th>Indikator Transportasi / <i>Transport Indicator</i></th><th>Isian Data PODES {data_year}</th></tr>
-            <tr><th class="col-num">(1)</th><th class="col-num">(2)</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Prasarana Transportasi Utama / <i>Main Transport Infrastructure</i></td><td>{m.prasarana_transportasi}</td></tr>
-            <tr><td>Jenis Permukaan Jalan Utama / <i>Road Surface Type</i></td><td><strong>{m.jenis_jalan}</strong></td></tr>
-            <tr><td>Aksesibilitas Roda 4 atau Lebih / <i>4-Wheel Vehicle Access</i></td><td>{m.jalan_roda4}</td></tr>
-            <tr><td>Operasional Angkutan Umum / <i>Public Transit Service</i></td><td>{m.angkutan_umum}</td></tr>
-          </tbody>
-        </table>
-      </div>
+    p_ch3_tbl2 = make_page_card("BAB III FASILITAS SOSIAL", "CHAPTER III SOCIAL FACILITIES", "11", tbl_3_2, 21, show_header=True)
 
-      <div class="section-box">
-        <div class="section-title">4.2 TELEKOMUNIKASI, BTS & SINYAL INTERNET</div>
-        <table class="bps-table">
-          <thead>
-            <tr><th>Indikator Telekomunikasi / <i>Telecom Indicator</i></th><th>Isian Data PODES {data_year}</th></tr>
-            <tr><th class="col-num">(1)</th><th class="col-num">(2)</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Jumlah Menara BTS / <i>BTS Towers</i></td><td class="text-right"><strong>{m.jumlah_bts} unit</strong></td></tr>
-            <tr><td>Operator Telekomunikasi / <i>Mobile Operators</i></td><td>{m.operator_seluler}</td></tr>
-            <tr><td>Kekuatan Sinyal Telepon Seluler / <i>Cellular Signal Strength</i></td><td><strong>{m.sinyal_hp}</strong></td></tr>
-            <tr><td>Jaringan Internet Seluler / <i>Mobile Internet Network</i></td><td><strong>{m.sinyal_internet}</strong></td></tr>
-          </tbody>
-        </table>
-      </div>
+    # Chapter 4
+    cover_ch4 = make_cover_card(
+        "4",
+        "TRANSPORTASI, KOMUNIKASI & EKONOMI",
+        "TRANSPORTATION, COMMUNICATION & ECONOMY",
+        f"""<div style="font-size: 9.5pt; line-height: 1.6; color: #334155;">
+          <p>Dukungan telekomunikasi mencakup <strong>{m.jumlah_bts} Menara BTS</strong> dengan jaringan <strong>{m.sinyal_internet}</strong>. Sektor industri kecil didukung oleh <strong>{fmt_val(m.jumlah_imk)} unit Industri Mikro dan Kecil (IMK)</strong>.</p>
+        </div>""",
+    )
+    p_ch4_cover = make_page_card("BAB IV TRANSPORTASI & EKONOMI", "CHAPTER IV TRANSPORT & ECONOMY", "12", cover_ch4, 22, show_header=True)
 
-      <div class="section-box">
-        <div class="section-title">4.3 FASILITAS EKONOMI & INDUSTRI MIKRO KECIL (IMK)</div>
-        <table class="bps-table">
-          <thead>
-            <tr><th>Indikator Ekonomi & Industri / <i>Economic & Industry Indicator</i></th><th>Isian Data PODES {data_year}</th></tr>
-            <tr><th class="col-num">(1)</th><th class="col-num">(2)</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Mata Pencaharian Utama / <i>Main Livelihood</i></td><td><strong>{m.sumber_penghasilan_utama} ({m.subsektor_utama})</strong></td></tr>
-            <tr><td>Fasilitas Ekonomi Utama / <i>Economic Facilities</i></td><td>{m.sarana_ekonomi}</td></tr>
-            <tr><td>Industri Mikro & Kecil (IMK) / <i>Micro & Small Industries</i></td><td class="text-right"><strong>{fmt_val(m.jumlah_imk)} unit usaha</strong></td></tr>
-          </tbody>
-        </table>
-      </div>
+    tbl_4_1 = f"""<div class="section-header">4.1 TRANSPORTASI & PRASARANA JALAN<span class="en">4.1 TRANSPORT & ROAD INFRASTRUCTURE</span></div>
+    <div class="table-title-block"><span class="table-num">Tabel 4.1</span><div class="table-title-text">Prasarana Transportasi, Jenis Permukaan Jalan, dan Angkutan Umum Tahun {data_year}<span class="en">Transport Infrastructure, Road Surface, and Public Transit {data_year}</span></div></div>
+    <table class="bps-table">
+      <thead><tr><th class="main-header">Indikator Transportasi<br><i>Transport Indicator</i></th><th class="main-header">Isian Data PODES {data_year}<br><i>Data Value</i></th></tr><tr><th class="col-num">(1)</th><th class="col-num">(2)</th></tr></thead>
+      <tbody>
+        <tr><td>Prasarana Transportasi Utama / <i>Main Infrastructure</i></td><td>{m.prasarana_transportasi}</td></tr>
+        <tr><td>Jenis Permukaan Jalan Utama / <i>Road Surface</i></td><td><strong>{m.jenis_jalan}</strong></td></tr>
+        <tr><td>Aksesibilitas Roda 4 atau Lebih / <i>4-Wheel Vehicle Access</i></td><td>{m.jalan_roda4}</td></tr>
+        <tr><td>Operasional Angkutan Umum / <i>Public Transit Service</i></td><td>{m.angkutan_umum}</td></tr>
+      </tbody>
+    </table>{meta_std}"""
 
-      <div class="page-footer">
-        <span>Potensi {admin_type} {name_title} {year}</span>
-        <span>9</span>
-      </div>
-    </div>
-    """
+    p_ch4_tbl1 = make_page_card("BAB IV TRANSPORTASI & EKONOMI", "CHAPTER IV TRANSPORT & ECONOMY", "13", tbl_4_1, 23, show_header=True)
 
-    # Page 10: Chapter 5 (Pemerintahan & Kelembagaan)
-    p10_ch5 = f"""
-    <div class="page">
-      <div class="chapter-header">
-        <div>
-          <div style="font-size: 9pt; font-weight: 800; color: #eb8a3c; text-transform: uppercase;">BAB V / CHAPTER V</div>
-          <div class="chapter-title-id">PEMERINTAHAN, KELEMBAGAAN & INFORMASI DESA</div>
-          <div class="chapter-title-en">GOVERNMENT, INSTITUTIONS & VILLAGE INFORMATION</div>
-        </div>
-      </div>
+    tbl_4_2 = f"""<div class="section-header">4.2 TELEKOMUNIKASI, BTS & SINYAL INTERNET<span class="en">4.2 TELECOM, BTS & INTERNET SIGNAL</span></div>
+    <div class="table-title-block"><span class="table-num">Tabel 4.2</span><div class="table-title-text">Keberadaan Menara BTS, Operator Telekomunikasi, dan Sinyal Internet Tahun {data_year}<span class="en">BTS Towers, Telecom Operators, and Internet Network {data_year}</span></div></div>
+    <table class="bps-table">
+      <thead><tr><th class="main-header">Indikator Telekomunikasi<br><i>Telecom Indicator</i></th><th class="main-header">Isian Data PODES {data_year}<br><i>Data Value</i></th></tr><tr><th class="col-num">(1)</th><th class="col-num">(2)</th></tr></thead>
+      <tbody>
+        <tr><td>Jumlah Menara BTS / <i>BTS Towers</i></td><td class="text-right"><strong>{m.jumlah_bts} unit</strong></td></tr>
+        <tr><td>Operator Layanan Seluler / <i>Mobile Operators</i></td><td>{m.operator_seluler}</td></tr>
+        <tr><td>Kekuatan Sinyal Telepon Seluler / <i>Cellular Signal Strength</i></td><td><strong>{m.sinyal_hp}</strong></td></tr>
+        <tr><td>Jaringan Internet Seluler / <i>Mobile Internet Network</i></td><td><strong>{m.sinyal_internet}</strong></td></tr>
+      </tbody>
+    </table>{meta_std}"""
 
-      <div class="section-box">
-        <div class="section-title">5.1 APARATUR DESA, BPD/LMK & SISTEM INFORMASI DESA</div>
-        <table class="bps-table">
-          <thead>
-            <tr><th>Indikator Pemerintahan & Kelembagaan / <i>Govt Indicator</i></th><th>Isian Data PODES {data_year}</th></tr>
-            <tr><th class="col-num">(1)</th><th class="col-num">(2)</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Aparatur Pemerintah Desa/Kelurahan / <i>Village Apparatus</i></td><td class="text-right"><strong>{m.aparatur_pemdes} orang</strong></td></tr>
-            <tr><td>Keberadaan BPD / LMK / <i>Village Representative Council</i></td><td><strong>{m.keberadaan_bpd}</strong></td></tr>
-            <tr><td>Kegiatan Musyawarah Desa / <i>Village Deliberation Meetings</i></td><td class="text-right"><strong>{m.musyawarah_desa} kali</strong></td></tr>
-            <tr><td>Sistem Informasi Desa (SID) / <i>Village Info System</i></td><td>{m.sistem_informasi_desa}</td></tr>
-            <tr><td>Ketersediaan SPPG / <i>SPPG Status</i></td><td>{m.jumlah_sppg}</td></tr>
-          </tbody>
-        </table>
-      </div>
+    p_ch4_tbl2 = make_page_card("BAB IV TRANSPORTASI & EKONOMI", "CHAPTER IV TRANSPORT & ECONOMY", "14", tbl_4_2, 24, show_header=True)
 
-      <div style="margin-top: 40px; border-top: 2.5px solid #0b3c5d; padding-top: 20px; text-align: center;">
-        <h3 style="color: #0b3c5d; font-size: 14pt; font-weight: 900; tracking: 1px;">MENCERDASKAN BANGSA DENGAN DATA STATISTIK DESA</h3>
-        <p style="font-size: 9pt; color: #64748b; font-style: italic;">Enlightening the Nation with Village Statistical Data</p>
-      </div>
+    tbl_4_3 = f"""<div class="section-header">4.3 FASILITAS EKONOMI & INDUSTRI MIKRO KECIL (IMK)<span class="en">4.3 ECONOMIC FACILITIES & MICRO SMALL INDUSTRIES</span></div>
+    <div class="table-title-block"><span class="table-num">Tabel 4.3</span><div class="table-title-text">Fasilitas Ekonomi Utama, Mata Pencaharian, dan IMK Tahun {data_year}<span class="en">Economic Facilities, Livelihood, and Micro Small Industries {data_year}</span></div></div>
+    <table class="bps-table">
+      <thead><tr><th class="main-header">Indikator Ekonomi & Industri<br><i>Economic & Industry Indicator</i></th><th class="main-header">Isian Data PODES {data_year}<br><i>Data Value</i></th></tr><tr><th class="col-num">(1)</th><th class="col-num">(2)</th></tr></thead>
+      <tbody>
+        <tr><td>Mata Pencaharian Utama / <i>Main Livelihood</i></td><td><strong>{m.sumber_penghasilan_utama} ({m.subsektor_utama})</strong></td></tr>
+        <tr><td>Fasilitas Ekonomi Utama / <i>Economic Facilities</i></td><td>{m.sarana_ekonomi}</td></tr>
+        <tr><td>Industri Mikro & Kecil (IMK) / <i>Micro Small Industries</i></td><td class="text-right"><strong>{fmt_val(m.jumlah_imk)} unit usaha</strong></td></tr>
+      </tbody>
+    </table>{meta_std}"""
 
-      <div class="page-footer">
-        <span>Potensi {admin_type} {name_title} {year}</span>
-        <span>12</span>
-      </div>
-    </div>
-    """
+    p_ch4_tbl3 = make_page_card("BAB IV TRANSPORTASI & EKONOMI", "CHAPTER IV TRANSPORT & ECONOMY", "15", tbl_4_3, 25, show_header=True)
 
-    full_html = f"""<!DOCTYPE html>
-    <html lang="id">
-    <head>
-      <meta charset="UTF-8">
-      <title>Potensi {admin_type} {name_title} {year}</title>
-      {css}
-    </head>
-    <body>
-      {p1_cover}
-      {p2_catalog}
-      {p3_preface}
-      {p4_toc}
-      {p5_keystats}
-      {p6_ch1}
-      {p7_ch2}
-      {p8_ch3}
-      {p9_ch4}
-      {p10_ch5}
-    </body>
-    </html>
-    """
+    # Chapter 5
+    cover_ch5 = make_cover_card(
+        "5",
+        "PEMERINTAHAN, KELEMBAGAAN & INFORMASI DESA",
+        "GOVERNMENT, INSTITUTIONS & VILLAGE INFORMATION",
+        f"""<div style="font-size: 9.5pt; line-height: 1.6; color: #334155;">
+          <p>Penyelenggaraan pemerintah desa didukung oleh <strong>{m.aparatur_pemdes} orang aparatur desa</strong>, keberadaan BPD/LMK tercatat <strong>"{m.keberadaan_bpd}"</strong>, serta pelaksanaan musyawarah desa sebanyak <strong>{m.musyawarah_desa} kali</strong>.</p>
+        </div>""",
+    )
+    p_ch5_cover = make_page_card("BAB V PEMERINTAHAN & KELEMBAGAAN", "CHAPTER V GOVT & INSTITUTIONS", "16", cover_ch5, 26, show_header=True)
+
+    tbl_5_1 = f"""<div class="section-header">5.1 APARATUR DESA, BPD/LMK & SISTEM INFORMASI DESA<span class="en">5.1 VILLAGE APPARATUS, BPD & INFO SYSTEM</span></div>
+    <div class="table-title-block"><span class="table-num">Tabel 5.1</span><div class="table-title-text">Aparatur Pemerintah Desa, Keberadaan BPD/LMK, dan Sistem Informasi Desa Tahun {data_year}<span class="en">Village Apparatus, BPD/LMK Status, and Village Info System {data_year}</span></div></div>
+    <table class="bps-table">
+      <thead><tr><th class="main-header">Indikator Pemerintahan & Kelembagaan<br><i>Govt & Institutional Indicator</i></th><th class="main-header">Isian Data PODES {data_year}<br><i>Data Value</i></th></tr><tr><th class="col-num">(1)</th><th class="col-num">(2)</th></tr></thead>
+      <tbody>
+        <tr><td>Aparatur Pemerintah Desa/Kelurahan / <i>Village Apparatus</i></td><td class="text-right"><strong>{m.aparatur_pemdes} orang</strong></td></tr>
+        <tr><td>Keberadaan BPD / LMK / <i>Representative Council Status</i></td><td><strong>{m.keberadaan_bpd}</strong></td></tr>
+        <tr><td>Kegiatan Musyawarah Desa / <i>Village Meetings</i></td><td class="text-right"><strong>{m.musyawarah_desa} kali</strong></td></tr>
+        <tr><td>Sistem Informasi Desa (SID) / <i>Village Info System</i></td><td>{m.sistem_informasi_desa}</td></tr>
+        <tr><td>Ketersediaan SPPG / <i>SPPG Status</i></td><td>{m.jumlah_sppg}</td></tr>
+      </tbody>
+    </table>{meta_std}
+    <div style="margin-top: 40px; border-top: 2.5px solid #0b3c5d; padding-top: 20px; text-align: center;">
+      <h3 style="color: #0b3c5d; font-size: 13.5pt; font-weight: 900; tracking: 1px; margin: 0;">MENCERDASKAN BANGSA DENGAN DATA STATISTIK DESA</h3>
+      <p style="font-size: 8.8pt; color: #64748b; font-style: italic; margin-top: 2px;">Enlightening the Nation with Village Statistical Data</p>
+    </div>"""
+
+    p_ch5_tbl1 = make_page_card("BAB V PEMERINTAHAN & KELEMBAGAAN", "CHAPTER V GOVT & INSTITUTIONS", "17", tbl_5_1, 27, show_header=True)
+
+    full_out = html_header
+    full_out += card_1_cover + "\n\n"
+    full_out += card_2_catalog + "\n\n"
+    full_out += card_3_contrib + "\n\n"
+    full_out += card_4_preface_id + "\n\n"
+    full_out += card_4_preface_en + "\n\n"
+    full_out += card_5_toc + "\n\n"
+    full_out += card_5b_lot + "\n\n"
+    full_out += card_6_tech_notes + "\n\n"
+    full_out += card_7_abbreviations + "\n\n"
+    full_out += card_blank + "\n\n"  # Page x (10)
+    full_out += card_8_keystats + "\n\n"  # Arab Page 1 (11)
+    full_out += make_blank_page() + "\n\n"  # Arab Page 2 (12)
+    full_out += p_ch1_cover + "\n\n"  # Arab Page 3 (13)
+    full_out += p_ch1_content + "\n\n"  # Arab Page 4 (14)
+    full_out += p_ch1_tbl2 + "\n\n"  # Arab Page 5 (15)
+    full_out += p_ch2_cover + "\n\n"  # Arab Page 6 (16)
+    full_out += p_ch2_tbl1 + "\n\n"  # Arab Page 7 (17)
+    full_out += p_ch2_tbl2 + "\n\n"  # Arab Page 8 (18)
+    full_out += p_ch3_cover + "\n\n"  # Arab Page 9 (19)
+    full_out += p_ch3_tbl1 + "\n\n"  # Arab Page 10 (20)
+    full_out += p_ch3_tbl2 + "\n\n"  # Arab Page 11 (21)
+    full_out += p_ch4_cover + "\n\n"  # Arab Page 12 (22)
+    full_out += p_ch4_tbl1 + "\n\n"  # Arab Page 13 (23)
+    full_out += p_ch4_tbl2 + "\n\n"  # Arab Page 14 (24)
+    full_out += p_ch4_tbl3 + "\n\n"  # Arab Page 15 (25)
+    full_out += p_ch5_cover + "\n\n"  # Arab Page 16 (26)
+    full_out += p_ch5_tbl1 + "\n\n"  # Arab Page 17 (27)
+    full_out += "</div>\n</body>\n</html>"
 
     out_dir = Path("kegiatan") / "desa-cantik" / str(year) / name_kebab
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / f"publikasi-potensi-{name_kebab}-{year}.html"
 
     with open(out_path, "w", encoding="utf-8") as f:
-        f.write(full_html)
+        f.write(full_out)
 
     print(f"HTML file written: {out_path}")
     return out_path
