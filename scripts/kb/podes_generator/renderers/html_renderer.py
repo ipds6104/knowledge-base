@@ -40,7 +40,7 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
     pub_no = config.get("pub_no", "61040.2026.101")
     kades_title = config.get("kades_title", f"Kepala Desa {name_title}")
     kades_title_en = config.get("kades_title_en", f"Head of {name_title} Village")
-    kades_name = config.get("kades_name", f"Kepala Desa {name_title}")
+    kades_name = config.get("kades_name", f"Pemerintah {admin_type} {name_title}")
 
     book_header_id = f"POTENSI {admin_upper} {name_upper} {year}"
     book_header_en = f"POTENTIALS OF {name_upper} {admin_type_en.upper()} {year}"
@@ -87,20 +87,20 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
     def make_cover_card(
         ch_num: str, ch_title_id: str, ch_title_en: str, info_html: str
     ) -> str:
-        return f"""  <div class="page-card" style="justify-content: center;">
-    <div style="background: linear-gradient(135deg, #f97316 0%, #eb8a3c 45%, #ea580c 100%); border-radius: 18px; padding: 25px 30px; display: flex; align-items: center; gap: 25px; box-shadow: 0 10px 25px -5px rgba(234, 88, 12, 0.3); margin-bottom: 25px;">
-      <div style="width: 85px; height: 85px; background: #c2410c; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ffffff; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
-        <span style="font-size: 36pt; font-weight: 900; line-height: 0.9; margin-top: -2px;">{ch_num}</span>
-        <span style="font-size: 10pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1px;">BAB</span>
-        <span style="font-size: 8pt; font-style: italic; font-weight: 600; margin-top: -2px;">Chapter</span>
+        return f"""  <div class="page-card" style="justify-content: center; padding-top: 35mm; padding-bottom: 35mm;">
+    <div style="background: linear-gradient(135deg, #0b3c5d 0%, #1e3a8a 50%, #eb8a3c 100%); border-radius: 18px; padding: 25px 30px; display: flex; align-items: center; gap: 25px; box-shadow: 0 10px 25px -5px rgba(11, 60, 93, 0.3); margin-bottom: 25px;">
+      <div style="width: 85px; height: 85px; background: #0b3c5d; border: 2.5px solid #eb8a3c; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #ffffff; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+        <span style="font-size: 34pt; font-weight: 900; line-height: 0.9; margin-top: -2px;">{ch_num}</span>
+        <span style="font-size: 9.5pt; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 1px; color: #eb8a3c;">BAB</span>
+        <span style="font-size: 7.5pt; font-style: italic; font-weight: 600; margin-top: -2px; color: #fef08a;">Chapter</span>
       </div>
       <div style="flex: 1;">
         <h2 style="font-size: 16pt; font-weight: 900; color: #ffffff; margin: 0 0 8px 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.5px;">{ch_title_id}</h2>
-        <div style="width: 100%; height: 2.5px; background: #ffffff; opacity: 0.9; margin-bottom: 8px;"></div>
-        <h3 style="font-size: 12pt; font-weight: 800; font-style: italic; color: #ffffff; margin: 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.5px;">{ch_title_en}</h3>
+        <div style="width: 100%; height: 2.5px; background: #eb8a3c; opacity: 0.9; margin-bottom: 8px;"></div>
+        <h3 style="font-size: 12pt; font-weight: 800; font-style: italic; color: #fef08a; margin: 0; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.5px;">{ch_title_en}</h3>
       </div>
     </div>
-    <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+    <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 16px; padding: 22px; box-shadow: 0 4px 15px rgba(0,0,0,0.04);">
       {info_html}
     </div>
   </div>"""
@@ -108,7 +108,7 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
     def make_blank_page() -> str:
         return """  <div class="page-card" style="justify-content: center; align-items: center;"><div style="color: #cbd5e1; font-style: italic; font-size: 9pt;">[ Halaman Ini Sengaja Dikosongkan / This Page Intentionally Left Blank ]</div></div>"""
 
-    meta_std = f"""<div class="table-meta"><div class="meta-row"><div class="meta-lbl">Catatan/<i>Note:</i></div><div>Data hasil Pendataan Potensi Desa (PODES) Tahun {data_year} / <i>Village Potential Survey Data {data_year}</i></div></div><div class="meta-row"><div class="meta-lbl">Sumber/<i>Source:</i></div><div>Badan Pusat Statistik Kabupaten Mempawah — PODES {data_year} / <i>BPS-Statistics Mempawah Regency — PODES {data_year}</i></div></div></div>"""
+    meta_std = f"""<div class="table-meta"><div class="meta-row"><div class="meta-lbl">Catatan/<i>Note:</i></div><div>Data hasil Pendataan Potensi Desa (PODES) Tahun {data_year} / <i>Village Potential Survey Data {data_year}</i></div></div><div class="meta-row"><div class="meta-lbl">Sumber/<i>Source:</i></div><div>{gov_name} & BPS Kabupaten Mempawah — PODES {data_year} / <i>{gov_name_en} & BPS-Statistics Mempawah Regency — PODES {data_year}</i></div></div></div>"""
 
     html_header = f"""<!DOCTYPE html>
 <html lang="id">
@@ -288,12 +288,12 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
       <div style="font-size: 14pt; font-weight: 500; color: #cbd5e1; font-style: italic; margin-bottom: 20px;">Potentials of {name_title} {admin_type_en} {year}</div>
       <div style="border-top: 2px solid rgba(255,255,255,0.2); padding-top: 15px; font-size: 10pt; color: #e2e8f0;">
         <strong>Kecamatan {kecamatan} — Kabupaten {kabupaten}</strong><br>
-        Hasil Pendataan Potensi Desa (PODES) Tahun {data_year}
+        Disusun oleh {gov_name} & Disunting oleh BPS Kabupaten Mempawah
       </div>
     </div>
     <div style="padding: 20mm; background: #072a42; border-top: 4px solid #eb8a3c; text-align: left;">
-      <div style="font-size: 12pt; font-weight: 800; color: #ffffff; text-transform: uppercase;">BADAN PUSAT STATISTIK KABUPATEN MEMPAWAH</div>
-      <div style="font-size: 9.5pt; color: #94a3b8; margin-top: 4px;">BPS-Statistics Mempawah Regency</div>
+      <div style="font-size: 12pt; font-weight: 800; color: #ffffff; text-transform: uppercase;">{gov_name.upper()}</div>
+      <div style="font-size: 9.5pt; color: #eb8a3c; margin-top: 2px; font-weight: 700;">Disunting oleh BPS Kabupaten Mempawah</div>
     </div>
   </div>"""
 
@@ -308,19 +308,19 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
       </div>
       <div style="font-size: 9pt; line-height: 1.6; color: #2d3748; max-width: 95%; margin: 0 auto;">
         <table style="width: 100%; border: none; font-size: 8.8pt; margin-bottom: 20px;">
-          <tr><td style="width: 160px; font-weight: 700;">Ukuran Buku / <i>Book Size</i></td><td>: 21 cm x 29,7 cm (A4)</td></tr>
+          <tr><td style="width: 170px; font-weight: 700;">Ukuran Buku / <i>Book Size</i></td><td>: 21 cm x 29,7 cm (A4)</td></tr>
           <tr><td style="font-weight: 700;">Jumlah Halaman / <i>Pages</i></td><td>: ix + 15 halaman</td></tr>
-          <tr><td style="font-weight: 700;">Naskah / <i>Manuscript</i></td><td>: BPS Kabupaten Mempawah</td></tr>
-          <tr><td style="font-weight: 700;">Penyunting / <i>Editor</i></td><td>: BPS Kabupaten Mempawah</td></tr>
-          <tr><td style="font-weight: 700;">Penerbit / <i>Publisher</i></td><td>: © BPS Kabupaten Mempawah & {gov_name}</td></tr>
-          <tr><td style="font-weight: 700;">Sumber Data / <i>Source</i></td><td>: Pendataan Potensi Desa (PODES) Tahun {data_year}</td></tr>
+          <tr><td style="font-weight: 700;">Penyusun Naskah / <i>Manuscript</i></td><td>: {gov_name} (menggunakan data PODES BPS)</td></tr>
+          <tr><td style="font-weight: 700;">Penyunting / <i>Editor</i></td><td>: Badan Pusat Statistik Kabupaten Mempawah</td></tr>
+          <tr><td style="font-weight: 700;">Penerbit / <i>Publisher</i></td><td>: © {gov_name} & BPS Kabupaten Mempawah</td></tr>
+          <tr><td style="font-weight: 700;">Sumber Data / <i>Source</i></td><td>: Hasil Pendataan Potensi Desa (PODES) Tahun {data_year}</td></tr>
         </table>
         
         <div style="border: 1.5px solid #0b3c5d; padding: 12px; border-radius: 6px; background: #f8fafc; margin-top: 30px;">
           <strong style="color: #0b3c5d; text-transform: uppercase;">KLAUSUL HAK CIPTA / COPYRIGHT NOTICE</strong><br>
           <p style="font-size: 8.2pt; color: #334155; margin-top: 6px; text-align: justify;">
-            Dilarang mengumumkan, mendistribusikan, mengomunikasikan, dan/atau menggandakan sebagian atau seluruh isi buku ini untuk tujuan komersial tanpa izin tertulis dari Badan Pusat Statistik Kabupaten Mempawah dan {gov_name}.<br>
-            <i>It is prohibited to publish, distribute, communicate, and/or duplicate part or all of this book for commercial purposes without written permission from BPS-Statistics Mempawah Regency and {gov_name_en}.</i>
+            Dilarang mengumumkan, mendistribusikan, mengomunikasikan, dan/atau menggandakan sebagian atau seluruh isi buku ini untuk tujuan komersial tanpa izin tertulis dari {gov_name} dan Badan Pusat Statistik Kabupaten Mempawah.<br>
+            <i>It is prohibited to publish, distribute, communicate, and/or duplicate part or all of this book for commercial purposes without written permission from {gov_name_en} and BPS-Statistics Mempawah Regency.</i>
           </p>
         </div>
       </div>""",
@@ -336,8 +336,8 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
         "iii",
         f"""      <h2 style="text-align: center; color: #0b3c5d; padding-bottom: 6px; font-size: 13pt; margin-bottom: 20px;">KONTRIBUTOR DATA / <i>DATA CONTRIBUTORS</i></h2>
       <ol style="font-size: 9.5pt; line-height: 1.8; color: #2d3748; padding-left: 20px; max-width: 90%; margin: 0 auto;">
-        <li>{gov_name} / <i>{gov_name_en}</i></li>
-        <li>Tim Pendataan Potensi Desa (PODES {data_year}) BPS Kabupaten Mempawah / <i>PODES {data_year} Team of BPS-Statistics Mempawah Regency</i></li>
+        <li>{gov_name} / <i>{gov_name_en}</i> (Penyusun Utama / <i>Main Drafter</i>)</li>
+        <li>Tim Pendataan Potensi Desa (PODES {data_year}) BPS Kabupaten Mempawah / <i>PODES {data_year} Team of BPS-Statistics Mempawah Regency</i> (Penyunting Data / <i>Data Editor</i>)</li>
       </ol>""",
         3,
         show_header=False,
@@ -351,8 +351,8 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
         "iv",
         f"""      <h2 style="text-align: center; color: #0b3c5d; font-size: 14pt; font-weight: 800; margin-top: 10px; margin-bottom: 25px;">KATA PENGANTAR</h2>
       <div style="font-size: 9.5pt; line-height: 1.6; color: #2d3748; max-width: 95%; margin: 0 auto;">
-        <p style="margin-bottom: 16px; text-align: justify; text-indent: 30px;">Puji dan syukur kita panjatkan ke hadirat Tuhan Yang Maha Esa atas rahmat dan karunia-Nya, publikasi resmi <strong>"Potensi {admin_type} {name_title} {year}"</strong> dapat diselesaikan dengan baik. Publikasi ini menyajikan gambaran komprehensif mengenai potensi kewilayahan, kependudukan, perumahan, energi, fasilitas sosial, prasarana komunikasi, hingga kelembagaan dan ekonomi masyarakat di {admin_type} {name_title} berdasarkan hasil Pendataan Potensi Desa (PODES) Tahun {data_year}.</p>
-        <p style="margin-bottom: 25px; text-align: justify; text-indent: 30px;">Data yang disajikan diharapkan dapat menjadi rujukan baku bagi Pemerintah {admin_type} dan para pemangku kepentingan dalam perencanaan pembangunan kewilayahan berbasis bukti (<i>evidence-based policy</i>) demi meningkatkan kesejahteraan masyarakat.</p>
+        <p style="margin-bottom: 16px; text-align: justify; text-indent: 30px;">Puji dan syukur kita panjatkan ke hadirat Tuhan Yang Maha Esa atas rahmat dan karunia-Nya, publikasi resmi <strong>"Potensi {admin_type} {name_title} {year}"</strong> dapat diselesaikan dengan baik. Publikasi ini disusun oleh <strong>{gov_name}</strong> menggunakan data hasil Pendataan Potensi Desa (PODES) Tahun {data_year} dari Badan Pusat Statistik (BPS) dan disunting oleh Badan Pusat Statistik Kabupaten Mempawah.</p>
+        <p style="margin-bottom: 25px; text-align: justify; text-indent: 30px;">Data yang disajikan menggambarkan kondisi potensi kewilayahan, kependudukan, perumahan, energi, fasilitas sosial, prasarana komunikasi, hingga kelembagaan dan ekonomi masyarakat di {admin_type} {name_title}. Publikasi ini diharapkan dapat menjadi rujukan baku dalam perencanaan pembangunan kewilayahan berbasis bukti (<i>evidence-based policy</i>) demi meningkatkan kesejahteraan masyarakat.</p>
       </div>
       <div style="margin-top: 35px; font-size: 9.5pt; text-align: right; padding-right: 20px;">
         <div style="margin-bottom: 15px; font-weight: 500; color: #2d3748;">{name_title}, Agustus {year}</div>
@@ -373,7 +373,7 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
         "v",
         f"""      <h2 style="text-align: center; color: #0b3c5d; font-size: 14pt; font-weight: 800; font-style: italic; margin-top: 10px; margin-bottom: 25px;">PREFACE</h2>
       <div style="font-size: 9.5pt; line-height: 1.6; font-style: italic; color: #475569; max-width: 95%; margin: 0 auto;">
-        <p style="margin-bottom: 16px; text-align: justify; text-indent: 30px;">Praise be to God Almighty for His blessings, the official publication <i>"Potentials of {name_title} {admin_type_en} {year}"</i> has been successfully completed. This publication presents a comprehensive overview of regional potential, demographics, housing, energy, social facilities, telecommunication infrastructure, institutions, and local economy based on the Village Potential Survey (PODES) {data_year}.</p>
+        <p style="margin-bottom: 16px; text-align: justify; text-indent: 30px;">Praise be to God Almighty for His blessings, the official publication <i>"Potentials of {name_title} {admin_type_en} {year}"</i> has been successfully completed. This publication was compiled by <strong>{gov_name_en}</strong> using data from the Village Potential Survey (PODES) {data_year} by BPS-Statistics Indonesia and edited by BPS-Statistics Mempawah Regency.</p>
         <p style="margin-bottom: 25px; text-align: justify; text-indent: 30px;">The presented data is expected to serve as a standard reference for the {admin_type_en} Government and stakeholders in evidence-based development planning.</p>
       </div>
       <div style="margin-top: 35px; font-size: 9.5pt; text-align: right; padding-right: 20px;">
@@ -416,7 +416,7 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
         <li><span class="toc-title">2.&nbsp;&nbsp;&nbsp;Energi, Utilitas Perumahan & Mitigasi Bencana</span><span class="toc-page">6</span></li>
         <li><span class="toc-title">3.&nbsp;&nbsp;&nbsp;Fasilitas Sosial (Pendidikan & Kesehatan)</span><span class="toc-page">9</span></li>
         <li><span class="toc-title">4.&nbsp;&nbsp;&nbsp;Transportasi, Komunikasi & Ekonomi</span><span class="toc-page">12</span></li>
-        <li><span class="toc-title">5.&nbsp;&nbsp;&nbsp;Pemerintahan, Kelembagaan & Informasi Desa</span><span class="toc-page">15</span></li>
+        <li><span class="toc-title">5.&nbsp;&nbsp;&nbsp;Pemerintahan, Kelembagaan & Informasi Desa</span><span class="toc-page">16</span></li>
       </ul>""",
         6,
         show_header=False,
@@ -465,6 +465,10 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
         <li><span class="lot-no">4.1</span><div class="lot-title-wrap"><span class="lot-title">Prasarana Transportasi, Akses Jalan, dan Angkutan Umum</span><span class="lot-dots"></span></div><span class="lot-page">13</span></li>
         <li><span class="lot-no">4.2</span><div class="lot-title-wrap"><span class="lot-title">Menara BTS, Operator Seluler, dan Sinyal Internet</span><span class="lot-dots"></span></div><span class="lot-page">14</span></li>
         <li><span class="lot-no">4.3</span><div class="lot-title-wrap"><span class="lot-title">Fasilitas Ekonomi Utama, Mata Pencaharian, dan IMK</span><span class="lot-dots"></span></div><span class="lot-page">15</span></li>
+      </ul>
+      <div class="lot-sec">5.&nbsp;&nbsp;PEMERINTAHAN & KELEMBAGAAN</div>
+      <ul class="lot-list">
+        <li><span class="lot-no">5.1</span><div class="lot-title-wrap"><span class="lot-title">Aparatur Desa, Keberadaan BPD/LMK, dan Sistem Informasi Desa</span><span class="lot-dots"></span></div><span class="lot-page">17</span></li>
       </ul>""",
         7,
         show_header=False,
@@ -574,7 +578,7 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
     )
 
     # Chapters Construction
-    # Chapter 1
+    # Chapter 1 Cover (Arab Page 3 - Page 13)
     cover_ch1 = make_cover_card(
         "1",
         "WILAYAH ADMINISTRASI, DEMOGRAFI & KAWASAN",
@@ -583,7 +587,7 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
           <p>{admin_type} {name_title} berstatus sebagai wilayah <strong>{m.status_daerah}</strong> dengan jumlah penduduk sebanyak <strong>{tot_pop_str} jiwa</strong> ({l_str} laki-laki, {p_str} perempuan). Total keluarga tercatat sebanyak <strong>{kk_str} KK</strong> dengan keluarga pertanian sejumlah <strong>{kk_pert_str} KK ({m.kk_pertanian_pct}%)</strong>.</p>
         </div>""",
     )
-    p_ch1_cover = make_page_card("BAB I WILAYAH ADMINISTRASI & DEMOGRAFI", "CHAPTER I ADMINISTRATIVE & DEMOGRAPHICS", "3", cover_ch1, 13, show_header=True)
+    p_ch1_cover = make_page_card("BAB I WILAYAH ADMINISTRASI & DEMOGRAFI", "CHAPTER I ADMINISTRATIVE & DEMOGRAPHICS", "3", cover_ch1, 13, show_header=False)
 
     tech_ch1 = f"""<div class="tech-notes-card">
       <div class="tech-notes-title">PENJELASAN TEKNIS BAB I / TECHNICAL NOTES CHAPTER I</div>
@@ -624,7 +628,7 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
 
     p_ch1_tbl2 = make_page_card("BAB I WILAYAH ADMINISTRASI & DEMOGRAFI", "CHAPTER I ADMINISTRATIVE & DEMOGRAPHICS", "5", tbl_1_2, 15, show_header=True)
 
-    # Chapter 2
+    # Chapter 2 Cover (Arab Page 6 - Page 16)
     cover_ch2 = make_cover_card(
         "2",
         "ENERGI, UTILITAS PERUMAHAN & MITIGASI BENCANA",
@@ -633,7 +637,7 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
           <p>Penggunaan listrik PLN mencakup <strong>{fmt_val(m.listrik_pln)} KK ({((m.listrik_pln/max(1, m.jumlah_kk))*100):.1f}%)</strong>. Sebagian besar keluarga menggunakan air minum berjenis <strong>{m.air_minum}</strong> dan memasak dengan <strong>{m.bakar_masak}</strong>.</p>
         </div>""",
     )
-    p_ch2_cover = make_page_card("BAB II ENERGI & BENCANA", "CHAPTER II ENERGY & DISASTER", "6", cover_ch2, 16, show_header=True)
+    p_ch2_cover = make_page_card("BAB II ENERGI & BENCANA", "CHAPTER II ENERGY & DISASTER", "6", cover_ch2, 16, show_header=False)
 
     tbl_2_1 = f"""<div class="section-header">2.1 PENGGUNAAN LISTRIK & BAHAN BAKAR<span class="en">2.1 ELECTRICITY & COOKING FUEL USAGE</span></div>
     <div class="table-title-block"><span class="table-num">Tabel 2.1</span><div class="table-title-text">Penggunaan Daya Listrik, Penerangan Jalan Utama, dan Bahan Bakar Memasak Tahun {data_year}<span class="en">Electricity Power, Road Lighting, and Fuel Usage {data_year}</span></div></div>
@@ -663,7 +667,7 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
 
     p_ch2_tbl2 = make_page_card("BAB II ENERGI & BENCANA", "CHAPTER II ENERGY & DISASTER", "8", tbl_2_2, 18, show_header=True)
 
-    # Chapter 3
+    # Chapter 3 Cover (Arab Page 9 - Page 19)
     cover_ch3 = make_cover_card(
         "3",
         "FASILITAS SOSIAL (PENDIDIKAN & KESEHATAN)",
@@ -672,7 +676,7 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
           <p>Ketersediaan sarana pendidikan formal/keagamaan dan pelayanan kesehatan meliputi <strong>{m.posyandu_aktif} Posyandu aktif</strong> dan <strong>{m.posbindu} Posbindu</strong>.</p>
         </div>""",
     )
-    p_ch3_cover = make_page_card("BAB III FASILITAS SOSIAL", "CHAPTER III SOCIAL FACILITIES", "9", cover_ch3, 19, show_header=True)
+    p_ch3_cover = make_page_card("BAB III FASILITAS SOSIAL", "CHAPTER III SOCIAL FACILITIES", "9", cover_ch3, 19, show_header=False)
 
     tbl_3_1 = f"""<div class="section-header">3.1 SARANA PENDIDIKAN FORMAL & KEAGAMAAN<span class="en">3.1 FORMAL & RELIGIOUS EDUCATION FACILITIES</span></div>
     <div class="table-title-block"><span class="table-num">Tabel 3.1</span><div class="table-title-text">Rekapitulasi Ketersediaan Sarana Pendidikan Formal dan Keagamaan Tahun {data_year}<span class="en">Availability of Formal and Religious Education Facilities {data_year}</span></div></div>
@@ -698,7 +702,7 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
 
     p_ch3_tbl2 = make_page_card("BAB III FASILITAS SOSIAL", "CHAPTER III SOCIAL FACILITIES", "11", tbl_3_2, 21, show_header=True)
 
-    # Chapter 4
+    # Chapter 4 Cover (Arab Page 12 - Page 22)
     cover_ch4 = make_cover_card(
         "4",
         "TRANSPORTASI, KOMUNIKASI & EKONOMI",
@@ -707,7 +711,7 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
           <p>Dukungan telekomunikasi mencakup <strong>{m.jumlah_bts} Menara BTS</strong> dengan jaringan <strong>{m.sinyal_internet}</strong>. Sektor industri kecil didukung oleh <strong>{fmt_val(m.jumlah_imk)} unit Industri Mikro dan Kecil (IMK)</strong>.</p>
         </div>""",
     )
-    p_ch4_cover = make_page_card("BAB IV TRANSPORTASI & EKONOMI", "CHAPTER IV TRANSPORT & ECONOMY", "12", cover_ch4, 22, show_header=True)
+    p_ch4_cover = make_page_card("BAB IV TRANSPORTASI & EKONOMI", "CHAPTER IV TRANSPORT & ECONOMY", "12", cover_ch4, 22, show_header=False)
 
     tbl_4_1 = f"""<div class="section-header">4.1 TRANSPORTASI & PRASARANA JALAN<span class="en">4.1 TRANSPORT & ROAD INFRASTRUCTURE</span></div>
     <div class="table-title-block"><span class="table-num">Tabel 4.1</span><div class="table-title-text">Prasarana Transportasi, Jenis Permukaan Jalan, dan Angkutan Umum Tahun {data_year}<span class="en">Transport Infrastructure, Road Surface, and Public Transit {data_year}</span></div></div>
@@ -750,7 +754,7 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
 
     p_ch4_tbl3 = make_page_card("BAB IV TRANSPORTASI & EKONOMI", "CHAPTER IV TRANSPORT & ECONOMY", "15", tbl_4_3, 25, show_header=True)
 
-    # Chapter 5
+    # Chapter 5 Cover (Arab Page 16 - Page 26)
     cover_ch5 = make_cover_card(
         "5",
         "PEMERINTAHAN, KELEMBAGAAN & INFORMASI DESA",
@@ -759,7 +763,7 @@ def render_podes_html(pub_data: PodesPublicationData) -> Path:
           <p>Penyelenggaraan pemerintah desa didukung oleh <strong>{m.aparatur_pemdes} orang aparatur desa</strong>, keberadaan BPD/LMK tercatat <strong>"{m.keberadaan_bpd}"</strong>, serta pelaksanaan musyawarah desa sebanyak <strong>{m.musyawarah_desa} kali</strong>.</p>
         </div>""",
     )
-    p_ch5_cover = make_page_card("BAB V PEMERINTAHAN & KELEMBAGAAN", "CHAPTER V GOVT & INSTITUTIONS", "16", cover_ch5, 26, show_header=True)
+    p_ch5_cover = make_page_card("BAB V PEMERINTAHAN & KELEMBAGAAN", "CHAPTER V GOVT & INSTITUTIONS", "16", cover_ch5, 26, show_header=False)
 
     tbl_5_1 = f"""<div class="section-header">5.1 APARATUR DESA, BPD/LMK & SISTEM INFORMASI DESA<span class="en">5.1 VILLAGE APPARATUS, BPD & INFO SYSTEM</span></div>
     <div class="table-title-block"><span class="table-num">Tabel 5.1</span><div class="table-title-text">Aparatur Pemerintah Desa, Keberadaan BPD/LMK, dan Sistem Informasi Desa Tahun {data_year}<span class="en">Village Apparatus, BPD/LMK Status, and Village Info System {data_year}</span></div></div>

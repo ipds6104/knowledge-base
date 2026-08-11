@@ -11,21 +11,23 @@ def render_podes_md(pub_data: PodesPublicationData) -> Path:
 
     name_title = cfg["name_title"]
     name_kebab = cfg["name_kebab"]
-    name_upper = name_title.upper()
     admin_type = cfg["admin_type"]
     admin_upper = admin_type.upper()
     pub_no = cfg["pub_no"]
     kades_title = cfg["kades_title"]
     kades_name = cfg["kades_name"]
+    gov_name = cfg.get("gov_name", f"Pemerintah {admin_type} {name_title}")
 
     year = cfg.get("year", 2026)
     data_year = cfg.get("data_year", 2025)
 
     md = f"""# **Potensi {admin_type} {name_title} {year}**
 
-Nomor Publikasi : {pub_no}  
 Ukuran Buku : 21 cm x 29,7 cm  
-Jumlah Halaman : iv + 16 halaman  
+Jumlah Halaman : ix + 15 halaman  
+Penyusun : {gov_name} (menggunakan data PODES BPS)  
+Penyunting : BPS Kabupaten Mempawah  
+Penerbit : © {gov_name} & BPS Kabupaten Mempawah  
 Tahun Terbit : {year}  
 Tahun Pendataan : {data_year}  
 
@@ -33,14 +35,16 @@ Tahun Pendataan : {data_year}
 
 ## **KATA PENGANTAR**
 
-Puji dan syukur kita panjatkan ke hadirat Tuhan Yang Maha Esa atas rahmat dan karunia-Nya, publikasi **"Potensi {admin_type} {name_title} {year}"** ini dapat diselesaikan dengan baik. Publikasi ini menyajikan gambaran komprehensif mengenai potensi kewilayahan, kependudukan, perumahan, energi, fasilitas sosial, prasarana komunikasi, hingga kelembagaan dan ekonomi masyarakat di {admin_type} {name_title} berdasarkan Pendataan Potensi Desa (PODES) Tahun {data_year}.
+Puji dan syukur kita panjatkan ke hadirat Tuhan Yang Maha Esa atas rahmat dan karunia-Nya, publikasi **"Potensi {admin_type} {name_title} {year}"** ini dapat diselesaikan dengan baik. Publikasi ini disusun oleh **{gov_name}** menggunakan data hasil Pendataan Potensi Desa (PODES) Tahun {data_year} dari Badan Pusat Statistik (BPS) dan disunting oleh BPS Kabupaten Mempawah.
+
+Publikasi ini menyajikan gambaran komprehensif mengenai potensi kewilayahan, kependudukan, perumahan, energi, fasilitas sosial, prasarana komunikasi, hingga kelembagaan dan ekonomi masyarakat di {admin_type} {name_title}.
 
 Data yang disajikan diharapkan dapat menjadi rujukan baku bagi Pemerintah {admin_type} dan para pemangku kepentingan dalam perencanaan pembangunan kewilayahan (*evidence-based policy*) demi meningkatkan kesejahteraan masyarakat.
 
 Kami menyampaikan ucapan terima kasih dan penghargaan setinggi-tingginya kepada seluruh pihak yang telah membantu terwujudnya publikasi ini.
 
 {name_title}, Agustus {year}  
-**{kades_title}**  
+**{kades_title.upper()}**  
 
 <u>**{kades_name.upper()}**</u>
 
@@ -50,25 +54,27 @@ Kami menyampaikan ucapan terima kasih dan penghargaan setinggi-tingginya kepada 
 
 | Judul Bab / Bagian | Halaman |
 | :--- | :--- |
-| **KATA PENGANTAR** | i |
-| **DAFTAR ISI** | ii |
-| **DAFTAR TABEL** | iii |
-| **PENJELASAN TEKNIS & KONSEP DEFINISI PODES** | 1 |
+| **KATA PENGANTAR** | iv |
+| **DAFTAR ISI** | vi |
+| **DAFTAR TABEL** | vii |
+| **PENJELASAN UMUM** | viii |
+| **DAFTAR SINGKATAN** | ix |
+| **STATISTIK KUNCI PODES {data_year}** | 1 |
 | **BAB I: WILAYAH ADMINISTRASI, DEMOGRAFI & KAWASAN** | 3 |
-| 1.1 Status Wilayah, Kawasan Hutan & Administrasi RT/RW | 3 |
-| 1.2 Kependudukan, Rasio Jenis Kelamin & Keluarga Pertanian | 4 |
+| 1.1 Status Wilayah, Kawasan Hutan & Administrasi RT/RW | 4 |
+| 1.2 Kependudukan, Rasio Jenis Kelamin & Keluarga Pertanian | 5 |
 | **BAB II: ENERGI, UTILITAS PERUMAHAN & MITIGASI BENCANA** | 6 |
-| 2.1 Penggunaan Listrik, Penerangan Jalan & Bahan Bakar | 6 |
-| 2.2 Air Minum & Potensi/Mitigasi Bencana Alam | 7 |
+| 2.1 Penggunaan Listrik, Penerangan Jalan & Bahan Bakar | 7 |
+| 2.2 Air Minum & Potensi/Mitigasi Bencana Alam | 8 |
 | **BAB III: FASILITAS SOSIAL (PENDIDIKAN & KESEHATAN)** | 9 |
-| 3.1 Ketersediaan Sarana Pendidikan Formal & Keagamaan | 9 |
-| 3.2 Sarana Kesehatan, Posyandu & Posbindu | 10 |
+| 3.1 Ketersediaan Sarana Pendidikan Formal & Keagamaan | 10 |
+| 3.2 Sarana Kesehatan, Posyandu & Posbindu | 11 |
 | **BAB IV: TRANSPORTASI, KOMUNIKASI, EKONOMI & INDUSTRI** | 12 |
-| 4.1 Prasarana Transportasi, Akses Jalan & Angkutan Umum | 12 |
-| 4.2 Menara BTS, Layanan Telekomunikasi & Sinyal Internet | 13 |
-| 4.3 Fasilitas Ekonomi, Mata Pencaharian & Industri Mikro/Kecil (IMK) | 14 |
-| **BAB V: PEMERINTAHAN, KELEMBAGAAN & INFORMASI DESA** | 15 |
-| 5.1 Aparatur Pemerintah Desa, BPD/LMK & Sistem Informasi Desa | 15 |
+| 4.1 Prasarana Transportasi, Akses Jalan & Angkutan Umum | 13 |
+| 4.2 Menara BTS, Layanan Telekomunikasi & Sinyal Internet | 14 |
+| 4.3 Fasilitas Ekonomi, Mata Pencaharian & Industri Mikro/Kecil (IMK) | 15 |
+| **BAB V: PEMERINTAHAN, KELEMBAGAAN & INFORMASI DESA** | 16 |
+| 5.1 Aparatur Pemerintah Desa, BPD/LMK & Sistem Informasi Desa | 17 |
 
 ---
 
@@ -76,20 +82,20 @@ Kami menyampaikan ucapan terima kasih dan penghargaan setinggi-tingginya kepada 
 
 | No Tabel | Nama Tabel | Halaman |
 | :--- | :--- | :--- |
-| **Tabel 1** | Identitas Wilayah, Kawasan Hutan, dan Pembagian RT/RW Tahun {data_year} | 3 |
-| **Tabel 2** | Jumlah Penduduk Menurut Jenis Kelamin, Sex Ratio, dan Keluarga Pertanian Tahun {data_year} | 4 |
-| **Tabel 3** | Penggunaan Daya Listrik, Penerangan Jalan Utama, dan Bahan Bakar Memasak Tahun {data_year} | 6 |
-| **Tabel 4** | Sumber Air Minum Utama dan Keberadaan Mitigasi Bencana Alam Tahun {data_year} | 7 |
-| **Tabel 5** | Rekapitulasi Ketersediaan Sarana Pendidikan Formal dan Keagamaan Tahun {data_year} | 9 |
-| **Tabel 6** | Ketersediaan Sarana Kesehatan, Posyandu Aktif, dan Posbindu Tahun {data_year} | 10 |
-| **Tabel 7** | Prasarana Transportasi, Jenis Permukaan Jalan, dan Angkutan Umum Tahun {data_year} | 12 |
-| **Tabel 8** | Keberadaan Menara BTS, Operator Telekomunikasi, dan Sinyal Internet Tahun {data_year} | 13 |
-| **Tabel 9** | Fasilitas Ekonomi Utama, Mata Pencaharian, dan Industri Mikro Kecil (IMK) Tahun {data_year} | 14 |
-| **Tabel 10** | Aparatur Pemerintah Desa, Keberadaan BPD/LMK, dan Sistem Informasi Desa Tahun {data_year} | 15 |
+| **Tabel 1.1** | Identitas Wilayah, Kawasan Hutan, dan Pembagian RT/RW Tahun {data_year} | 4 |
+| **Tabel 1.2** | Jumlah Penduduk Menurut Jenis Kelamin, Sex Ratio, dan Keluarga Pertanian Tahun {data_year} | 5 |
+| **Tabel 2.1** | Penggunaan Daya Listrik, Penerangan Jalan Utama, dan Bahan Bakar Memasak Tahun {data_year} | 7 |
+| **Tabel 2.2** | Sumber Air Minum Utama dan Keberadaan Mitigasi Bencana Alam Tahun {data_year} | 8 |
+| **Tabel 3.1** | Rekapitulasi Ketersediaan Sarana Pendidikan Formal dan Keagamaan Tahun {data_year} | 10 |
+| **Tabel 3.2** | Ketersediaan Sarana Kesehatan, Posyandu Aktif, dan Posbindu Tahun {data_year} | 11 |
+| **Tabel 4.1** | Prasarana Transportasi, Jenis Permukaan Jalan, dan Angkutan Umum Tahun {data_year} | 13 |
+| **Tabel 4.2** | Keberadaan Menara BTS, Operator Telekomunikasi, dan Sinyal Internet Tahun {data_year} | 14 |
+| **Tabel 4.3** | Fasilitas Ekonomi Utama, Mata Pencaharian, dan Industri Mikro Kecil (IMK) Tahun {data_year} | 15 |
+| **Tabel 5.1** | Aparatur Pemerintah Desa, Keberadaan BPD/LMK, dan Sistem Informasi Desa Tahun {data_year} | 17 |
 
 ---
 
-## **PENJELASAN TEKNIS & KONSEP DEFINISI PODES**
+## **PENJELASAN UMUM & KONSEP DEFINISI PODES**
 
 1. **Potensi Desa (PODES)**: Pendataan inventarisasi potensi kewilayahan di tingkat desa/kelurahan yang mengumpulkan data prasarana, sarana, dan kondisi sosio-ekonomi wilayah.
 2. **Status Daerah**: Pengklasifikasian wilayah desa/kelurahan menjadi Perdesaan atau Perkotaan berdasarkan skor kepadatan penduduk, persentase keluarga pertanian, dan aksesibilitas fasilitas umum.
@@ -105,7 +111,7 @@ Kami menyampaikan ucapan terima kasih dan penghargaan setinggi-tingginya kepada 
 ### **1.1 STATUS WILAYAH, KAWASAN HUTAN & ADMINISTRASI RT/RW**
 {admin_type} {name_title} berstatus sebagai wilayah **{m.status_daerah}** dengan lokasi perkantoran berada di **{m.alamat_lengkap}**. Keberadaan wilayah terhadap kawasan hutan tercatat **{m.kawasan_hutan}**. Secara administratif, wilayah {admin_type} {name_title} terbagi atas **{m.jumlah_rw} Rukun Warga (RW)** dan **{m.jumlah_rt} Rukun Tetangga (RT)**.
 
-**Tabel 1. Identitas Wilayah, Kawasan Hutan, dan Pembagian RT/RW Tahun {data_year}**
+**Tabel 1.1 Identitas Wilayah, Kawasan Hutan, dan Pembagian RT/RW Tahun {data_year}**
 | Indikator Kewilayahan | Isian Data PODES {data_year} |
 | :--- | :--- |
 | **Status Klasifikasi Wilayah** | {m.status_daerah} |
@@ -119,7 +125,7 @@ Kami menyampaikan ucapan terima kasih dan penghargaan setinggi-tingginya kepada 
 ### **1.2 KEPENDUDUKAN, RASIO JENIS KELAMIN & KELUARGA PERTANIAN**
 Jumlah penduduk di {admin_type} {name_title} hasil pendataan {data_year} sebanyak **{m.total_penduduk:,} jiwa**, terdiri dari **{m.penduduk_l:,} jiwa laki-laki ({m.male_pct}%)** dan **{m.penduduk_p:,} jiwa perempuan ({m.female_pct}%)**, dengan *sex ratio* sebesar **{m.sex_ratio}**. Total keluarga tercatat sebanyak **{m.jumlah_kk:,} KK**, di mana sebanyak **{m.kk_pertanian:,} keluarga ({m.kk_pertanian_pct}%)** bergerak di sektor pertanian.
 
-**Tabel 2. Jumlah Penduduk Menurut Jenis Kelamin, Sex Ratio, dan Keluarga Pertanian Tahun {data_year}**
+**Tabel 1.2 Jumlah Penduduk Menurut Jenis Kelamin, Sex Ratio, dan Keluarga Pertanian Tahun {data_year}**
 | Indikator Demografi & Pertanian | Jumlah / Nilai |
 | :--- | :---: |
 | **Jumlah Penduduk Laki-laki** | {m.penduduk_l:,} jiwa |
@@ -136,7 +142,7 @@ Jumlah penduduk di {admin_type} {name_title} hasil pendataan {data_year} sebanya
 ### **2.1 PENGGUNAAN LISTRIK, PENERANGAN JALAN & BAHAN BAKAR**
 Sebanyak **{m.listrik_pln:,} keluarga ({((m.listrik_pln/max(1, m.jumlah_kk))*100):.1f}%)** telah memanfaatkan sumber listrik PLN. Kondisi penerangan di jalan utama desa tergolong **"{m.penerangan_jalan}"**. Sebagian besar keluarga memanfaatkan **{m.bakar_masak}** sebagai bahan bakar utama untuk memasak.
 
-**Tabel 3. Penggunaan Daya Listrik, Penerangan Jalan Utama, dan Bahan Bakar Memasak Tahun {data_year}**
+**Tabel 2.1 Penggunaan Daya Listrik, Penerangan Jalan Utama, dan Bahan Bakar Memasak Tahun {data_year}**
 | Indikator Energi & Utilitas | Isian Data PODES {data_year} |
 | :--- | :--- |
 | **Pengguna Listrik PLN** | {m.listrik_pln:,} KK |
@@ -148,98 +154,94 @@ Sebanyak **{m.listrik_pln:,} keluarga ({((m.listrik_pln/max(1, m.jumlah_kk))*100
 ---
 
 ### **2.2 AIR MINUM & POTENSI/MITIGASI BENCANA ALAM**
-Sumber air utama untuk konsumsi minum keluarga sebagian besar berasal dari **{m.air_minum}**. Terkait kejadian bencana alam, dalam satu tahun terakhir tercatat **"{m.bencana_alam}"**. Upaya mitigasi dan kesiapsiagaan bencana yang tersedia mencakup **{m.mitigasi_bencana}**.
+Sumber air minum utama yang paling banyak digunakan masyarakat di {admin_type} {name_title} berasal dari **{m.air_minum}**. Terkait dengan potensi bencana, kejadian bencana alam dalam beberapa waktu terakhir tercatat **"{m.bencana_alam}"**, dengan ketersediaan sistem/upaya mitigasi bencana tergolong **"{m.mitigasi_bencana}"**.
 
-**Tabel 4. Sumber Air Minum Utama dan Keberadaan Mitigasi Bencana Alam Tahun {data_year}**
+**Tabel 2.2 Sumber Air Minum Utama dan Keberadaan Mitigasi Bencana Alam Tahun {data_year}**
 | Indikator Lingkungan & Bencana | Isian Data PODES {data_year} |
 | :--- | :--- |
 | **Sumber Air Minum Utama** | {m.air_minum} |
-| **Kejadian Bencana Alam Setahun Terakhir** | {m.bencana_alam} |
-| **Fasilitas & Mitigasi Kesiapsiagaan Bencana** | {m.mitigasi_bencana} |
+| **Kejadian Bencana Alam** | {m.bencana_alam} |
+| **Fasilitas & Upaya Mitigasi Bencana** | {m.mitigasi_bencana} |
 
 ---
 
 ## **BAB III: FASILITAS SOSIAL (PENDIDIKAN & KESEHATAN)**
 
 ### **3.1 KETERSEDIAAN SARANA PENDIDIKAN FORMAL & KEAGAMAAN**
-Fasilitas pendidikan di {admin_type} {name_title} meliputi: **{m.sarana_pendidikan}**.
+Ketersediaan sarana pendidikan di {admin_type} {name_title} tercatat meliputi **{m.sarana_pendidikan}**.
 
-**Tabel 5. Rekapitulasi Ketersediaan Sarana Pendidikan Formal dan Keagamaan Tahun {data_year}**
-| Kategori Sarana | Rincian Ketersediaan Sarana Pendidikan |
+**Tabel 3.1 Rekapitulasi Ketersediaan Sarana Pendidikan Formal dan Keagamaan Tahun {data_year}**
+| Kategori Sarana Pendidikan | Rincian Ketersediaan Sarana |
 | :--- | :--- |
-| **Fasilitas Pendidikan** | {m.sarana_pendidikan} |
+| **Fasilitas Pendidikan Formal & Non-Formal** | {m.sarana_pendidikan} |
 
 ---
 
 ### **3.2 SARANA KESEHATAN, POSYANDU & POSBINDU**
-Fasilitas pelayanan kesehatan yang tersedia meliputi: **{m.sarana_kesehatan}**. Dukungan pelayanan kesehatan bersumberdaya masyarakat mencakup **{m.posyandu_aktif} posyandu aktif** dengan pelayanan rutin sebulan sekali serta **{m.posbindu} posbindu**.
+Fasilitas pelayanan kesehatan masyarakat didukung oleh keberadaan **{m.sarana_kesehatan}**. Untuk pelayanan kesehatan balita dan lansia berbasis masyarakat, terdapat **{m.posyandu_aktif} unit Posyandu aktif** dan **{m.posbindu} unit Posbindu**.
 
-**Tabel 6. Ketersediaan Sarana Kesehatan, Posyandu Aktif, dan Posbindu Tahun {data_year}**
-| Indikator Sarana Kesehatan | Rincian Ketersediaan Data |
+**Tabel 3.2 Ketersediaan Sarana Kesehatan, Posyandu Aktif, dan Posbindu Tahun {data_year}**
+| Indikator Pelayanan Kesehatan | Jumlah / Keterangan |
 | :--- | :--- |
-| **Fasilitas Pelayanan Kesehatan** | {m.sarana_kesehatan} |
-| **Posyandu Aktif (Bulanan)** | {m.posyandu_aktif} unit |
-| **Posbindu** | {m.posbindu} unit |
+| **Fasilitas Kesehatan Utama** | {m.sarana_kesehatan} |
+| **Posyandu Aktif (Pemeriksaan Rutin Bulanan)** | {m.posyandu_aktif} unit |
+| **Posbindu (Pos Pembinaan Terpadu)** | {m.posbindu} unit |
 
 ---
 
 ## **BAB IV: TRANSPORTASI, KOMUNIKASI, EKONOMI & INDUSTRI**
 
 ### **4.1 PRASARANA TRANSPORTASI, AKSES JALAN & ANGKUTAN UMUM**
-Prasarana transportasi antar desa terhubung via lalu lintas **{m.prasarana_transportasi}** dengan jenis permukaan jalan utama berupa **{m.jenis_jalan}**. Jalan darat dapat dilalui kendaraan roda 4 atau lebih **{m.jalan_roda4}**. Keberadaan angkutan umum teridentifikasi **"{m.angkutan_umum}"**.
+Prasarana jalan utama di {admin_type} {name_title} memiliki permukaan jalan berjenis **{m.jenis_jalan}**. Aksesibilitas jalan dapat dilalui kendaraan roda 4 atau lebih sepanjang tahun tercatat **"{m.jalan_roda4}"**, dan operasional angkutan umum tergolong **"{m.angkutan_umum}"**.
 
-**Tabel 7. Prasarana Transportasi, Jenis Permukaan Jalan, dan Angkutan Umum Tahun {data_year}**
+**Tabel 4.1 Prasarana Transportasi, Jenis Permukaan Jalan, dan Angkutan Umum Tahun {data_year}**
 | Indikator Transportasi | Isian Data PODES {data_year} |
 | :--- | :--- |
-| **Prasarana Transportasi Antar Desa** | {m.prasarana_transportasi} |
+| **Prasarana Transportasi Utama** | {m.prasarana_transportasi} |
 | **Jenis Permukaan Jalan Utama** | {m.jenis_jalan} |
-| **Aksesibilitas Roda 4 atau Lebih** | {m.jalan_roda4} |
+| **Aksesibilitas Kendaraan Roda 4 atau Lebih** | {m.jalan_roda4} |
 | **Keberadaan & Operasional Angkutan Umum** | {m.angkutan_umum} |
 
 ---
 
 ### **4.2 MENARA BTS, LAYANAN TELEKOMUNIKASI & SINYAL INTERNET**
-Dukungan infrastruktur telekomunikasi mencakup **{m.jumlah_bts} menara BTS** dengan jangkuan operator meliputi **{m.operator_seluler}**. Kualitas sinyal telepon seluler tergolong **"{m.sinyal_hp}"** dengan jaringan internet seluler mendukung **{m.sinyal_internet}**.
+Akses komunikasi seluler di {admin_type} {name_title} ditopang oleh keberadaan **{m.jumlah_bts} Menara Base Transceiver Station (BTS)**. Layanan operator seluler yang menjangkau wilayah ini tergolong **"{m.operator_seluler}"** dengan kekuatan sinyal telepon **"{m.sinyal_hp}"** dan jangkauan sinyal internet seluler sebesar **"{m.sinyal_internet}"**.
 
-**Tabel 8. Keberadaan Menara BTS, Operator Telekomunikasi, dan Sinyal Internet Tahun {data_year}**
-| Indikator Komunikasi & Sinyal | Isian Data PODES {data_year} |
+**Tabel 4.2 Keberadaan Menara BTS, Operator Telekomunikasi, dan Sinyal Internet Tahun {data_year}**
+| Indikator Telekomunikasi | Isian Data PODES {data_year} |
 | :--- | :--- |
 | **Jumlah Menara BTS** | {m.jumlah_bts} unit |
 | **Operator Layanan Seluler** | {m.operator_seluler} |
-| **Kekuatan Sinyal Telepon** | {m.sinyal_hp} |
-| **Jaringan Internet Seluler** | {m.sinyal_internet} |
+| **Kekuatan Sinyal Telepon Seluler** | {m.sinyal_hp} |
+| **Jaringan & Sinyal Internet Seluler** | {m.sinyal_internet} |
 
 ---
 
-### **4.3 FASILITAS EKONOMI, MATA PENCAHARIAN & INDUSTRI MIKRO/KECIL (IMK)**
-Mata pencaharian utama sebagian besar penduduk adalah **{m.sumber_penghasilan_utama}** (subsektor **{m.subsektor_utama}**). Aktivitas ekonomi didukung oleh fasilitas berupa **{m.sarana_ekonomi}**. Selain itu, berkembang sebanyak **{m.jumlah_imk} unit Industri Mikro dan Kecil (IMK)** di wilayah {admin_type}.
+### **4.3 FASILITAS EKONOMI, MATA PENCAHARIAN & INDUSTRI MIKRO KECIL (IMK)**
+Sebagian besar penduduk di {admin_type} {name_title} menggantungkan mata pencaharian utama pada sektor **{m.sumber_penghasilan_utama} ({m.subsektor_utama})**. Aktivitas perekonomian didukung ketersediaan sarana berupa **{m.sarana_ekonomi}**, serta kegiatan sektor pengolahan sebanyak **{m.jumlah_imk} unit Industri Mikro dan Kecil (IMK)**.
 
-**Tabel 9. Fasilitas Ekonomi Utama, Mata Pencaharian, dan Industri Mikro Kecil (IMK) Tahun {data_year}**
+**Tabel 4.3 Fasilitas Ekonomi Utama, Mata Pencaharian, dan Industri Mikro Kecil (IMK) Tahun {data_year}**
 | Indikator Ekonomi & Industri | Isian Data PODES {data_year} |
 | :--- | :--- |
 | **Mata Pencaharian Utama Penduduk** | {m.sumber_penghasilan_utama} ({m.subsektor_utama}) |
 | **Fasilitas Ekonomi Utama** | {m.sarana_ekonomi} |
-| **Jumlah Industri Mikro & Kecil (IMK)** | {m.jumlah_imk} unit usaha |
+| **Jumlah Industri Mikro dan Kecil (IMK)** | {m.jumlah_imk} unit usaha |
 
 ---
 
 ## **BAB V: PEMERINTAHAN, KELEMBAGAAN & INFORMASI DESA**
 
 ### **5.1 APARATUR PEMERINTAH DESA, BPD/LMK & SISTEM INFORMASI DESA**
-Penyelenggaraan pemerintahan {admin_type} {name_title} didukung oleh **{m.aparatur_pemdes} orang aparatur pemerintah**. Keberadaan lembaga perwakilan rakyat desa (BPD/LMK) tercatat **"{m.keberadaan_bpd}"** dengan frekuensi musyawarah sebanyak **{m.musyawarah_desa} kali kegiatan** dalam sebulan/setahun terakhir. Keberadaan Sistem Informasi Desa (SID) teridentifikasi **"{m.sistem_informasi_desa}"** dan ketersediaan SPPG tercatat **"{m.jumlah_sppg}"**.
+Roda pemerintahan {admin_type} {name_title} dijalankan oleh **{m.aparatur_pemdes} orang aparatur pemerintah desa/kelurahan**. Keberadaan badan perwakilan (BPD/LMK) tercatat **"{m.keberadaan_bpd}"** dengan frekuensi musyawarah desa sebanyak **{m.musyawarah_desa} kali**. Pemanfaatan teknologi informasi diwujudkan melalui Sistem Informasi Desa (SID) bernomenklatur **"{m.sistem_informasi_desa}"**, serta ketersediaan SPPG tercatat **"{m.jumlah_sppg}"**.
 
-**Tabel 10. Aparatur Pemerintah Desa, Keberadaan BPD/LMK, dan Sistem Informasi Desa Tahun {data_year}**
+**Tabel 5.1 Aparatur Pemerintah Desa, Keberadaan BPD/LMK, dan Sistem Informasi Desa Tahun {data_year}**
 | Indikator Pemerintahan & Kelembagaan | Isian Data PODES {data_year} |
 | :--- | :--- |
 | **Jumlah Aparatur Pemerintah Desa/Kelurahan** | {m.aparatur_pemdes} orang |
 | **Keberadaan BPD / LMK** | {m.keberadaan_bpd} |
-| **Jumlah Kegiatan Musyawarah Desa** | {m.musyawarah_desa} kali |
-| **Sistem Informasi Desa (SID)** | {m.sistem_informasi_desa} |
+| **Frekuensi Musyawarah Desa dalam 1 Tahun** | {m.musyawarah_desa} kali |
+| **Keberadaan Sistem Informasi Desa (SID)** | {m.sistem_informasi_desa} |
 | **Ketersediaan SPPG** | {m.jumlah_sppg} |
-
----
-
-# **MENCERDASKAN BANGSA DENGAN DATA STATISTIK DESA**
 """
 
     out_dir = Path("kegiatan") / "desa-cantik" / str(year) / name_kebab
@@ -249,5 +251,5 @@ Penyelenggaraan pemerintahan {admin_type} {name_title} didukung oleh **{m.aparat
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(md)
 
-    print(f"Markdown file written: {out_path}")
+    print(f"Markdown PODES file written: {out_path}")
     return out_path
