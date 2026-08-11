@@ -47,8 +47,6 @@ Sungai Bakau Kecil, Agustus 2026
 | 4.1 Sebaran Penerima PKH, BPNT, BST, & BLT | 13 |
 | **BAB V: PERUMAHAN & INFRASTRUKTUR** | 14 |
 | 5.1 Jumlah Bumbung Rumah & Kepadatan Hunian | 14 |
-| 5.2 Sebaran Sarana Peribadatan, Pendidikan & Kesehatan | 15 |
-| 5.3 Kondisi Bangunan & Akses Infrastruktur Desa | 16 |
 
 ---
 
@@ -67,8 +65,6 @@ Sungai Bakau Kecil, Agustus 2026
 | **Tabel 9** | Penduduk Memiliki KTP-el dan Persentase Kepemilikan per RT | 12 |
 | **Tabel 10** | Sebaran Keluarga Penerima Bantuan Sosial (PKH, BPNT, BST, BLT) per RT | 13 |
 | **Tabel 11** | Jumlah Bumbung Rumah dan Kepadatan Hunian (Jiwa/Rumah) per RT | 14 |
-| **Tabel 12** | Sebaran Sarana Peribadatan, Pendidikan, dan Kesehatan per RT | 15 |
-| **Tabel 13** | Rekapitulasi Kondisi Bangunan dan Akses Infrastruktur Desa per RT | 16 |
 
 ---
 
@@ -581,100 +577,6 @@ Total bumbung rumah di Desa Sungai Bakau Kecil sebanyak **1,473 unit**, dengan r
 | **RT 036 RW 03 DUSUN BENTENG TIMUR** | 213 | 36 | 5.92 |
 | **RT 037 RW 05 DUSUN SEPAKAT DARAT** | 134 | 39 | 3.44 |
 | **DESA SUNGAI BAKAU KECIL** | **5744** | **1473** | **3.90** |
-
----
-
-### **5.2 SEBARAN SARANA PERIBADATAN, PENDIDIKAN, KESEHATAN & PEMERINTAHAN/EKONOMI**
-Hasil pendataan fasilitas di Desa Sungai Bakau Kecil mengidentifikasi **26 sarana peribadatan** (9 Masjid, 15 Surau/Musholla, 2 Vihara/Klenteng), **23 sarana pendidikan** (3 PAUD/TK, 6 SD/MI, 3 SMP/MTs, 10 SMA/SMK/MA, 1 Pondok Pesantren), **9 sarana kesehatan** (8 Posyandu, 1 Polindes/Poskesdes), serta **49 sarana pemerintahan, ekonomi & fasilitas umum** (1 Kantor Desa/Dusun).
-
-**Tabel 12. Sebaran Sarana Peribadatan, Pendidikan, Kesehatan, dan Pemerintahan/Ekonomi per RT**
-| Nama RT | Peribadatan (Masjid/Surau) | Pendidikan (TK/SD/SMP/SMA/Ponpes) | Kesehatan (Posyandu/Polindes) | Pemerintahan & Ekonomi | Total Sarana |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| **RT 001 RW 01 DUSUN SENGGIRING** | 1 | 0 | 0 | 1 | **2** |
-| **RT 002 RW 01 DUSUN SENGGIRING** | 0 | 0 | 0 | 1 | **1** |
-| **RT 003 RW 01 DUSUN SENGGIRING** | 1 | 0 | 0 | 1 | **2** |
-| **RT 004 RW 02 DUSUN BENTENG RAYA** | 0 | 0 | 0 | 0 | **0** |
-| **RT 005 RW 02 DUSUN BENTENG RAYA** | 0 | 1 | 1 | 2 | **4** |
-| **RT 006 RW 02 DUSUN BENTENG RAYA** | 1 | 2 | 0 | 2 | **5** |
-| **RT 007 RW 03 DUSUN BENTENG TIMUR** | 0 | 0 | 0 | 0 | **0** |
-| **RT 008 RW 03 DUSUN BENTENG TIMUR** | 1 | 2 | 0 | 3 | **6** |
-| **RT 009 RW 03 DUSUN BENTENG TIMUR** | 0 | 0 | 0 | 0 | **0** |
-| **RT 010 RW 03 DUSUN SEPAKAT TENGAH** | 1 | 0 | 0 | 1 | **2** |
-| **RT 011 RW 03 DUSUN SEPAKAT TENGAH** | 2 | 2 | 0 | 4 | **8** |
-| **RT 012 RW 04 DUSUN SEPAKAT TENGAH** | 2 | 1 | 1 | 3 | **7** |
-| **RT 013 RW 04 DUSUN SEPAKAT TENGAH** | 2 | 1 | 1 | 3 | **7** |
-| **RT 014 RW 04 DUSUN SEPAKAT TENGAH** | 1 | 1 | 0 | 2 | **4** |
-| **RT 015 RW 05 DUSUN SEPAKAT DARAT** | 1 | 1 | 0 | 1 | **3** |
-| **RT 016 RW 05 DUSUN SEPAKAT DARAT** | 1 | 4 | 1 | 4 | **10** |
-| **RT 017 RW 05 DUSUN SEPAKAT DARAT** | 0 | 1 | 0 | 1 | **2** |
-| **RT 018 RW 03 DUSUN BENTENG TIMUR** | 1 | 0 | 0 | 1 | **2** |
-| **RT 019 RW 04 DUSUN SEPAKAT TENGAH** | 1 | 0 | 0 | 1 | **2** |
-| **RT 020 RW 01 DUSUN SENGGIRING** | 0 | 0 | 1 | 1 | **2** |
-| **RT 021 RW 06 DUSUN KEDAUNG** | 0 | 0 | 0 | 0 | **0** |
-| **RT 022 RW 06 DUSUN KEDAUNG** | 3 | 3 | 1 | 6 | **13** |
-| **RT 023 RW 06 DUSUN KEDAUNG** | 0 | 0 | 0 | 0 | **0** |
-| **RT 024 RW 07 DUSUN SENAMBANG** | 2 | 1 | 0 | 2 | **5** |
-| **RT 025 RW 07 DUSUN SENAMBANG** | 0 | 0 | 0 | 0 | **0** |
-| **RT 026 RW 07 DUSUN SENAMBANG** | 1 | 2 | 1 | 3 | **7** |
-| **RT 027 RW 08 DUSUN KONSASI** | 0 | 0 | 1 | 1 | **2** |
-| **RT 028 RW 08 DUSUN KONSASI** | 1 | 0 | 0 | 1 | **2** |
-| **RT 029 RW 08 DUSUN KONSASI** | 1 | 0 | 0 | 1 | **2** |
-| **RT 030 RW 05 DUSUN SEPAKAT DARAT** | 0 | 0 | 0 | 0 | **0** |
-| **RT 031 RW 02 DUSUN BENTENG RAYA** | 0 | 0 | 0 | 0 | **0** |
-| **RT 032 RW 07 DUSUN SENAMBANG** | 1 | 0 | 0 | 1 | **2** |
-| **RT 033 RW 04 DUSUN SEPAKAT TENGAH** | 1 | 1 | 0 | 1 | **3** |
-| **RT 034 RW 05 DUSUN SEPAKAT DARAT** | 0 | 0 | 0 | 0 | **0** |
-| **RT 035 RW 04 DUSUN SEPAKAT TENGAH** | 0 | 0 | 0 | 0 | **0** |
-| **RT 036 RW 03 DUSUN BENTENG TIMUR** | 0 | 0 | 0 | 0 | **0** |
-| **RT 037 RW 05 DUSUN SEPAKAT DARAT** | 0 | 0 | 1 | 1 | **2** |
-| **DESA SUNGAI BAKAU KECIL** | **26** | **23** | **9** | **49** | **107** |
-
----
-
-### **5.3 KONDISI BANGUNAN & AKSES INFRASTRUKTUR DESA**
-Sebanyak **47 fasilitas (95.9%)** berada dalam kondisi fisik baik. Infrastruktur pendukung mencakup **38 akses jalan beraspal/beton**, **49 tersambung listrik PLN 24 jam**, dan **28 terjangkau sinyal seluler 4G/LTE**.
-
-**Tabel 13. Rekapitulasi Kondisi Bangunan dan Akses Infrastruktur Desa per RT**
-| Nama RT | Kondisi Baik | Jalan Aspal/Beton | Listrik PLN | Sinyal 4G/LTE |
-| :--- | :---: | :---: | :---: | :---: |
-| **RT 001 RW 01 DUSUN SENGGIRING** | 1 | 1 | 1 | 1 |
-| **RT 002 RW 01 DUSUN SENGGIRING** | 1 | 1 | 1 | 1 |
-| **RT 003 RW 01 DUSUN SENGGIRING** | 1 | 1 | 1 | 1 |
-| **RT 004 RW 02 DUSUN BENTENG RAYA** | 0 | 0 | 0 | 0 |
-| **RT 005 RW 02 DUSUN BENTENG RAYA** | 2 | 1 | 2 | 2 |
-| **RT 006 RW 02 DUSUN BENTENG RAYA** | 2 | 2 | 2 | 2 |
-| **RT 007 RW 03 DUSUN BENTENG TIMUR** | 0 | 0 | 0 | 0 |
-| **RT 008 RW 03 DUSUN BENTENG TIMUR** | 3 | 2 | 3 | 2 |
-| **RT 009 RW 03 DUSUN BENTENG TIMUR** | 0 | 0 | 0 | 0 |
-| **RT 010 RW 03 DUSUN SEPAKAT TENGAH** | 1 | 1 | 1 | 1 |
-| **RT 011 RW 03 DUSUN SEPAKAT TENGAH** | 4 | 4 | 4 | 4 |
-| **RT 012 RW 04 DUSUN SEPAKAT TENGAH** | 3 | 3 | 3 | 2 |
-| **RT 013 RW 04 DUSUN SEPAKAT TENGAH** | 2 | 0 | 3 | 0 |
-| **RT 014 RW 04 DUSUN SEPAKAT TENGAH** | 2 | 2 | 2 | 1 |
-| **RT 015 RW 05 DUSUN SEPAKAT DARAT** | 1 | 1 | 1 | 1 |
-| **RT 016 RW 05 DUSUN SEPAKAT DARAT** | 4 | 4 | 4 | 2 |
-| **RT 017 RW 05 DUSUN SEPAKAT DARAT** | 1 | 1 | 1 | 0 |
-| **RT 018 RW 03 DUSUN BENTENG TIMUR** | 1 | 1 | 1 | 1 |
-| **RT 019 RW 04 DUSUN SEPAKAT TENGAH** | 0 | 0 | 1 | 0 |
-| **RT 020 RW 01 DUSUN SENGGIRING** | 1 | 1 | 1 | 1 |
-| **RT 021 RW 06 DUSUN KEDAUNG** | 0 | 0 | 0 | 0 |
-| **RT 022 RW 06 DUSUN KEDAUNG** | 6 | 6 | 6 | 5 |
-| **RT 023 RW 06 DUSUN KEDAUNG** | 0 | 0 | 0 | 0 |
-| **RT 024 RW 07 DUSUN SENAMBANG** | 2 | 2 | 2 | 0 |
-| **RT 025 RW 07 DUSUN SENAMBANG** | 0 | 0 | 0 | 0 |
-| **RT 026 RW 07 DUSUN SENAMBANG** | 3 | 2 | 3 | 1 |
-| **RT 027 RW 08 DUSUN KONSASI** | 1 | 0 | 1 | 0 |
-| **RT 028 RW 08 DUSUN KONSASI** | 1 | 0 | 1 | 0 |
-| **RT 029 RW 08 DUSUN KONSASI** | 1 | 0 | 1 | 0 |
-| **RT 030 RW 05 DUSUN SEPAKAT DARAT** | 0 | 0 | 0 | 0 |
-| **RT 031 RW 02 DUSUN BENTENG RAYA** | 0 | 0 | 0 | 0 |
-| **RT 032 RW 07 DUSUN SENAMBANG** | 1 | 0 | 1 | 0 |
-| **RT 033 RW 04 DUSUN SEPAKAT TENGAH** | 1 | 1 | 1 | 0 |
-| **RT 034 RW 05 DUSUN SEPAKAT DARAT** | 0 | 0 | 0 | 0 |
-| **RT 035 RW 04 DUSUN SEPAKAT TENGAH** | 0 | 0 | 0 | 0 |
-| **RT 036 RW 03 DUSUN BENTENG TIMUR** | 0 | 0 | 0 | 0 |
-| **RT 037 RW 05 DUSUN SEPAKAT DARAT** | 1 | 1 | 1 | 0 |
-| **DESA SUNGAI BAKAU KECIL** | **47** | **38** | **49** | **28** |
 
 ---
 

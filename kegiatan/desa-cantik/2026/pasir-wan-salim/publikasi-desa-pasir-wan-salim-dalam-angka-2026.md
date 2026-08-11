@@ -17,7 +17,7 @@ Kepada semua pihak yang telah membantu terwujudnya publikasi ini, khususnya para
 Pasir Wan Salim, Agustus 2026  
 **Lurah Pasir Wan Salim**  
 
-<u>**LURAH PASIR WAN SALIM**</u>
+<u>**H. MULYADI, S.H.I**</u>
 
 ---
 
