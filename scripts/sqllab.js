@@ -69,7 +69,7 @@ async function performLogin() {
   const page = await context.newPage();
   try {
     console.log("→ Menavigasi ke halaman login...");
-    await page.goto(`${BASE_URL}/login/`, { waitUntil: "networkidle", timeout: 45000 });
+    await page.goto(`${BASE_URL}/login/`, { waitUntil: "domcontentloaded", timeout: 45000 });
     
     console.log("→ Mengklik tombol login SSO...");
     await page.click("button:has-text('GO!')");
@@ -87,7 +87,7 @@ async function performLogin() {
     await page.waitForURL((url) => url.hostname.includes("fasih-dashboard.bps.go.id"), { timeout: 30000 });
     
     console.log("→ Mendapatkan token CSRF dari halaman SQLLab...");
-    await page.goto(`${BASE_URL}/superset/sqllab/`, { waitUntil: "networkidle", timeout: 45000 });
+    await page.goto(`${BASE_URL}/superset/sqllab/`, { waitUntil: "domcontentloaded", timeout: 45000 });
     
     const csrfToken = await page.evaluate(() => {
       const el = document.getElementById("csrf_token");
@@ -134,7 +134,7 @@ async function getCsrfTokenFromPage(storagePath) {
 
   const page = await context.newPage();
   try {
-    await page.goto(`${BASE_URL}/superset/sqllab/`, { waitUntil: "networkidle", timeout: 30000 });
+    await page.goto(`${BASE_URL}/superset/sqllab/`, { waitUntil: "domcontentloaded", timeout: 30000 });
     
     if (page.url().includes("/login/")) {
       return null;
@@ -185,7 +185,7 @@ async function executeQuery(sql, cookieStr, csrfToken) {
     tmp_table_name: "",
     select_as_cta: false,
     ctas_method: "TABLE",
-    queryLimit: 1000,
+    queryLimit: 9000,
     expand_data: true
   };
 

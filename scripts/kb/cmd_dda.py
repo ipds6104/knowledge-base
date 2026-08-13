@@ -37,7 +37,7 @@ def handle_dda(args):
 
     # Step 2: Calculation (Layer 1)
     print("Mengalkulasi indikator statistik baku...")
-    metrics = calculate_desa_metrics(rt_data, pub_config=config)
+    metrics = calculate_desa_metrics(rt_data, fas_raw_list=fas_data, pub_config=config)
     capabilities = build_capabilities_dto(metrics, config=config)
 
     print(f"  -> Total Penduduk: {metrics['tot_pop']:,} jiwa")

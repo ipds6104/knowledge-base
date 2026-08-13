@@ -47,6 +47,8 @@ Pasir Palembang, Agustus 2026
 | 4.1 Sebaran Penerima PKH, BPNT, BST, & BLT | 13 |
 | **BAB V: PERUMAHAN & INFRASTRUKTUR** | 14 |
 | 5.1 Jumlah Bumbung Rumah & Kepadatan Hunian | 14 |
+| 5.2 Sebaran Sarana Peribadatan, Pendidikan & Kesehatan | 15 |
+| 5.3 Kondisi Bangunan & Akses Infrastruktur Desa | 16 |
 
 ---
 
@@ -65,6 +67,8 @@ Pasir Palembang, Agustus 2026
 | **Tabel 9** | Penduduk Memiliki KTP-el dan Persentase Kepemilikan per RT | 12 |
 | **Tabel 10** | Sebaran Keluarga Penerima Bantuan Sosial (PKH, BPNT, BST, BLT) per RT | 13 |
 | **Tabel 11** | Jumlah Bumbung Rumah dan Kepadatan Hunian (Jiwa/Rumah) per RT | 14 |
+| **Tabel 12** | Sebaran Sarana Peribadatan, Pendidikan, dan Kesehatan per RT | 15 |
+| **Tabel 13** | Rekapitulasi Kondisi Bangunan dan Akses Infrastruktur Desa per RT | 16 |
 
 ---
 
@@ -347,6 +351,54 @@ Total bumbung rumah di Desa Pasir Palembang sebanyak **865 unit**, dengan rata-r
 | **RT 013 RW 06 DUSUN TEKAM BARU** | 350 | 81 | 4.32 |
 | **RT 014 RW 06 DUSUN TEKAM BARU** | 150 | 34 | 4.41 |
 | **DESA PASIR PALEMBANG** | **3680** | **865** | **4.25** |
+
+---
+
+### **5.2 SEBARAN SARANA PERIBADATAN, PENDIDIKAN, KESEHATAN & PEMERINTAHAN/EKONOMI**
+Hasil pendataan fasilitas di Desa Pasir Palembang mengidentifikasi **29 sarana peribadatan** (5 Masjid, 24 Surau/Musholla), **21 sarana pendidikan** (6 PAUD/TK, 5 SD/MI, 9 SMA/SMK/MA, 1 Pondok Pesantren), **3 sarana kesehatan** (2 Posyandu, 1 Polindes/Poskesdes), serta **99 sarana pemerintahan, ekonomi & fasilitas umum** (2 Kantor Desa/Dusun, 17 Sarana Ekonomi/UMKM, 3 TPU, 3 Menara BTS, 1 Lapangan Olahraga).
+
+**Tabel 12. Sebaran Sarana Peribadatan, Pendidikan, Kesehatan, dan Pemerintahan/Ekonomi per RT**
+| Nama RT | Peribadatan (Masjid/Surau) | Pendidikan (TK/SD/SMP/SMA/Ponpes) | Kesehatan (Posyandu/Polindes) | Pemerintahan & Ekonomi | Total Sarana |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **RT 001 RW 01 DUSUN PELAIK** | 2 | 2 | 1 | 12 | **17** |
+| **RT 002 RW 01 DUSUN PELAIK** | 2 | 4 | 1 | 11 | **18** |
+| **RT 003 RW 02 DUSUN PELAIK** | 0 | 0 | 0 | 2 | **2** |
+| **RT 004 RW 02 DUSUN PELAIK** | 1 | 2 | 0 | 6 | **9** |
+| **RT 005 RW 03 DUSUN TENGAH** | 3 | 0 | 0 | 6 | **9** |
+| **RT 006 RW 03 DUSUN TENGAH** | 2 | 0 | 1 | 7 | **10** |
+| **RT 007 RW 04 DUSUN TENGAH** | 4 | 0 | 0 | 9 | **13** |
+| **RT 008 RW 04 DUSUN TENGAH** | 2 | 1 | 0 | 7 | **10** |
+| **RT 009 RW 04 DUSUN TENGAH** | 2 | 3 | 0 | 10 | **15** |
+| **RT 010 RW 05 DUSUN TEKAM BARU** | 4 | 1 | 0 | 10 | **15** |
+| **RT 011 RW 05 DUSUN TEKAM BARU** | 2 | 2 | 0 | 7 | **11** |
+| **RT 012 RW 06 DUSUN TEKAM BARU** | 3 | 1 | 0 | 4 | **8** |
+| **RT 013 RW 06 DUSUN TEKAM BARU** | 2 | 4 | 0 | 6 | **12** |
+| **RT 014 RW 06 DUSUN TEKAM BARU** | 0 | 1 | 0 | 2 | **3** |
+| **DESA PASIR PALEMBANG** | **29** | **21** | **3** | **99** | **152** |
+
+---
+
+### **5.3 KONDISI BANGUNAN & AKSES INFRASTRUKTUR DESA**
+Sebanyak **46 fasilitas (48.9%)** berada dalam kondisi fisik baik. Infrastruktur pendukung mencakup **71 akses jalan beraspal/beton**, **67 tersambung listrik PLN 24 jam**, dan **41 terjangkau sinyal seluler 4G/LTE**.
+
+**Tabel 13. Rekapitulasi Kondisi Bangunan dan Akses Infrastruktur Desa per RT**
+| Nama RT | Kondisi Baik | Jalan Aspal/Beton | Listrik PLN | Sinyal 4G/LTE |
+| :--- | :---: | :---: | :---: | :---: |
+| **RT 001 RW 01 DUSUN PELAIK** | 6 | 10 | 7 | 12 |
+| **RT 002 RW 01 DUSUN PELAIK** | 2 | 11 | 9 | 10 |
+| **RT 003 RW 02 DUSUN PELAIK** | 0 | 1 | 0 | 2 |
+| **RT 004 RW 02 DUSUN PELAIK** | 2 | 6 | 4 | 6 |
+| **RT 005 RW 03 DUSUN TENGAH** | 5 | 3 | 3 | 2 |
+| **RT 006 RW 03 DUSUN TENGAH** | 2 | 6 | 5 | 7 |
+| **RT 007 RW 04 DUSUN TENGAH** | 6 | 7 | 7 | 1 |
+| **RT 008 RW 04 DUSUN TENGAH** | 5 | 6 | 6 | 0 |
+| **RT 009 RW 04 DUSUN TENGAH** | 7 | 10 | 7 | 0 |
+| **RT 010 RW 05 DUSUN TEKAM BARU** | 5 | 5 | 6 | 0 |
+| **RT 011 RW 05 DUSUN TEKAM BARU** | 0 | 4 | 4 | 1 |
+| **RT 012 RW 06 DUSUN TEKAM BARU** | 2 | 0 | 3 | 0 |
+| **RT 013 RW 06 DUSUN TEKAM BARU** | 3 | 2 | 5 | 0 |
+| **RT 014 RW 06 DUSUN TEKAM BARU** | 1 | 0 | 1 | 0 |
+| **DESA PASIR PALEMBANG** | **46** | **71** | **67** | **41** |
 
 ---
 

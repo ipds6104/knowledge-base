@@ -49,8 +49,8 @@ def main():
     )
     parser_sqllab.add_argument(
         "sqllab_subcommand",
-        choices=["sync", "pull", "pull-microdata", "pull-completed", "report", "print-prep"],
-        help="Subcommand: 'sync' (workflow otomatis 5-step penuh), 'pull' (tarik massal agregat), 'pull-microdata' (tarik microdata CSV), 'pull-completed' (tarik CSV Sub-SLS selesai), 'report' (laporan 2-view), 'print-prep' (penyiapan PDF verifikasi RT)"
+        choices=["sync", "pull", "pull-microdata", "pull-completed", "report", "print-prep", "surreal-sync"],
+        help="Subcommand: 'sync' (workflow otomatis 5-step penuh), 'surreal-sync' (delta sync 599+ kolom ke SurrealDB), 'pull' (tarik massal agregat), 'pull-microdata' (tarik microdata CSV), 'pull-completed' (tarik CSV Sub-SLS selesai), 'report' (laporan 2-view), 'print-prep' (penyiapan PDF verifikasi RT)"
     )
     parser_sqllab.add_argument(
         "--min-not-found", "-m",
@@ -378,6 +378,8 @@ def main():
             cmd_sqllab.cmd_sqllab_report(args)
         elif args.sqllab_subcommand == "print-prep":
             cmd_sqllab.cmd_sqllab_print_prep(args)
+        elif args.sqllab_subcommand == "surreal-sync":
+            cmd_sqllab.cmd_sqllab_surreal_sync(args)
     elif args.command == "gdrive-mirror":
         cmd_gdrive_mirror.run_gdrive_mirror(args)
 

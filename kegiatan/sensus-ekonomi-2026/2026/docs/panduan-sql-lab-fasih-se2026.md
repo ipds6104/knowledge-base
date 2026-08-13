@@ -21,11 +21,12 @@ Saat menyusun dan mengeksekusi query SQL pada Superset SQL Lab API, **wajib** me
 
 | Limitasi | Ketentuan & Batasan | Solusi / Penanganan |
 | :--- | :--- | :--- |
-| **Batas Baris (Max Rows)** | Maksimal **1.000 baris** per query request (`queryLimit: 1000`). | Gunakan paginasi chunking dengan `LIMIT 1000 OFFSET {n}`. |
+| **Batas Baris (Max Rows)** | Maksimal **9.000 baris** per query request (`queryLimit: 9000`). | Gunakan `LIMIT 9000 OFFSET {n}` untuk penarikan data massal skala besar. |
 | **Larangan `SELECT *`** | Wildcard `SELECT *` **dilarang keras** dan ditolak server dengan error `Selecting all columns or using wildcard '*' is not allowed in SQL Lab.`. | Sebutkan nama kolom secara spesifik (misal: `SELECT assignment_id, level_2_name ...`). |
-| **Batas Maksimal Kolom** | Maksimal **25 kolom** per SELECT query call. | Pilih hanya kolom-kolom yang relevan dengan kebutuhan analisis (jangan melebihi 25 kolom dalam 1 SQL statement). |
+| **Batas Maksimal Kolom (Max 25 Cols)** | Maksimal **25 kolom** per SELECT query call output. | Gunakan **Server-Side Multi-Block `CONCAT()` JSON Packaging** (`CONCAT('{"col1":"', val1, ...}') AS block_1`) untuk mengemas 15-20 kolom per blok output. Dengan metode ini, 599+ kolom metadata ditarik utuh tanpa pruning dalam hanya 5 query SQL. |
+| **Aturan Eksekusi Sekuensial (No Parallelism)** | Eksekusi paralel (`Promise.all` / `ThreadPoolExecutor`) pada akun yang sama **menyebabkan tabrakan sesi & query bernilai 0 rows**. | **WAJIB eksekusi sekuensial (Pool = 1 Worker)**. Eksekusi sekuensial 100% stabil, lebih cepat (39.8s vs 48.6s paralel), dan bebas query fail. |
 | **Client ID Unik** | Parameter `client_id` pada payload POST **wajib alfanumerik 10 karakter unik** per request. | Hasilkan `client_id` acak secara dinamis (contoh: `Math.random().toString(36).substring(2, 12)` di JS atau `uuid.uuid4().hex[:10]` di Python). Jika statis, server mereturn `HTTP 500: Create failed`. |
-| **Kuota Rate Limit (HTTP 429)** | Maksimal **300 query request per hari** per akun SSO (`HTTP 429 Too Many Requests: 300 per 1 day`). | Hemat kuota dengan agregasi `GROUP BY` di server-side, terapkan Caching lokal (`results/`), dan penanganan Retry dengan Exponential Backoff. |
+| **Kuota Rate Limit (HTTP 429)** | Maksimal **300 query request per hari** per akun SSO (`HTTP 429 Too Many Requests: 300 per 1 day`). | Full sync 126.976 assignment hanya membutuhkan **105 request** (35% kuota harian). Delta sync harian hanya membutuhkan **7 request** (2.3% kuota harian). |
 | **Keterbatasan Data Status OPEN** | Replikasi OLTP FASIH ke StarRocks/Trino SQL Lab **hanya mereplikasi data yang minimal pernah berstatus DRAFT** (pernah disimpan ke server). Assignment berstatus `OPEN` (belum disentuh PPL) **TIDAK ADA** di SQL Lab. | Jangan gunakan `COUNT(assignment_id)` di SQL Lab sebagai total target acuan utama (karena akan *under-count* target & *over-inflate* persentase selesai). Gunakan master file `Alokasi Petugas.csv` untuk total target, dan gunakan SQL Lab untuk menghitung jumlah worked/submitted/approved/microdata anomali. |
 
 ---
@@ -106,7 +107,7 @@ async function executeSqlLabQuery(sql, cookieStr, csrfToken, maxRetries = 3) {
     tab: "SQL Execution",
     select_as_cta: false,
     ctas_method: "TABLE",
-    queryLimit: 1000, // Max 1000 baris
+    queryLimit: 9000, // Max 9000 baris
     expand_data: true
   };
 
@@ -151,8 +152,8 @@ async function executeSqlLabQuery(sql, cookieStr, csrfToken, maxRetries = 3) {
 /**
  * Paginasi Chunking Deterministik Paralel
  */
-async function fetchAllChunks(cookieStr, csrfToken, totalLimit = 3000) {
-  const chunkSize = 1000;
+async function fetchAllChunks(cookieStr, csrfToken, totalLimit = 18000) {
+  const chunkSize = 9000;
   const allData = [];
 
   for (let offset = 0; offset < totalLimit; offset += chunkSize) {
@@ -177,7 +178,7 @@ async function fetchAllChunks(cookieStr, csrfToken, totalLimit = 3000) {
     const rows = await executeSqlLabQuery(sql, cookieStr, csrfToken);
     allData.push(...rows);
 
-    if (rows.length < chunkSize) break; // Selesai jika baris yang diterima < 1000
+    if (rows.length < chunkSize) break; // Selesai jika baris yang diterima < 9000
   }
 
   console.log(`[Success] Total ditarik: ${allData.length} baris.`);

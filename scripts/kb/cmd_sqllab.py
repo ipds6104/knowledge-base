@@ -114,11 +114,11 @@ def cmd_sqllab_pull(args):
 
 
 def cmd_sqllab_pull_microdata(args):
-    """Subcommand: kb sqllab pull-microdata — Penarikan massal microdata Usaha & Keluarga Tidak Ditemukan (Chunking 1.000 baris, Non-Draft)."""
+    """Subcommand: kb sqllab pull-microdata — Penarikan massal microdata Usaha & Keluarga Tidak Ditemukan (Chunking 9.000 baris, Non-Draft)."""
     import csv
 
     print("🔄 [SQL Lab Pull Microdata] Memulai penarikan massal microdata 'Tidak Ditemukan' (Non-Draft)...")
-    chunk_size = 1000
+    chunk_size = 9000
 
     # 1. Tarik Data Penugasan Lapangan Tidak Ditemukan (base_table_assignment)
     print("\n📦 [1/2] Menarik data base_table_assignment (Non-Draft Tidak Ditemukan)...")
@@ -227,7 +227,7 @@ def cmd_sqllab_pull_microdata(args):
                 writer.writerows(all_usaha_rows)
         print(f"✅ [Sukses] {len(all_usaha_rows)} baris kuesioner usaha berhasil diekspor ke {usaha_csv_list[0]}")
 
-    print(f"\n🎉 [Selesai] Penarikan microdata selesai tanpa melanggar batas 1.000 baris server!")
+    print(f"\n🎉 [Selesai] Penarikan microdata selesai dengan kapasitas max {chunk_size} baris server!")
 
 
 def cmd_sqllab_pull_completed_subsls(args):
@@ -517,7 +517,41 @@ def cmd_sqllab_sync(args):
     print("\n📌 [STEP 5/5] Menyajikan Laporan 2-View Terbaru...")
     cmd_sqllab_report(args)
 
-    print("\n==========================================================================================")
-    print("🎉 [WORKFLOW SYNC SELESAI] Data Real-Time Berhasil Diperbarui & Siap Digunakan!")
+def cmd_sqllab_surreal_sync(args):
+    """Subcommand: kb sqllab surreal-sync — Delta Sync Full-Schema (599+ Kolom Unpruned) ke SurrealDB."""
+    print("==========================================================================================")
+    print("🚀 [SQLLAB SURREALDB DELTA SYNC] MEMULAI SYNC FULL SCHEMA 599+ KOLOM KE SURREALDB")
     print("==========================================================================================\n")
+    
+    script_path = os.path.join(BASE_DIR, "scratch", "export_surrealdb_to_csv.py")
+    if os.path.exists(script_path):
+        res = subprocess.run([sys.executable, script_path], cwd=BASE_DIR)
+        if res.returncode == 0:
+            print("\n✅ [Sukses] SurrealDB Delta Sync Full-Schema berhasil dilaksanakan!")
+        else:
+            print(f"\n❌ [Gagal] Proses melempar exit code {res.returncode}")
+    else:
+        print(f"❌ Script tidak ditemukan di {script_path}")
+
+
+def handle_command(args):
+    """Main dispatch handler for sqllab subcommand"""
+    cmd = getattr(args, "sqllab_subcommand", "sync")
+    if cmd == "sync":
+        cmd_sqllab_sync(args)
+    elif cmd == "surreal-sync":
+        cmd_sqllab_surreal_sync(args)
+    elif cmd == "pull":
+        cmd_sqllab_pull(args)
+    elif cmd == "pull-microdata":
+        cmd_sqllab_pull_microdata(args)
+    elif cmd == "pull-completed":
+        cmd_sqllab_pull_completed_subsls(args)
+    elif cmd == "report":
+        cmd_sqllab_report(args)
+    elif cmd == "print-prep":
+        cmd_sqllab_print_prep(args)
+    else:
+        print(f"Subcommand '{cmd}' tidak dikenali.")
+
 

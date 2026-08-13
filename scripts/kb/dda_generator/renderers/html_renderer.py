@@ -368,400 +368,6 @@ def render_desa_html(pub_data: DesaPublicationData) -> Path:
 <div class="page-container">
 """
 
-    # Page 1: Cover (No header, No footer)
-    card_1_cover = f"""  <div class="page-card">
-    <div class="page-content">
-      <div class="cover-box">
-        <h1 class="cover-title">{admin_upper} {name_upper}<br>DALAM ANGKA {year}</h1>
-        <div class="cover-subtitle">{name_upper} {admin_type_en.upper()} IN FIGURES {year}</div>
-      </div>
-    </div>
-  </div>"""
-
-    # Page 2 (ii - EVEN - BPS Catalog Metadata & Copyright Page)
-    pub_no_str = config.get("pub_no", "61040.2026.002")
-    card_2_compilers = make_page_card(
-        "IDENTITAS PUBLIKASI",
-        "PUBLICATION METADATA",
-        "ii",
-        f"""      <div style="font-size: 8.5pt; line-height: 1.5; color: #1a202c; max-width: 92%; margin: 15px auto 0 auto;">
-        <div style="font-weight: 800; font-size: 11.5pt; color: #0b3c5d; margin-bottom: 2px;">{admin_upper} {name_upper} DALAM ANGKA {year}</div>
-        <div style="font-style: italic; font-size: 10pt; color: #475569; margin-bottom: 16px;">{name_title} {admin_type_en} in Figures {year}</div>
-        
-        <div style="margin-bottom: 14px;">
-          <strong>Ukuran Buku / <i>Book Size</i>:</strong> 21 cm x 29,7 cm (A4)<br>
-          <strong>Jumlah Halaman / <i>Number of Pages</i>:</strong> ix + 35 halaman/pages
-        </div>
-
-        <div style="margin-bottom: 14px; border-top: 1px solid #e2e8f0; padding-top: 12px;">
-          <strong>Penanggung Jawab / <i>Person in Charge</i>:</strong><br>
-          {kades_name.upper()} ({kades_title})
-        </div>
-
-        <div style="margin-bottom: 14px;">
-          <strong>Penyusun Naskah / <i>Manuscript Drafter</i>:</strong><br>
-          Tim Agen Statistik {admin_type} {name_title} & Tim Pembina Desa Cantik BPS Kabupaten Mempawah
-        </div>
-
-        <div style="margin-bottom: 14px;">
-          <strong>Penyunting & Penata Letak / <i>Editors & Layouters</i>:</strong><br>
-          Tim Pembina Desa Cantik BPS Kabupaten Mempawah
-        </div>
-
-        <div style="margin-bottom: 14px;">
-          <strong>Penerbit / <i>Publisher</i>:</strong><br>
-          © BPS Kabupaten Mempawah & {gov_name}
-        </div>
-
-        <div style="margin-top: 35px; padding: 12px 15px; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 6px; font-size: 7.8pt; line-height: 1.45;">
-          <strong>Dilarang mereproduksi dan/atau menggandakan sebagian atau seluruh isi buku ini untuk tujuan komersial tanpa izin tertulis dari Badan Pusat Statistik Kabupaten Mempawah dan {gov_name}.</strong><br>
-          <span style="font-style: italic; color: #475569;">It is prohibited to reproduce and/or duplicate part or all of this book for commercial purposes without written permission from BPS-Statistics Mempawah Regency and {gov_name_en}.</span>
-        </div>
-      </div>""",
-        2,
-        show_header=False,
-        show_footer=True,
-    )
-
-    # Page 3 (iii - ODD)
-    card_3_contrib = make_page_card(
-        "KONTRIBUTOR DATA",
-        "DATA CONTRIBUTORS",
-        "iii",
-        f"""      <h2 style="text-align: center; color: #0b3c5d; padding-bottom: 6px; font-size: 13pt; margin-bottom: 20px;">KONTRIBUTOR DATA / <i>DATA CONTRIBUTORS</i></h2>
-      <ol style="font-size: 9.5pt; line-height: 1.8; color: #2d3748; padding-left: 20px;">
-        <li>{gov_name} / <i>{gov_name_en}</i></li>
-        <li>Pengurus Rukun Tetangga ({len(rows)} RT) {admin_type} {name_title} / <i>Management of {len(rows)} Neighborhood Units (RT) of {name_title} {admin_type_en}</i></li>
-      </ol>""",
-        3,
-        show_header=False,
-        show_footer=True,
-    )
-
-    if name_kebab in ("pasir-palembang", "pasir-wan-salim"):
-        preface_desc_id = f"Data yang disajikan dihimpun secara langsung melalui pendataan keluarga per bangunan tempat tinggal biasa di wilayah {name_title} menggunakan metode <i>Computer-Assisted Personal Interviewing</i> (CAPI) berbasis aplikasi mobile AppSheet dan observasi geospasial fasilitas. Cakupan data meliputi kondisi demografi kependudukan, tingkat pendidikan, kepemilikan dokumen adminduk (KTP-el), sebaran penerima bantuan sosial, hingga kelayakan infrastruktur perumahan."
-        preface_desc_en = f"The presented data was collected directly through family enumeration per ordinary residential building in {name_title} using the CAPI method via AppSheet mobile application and geospatial facility observation. The coverage includes demographics, education, ID card ownership, social assistance distribution, and housing infrastructure."
-    else:
-        preface_desc_id = f"Data yang disajikan dihimpun secara langsung dari {len(rows)} Rukun Tetangga (RT) menggunakan metode <i>Computer-Assisted Personal Interviewing</i> (CAPI) berbasis aplikasi mobile AppSheet. Cakupan data meliputi kondisi demografi kependudukan, tingkat pendidikan, kepemilikan dokumen adminduk (KTP-el), sebaran penerima bantuan sosial, hingga kelayakan infrastruktur perumahan."
-        preface_desc_en = f"The presented data was collected directly from {len(rows)} Neighborhood Units (RT) using the CAPI method via AppSheet mobile application. The coverage includes demographics, education, ID card ownership, social assistance distribution, and housing infrastructure."
-
-    # Page 4 (iv - EVEN)
-    card_4_preface_id = make_page_card(
-        "KATA PENGANTAR",
-        "PREFACE",
-        "iv",
-        f"""      <h2 style="text-align: center; color: #0b3c5d; font-size: 14pt; font-weight: 800; margin-top: 10px; margin-bottom: 25px;">KATA PENGANTAR</h2>
-      <div style="font-size: 9.5pt; line-height: 1.6; color: #2d3748; max-width: 95%; margin: 0 auto;">
-        <p style="margin-bottom: 16px; text-align: justify; text-indent: 30px;">Puji dan syukur kita panjatkan ke hadirat Tuhan Yang Maha Esa atas rahmat dan karunia-Nya, publikasi resmi <strong>"{admin_type} {name_title} Dalam Angka {year}"</strong> dapat diselesaikan dengan baik. Publikasi ini merupakan wujud nyata pembinaan statistik sektoral melalui Program <strong>Desa Cantik (Desa Cinta Statistik)</strong> BPS Kabupaten Mempawah berkolaborasi dengan {gov_name}.</p>
-        <p style="margin-bottom: 25px; text-align: justify; text-indent: 30px;">{preface_desc_id}</p>
-      </div>
-      <div style="margin-top: 35px; font-size: 9.5pt; text-align: right; padding-right: 20px;">
-        <div style="margin-bottom: 15px; font-weight: 500; color: #2d3748;">{name_title}, Agustus {year}</div>
-        <div style="display: inline-block; text-align: center;">
-          <div style="font-weight: 700; color: #0b3c5d;">{kades_title.upper()}</div>
-          <div style="font-weight: 800; color: #0b3c5d; text-decoration: underline; margin-top: 55px; font-size: 10.5pt;">{kades_name.upper()}</div>
-        </div>
-      </div>""",
-        4,
-        show_header=False,
-        show_footer=True,
-    )
-
-    # Page 5 (v - ODD)
-    card_4_preface_en = make_page_card(
-        "PREFACE",
-        "PREFACE",
-        "v",
-        f"""      <h2 style="text-align: center; color: #0b3c5d; font-size: 14pt; font-weight: 800; font-style: italic; margin-top: 10px; margin-bottom: 25px;">PREFACE</h2>
-      <div style="font-size: 9.5pt; line-height: 1.6; font-style: italic; color: #475569; max-width: 95%; margin: 0 auto;">
-        <p style="margin-bottom: 16px; text-align: justify; text-indent: 30px;">Praise be to God Almighty for His blessings, the official publication <i>"{name_title} {admin_type_en} in Figures {year}"</i> has been successfully completed. This publication is a concrete result of statistical development under the Desa Cantik Program by BPS-Statistics of Mempawah Regency in collaboration with {gov_name_en}.</p>
-        <p style="margin-bottom: 25px; text-align: justify; text-indent: 30px;">{preface_desc_en}</p>
-      </div>
-      <div style="margin-top: 35px; font-size: 9.5pt; text-align: right; padding-right: 20px;">
-        <div style="margin-bottom: 15px; font-style: italic; color: #475569;">{name_title}, August {year}</div>
-        <div style="display: inline-block; text-align: center;">
-          <div style="font-weight: 700; font-style: italic; color: #0b3c5d;">{kades_title_en.upper()}</div>
-          <div style="font-weight: 800; color: #0b3c5d; text-decoration: underline; margin-top: 55px; font-size: 10.5pt;">{kades_name.upper()}</div>
-        </div>
-      </div>""",
-        5,
-        show_header=False,
-        show_footer=True,
-    )
-
-    # Page 6 (vi - EVEN)
-    card_5_toc = make_page_card(
-        "DAFTAR ISI",
-        "CONTENTS",
-        "vi",
-        f"""      <div style="text-align: center; margin-top: 5px; margin-bottom: 20px;">
-        <h2 style="font-size: 13.5pt; font-weight: 800; color: #1a202c; margin: 0; text-transform: uppercase;">DAFTAR ISI/<i>CONTENTS</i></h2>
-        <div style="font-size: 10.5pt; font-weight: 700; color: #2d3748; margin-top: 4px;">{admin_type} {name_title} Dalam Angka {year}</div>
-        <div style="font-size: 10.5pt; font-weight: 700; font-style: italic; color: #475569;">{name_title} Village in Figures {year}</div>
-      </div>
-      <style>
-        .toc-list {{ list-style: none; padding: 0; margin: 0; }}
-        .toc-list li {{ position: relative; overflow: hidden; line-height: 1.5; font-size: 9.5pt; margin-bottom: 6px; clear: both; color: #2d3748; }}
-        .toc-list li .toc-page {{ position: absolute; right: 0; bottom: 0; background: #fff; padding-left: 6px; z-index: 2; font-size: 9.5pt; }}
-        .toc-list li .toc-title {{ background: #fff; padding-right: 6px; position: relative; z-index: 2; }}
-        .toc-list li::after {{ content: ""; position: absolute; left: 0; right: 0; bottom: 4px; border-bottom: 1.2px dotted #777; z-index: 1; }}
-      </style>
-      <ul class="toc-list">
-        <li><span class="toc-title">Kata Pengantar/<i>Preface</i></span><span class="toc-page">iv</span></li>
-        <li><span class="toc-title">Daftar Isi/<i>Contents</i></span><span class="toc-page">vi</span></li>
-        <li><span class="toc-title">Daftar Tabel/<i>List of Tables</i></span><span class="toc-page">vii</span></li>
-        <li><span class="toc-title">Penjelasan Umum/<i>Explanatory Notes</i></span><span class="toc-page">viii</span></li>
-        <li><span class="toc-title">Daftar Singkatan/<i>List of Abbreviations</i></span><span class="toc-page">ix</span></li>
-        <li><span class="toc-title">Statistik Kunci/<i>Key Statistics</i></span><span class="toc-page">1</span></li>
-        <li><span class="toc-title">1.&nbsp;&nbsp;&nbsp;Geografi dan Pemerintahan/<i>Geography and Government</i></span><span class="toc-page">3</span></li>
-        <li><span class="toc-title">2.&nbsp;&nbsp;&nbsp;Kependudukan dan Demografi/<i>Population and Demographics</i></span><span class="toc-page">9</span></li>
-        <li><span class="toc-title">3.&nbsp;&nbsp;&nbsp;Pendidikan dan Adminduk/<i>Education and Civil Registration</i></span><span class="toc-page">15</span></li>
-        <li><span class="toc-title">4.&nbsp;&nbsp;&nbsp;Sosial dan Kesejahteraan Rakyat/<i>Social and Welfare</i></span><span class="toc-page">21</span></li>
-        <li><span class="toc-title">5.&nbsp;&nbsp;&nbsp;Perumahan dan Lingkungan/<i>Housing and Infrastructure</i></span><span class="toc-page">27</span></li>
-      </ul>""",
-        6,
-        show_header=False,
-        show_footer=True,
-    )
-
-    # Page 7 (vii - ODD)
-    card_5b_lot = make_page_card(
-        "DAFTAR TABEL",
-        "LIST OF TABLES",
-        "vii",
-        f"""      <div style="text-align: center; margin-top: 5px; margin-bottom: 20px;">
-        <h2 style="font-size: 13.5pt; font-weight: 800; color: #1a202c; margin: 0; text-transform: uppercase;">DAFTAR TABEL/<i>LIST OF TABLES</i></h2>
-      </div>
-      <style>
-        .lot-hdr {{ display: flex; justify-content: space-between; font-size: 8.8pt; color: #2d3748; margin-bottom: 12px; line-height: 1.3; font-weight: 700; border-bottom: 1px solid #e2e8f0; padding-bottom: 4px; }}
-        .lot-hdr-no {{ width: 50px; }}
-        .lot-hdr-pg {{ text-align: right; }}
-        .lot-list {{ list-style: none; padding: 0; margin: 0; }}
-        .lot-list li {{ display: flex; align-items: flex-start; position: relative; line-height: 1.4; font-size: 8.8pt; margin-bottom: 10px; color: #2d3748; }}
-        .lot-list li .lot-no {{ width: 50px; flex-shrink: 0; font-weight: 700; background: #fff; z-index: 2; font-size: 8.8pt; }}
-        .lot-list li .lot-title-wrap {{ flex: 1; position: relative; padding-right: 35px; min-height: 1.4em; }}
-        .lot-list li .lot-title {{ background: #fff; padding-right: 6px; position: relative; z-index: 2; display: inline; }}
-        .lot-list li .lot-dots {{ position: absolute; left: 0; right: 0; bottom: 3px; border-bottom: 1.2px dotted #777; z-index: 1; }}
-        .lot-list li .lot-page {{ position: absolute; right: 0; bottom: 0; background: #fff; padding-left: 6px; z-index: 2; font-size: 8.8pt; font-weight: 600; }}
-        .lot-sec {{ font-weight: 800; color: #0b3c5d; font-size: 9pt; margin-top: 12px; margin-bottom: 6px; text-transform: uppercase; }}
-      </style>
-      <div class="lot-hdr"><span class="lot-hdr-no">Tabel<br><i>Table</i></span><span class="lot-hdr-pg">Halaman<br><i>Page</i></span></div>
-      <div class="lot-sec">0.&nbsp;&nbsp;STATISTIK KUNCI / <i>KEY STATISTICS</i></div>
-      <ul class="lot-list">
-        <li>
-          <span class="lot-no">0.1</span>
-          <div class="lot-title-wrap">
-            <span class="lot-title">Statistik Kunci {admin_type} {name_title}, {year}<br><i>Key Statistics of {name_title} {admin_type_en}, {year}</i></span>
-            <span class="lot-dots"></span>
-            <span class="lot-page">1</span>
-          </div>
-        </li>
-      </ul>
-      <div class="lot-sec">1.&nbsp;&nbsp;GEOGRAFI DAN PEMERINTAHAN / <i>GEOGRAPHY AND GOVERNMENT</i></div>
-      <ul class="lot-list">
-        <li>
-          <span class="lot-no">1.1</span>
-          <div class="lot-title-wrap">
-            <span class="lot-title">Batas Wilayah Administrasi {admin_type} {name_title}<br><i>Administrative Boundary of {name_title} {admin_type_en}</i></span>
-            <span class="lot-dots"></span>
-            <span class="lot-page">5</span>
-          </div>
-        </li>
-        <li>
-          <span class="lot-no">1.2</span>
-          <div class="lot-title-wrap">
-            <span class="lot-title">Daftar Nama Ketua RT dan Agen Statistik {admin_type} Menurut Wilayah RT, {year}<br><i>List of Neighborhood Chairmen and {admin_type_en} Statistical Agents by RT, {year}</i></span>
-            <span class="lot-dots"></span>
-            <span class="lot-page">5</span>
-          </div>
-        </li>
-      </ul>
-      <div class="lot-sec">2.&nbsp;&nbsp;KEPENDUDUKAN DAN DEMOGRAFI / <i>POPULATION AND DEMOGRAPHICS</i></div>
-      <ul class="lot-list">
-        <li>
-          <span class="lot-no">2.1</span>
-          <div class="lot-title-wrap">
-            <span class="lot-title">Jumlah Penduduk dan Sex Ratio Menurut RT, {year}<br><i>Total Population and Sex Ratio by RT, {year}</i></span>
-            <span class="lot-dots"></span>
-            <span class="lot-page">11</span>
-          </div>
-        </li>
-      </ul>
-      <div class="lot-sec">3.&nbsp;&nbsp;PENDIDIKAN DAN ADMINDUK / <i>EDUCATION AND CIVIL REGISTRATION</i></div>
-      <ul class="lot-list">
-        <li>
-          <span class="lot-no">3.1</span>
-          <div class="lot-title-wrap">
-            <span class="lot-title">Jumlah Penduduk Putus Sekolah dan Kepemilikan KTP-el Menurut RT, {year}<br><i>Total Dropouts and ID Card Ownership by RT, {year}</i></span>
-            <span class="lot-dots"></span>
-            <span class="lot-page">17</span>
-          </div>
-        </li>
-      </ul>
-      <div class="lot-sec">4.&nbsp;&nbsp;SOSIAL DAN KESEJAHTERAAN RAKYAT / <i>SOCIAL AND WELFARE</i></div>
-      <ul class="lot-list">
-        <li>
-          <span class="lot-no">4.1</span>
-          <div class="lot-title-wrap">
-            <span class="lot-title">Jumlah Keluarga Penerima Bantuan Sosial Menurut Jenis Bantuan dan RT, {year}<br><i>Number of Social Assistance Recipient Families by Assistance Type and RT, {year}</i></span>
-            <span class="lot-dots"></span>
-            <span class="lot-page">23</span>
-          </div>
-        </li>
-      </ul>
-      <div class="lot-sec">5.&nbsp;&nbsp;PERUMAHAN DAN LINGKUNGAN / <i>HOUSING AND INFRASTRUCTURE</i></div>
-      <ul class="lot-list">
-        <li>
-          <span class="lot-no">5.1</span>
-          <div class="lot-title-wrap">
-            <span class="lot-title">Bumbung Rumah dan Rata-rata Kepadatan Hunian Menurut RT, {year}<br><i>Residential Buildings and Average Occupancy Density by RT, {year}</i></span>
-            <span class="lot-dots"></span>
-            <span class="lot-page">29</span>
-          </div>
-        </li>
-        {f'''<li>
-          <span class="lot-no">5.2</span>
-          <div class="lot-title-wrap">
-            <span class="lot-title">Sebaran Sarana Peribadatan, Pendidikan, dan Kesehatan Menurut RT, {year}<br><i>Distribution of Worship, Education, and Health Facilities by RT, {year}</i></span>
-            <span class="lot-dots"></span>
-            <span class="lot-page">30</span>
-          </div>
-        </li>
-        <li>
-          <span class="lot-no">5.3</span>
-          <div class="lot-title-wrap">
-            <span class="lot-title">Rekapitulasi Kondisi Bangunan dan Akses Infrastruktur Desa Menurut RT, {year}<br><i>Building Condition and Infrastructure Access Summary by RT, {year}</i></span>
-            <span class="lot-dots"></span>
-            <span class="lot-page">31</span>
-          </div>
-        </li>''' if caps.has_public_facilities and metrics.get('fasilitas') else ''}
-      </ul>""",
-        7,
-        show_header=False,
-        show_footer=True,
-    )
-
-    # Page 8 (viii - EVEN)
-    card_6_tech_notes = make_page_card(
-        "PENJELASAN UMUM",
-        "EXPLANATORY NOTES",
-        "viii",
-        """      <div style="text-align: center; margin-top: 5px; margin-bottom: 20px;">
-        <h2 style="font-size: 13.5pt; font-weight: 800; color: #1a202c; margin: 0; text-transform: uppercase;">PENJELASAN UMUM/<i>EXPLANATORY NOTES</i></h2>
-      </div>
-      <div style="font-size: 9pt; line-height: 1.5; color: #2d3748; margin-bottom: 18px;">
-        <div>Tanda-tanda, satuan-satuan, dan lain-lainnya yang digunakan dalam publikasi ini adalah sebagai berikut:</div>
-        <div style="font-style: italic; color: #475569;">Symbols, measurement units, and acronyms which are used in this publication, are as follows:</div>
-      </div>
-      <table style="width: 100%; border-collapse: collapse; font-size: 8.8pt; line-height: 1.7; color: #2d3748;">
-        <tbody>
-          <tr><td style="border: none;">Data tidak tersedia/<i>Data not available</i></td><td style="border: none;">: ...</td></tr>
-          <tr><td style="border: none;">Tidak ada atau nol /<i>Null or zero</i></td><td style="border: none;">: -</td></tr>
-          <tr><td style="border: none;">Data dapat diabaikan/<i>Data negligible</i></td><td style="border: none;">: ~0</td></tr>
-          <tr><td style="border: none;">Tanda desimal/<i>Decimal point</i></td><td style="border: none;">: ,</td></tr>
-        </tbody>
-      </table>""",
-        8,
-        show_header=False,
-        show_footer=True,
-    )
-
-    # Page 9 (ix - ODD)
-    card_7_abbreviations = make_page_card(
-        "DAFTAR SINGKATAN",
-        "LIST OF ABBREVIATIONS",
-        "ix",
-        """      <h2 style="text-align: center; color: #0b3c5d; font-size: 13pt; margin-top: 0; margin-bottom: 20px;">DAFTAR SINGKATAN / <i>LIST OF ABBREVIATIONS</i></h2>
-      <table style="width: 100%; border-collapse: collapse; border: none; font-size: 8.5pt; line-height: 1.6; color: #2d3748;">
-        <tbody>
-          <tr><td style="width: 50%; border: none;"><strong>BPS:</strong> Badan Pusat Statistik</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>BPS:</strong> BPS-Statistics (Central Agency on Statistics)</td></tr>
-          <tr><td style="width: 50%; border: none;"><strong>CAPI:</strong> Computer-Assisted Personal Interviewing</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>CAPI:</strong> Computer-Assisted Personal Interviewing</td></tr>
-          <tr><td style="width: 50%; border: none;"><strong>RT:</strong> Rukun Tetangga</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>RT:</strong> Neighborhood Unit</td></tr>
-          <tr><td style="width: 50%; border: none;"><strong>KK:</strong> Kepala Keluarga</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>KK:</strong> Head of Household / Family Card</td></tr>
-          <tr><td style="width: 50%; border: none;"><strong>ART:</strong> Anggota Rumah Tangga</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>ART:</strong> Household Member</td></tr>
-          <tr><td style="width: 50%; border: none;"><strong>KTP-el:</strong> Kartu Tanda Penduduk Elektronik</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>KTP-el:</strong> Electronic Identity Card</td></tr>
-          <tr><td style="width: 50%; border: none;"><strong>PKH:</strong> Program Keluarga Harapan</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>PKH:</strong> Family Hope Program</td></tr>
-          <tr><td style="width: 50%; border: none;"><strong>BPNT:</strong> Bantuan Pangan Non-Tunai</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>BPNT:</strong> Non-Cash Food Assistance</td></tr>
-          <tr><td style="width: 50%; border: none;"><strong>BST:</strong> Bantuan Sosial Tunai</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>BST:</strong> Social Cash Assistance</td></tr>
-          <tr><td style="width: 50%; border: none;"><strong>BLT:</strong> Bantuan Langsung Tunai</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>BLT:</strong> Direct Cash Assistance</td></tr>
-          <tr><td style="width: 50%; border: none;"><strong>SD / SMP / SMA:</strong> Sekolah Dasar / Menengah / Atas</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>SD / SMP / SMA:</strong> Primary / Junior / Senior High School</td></tr>
-          <tr><td style="width: 50%; border: none;"><strong>PT:</strong> Perguruan Tinggi</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>PT:</strong> Higher Education / University</td></tr>
-        </tbody>
-      </table>""",
-        9,
-        show_header=False,
-        show_footer=True,
-    )
-
-    # Build Key Stats (Tabel 0.1) dynamically per village capabilities
-    if caps.has_employment:
-        keystats_rows = f"""
-          <tr style="background: #fff5eb; font-weight: 700; color: #0b3c5d;"><td colspan="3">DEMOGRAFI DAN KEPENDUDUKAN / <i>DEMOGRAPHICS AND POPULATION</i></td></tr>
-          <tr><td>Penduduk / <i>Population</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">{dyn_pop}</td></tr>
-          <tr><td>Laki-laki / <i>Male</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">{dyn_l}</td></tr>
-          <tr><td>Perempuan / <i>Female</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">{dyn_p}</td></tr>
-          <tr><td>Rasio Jenis Kelamin / <i>Sex Ratio</i></td><td>-</td><td class="text-right">{dyn_sr}</td></tr>
-          <tr><td>Kepala Keluarga / <i>Households</i></td><td>KK / <i>Households</i></td><td class="text-right">{dyn_kk}</td></tr>
-          <tr style="background: #fff5eb; font-weight: 700; color: #0b3c5d;"><td colspan="3">KETENAGAKERJAAN, UMKM & SOSIAL / <i>EMPLOYMENT, MSME & SOCIAL</i></td></tr>
-          <tr><td>Usia Kerja Bekerja / <i>Employed Working Age</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">{fmt_val(metrics['tot_bekerja'])}</td></tr>
-          <tr><td>Rumah Tangga UMKM / <i>MSME Households</i></td><td>KK / <i>Households</i></td><td class="text-right">{fmt_val(metrics['tot_umkm'])}</td></tr>
-          <tr><td>Peserta BPJS Kesehatan / <i>BPJS Health Participants</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">{fmt_val(metrics['tot_bpjs'])}</td></tr>
-          <tr><td>Keluarga Penerima Bansos (PKH/BPNT) / <i>Assistance Recipients</i></td><td>Keluarga / <i>Families</i></td><td class="text-right">{dyn_bansos}</td></tr>
-          <tr style="background: #fff5eb; font-weight: 700; color: #0b3c5d;"><td colspan="3">PERUMAHAN DAN LINGKUNGAN / <i>HOUSING AND ENVIRONMENT</i></td></tr>
-          <tr><td>Bumbung Rumah (Hunian) / <i>Residential Buildings</i></td><td>Unit / <i>Units</i></td><td class="text-right">{dyn_bumbung}</td></tr>
-          <tr><td>Kepadatan Hunian Rata-rata / <i>Housing Density</i></td><td>Jiwa per Unit / <i>Persons/Unit</i></td><td class="text-right">{dyn_kepadatan}</td></tr>
-          <tr><td>Sanitasi BAB Sendiri / <i>Private Toilet Sanitation</i></td><td>KK / <i>Households</i></td><td class="text-right">{fmt_val(metrics['tot_bab_sendiri'])}</td></tr>"""
-    elif caps.has_building_materials:
-        keystats_rows = f"""
-          <tr style="background: #fff5eb; font-weight: 700; color: #0b3c5d;"><td colspan="3">DEMOGRAFI DAN KEPENDUDUKAN / <i>DEMOGRAPHICS AND POPULATION</i></td></tr>
-          <tr><td>Penduduk / <i>Population</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">{dyn_pop}</td></tr>
-          <tr><td>Laki-laki / <i>Male</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">{dyn_l}</td></tr>
-          <tr><td>Perempuan / <i>Female</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">{dyn_p}</td></tr>
-          <tr><td>Rasio Jenis Kelamin / <i>Sex Ratio</i></td><td>-</td><td class="text-right">{dyn_sr}</td></tr>
-          <tr><td>Kepala Keluarga / <i>Households</i></td><td>KK / <i>Households</i></td><td class="text-right">{dyn_kk}</td></tr>
-          <tr style="background: #fff5eb; font-weight: 700; color: #0b3c5d;"><td colspan="3">SOSIAL DAN KESEJAHTERAAN / <i>SOCIAL AND WELFARE</i></td></tr>
-          <tr><td>Keluarga Penerima Bansos (PKH/BPNT/BLT) / <i>Assistance Recipients</i></td><td>Keluarga / <i>Families</i></td><td class="text-right">{dyn_bansos}</td></tr>
-          <tr><td>Penerima BPJS PBI / <i>BPJS PBI Insurance Recipients</i></td><td>Keluarga / <i>Families</i></td><td class="text-right">{fmt_val(metrics['tot_bpjs'])}</td></tr>
-          <tr style="background: #fff5eb; font-weight: 700; color: #0b3c5d;"><td colspan="3">PERUMAHAN DAN LINGKUNGAN / <i>HOUSING AND ENVIRONMENT</i></td></tr>
-          <tr><td>Bumbung Rumah (Hunian) / <i>Residential Buildings</i></td><td>Unit / <i>Units</i></td><td class="text-right">{dyn_bumbung}</td></tr>
-          <tr><td>Rumah Layak Huni / <i>Decent Housing</i></td><td>Unit / <i>Units</i></td><td class="text-right">{dyn_layak}</td></tr>
-          <tr><td>Persentase Rumah Layak Huni / <i>Decent Housing Rate</i></td><td>%</td><td class="text-right">{f"{metrics['tot_layak_pct']:.2f}".replace('.', ',')}</td></tr>"""
-    else:
-        keystats_rows = f"""
-          <tr style="background: #fff5eb; font-weight: 700; color: #0b3c5d;"><td colspan="3">DEMOGRAFI DAN KEPENDUDUKAN / <i>DEMOGRAPHICS AND POPULATION</i></td></tr>
-          <tr><td>Penduduk / <i>Population</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">{dyn_pop}</td></tr>
-          <tr><td>Laki-laki / <i>Male</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">{dyn_l}</td></tr>
-          <tr><td>Perempuan / <i>Female</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">{dyn_p}</td></tr>
-          <tr><td>Rasio Jenis Kelamin / <i>Sex Ratio</i></td><td>-</td><td class="text-right">{dyn_sr}</td></tr>
-          <tr><td>Kepala Keluarga / <i>Households</i></td><td>KK / <i>Households</i></td><td class="text-right">{dyn_kk}</td></tr>
-          <tr style="background: #fff5eb; font-weight: 700; color: #0b3c5d;"><td colspan="3">SOSIAL DAN KESEJAHTERAAN / <i>SOCIAL AND WELFARE</i></td></tr>
-          <tr><td>Memiliki KTP-el / <i>ID Card Owners</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">{dyn_ktp}</td></tr>
-          <tr><td>Persentase KTP-el / <i>ID Card Ownership Rate</i></td><td>%</td><td class="text-right">{dyn_ktp_pct}</td></tr>
-          <tr><td>Keluarga Penerima Bansos (PKH/BPNT/BLT) / <i>Assistance Recipients</i></td><td>Keluarga / <i>Families</i></td><td class="text-right">{dyn_bansos}</td></tr>
-          <tr style="background: #fff5eb; font-weight: 700; color: #0b3c5d;"><td colspan="3">PERUMAHAN DAN LINGKUNGAN / <i>HOUSING AND ENVIRONMENT</i></td></tr>
-          <tr><td>Bumbung Rumah (Hunian) / <i>Residential Buildings</i></td><td>Unit / <i>Units</i></td><td class="text-right">{dyn_bumbung}</td></tr>
-          <tr><td>Kepadatan Hunian Rata-rata / <i>Housing Density</i></td><td>Jiwa per Unit / <i>Persons/Unit</i></td><td class="text-right">{dyn_kepadatan}</td></tr>"""
-
-    # Page 11 (Arab 1 - ODD)
-    card_8_keystats = make_page_card(
-        f"STATISTIK KUNCI {year}",
-        f"KEY STATISTICS {year}",
-        "1",
-        f"""<div style="font-weight: 800; font-size: 9.5pt; color: #0b3c5d; margin-bottom: 2px;">Tabel 0.1 Statistik Kunci {year}</div>
-      <div style="font-weight: 800; font-size: 8.5pt; font-style: italic; color: #0b3c5d; margin-bottom: 8px;">Table Key Statistics, {year}</div>
-      <table class="bps-table">
-        <thead>
-          <tr><th class="main-header">Rincian / <i>Description</i></th><th class="main-header" style="width: 110px;">Satuan / <i>Unit</i></th><th class="main-header" style="width: 80px;">{year}</th></tr>
-          <tr><th class="col-num">(1)</th><th class="col-num">(2)</th><th class="col-num">(3)</th></tr>
-        </thead>
-        <tbody>
-          {keystats_rows}
-        </tbody>
-      </table>{meta_std}""",
-        11,
-    )
-
-    # Function to build chapters with chunked pages & exact page parity
     def build_chapter_html(
         ch_num,
         badge_start,
@@ -812,7 +418,7 @@ def render_desa_html(pub_data: DesaPublicationData) -> Path:
         res += make_page_card(
             f"PENJELASAN TEKNIS BAB {ch_num}",
             f"TECHNICAL NOTES CHAPTER {ch_num}",
-            str(ch_num),
+            str(badge_start + 1),
             tech_page_body,
             badge_start + 1,
         )
@@ -852,6 +458,9 @@ def render_desa_html(pub_data: DesaPublicationData) -> Path:
         p1_chunk_size = 16 if table_code == "1.2" else 18
         cont_chunk_size = 24
         current_page_idx = badge_start + 2
+        table_pages = {table_code: current_page_idx}
+        if table_code == "1.2":
+            table_pages["1.1"] = current_page_idx
 
         if len(rows_all) <= p1_chunk_size:
             r_p1 = "\n".join(rows_all)
@@ -882,7 +491,7 @@ def render_desa_html(pub_data: DesaPublicationData) -> Path:
             res += make_page_card(
                 ch_title_id,
                 ch_title_en,
-                str(ch_num),
+                str(current_page_idx),
                 t1_body,
                 current_page_idx,
             )
@@ -913,7 +522,7 @@ def render_desa_html(pub_data: DesaPublicationData) -> Path:
             res += make_page_card(
                 ch_title_id,
                 ch_title_en,
-                str(ch_num),
+                str(current_page_idx),
                 t1_body,
                 current_page_idx,
             )
@@ -941,7 +550,7 @@ def render_desa_html(pub_data: DesaPublicationData) -> Path:
                 res += make_page_card(
                     ch_title_id,
                     ch_title_en,
-                    str(ch_num),
+                    str(current_page_idx),
                     t_cont_body,
                     current_page_idx,
                 )
@@ -977,6 +586,7 @@ def render_desa_html(pub_data: DesaPublicationData) -> Path:
                     )
 
                 current_page_idx += 1
+                table_pages[e_code] = current_page_idx
                 if len(e_rows_all) <= 18:
                     e_p1 = "\n".join(e_rows_all)
                     if e_r_tot:
@@ -991,7 +601,7 @@ def render_desa_html(pub_data: DesaPublicationData) -> Path:
                     res += make_page_card(
                         ch_title_id,
                         ch_title_en,
-                        str(ch_num),
+                        str(current_page_idx),
                         e_body,
                         current_page_idx,
                     )
@@ -1006,7 +616,7 @@ def render_desa_html(pub_data: DesaPublicationData) -> Path:
                     res += make_page_card(
                         ch_title_id,
                         ch_title_en,
-                        str(ch_num),
+                        str(current_page_idx),
                         e_body,
                         current_page_idx,
                     )
@@ -1034,28 +644,17 @@ def render_desa_html(pub_data: DesaPublicationData) -> Path:
                         res += make_page_card(
                             ch_title_id,
                             ch_title_en,
-                            str(ch_num),
+                            str(current_page_idx),
                             e_cont_body,
                             current_page_idx,
                         )
 
-        return res
+        if current_page_idx % 2 != 0:
+            res += make_blank_page()
+            current_page_idx += 1
 
+        return res, current_page_idx + 1, table_pages
 
-    # Assemble Full Document
-    full_out = html_header
-    full_out += card_1_cover + "\n\n"
-    full_out += card_2_compilers + "\n\n"
-    full_out += card_3_contrib + "\n\n"
-    full_out += card_4_preface_id + "\n\n"
-    full_out += card_4_preface_en + "\n\n"
-    full_out += card_5_toc + "\n\n"
-    full_out += card_5b_lot + "\n\n"
-    full_out += card_6_tech_notes + "\n\n"
-    full_out += card_7_abbreviations + "\n\n"
-    full_out += make_blank_page()  # Page x (10)
-    full_out += card_8_keystats + "\n\n"  # Arab Page 1 (11)
-    full_out += make_blank_page()  # Arab Page 2 (12)
 
     # Chapter 1: Geografi & Pemerintahan
     dusun_bars = []
@@ -1111,9 +710,10 @@ def render_desa_html(pub_data: DesaPublicationData) -> Path:
         f"<strong>{admin_type_en} Statistical Agent</strong> is a {admin_type_en.lower()} official appointed to conduct direct field registration and data collection.",
     ]
 
-    full_out += build_chapter_html(
+    cur_p = 3
+    ch1_html, cur_p, tpages1 = build_chapter_html(
         1,
-        3,
+        cur_p,
         "GEOGRAFI DAN PEMERINTAHAN",
         "GEOGRAPHY AND GOVERNMENT",
         "1.1 WILAYAH ADMINISTRATIF",
@@ -1189,9 +789,10 @@ def render_desa_html(pub_data: DesaPublicationData) -> Path:
         "<strong>Household Member</strong> refers to all persons who usually reside in a household.",
     ]
 
-    full_out += build_chapter_html(
+    ch2_start = cur_p
+    ch2_html, cur_p, tpages2 = build_chapter_html(
         2,
-        9,
+        cur_p,
         "KEPENDUDUKAN DAN DEMOGRAFI",
         "POPULATION AND DEMOGRAPHICS",
         "2.1 KEPENDUDUKAN DAN DEMOGRAFI",
@@ -1342,9 +943,10 @@ def render_desa_html(pub_data: DesaPublicationData) -> Path:
             "<strong>Highest Educational Attainment</strong> refers to the highest formal education level completed by a person.",
         ]
 
-    full_out += build_chapter_html(
+    ch3_start = cur_p
+    ch3_html, cur_p, tpages3 = build_chapter_html(
         3,
-        15,
+        cur_p,
         ch3_title_id,
         ch3_title_en,
         ch3_sec_id,
@@ -1405,9 +1007,10 @@ def render_desa_html(pub_data: DesaPublicationData) -> Path:
         "<strong>Elderly Population</strong> refers to population who have reached the age of 60 years or above.",
     ]
 
-    full_out += build_chapter_html(
+    ch4_start = cur_p
+    ch4_html, cur_p, tpages4 = build_chapter_html(
         4,
-        21,
+        cur_p,
         "SOSIAL DAN KESEJAHTERAAN RAKYAT",
         "SOCIAL AND WELFARE",
         "4.1 BANTUAN SOSIAL DAN KESEJAHTERAAN RAKYAT",
@@ -1533,9 +1136,10 @@ def render_desa_html(pub_data: DesaPublicationData) -> Path:
             },
         ]
 
-    full_out += build_chapter_html(
+    ch5_start = cur_p
+    ch5_html, cur_p, tpages5 = build_chapter_html(
         5,
-        27,
+        cur_p,
         "PERUMAHAN DAN LINGKUNGAN",
         "HOUSING AND INFRASTRUCTURE",
         "5.1 PERUMAHAN DAN LINGKUNGAN HIDUP",
@@ -1553,6 +1157,434 @@ def render_desa_html(pub_data: DesaPublicationData) -> Path:
         extra_tables=extra_tables_5,
     )
 
+    tot_arabic_pages = cur_p - 1
+
+    # Page 1: Cover (No header, No footer)
+    card_1_cover = f"""  <div class="page-card">
+    <div class="page-content">
+      <div class="cover-box">
+        <h1 class="cover-title">{admin_upper} {name_upper}<br>DALAM ANGKA {year}</h1>
+        <div class="cover-subtitle">{name_upper} {admin_type_en.upper()} IN FIGURES {year}</div>
+      </div>
+    </div>
+  </div>"""
+
+    # Page 2 (ii - EVEN - BPS Catalog Metadata & Copyright Page)
+    pub_no_str = config.get("pub_no", "61040.2026.002")
+    card_2_compilers = make_page_card(
+        "IDENTITAS PUBLIKASI",
+        "PUBLICATION METADATA",
+        "ii",
+        f"""      <div style="font-size: 8.5pt; line-height: 1.5; color: #1a202c; max-width: 92%; margin: 15px auto 0 auto;">
+        <div style="font-weight: 800; font-size: 11.5pt; color: #0b3c5d; margin-bottom: 2px;">{admin_upper} {name_upper} DALAM ANGKA {year}</div>
+        <div style="font-style: italic; font-size: 10pt; color: #475569; margin-bottom: 16px;">{name_title} {admin_type_en} in Figures {year}</div>
+        
+        <div style="margin-bottom: 14px;">
+          <strong>Ukuran Buku / <i>Book Size</i>:</strong> 21 cm x 29,7 cm (A4)<br>
+          <strong>Jumlah Halaman / <i>Number of Pages</i>:</strong> ix + {tot_arabic_pages} halaman/pages
+        </div>
+
+        <div style="margin-bottom: 14px; border-top: 1px solid #e2e8f0; padding-top: 12px;">
+          <strong>Penanggung Jawab / <i>Person in Charge</i>:</strong><br>
+          {kades_name.upper()} ({kades_title})
+        </div>
+
+        <div style="margin-bottom: 14px;">
+          <strong>Penyusun Naskah / <i>Manuscript Drafter</i>:</strong><br>
+          Tim Agen Statistik {admin_type} {name_title} & Tim Pembina Desa Cantik BPS Kabupaten Mempawah
+        </div>
+
+        <div style="margin-bottom: 14px;">
+          <strong>Penyunting & Penata Letak / <i>Editors & Layouters</i>:</strong><br>
+          Tim Pembina Desa Cantik BPS Kabupaten Mempawah
+        </div>
+
+        <div style="margin-bottom: 14px;">
+          <strong>Penerbit / <i>Publisher</i>:</strong><br>
+          Pemerintah {admin_type} {name_title} bekerjasama dengan Badan Pusat Statistik Kabupaten Mempawah
+        </div>
+
+        <div style="border: 1px dashed #cbd5e1; padding: 10px; border-radius: 6px; background: #f8fafc; font-size: 7.8pt;">
+          <strong>Klausul Hak Cipta / <i>Copyright Notice</i>:</strong><br>
+          Dilarang mengumumkan, mendistribusikan, mengomunikasikan, dan/atau menggandakan sebagian atau seluruh isi buku ini untuk tujuan komersial tanpa izin tertulis dari Pemerintah {admin_type} {name_title} dan Badan Pusat Statistik Kabupaten Mempawah.
+        </div>
+      </div>""",
+        2,
+        show_header=False,
+        show_footer=True,
+    )
+
+    # Page 3 (iii - ODD)
+    card_3_contrib = make_page_card(
+        "KONTRIBUTOR DATA",
+        "DATA CONTRIBUTORS",
+        "iii",
+        f"""      <div style="text-align: center; margin-top: 10px; margin-bottom: 25px;">
+        <h2 style="font-size: 14pt; font-weight: 800; color: #0b3c5d; margin: 0; text-transform: uppercase;">TIM PENYUSUN & KONTRIBUTOR DATA</h2>
+        <h3 style="font-size: 11pt; font-weight: 800; font-style: italic; color: #0b3c5d; margin: 3px 0 0 0; text-transform: uppercase;">PREPARATION TEAM & DATA CONTRIBUTORS</h3>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 8.8pt; line-height: 1.6; color: #2d3748;">
+        <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 15px;">
+          <div style="font-weight: 800; color: #0b3c5d; border-bottom: 2px solid #eb8a3c; padding-bottom: 4px; margin-bottom: 10px; text-transform: uppercase;">PEMERINTAH {admin_upper} {name_upper}</div>
+          <strong>Penanggung Jawab:</strong><br>{kades_name} ({kades_title})<br><br>
+          <strong>Koordinator Agen Statistik:</strong><br>Sekretaris {admin_type} {name_title}<br><br>
+          <strong>Agen Statistik {admin_type}:</strong><br>Kasi Pemerintahan & Seluruh Ketua RT {admin_type} {name_title}
+        </div>
+        <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 15px;">
+          <div style="font-weight: 800; color: #0b3c5d; border-bottom: 2px solid #eb8a3c; padding-bottom: 4px; margin-bottom: 10px; text-transform: uppercase;">BPS KABUPATEN MEMPAWAH</div>
+          <strong>Pembina Desa Cantik:</strong><br>Tim Kerja Pembinaan Statistik Sektoral BPS Kabupaten Mempawah<br><br>
+          <strong>Penyunting & Analis Data:</strong><br>Fungsional Statistisi BPS Kabupaten Mempawah<br><br>
+          <strong>Desain & Penata Letak:</strong><br>Tim Diseminasi Statistik BPS Kabupaten Mempawah
+        </div>
+      </div>""",
+        3,
+        show_header=False,
+        show_footer=True,
+    )
+
+    # Page 4 (iv - EVEN - Preface ID)
+    card_4_preface_id = make_page_card(
+        "KATA PENGANTAR",
+        "PREFACE",
+        "iv",
+        f"""      <div style="text-align: center; margin-top: 5px; margin-bottom: 20px;">
+        <h2 style="font-size: 13.5pt; font-weight: 800; color: #1a202c; margin: 0; text-transform: uppercase;">KATA PENGANTAR</h2>
+      </div>
+      <div style="font-size: 9.2pt; line-height: 1.6; color: #2d3748; text-align: justify; text-justify: inter-word;">
+        <p style="margin-bottom: 12px; text-indent: 2em;">Puji dan syukur kita panjatkan ke hadirat Tuhan Yang Maha Esa, karena atas rahmat dan karunia-Nya, publikasi <strong>"{admin_type} {name_title} Dalam Angka {year}"</strong> dapat diselesaikan dan diterbitkan dengan baik. Publikasi ini merupakan hasil kompilasi data statistik sektoral terkini yang menghimpun potensi wilayah, kependudukan, sosial, serta perumahan di tingkat Rukun Tetangga (RT).</p>
+        <p style="margin-bottom: 12px; text-indent: 2em;">Data yang disajikan dalam publikasi ini bersumber dari hasil pendaftaran lapangan (sensus bangunan dan sosial keluarga) yang dilaksanakan oleh <strong>Agen Statistik {admin_type} {name_title}</strong> bekerjasama dan mendapatkan pembinaan teknis secara berkelanjutan dari <strong>Badan Pusat Statistik (BPS) Kabupaten Mempawah</strong> melalui Program Desa Cantik (Desa Cinta Statistik) {year}.</p>
+        <p style="margin-bottom: 12px; text-indent: 2em;">Diharapkan publikasi ini dapat memberikan gambaran komprehensif mengenai profil dan potensi {admin_type} {name_title}, serta menjadi rujukan utama bagi Pemerintah {admin_type}, Badan Permusyawaratan Desa, serta pihak-pihak terkait dalam perencanaan pembangunan wilayah dan intervensi kebijakan yang tepat sasaran.</p>
+        <p style="margin-bottom: 20px; text-indent: 2em;">Penghargaan dan ucapan terima kasih yang setinggi-tingginya kami sampaikan kepada seluruh Agen Statistik {admin_type}, Ketua RT, serta BPS Kabupaten Mempawah atas kerja keras dan kerja samanya. Kritik dan saran yang membangun sangat kami harapkan guna penyempurnaan publikasi ini di masa mendatang.</p>
+        <div style="display: flex; justify-content: flex-end; margin-top: 25px;">
+          <div style="text-align: center; font-size: 9pt; line-height: 1.4;">
+            {name_title}, Agustus {year}<br>
+            <strong>{kades_title.upper()} {name_upper}</strong><br>
+            <div style="height: 45px;"></div>
+            <strong><u>{kades_name.upper()}</u></strong>
+          </div>
+        </div>
+      </div>""",
+        4,
+        show_header=False,
+        show_footer=True,
+    )
+
+    # Page 5 (v - ODD - Preface EN)
+    card_4_preface_en = make_page_card(
+        "PREFACE",
+        "PREFACE",
+        "v",
+        f"""      <div style="text-align: center; margin-top: 5px; margin-bottom: 20px;">
+        <h2 style="font-size: 13.5pt; font-weight: 800; font-style: italic; color: #1a202c; margin: 0; text-transform: uppercase;">PREFACE</h2>
+      </div>
+      <div style="font-size: 9.2pt; line-height: 1.6; color: #2d3748; font-style: italic; text-align: justify; text-justify: inter-word;">
+        <p style="margin-bottom: 12px; text-indent: 2em;">Praise be to Almighty God for His blessings that the publication <strong>"{name_title} {admin_type_en} in Figures {year}"</strong> has been successfully compiled and published. This publication presents up-to-date sectoral statistical data covering regional potential, population, social welfare, and housing conditions at the Neighborhood Unit (RT) level.</p>
+        <p style="margin-bottom: 12px; text-indent: 2em;">The data presented herein were gathered from field registration (building census and family social enumeration) conducted by <strong>{name_title} {admin_type_en} Statistical Agents</strong> under the technical guidance and coaching of <strong>BPS-Statistics Mempawah Regency</strong> through the {year} Desa Cantik (Love Statistics Village) Program.</p>
+        <p style="margin-bottom: 12px; text-indent: 2em;">It is expected that this publication will provide a comprehensive overview of the profile and potential of {name_title} {admin_type_en}, serving as an essential reference for local government planning and evidence-based policy intervention.</p>
+        <p style="margin-bottom: 20px; text-indent: 2em;">We express our deepest appreciation to all Statistical Agents, RT Chairmen, and BPS-Statistics Mempawah Regency for their dedication. Constructive feedback and suggestions are highly welcome for future enhancements.</p>
+        <div style="display: flex; justify-content: flex-end; margin-top: 25px;">
+          <div style="text-align: center; font-size: 9pt; line-height: 1.4; font-style: normal;">
+            {name_title}, August {year}<br>
+            <strong>HEAD OF {name_upper} {admin_type_en.upper()}</strong><br>
+            <div style="height: 45px;"></div>
+            <strong><u>{kades_name.upper()}</u></strong>
+          </div>
+        </div>
+      </div>""",
+        5,
+        show_header=False,
+        show_footer=True,
+    )
+
+    # Page 6 (vi - EVEN)
+    card_5_toc = make_page_card(
+        "DAFTAR ISI",
+        "CONTENTS",
+        "vi",
+        f"""      <div style="text-align: center; margin-top: 5px; margin-bottom: 20px;">
+        <h2 style="font-size: 13.5pt; font-weight: 800; color: #1a202c; margin: 0; text-transform: uppercase;">DAFTAR ISI/<i>CONTENTS</i></h2>
+        <div style="font-size: 10.5pt; font-weight: 700; color: #2d3748; margin-top: 4px;">{admin_type} {name_title} Dalam Angka {year}</div>
+        <div style="font-size: 10.5pt; font-weight: 700; font-style: italic; color: #475569;">{name_title} Village in Figures {year}</div>
+      </div>
+      <style>
+        .toc-list {{ list-style: none; padding: 0; margin: 0; }}
+        .toc-list li {{ position: relative; overflow: hidden; line-height: 1.5; font-size: 9.5pt; margin-bottom: 6px; clear: both; color: #2d3748; }}
+        .toc-list li .toc-page {{ position: absolute; right: 0; bottom: 0; background: #fff; padding-left: 6px; z-index: 2; font-size: 9.5pt; }}
+        .toc-list li .toc-title {{ background: #fff; padding-right: 6px; position: relative; z-index: 2; }}
+        .toc-list li::after {{ content: ""; position: absolute; left: 0; right: 0; bottom: 4px; border-bottom: 1.2px dotted #777; z-index: 1; }}
+      </style>
+      <ul class="toc-list">
+        <li><span class="toc-title">Kata Pengantar/<i>Preface</i></span><span class="toc-page">iv</span></li>
+        <li><span class="toc-title">Daftar Isi/<i>Contents</i></span><span class="toc-page">vi</span></li>
+        <li><span class="toc-title">Daftar Tabel/<i>List of Tables</i></span><span class="toc-page">vii</span></li>
+        <li><span class="toc-title">Penjelasan Umum/<i>Explanatory Notes</i></span><span class="toc-page">viii</span></li>
+        <li><span class="toc-title">Daftar Singkatan/<i>List of Abbreviations</i></span><span class="toc-page">ix</span></li>
+        <li><span class="toc-title">Statistik Kunci/<i>Key Statistics</i></span><span class="toc-page">1</span></li>
+        <li><span class="toc-title">1.&nbsp;&nbsp;&nbsp;Geografi dan Pemerintahan/<i>Geography and Government</i></span><span class="toc-page">3</span></li>
+        <li><span class="toc-title">2.&nbsp;&nbsp;&nbsp;Kependudukan dan Demografi/<i>Population and Demographics</i></span><span class="toc-page">{ch2_start}</span></li>
+        <li><span class="toc-title">3.&nbsp;&nbsp;&nbsp;Pendidikan dan Adminduk/<i>Education and Civil Registration</i></span><span class="toc-page">{ch3_start}</span></li>
+        <li><span class="toc-title">4.&nbsp;&nbsp;&nbsp;Sosial dan Kesejahteraan Rakyat/<i>Social and Welfare</i></span><span class="toc-page">{ch4_start}</span></li>
+        <li><span class="toc-title">5.&nbsp;&nbsp;&nbsp;Perumahan dan Lingkungan/<i>Housing and Infrastructure</i></span><span class="toc-page">{ch5_start}</span></li>
+      </ul>""",
+        6,
+        show_header=False,
+        show_footer=True,
+    )
+
+    # Page 7 (vii - ODD)
+    card_5b_lot = make_page_card(
+        "DAFTAR TABEL",
+        "LIST OF TABLES",
+        "vii",
+        f"""      <div style="text-align: center; margin-top: 5px; margin-bottom: 20px;">
+        <h2 style="font-size: 13.5pt; font-weight: 800; color: #1a202c; margin: 0; text-transform: uppercase;">DAFTAR TABEL/<i>LIST OF TABLES</i></h2>
+      </div>
+      <style>
+        .lot-hdr {{ display: flex; justify-content: space-between; font-size: 8.8pt; color: #2d3748; margin-bottom: 12px; line-height: 1.3; font-weight: 700; border-bottom: 1px solid #e2e8f0; padding-bottom: 4px; }}
+        .lot-hdr-no {{ width: 50px; }}
+        .lot-hdr-pg {{ text-align: right; }}
+        .lot-list {{ list-style: none; padding: 0; margin: 0; }}
+        .lot-list li {{ display: flex; align-items: flex-start; position: relative; line-height: 1.4; font-size: 8.8pt; margin-bottom: 10px; color: #2d3748; }}
+        .lot-list li .lot-no {{ width: 50px; flex-shrink: 0; font-weight: 700; background: #fff; z-index: 2; font-size: 8.8pt; }}
+        .lot-list li .lot-title-wrap {{ flex: 1; position: relative; padding-right: 35px; min-height: 1.4em; }}
+        .lot-list li .lot-title {{ background: #fff; padding-right: 6px; position: relative; z-index: 2; display: inline; }}
+        .lot-list li .lot-dots {{ position: absolute; left: 0; right: 0; bottom: 3px; border-bottom: 1.2px dotted #777; z-index: 1; }}
+        .lot-list li .lot-page {{ position: absolute; right: 0; bottom: 0; background: #fff; padding-left: 6px; z-index: 2; font-size: 8.8pt; font-weight: 600; }}
+        .lot-sec {{ font-weight: 800; color: #0b3c5d; font-size: 9pt; margin-top: 12px; margin-bottom: 6px; text-transform: uppercase; }}
+      </style>
+      <div class="lot-hdr"><span class="lot-hdr-no">Tabel<br><i>Table</i></span><span class="lot-hdr-pg">Halaman<br><i>Page</i></span></div>
+      <div class="lot-sec">0.&nbsp;&nbsp;STATISTIK KUNCI / <i>KEY STATISTICS</i></div>
+      <ul class="lot-list">
+        <li>
+          <span class="lot-no">0.1</span>
+          <div class="lot-title-wrap">
+            <span class="lot-title">Statistik Kunci {admin_type} {name_title}, {year}<br><i>Key Statistics of {name_title} {admin_type_en}, {year}</i></span>
+            <span class="lot-dots"></span>
+            <span class="lot-page">1</span>
+          </div>
+        </li>
+      </ul>
+      <div class="lot-sec">1.&nbsp;&nbsp;GEOGRAFI DAN PEMERINTAHAN / <i>GEOGRAPHY AND GOVERNMENT</i></div>
+      <ul class="lot-list">
+        <li>
+          <span class="lot-no">1.1</span>
+          <div class="lot-title-wrap">
+            <span class="lot-title">Batas Wilayah Administrasi {admin_type} {name_title}<br><i>Administrative Boundary of {name_title} {admin_type_en}</i></span>
+            <span class="lot-dots"></span>
+            <span class="lot-page">{tpages1.get("1.1", 5)}</span>
+          </div>
+        </li>
+        <li>
+          <span class="lot-no">1.2</span>
+          <div class="lot-title-wrap">
+            <span class="lot-title">Daftar Nama Ketua RT dan Agen Statistik {admin_type} Menurut Wilayah RT, {year}<br><i>List of Neighborhood Chairmen and {admin_type_en} Statistical Agents by RT, {year}</i></span>
+            <span class="lot-dots"></span>
+            <span class="lot-page">{tpages1.get("1.2", 5)}</span>
+          </div>
+        </li>
+      </ul>
+      <div class="lot-sec">2.&nbsp;&nbsp;KEPENDUDUKAN DAN DEMOGRAFI / <i>POPULATION AND DEMOGRAPHICS</i></div>
+      <ul class="lot-list">
+        <li>
+          <span class="lot-no">2.1</span>
+          <div class="lot-title-wrap">
+            <span class="lot-title">Jumlah Penduduk dan Sex Ratio Menurut RT, {year}<br><i>Total Population and Sex Ratio by RT, {year}</i></span>
+            <span class="lot-dots"></span>
+            <span class="lot-page">{tpages2.get("2.1", 11)}</span>
+          </div>
+        </li>
+      </ul>
+      <div class="lot-sec">3.&nbsp;&nbsp;PENDIDIKAN DAN ADMINDUK / <i>EDUCATION AND CIVIL REGISTRATION</i></div>
+      <ul class="lot-list">
+        <li>
+          <span class="lot-no">3.1</span>
+          <div class="lot-title-wrap">
+            <span class="lot-title">Jumlah Penduduk Putus Sekolah dan Kepemilikan KTP-el Menurut RT, {year}<br><i>Total Dropouts and ID Card Ownership by RT, {year}</i></span>
+            <span class="lot-dots"></span>
+            <span class="lot-page">{tpages3.get("3.1", 17)}</span>
+          </div>
+        </li>
+      </ul>
+      <div class="lot-sec">4.&nbsp;&nbsp;SOSIAL DAN KESEJAHTERAAN RAKYAT / <i>SOCIAL AND WELFARE</i></div>
+      <ul class="lot-list">
+        <li>
+          <span class="lot-no">4.1</span>
+          <div class="lot-title-wrap">
+            <span class="lot-title">Jumlah Keluarga Penerima Bantuan Sosial Menurut Jenis Bantuan dan RT, {year}<br><i>Number of Social Assistance Recipient Families by Assistance Type and RT, {year}</i></span>
+            <span class="lot-dots"></span>
+            <span class="lot-page">{tpages4.get("4.1", 23)}</span>
+          </div>
+        </li>
+      </ul>
+      <div class="lot-sec">5.&nbsp;&nbsp;PERUMAHAN DAN LINGKUNGAN / <i>HOUSING AND INFRASTRUCTURE</i></div>
+      <ul class="lot-list">
+        <li>
+          <span class="lot-no">5.1</span>
+          <div class="lot-title-wrap">
+            <span class="lot-title">Bumbung Rumah dan Rata-rata Kepadatan Hunian Menurut RT, {year}<br><i>Residential Buildings and Average Occupancy Density by RT, {year}</i></span>
+            <span class="lot-dots"></span>
+            <span class="lot-page">{tpages5.get("5.1", 29)}</span>
+          </div>
+        </li>
+        {f'''<li>
+          <span class="lot-no">5.2</span>
+          <div class="lot-title-wrap">
+            <span class="lot-title">Sebaran Sarana Peribadatan, Pendidikan, dan Kesehatan Menurut RT, {year}<br><i>Distribution of Worship, Education, and Health Facilities by RT, {year}</i></span>
+            <span class="lot-dots"></span>
+            <span class="lot-page">{tpages5.get("5.2", 30)}</span>
+          </div>
+        </li>
+        <li>
+          <span class="lot-no">5.3</span>
+          <div class="lot-title-wrap">
+            <span class="lot-title">Rekapitulasi Kondisi Bangunan dan Akses Infrastruktur Desa Menurut RT, {year}<br><i>Building Condition and Infrastructure Access Summary by RT, {year}</i></span>
+            <span class="lot-dots"></span>
+            <span class="lot-page">{tpages5.get("5.3", 31)}</span>
+          </div>
+        </li>''' if caps.has_public_facilities and metrics.get('fasilitas') else ''}
+      </ul>""",
+        7,
+        show_header=False,
+        show_footer=True,
+    )
+
+    # Page 8 (viii - EVEN)
+    card_6_tech_notes = make_page_card(
+        "PENJELASAN UMUM",
+        "EXPLANATORY NOTES",
+        "viii",
+        """      <div style="text-align: center; margin-top: 5px; margin-bottom: 20px;">
+        <h2 style="font-size: 13.5pt; font-weight: 800; color: #1a202c; margin: 0; text-transform: uppercase;">PENJELASAN UMUM/<i>EXPLANATORY NOTES</i></h2>
+      </div>
+      <div style="font-size: 9pt; line-height: 1.5; color: #2d3748; margin-bottom: 18px;">
+        <div>Tanda-tanda, satuan-satuan, dan lain-lainnya yang digunakan dalam publikasi ini adalah sebagai berikut:</div>
+        <div style="font-style: italic; color: #475569;">Symbols, measurement units, and acronyms which are used in this publication, are as follows:</div>
+      </div>
+      <table style="width: 100%; border-collapse: collapse; font-size: 8.8pt; line-height: 1.7; color: #2d3748;">
+        <tbody>
+          <tr><td style="border: none;">Data tidak tersedia/<i>Data not available</i></td><td style="border: none;">: ...</td></tr>
+          <tr><td style="border: none;">Tidak ada atau nol /<i>Null or zero</i></td><td style="border: none;">: -</td></tr>
+          <tr><td style="border: none;">Data dapat diabaikan/<i>Data negligible</i></td><td style="border: none;">: ~0</td></tr>
+          <tr><td style="border: none;">Tanda desimal/<i>Decimal point</i></td><td style="border: none;">: ,</td></tr>
+        </tbody>
+      </table>""",
+        8,
+        show_header=False,
+        show_footer=True,
+    )
+
+    # Page 9 (ix - ODD)
+    card_7_abbreviations = make_page_card(
+        "DAFTAR SINGKATAN",
+        "LIST OF ABBREVIATIONS",
+        "ix",
+        """      <h2 style="text-align: center; color: #0b3c5d; font-size: 13pt; margin-top: 0; margin-bottom: 20px;">DAFTAR SINGKATAN / <i>LIST OF ABBREVIATIONS</i></h2>
+      <table style="width: 100%; border-collapse: collapse; border: none; font-size: 8.5pt; line-height: 1.6; color: #2d3748;">
+        <tbody>
+          <tr><td style="width: 50%; border: none;"><strong>BPS:</strong> Badan Pusat Statistik</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>BPS:</strong> BPS-Statistics (Central Agency on Statistics)</td></tr>
+          <tr><td style="width: 50%; border: none;"><strong>CAPI:</strong> Computer-Assisted Personal Interviewing</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>CAPI:</strong> Computer-Assisted Personal Interviewing</td></tr>
+          <tr><td style="width: 50%; border: none;"><strong>RT:</strong> Rukun Tetangga</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>RT:</strong> Neighborhood Unit</td></tr>
+          <tr><td style="width: 50%; border: none;"><strong>KK:</strong> Kepala Keluarga</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>KK:</strong> Head of Household / Family Card</td></tr>
+          <tr><td style="width: 50%; border: none;"><strong>ART:</strong> Anggota Rumah Tangga</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>ART:</strong> Household Member</td></tr>
+          <tr><td style="width: 50%; border: none;"><strong>KTP-el:</strong> Kartu Tanda Penduduk Elektronik</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>KTP-el:</strong> Electronic Identity Card</td></tr>
+          <tr><td style="width: 50%; border: none;"><strong>PKH:</strong> Program Keluarga Harapan</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>PKH:</strong> Family Hope Program</td></tr>
+          <tr><td style="width: 50%; border: none;"><strong>BPNT:</strong> Bantuan Pangan Non-Tunai</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>BPNT:</strong> Non-Cash Food Assistance</td></tr>
+          <tr><td style="width: 50%; border: none;"><strong>BST:</strong> Bantuan Sosial Tunai</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>BST:</strong> Social Cash Assistance</td></tr>
+          <tr><td style="width: 50%; border: none;"><strong>BLT:</strong> Bantuan Langsung Tunai</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>BLT:</strong> Direct Cash Assistance</td></tr>
+          <tr><td style="width: 50%; border: none;"><strong>SD / SMP / SMA:</strong> Sekolah Dasar / Menengah / Atas</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>SD / SMP / SMA:</strong> Primary / Junior / Senior High School</td></tr>
+          <tr><td style="width: 50%; border: none;"><strong>PT:</strong> Perguruan Tinggi</td><td style="width: 50%; font-style: italic; color: #475569; border: none;"><strong>PT:</strong> Higher Education / University</td></tr>
+        </tbody>
+      </table>""",
+        9,
+        show_header=False,
+        show_footer=True,
+    )
+
+    # Build Key Stats (Tabel 0.1) dynamically per village capabilities
+    if caps.has_employment:
+        keystats_rows = f"""
+          <tr style="background: #fff5eb; font-weight: 700; color: #0b3c5d;"><td colspan="3">DEMOGRAFI DAN KEPENDUDUKAN / <i>DEMOGRAPHICS AND POPULATION</i></td></tr>
+          <tr><td>Penduduk / <i>Population</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">{dyn_pop}</td></tr>
+          <tr><td>Laki-laki / <i>Male</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">{dyn_l}</td></tr>
+          <tr><td>Perempuan / <i>Female</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">{dyn_p}</td></tr>
+          <tr><td>Rasio Jenis Kelamin / <i>Sex Ratio</i></td><td>-</td><td class="text-right">{dyn_sr}</td></tr>
+          <tr><td>Kepala Keluarga / <i>Households</i></td><td>KK / <i>Households</i></td><td class="text-right">{dyn_kk}</td></tr>
+          <tr style="background: #fff5eb; font-weight: 700; color: #0b3c5d;"><td colspan="3">KETENAGAKERJAAN, UMKM & SOSIAL / <i>EMPLOYMENT, MSME & SOCIAL</i></td></tr>
+          <tr><td>Usia Kerja Bekerja / <i>Employed Working Age</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">{fmt_val(metrics['tot_bekerja'])}</td></tr>
+          <tr><td>Rumah Tangga UMKM / <i>MSME Households</i></td><td>KK / <i>Households</i></td><td class="text-right">{fmt_val(metrics['tot_umkm'])}</td></tr>
+          <tr><td>Peserta BPJS Kesehatan / <i>BPJS Health Participants</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">{fmt_val(metrics['tot_bpjs'])}</td></tr>
+          <tr><td>Keluarga Penerima Bansos (PKH/BPNT) / <i>Assistance Recipients</i></td><td>Keluarga / <i>Families</i></td><td class="text-right">{dyn_bansos}</td></tr>
+          <tr style="background: #fff5eb; font-weight: 700; color: #0b3c5d;"><td colspan="3">PERUMAHAN DAN LINGKUNGAN / <i>HOUSING AND ENVIRONMENT</i></td></tr>
+          <tr><td>Bumbung Rumah (Hunian) / <i>Residential Buildings</i></td><td>Unit / <i>Units</i></td><td class="text-right">{dyn_bumbung}</td></tr>
+          <tr><td>Kepadatan Hunian Rata-rata / <i>Housing Density</i></td><td>Jiwa per Unit / <i>Persons/Unit</i></td><td class="text-right">{dyn_kepadatan}</td></tr>
+          <tr><td>Sanitasi BAB Sendiri / <i>Private Toilet Sanitation</i></td><td>KK / <i>Households</i></td><td class="text-right">{fmt_val(metrics['tot_bab_sendiri'])}</td></tr>"""
+    elif caps.has_building_materials:
+        keystats_rows = f"""
+          <tr style="background: #fff5eb; font-weight: 700; color: #0b3c5d;"><td colspan="3">DEMOGRAFI DAN KEPENDUDUKAN / <i>DEMOGRAPHICS AND POPULATION</i></td></tr>
+          <tr><td>Penduduk / <i>Population</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">{dyn_pop}</td></tr>
+          <tr><td>Laki-laki / <i>Male</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">{dyn_l}</td></tr>
+          <tr><td>Perempuan / <i>Female</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">{dyn_p}</td></tr>
+          <tr><td>Rasio Jenis Kelamin / <i>Sex Ratio</i></td><td>-</td><td class="text-right">{dyn_sr}</td></tr>
+          <tr><td>Kepala Keluarga / <i>Households</i></td><td>KK / <i>Households</i></td><td class="text-right">{dyn_kk}</td></tr>
+          <tr style="background: #fff5eb; font-weight: 700; color: #0b3c5d;"><td colspan="3">SOSIAL DAN KESEJAHTERAAN / <i>SOCIAL AND WELFARE</i></td></tr>
+          <tr><td>Keluarga Penerima Bansos (PKH/BPNT/BLT) / <i>Assistance Recipients</i></td><td>Keluarga / <i>Families</i></td><td class="text-right">{dyn_bansos}</td></tr>
+          <tr><td>Penerima BPJS PBI / <i>BPJS PBI Insurance Recipients</i></td><td>Keluarga / <i>Families</i></td><td class="text-right">{fmt_val(metrics['tot_bpjs'])}</td></tr>
+          <tr style="background: #fff5eb; font-weight: 700; color: #0b3c5d;"><td colspan="3">PERUMAHAN DAN LINGKUNGAN / <i>HOUSING AND ENVIRONMENT</i></td></tr>
+          <tr><td>Bumbung Rumah (Hunian) / <i>Residential Buildings</i></td><td>Unit / <i>Units</i></td><td class="text-right">{dyn_bumbung}</td></tr>
+          <tr><td>Rumah Layak Huni / <i>Decent Housing</i></td><td>Unit / <i>Units</i></td><td class="text-right">{dyn_layak}</td></tr>
+          <tr><td>Persentase Rumah Layak Huni / <i>Decent Housing Rate</i></td><td>%</td><td class="text-right">{f"{metrics['tot_layak_pct']:.2f}".replace('.', ',')}</td></tr>"""
+    else:
+        keystats_rows = f"""
+          <tr style="background: #fff5eb; font-weight: 700; color: #0b3c5d;"><td colspan="3">DEMOGRAFI DAN KEPENDUDUKAN / <i>DEMOGRAPHICS AND POPULATION</i></td></tr>
+          <tr><td>Penduduk / <i>Population</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">{dyn_pop}</td></tr>
+          <tr><td>Laki-laki / <i>Male</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">{dyn_l}</td></tr>
+          <tr><td>Perempuan / <i>Female</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">{dyn_p}</td></tr>
+          <tr><td>Rasio Jenis Kelamin / <i>Sex Ratio</i></td><td>-</td><td class="text-right">{dyn_sr}</td></tr>
+          <tr><td>Kepala Keluarga / <i>Households</i></td><td>KK / <i>Households</i></td><td class="text-right">{dyn_kk}</td></tr>
+          <tr style="background: #fff5eb; font-weight: 700; color: #0b3c5d;"><td colspan="3">SOSIAL DAN KESEJAHTERAAN / <i>SOCIAL AND WELFARE</i></td></tr>
+          <tr><td>Memiliki KTP-el / <i>ID Card Owners</i></td><td>Jiwa / <i>Persons</i></td><td class="text-right">{dyn_ktp}</td></tr>
+          <tr><td>Persentase KTP-el / <i>ID Card Ownership Rate</i></td><td>%</td><td class="text-right">{dyn_ktp_pct}</td></tr>
+          <tr><td>Keluarga Penerima Bansos (PKH/BPNT/BLT) / <i>Assistance Recipients</i></td><td>Keluarga / <i>Families</i></td><td class="text-right">{dyn_bansos}</td></tr>
+          <tr style="background: #fff5eb; font-weight: 700; color: #0b3c5d;"><td colspan="3">PERUMAHAN DAN LINGKUNGAN / <i>HOUSING AND ENVIRONMENT</i></td></tr>
+          <tr><td>Bumbung Rumah (Hunian) / <i>Residential Buildings</i></td><td>Unit / <i>Units</i></td><td class="text-right">{dyn_bumbung}</td></tr>
+          <tr><td>Kepadatan Hunian Rata-rata / <i>Housing Density</i></td><td>Jiwa per Unit / <i>Persons/Unit</i></td><td class="text-right">{dyn_kepadatan}</td></tr>"""
+
+    # Page 11 (Arab 1 - ODD)
+    card_8_keystats = make_page_card(
+        f"STATISTIK KUNCI {year}",
+        f"KEY STATISTICS {year}",
+        "1",
+        f"""<div style="font-weight: 800; font-size: 9.5pt; color: #0b3c5d; margin-bottom: 2px;">Tabel 0.1 Statistik Kunci {year}</div>
+      <div style="font-weight: 800; font-size: 8.5pt; font-style: italic; color: #0b3c5d; margin-bottom: 8px;">Table Key Statistics, {year}</div>
+      <table class="bps-table">
+        <thead>
+          <tr><th class="main-header">Rincian / <i>Description</i></th><th class="main-header" style="width: 110px;">Satuan / <i>Unit</i></th><th class="main-header" style="width: 80px;">{year}</th></tr>
+          <tr><th class="col-num">(1)</th><th class="col-num">(2)</th><th class="col-num">(3)</th></tr>
+        </thead>
+        <tbody>
+          {keystats_rows}
+        </tbody>
+      </table>{meta_std}""",
+        11,
+    )
+    full_out = html_header
+    full_out += card_1_cover + "\n\n"
+    full_out += card_2_compilers + "\n\n"
+    full_out += card_3_contrib + "\n\n"
+    full_out += card_4_preface_id + "\n\n"
+    full_out += card_4_preface_en + "\n\n"
+    full_out += card_5_toc + "\n\n"
+    full_out += card_5b_lot + "\n\n"
+    full_out += card_6_tech_notes + "\n\n"
+    full_out += card_7_abbreviations + "\n\n"
+    full_out += make_blank_page() + "\n\n"  # Page x (10)
+    full_out += card_8_keystats + "\n\n"  # Arab Page 1 (11)
+    full_out += make_blank_page() + "\n\n"  # Arab Page 2 (12)
+    full_out += ch1_html + "\n\n"
+    full_out += ch2_html + "\n\n"
+    full_out += ch3_html + "\n\n"
+    full_out += ch4_html + "\n\n"
+    full_out += ch5_html + "\n\n"
     full_out += "</div>\n</body>\n</html>"
 
     out_dir = Path("kegiatan") / "desa-cantik" / str(year) / name_kebab
