@@ -198,7 +198,34 @@ python scripts/kb.py dda [nama-desa-kebab] [--sheet-id SHEET_ID] [--year 2026]
 
 ---
 
+## 📑 SOP Permintaan Data & Diseminasi Statistik Desa Cantik (Dual-Channel Delivery)
+
+Setiap penyusunan dokumen Standar Operasional Prosedur (SOP) Permintaan Data untuk desa/kelurahan binaan Desa Cantik (Sungai Bakau Kecil, Pasir Palembang, Pasir Wan Salim, dll.) **WAJIB** menerapkan prinsip dan arsitektur berikut:
+
+### 🚨 Aturan Wajib Mekanisme Download Langsung di Web
+**Seluruh dokumen SOP Permintaan Data Desa Cantik WAJIB mencantumkan mekanisme download mandiri (*self-service*) langsung di website portal resmi (`https://desa-sm.dvlp.asia/desa-cantik/[slug-desa]`) dan Open Data API, meskipun status fiturnya masih dalam tahap pengembangan/penyusunan.** Dilarang membuat SOP yang murni manual/tatap muka tanpa mencantumkan kanal digital terbuka ini.
+
+### 🏗️ Arsitektur Saluran Layanan Dual-Channel:
+1. **Jalur 1 — Layanan Mandiri Digital (*Self-Service Online Download & Open API*) — ⚡ Instan (0 Menit)**:
+   - **Sasaran**: Masyarakat umum, akademisi, mahasiswa, media, dan OPD yang membutuhkan data terbuka (agregat RT, daftar fasilitas umum, publikasi digital, dan infografis).
+   - **Kanal Akses**:
+     - **Portal Website**: `https://desa-sm.dvlp.asia/desa-cantik/[slug-desa]`
+       - Sungai Bakau Kecil: `https://desa-sm.dvlp.asia/desa-cantik/desasungaibakaukecil`
+       - Pasir Palembang: `https://desa-sm.dvlp.asia/desa-cantik/desapasirpalembang`
+       - Pasir Wan Salim: `https://desa-sm.dvlp.asia/desa-cantik/kelurahanpasirwansalim`
+     - **Open Data REST API**: `https://desa-sm.dvlp.asia/desa-cantik/api/[slug]/[sheet]` (format JSON live/cached).
+   - **Output**: Dataset Excel (`.xlsx`), Naskah Buku Publikasi PDF Siap Cetak, Monografi Desa, dan Infografis Demografi format HD.
+   - **Ketentuan**: Tanpa registrasi berbelit, tanpa surat pengantar, dan tanpa verifikasi manual.
+2. **Jalur 2 — Layanan Fasilitasi / Permintaan Khusus (*Offline & WhatsApp*) — ⏱️ Maksimal 1 Hari Kerja**:
+   - **Sasaran**: Instansi resmi, riset khusus, atau pemohon yang membutuhkan data disagregasi spesifik, legalisir stempel resmi Kepala Desa / Lurah, atau konsultasi statistik sektoral.
+   - **Kanal Akses**: Loket Kantor Desa / Kelurahan atau kontak WhatsApp resmi Agen Statistik Desa.
+   - **Ketentuan Privasi**: Tetap mematuhi perlindungan kerahasiaan data individu (*by name by address*) sesuai UU No. 27/2022 tentang Pelindungan Data Pribadi (PDP).
+
+---
+
 ## Progress Log
+- **2026-08-14**: Memperbarui dan membakukan dokumen Standar Operasional Prosedur (SOP) Permintaan Data untuk seluruh desa/kelurahan binaan Desa Cantik 2026 (**Sungai Bakau Kecil**, **Pasir Palembang**, dan **Kelurahan Pasir Wan Salim**) ke format baku *Dual-Channel Delivery* (Jalur 1: Unduh Mandiri Instan via Portal Web `desa-sm.dvlp.asia` & Open Data API, Jalur 2: Layanan Fasilitasi Manual & Legalisasi Kades/Lurah via Agen Statistik). Mengompilasi naskah resmi dalam format Markdown, DOCX, dan PDF di folder kegiatan serta folder `outputs/`.
+- **2026-08-13**: Memperbaiki duplikasi penulisan jabatan Pj. pada tanda tangan Kata Pengantar (`kades_title.upper()`) dan mengembalikan tata letak baku halaman `KONTRIBUTOR DATA / DATA CONTRIBUTORS` (Halaman iii) berstandar tata naskah diseminasi BPS. Mengompilasi ulang seluruh publikasi desa dalam angka (SBK, Pasir Palembang, Pasir Wan Salim) ke format PDF & DOCX.
 - **2026-08-10**: Menyelesaikan audit dan perbaikan menyeluruh (*comprehensive overhaul*) pada DDA Engine (`kb/dda_generator/`) sehingga 100% elemen publikasi Desa/Kelurahan Dalam Angka (Statistik Kunci Tabel 0.1, Tabel Bab 3 & Bab 5, Infografis/Grafik Visualisasi, Ulasan Narasi Bilingual, dan Penjelasan Teknis) bersifat dinamis 100% berbasis data CAPI aktual per desa/kelurahan. Menghapus seluruh nilai/pengali sintetis (`* 0.71`, `* 0.09`, `92,33%` default) dan memastikan variabel yang tidak dikumpulkan di suatu desa (seperti KTP-el atau Layak Huni di Pasir Wan Salim) tidak ditampilkan dalam tabel maupun infografis. Menyajikan data aktual CAPI Ketenagakerjaan (Usia Kerja Bekerja 1.094 jiwa), UMKM (126 KK), & BPJS (2.655 jiwa) untuk Kelurahan Pasir Wan Salim, serta Bahan Bangunan (Dinding Tembok 837 unit, Atap Seng 849 unit, Sanitasi BAB 748 KK) & Rumah Layak Huni Aktual (65,90%) untuk Desa Pasir Palembang.
 - **2026-08-10**: Mengoreksi dan menyelaraskan metrik metadata serta publikasi Pasir Palembang sesuai standar metodologi CAPI mikrodata: memperbarui `Nama Kegiatan` menjadi **"Pendataan Sosial Keluarga dan Fasilitas Umum Desa Cantik Pasir Palembang 2026"**, memperjelas `Cara Pengumpulan Data` menjadi **"Wawancara langsung (CAPI) pendataan bangunan tempat tinggal biasa per keluarga dan observasi geospasial fasilitas desa menggunakan aplikasi mobile AppSheet"** (tanpa penyebutan agregat RT), serta mengisolasikan pembersihan nilai invalid CAPI (`safe_int` sanitization `-1` menjadi `0`) sehingga total penduduk konsisten di angka **3.679 jiwa**.
 - **2026-08-10**: Membakukan **SOP Wajib Konfirmasi User & Anti-Asumsi** pada `GEMINI.md` untuk kompilasi metadata & publikasi desa/kelurahan baru. Merefaktor mesin metadata (`builder.py`, `fetcher.py`, `typst_renderer.py`) untuk: (1) Mengharuskan konfirmasi nama kegiatan, status administrasi (Kelurahan vs Desa), serta tab sheet eksplisit (`rt_tab`, `fas_tab`), (2) Mengisolasi Pasir Wan Salim murni CAPI Keluarga tanpa Fasilitas Umum (`fas_tab` kosong) dan menghapus header tabel kosong dari PDF/Markdown, (3) Melakukan audit ketat pada `MS-INDIKATOR` di mana indikator HANYA dicantumkan jika variabel pembentuknya terbukti ada di sheet desa, (4) Mengubah ukuran font tabel Typst menjadi 7.5pt dan memperluas *zero-width space* (`wrap-var`) ke karakter `_`, `(`, `)`, `/`, `?` sehingga bebas overflow, dan (5) Memperbaiki nomenklatur Pasir Wan Salim 100% konsisten sebagai **Kelurahan Pasir Wan Salim**.

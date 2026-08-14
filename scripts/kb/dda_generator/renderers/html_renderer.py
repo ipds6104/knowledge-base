@@ -354,7 +354,7 @@ def render_desa_html(pub_data: DesaPublicationData) -> Path:
     .bps-table {{ width: 100%; border-collapse: collapse; font-size: 7.8pt; margin-bottom: 6px; }}
     .bps-table th.main-header {{ background-color: #eb8a3c; color: #ffffff; font-weight: 700; text-align: center; padding: 4.5px 6px; border: 1px solid #d97706; vertical-align: middle; font-size: 8pt; }}
     .bps-table th.col-num {{ background-color: #fdebd0; color: #1a202c; font-weight: 700; text-align: center; padding: 2.5px; border: 1px solid #d97706; font-size: 7.5pt; }}
-    .bps-table td {{ padding: 3px 6px; border: 1px solid #cbd5e1; color: #1a202c; }}
+    .bps-table td {{ padding: 2.5px 5px; border: 1px solid #cbd5e1; color: #1a202c; line-height: 1.25; }}
     .bps-table tbody tr:nth-child(even) {{ background-color: #fff5eb; }}
     .bps-table tr.total-row td {{ background-color: #eb8a3c !important; color: #ffffff !important; font-weight: 800; border: 1px solid #d97706; }}
     .text-center {{ text-align: center; }}
@@ -455,8 +455,16 @@ def render_desa_html(pub_data: DesaPublicationData) -> Path:
                 + "</tr>"
             )
 
-        p1_chunk_size = 16 if table_code == "1.2" else 18
-        cont_chunk_size = 24
+        if table_code == "1.2":
+            p1_chunk_size = 9
+            cont_chunk_size = 12
+        elif table_code in ["5.2", "5.3"]:
+            p1_chunk_size = 10
+            cont_chunk_size = 12
+        else:
+            p1_chunk_size = 11
+            cont_chunk_size = 12
+
         current_page_idx = badge_start + 2
         table_pages = {table_code: current_page_idx}
         if table_code == "1.2":
@@ -585,9 +593,12 @@ def render_desa_html(pub_data: DesaPublicationData) -> Path:
                         + "</tr>"
                     )
 
+                e_p1_chunk = 10
+                e_cont_chunk = 12
+
                 current_page_idx += 1
                 table_pages[e_code] = current_page_idx
-                if len(e_rows_all) <= 18:
+                if len(e_rows_all) <= e_p1_chunk:
                     e_p1 = "\n".join(e_rows_all)
                     if e_r_tot:
                         e_p1 += "\n" + e_r_tot
@@ -606,7 +617,7 @@ def render_desa_html(pub_data: DesaPublicationData) -> Path:
                         current_page_idx,
                     )
                 else:
-                    e_p1 = "\n".join(e_rows_all[:18])
+                    e_p1 = "\n".join(e_rows_all[:e_p1_chunk])
                     e_body = f"""{e_sec_h}{e_main_title}
                     <table class="bps-table">
                       <thead>{e_thead}</thead>
@@ -621,18 +632,18 @@ def render_desa_html(pub_data: DesaPublicationData) -> Path:
                         current_page_idx,
                     )
 
-                    e_rem = e_rows_all[18:]
+                    e_rem = e_rows_all[e_p1_chunk:]
                     while e_rem:
                         current_page_idx += 1
-                        if len(e_rem) <= 24:
+                        if len(e_rem) <= e_cont_chunk:
                             e_chunk = e_rem
                             e_rem = []
                             e_r_cont = "\n".join(e_chunk)
                             if e_r_tot:
                                 e_r_cont += "\n" + e_r_tot
                         else:
-                            e_chunk = e_rem[:24]
-                            e_rem = e_rem[24:]
+                            e_chunk = e_rem[:e_cont_chunk]
+                            e_rem = e_rem[e_cont_chunk:]
                             e_r_cont = "\n".join(e_chunk)
 
                         e_cont_body = f"""{e_cont_title}
@@ -1214,28 +1225,31 @@ def render_desa_html(pub_data: DesaPublicationData) -> Path:
         show_footer=True,
     )
 
-    # Page 3 (iii - ODD)
+    # Page 3 (iii - ODD - Kontributor Data)
     card_3_contrib = make_page_card(
         "KONTRIBUTOR DATA",
         "DATA CONTRIBUTORS",
         "iii",
         f"""      <div style="text-align: center; margin-top: 10px; margin-bottom: 25px;">
-        <h2 style="font-size: 14pt; font-weight: 800; color: #0b3c5d; margin: 0; text-transform: uppercase;">TIM PENYUSUN & KONTRIBUTOR DATA</h2>
-        <h3 style="font-size: 11pt; font-weight: 800; font-style: italic; color: #0b3c5d; margin: 3px 0 0 0; text-transform: uppercase;">PREPARATION TEAM & DATA CONTRIBUTORS</h3>
+        <h2 style="font-size: 14pt; font-weight: 800; color: #0b3c5d; margin: 0; text-transform: uppercase;">KONTRIBUTOR DATA</h2>
+        <h3 style="font-size: 11pt; font-weight: 800; font-style: italic; color: #0b3c5d; margin: 3px 0 0 0; text-transform: uppercase;">DATA CONTRIBUTORS</h3>
       </div>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 8.8pt; line-height: 1.6; color: #2d3748;">
-        <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 15px;">
-          <div style="font-weight: 800; color: #0b3c5d; border-bottom: 2px solid #eb8a3c; padding-bottom: 4px; margin-bottom: 10px; text-transform: uppercase;">PEMERINTAH {admin_upper} {name_upper}</div>
-          <strong>Penanggung Jawab:</strong><br>{kades_name} ({kades_title})<br><br>
-          <strong>Koordinator Agen Statistik:</strong><br>Sekretaris {admin_type} {name_title}<br><br>
-          <strong>Agen Statistik {admin_type}:</strong><br>Kasi Pemerintahan & Seluruh Ketua RT {admin_type} {name_title}
-        </div>
-        <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 15px;">
-          <div style="font-weight: 800; color: #0b3c5d; border-bottom: 2px solid #eb8a3c; padding-bottom: 4px; margin-bottom: 10px; text-transform: uppercase;">BPS KABUPATEN MEMPAWAH</div>
-          <strong>Pembina Desa Cantik:</strong><br>Tim Kerja Pembinaan Statistik Sektoral BPS Kabupaten Mempawah<br><br>
-          <strong>Penyunting & Analis Data:</strong><br>Fungsional Statistisi BPS Kabupaten Mempawah<br><br>
-          <strong>Desain & Penata Letak:</strong><br>Tim Diseminasi Statistik BPS Kabupaten Mempawah
-        </div>
+      <div style="font-size: 9.2pt; line-height: 1.8; color: #2d3748; max-width: 90%; margin: 0 auto;">
+        <p style="margin-bottom: 18px; text-align: justify;">Publikasi <strong>"{admin_type} {name_title} Dalam Angka {year}"</strong> dapat terwujud berkat kerja sama dan kontribusi aktif dari berbagai pihak, antara lain:</p>
+        <ol style="padding-left: 22px; line-height: 1.9;">
+          <li style="margin-bottom: 12px;">
+            <strong>Pemerintah {admin_type} {name_title}</strong><br>
+            <span style="font-style: italic; color: #475569;">Government of {name_title} {admin_type_en}</span>
+          </li>
+          <li style="margin-bottom: 12px;">
+            <strong>Pengurus Rukun Tetangga ({len(rows)} RT) {admin_type} {name_title}</strong><br>
+            <span style="font-style: italic; color: #475569;">Management of {len(rows)} Neighborhood Units (RT) of {name_title} {admin_type_en}</span>
+          </li>
+          <li style="margin-bottom: 12px;">
+            <strong>Badan Pusat Statistik Kabupaten Mempawah</strong><br>
+            <span style="font-style: italic; color: #475569;">BPS-Statistics of Mempawah Regency</span>
+          </li>
+        </ol>
       </div>""",
         3,
         show_header=False,
@@ -1258,7 +1272,7 @@ def render_desa_html(pub_data: DesaPublicationData) -> Path:
         <div style="display: flex; justify-content: flex-end; margin-top: 25px;">
           <div style="text-align: center; font-size: 9pt; line-height: 1.4;">
             {name_title}, Agustus {year}<br>
-            <strong>{kades_title.upper()} {name_upper}</strong><br>
+            <strong>{kades_title.upper()}</strong><br>
             <div style="height: 45px;"></div>
             <strong><u>{kades_name.upper()}</u></strong>
           </div>
@@ -1285,7 +1299,7 @@ def render_desa_html(pub_data: DesaPublicationData) -> Path:
         <div style="display: flex; justify-content: flex-end; margin-top: 25px;">
           <div style="text-align: center; font-size: 9pt; line-height: 1.4; font-style: normal;">
             {name_title}, August {year}<br>
-            <strong>HEAD OF {name_upper} {admin_type_en.upper()}</strong><br>
+            <strong>{kades_title_en.upper()}</strong><br>
             <div style="height: 45px;"></div>
             <strong><u>{kades_name.upper()}</u></strong>
           </div>
