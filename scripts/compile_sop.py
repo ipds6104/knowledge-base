@@ -14,13 +14,13 @@ CSS_STYLE = """
 <style>
 @page {
     size: A4;
-    margin: 14mm 16mm 14mm 16mm;
+    margin: 12mm 15mm 12mm 15mm;
 }
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     color: #1e293b;
-    font-size: 8.8pt;
-    line-height: 1.38;
+    font-size: 8.6pt;
+    line-height: 1.35;
     margin: 0;
     padding: 0;
 }
@@ -144,24 +144,24 @@ def generate_svg_diagram(cfg: dict) -> str:
 
   <!-- Jalur 2 Title Box (Blue) -->
   <rect x="410" y="76" width="260" height="28" rx="4" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.2" />
-  <text x="540" y="89" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="8.5" font-weight="bold" fill="#1e40af" text-anchor="middle">JALUR 2: LAYANAN FASILITASI KHUSUS</text>
-  <text x="540" y="99" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="7" fill="#1d4ed8" text-anchor="middle">Offline &amp; WhatsApp — Maksimal 1 Hari Kerja</text>
+  <text x="540" y="89" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="8.5" font-weight="bold" fill="#1e40af" text-anchor="middle">JALUR 2: LAYANAN FASILITASI CEPAT</text>
+  <text x="540" y="99" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="7" fill="#1d4ed8" text-anchor="middle">Offline &amp; WhatsApp — 15 s.d. 30 Menit</text>
 
   <!-- Jalur 2 Steps -->
   <path d="M 540 104 L 540 114" fill="none" stroke="#3b82f6" stroke-width="1.2" marker-end="url(#arrow-blue)" />
   <rect x="410" y="114" width="260" height="30" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" />
   <text x="540" y="126" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="7.5" font-weight="bold" fill="#1e293b" text-anchor="middle">Loket Kantor / Kontak WhatsApp Agen</text>
-  <text x="540" y="137" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="7" fill="#64748b" text-anchor="middle">Pengajuan permohonan data kustom / legalisir</text>
+  <text x="540" y="137" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="7" fill="#64748b" text-anchor="middle">Pengajuan kebutuhan data agregat non-BNBA</text>
 
   <path d="M 540 144 L 540 154" fill="none" stroke="#3b82f6" stroke-width="1.2" marker-end="url(#arrow-blue)" />
   <rect x="410" y="154" width="260" height="30" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" />
-  <text x="540" y="166" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="7.5" font-weight="bold" fill="#1e293b" text-anchor="middle">Verifikasi &amp; Persetujuan Pimpinan</text>
-  <text x="540" y="177" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="7" fill="#64748b" text-anchor="middle">Disetujui oleh {cfg['kades_title']}</text>
+  <text x="540" y="166" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="7.5" font-weight="bold" fill="#1e293b" text-anchor="middle">Verifikasi &amp; Ekstraksi Langsung</text>
+  <text x="540" y="177" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="7" fill="#64748b" text-anchor="middle">Verifikasi data agregat oleh Agen Statistik {cfg['admin_type']}</text>
 
   <path d="M 540 184 L 540 194" fill="none" stroke="#3b82f6" stroke-width="1.2" marker-end="url(#arrow-blue)" />
   <rect x="410" y="194" width="260" height="32" rx="4" fill="#f3e8ff" stroke="#a855f7" stroke-width="1.2" />
-  <text x="540" y="207" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="8" font-weight="bold" fill="#6b21a8" text-anchor="middle">PENYERAHAN BERKAS RESMI</text>
-  <text x="540" y="218" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="7" fill="#7e22ce" text-anchor="middle">Cetak bertanda tangan atau file elektronik resmi</text>
+  <text x="540" y="207" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="8" font-weight="bold" fill="#6b21a8" text-anchor="middle">PENYERAHAN DATA TERVERIFIKASI</text>
+  <text x="540" y="218" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-size="7" fill="#7e22ce" text-anchor="middle">Lembar rekapitulasi data siap pakai oleh Agen Statistik</text>
 
   <!-- Markers -->
   <defs>
@@ -193,10 +193,7 @@ def generate_sop_markdown(cfg: dict) -> str:
 
     fas_desc = ""
     if cfg.get("fas_tab"):
-        fas_desc = f"\n*   **Basis Data Fasilitas (`{cfg['fas_tab']}` / AppSheet)**: Pemetaan geospasial sarana peribadatan, pendidikan, kesehatan, fasilitas ekonomi, pemerintahan, kondisi fisik bangunan, jalan, listrik, dan jaringan telekomunikasi."
-        api_fas = f"\n     - `GET https://desa-sm.dvlp.asia/desa-cantik/api/{api_slug}/{cfg['fas_tab']}`"
-    else:
-        api_fas = ""
+        fas_desc = f"\n- **Basis Data Sarana, Prasarana, & Potensi Wilayah**: Pemetaan geospasial sarana peribadatan, pendidikan, kesehatan, fasilitas ekonomi, perkantoran pemerintah, kondisi fisik lingkungan, jalan, penerangan, dan jaringan telekomunikasi."
 
     wa_contact = cfg.get("wa_contact", "")
     wa_display = f" (`{wa_contact}`)" if wa_contact else ""
@@ -208,15 +205,19 @@ def generate_sop_markdown(cfg: dict) -> str:
 
 ---
 
-### 1. Latar Belakang
-Dalam rangka mewujudkan tata kelola Satu Data Indonesia (SDI) di tingkat {admin_type.lower()} serta mendukung keterbukaan informasi publik, Pemerintah {admin_type} {name_title} bersama Badan Pusat Statistik (BPS) Kabupaten Mempawah menyusun Standar Operasional Prosedur (SOP) Permintaan dan Pemanfaatan Data. SOP ini mengatur mekanisme aksesibilitas data bagi masyarakat, akademisi, perangkat daerah, dan pemangku kepentingan secara transparan, akuntabel, dan cepat.
+### 1. Latar Belakang & Prinsip Layanan Cepat
+
+Dalam rangka mewujudkan tata kelola Satu Data Indonesia (SDI) di tingkat {admin_type.lower()} serta mendukung keterbukaan informasi publik, Pemerintah {admin_type} {name_title} bersama Badan Pusat Statistik (BPS) Kabupaten Mempawah menyusun Standar Operasional Prosedur (SOP) Permintaan dan Pemanfaatan Data. Layanan ini menerapkan prinsip **pelayanan cepat, ringkas, dan bebas hambatan birokrasi**: permohonan data statistik yang bersifat **agregat (non-*by name by address*)** langsung diproses dan dirilis secara mandiri oleh **Petugas Agen Statistik {admin_type}** tanpa memerlukan tanda tangan basah {kades_title}.
 
 ---
 
-### 2. Sumber Data & Basis Data Terpadu
-Data yang dapat diakses bersumber dari basis data hasil sensus dan pendataan potensi kewilayahan Program {admin_type} Cantik {year}:
-*   **Basis Data RT & Demografi (`{cfg['rt_tab']}` / AppSheet)**: Karakteristik penduduk (gender, rasio jenis kelamin), rumah tangga (KK), tingkat pendidikan, kepemilikan dokumen adminduk/BPJS, status ketenagakerjaan, kegiatan UMKM, dan sebaran penerima bantuan sosial (PKH, BPNT, BST, BLT).{fas_desc}
-*   **Produk Statistik Turunan**: Buku Publikasi *{admin_type} {name_title} Dalam Angka {year}*, Buku *Potensi {admin_type} {name_title} {year}*, Monografi {admin_type}, dan Infografis Statistik Demografi format resolusi tinggi (HD).
+### 2. Sumber Data & Batasan Data Terpadu (Hanya Non-BNBA)
+
+Data yang dapat diakses bersumber dari basis data hasil sensus dan pendataan potensi kewilayahan Program {admin_type} Cantik {year}, dengan batasan ketat **hanya menyajikan data agregat**:
+
+- **Basis Data Kependudukan & Sosial Ekonomi**: Rekapitulasi jumlah penduduk (gender, rasio jenis kelamin), jumlah kepala keluarga (KK), sebaran tingkat pendidikan, kepemilikan dokumen administrasi kependudukan/BPJS, status ketenagakerjaan, kelompok UMKM, dan sebaran agregat penerima bantuan sosial (PKH, BPNT, BST, BLT).{fas_desc}
+- **Produk Statistik Turunan**: Buku Publikasi *{admin_type} {name_title} Dalam Angka {year}*, Buku *Potensi {admin_type} {name_title} {year}*, Monografi {admin_type}, dan Infografis Statistik Demografi format resolusi tinggi (HD).
+- **Pemberitahuan Khusus**: Seluruh data individu perorangan/keluarga (*by name by address*) **tidak dapat dimohonkan** demi mematuhi prinsip kerahasiaan statistik dan privasi warga.
 
 ---
 
@@ -227,7 +228,7 @@ Layanan penyediaan data statistik {admin_type} Cantik {name_title} diselenggarak
 | Saluran Layanan | Jalur Akses | Sasaran Pengguna | Durasi Layanan | Jenis Output |
 | :--- | :--- | :--- | :---: | :--- |
 | **Jalur 1: Layanan Mandiri Digital** (*Self-Service Online*) | Portal Website Resmi (`desa-sm.dvlp.asia`) & Open Data REST API | Masyarakat umum, akademisi, peneliti, mahasiswa, media massa, dan OPD | **Instan (0 Menit)** | File Spreadsheet Excel (`.xlsx`), Naskah Buku Publikasi PDF, Monografi, Infografis HD, JSON API |
-| **Jalur 2: Layanan Fasilitasi Khusus** (*Offline & WhatsApp*) | Loket Kantor {admin_type}{wa_table_label} | Instansi resmi, riset khusus, atau pemohon data disagregasi/legalisir | **Maksimal 1 Hari Kerja** | Berkas Data Rekapitulasi Resmi bertanda tangan {kades_title} |
+| **Jalur 2: Layanan Fasilitasi Cepat** (*Offline & WhatsApp*) | Loket Kantor {admin_type}{wa_table_label} | Instansi pemerintah, mahasiswa, perencana, atau pemohon data disagregasi agregat | **15 s.d. 30 Menit** | Lembar Rekapitulasi Data Agregat Terverifikasi Petugas Agen Statistik {admin_type} |
 
 ---
 
@@ -243,35 +244,35 @@ Jalur ini ditujukan bagi publik, mahasiswa, akademisi, dan instansi yang memerlu
    - **Buku Publikasi Digital**: Masuk ke section *Publikasi & Bukti Dukung*, klik **"Unduh Publikasi"** untuk mengunduh naskah PDF resmi {admin_type} Dalam Angka atau Potensi {admin_type}.
    - **Monografi & Infografis**: Masuk ke section *Produk Statistik & SOP*, klik **"Unduh Monografi"** atau **"Unduh Versi HD"** untuk materi infografis visual.
 3. **Integrasi Open API (Bagi Pengembang / Sistem Eksternal)**:
-   - Akses data terstruktur via REST API (JSON):
-     - `GET https://desa-sm.dvlp.asia/desa-cantik/api/{api_slug}/{cfg['rt_tab']}`{api_fas}
+   - Akses data terbuka terstruktur via REST API (JSON):
+     - `https://desa-sm.dvlp.asia/desa-cantik/api/{api_slug}` (format JSON terstandarisasi untuk integrasi aplikasi).
 
 ---
 
-#### B. Jalur 2: Layanan Fasilitasi / Permintaan Khusus (*Offline & WhatsApp*) — Maksimal 1 Hari Kerja
-Jalur ini ditujukan bagi pemohon yang membutuhkan data disagregasi khusus, konsultasi statistik sektoral, atau berkas data bertanda tangan resmi {kades_title}:
+#### B. Jalur 2: Layanan Fasilitasi Cepat (*Offline & WhatsApp*) — 15 s.d. 30 Menit
+Jalur ini ditujukan bagi pemohon yang memerlukan data disagregasi agregat khusus atau bantuan konsultasi teknis statistik, diproses langsung secara cepat oleh Petugas Agen Statistik {admin_type}:
 
 | Tahap | Pelaku | Aktivitas | Durasi | Output |
 | :---: | :--- | :--- | :---: | :--- |
-| **1** | Pemohon Data | Mengajukan permohonan di loket Kantor {admin_type} {name_title} atau menghubungi Agen Statistik {admin_type} via WhatsApp{wa_display} dengan menyampaikan maksud keperluan. | 10 Menit | Formulir Permohonan Tercatat |
-| **2** | Kasi Pemerintahan / {kades_title} | Memverifikasi kesesuaian permohonan data dan memberikan persetujuan rilis data statistik. | Maks 2 Jam | Disposisi Persetujuan Rilis |
-| **3** | Agen Statistik {admin_type} | Melakukan ekstraksi data dari basis data terpadu {admin_type} Cantik. | 15 Menit | Berkas Rekapitulasi Data |
-| **4** | Agen Statistik {admin_type} | Menyerahkan berkas data resmi (cetak bertanda tangan atau file elektronik terotentikasi via WhatsApp/Email). | 5 Menit | Tanda Terima & Berkas Data |
+| **1** | Pemohon Data | Mengajukan kebutuhan data agregat di loket Kantor {admin_type} {name_title} atau via WhatsApp Agen Statistik{wa_display}. | 5 Menit | Permohonan Tercatat |
+| **2** | Agen Statistik {admin_type} | Memverifikasi bahwa data yang diminta adalah data agregat (non-*by name by address*). | 5 Menit | Permohonan Terverifikasi |
+| **3** | Agen Statistik {admin_type} | Melakukan ekstraksi rekapitulasi data dari basis data terpadu {admin_type} Cantik. | 10 Menit | Berkas Rekapitulasi Data |
+| **4** | Agen Statistik {admin_type} | Menyerahkan lembar rekapitulasi data terverifikasi (file digital via WhatsApp/Email atau cetak langsung). | 5 Menit | Data Selesai Diterima |
 
 ---
 
 ### 5. Aturan Hak Akses & Keamanan Data Pribadi
-1. **Perlindungan Data Pribadi (UU No. 27/2022)**: Data individu/mikro (*by name by address*) bersifat rahasia dan **tidak dipublikasikan** untuk melindungi privasi warga.
-2. **Level Diseminasi**: Data yang diserahkan kepada publik berupa data agregat tingkat Rukun Tetangga (RT), Dusun/RW, atau inventarisasi fasilitas umum.
-3. **Pemanfaatan Non-Komersial**: Data hasil kegiatan {admin_type} Cantik disediakan untuk kepentingan perencanaan pembangunan, perumusan kebijakan, penelitian akademis, dan pelayanan publik. Penggunaan untuk tujuan komersial wajib memperoleh izin tertulis dari Pemerintah {admin_type}.
+1. **Wajib Non-*By Name By Address* (UU No. 27/2022)**: Data individu/mikro perorangan dan identitas keluarga bersifat rahasia dan **sama sekali tidak dapat diberikan kepada pemohon manapun** guna melindungi data pribadi penduduk.
+2. **Level Diseminasi Legal**: Data yang dapat dilayani murni merupakan data agregat/makro tingkat Rukun Tetangga (RT), Dusun/RW, desa/kelurahan, atau sebaran fasilitas umum.
+3. **Pemanfaatan Data**: Data hasil pembinaan {admin_type} Cantik disediakan untuk perencanaan pembangunan, riset akademik, evaluasi program, dan perumusan kebijakan publik. Penggunaan untuk tujuan komersial wajib memperoleh izin tertulis dari Pemerintah {admin_type}.
 
 ---
 
-### 6. Pengesahan & Tanda Tangan
+### 6. Pengesahan Dokumen SOP
 
 {name_title}, 6 Agustus {year}
 
-**Mengesahkan,**  
+**Menetapkan,**  
 **{kades_title}**
 
 <br><br><br>
