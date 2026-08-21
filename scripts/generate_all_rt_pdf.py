@@ -87,34 +87,48 @@ def load_data():
             if code:
                 alokasi[code] = r
 
-    kel_by_code = defaultdict(list)
-    with open(KEL_CSV, encoding='utf-8-sig') as f:
-        for r in csv.DictReader(f):
-            code = r.get('level_6_full_code', '').strip()
-            name = (r.get('data1') or '').strip().upper()
-            code_id = (r.get('code_identity') or '').strip().upper()
-            # Saring entitas DUMMY dan entitas bangunan kosong (No 1)
-            if name == 'DUMMY' or 'DUMMY' in code_id or is_empty_entity(name, code_id):
-                continue
-            if code:
-                kel_by_code[code].append(r)
-
+    # 1. Load data kuesioner usaha dan catat assignment_id yang berstatus Ditemukan/Baru
     us_by_code = defaultdict(list)
     usaha_by_id = {}
+    found_assignment_ids = set()
     with open(USAHA_CSV, encoding='utf-8-sig') as f:
         for r in csv.DictReader(f):
             code = r.get('level_6_full_code', '').strip()
             nama_us = (r.get('nama_usaha') or '').strip().upper()
             code_id = (r.get('code_identity') or '').strip().upper()
             is_act = str(r.get('is_active', '1')).strip()
-            # Saring entitas tidak aktif (is_active = 0), dummy, dan bangunan kosong (No 1)
-            if is_act == '0' or nama_us == 'DUMMY' or is_empty_entity(nama_us, code_id):
+            base_is_act = str(r.get('base_is_active', '1')).strip()
+            # Saring entitas tidak aktif (is_active = 0), dummy, dan bangunan kosong
+            if is_act == '0' or base_is_act == '0' or nama_us == 'DUMMY' or is_empty_entity(nama_us, code_id):
                 continue
+            aid = r.get('assignment_id', '').strip()
+            val = str(r.get('keberadaan_usaha_value', '')).strip()
+            lbl = (r.get('keberadaan_usaha_label', '') or '').upper()
+            if val in ('1', '2') or 'DITEMUKAN' in lbl or 'BARU' in lbl:
+                if aid:
+                    found_assignment_ids.add(aid)
             if code:
                 us_by_code[code].append(r)
-            aid = r.get('assignment_id', '').strip()
             if aid:
                 usaha_by_id[aid] = r
+
+    # 2. Load penugasan keluarga dengan Smart Cross-Exclusion & is_active = 1
+    kel_by_code = defaultdict(list)
+    with open(KEL_CSV, encoding='utf-8-sig') as f:
+        for r in csv.DictReader(f):
+            code = r.get('level_6_full_code', '').strip()
+            name = (r.get('data1') or '').strip().upper()
+            code_id = (r.get('code_identity') or '').strip().upper()
+            is_act = str(r.get('is_active', '1')).strip()
+            aid = r.get('assignment_id', '').strip()
+            # Saring entitas tidak aktif (is_active = 0), dummy, bangunan kosong, dan false-positive (Smart Cross-Exclusion)
+            if is_act == '0' or name == 'DUMMY' or 'DUMMY' in code_id or is_empty_entity(name, code_id):
+                continue
+            if aid and aid in found_assignment_ids:
+                # Usaha keluarga ditemukan/baru, eksklusi dari daftar keluarga tidak ditemukan
+                continue
+            if code:
+                kel_by_code[code].append(r)
 
     all_codes = sorted(list(set(kel_by_code.keys()).union(us_by_code.keys())))
     # Pastikan hanya memproses SLS yang:
@@ -157,7 +171,14 @@ def build_html_for_code(code, alokasi_info, kk_list, us_list, usaha_by_id=None):
         esc_name = html.escape(raw_name)
         # Bersihkan string code_identity dari artefak CAPI (No 3)
         cleaned_id = clean_code_id(code_id, code, raw_name)
-        sub_id = f'NIK/KK: {html.escape(cleaned_id)}' if cleaned_id else ''
+        sub_id_parts = []
+        if cleaned_id:
+            sub_id_parts.append(f'NIK/KK: {html.escape(cleaned_id)}')
+        st = r.get('assignment_status_alias', '').strip()
+        if st and st != 'APPROVED BY Pengawas':
+            badge_text = 'REJECTED PML' if 'REJECT' in st else ('DRAFT' if 'DRAFT' in st else ('OPEN' if 'OPEN' in st else 'SUBMITTED'))
+            sub_id_parts.append(f'<span style="color:#b91c1c;font-weight:bold;">[{badge_text}]</span>')
+        sub_id = ' | '.join(sub_id_parts)
         kk_items.append({'idx': idx, 'label': f'A{idx}', 'nama': esc_name, 'sub_id': sub_id, 'alamat': html.escape(alamat)})
 
     # ── Prepare Usaha items ────────────────────────────────────────────────────

@@ -100,6 +100,7 @@ def cmd_sqllab_pull(args):
       COUNT(CASE WHEN (data9 = '2. Tidak' OR data9 LIKE '%Tidak Ditemukan%') AND assignment_status_alias = 'SUBMITTED BY Pencacah' THEN 1 END) AS tidak_ditemukan_submitted
     FROM base_table_assignment
     WHERE level_2_full_code = '6104'
+      AND is_active = 1
     GROUP BY level_6_full_code
     ORDER BY level_6_full_code ASC
     LIMIT 1000 OFFSET 0;
@@ -151,11 +152,17 @@ def cmd_sqllab_pull_microdata(args):
           data2,
           data9,
           current_user_username,
-          current_user_survey_role_name
+          current_user_survey_role_name,
+          is_active
         FROM base_table_assignment
         WHERE level_2_full_code = '6104'
-          AND (data9 = '2. Tidak' OR data9 LIKE '%Tidak Ditemukan%')
-          AND assignment_status_alias != 'DRAFT'
+          AND is_active = 1
+          AND (
+            (data9 = '2. Tidak' OR data9 LIKE '%Tidak Ditemukan%')
+            OR assignment_status_alias IN ('REJECTED BY Pengawas', 'REJECTED BY Admin Kabupaten')
+            OR (assignment_status_alias = 'DRAFT' AND (data9 = '2. Tidak' OR data9 LIKE '%Tidak Ditemukan%'))
+            OR assignment_status_alias = 'OPEN'
+          )
           AND data1 != 'DUMMY'
           AND code_identity NOT LIKE '%DUMMY%'
         ORDER BY level_6_full_code ASC, assignment_id ASC
@@ -208,11 +215,18 @@ def cmd_sqllab_pull_microdata(args):
           n.keberadaan_usaha_label,
           n.keberadaan_usaha_value,
           n.kbli_value,
-          n.kbli_label
+          n.kbli_label,
+          b.assignment_status_alias,
+          b.is_active AS base_is_active
         FROM se2026_nested n
         LEFT JOIN base_table_assignment b ON n.assignment_id = b.assignment_id
         WHERE n.level_2_full_code = '6104'
-          AND (n.keberadaan_usaha_label LIKE '%Tidak Ditemukan%' OR n.keberadaan_usaha_value = '00')
+          AND (b.is_active IS NULL OR b.is_active = 1)
+          AND (
+            n.keberadaan_usaha_label LIKE '%Tidak Ditemukan%' 
+            OR n.keberadaan_usaha_value = '00'
+            OR b.assignment_status_alias IN ('REJECTED BY Pengawas', 'REJECTED BY Admin Kabupaten')
+          )
           AND (n.is_active IS NULL OR n.is_active != 0)
         ORDER BY n.level_6_full_code ASC, n.assignment_id ASC
         LIMIT {chunk_size} OFFSET {offset};
@@ -272,6 +286,7 @@ def cmd_sqllab_pull_completed_subsls(args):
       COUNT(CASE WHEN (data9 = '2. Tidak' OR data9 LIKE '%Tidak Ditemukan%') AND assignment_status_alias != 'DRAFT' THEN 1 END) AS tidak_ditemukan_total
     FROM base_table_assignment
     WHERE level_2_full_code = '6104'
+      AND is_active = 1
     GROUP BY level_6_full_code
     HAVING COUNT(assignment_id) = COUNT(CASE WHEN external_done = '1' THEN 1 END)
     ORDER BY level_6_full_code ASC
