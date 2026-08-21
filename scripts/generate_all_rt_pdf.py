@@ -1,5 +1,6 @@
 import csv
 import hashlib
+import html
 import json
 import os
 import re
@@ -7,6 +8,7 @@ import subprocess
 import sys
 from collections import defaultdict
 from concurrent.futures import ProcessPoolExecutor, as_completed
+from datetime import datetime
 
 BASE_DIR = 'kegiatan/sensus-ekonomi-2026/2026'
 ALOKASI_CSV = os.path.join(BASE_DIR, 'master_data', 'Alokasi Petugas.csv')
@@ -42,6 +44,41 @@ def get_logo_html():
             return f'<img src="data:image/svg+xml;base64,{b64}" alt="Logo BPS" style="height: 52px; width: auto;" />'
     return '<div style="border: 1.5px solid #000; padding: 4px; font-weight: bold;">BPS 6104</div>'
 
+def is_empty_entity(name, code_id):
+    """Mendeteksi entitas non-orang / bangunan kosong yang tidak relevan untuk verifikasi lapangan."""
+    n = (name or '').strip().upper()
+    c = (code_id or '').strip().upper()
+    keywords = [
+        'RUMAH KOSONG', 'BANGUNAN KOSONG', 'LAHAN KOSONG', 'TANAH KOSONG',
+        'GEDUNG KOSONG', 'RUKO KOSONG', 'KANDANG KOSONG', 'KOSONG /'
+    ]
+    for kw in keywords:
+        if kw in n or kw in c:
+            return True
+    return False
+
+def clean_code_id(code_id, sls_code='', name=''):
+    """Membersihkan string code_identity dari prefix SLS dan artefak tagging CAPI (misal: '- 2. Tidak', '- 0 - 2. Tidak')."""
+    if not code_id or code_id == '-':
+        return ''
+    s = code_id.strip()
+    
+    # 1. Hapus prefix kode SLS jika ada (misal: '6104080001002100 - ')
+    if sls_code and s.startswith(sls_code):
+        s = s[len(sls_code):].strip(' -_')
+    elif re.match(r'^\d{16}\s*[-_]\s*', s):
+        s = re.sub(r'^\d{16}\s*[-_]\s*', '', s).strip()
+
+    # 2. Hapus suffix status CAPI seperti '- 2. Tidak', '- 0 - 2. Tidak', '- 1 - 2. TIDAK', '/ - 2. Tidak'
+    s = re.sub(r'[\s\/\-_]*\d*\.?\s*Tidak(?:\s*Ditemukan)?.*$', '', s, flags=re.IGNORECASE).strip()
+    s = re.sub(r'[\s\/\-_]+0$', '', s).strip()
+    s = re.sub(r'(\s*[\/\-]\s*)+$', '', s).strip()
+    
+    # 3. Jika setelah dibersihkan hasilnya kosong atau sama dengan '-', return kosong
+    if s == '-' or not s:
+        return ''
+    return s
+
 def load_data():
     alokasi = {}
     with open(ALOKASI_CSV, encoding='utf-8-sig') as f:
@@ -54,6 +91,11 @@ def load_data():
     with open(KEL_CSV, encoding='utf-8-sig') as f:
         for r in csv.DictReader(f):
             code = r.get('level_6_full_code', '').strip()
+            name = (r.get('data1') or '').strip().upper()
+            code_id = (r.get('code_identity') or '').strip().upper()
+            # Saring entitas DUMMY dan entitas bangunan kosong (No 1)
+            if name == 'DUMMY' or 'DUMMY' in code_id or is_empty_entity(name, code_id):
+                continue
             if code:
                 kel_by_code[code].append(r)
 
@@ -62,6 +104,12 @@ def load_data():
     with open(USAHA_CSV, encoding='utf-8-sig') as f:
         for r in csv.DictReader(f):
             code = r.get('level_6_full_code', '').strip()
+            nama_us = (r.get('nama_usaha') or '').strip().upper()
+            code_id = (r.get('code_identity') or '').strip().upper()
+            is_act = str(r.get('is_active', '1')).strip()
+            # Saring entitas tidak aktif (is_active = 0), dummy, dan bangunan kosong (No 1)
+            if is_act == '0' or nama_us == 'DUMMY' or is_empty_entity(nama_us, code_id):
+                continue
             if code:
                 us_by_code[code].append(r)
             aid = r.get('assignment_id', '').strip()
@@ -69,345 +117,498 @@ def load_data():
                 usaha_by_id[aid] = r
 
     all_codes = sorted(list(set(kel_by_code.keys()).union(us_by_code.keys())))
+    # Pastikan hanya memproses SLS yang:
+    # 1. Memiliki panjang 16 digit dan digit ke-11 (index 10) adalah '0' (tanda wilayah RT/SLS pemukiman, bukan Non-SLS hutan/sawit)
+    # 2. Memiliki minimal 1 responden real (non-dummy)
+    all_codes = [
+        c for c in all_codes
+        if len(c) == 16 and c[10] == '0' and (len(kel_by_code.get(c, [])) + len(us_by_code.get(c, []))) > 0
+    ]
     return alokasi, kel_by_code, us_by_code, all_codes, usaha_by_id
 
 def build_html_for_code(code, alokasi_info, kk_list, us_list, usaha_by_id=None):
-    nmsls = alokasi_info.get('nmsls', 'Unknown SLS')
-    nmkec = alokasi_info.get('nmkec', '-')
+    nmsls  = alokasi_info.get('nmsls', 'Unknown SLS')
+    nmkec  = alokasi_info.get('nmkec', '-')
     nmdesa = alokasi_info.get('nmdesa', '-')
-    kdkec = alokasi_info.get('kdkec', '-')
+    kdkec  = alokasi_info.get('kdkec', '-')
     kddesa = alokasi_info.get('kddesa', '-')
-    ppl = alokasi_info.get('PPL', '-')
-    pml = alokasi_info.get('PML', '-')
-    pj = alokasi_info.get('Pj-Kuda', '-')
+    ppl    = alokasi_info.get('PPL', '-')
+    pml    = alokasi_info.get('PML', '-')
+    pj     = alokasi_info.get('Pj-Kuda', '-')
     target = alokasi_info.get('Target', '0')
-    logo_html = get_logo_html()
+    logo_html    = get_logo_html()
+    gen_time_str = datetime.now().strftime("%d %B %Y %H:%M")
 
-    html = f"""<!DOCTYPE html>
+    if usaha_by_id is None:
+        usaha_by_id = {}
+
+    # ── Prepare KK items ───────────────────────────────────────────────────────
+    kk_items = []
+    for idx, r in enumerate(kk_list, 1):
+        raw_name = (r.get('data1') or r.get('nama_kk') or r.get('dtsen_nama_kk') or '').strip()
+        code_id  = (r.get('code_identity') or r.get('nik_kk') or r.get('no_kk') or '-').strip()
+        alamat   = (r.get('data2') or r.get('alamat_klrg') or r.get('alamat_prelist') or '-').strip()
+        if not raw_name:
+            aid    = r.get('assignment_id', '').strip()
+            u_info = usaha_by_id.get(aid, {})
+            u_name = (u_info.get('nama_usaha') or u_info.get('nama_komersial') or '').strip()
+            raw_name = u_name or ('[Sampel UMK]' if 'UMK' in code_id else '[Sampel Prelist]')
+        
+        esc_name = html.escape(raw_name)
+        # Bersihkan string code_identity dari artefak CAPI (No 3)
+        cleaned_id = clean_code_id(code_id, code, raw_name)
+        sub_id = f'NIK/KK: {html.escape(cleaned_id)}' if cleaned_id else ''
+        kk_items.append({'idx': idx, 'label': f'A{idx}', 'nama': esc_name, 'sub_id': sub_id, 'alamat': html.escape(alamat)})
+
+    # ── Prepare Usaha items ────────────────────────────────────────────────────
+    us_items = []
+    for idx, r in enumerate(us_list, 1):
+        raw_nama_us = (r.get('nama_usaha') or r.get('nama_komersial') or '-').strip()
+        
+        # Ekstrak nama pemilik dari pola <...> (prelist CAPI)
+        owners_in_tag = list(dict.fromkeys(re.findall(r'<([^>]+)>', raw_nama_us)))
+        clean_nama_us = re.sub(r'<[^>]+>', '', raw_nama_us).strip()
+        if not clean_nama_us and raw_nama_us:
+            clean_nama_us = raw_nama_us
+            
+        pengusaha = (r.get('pengusaha') or r.get('nik_pengusaha') or '').strip()
+        if not pengusaha and owners_in_tag:
+            pengusaha = ', '.join(o.strip() for o in owners_in_tag if o.strip())
+            
+        prelist_kk = (r.get('nama_prelist_kk') or '').strip()
+        if prelist_kk and not pengusaha:
+            pengusaha = prelist_kk
+
+        code_id = (r.get('code_identity') or '').strip()
+        alamat_us = (r.get('alamat_usaha') or r.get('alamat_usaha_utama') or '-').strip()
+        skala = (r.get('skala_usaha') or 'UMK').strip()
+
+        # HTML Escape untuk keamanan rendering
+        esc_nama = html.escape(clean_nama_us)
+        esc_skala = html.escape(skala)
+        nama_disp = f'{esc_nama} <span style="font-weight:normal;font-size:7px">({esc_skala})</span>'
+
+        sub_parts = []
+        if pengusaha and pengusaha != '-':
+            sub_parts.append(f'Pemilik: {html.escape(pengusaha)}')
+        
+        # Bersihkan string code_identity dari artefak CAPI (No 3)
+        cleaned_id = clean_code_id(code_id, code, clean_nama_us)
+        if cleaned_id:
+            short_id = cleaned_id.split(' - ', 1)[1] if ' - ' in cleaned_id else cleaned_id
+            sub_parts.append(f'ID: {html.escape(short_id)}')
+
+        sub_id = ' | '.join(sub_parts)
+        us_items.append({'idx': idx, 'label': f'B{idx}', 'nama': nama_disp, 'sub_id': sub_id, 'alamat': html.escape(alamat_us)})
+
+    total = len(kk_items) + len(us_items)
+
+    html_doc = f"""<!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <title>Lembar Verifikasi Lapangan - {nmsls}</title>
-    <style>
-        @page {{
-            size: A4 portrait;
-            margin: 10mm 12mm;
-        }}
-        body {{
-            font-family: 'Arial', 'Helvetica', sans-serif;
-            font-size: 10.5px;
-            color: #000;
-            line-height: 1.3;
-            margin: 0;
-            padding: 10px;
-        }}
-        .kop {{
-            display: flex;
-            align-items: center;
-            border-bottom: 3px double #000;
-            padding-bottom: 6px;
-            margin-bottom: 10px;
-        }}
-        .kop-logo {{
-            width: 70px;
-            height: 55px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 12px;
-            text-align: center;
-        }}
-        .kop-text {{
-            flex: 1;
-            text-align: center;
-        }}
-        .kop-text h2 {{
-            margin: 0;
-            font-size: 13.5px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }}
-        .kop-text h3 {{
-            margin: 2px 0 0 0;
-            font-size: 11.5px;
-            font-weight: bold;
-            color: #111;
-        }}
-        .kop-text p {{
-            margin: 1px 0 0 0;
-            font-size: 9px;
-            color: #333;
-        }}
-        
-        .meta-box {{
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 10px;
-        }}
-        .meta-box td {{
-            padding: 4px 6px;
-            border: 1px solid #444;
-            vertical-align: top;
-            font-size: 10px;
-        }}
-        .meta-header {{
-            background-color: #eaeaea;
-            font-weight: bold;
-        }}
-        .badge-alert {{
-            background-color: #fff0f0;
-            color: #b71c1c;
-            font-weight: bold;
-            padding: 1px 4px;
-            border: 1px solid #ffcdd2;
-            border-radius: 3px;
-        }}
-        
-        .section-title {{
-            font-weight: bold;
-            font-size: 10.5px;
-            background-color: #1a365d;
-            color: #ffffff;
-            padding: 4px 8px;
-            margin-top: 10px;
-            margin-bottom: 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }}
-        
-        .data-table {{
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 10px;
-        }}
-        .data-table th {{
-            background-color: #f7fafc;
-            border: 1px solid #333;
-            padding: 5px 3px;
-            font-size: 9px;
-            text-align: center;
-            font-weight: bold;
-        }}
-        .data-table td {{
-            border: 1px solid #444;
-            padding: 4px 4px;
-            font-size: 9px;
-            vertical-align: middle;
-        }}
-        .text-center {{ text-align: center; }}
-        .chk-cell {{
-            width: 28px;
-            text-align: center;
-            font-size: 10px;
-            font-family: monospace;
-        }}
-        
-        .catatan-box {{
-            border: 1px solid #444;
-            padding: 6px;
-            min-height: 40px;
-            margin-bottom: 10px;
-            background: #fafafa;
-        }}
-        .catatan-title {{
-            font-weight: bold;
-            font-size: 9.5px;
-            margin-bottom: 2px;
-        }}
+<meta charset="UTF-8">
+<title>Verifikasi Lapangan SE2026 - {nmsls}</title>
+<style>
+  @page {{
+    size: A4 portrait;
+    margin: 6mm 8mm 8mm 8mm;
+    @bottom-center {{
+      content: "Hal. " counter(page) " / " counter(pages) " — {nmsls} — {code}";
+      font-size: 7px; color: #333;
+    }}
+  }}
+  * {{ box-sizing: border-box; margin: 0; padding: 0; }}
+  body {{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 8px; color: #000; line-height: 1.2;
+    background: #fff;
+  }}
 
-        .signature-grid {{
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 12px;
-            page-break-inside: avoid;
-        }}
-        .signature-grid td {{
-            width: 33.33%;
-            text-align: center;
-            vertical-align: top;
-            padding: 4px;
-            border: none;
-        }}
-        .sig-space {{
-            height: 55px;
-        }}
-        .sig-name {{
-            font-weight: bold;
-            text-decoration: underline;
-            font-size: 10px;
-        }}
-        .sig-title {{
-            font-size: 9.5px;
-            color: #222;
-        }}
-    </style>
+  /* ── KOP SURAT (HIGH CONTRAST B&W) ─────────────────── */
+  .kop {{
+    display: flex; align-items: center;
+    border-bottom: 2px solid #000;
+    padding-bottom: 3px; margin-bottom: 3px;
+  }}
+  .kop-logo {{ width: 48px; flex-shrink: 0; margin-right: 8px; }}
+  .kop-text {{ flex: 1; text-align: center; }}
+  .kop-text .k1 {{ font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.3px; }}
+  .kop-text .k2 {{ font-size: 9.5px; font-weight: bold; margin-top: 1px; }}
+  .kop-text .k3 {{ font-size: 6.8px; color: #222; margin-top: 1px; }}
+
+  /* ── META INFO (CLEAN B&W) ─────────────────────────── */
+  .meta {{ width: 100%; border-collapse: collapse; margin-bottom: 3px; }}
+  .meta td {{ padding: 1.5px 3.5px; border: 0.75px solid #000; font-size: 7.5px; vertical-align: middle; }}
+  .meta .lbl {{ font-weight: bold; width: 13%; }}
+  .badge-bw {{
+    border: 1px solid #000; padding: 0 3px; font-weight: bold;
+  }}
+
+  /* ── PANDUAN PIMPINAN / KONSEP TIDAK DITEMUKAN ────── */
+  .konsep-box {{
+    border: 1px solid #000;
+    padding: 2.5px 5px;
+    font-size: 6.8px;
+    line-height: 1.25;
+    margin-bottom: 3px;
+  }}
+  .konsep-box b {{ text-transform: uppercase; }}
+
+  /* ── TABEL UTAMA (MAX DATA-TO-INK RATIO) ───────────── */
+  .dt {{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 3px;
+    page-break-inside: auto;
+  }}
+  .dt thead {{
+    display: table-header-group;
+  }}
+  .dt tbody tr {{
+    page-break-inside: avoid;
+  }}
+  
+  /* Thead Section Title */
+  .dt thead tr.thead-sec th {{
+    background: #000; color: #fff;
+    font-weight: bold; font-size: 8px;
+    padding: 2px 5px; text-align: left;
+    text-transform: uppercase; letter-spacing: 0.3px;
+    border: 1px solid #000;
+  }}
+  
+  /* Thead Legend Box */
+  .dt thead tr.thead-legend th {{
+    background: #fff;
+    border: 1px solid #000;
+    border-top: none;
+    padding: 2px 4px;
+    text-align: left;
+    font-weight: normal;
+    color: #000;
+  }}
+  .legend-title {{
+    font-weight: bold;
+    margin-bottom: 1px;
+    font-size: 6.8px;
+    text-transform: uppercase;
+  }}
+  .legend-items {{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 8px;
+    align-items: center;
+    font-size: 6.8px;
+    line-height: 1.2;
+  }}
+  .legend-item b {{
+    display: inline-block;
+    border: 1px solid #000;
+    background: #fff;
+    color: #000;
+    padding: 0 2.5px;
+    font-size: 6.8px;
+    margin-right: 2px;
+  }}
+
+  /* Thead Column Headers */
+  .dt th {{
+    border: 0.75px solid #000; padding: 2px 3px;
+    font-size: 7px; text-align: center;
+    background: #fff; font-weight: bold;
+    line-height: 1.15;
+  }}
+  
+  /* Data Rows */
+  .dt td {{
+    border: 0.5px solid #000; padding: 1.5px 3px;
+    font-size: 7.2px; vertical-align: middle;
+    background: #fff;
+  }}
+  .dt td.no  {{ text-align: center; font-size: 7px; font-weight: bold; width: 22px; }}
+
+  /* Nama entitas + sub-id dalam satu sel */
+  .ent-nama {{ font-weight: bold; font-size: 7.5px; line-height: 1.15; color: #000; }}
+  .ent-sub  {{ font-size: 6.5px; color: #222; margin-top: 0.5px; }}
+
+  /* Kotak Isian Kode Status */
+  .code-cell {{ text-align: center; vertical-align: middle; }}
+  .code-box {{
+    display: inline-block;
+    width: 20px;
+    height: 16px;
+    border: 1.2px solid #000;
+    background: #fff;
+    vertical-align: middle;
+  }}
+
+  /* ── HALAMAN KHUSUS BERITA ACARA PENUTUP ───────────── */
+  .ba-page {{
+    page-break-before: always;
+    padding-top: 8px;
+  }}
+  .ba-box-standalone {{
+    border: 1.5px solid #000;
+    padding: 10px 14px;
+    font-size: 8.5px;
+    line-height: 1.5;
+    margin: 8px 0 14px 0;
+  }}
+  .ba-title-standalone {{
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 9.5px;
+    text-align: center;
+    border-bottom: 1.2px solid #000;
+    padding-bottom: 4px;
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+  }}
+  .ba-rekap-standalone {{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 8px 0;
+    padding: 6px 10px;
+    border: 1px solid #000;
+    font-size: 8.5px;
+  }}
+  .box-fill {{
+    display: inline-block;
+    border: 1px solid #000;
+    width: 36px;
+    height: 16px;
+    vertical-align: middle;
+    background: #fff;
+    margin: 0 4px;
+  }}
+  .line-fill {{
+    display: inline-block;
+    border-bottom: 1px solid #000;
+    vertical-align: bottom;
+    margin: 0 2px;
+  }}
+  .ba-notes-standalone {{
+    margin-top: 8px;
+    font-size: 8px;
+    border-top: 0.75px dashed #000;
+    padding-top: 6px;
+    line-height: 1.6;
+  }}
+
+  .sig-3col {{ width: 100%; border-collapse: collapse; margin-top: 20px; }}
+  .sig-3col td {{
+    text-align: center; vertical-align: top;
+    padding: 2px 6px; border: none;
+    font-size: 8.5px;
+  }}
+  .sig-space-large {{ height: 50px; }}
+  .sig-name {{ font-weight: bold; font-size: 9px; }}
+  .sig-sub  {{ font-size: 7.5px; color: #222; margin-top: 2px; }}
+</style>
 </head>
 <body>
 
-    <div class="kop">
-        <div class="kop-logo">{logo_html}</div>
-        <div class="kop-text">
-            <h2>BADAN PUSAT STATISTIK KABUPATEN MEMPAWAH</h2>
-            <h3>LEMBAR VERIFIKASI KEBERADAAN RESPONDEN SENSUS EKONOMI 2026</h3>
-            <p>Berita Acara Pembuktian Lapangan Bersama Pengurus RT &amp; Pemerintah Desa/Kelurahan (Kondisi Data per 21 Juli 2026)</p>
-        </div>
+<!-- KOP SURAT -->
+<div class="kop">
+  <div class="kop-logo">{logo_html}</div>
+  <div class="kop-text">
+    <div class="k1">Badan Pusat Statistik Kabupaten Mempawah</div>
+    <div class="k2">Lembar Verifikasi Keberadaan Responden &mdash; Sensus Ekonomi 2026</div>
+    <div class="k3">Berita Acara Pembuktian Lapangan &bull; Snapshot Data: {gen_time_str} WIB</div>
+  </div>
+</div>
+
+<!-- META INFO -->
+<table class="meta">
+  <tr>
+    <td class="lbl">Kecamatan</td><td width="27%">: <b>[{kdkec}] {nmkec}</b></td>
+    <td class="lbl">Kode Sub-SLS</td><td width="47%">: <b style="font-family:monospace">{code}</b></td>
+  </tr>
+  <tr>
+    <td class="lbl">Desa / Kelurahan</td><td>: <b>[{kddesa}] {nmdesa}</b></td>
+    <td class="lbl">PPL / PML</td><td>: <b>{ppl}</b> / {pml}</td>
+  </tr>
+  <tr>
+    <td class="lbl">Nama SLS / Sub-SLS</td><td>: <b>{nmsls}</b></td>
+    <td class="lbl">PJ Wilayah</td><td>: {pj}</td>
+  </tr>
+  <tr>
+    <td class="lbl">Kasus Dilaporkan</td>
+    <td colspan="3">:&nbsp;
+      <span class="badge-bw">KK Tdk Ditemukan: {len(kk_list)}</span>&nbsp;
+      <span class="badge-bw">Usaha Tdk Ditemukan: {len(us_list)}</span>&nbsp;
+      <b>(Total Diverifikasi: {total} Kasus)</b>
+    </td>
+  </tr>
+</table>
+
+<!-- PANDUAN PIMPINAN: KONSEP TIDAK DITEMUKAN & PRELIST TERTUKAR -->
+<div class="konsep-box">
+  <b>PENTING &mdash; KONSEP "TIDAK DITEMUKAN" (STANDAR BPS):</b><br>
+  &bull; <b>HANYA</b> berlaku bagi yang <u>benar-benar tidak ada</u> di wilayah ini (<b>BUKAN</b> karena sedang bepergian/bekerja, belum sempat ditemui, atau menolak dicacah).<br>
+  &bull; <b>KASUS PRELIST TERTUKAR:</b> Jika responden ternyata warga/usaha di RT/SLS tetangga, gunakan <b>KODE 2</b> dan tulis RT yang benar (Contoh: <i>"Warga RT 04"</i>).<br>
+  &bull; <b>PENGISIAN CEPAT (MASSAL):</b> Jika satu blok/halaman seluruhnya tertukar ke RT yang sama, cukup tulis kode <b>2</b> dan keterangan di baris pertama, lalu beri tanda kurung kurawal/panah ke bawah.
+</div>
+"""
+
+    # ── Fungsi bantu render tabel dengan sistem KODE (THEAD REPEATING) ────────
+    def render_table(items, section_label, is_usaha=False):
+        """Render tabel verifikasi dengan sistem KODE STATUS yang berulang di setiap halaman."""
+        addr_label = 'Alamat Usaha / Lokasi' if is_usaha else 'Alamat Prelist / Domisili'
+        
+        if is_usaha:
+            legend_inner = """
+      <div class="legend-title">Petunjuk Kode Status Usaha (Diisi Pengurus RT/RW):</div>
+      <div class="legend-items">
+        <div class="legend-item"><b>1</b> Ada &amp; Aktif di SLS Ini</div>
+        <div class="legend-item"><b>2</b> Tertukar / Masuk SLS Lain <i>(Tulis RT/SLS yang benar di Keterangan)</i></div>
+        <div class="legend-item"><b>3</b> Pindah Lokasi Usaha <i>(Tulis lokasi baru)</i></div>
+        <div class="legend-item"><b>4</b> Usaha Tutup / Nonaktif Permanen</div>
+        <div class="legend-item"><b>5</b> Tidak Pernah Ada / Fiktif</div>
+        <div class="legend-item"><b>6</b> Tidak Dapat Dikonfirmasi / Lainnya</div>
+      </div>"""
+            code_sub_label = "(Kode 1 - 6)"
+        else:
+            legend_inner = """
+      <div class="legend-title">Petunjuk Kode Status Keluarga (Diisi Pengurus RT/RW):</div>
+      <div class="legend-items">
+        <div class="legend-item"><b>1</b> Ada di SLS Ini</div>
+        <div class="legend-item"><b>2</b> Tertukar / Warga SLS Lain <i>(Tulis RT/SLS yang benar di Keterangan)</i></div>
+        <div class="legend-item"><b>3</b> Pindah Keluar Wilayah <i>(Tulis tujuan di Keterangan)</i></div>
+        <div class="legend-item"><b>4</b> Tidak Pernah Ada / Fiktif <i>(Bukan krn bepergian/menolak)</i></div>
+        <div class="legend-item"><b>5</b> Tidak Dapat Dikonfirmasi / Lainnya</div>
+      </div>"""
+            code_sub_label = "(Kode 1 - 5)"
+
+        out = f"""
+<table class="dt">
+  <thead>
+    <tr class="thead-sec">
+      <th colspan="5">{section_label}</th>
+    </tr>
+    <tr class="thead-legend">
+      <th colspan="5">{legend_inner}</th>
+    </tr>
+    <tr>
+      <th width="3%">No</th>
+      <th width="28%">Nama{' Usaha &amp; Pengusaha' if is_usaha else ' KK &amp; Identitas'}</th>
+      <th width="23%">{addr_label}</th>
+      <th width="9%">Kode Status<br><span style="font-weight:normal;font-style:italic;font-size:6.2px">{code_sub_label}</span></th>
+      <th width="37%">Keterangan / Lokasi Pindah / Catatan Tindak Lanjut PPL<br><span style="font-weight:normal;font-style:italic;font-size:6.2px">(Wajib diisi jika Tertukar [Kode 2], Pindah [Kode 3], atau catatan hasil pencacahan)</span></th>
+    </tr>
+  </thead>
+  <tbody>
+"""
+        for item in items:
+            sub_id_html = f'<div class="ent-sub">{item["sub_id"]}</div>' if item.get('sub_id') else ''
+            out += f"""    <tr>
+      <td class="no">{item['label']}</td>
+      <td>
+        <div class="ent-nama">{item['nama']}</div>
+        {sub_id_html}
+      </td>
+      <td style="font-size:7px;color:#000">{item['alamat']}</td>
+      <td class="code-cell"><div class="code-box"></div></td>
+      <td style="font-size:6.8px;color:#000">&nbsp;</td>
+    </tr>
+"""
+        out += "  </tbody>\n</table>\n"
+        return out
+
+    if kk_items:
+        html_doc += render_table(
+            kk_items,
+            f'Bagian A &mdash; Keluarga (KK) Dilaporkan &ldquo;Tidak Ditemukan&rdquo; ({len(kk_items)} KK)',
+            is_usaha=False
+        )
+
+    if us_items:
+        html_doc += render_table(
+            us_items,
+            f'Bagian B &mdash; Usaha/Perusahaan Dilaporkan &ldquo;Tidak Ditemukan&rdquo; ({len(us_items)} Usaha)',
+            is_usaha=True
+        )
+
+    # ── HALAMAN PENUTUP: BERITA ACARA STANDALONE (PAGE BREAK ALWAYS) ──────────
+    html_doc += f"""
+<div class="ba-page">
+  <!-- KOP SURAT BERITA ACARA -->
+  <div class="kop">
+    <div class="kop-logo">{logo_html}</div>
+    <div class="kop-text">
+      <div class="k1">Badan Pusat Statistik Kabupaten Mempawah</div>
+      <div class="k2">Berita Acara Pembuktian Lapangan &mdash; Sensus Ekonomi 2026</div>
+      <div class="k3">Dokumen Pengesahan Hasil Verifikasi Keberadaan Responden Tidak Ditemukan</div>
+    </div>
+  </div>
+
+  <!-- META INFO SLS -->
+  <table class="meta" style="margin-top: 6px;">
+    <tr>
+      <td class="lbl">Kecamatan</td><td width="27%">: <b>[{kdkec}] {nmkec}</b></td>
+      <td class="lbl">Kode Sub-SLS</td><td width="47%">: <b style="font-family:monospace">{code}</b></td>
+    </tr>
+    <tr>
+      <td class="lbl">Desa / Kelurahan</td><td>: <b>[{kddesa}] {nmdesa}</b></td>
+      <td class="lbl">PJ Wilayah</td><td>: {pj}</td>
+    </tr>
+    <tr>
+      <td class="lbl">Nama SLS / Sub-SLS</td><td>: <b>{nmsls}</b></td>
+      <td class="lbl">Total Diverifikasi</td><td>: <b>{total} Responden Prelist ({len(kk_list)} KK, {len(us_list)} Usaha)</b></td>
+    </tr>
+  </table>
+
+  <!-- KOTAK PERNYATAAN & REKAPITULASI BERITA ACARA -->
+  <div class="ba-box-standalone">
+    <div class="ba-title-standalone">BERITA ACARA KESEPAKATAN HASIL VERIFIKASI KEBERADAAN</div>
+    <div>Pada hari ini, tanggal <span class="line-fill" style="width:28px;"></span> / <span class="line-fill" style="width:28px;"></span> / 2026, telah dilaksanakan verifikasi, pengecekan, dan pembuktian keberadaan responden secara langsung di lapangan bersama antara Petugas Sensus BPS dengan Pengurus RT/RW/Kepala Wilayah setempat terhadap sejumlah <b>{total}</b> responden prelist (<b>{len(kk_list)} KK</b> dan <b>{len(us_list)} Usaha</b>) yang dilaporkan tidak ditemukan di wilayah SLS <b>{nmsls}</b>, dengan hasil kesepakatan akhir sebagai berikut:</div>
+    
+    <div class="ba-rekap-standalone">
+      <div><b>Total Diverifikasi:</b> <b>{total}</b> Kasus</div>
+      <div>&bull;</div>
+      <div><b>[Kode 1] Ditemukan di SLS Ini:</b> <span class="box-fill"></span> Kasus <i>(Wajib dicacah ulang PPL)</i></div>
+      <div>&bull;</div>
+      <div><b>[Kode 2..6] Tidak Ditemukan:</b> <span class="box-fill"></span> Kasus <i>(Tertukar / Pindah / Fiktif / Tutup)</i></div>
     </div>
 
-    <table class="meta-box">
-        <tr>
-            <td width="16%" class="meta-header">Kecamatan</td>
-            <td width="34%">: <b>[{kdkec}] {nmkec}</b></td>
-            <td width="18%" class="meta-header">Kode Sub-SLS (16-Digit)</td>
-            <td width="32%">: <b>{code}</b></td>
-        </tr>
-        <tr>
-            <td class="meta-header">Desa / Kelurahan</td>
-            <td>: <b>[{kddesa}] {nmdesa}</b></td>
-            <td class="meta-header">Petugas Pencacah (PPL)</td>
-            <td>: <b>{ppl}</b></td>
-        </tr>
-        <tr>
-            <td class="meta-header">Nama SLS / Sub-SLS</td>
-            <td>: <b>{nmsls}</b></td>
-            <td class="meta-header">Pengawas (PML)</td>
-            <td>: <b>{pml}</b></td>
-        </tr>
-        <tr>
-            <td class="meta-header">Target Prelist SLS</td>
-            <td>: <b>{target} Responden</b></td>
-            <td class="meta-header">Penanggung Jawab (PJ)</td>
-            <td>: <b>{pj}</b></td>
-        </tr>
-        <tr>
-            <td class="meta-header">Laporan Diskonfirmasi</td>
-            <td colspan="3">
-                : <span class="badge-alert">Keluarga Tidak Ditemukan: {len(kk_list)} KK</span> &nbsp;|&nbsp; 
-                <span class="badge-alert">Usaha Tidak Ditemukan: {len(us_list)} Usaha</span> 
-                <b>(Data CSV Tarikan per 21 Juli 2026: {len(kk_list)+len(us_list)} dari {target} Prelist)</b>
-            </td>
-        </tr>
-    </table>
-"""
-
-    # BAGIAN A: KELUARGA
-    if kk_list:
-        html += f"""    <div class="section-title">BAGIAN A: DAFTAR KELUARGA (KK) DILAPORKAN "TIDAK DITEMUKAN" ({len(kk_list)} KK)</div>
-    <table class="data-table">
-        <thead>
-            <tr>
-                <th width="4%">No</th>
-                <th width="24%">Nama Kepala Keluarga (KK)</th>
-                <th width="18%">NIK / No. KK Prelist</th>
-                <th width="24%">Alamat Prelist / Domisili</th>
-                <th width="6%">Ada</th>
-                <th width="6%">Tdk Ada</th>
-                <th width="6%">Pindah</th>
-                <th width="12%">Catatan RT</th>
-            </tr>
-        </thead>
-        <tbody>
-"""
-        if usaha_by_id is None:
-            usaha_by_id = {}
-
-        for idx, r in enumerate(kk_list, 1):
-            raw_name = (r.get('data1') or r.get('nama_kk') or r.get('dtsen_nama_kk') or '').strip()
-            code_id = (r.get('code_identity') or r.get('nik_kk') or r.get('no_kk') or '-').strip()
-            alamat = (r.get('data2') or r.get('alamat_klrg') or r.get('alamat_prelist') or '-').strip()
-
-            if raw_name:
-                nama_kk = raw_name
-            else:
-                aid = r.get('assignment_id', '').strip()
-                u_info = usaha_by_id.get(aid, {})
-                u_name = (u_info.get('nama_usaha') or u_info.get('nama_komersial') or '').strip()
-                if u_name:
-                    nama_kk = u_name
-                elif 'UMK' in code_id:
-                    nama_kk = '[Sampel Prelist UMK]'
-                else:
-                    nama_kk = '[Sampel Prelist]'
-
-            html += f"""            <tr>
-                <td class="text-center">{idx}</td>
-                <td><b>{nama_kk}</b></td>
-                <td class="text-center">{code_id}</td>
-                <td>{alamat}</td>
-                <td class="chk-cell">[ &nbsp; ]</td>
-                <td class="chk-cell">[ &nbsp; ]</td>
-                <td class="chk-cell">[ &nbsp; ]</td>
-                <td></td>
-            </tr>
-"""
-        html += "        </tbody>\n    </table>\n"
-
-    # BAGIAN B: USAHA
-    if us_list:
-        html += f"""    <div class="section-title">BAGIAN B: DAFTAR USAHA / PERUSAHAAN DILAPORKAN "TIDAK DITEMUKAN" ({len(us_list)} USAHA)</div>
-    <table class="data-table">
-        <thead>
-            <tr>
-                <th width="4%">No</th>
-                <th width="24%">Nama Usaha / Komersial</th>
-                <th width="18%">Nama Pengusaha / NIK</th>
-                <th width="24%">Alamat Usaha / Lokasi</th>
-                <th width="6%">Ada</th>
-                <th width="6%">Tdk Ada</th>
-                <th width="6%">Pindah</th>
-                <th width="12%">Catatan RT</th>
-            </tr>
-        </thead>
-        <tbody>
-"""
-        for idx, r in enumerate(us_list, 1):
-            nama_us = r.get('nama_usaha') or r.get('nama_komersial') or '-'
-            pengusaha = r.get('pengusaha') or r.get('nik_pengusaha') or '-'
-            alamat_us = r.get('alamat_usaha') or r.get('alamat_usaha_utama') or '-'
-            skala = r.get('skala_usaha') or 'UMK'
-            html += f"""            <tr>
-                <td class="text-center">{idx}</td>
-                <td><b>{nama_us}</b> <small style="color:#555">({skala})</small></td>
-                <td>{pengusaha}</td>
-                <td>{alamat_us}</td>
-                <td class="chk-cell">[ &nbsp; ]</td>
-                <td class="chk-cell">[ &nbsp; ]</td>
-                <td class="chk-cell">[ &nbsp; ]</td>
-                <td></td>
-            </tr>
-"""
-        html += "        </tbody>\n    </table>\n"
-
-    html += """    <div class="catatan-box">
-        <div class="catatan-title">BLOK III. CATATAN &amp; KETERANGAN TAMBAHAN KETUA RT / LURAH:</div>
-        <span style="color:#777; font-style:italic; font-size:9px;">(Tuliskan keterangan mengenai kondisi keberadaan lokasi usaha/keluarga, kunjungan PPL, atau penjelasan kepindahan responden)</span>
+    <div class="ba-notes-standalone">
+      <b>Catatan Khusus Lapangan / Kasus Prelist Tertukar Antar-RT:</b><br>
+      [&nbsp;&nbsp;] Sebagian besar responden prelist di atas sebenarnya merupakan warga/usaha di RT/SLS: <span class="line-fill" style="width: 200px;"></span><br>
+      [&nbsp;&nbsp;] Catatan Lapangan Lainnya: <span class="line-fill" style="width: 530px;"></span><br>
+      <span class="line-fill" style="width: 100%; margin-top: 4px;"></span>
     </div>
+  </div>
 
-    <table class="signature-grid">
-        <tr>
-            <td width="33%">
-                <div class="sig-title">Petugas Verifikator BPS</div>
-                <div class="sig-space"></div>
-                <div class="sig-name">( __________________________ )</div>
-            </td>
-            <td width="34%">
-                <div class="sig-title">Pengurus RT / Kepala Wilayah Setempat</div>
-                <div class="sig-space"></div>
-                <div class="sig-name">( __________________________ )</div>
-                <div class="sig-title">Stempel RT / No. HP:</div>
-            </td>
-            <td width="33%">
-                <div class="sig-title">Mengetahui / Mengesahkan:<br><b>Kepala Desa / Lurah Setempat</b></div>
-                <div class="sig-space"></div>
-                <div class="sig-name">( __________________________ )</div>
-                <div class="sig-title">Stempel Basah Desa / Kelurahan</div>
-            </td>
-        </tr>
-    </table>
+  <!-- 3 KOLOM TANDA TANGAN RESMI: PPL, PML, KETUA RT/RW -->
+  <table class="sig-3col">
+    <tr>
+      <td width="32%">
+        <div>Petugas Pendataan Lapangan<br><b>( PPL )</b></div>
+        <div class="sig-space-large"></div>
+        <div class="sig-name">( {ppl} )</div>
+        <div class="sig-sub">Petugas Pencacah BPS</div>
+      </td>
+      <td width="34%">
+        <div>Petugas Pemeriksa Lapangan<br><b>( PML )</b></div>
+        <div class="sig-space-large"></div>
+        <div class="sig-name">( {pml} )</div>
+        <div class="sig-sub">Pengawas Lapangan BPS</div>
+      </td>
+      <td width="34%">
+        <div>Yang Menyatakan &amp; Membuktikan,<br><b>Pengurus RT / RW / Kepala Wilayah</b></div>
+        <div class="sig-space-large"></div>
+        <div class="sig-name">( <span class="line-fill" style="width: 160px;"></span> )</div>
+        <div class="sig-sub">Nama Terang &bull; No. HP &bull; Stempel RT</div>
+      </td>
+    </tr>
+  </table>
+</div>
 
 </body>
 </html>
 """
-    return html
+    return html_doc
 
 def render_worker(task):
     code, html_path, pdf_path = task
@@ -434,6 +635,7 @@ def main():
     parser.add_argument("--only-completed", action="store_true", help="Hanya memproses SLS yang 100%% Selesai (ada di subsls_selesai.csv)")
     parser.add_argument("--min-not-found", type=int, default=0, help="Batas minimal total kasus Tidak Ditemukan per SLS")
     parser.add_argument("--output-dir", type=str, default=None, help="Folder khusus output PDF (default: pdf_verifikasi_rt_completed jika --only-completed)")
+    parser.add_argument("--workers", "-w", type=int, default=12, help="Jumlah worker paralel Chromium (default: 12)")
     parser.add_argument("--force", action="store_true", help="Paksa generasi ulang seluruh PDF tanpa menggunakan cache delta")
     args = parser.parse_args()
 
@@ -519,11 +721,11 @@ def main():
         print(f"🟢 Seluruh {skipped_count} PDF sudah mutakhir (Up to Date). Tidak ada rendering yang diperlukan.")
         return
 
-    print(f"Memulai pencetakan massal {len(tasks)} PDF baru/diperbarui dengan multiprocessing pool (8 workers)...")
+    print(f"Memulai pencetakan massal {len(tasks)} PDF baru/diperbarui dengan multiprocessing pool ({args.workers} workers)...")
     success_count = 0
     fail_count = 0
 
-    with ProcessPoolExecutor(max_workers=8) as executor:
+    with ProcessPoolExecutor(max_workers=args.workers) as executor:
         futures = [executor.submit(render_worker, t) for t in tasks]
         for i, future in enumerate(as_completed(futures), 1):
             code, success, err = future.result()

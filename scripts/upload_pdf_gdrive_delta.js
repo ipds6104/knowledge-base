@@ -18,7 +18,13 @@ const CREDENTIALS_PATH = existsSync(resolve(KB_ROOT, "credentials.json"))
 
 const USER_TOKEN_PATH = resolve(FASIH_SYNC_DIR, "token_user.json");
 const GDRIVE_FOLDER_ID = "1GVLa9UVOBJOr-rb62A539HnNK7UGyrXa";
-const PDF_DIR = resolve(KB_ROOT, "kegiatan/sensus-ekonomi-2026/2026/sqllab_monitoring/pdf_siap_cetak");
+const PDF_DIR = process.argv[2]
+  ? resolve(process.argv[2])
+  : (process.env.PDF_DIR
+      ? resolve(process.env.PDF_DIR)
+      : (existsSync(resolve(KB_ROOT, "kegiatan/sensus-ekonomi-2026/2026/pdf_verifikasi_rt"))
+          ? resolve(KB_ROOT, "kegiatan/sensus-ekonomi-2026/2026/pdf_verifikasi_rt")
+          : resolve(KB_ROOT, "kegiatan/sensus-ekonomi-2026/2026/sqllab_monitoring/pdf_siap_cetak")));
 const LINK_MAPPING_FILE = resolve(FASIH_SYNC_DIR, "results", "pdf_gdrive_links.json");
 
 const SCOPES = [

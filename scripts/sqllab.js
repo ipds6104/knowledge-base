@@ -25,6 +25,9 @@ async function getChromeArgs() {
     "--disable-setuid-sandbox",
     "--disable-blink-features=AutomationControlled",
     "--disable-infobars",
+    "--ignore-certificate-errors",
+    "--ignore-ssl-errors",
+    "--allow-insecure-localhost",
     "--window-size=1280,800",
   ];
   const domains = ["fasih-dashboard.bps.go.id", "sso.bps.go.id"];

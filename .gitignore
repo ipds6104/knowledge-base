@@ -38,7 +38,9 @@ kegiatan/**/prelist_updating_sakernas_se2026_intersect_final*
 kegiatan/**/.~*
 kegiatan/**/*.xlsx
 kegiatan/sakernas/2026-08/test_write*
-kegiatan/sensus-ekonomi-2026/2026/master_data/archive/
+kegiatan/**/archive/
+archive/
+*backup*
 kegiatan/**/se_data_yonif_yonzipur*
 
 
@@ -48,6 +50,7 @@ sqllab_monitoring/
 temp_html_rt/
 sample_lembar_verifikasi_*
 *_cache*.json
+pdf_gdrive_links.json
 *.pdf
 scratch/
 

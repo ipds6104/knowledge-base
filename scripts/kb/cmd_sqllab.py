@@ -27,14 +27,20 @@ FASIH_SYNC_DIR = os.path.abspath(os.path.join(BASE_DIR, "..", "fasih-sync-monito
 
 
 def run_node_sqllab_query(sql):
-    """Menjalankan query SQL ke Superset BPS via execute-query.js di fasih-sync-monitoring."""
-    if not os.path.exists(FASIH_SYNC_DIR):
-        print(f"❌ Error: Repositori fasih-sync-monitoring tidak ditemukan di {FASIH_SYNC_DIR}")
+    """Menjalankan query SQL ke Superset BPS via scripts/sqllab.js (atau fallback ke fasih-sync-monitoring)."""
+    local_script = os.path.join(BASE_DIR, "scripts", "sqllab.js")
+    if os.path.exists(local_script):
+        cmd = ["node", local_script, sql]
+        exec_cwd = BASE_DIR
+    elif os.path.exists(FASIH_SYNC_DIR):
+        cmd = ["node", "src/execute-query.js", sql]
+        exec_cwd = FASIH_SYNC_DIR
+    else:
+        print(f"❌ Error: Script SQL Lab tidak ditemukan di {local_script} maupun {FASIH_SYNC_DIR}")
         return None
 
-    cmd = ["node", "src/execute-query.js", sql]
     try:
-        res = subprocess.run(cmd, cwd=FASIH_SYNC_DIR, capture_output=True, text=True, check=True)
+        res = subprocess.run(cmd, cwd=exec_cwd, capture_output=True, text=True, check=True)
         stdout = res.stdout
         # Find JSON array starting with '[' and ending with ']'
         # Look for the last matching pair or JSON block
@@ -150,6 +156,8 @@ def cmd_sqllab_pull_microdata(args):
         WHERE level_2_full_code = '6104'
           AND (data9 = '2. Tidak' OR data9 LIKE '%Tidak Ditemukan%')
           AND assignment_status_alias != 'DRAFT'
+          AND data1 != 'DUMMY'
+          AND code_identity NOT LIKE '%DUMMY%'
         ORDER BY level_6_full_code ASC, assignment_id ASC
         LIMIT {chunk_size} OFFSET {offset};
         """
@@ -185,24 +193,28 @@ def cmd_sqllab_pull_microdata(args):
         print(f"   → Fetching chunk offset {offset} (Limit {chunk_size})...")
         sql = f"""
         SELECT 
-          assignment_id,
-          level_2_name,
-          level_3_name,
-          level_4_name,
-          level_5_full_code,
-          level_6_full_code,
-          level_5_name AS nama_sls,
-          nama_usaha,
-          nama_komersial,
-          alamat_usaha,
-          keberadaan_usaha_label,
-          keberadaan_usaha_value,
-          kbli_value,
-          kbli_label
-        FROM se2026_nested
-        WHERE level_2_full_code = '6104'
-          AND (keberadaan_usaha_label LIKE '%Tidak Ditemukan%' OR keberadaan_usaha_value = '00')
-        ORDER BY level_6_full_code ASC, assignment_id ASC
+          n.assignment_id,
+          n.level_2_name,
+          n.level_3_name,
+          n.level_4_name,
+          n.level_5_full_code,
+          n.level_6_full_code,
+          n.level_5_name AS nama_sls,
+          n.nama_usaha,
+          n.nama_komersial,
+          COALESCE(NULLIF(n.alamat_usaha, ''), b.data2, '') AS alamat_usaha,
+          b.code_identity,
+          b.data1 AS nama_prelist_kk,
+          n.keberadaan_usaha_label,
+          n.keberadaan_usaha_value,
+          n.kbli_value,
+          n.kbli_label
+        FROM se2026_nested n
+        LEFT JOIN base_table_assignment b ON n.assignment_id = b.assignment_id
+        WHERE n.level_2_full_code = '6104'
+          AND (n.keberadaan_usaha_label LIKE '%Tidak Ditemukan%' OR n.keberadaan_usaha_value = '00')
+          AND (n.is_active IS NULL OR n.is_active != 0)
+        ORDER BY n.level_6_full_code ASC, n.assignment_id ASC
         LIMIT {chunk_size} OFFSET {offset};
         """
         chunk = run_node_sqllab_query(sql)
@@ -227,7 +239,7 @@ def cmd_sqllab_pull_microdata(args):
                 writer.writerows(all_usaha_rows)
         print(f"✅ [Sukses] {len(all_usaha_rows)} baris kuesioner usaha berhasil diekspor ke {usaha_csv_list[0]}")
 
-    print(f"\n🎉 [Selesai] Penarikan microdata selesai dengan kapasitas max {chunk_size} baris server!")
+    print(f"\n🎉 [Selesai] Penarikan microdata selesai dengan kapasitas max {chunk_size} baris per chunk!")
 
 
 def cmd_sqllab_pull_completed_subsls(args):
