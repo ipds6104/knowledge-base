@@ -40,7 +40,7 @@ def run_node_sqllab_query(sql):
         return None
 
     try:
-        res = subprocess.run(cmd, cwd=exec_cwd, capture_output=True, text=True, check=True)
+        res = subprocess.run(cmd, cwd=exec_cwd, capture_output=True, text=True, encoding="utf-8", errors="replace", check=True)
         stdout = res.stdout
         # Find JSON array starting with '[' and ending with ']'
         # Look for the last matching pair or JSON block
@@ -70,11 +70,11 @@ def run_node_sqllab_query(sql):
             print(stdout)
             return None
     except subprocess.CalledProcessError as e:
-        print(f"❌ Error eksekusi SQL Lab via Node.js (Exit {e.returncode}):")
-        print(e.stderr or e.stdout)
+        err_msg = e.stderr or e.stdout or str(e)
+        print("[Error] Eksekusi SQL Lab via Node.js (Exit", e.returncode, "):", err_msg.encode('ascii', errors='replace').decode('ascii'))
         return None
     except Exception as e:
-        print(f"❌ Exception: {e}")
+        print("[Exception]:", str(e).encode('ascii', errors='replace').decode('ascii'))
         return None
 
 
