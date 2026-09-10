@@ -41,7 +41,10 @@ kegiatan/**/progress_petugas_se2026_mempawah*
 kegiatan/**/prelist_updating_sakernas_se2026_intersect_final*
 kegiatan/**/.~*
 kegiatan/**/*.xlsx
-kegiatan/sakernas/2026-08/test_write*
+# Arsip Berat & Referensi Publikasi Tahun Lalu
+kegiatan/kecamatan-dalam-angka/**/referensi*/
+referensi-*/
+*.rar
 kegiatan/**/archive/
 archive/
 *backup*

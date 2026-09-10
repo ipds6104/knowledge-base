@@ -80,16 +80,30 @@ Proses penyusunan publikasi KCDA 2026 mengikuti alur kerja sistematis berikut de
 
 ## 📋 Ketentuan Teknis Penyusunan KCDA 2026
 
-Berdasarkan surat edaran Kepala BPS Provinsi Kalimantan Barat, penyusunan KCDA 2026 wajib memenuhi ketentuan berikut:
+Berdasarkan surat edaran Kepala BPS Provinsi Kalimantan Barat serta arahan teknis penyusunan KCDA 2026 Kabupaten Mempawah:
 
-1. **Struktur Tabel**:
-   * Jumlah tabel wajib KCDA 2026 saat ini adalah **24 tabel**.
-   * Judul tabel, format tabel, template publikasi, daftar perubahan format tabel dari tahun 2025 ke 2026, serta aturan penyusunan selengkapnya dapat diunduh pada tautan resmi [https://linktr.ee/kcda2026_file](https://linktr.ee/kcda2026_file) atau diakses secara lokal di berkas [daftar-perubahan-dda-2026.md](daftar-perubahan-dda-2026.md).
-2. **Kewajiban Pengawasan Kualitas Konten (Pencegahan Temuan Pengguna)**:
+1. **Tahun Judul vs Tahun Referensi Data**:
+   * **Tahun Judul**: Publikasi diseragamkan menggunakan tahun rilis **2026** (*Kecamatan XXX Dalam Angka 2026*).
+   * **Tahun Data Utama (Standar)**: Seluruh tabel secara baku menggunakan **data tahun 2025** ($t-1$).
+   * **Pengecualian / Data Sulit Diperoleh (Carry-Over)**:
+     - Jika ada data tertentu yang sulit didapatkan atau belum diperbarui oleh instansi daerah/Kantor Camat (misalnya data monografi desa, pegawai kecamatan, atau sarana tertentu), penyusun **diperkenankan mencantumkan data tahun sebelumnya (2024 atau 2023)**.
+     - Setiap pencantuman data tahun sebelumnya **WAJIB disertai catatan kaki (*footnote*) atau keterangan eksplisit pada judul/header tabel** agar transparan bagi pengguna data.
+   * **Data Serial Waktu (Time Series)**:
+     - Tabel sarana/fasilitas yang bersumber dari Podes/daerah menyajikan serial waktu (misal `2023–2025` atau `2024–2025`).
+     - Data pendidikan (Kemendikbudristek dan Kemenag) menyajikan semester genap tahun ajaran `2024/2025` dan `2025/2026`.
+
+2. **Struktur Tabel & Matriks Sumber Data**:
+   * Terdapat **24 tabel wajib dari BPS Pusat** serta **tabel tambahan daerah/Kantor Camat** (total 40+ tabel acuan Kabupaten Mempawah).
+   * Rincian seluruh tabel beserta tautan Google Sheets sumber data dan instansi penyedia dapat diakses pada dokumen:
+     👉 **[Matriks Sumber Data & Tabel KCDA 2026](matriks-sumber-data-kcda-2026.md)**.
+   * Template master naskah Mempawah tersimpan di:
+     👉 **[templates/MEMPAWAH_Template_KCDA_2026_Final.docx](templates/MEMPAWAH_Template_KCDA_2026_Final.docx)**.
+   * Berkas monitoring progres dan alokasi tersimpan di:
+     👉 `monitoring/2026_Monitoring_ALL_KCDA.xlsx`.
+
+3. **Kewajiban Pengawasan Kualitas Konten (Pencegahan Temuan Pengguna)**:
    * ⚠️ **PENTING**: Kepala BPS Kabupaten/Kota penyusun KCDA **wajib memeriksa kebenaran naskah** yang tayang di website.
-   * Langkah ini untuk memitigasi adanya temuan atau keluhan dari pengguna data mengenai isi publikasi KCDA yang tidak diperbarui (misalnya: petugas hanya mengganti kover publikasi sementara isi tabel di dalamnya kosong atau masih menggunakan data tahun sebelumnya).
-3. **Tahun Judul**:
-   * Tahun judul untuk publikasi KCDA tahun ini diseragamkan menggunakan tahun **2026**.
+   * Langkah ini untuk memitigasi adanya temuan atau keluhan dari pengguna data mengenai isi publikasi KCDA yang tidak diperbarui (misalnya: petugas hanya mengganti kover publikasi sementara isi tabel di dalamnya kosong atau masih menggunakan data tahun sebelumnya tanpa konfirmasi).
 
 ---
 
