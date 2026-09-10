@@ -1,8 +1,12 @@
 defaultTs: bun
 includes:
   - f/**
-  - u/**
-excludes: []
+excludes:
+  - "**/node_modules/**"
+  - "**/.venv/**"
+  - "**/__pycache__/**"
+  - "**/*.tmp"
+  - "**/*.log"
 skipVariables: false
 skipResources: false
 skipResourceTypes: false
@@ -15,7 +19,11 @@ skipWorkspaceDependencies: false
 skipDatatableMigrations: false
 nonDottedPaths: true
 syncBehavior: v1
-codebases: []
+codebases:
+  - relative_path: f/shared
+    includes:
+      - "**"
+    excludes: []
 workspaces:
   admins:
     baseUrl: https://wind.dvlpid.my.id/

@@ -1,0 +1,9 @@
+schedule: 0 0 8 * * *
+timezone: Asia/Jakarta
+enabled: true
+script_path: f/mempawah_kcda/monitor_kcda_2026
+is_flow: false
+args: {}
+summary: "Briefing Pagi Monitoring KCDA 2026"
+description: "Mengevaluasi rekapitulasi progres 9 kecamatan dan sisa hari menjelang tenggat ARC 23 September 2026 setiap hari pukul 08:00 WIB"
+no_flow_overlap: true

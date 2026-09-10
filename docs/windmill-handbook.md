@@ -235,3 +235,42 @@ Setiap agen AI atau pengembang di repositori `knowledge-base` **wajib** mematuhi
      - Script debugging lokal atau run test unit cepat di terminal developer.
 4. **Living Knowledge Updates**:
    - Bila terdapat penambahan credential/resource baru atau flow baru, dokumentasikan perubahannya pada log repositori dan perbarui handbook ini.
+
+---
+
+## 🏛️ VIII. 5 Pilar Kerapian Arsitektur Windmill (Knowledge Base Standards)
+
+Agar pengelolaan pipeline di Windmill sebersih dan seringkas pengelolaan dokumen statistik di repositori kita, terapkan 5 pilar disiplin berikut:
+
+### 1. Struktur Folder Berbasis Domain & Batas Akses (`f/` Hierarchy)
+- **Larangan `u/` untuk Produksi**: Folder pengguna `u/` hanya untuk pengujian sementara. Seluruh kode produksi wajib berada di `f/`.
+- **Pemisahan Folder Khusus**:
+  - `f/shared/`: Menampung modul *library* pembantu (*shared codebase*) yang di-import oleh banyak skrip.
+  - `f/_resources/`: Menampung definisi *Resource Connection* (Google API OAuth, token WhatsApp Gateway, DB).
+  - `f/[nama-kegiatan]/`: Menampung skrip, flow, dan schedule domain spesifik (misal: `f/mempawah_kcda/`, `f/mempawah_se2026/`, `f/desa_cantik/`).
+
+### 2. Paradigma *Self-Documenting Code* (Docstring & Type Annotations)
+- **Markdown Docstring**: Setiap skrip wajib memiliki docstring deskripsi Markdown yang kaya pada fungsi utama. Windmill UI merender docstring ini sebagai dokumentasi interaktif bagi pengguna peramban.
+- **Type Annotations**: Tentukan tipe data (`str`, `int`, `bool`, `List`, `Dict`) secara eksplisit agar form antarmuka web terbentuk otomatis tanpa koding frontend.
+
+### 3. Modul Bersama Tanpa Duplikasi (*Codebases & Bundles*)
+- Daftarkan folder bersama pada `wmill.yaml`:
+  ```yaml
+  codebases:
+    - relative_path: f/shared
+      includes: ["**"]
+  ```
+- Import langsung antar-skrip di Python menggunakan notasi resmi:
+  ```python
+  from f.shared.bps_formatters import format_bps_percentage, clean_kecamatan_name
+  from f.shared.alert_formatter import generate_daily_monitoring_alert
+  ```
+
+### 4. Version Control & Git-Sync yang Disiplin
+- **Keamanan Kredensial**: Tetapkan `skipSecrets: true` pada `wmill.yaml` agar rahasia (*secret variables*) tidak pernah bocor ke commit Git.
+- **Pencegahan Drift Metadata**: Jalankan `wmill generate-metadata` setiap kali ada penambahan library baru atau perubahan tipe argumen skrip untuk menyegarkan `wmill-lock.yaml`.
+
+### 5. Aturan Penjadwalan Anti-Tumbukan (*Concurrency Hygiene*)
+- **Wajib `no_flow_overlap: true`**: Mencegah benturan eksekusi jika penarikan data sebelumnya masih berjalan.
+- **Timezone Baku**: Selalu gunakan `timezone: Asia/Jakarta`.
+

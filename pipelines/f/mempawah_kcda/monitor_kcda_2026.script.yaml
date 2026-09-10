@@ -1,0 +1,14 @@
+summary: ''
+description: ''
+lock: '!inline f/mempawah_kcda/monitor_kcda_2026.script.lock'
+kind: script
+schema:
+  $schema: https://json-schema.org/draft/2020-12/schema
+  type: object
+  properties:
+    current_date_override:
+      type: string
+      description: ''
+      default: ''
+      originalType: string
+  required: []

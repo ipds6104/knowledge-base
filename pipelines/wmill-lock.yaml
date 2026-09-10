@@ -1,0 +1,5 @@
+version: v2
+locks:
+  f/mempawah_kcda/monitor_kcda_2026: b51265431d48ba3ad90cf4ad3035983325926bb8e1eb66c6718ecc3a5970ad4b
+  f/shared/alert_formatter: da15300133940856ecec56ca62a9b5f07939fdb80cb9dcaf2b675f1bea05f2de
+  f/shared/bps_formatters: 2625b68b6ad174059afde2930c99398bd8fda85c38317410049d53fab05a66d8

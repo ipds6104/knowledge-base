@@ -8,36 +8,44 @@ Direktori ini menampung seluruh skrip otomasi (*scripts*), alur kerja (*flows*),
 
 ```text
 pipelines/
-├── wmill.yaml             # Konfigurasi sync workspace Windmill
-├── README.md              # Dokumentasi & panduan
+├── wmill.yaml             # Konfigurasi sync workspace Windmill & shared codebases
+├── wmill-lock.yaml        # Lockfile dependencies & content hash
+├── README.md              # Dokumentasi & panduan teknis
 └── f/
-    └── mempawah/          # Folder utama untuk alur kerja BPS Mempawah
-        ├── sync_kcda_2026.py
-        ├── sync_se2026_monitoring.py
-        └── ...
+    ├── shared/            # Library bersama (BPS formatters, alert helpers)
+    │   ├── bps_formatters.py
+    │   └── alert_formatter.py
+    └── mempawah_kcda/     # Domain Kecamatan Dalam Angka 2026
+        ├── monitor_kcda_2026.py
+        └── monitor_kcda_2026.schedule.yaml
 ```
 
 ---
 
 ## 🚀 Cara Kerja & Perintah Cepat
 
-1. **Uji Coba Skrip Lokal**:
+1. **Uji Coba Skrip Lokal (Preview)**:
    ```bash
-   wmill script preview f/mempawah/[nama_script].py -d '{"arg1": "val1"}'
+   wmill script preview f/mempawah_kcda/monitor_kcda_2026.py -d '{"current_date_override": "2026-09-10"}'
    ```
 
-2. **Push Skrip Tunggal**:
+2. **Push Skrip Tunggal ke Server**:
    ```bash
-   wmill script push f/mempawah/[nama_script].py f/mempawah/[nama_script]
+   wmill script push f/mempawah_kcda/monitor_kcda_2026.py
    ```
 
-3. **Push Jadwal Cron**:
+3. **Push & Aktifkan Jadwal Cron**:
    ```bash
-   wmill schedule push f/mempawah/[nama_schedule].schedule.yaml f/mempawah/[nama_schedule]
-   wmill schedule enable f/mempawah/[nama_schedule]
+   wmill schedule push f/mempawah_kcda/monitor_kcda_2026.schedule.yaml f/mempawah_kcda/monitor_kcda_2026_daily
+   wmill schedule enable f/mempawah_kcda/monitor_kcda_2026_daily
    ```
 
-4. **Sinkronisasi Seluruh Pipeline ke Server**:
+4. **Sinkronisasi Metadata Schema Form UI**:
+   ```bash
+   wmill generate-metadata
+   ```
+
+5. **Sinkronisasi Seluruh Pipeline ke Server**:
    ```bash
    wmill sync push
    ```
