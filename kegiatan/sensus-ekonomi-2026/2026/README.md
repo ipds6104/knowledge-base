@@ -23,6 +23,15 @@ deadlines:
     status: "belum"
   - tanggal: "2026-08-31"
     kegiatan: "Batas Akhir Pendataan Lapangan (Door-to-Door / CAPI)"
+    status: "selesai"
+  - tanggal: "2026-09-07"
+    kegiatan: "Mulai Pelatihan Petugas Pengolahan Peta (Wilkerstat) SE2026 BPS Kab/Kota"
+    status: "belum"
+  - tanggal: "2026-09-11"
+    kegiatan: "Batas Akhir Pelatihan Petugas Pengolahan Peta (Wilkerstat) SE2026 BPS Kab/Kota"
+    status: "belum"
+  - tanggal: "2026-10-11"
+    kegiatan: "Target Akhir Pengolahan Peta & Muatan Wilkerstat SE2026 (Durasi 1 Bulan)"
     status: "belum"
 ---
 # Sensus Ekonomi 2026 (2026)
@@ -452,6 +461,10 @@ Berikut adalah daftar PPL dengan rasio usaha keluarga Non-Aktif (Closed / Not Fo
   Mekanisme teknis eksekusi SQL pada Superset API, limitasi kritis (`SELECT *` dilarang, max 1000 baris, max 25 kolom), strategi query paralel `Promise.all()`, serta Data Dictionary lengkap (12 tabel, 773 variabel kuesioner SE2026).
 * 📄 **[Ketentuan Non-Disclosure Agreement (NDA) FASIH-DATA SE2026](docs/nda-fasih-data-se2026.md)**  
   10 klausul pengamanan data dan aturan kerahasiaan BPS RI untuk aktivasi akun FASIH-DATA.
+* 📄 **[Surat Pelatihan Petugas Pengolahan Wilkerstat SE2026](docs/surat-pelatihan-petugas-pengolahan-wilkerstat-se2026.md)**  
+  Surat Dinas BPS Provinsi Kalbar No. B-713/61000/VS.190/2026 mengenai jadwal pelatihan BPS Kab/Kota (7–11 September 2026), beban 500 SLS/bulan per petugas, materi, serta format SPK dan BAST.
+* 📚 **[Materi Lengkap Pengolahan Wilkerstat SE2026 (10 Modul)](materi-pengolahan/README.md)**  
+  Arsip komprehensif materi pelatihan Inda & Petugas Pengolahan Wilkerstat SE2026 (10 modul PDF & Markdown LLM-ready, diagram alur kerja, standar beban kerja mitra, dan juknis pengolahan).
 
 ---
 

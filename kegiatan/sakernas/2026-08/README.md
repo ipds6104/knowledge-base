@@ -90,5 +90,35 @@ Untuk memanfaatkan data mikro hasil pencacahan SE2026 pada 48 Sub-SLS sampel Sak
   * **CSV**: [prelist_updating_sakernas_se2026_intersect_final.csv](prelist_updating_sakernas_se2026_intersect_final.csv)
   * **Excel (Styled)**: [prelist_updating_sakernas_se2026_intersect_final.xlsx](prelist_updating_sakernas_se2026_intersect_final.xlsx) (Dilengkapi format header slate-gray, gridlines, auto-column width, dan freeze-panes).
 
+---
+
+## 📦 Ekstraksi Data Mikro Penuh Sakernas Agustus 2026 (Zero-Pruning 100% Kolom)
+
+Penarikan data mikro 100% lengkap tanpa meninggalkan satu kolom pun untuk seluruh sampel Sakernas Agustus 2026 Kabupaten Mempawah (6104) telah berhasil dieksekusi secara otomatis:
+
+* **Skrip Ekstraktor**: [scripts/extract_sakernas_full_data.py](file:///home/ihza/Projects/knowledge-base/scripts/extract_sakernas_full_data.py)
+* **Kamus Skema & Kolom**: [metadata_tables_sakernas.json](metadata_tables_sakernas.json) (Memetakan 1.036 kolom dari 11 tabel skema `tok_3fd42e0e`)
+* **Metode**: *Deterministic Column-Chunking* (membagi puluhan kolom ke dalam paket 22-kolom untuk mem-bypass batasan query Superset max 25 kolom per SQL statement tanpa kehilangan satu kolom pun)
+* **Perintah Penarikan Ulang**:
+  ```bash
+  python3 scripts/extract_sakernas_full_data.py
+  python3 scripts/upload_sakernas_to_gdrive.py
+  ```
+* **Tautan Google Drive Resmi (35. Sakernas / 2026-08)**: [Folder Google Drive 2026-08](https://drive.google.com/drive/folders/16dOgtUV9C1SbuZlbg2OATciFr7p7adSH)
+
+### 📂 Berkas Output Dataset & Struktur Google Drive:
+Folder Google Drive `2026-08/` telah ditata ke dalam 3 subfolder rapi:
+1. **`01_Dataset_Utama/`**:
+   * [`sakernas_agustus_2026_mempawah_master_flat.xlsx`](https://drive.google.com/file/d/19xg5FGXUeUTqWgEevr2WKmnF0OmXr-Kc/view) (8.73 MB)
+   * [`sakernas_agustus_2026_mempawah_master_flat.csv`](https://drive.google.com/file/d/1nivycxQppWN3q9hc_gyOmPywC1otbARu/view) (16.35 MB) — **1.756 baris ART** × **861 kolom unik** (Hasil penggabungan ART + Rumah Tangga + Assignment + Petugas).
+2. **`02_Tabel_Mikro/`**:
+   * **`art_roster` (Individu/ART)**: [`art_roster_mempawah_full_637cols.xlsx`](https://drive.google.com/file/d/188A4G5M2gcOrogbkjn8CmqhoMBT23fWi/view) (4.17 MB) & [`.csv`](https://drive.google.com/file/d/1Hg2WqWLm7JXrU9_sFz3znnODE3f7Fvyy/view) (4.61 MB) | **1.756 baris** × **637 kolom lengkap**.
+   * **`root_table` (Rumah Tangga)**: [`root_table_mempawah_full_120cols.xlsx`](https://drive.google.com/file/d/18VwvNzxX44PKZpUqdwg3S8Tf7iTNX0Kq/view) (380 KB) & [`.csv`](https://drive.google.com/file/d/15t3wsSMAcUvTQJARTHT91Q6aBujYkeOT/view) (892 KB) | **479 baris** × **120 kolom lengkap**.
+   * **`base_table_assignment` (Status Assignment)**: [`base_table_assignment_mempawah_full_86cols.xlsx`](https://drive.google.com/file/d/1-mPAFREyrPDnjM2kV3-mZl4GmsyUgDgS/view) (400 KB) & [`.csv`](https://drive.google.com/file/d/1od3SOwES5lsaDQBaIIuewiruYAI1SrQB/view) (2.01 MB) | **479 baris** × **86 kolom lengkap**.
+   * **`petugas` (Petugas Lapangan)**: [`petugas_mempawah_full_21cols.xlsx`](https://drive.google.com/file/d/1YEmJO-r-UNjeDYNH92WlRsZxZk2sIFo8/view) (70 KB) & [`.csv`](https://drive.google.com/file/d/1A966mbJ369K3rVK4kIllRu1MM5d37WON/view) (190 KB) | **479 baris** × **21 kolom lengkap**.
+3. **`03_Metadata_dan_Kamus_Data/`**:
+   * [`kamus_variabel_sakernas_202608.xlsx`](https://drive.google.com/file/d/1OpXmVpMTqQie29XdUTJjOQ7VwP4_OaD7/view) — Buku kamus daftar 1.036 variabel seluruh tabel dalam format Excel siap baca.
+   * [`metadata_tables_sakernas.json`](https://drive.google.com/file/d/1LxIMvf2ynhts210YSj5yNi5TCr8CXcaG/view) — Skema database asli dalam format JSON.
+
 
 

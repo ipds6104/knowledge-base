@@ -23,14 +23,14 @@ deadlines:
     status: "selesai"
   - tanggal: "2026-07-15"
     kegiatan: "Penilaian Interviu EPSS Pemkab Mempawah (Penilai: BPS Kab. Ketapang)"
-    status: "belum"
+    status: "selesai"
     waktu: "08.30 - 11.00 WIB"
     tempat: "Mempawah Command Centre (MCC) / Online Zoom"
     zoom_link: "http://s.bps.go.id/interview2026"
     nomor_surat: "B-337/61046/HM.310/2026"
   - tanggal: "2026-07-15"
     kegiatan: "Penilaian Interviu EPSS Pemkab Kubu Raya (Penilai: BPS Kab. Mempawah)"
-    status: "belum"
+    status: "selesai"
     waktu: "13.30 WIB - Selesai"
     tempat: "Online Zoom"
     zoom_link: "http://s.bps.go.id/Zoom-EPSS-BPSKKR"
@@ -38,20 +38,30 @@ deadlines:
     slide_paparan: "https://docs.google.com/presentation/d/1GF-Rw9Tl5gqeORCP8fstgXGP1bwN0UkUqc0dfZzUO20/edit?slide=id.g3f80872f5c2_0_2024"
   - tanggal: "2026-07-17"
     kegiatan: "Batas Akhir Melengkapi/Memperbaiki Dokumen Pendukung EPSS Pemkab Mempawah (2 Hari Pasca-Interviu)"
-    status: "belum"
+    status: "selesai"
     nomor_surat: "B-593/61000/TS.160/2026"
     keterangan: "TPI diberikan kesempatan memperbaiki dokumen pendukung yang kurang maksimal 2 hari setelah interviu dilaksanakan."
   - tanggal: "2026-07-17"
     kegiatan: "Batas Akhir Penilaian Interviu"
-    status: "belum"
+    status: "selesai"
   - tanggal: "2026-07-17"
     kegiatan: "Batas Akhir Penilaian Visitasi"
-    status: "belum"
+    status: "selesai"
   - tanggal: "2026-07-31"
     kegiatan: "Batas Akhir Penilaian Harmonisasi Wilayah"
+    status: "selesai"
+  - tanggal: "2026-09-03"
+    kegiatan: "Rapat Pleno Provinsi Evaluasi EPSS 2026 Se-Kalbar (Hari Pertama)"
+    status: "selesai"
+  - tanggal: "2026-09-04"
+    kegiatan: "Rapat Pleno Provinsi Evaluasi EPSS 2026 Se-Kalbar (Hari Kedua)"
     status: "belum"
-  - tanggal: "2026-08-23"
-    kegiatan: "Batas Akhir Penilaian Harmonisasi Nasional"
+  - tanggal: "2026-09-04"
+    kegiatan: "Batas Akhir Perbaikan Dokumen Pendukung Hasil Pleno Provinsi (Pukul 23:59 WIB)"
+    status: "belum"
+    keterangan: "TPI Pemkab Mempawah mengunggah berkas perbaikan ke Google Drive bersama sebelum batas waktu."
+  - tanggal: "2026-09-05"
+    kegiatan: "Batas Akhir Penyesuaian Nilai di SIMBATIK oleh TPB Pasca Pleno Provinsi"
     status: "belum"
 ---
 # Evaluasi EPSS (2026)
@@ -62,6 +72,9 @@ Kegiatan ini mengacu pada **Surat Kepala BPS Provinsi Kalimantan Barat Nomor B-5
 
 *   **Tautan Materi EPSS 2026 (Pusat):** [http://s.bps.go.id/MateriEPSS_2026](http://s.bps.go.id/MateriEPSS_2026)
 *   **SK TPI Kabupaten Mempawah 2026:** [Keputusan Bupati Mempawah Nomor 500.14.1/133/DISKOMINFO/2026](sk-tpi-mempawah-2026.md)
+*   **Modul Pelatihan & Pedoman Penilaian Domain 1 s.d. 5 (Markdown):** [materi-pelatihan/README.md](materi-pelatihan/README.md)
+*   **Dokumen Rencana Aksi Perbaikan Hasil Pleno:** [analisis-hasil-pleno-provinsi-epss-2026.md](analisis-hasil-pleno-provinsi-epss-2026.md)
+*   **Bahan Tayang Pleno Provinsi:** [bahan-tayang-pleno-mempawah.pdf](bahan-tayang-pleno-mempawah.pdf) (Slide Google: [Link Slide Pleno](https://docs.google.com/presentation/d/1NLduIivFp5yeCW8gqYuLfHMblq-VJXSL/edit?slide=id.p1#slide=id.p1))
 
 ## Catatan Pelaksanaan
 *   **12 Mei 2026**: *Insiden Teknis* - Terjadi pemadaman sistem kelistrikan dan pendingin di Data Center BPS Pusat, menyebabkan gangguan akses Simbatik/aplikasi EPSS secara nasional selama beberapa jam.
@@ -70,6 +83,7 @@ Kegiatan ini mengacu pada **Surat Kepala BPS Provinsi Kalimantan Barat Nomor B-5
 *   **14 Juli 2026**: Menandai selesai untuk tiga milestone sebelumnya (Penilaian Dokumen PK, Awal Penyesuaian, dan Batas Akhir Penyesuaian).
 *   **15 Juli 2026**: Penilaian Interviu EPSS Kabupaten Mempawah oleh BPS Kabupaten Ketapang (selaku Penilai Badan). Lokasi di Mempawah Command Centre (MCC) / Zoom link: http://s.bps.go.id/interview2026. Nomor Surat Undangan: B-337/61046/HM.310/2026.
 *   **15 Juli 2026**: Penilaian Interviu EPSS Kabupaten Kubu Raya oleh BPS Kabupaten Mempawah (selaku Penilai Badan). BPS Mempawah memaparkan bahan tayang/slide paparan: https://docs.google.com/presentation/d/1GF-Rw9Tl5gqeORCP8fstgXGP1bwN0UkUqc0dfZzUO20/edit?slide=id.g3f80872f5c2_0_2024. Lokasi online via Zoom link: http://s.bps.go.id/Zoom-EPSS-BPSKKR. Nomor Surat Undangan: B-204/61120/TS.160/2026.
+*   **03 September 2026**: Rapat Pleno Provinsi EPSS 2026 Se-Kalbar. Ditemukan bahwa Pemkab Mempawah mendapat **Nilai 1 pada 10 Indikator** oleh BPS Kab. Ketapang, didominasi oleh Domain 2 (Kualitas Data: 20201, 20301, 20302, 20501, 20502), Domain 3 (30302), Domain 4 (40102, 40103), dan Domain 5 (50103, 50301). Diskominfo dan OPD terkait (Dinkes & Disperindag) diberikan kesempatan perbaikan bukti dukung sampai **4 September 2026 pukul 23:59 WIB**. Analisis lengkap dan daftar dokumen penyelamat didokumentasikan di [analisis-hasil-pleno-provinsi-epss-2026.md](analisis-hasil-pleno-provinsi-epss-2026.md).
 
 ### 📝 Aturan Penilaian Interviu & Bukti Dukung Tambahan (Hasil Rapat & Chat):
 1.  **Independensi & Kerahasiaan Satker:** Dalam melakukan interviu, TPB dari BPS Mempawah yang menilai Kubu Raya **tidak diperkenankan memperkenalkan asal satker** (Mempawah). Seluruh komunikasi hanya merepresentasikan nama "BPS" secara umum untuk menghindari *conflict of interest*.

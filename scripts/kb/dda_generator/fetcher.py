@@ -11,9 +11,12 @@ import urllib.request
 from pathlib import Path
 
 
-def fetch_sheet_tab_by_name(sheet_id: str, tab_name: str) -> list:
-    """Menarik data tab CSV dari Google Sheets berdasarkan sheet_id dan tab_name."""
-    url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={urllib.parse.quote(tab_name)}"
+def fetch_sheet_tab_by_name(sheet_id: str, tab_name: str, gid: str = None) -> list:
+    """Menarik data tab CSV dari Google Sheets berdasarkan sheet_id dan tab_name atau gid."""
+    if gid:
+        url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&gid={gid}"
+    else:
+        url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={urllib.parse.quote(tab_name)}"
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(req, timeout=15) as resp:
         text = resp.read().decode("utf-8")
@@ -25,7 +28,9 @@ def fetch_desa_data(config: dict) -> tuple:
     """Menarik dataset RT/CAPI dan Fasilitas untuk desa secara eksplisit sesuai sheet_id dan nama tab di config."""
     sheet_id = config.get("sheet_id", "")
     rt_tab = config.get("rt_tab", "Sheet1")
+    rt_gid = config.get("rt_gid", None)
     fas_tab = config.get("fas_tab", "Sheet4")
+    fas_gid = config.get("fas_gid", None)
 
     rt_data = []
     fas_data = []
@@ -33,13 +38,13 @@ def fetch_desa_data(config: dict) -> tuple:
     if sheet_id:
         try:
             print(f"Mengunduh data live Google Sheets (ID: {sheet_id})...")
-            if rt_tab:
-                rt_data = fetch_sheet_tab_by_name(sheet_id, rt_tab)
-                print(f"  -> {rt_tab}: {len(rt_data)} baris")
+            if rt_tab or rt_gid:
+                rt_data = fetch_sheet_tab_by_name(sheet_id, rt_tab, gid=rt_gid)
+                print(f"  -> {rt_tab or rt_gid}: {len(rt_data)} baris")
 
-            if fas_tab:
-                fas_data = fetch_sheet_tab_by_name(sheet_id, fas_tab)
-                print(f"  -> {fas_tab}: {len(fas_data)} baris")
+            if fas_tab or fas_gid:
+                fas_data = fetch_sheet_tab_by_name(sheet_id, fas_tab, gid=fas_gid)
+                print(f"  -> {fas_tab or fas_gid}: {len(fas_data)} baris")
             else:
                 print("  -> Tidak ada pendataan Fasilitas Umum (fas_tab kosong).")
 

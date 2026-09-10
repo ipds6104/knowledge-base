@@ -48,9 +48,16 @@ async function getChromeArgs() {
   return args;
 }
 
+function getCookiePaths(username) {
+  const safeName = (username || "default").replace(/[^a-zA-Z0-9_-]/g, "_");
+  const cookiesPath = resolve(__dirname, "..", "data", "cookies", `fasih-dashboard-${safeName}.json`);
+  const storagePath = cookiesPath.replace(".json", "-storage.json");
+  return { cookiesPath, storagePath };
+}
+
 // Perform Playwright login and store session
-async function performLogin() {
-  console.log("→ Meluncurkan browser untuk login BPS SSO...");
+async function performLogin(username, password, cookiesPath, storagePath) {
+  console.log(`→ Meluncurkan browser untuk login BPS SSO akun: ${username}...`);
   const chromePath = platform() === "win32"
     ? "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
     : "/usr/bin/google-chrome-stable";
@@ -82,8 +89,8 @@ async function performLogin() {
     
     console.log("→ Mengisi kredensial SSO...");
     await page.waitForSelector("#username", { timeout: 15000 });
-    await page.fill("#username", USERNAME);
-    await page.fill("#password", PASSWORD);
+    await page.fill("#username", username);
+    await page.fill("#password", password);
     await page.click("#kc-login");
     
     console.log("→ Menunggu kembali ke dashboard...");
@@ -102,12 +109,12 @@ async function performLogin() {
     }
 
     const cookies = await context.cookies();
-    ensureDir(COOKIES_PATH);
-    writeFileSync(COOKIES_PATH, JSON.stringify(cookies, null, 2));
+    ensureDir(cookiesPath);
+    writeFileSync(cookiesPath, JSON.stringify(cookies, null, 2));
     const storageState = await context.storageState();
-    writeFileSync(STORAGE_PATH, JSON.stringify(storageState, null, 2));
+    writeFileSync(storagePath, JSON.stringify(storageState, null, 2));
 
-    console.log("✓ Login berhasil! Cookie dan Token CSRF telah disimpan.");
+    console.log(`✓ Login berhasil! Cookie dan Token CSRF telah disimpan (${cookiesPath}).`);
     return { cookies, csrfToken };
   } finally {
     await browser.close();
@@ -115,7 +122,7 @@ async function performLogin() {
 }
 
 // Retrieve active CSRF token
-async function getCsrfTokenFromPage(storagePath) {
+async function getCsrfTokenFromPage(storagePath, cookiesPath) {
   const chromePath = platform() === "win32"
     ? "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
     : "/usr/bin/google-chrome-stable";
@@ -148,10 +155,12 @@ async function getCsrfTokenFromPage(storagePath) {
       return el ? el.value : null;
     });
 
-    const cookies = await context.cookies();
-    writeFileSync(COOKIES_PATH, JSON.stringify(cookies, null, 2));
-    const storageState = await context.storageState();
-    writeFileSync(STORAGE_PATH, JSON.stringify(storageState, null, 2));
+    if (csrfToken && cookiesPath) {
+      const cookies = await context.cookies();
+      writeFileSync(cookiesPath, JSON.stringify(cookies, null, 2));
+      const storageState = await context.storageState();
+      writeFileSync(storagePath, JSON.stringify(storageState, null, 2));
+    }
 
     return csrfToken;
   } catch (err) {
@@ -162,7 +171,7 @@ async function getCsrfTokenFromPage(storagePath) {
 }
 
 // Execute query via native fetch with rules checking
-async function executeQuery(sql, cookieStr, csrfToken) {
+async function executeQuery(sql, cookieStr, csrfToken, options = {}) {
   if (sql.includes("SELECT *") || sql.includes("select *")) {
     console.warn("⚠️ PERINGATAN: Superset SQL Lab melarang klausa 'SELECT *'. Harap sebutkan nama kolom secara eksplisit!");
   }
@@ -178,17 +187,17 @@ async function executeQuery(sql, cookieStr, csrfToken) {
 
   const payload = {
     client_id: randStr(10),
-    database_id: 25,
+    database_id: options.databaseId ?? 25,
     json: true,
     runAsync: false,
-    schema: "tgr_fd68e454",
+    schema: options.schema ?? "tgr_fd68e454",
     sql: sql,
-    sql_editor_id: "950527",
-    tab: "KB SQLLab Query",
+    sql_editor_id: options.sqlEditorId ?? "950527",
+    tab: options.tab ?? "KB SQLLab Query",
     tmp_table_name: "",
     select_as_cta: false,
     ctas_method: "TABLE",
-    queryLimit: 9000,
+    queryLimit: options.queryLimit ?? 9000,
     expand_data: true
   };
 
@@ -208,27 +217,89 @@ async function executeQuery(sql, cookieStr, csrfToken) {
 }
 
 async function run() {
-  const sql = process.argv[2];
+  const args = process.argv.slice(2);
+  let sql = "";
+  let databaseId = 25;
+  let schema = "tgr_fd68e454";
+  let queryLimit = 9000;
+  let outputFile = null;
+
+  let requestedUser = null;
+  let requestedPass = null;
+
+  for (let i = 0; i < args.length; i++) {
+    if (args[i] === "--db" || args[i] === "--database-id") {
+      databaseId = parseInt(args[++i], 10);
+    } else if (args[i] === "--schema") {
+      schema = args[++i];
+    } else if (args[i] === "--limit") {
+      queryLimit = parseInt(args[++i], 10);
+    } else if (args[i] === "--user" || args[i] === "--username" || args[i] === "--account") {
+      requestedUser = args[++i];
+    } else if (args[i] === "--pass" || args[i] === "--password") {
+      requestedPass = args[++i];
+    } else if (args[i] === "--file" || args[i] === "-f") {
+      const filePath = resolve(args[++i]);
+      sql = readFileSync(filePath, "utf-8");
+    } else if (args[i] === "--output" || args[i] === "-o") {
+      outputFile = resolve(args[++i]);
+    } else if (!sql && !args[i].startsWith("-")) {
+      sql = args[i];
+    }
+  }
+
   if (!sql) {
-    console.error("Penggunaan: node scripts/sqllab.js \"<SQL_QUERY>\"");
+    console.error("Penggunaan: node scripts/sqllab.js \"<SQL_QUERY>\" [options]");
+    console.error("       atau: node scripts/sqllab.js --file <path/to/query.sql> [options]");
+    console.error("Pilihan:");
+    console.error("  --db, --database-id <id>    ID database Superset (default: 25 untuk SE2026, 15 untuk Sakernas)");
+    console.error("  --schema <schema_name>     Nama schema (default: tgr_fd68e454, Sakernas: tok_3fd42e0e)");
+    console.error("  --limit <number>           Batas baris query (default: 9000)");
+    console.error("  --account, --user <name>   Username akun FASIH/SSO BPS");
+    console.error("  --file, -f <path>          Baca SQL dari berkas");
+    console.error("  --output, -o <path>        Simpan output JSON ke berkas");
     process.exit(1);
   }
 
-  if (!USERNAME || !PASSWORD) {
-    console.error("❌ Kredensial FASIH_USERNAME dan FASIH_PASSWORD harus diset di file .env");
+  // Resolve survey-specific account vs default account
+  let username = requestedUser;
+  let password = requestedPass;
+  const isSakernas = databaseId === 15 || (schema && schema.includes("3fd42e0e"));
+
+  if (!username) {
+    if (isSakernas && process.env.FASIH_SAKERNAS_USERNAME) {
+      username = process.env.FASIH_SAKERNAS_USERNAME;
+      password = process.env.FASIH_SAKERNAS_PASSWORD;
+    } else {
+      username = process.env.FASIH_USERNAME;
+      password = process.env.FASIH_PASSWORD;
+    }
+  } else if (!password) {
+    if (username === process.env.FASIH_SAKERNAS_USERNAME) {
+      password = process.env.FASIH_SAKERNAS_PASSWORD;
+    } else if (username === process.env.FASIH_USERNAME) {
+      password = process.env.FASIH_PASSWORD;
+    }
+  }
+
+  if (!username || !password) {
+    console.error("❌ Kredensial FASIH_USERNAME dan FASIH_PASSWORD harus diset di file .env atau via CLI (--user & --pass)");
     process.exit(1);
   }
+
+  const { cookiesPath, storagePath } = getCookiePaths(username);
+  const queryOptions = { databaseId, schema, queryLimit };
 
   let cookies = [];
   let csrfToken = null;
 
-  if (existsSync(COOKIES_PATH) && existsSync(STORAGE_PATH)) {
-    console.log("→ Memuat sesi tersimpan...");
+  if (existsSync(cookiesPath) && existsSync(storagePath)) {
+    console.log(`→ Memuat sesi tersimpan untuk ${username}...`);
     try {
-      cookies = JSON.parse(readFileSync(COOKIES_PATH, "utf-8"));
-      csrfToken = await getCsrfTokenFromPage(STORAGE_PATH);
+      cookies = JSON.parse(readFileSync(cookiesPath, "utf-8"));
+      csrfToken = await getCsrfTokenFromPage(storagePath, cookiesPath);
       if (csrfToken) {
-        cookies = JSON.parse(readFileSync(COOKIES_PATH, "utf-8"));
+        cookies = JSON.parse(readFileSync(cookiesPath, "utf-8"));
       } else {
         console.warn("⚠️ Sesi tersimpan kedaluwarsa.");
       }
@@ -238,15 +309,15 @@ async function run() {
   }
 
   if (!csrfToken) {
-    const fresh = await performLogin();
+    const fresh = await performLogin(username, password, cookiesPath, storagePath);
     cookies = fresh.cookies;
     csrfToken = fresh.csrfToken;
   }
 
   const cookieStr = cookies.map(c => `${c.name}=${c.value}`).join('; ');
 
-  console.log("→ Mengeksekusi query SQL...");
-  let res = await executeQuery(sql, cookieStr, csrfToken);
+  console.log(`→ Mengeksekusi query SQL (Akun: ${username}, DB: ${databaseId}, Schema: ${schema}, Limit: ${queryLimit})...`);
+  let res = await executeQuery(sql, cookieStr, csrfToken, queryOptions);
 
   const isUnauthorized = res.status === 401 || res.status === 403;
   let isCsrfMissing = false;
@@ -259,9 +330,9 @@ async function run() {
 
   if (isUnauthorized || isCsrfMissing) {
     console.warn(`⚠️ Sesi ditolak (Status ${res.status} atau CSRF kedaluwarsa). Melakukan re-login...`);
-    const fresh = await performLogin();
+    const fresh = await performLogin(username, password, cookiesPath, storagePath);
     const freshCookieStr = fresh.cookies.map(c => `${c.name}=${c.value}`).join('; ');
-    res = await executeQuery(sql, freshCookieStr, fresh.csrfToken);
+    res = await executeQuery(sql, freshCookieStr, fresh.csrfToken, queryOptions);
   }
 
   if (!res.ok) {
@@ -274,7 +345,13 @@ async function run() {
   const result = await res.json();
   if (result.status === "success" && result.data) {
     console.log("🟢 SQL Query berhasil dieksekusi!");
-    console.log(JSON.stringify(result.data, null, 2));
+    if (outputFile) {
+      ensureDir(outputFile);
+      writeFileSync(outputFile, JSON.stringify(result.data, null, 2), "utf-8");
+      console.log(`✓ Hasil query berhasil disimpan ke: ${outputFile} (${result.data.length} baris)`);
+    } else {
+      console.log(JSON.stringify(result.data, null, 2));
+    }
   } else {
     console.error("❌ SQL Query gagal dieksekusi oleh Database Engine:");
     console.error(JSON.stringify(result, null, 2));

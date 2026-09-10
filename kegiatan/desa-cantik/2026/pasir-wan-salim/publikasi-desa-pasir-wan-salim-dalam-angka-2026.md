@@ -132,56 +132,56 @@ Desa Pasir Wan Salim terletak di Kecamatan Mempawah Timur, Kabupaten Mempawah, P
 ## **BAB II: KEPENDUDUKAN & KELOMPOK RENTAN**
 
 ### **2.1 GAMBARAN UMUM DEMOGRAFI**
-Berdasarkan hasil pendataan Desa Cantik 2026, jumlah penduduk Desa Pasir Wan Salim tercatat sebanyak **3,074 jiwa**, terdiri dari **1,569 jiwa laki-laki** dan **1,505 jiwa perempuan**. Nilai *Sex Ratio* sebesar **104.25**.
+Berdasarkan hasil pendataan Desa Cantik 2026, jumlah penduduk Desa Pasir Wan Salim tercatat sebanyak **3,101 jiwa**, terdiri dari **1,584 jiwa laki-laki** dan **1,517 jiwa perempuan**. Nilai *Sex Ratio* sebesar **104.42**.
 
 **Tabel 3. Jumlah Penduduk Desa Pasir Wan Salim Menurut Wilayah RT dan Jenis Kelamin**
 | Nama RT | Laki-Laki | Perempuan | Total Penduduk | Sex Ratio |
 | :--- | :---: | :---: | :---: | :---: |
-| **RT 001 RW 01** | 45 | 40 | **85** | 112.50 |
-| **RT 002 RW 01** | 45 | 38 | **83** | 118.42 |
+| **RT 001 RW 01** | 46 | 40 | **86** | 115.00 |
+| **RT 002 RW 01** | 47 | 40 | **87** | 117.50 |
 | **RT 003 RW 02** | 36 | 34 | **70** | 105.88 |
 | **RT 004 RW 02** | 63 | 40 | **103** | 157.50 |
 | **RT 005 RW 03** | 66 | 70 | **136** | 94.29 |
-| **RT 006 RW 03** | 65 | 66 | **131** | 98.48 |
+| **RT 006 RW 03** | 67 | 67 | **134** | 100.00 |
 | **RT 007 RW 04** | 187 | 181 | **368** | 103.31 |
 | **RT 008 RW 04** | 144 | 155 | **299** | 92.90 |
 | **RT 009 RW 05** | 176 | 176 | **352** | 100.00 |
 | **RT 010 RW 05** | 136 | 129 | **265** | 105.43 |
 | **RT 011 RW 06** | 45 | 56 | **101** | 80.36 |
-| **RT 012 RW 06** | 69 | 61 | **130** | 113.11 |
-| **RT 013 RW 06** | 45 | 41 | **86** | 109.76 |
-| **RT 014 RW 07** | 80 | 57 | **137** | 140.35 |
-| **RT 015 RW 08** | 130 | 116 | **246** | 112.07 |
+| **RT 012 RW 06** | 72 | 63 | **135** | 114.29 |
+| **RT 013 RW 06** | 49 | 47 | **96** | 104.26 |
+| **RT 014 RW 07** | 82 | 57 | **139** | 143.86 |
+| **RT 015 RW 08** | 131 | 117 | **248** | 111.97 |
 | **RT 016 RW 08** | 93 | 104 | **197** | 89.42 |
 | **RT 017 RW 08** | 144 | 141 | **285** | 102.13 |
-| **DESA PASIR WAN SALIM** | **1569** | **1505** | **3074** | **104.25** |
+| **DESA PASIR WAN SALIM** | **1584** | **1517** | **3101** | **104.42** |
 
 ---
 
 ### **2.2 JUMLAH KARTU KELUARGA (KK) & RATA-RATA ART**
-Total Kartu Keluarga (KK) di Desa Pasir Wan Salim berjumlah **994 KK**, dengan rata-rata anggota rumah tangga sebesar **3.09 jiwa per KK**.
+Total Kartu Keluarga (KK) di Desa Pasir Wan Salim berjumlah **986 KK**, dengan rata-rata anggota rumah tangga sebesar **3.15 jiwa per KK**.
 
 **Tabel 4. Jumlah Kartu Keluarga (KK) dan Rata-rata Anggota Rumah Tangga (ART) per RT**
 | Nama RT | Total Penduduk | Jumlah KK | Rata-rata ART |
 | :--- | :---: | :---: | :---: |
-| **RT 001 RW 01** | 85 | 30 | 2.83 |
-| **RT 002 RW 01** | 83 | 28 | 2.96 |
+| **RT 001 RW 01** | 86 | 30 | 2.87 |
+| **RT 002 RW 01** | 87 | 28 | 3.11 |
 | **RT 003 RW 02** | 70 | 23 | 3.04 |
-| **RT 004 RW 02** | 103 | 30 | 3.43 |
+| **RT 004 RW 02** | 103 | 28 | 3.68 |
 | **RT 005 RW 03** | 136 | 42 | 3.24 |
-| **RT 006 RW 03** | 131 | 50 | 2.62 |
+| **RT 006 RW 03** | 134 | 50 | 2.68 |
 | **RT 007 RW 04** | 368 | 114 | 3.23 |
 | **RT 008 RW 04** | 299 | 92 | 3.25 |
 | **RT 009 RW 05** | 352 | 117 | 3.01 |
-| **RT 010 RW 05** | 265 | 84 | 3.15 |
+| **RT 010 RW 05** | 265 | 83 | 3.19 |
 | **RT 011 RW 06** | 101 | 32 | 3.16 |
-| **RT 012 RW 06** | 130 | 48 | 2.71 |
-| **RT 013 RW 06** | 86 | 37 | 2.32 |
-| **RT 014 RW 07** | 137 | 37 | 3.70 |
-| **RT 015 RW 08** | 246 | 80 | 3.08 |
-| **RT 016 RW 08** | 197 | 64 | 3.08 |
+| **RT 012 RW 06** | 135 | 48 | 2.81 |
+| **RT 013 RW 06** | 96 | 37 | 2.59 |
+| **RT 014 RW 07** | 139 | 38 | 3.66 |
+| **RT 015 RW 08** | 248 | 75 | 3.31 |
+| **RT 016 RW 08** | 197 | 63 | 3.13 |
 | **RT 017 RW 08** | 285 | 86 | 3.31 |
-| **DESA PASIR WAN SALIM** | **3074** | **994** | **3.09** |
+| **DESA PASIR WAN SALIM** | **3101** | **986** | **3.15** |
 
 ---
 
@@ -301,31 +301,31 @@ Sebanyak **0 penduduk** di Desa Pasir Wan Salim telah memiliki KTP-el (0.00% dar
 **Tabel 9. Penduduk Memiliki KTP-el per RT**
 | Nama RT | Total Penduduk | Memiliki KTP-el | Persentase (%) |
 | :--- | :---: | :---: | :---: |
-| **RT 001 RW 01** | 85 | 0 | 0.00% |
-| **RT 002 RW 01** | 83 | 0 | 0.00% |
+| **RT 001 RW 01** | 86 | 0 | 0.00% |
+| **RT 002 RW 01** | 87 | 0 | 0.00% |
 | **RT 003 RW 02** | 70 | 0 | 0.00% |
 | **RT 004 RW 02** | 103 | 0 | 0.00% |
 | **RT 005 RW 03** | 136 | 0 | 0.00% |
-| **RT 006 RW 03** | 131 | 0 | 0.00% |
+| **RT 006 RW 03** | 134 | 0 | 0.00% |
 | **RT 007 RW 04** | 368 | 0 | 0.00% |
 | **RT 008 RW 04** | 299 | 0 | 0.00% |
 | **RT 009 RW 05** | 352 | 0 | 0.00% |
 | **RT 010 RW 05** | 265 | 0 | 0.00% |
 | **RT 011 RW 06** | 101 | 0 | 0.00% |
-| **RT 012 RW 06** | 130 | 0 | 0.00% |
-| **RT 013 RW 06** | 86 | 0 | 0.00% |
-| **RT 014 RW 07** | 137 | 0 | 0.00% |
-| **RT 015 RW 08** | 246 | 0 | 0.00% |
+| **RT 012 RW 06** | 135 | 0 | 0.00% |
+| **RT 013 RW 06** | 96 | 0 | 0.00% |
+| **RT 014 RW 07** | 139 | 0 | 0.00% |
+| **RT 015 RW 08** | 248 | 0 | 0.00% |
 | **RT 016 RW 08** | 197 | 0 | 0.00% |
 | **RT 017 RW 08** | 285 | 0 | 0.00% |
-| **DESA PASIR WAN SALIM** | **3074** | **0** | **0.00%** |
+| **DESA PASIR WAN SALIM** | **3101** | **0** | **0.00%** |
 
 ---
 
 ## **BAB IV: KESEJAHTERAAN MASYARAKAT & BANTUAN SOSIAL**
 
 ### **4.1 SEBARAN PENERIMA BANTUAN SOSIAL**
-Pemerintah menyalurkan bantuan sosial meliputi: PKH (47), BPNT (94), BST (0), dan BLT (0).
+Pemerintah menyalurkan bantuan sosial meliputi: PKH (46), BPNT (94), BST (0), dan BLT (0).
 
 **Tabel 10. Sebaran Keluarga Penerima Bantuan Sosial per RT**
 | Nama RT | Penerima PKH | Penerima BPNT | Penerima BST | Penerima BLT | Total Penerima |
@@ -344,39 +344,39 @@ Pemerintah menyalurkan bantuan sosial meliputi: PKH (47), BPNT (94), BST (0), da
 | **RT 012 RW 06** | 1 | 12 | 0 | 0 | **13** |
 | **RT 013 RW 06** | 2 | 6 | 0 | 0 | **8** |
 | **RT 014 RW 07** | 4 | 4 | 0 | 0 | **8** |
-| **RT 015 RW 08** | 11 | 1 | 0 | 0 | **12** |
+| **RT 015 RW 08** | 10 | 1 | 0 | 0 | **11** |
 | **RT 016 RW 08** | 3 | 6 | 0 | 0 | **9** |
 | **RT 017 RW 08** | 8 | 17 | 0 | 0 | **25** |
-| **DESA PASIR WAN SALIM** | **47** | **94** | **0** | **0** | **141** |
+| **DESA PASIR WAN SALIM** | **46** | **94** | **0** | **0** | **140** |
 
 ---
 
 ## **BAB V: PERUMAHAN & INFRASTRUKTUR**
 
 ### **5.1 JUMLAH BUMBUNG RUMAH & KEPADATAN HUNIAN**
-Total bumbung rumah di Desa Pasir Wan Salim sebanyak **748 unit**, dengan rata-rata kepadatan hunian **4.11 jiwa per rumah**.
+Total bumbung rumah di Desa Pasir Wan Salim sebanyak **746 unit**, dengan rata-rata kepadatan hunian **4.16 jiwa per rumah**.
 
 **Tabel 11. Jumlah Bumbung Rumah dan Kepadatan Hunian (Jiwa/Rumah) per RT**
 | Nama RT | Total Penduduk | Bumbung Rumah | Kepadatan Hunian (Jiwa/Rumah) |
 | :--- | :---: | :---: | :---: |
-| **RT 001 RW 01** | 85 | 20 | 4.25 |
-| **RT 002 RW 01** | 83 | 23 | 3.61 |
+| **RT 001 RW 01** | 86 | 20 | 4.30 |
+| **RT 002 RW 01** | 87 | 23 | 3.78 |
 | **RT 003 RW 02** | 70 | 19 | 3.68 |
-| **RT 004 RW 02** | 103 | 27 | 3.81 |
+| **RT 004 RW 02** | 103 | 25 | 4.12 |
 | **RT 005 RW 03** | 136 | 30 | 4.53 |
-| **RT 006 RW 03** | 131 | 38 | 3.45 |
+| **RT 006 RW 03** | 134 | 38 | 3.53 |
 | **RT 007 RW 04** | 368 | 85 | 4.33 |
 | **RT 008 RW 04** | 299 | 67 | 4.46 |
 | **RT 009 RW 05** | 352 | 83 | 4.24 |
 | **RT 010 RW 05** | 265 | 56 | 4.73 |
 | **RT 011 RW 06** | 101 | 27 | 3.74 |
-| **RT 012 RW 06** | 130 | 39 | 3.33 |
-| **RT 013 RW 06** | 86 | 34 | 2.53 |
-| **RT 014 RW 07** | 137 | 29 | 4.72 |
-| **RT 015 RW 08** | 246 | 61 | 4.03 |
+| **RT 012 RW 06** | 135 | 39 | 3.46 |
+| **RT 013 RW 06** | 96 | 34 | 2.82 |
+| **RT 014 RW 07** | 139 | 30 | 4.63 |
+| **RT 015 RW 08** | 248 | 60 | 4.13 |
 | **RT 016 RW 08** | 197 | 48 | 4.10 |
 | **RT 017 RW 08** | 285 | 62 | 4.60 |
-| **DESA PASIR WAN SALIM** | **3074** | **748** | **4.11** |
+| **DESA PASIR WAN SALIM** | **3101** | **746** | **4.16** |
 
 ---
 

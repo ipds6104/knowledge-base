@@ -8,7 +8,6 @@ from pathlib import Path
 from typing import Dict, Optional, Tuple
 
 SCOPES = [
-    'https://www.googleapis.com/auth/spreadsheets',
     'https://www.googleapis.com/auth/drive',
 ]
 

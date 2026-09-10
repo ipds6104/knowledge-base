@@ -24,7 +24,9 @@ def cmd_convert(args) -> None:
 
     output_md = pdf_path.with_suffix('.md')
 
-    if args.ai:
+    if getattr(args, "slide", False):
+        _convert_slide(pdf_path, output_md, getattr(args, "model", None))
+    elif args.ai:
         _convert_ai(pdf_path, output_md)
     else:
         _convert_pdftotext(pdf_path, output_md)
@@ -33,6 +35,24 @@ def cmd_convert(args) -> None:
 
 
 # ─── Private helpers ──────────────────────────────────────────────────────────
+
+def _convert_slide(pdf_path: Path, output_md: Path, model: str = None) -> None:
+    """Konversi presisi tinggi untuk slide presentasi menggunakan Top Tools AI Vision."""
+    from .slide_converter import create_slide_converter
+    print(f"{Colors.BLUE}Memulai konversi slide presentasi menggunakan AI Vision (Top Tools AI)...{Colors.ENDC}")
+
+    config = load_env()
+    if model:
+        config["TOP_TOOLS_AI_MODEL"] = model
+
+    converter = create_slide_converter(config)
+
+    def on_progress(current: int, total: int, message: str):
+        pct = int((current / total) * 100)
+        print(f"{Colors.BLUE}[{pct:3d}%] Slide {current}/{total}: {message}{Colors.ENDC}")
+
+    converter.convert(pdf_path, output_md, on_progress=on_progress)
+
 
 def _convert_pdftotext(pdf_path: Path, output_md: Path) -> None:
     """Konversi cepat menggunakan pdftotext (tanpa AI)."""

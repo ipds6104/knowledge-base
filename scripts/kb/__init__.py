@@ -19,6 +19,7 @@ from . import cmd_metadata
 from . import cmd_dda
 from . import cmd_gdrive_mirror
 from . import cmd_podes
+from . import cmd_epss
 
 __all__ = [
     "Colors",

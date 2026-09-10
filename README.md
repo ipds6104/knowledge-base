@@ -134,16 +134,19 @@ Memindai semua berkas `README.md` dan menampilkan daftar deadline secara kronolo
 
 ---
 
-### 4. Konversi Surat PDF ke Markdown (`convert`)
-Mengonversi berkas surat tugas/edaran/dokumen berbentuk PDF ke berkas Markdown (`.md`) dengan nama yang sama.
+### 4. Konversi Dokumen & Slide PDF ke Markdown (`convert`)
+Mengonversi berkas dokumen PDF (surat tugas, naskah dinas, maupun slide presentasi) ke berkas Markdown (`.md`) dengan nama yang sama.
 ```bash
-# Mode Cepat & Offline (Menggunakan pdftotext bawaan poppler)
+# 1. Mode Cepat & Offline (Menggunakan pdftotext bawaan poppler)
 ./scripts/kb.py convert "kegiatan/sakernas/2026-06/surat_tugas.pdf"
 
-# Mode AI Vision (Menggunakan Gemini 3 Flash via Proxy - Presisi Tinggi)
+# 2. Mode AI Vision Dokumen (Menggunakan Gemini via Proxy - Presisi Tinggi)
 ./scripts/kb.py convert "kegiatan/sakernas/2026-06/surat_tugas.pdf" --ai
+
+# 3. Mode AI Vision Slide Presentasi (Top Tools AI - Diagram Mermaid, Chart, & Visual Understanding)
+./scripts/kb.py convert "kegiatan/sakernas/2026-08/briefing.pdf" --slide
 ```
-*Catatan Mode AI:* Membutuhkan konfigurasi API Key dan URL Proxy di berkas `.env` pada root repositori.
+*Catatan Mode Slide:* Menerapkan Clean Architecture (Ports & Adapters) dan memanfaatkan Vision API Top Tools AI untuk mentranslasikan diagram ke Mermaid.js dan chart ke Markdown Table. Dokumentasi lengkap: [docs/slide-converter.md](docs/slide-converter.md).
 
 ---
 

@@ -233,7 +233,71 @@ Setiap penyusunan dokumen Standar Operasional Prosedur (SOP) Permintaan Data unt
 
 ---
 
+## 🏛️ Standar Tata Naskah Dinas & Dokumen Bukti Dukung Resmi (Anti-AI Aesthetics & Zero Emoticons)
+
+Setiap pembuatan atau modifikasi dokumen kedinasan, surat pernyataan, laporan teknis, publikasi statistik, dan berkas bukti dukung evaluasi (EPSS, SAKIP, RB, Desa Cantik, dll.) **WAJIB MEMATUHI ATURAN MUTLAK BERIKUT**:
+
+### 🚨 1. Larangan Mutlak Emotikon (*Zero Emoticons*)
+- **DILARANG KERAS** menggunakan simbol emotikon apapun (seperti `📌`, `✅`, `⚠️`, `🚀`, `💡`, `❌`, dll.) di dalam teks dokumen naskah dinas, laporan teknis, keterangan tabel, maupun catatan/kesimpulan.
+- Dokumen pemerintah dan audit evaluasi nasional dinilai dari keabsahan dan formalitasnya; keberadaan emotikon langsung memicu kesan *"dokumen buatan AI / chat informal"* yang merusak kredibilitas institusi.
+
+### 🚫 2. Larangan Dekorasi Berlebihan (*Zero AI-Callout Boxes & Unadorned Notes*)
+- **DILARANG** membungkus catatan, penjelasan, atau kesimpulan ke dalam kotak-kotak dekoratif bergaya aplikasi/web (misal: kotak berwarna-warni melengkung/rounded, berlatar belakang biru/hijau muda, atau bergaris aksen tebal vertikal di sisi kiri).
+- **Format yang Benar**:
+  - Catatan dan keterangan ditulis sebagai **teks paragraf naskah dinas standar** yang mengalir secara alami di bawah tabel atau naskah (contoh: cukup diawali kata `Catatan:` atau `Keterangan:` yang dicetak tebal).
+  - Kesimpulan disajikan sebagai paragraf narasi formal atau daftar berbutir (*standard numbered list*) tanpa bingkai kotak hiasan.
+  - Latar belakang dokumen selalu berwarna putih bersih (*plain white*) tanpa shading kotak berwarna-warni.
+
+### ✍️ 3. Gaya Bahasa Birokrasi & Naskah Dinas Baku (*Institutional Tone*)
+- Gunakan tata bahasa Indonesia baku, objektif, formal, dan mencerminkan bahasa hukum/naskah dinas kedinasan (Permendagri / Perka BPS tentang Tata Naskah Dinas).
+- Hindari bahasa promosi, istilah percakapan, atau gaya penjelasan asisten virtual.
+
+---
+
+## 📄 SOP Konversi Dokumen & Slide PDF ke Basis Pengetahuan (`kb convert`)
+
+Setiap kali pengguna meminta untuk mengintegrasikan atau mengonversi berkas dokumen (surat edaran, juknis, materi briefing, atau materi paparan/slide) dari format PDF ke format Markdown (.md) di dalam basis pengetahuan:
+
+### 1. Pohon Keputusan Mode Konversi (Decision Matrix):
+* **Mode Slide / Presentasi (`--slide`) [SANGAT DIREKOMENDASIKAN UNTUK MATERI & PAPARAN]**:
+  - **Kriteria**: Dokumen berorientasi lanskap (*landscape*), materi sosialisasi/pelatihan, slide deck PPT, atau dokumen yang padat diagram alur, tabel data, infografis, dan elemen visual.
+  - **Perintah Eksekusi**:
+    ```bash
+    ./scripts/kb.py convert "path/to/materi.pdf" --slide
+    ```
+  - **Engine**: Menggunakan `Top Tools AI Vision` (model `Top-Tools-Ai` / `Qwen-3.8-Max`) dengan arsitektur heksagonal (`scripts/kb/slide_converter/`).
+  - **Fitur Ekstraksi Khusus**:
+    1. **Diagram Alur / Arsitektur**: Otomatis diterjemahkan menjadi blok kode interaktif ````mermaid ... ```` agar tetap dapat dirender dan diedit.
+    2. **Grafik / Chart**: Dikonversi menjadi tabel data angka presisi + 1 kalimat tren.
+    3. **Elemen Visual / Foto / Mockup UI**: Diberikan konteks semantik format callout `> 🖼️ **Visual**: ...`.
+    4. **Catatan / Warning**: Dikonversi ke GitHub Flavored Markdown (GFM) alerts (`> [!NOTE]`, `> [!IMPORTANT]`).
+
+* **Mode Dokumen Teks Formal / Surat Dinas (`--ai`)**:
+  - **Kriteria**: Dokumen persuratan resmi, surat tugas, SK Bupati, naskah dinas berorientasi potret (*portrait*) yang dominan teks naratif dan stempel/tanda tangan.
+  - **Perintah Eksekusi**:
+    ```bash
+    ./scripts/kb.py convert "path/to/surat_tugas.pdf" --ai
+    ```
+
+* **Mode Cepat / Offline (Tanpa Flag)**:
+  - **Kriteria**: Dokumen teks biasa jika tanpa koneksi internet atau dokumen sederhana tanpa elemen visual.
+  - **Perintah Eksekusi**:
+    ```bash
+    ./scripts/kb.py convert "path/to/dokumen.pdf"
+    ```
+
+### 2. Standar Penyimpanan & Penautan Hasil Konversi:
+1. **Lokasi Berkas**: Berkas hasil `.md` disimpan di direktori yang sama dengan berkas PDF aslinya (misal: `kegiatan/[kegiatan]/[periode]/docs/` atau `kegiatan/[kegiatan]/[periode]/`).
+2. **Penautan di README Kegiatan**: Wajib menautkan berkas Markdown tersebut menggunakan **tautan relatif (relative path)** di dalam berkas `README.md` kegiatan terkait.
+3. **Ekstraksi Jadwal / Deadline**: Jika dokumen memuat tanggal penting, deadline, atau milestone baru:
+   - Perbarui YAML frontmatter `deadlines` pada `README.md` kegiatan.
+   - Picu sinkronisasi otomatis: `./scripts/kb.py sync-sheets`.
+
+---
+
 ## Progress Log
+- **2026-09-03**: Mengembangkan dan membakukan modul **Slide-to-Markdown Vision Converter** pada `scripts/kb/slide_converter/` berarsitektur *Hexagonal Architecture (Ports & Adapters)* dan *Interface-First Pattern*. Menambahkan opsi `--slide` pada CLI `kb convert` untuk mengonversi berkas presentasi PDF ke Markdown secara presisi menggunakan model Vision AI (Top Tools AI / Qwen). Mampu menerjemahkan diagram alur menjadi blok kode Mermaid.js interaktif, grafik visual menjadi tabel data numerik, dan kotak catatan menjadi GFM alerts. Telah lolos uji stres empiris pada PDF pindaian (*scanned image*, 0 text layer) dengan akurasi 100%. Dokumentasi teknis tersedia di [docs/slide-converter.md](docs/slide-converter.md).
+- **2026-08-31**: Mengintegrasikan Surat Dinas BPS Provinsi Kalimantan Barat No. **B-713/61000/VS.190/2026** per tanggal 31 Agustus 2026 tentang **Pelatihan Petugas Pengolahan Wilkerstat SE2026** ke dalam basis pengetahuan di [surat-pelatihan-petugas-pengolahan-wilkerstat-se2026.md](file:///home/ihza/Projects/knowledge-base/kegiatan/sensus-ekonomi-2026/2026/docs/surat-pelatihan-petugas-pengolahan-wilkerstat-se2026.md). Memperbarui YAML frontmatter `deadlines` pada `README.md` Sensus Ekonomi 2026 untuk mencakup jadwal pelaksanaan pelatihan di BPS Kab/Kota (**7 – 11 September 2026**), standar beban kerja (**500 SLS/sub-SLS/non-SLS per bulan**), tautan materi/SPK/BAST (`http://s.bps.go.id/persiapan_petugaswilkerstat2026`), serta target akhir pengolahan peta (**11 Oktober 2026**). Jadwal telah terverifikasi sinkron via CLI `kb schedule`.
 - **2026-08-14**: Menyempurnakan SOP Permintaan Data untuk seluruh desa/kelurahan binaan Desa Cantik 2026 (**Sungai Bakau Kecil**, **Pasir Palembang**, dan **Kelurahan Pasir Wan Salim**) dengan aturan ketat: (1) Hanya melayani data agregat non-*by name by address* (UU No. 27/2022 PDP), (2) Proses Jalur 2 dipercepat menjadi 15 s.d. 30 menit langsung oleh Petugas Agen Statistik tanpa memerlukan tanda tangan basah Kepala Desa / Lurah, (3) Mengintegrasikan nomor kontak WhatsApp resmi per desa/kelurahan (`+62 815-4928-3541` untuk SBK, `+62 857-5171-8089` untuk Pasir Palembang, dan `+62 897-7539-550` untuk Pasir Wan Salim), serta menyematkan diagram alur vektor SVG yang rapi dan siap cetak 2 halaman penuh tanpa header/footer peramban.
 - **2026-08-13**: Memperbaiki duplikasi penulisan jabatan Pj. pada tanda tangan Kata Pengantar (`kades_title.upper()`) dan mengembalikan tata letak baku halaman `KONTRIBUTOR DATA / DATA CONTRIBUTORS` (Halaman iii) berstandar tata naskah diseminasi BPS. Mengompilasi ulang seluruh publikasi desa dalam angka (SBK, Pasir Palembang, Pasir Wan Salim) ke format PDF & DOCX.
 - **2026-08-10**: Menyelesaikan audit dan perbaikan menyeluruh (*comprehensive overhaul*) pada DDA Engine (`kb/dda_generator/`) sehingga 100% elemen publikasi Desa/Kelurahan Dalam Angka (Statistik Kunci Tabel 0.1, Tabel Bab 3 & Bab 5, Infografis/Grafik Visualisasi, Ulasan Narasi Bilingual, dan Penjelasan Teknis) bersifat dinamis 100% berbasis data CAPI aktual per desa/kelurahan. Menghapus seluruh nilai/pengali sintetis (`* 0.71`, `* 0.09`, `92,33%` default) dan memastikan variabel yang tidak dikumpulkan di suatu desa (seperti KTP-el atau Layak Huni di Pasir Wan Salim) tidak ditampilkan dalam tabel maupun infografis. Menyajikan data aktual CAPI Ketenagakerjaan (Usia Kerja Bekerja 1.094 jiwa), UMKM (126 KK), & BPJS (2.655 jiwa) untuk Kelurahan Pasir Wan Salim, serta Bahan Bangunan (Dinding Tembok 837 unit, Atap Seng 849 unit, Sanitasi BAB 748 KK) & Rumah Layak Huni Aktual (65,90%) untuk Desa Pasir Palembang.

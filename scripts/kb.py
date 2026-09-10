@@ -30,6 +30,7 @@ from kb import (
     cmd_dda,
     cmd_gdrive_mirror,
     cmd_podes,
+    cmd_epss,
     whoami_str,
 )
 
@@ -149,7 +150,18 @@ def main():
     parser_conv.add_argument(
         "--ai",
         action="store_true",
-        help="Gunakan AI Vision (Gemini Proxy) untuk konversi presisi tinggi.",
+        help="Gunakan AI Vision (Gemini Proxy) untuk konversi dokumen teks biasa.",
+    )
+    parser_conv.add_argument(
+        "--slide",
+        action="store_true",
+        help="Gunakan AI Vision (Top Tools AI) khusus slide presentasi (Mermaid, chart, visual understanding).",
+    )
+    parser_conv.add_argument(
+        "--model",
+        type=str,
+        default=None,
+        help="Model AI Vision kustom (default: Top-Tools-Ai).",
     )
 
     # 5. SE-MONITOR command
@@ -297,6 +309,37 @@ def main():
         action="store_true",
         help="Jangan upload hasil ke Google Drive secara otomatis."
     )
+    parser_dda.add_argument(
+        "--no-verify",
+        action="store_true",
+        help="Jangan jalankan verifikasi PDF secara otomatis pasca kompilasi."
+    )
+
+    # DDA-VERIFY command
+    parser_dda_verify = subparsers.add_parser(
+        "dda-verify", help="Verifikasi deterministik angka publikasi Desa Dalam Angka (PDF) terhadap Google Sheet."
+    )
+    parser_dda_verify.add_argument(
+        "nama_desa",
+        type=str,
+        help="Nama desa dalam format kebab-case (contoh: 'pasir-wan-salim', 'sungai-bakau-kecil', 'pasir-palembang')"
+    )
+    parser_dda_verify.add_argument(
+        "--pdf",
+        type=str,
+        default=None,
+        help="Path manual ke berkas PDF jika berbeda dari default."
+    )
+    parser_dda_verify.add_argument(
+        "--sheet-id", "-s",
+        type=str, default=None,
+        help="Google Sheet ID override (opsional)"
+    )
+    parser_dda_verify.add_argument(
+        "--year", "-y",
+        type=int, default=2026,
+        help="Tahun publikasi (default: 2026)"
+    )
 
     # 13. GDRIVE-MIRROR command
     parser_gdrive = subparsers.add_parser(
@@ -327,6 +370,9 @@ def main():
 
     # 14. PODES command
     cmd_podes.register_podes_subparser(subparsers)
+
+    # 15. EPSS command
+    cmd_epss.add_subparser(subparsers)
 
     args = parser.parse_args()
 
@@ -363,8 +409,15 @@ def main():
         cmd_metadata.run(args)
     elif args.command == "dda":
         cmd_dda.handle_dda(args)
+    elif args.command == "dda-verify":
+        cmd_dda.handle_dda_verify(args)
     elif args.command == "podes":
         cmd_podes.handle_podes(args)
+    elif args.command == "epss":
+        if hasattr(args, "func"):
+            args.func(args)
+        else:
+            cmd_epss.run_summary(args)
     elif args.command == "sqllab":
         if args.sqllab_subcommand == "sync":
             cmd_sqllab.cmd_sqllab_sync(args)

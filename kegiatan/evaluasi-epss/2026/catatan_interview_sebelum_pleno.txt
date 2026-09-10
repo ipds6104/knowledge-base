@@ -1,0 +1,48 @@
+﻿Evaluasi EPSS Disperindag (ketenagakerjaan) dan Dinkes
+* prinsip satu data indonesia → satud data sattsistik –? apakaah ada bk pedoman/ petinjuk teknis yng dinilaikan? dan bagaian mana yang mengaju di sds di 2 opd tersebut? dan di dokiumen tersebut di bagian mana nya? jawabab : sudah diupload dan dilampiri bagian sop dan screenshootnya
+* jika ada tambahan bisa ditambahkan
+* terkait indikator penerapan metdata statistik → apakah terdpaat bukti dukung metdata varibael di indah status submit/disetujui → sudah ada, dan sudah dilampirkan metada variabel → nanti ditambahan bukti dukung metada variabel (belum di screenshoot)
+* terus apakah sopnya sudah berlaku seluruh produsen data? → krn tidak ada stempelenya → untuk di kab mempawah cukup dengan tanda tangan tidak ada stempel untuk seluuruh opd kab mempawah (ndak papa menyesuaikan pemda mempawah)
+* 3. indikator tingkat kemetangan penerapan inteprobiltas →portal yang dibuat pemba mempawah sudah terintegrasi dengan SDI pusat? → jawaban portal sudah terintigrasi sejak portal itu ada dan sempat kena serangan pdn 2024, dan konfirmasi sekarang sudah terintgrasi lagi
+* domain 2 → 1. domain kualitas data tingkat kematangan proses identifikasi kebutuhan data → terdapat sop meenhkapai daftar data yg sudah disetujui forum data, ini forum datanya bentuknya kek gimana? → jawaban seluruh perangkat daerah degan baperida dan pada forum tersebut kita sepekati sejumlah data prioritas dan ditetapkan dalam bentuk berita acara dan lampiran sehingga terbentuk 
+* apakah forum datanya ada dokumentasi undangan notula dll? dokumentasi,notula ada sepertinya (nanti dicek lagi, kalo forum datanya da boleh ditambahkam di bukti dukung) → soalnya di bukti dukung masing2 opd 2 itu saja masihan
+* domain 2 → tingakt kemtanga  akurasi data → apakah ada proses akurasi data tsv, adakah bukti dukung proses data tersebut diperiksa dan setelah diperiska menjadi seperti ini? berdaraksan bukti dukung hanya proses meindahkan data tersebut ke komputer, belum ada proses pemriksaan (proses tersebut bisa ditambahkan ) → tangaapn terkait dengan dokumentasi secara fisik gak ada, tapi memang prosesnya seperti itu, misal di dinkes menyampaikam pemintaan data ke puskesmas dalam bentuk googlesheet diolah lagi fixnya gimana(perhitungan sudah benar, agrrgegasinya sudah benar? ini boleh ditambahkan, before afrternya terlihat gitu)
+* domain 2 → aktualitas data → apakah kedua kegitan ini sduah melampirkan KAK kegitana→ sudah diupload (apakah disprindag ada buku profil kek dinkes?untuk disperindag tidak ada berupa buku, adanya bentuk tabel saja
+* dan mau menangkap aktualitas data →diseperindag masi belum bisa ditangkap pbulikasi/ tabel yg dirilis sesuai dengan timeline KAK, kalo di dinkes bisaa (tapi harus dikuatkan juga rilisnya tanggal segini) dan lain2. → jaeabaan kalo dinkes dari tanggal rilis di tanggal pengatar dan untuk disperindag upload data di portal dan website menggunakan data 2024 dan bingung cara membuktikannya 
+* apakah ada mungkin surat dari diskominfo yang meminta data ini harus dirilis di portal tanggal ini? (bisa dibua tuntuk bukti dukung tamban)
+* KAK → tidak ada ttd dan stampel sebagai bukti pengesahan → kalau ada dokumen KAK final yg sudah disahkan setempel dll bisa ditambahkan
+* domain 2→ tingaktkemtangan pemnataudn desiminasi → (bukti duking tambahan sama kek sebelumnya)
+* indikator ketersedian data → konfirmasi apakah ada bukti dukung berupa publistas / crenshoot metada dari 2 kegiatan yang diajukan → metadata nya ada? datanya ada? dll yg menjujkan data tsb disertasi dengan metadata
+* indiaktor akses media penyebar luasan data → adakah bukti dukun yg menjukan kegatan statsitik ini dipublikasin/ disebar luaskan selian di portal SDI? (soalmnya dibukti dukung ada di media sosial , tapi di bukti dukung ndk ada, tapi di SOP nya ,media sosial ada) →bisa dijadikan tambahan kalau ada? 
+* masih belum ada bukti dukung kompilasi data keshtan di portal → upload di tambahan
+
+
+
+
+* domaian 2 → indiaktor keterbandingan data → masih perlu bukti dukung yg menujukan analisis antar waktu mupun wilaayah → ada analisisnya antar waktu maupun wilayah → bisajuga mungkin dari analisis publikasinya
+* indiaktor konsistensi sytatisk → data tenaga kerja belum melihat keterbandingan dengan sumber data yang lain karrna sumbernya masi sumber yang sama hanya beda publikasi saja → apakah ada bukti dukung yang lain? datanya sama dari disperindag tapi yng ngepulikasi dari dinas yang lain. dinkes sudah ada
+* * adomain 3         -> indikator proses pengumpulan data → data kesehtana adakahsurat permintaan data? dinskes dari proses penyususn proful kesrtana di awal tahun sebelum meyusun memmang menyurtsi psukemsas dari data hingga terssuusn jadi profil kesehwta dan berkoordinasi pengeolal prpgra, yg ada di dinas keshatan, lalu mintn mengisi di google drive, lalu dilolaj jadi prfil kesehan yang lengkap. selain dari puskemas juga lintas sektor bjs, rumah sakit, dll → bisamditambahkan surat permintaan data di drive yang menujukan pengumpamn datnya seperit itu dll dan koordinasinya
+* domaain 3 → analisis data → disneks sudah analisinua, diperindah analisismnya kurang krn analisisnya dari di dokumentasi rpmjd, ada gak yg dari disperindgany langsung? akan dikofmimasi ulang oleh bidang tersebut
+* domain 3 → disemninasi data → peneyerbalan luasan ditambahkan selain dari portal krn di sop ada
+* domian 4 → indikator penjamain transparansi informasi statisitik → bisa ditamabhakan bahwa publikasi metada vsriabel dapat diakses oleh publik
+* penjamiann netrliatas dan objektivitas → adakah bukti dukung  menujukan data yg dihasilkan produsen data merujuk pada standar nasional atau internasional ?
+* apa upaaya yang dilakukan penjaminan kualitas data/ bisa menunjukkan dokumen? sudah dijawab
+* indikator penjaminan konfiednsilitas data → belum ada proses/ dokuemn sektfikas keamanan data → di bukdu hanay data by name?--> bisa dijelaskan narasi kalo memang tidak diupload by name gituu
+* indikatoe tingakt kematangan SDM → sudah sesuai sampe setifikat namun yg diuslkan adakah dilakukan pelaksanaa review secara berkala? kalau ada
+* SDM manaheman datanyta ada reviewnya ndak?
+
+
+
+
+* DOMAIN 4
+* kolaborasi penyelenggara statistik –? apakah ada bukti dukung yg menyatakan bahwa evaluasi sudah dilakukan.. kits ingin melihat evaluasi -> forum 11 des 2024 → apakah memang sudha dilkauan secra berkala? setiap apa? krn cuma satu waktu > jawaban → 2024 memang pertama kali besar2an tapi tahun2 lalu tidak terlalu besar, 2025 kecil2an → mungkin bisa ditambabhkan kalo dia dilakukan berkala meskipun tidak besar2an
+* indikaro penyelenggaran forum SDI → apakah sudha diteapakn rencana aksi satu data? → memang belum ada, tapi forumnya ada
+* indikaro kolanbroasi dengan pembina data statistik → bukti dukungnya masih ada 2024, kalo 2025 ada boleh ditambahkan 
+* indikator pelkasana petugas sebaga walidata→ apakah ada dilakuan rapat evalausi secara berkala terkait tugas walidayta rekomdasi stayistk maupun portal data? belum sampai ke sana (jawabn diskominfo)
+* pemanfaayn data statutik untuk membuat kebijakan → apakaha da dalam penyusua dokuemn2 tsbt adakah korodinasi walidata dgn produsen data? bisa dijadikan bukdu tambahan → forum kooridnasi dilakuakn di WA grup, kalau ada suart dll keknya belum ada, masi jarang → bolejh ditamhaakm di WA sebagai pertimbangan 
+* indiaktor apakah ada bukdu yg memberikan peningkatan literasi statisikk yg disengaran produsen/walidata? bukan sekdar visualisasi data tidak ada narisnyaa → kalau ada bisa jadi tambahaan (keknya belum ada)
+* pengeolaan rekomendasi kegiatan statistik → tetap dijagaa
+* penguatan SSN → pencanangan pembangun statistik → apakah ada penetapan dokumen perencanaan sattistik → dokumen rencana satu data? memang belum ada
+*  penyebar luasan data → 
+* pemanfaatn big data → harapannya tetap dilanjutkan → screnshoot penegmnahan kemarin dan sekarang, dan mungkin evaluasinya?
+*

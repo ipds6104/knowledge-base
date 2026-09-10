@@ -52,8 +52,8 @@ Sebagai referensi pengisian dokumen NDA yang disetujui oleh BPS Pusat (Direktora
 * **Tanggal Terbit**: 17 Juli 2026
 * **Pihak Pertama (Yang Menyatakan)**:
   * **Nama**: Yudistira Elton Jhon, S.Tr.Stat.
-  * **Nomor Identitas (KTP)**: 3510162304000005
-  * **Alamat**: Jl. Sutan Syahrir Gg. Tulus No. 1B, Kel. Beringin, Kec. Kapuas
+  * **Nomor Identitas (KTP)**: 3510162304xxxxxx *(Disamarkan/Redacted)*
+  * **Alamat**: Jl. Sutan Syahrir [DIREDAKSI], Kel. Beringin, Kec. Kapuas
   * **Satuan Kerja**: BPS Kabupaten Sanggau
   * **Jabatan**: Pranata Komputer Ahli Pertama
 * **Pihak Kedua (Mengetahui - Kepala Satker)**:

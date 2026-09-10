@@ -23,16 +23,20 @@ data/cookies/
 *.pem
 *.key
 
-# Data Sensitif & Microdata By Name By Address (BNBA) — Sensus Ekonomi & Kegiatan BPS
+# Data Sensitif & Microdata By Name By Address (BNBA) — Sensus Ekonomi, Sakernas, & Kegiatan BPS
 *_tidak_ditemukan_*.csv
 *keluarga_tidak_ditemukan*
 *usaha_tidak_ditemukan*
 subsls_selesai_sqllab_*.csv
 prelist_updating_sakernas_se2026_intersect.csv
 *_intersect.csv
-kegiatan/sakernas/2026-08/*.csv
-kegiatan/sakernas/2026-08/*.xlsx
-kegiatan/sakernas/2026-08/sls_chunks/
+**/raw_data/
+raw_data/
+**/sls_chunks/
+sls_chunks/
+kegiatan/sakernas/**/*.csv
+kegiatan/sakernas/**/*.json
+kegiatan/sakernas/**/*.xlsx
 kegiatan/**/progress_petugas_se2026_mempawah*
 kegiatan/**/prelist_updating_sakernas_se2026_intersect_final*
 kegiatan/**/.~*
@@ -42,6 +46,21 @@ kegiatan/**/archive/
 archive/
 *backup*
 kegiatan/**/se_data_yonif_yonzipur*
+
+# Dokumen Fisik Bukti Dukung & Berkas Scan Internal (Mengandung Identitas / PII)
+kegiatan/evaluasi-epss/**/bukti-dukung/
+kegiatan/evaluasi-epss/**/bukti-dukung-vision/
+kegiatan/evaluasi-epss/**/bukti-dukung-md/
+kegiatan/evaluasi-epss/**/dokumen-perbaikan/
+kegiatan/evaluasi-epss/**/materi-pelatihan/
+
+# Database Files & Test Artifacts
+*.db
+*.sqlite
+*.sqlite3
+test_*.png
+test_*.typ
+
 
 
 # Cache & Output Tergenerasi / PDF Verifikasi

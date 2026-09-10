@@ -109,6 +109,21 @@ def handle_dda(args):
         print(f"  4. DOCX     : {compiled_docx}")
     print(f"  5. Outputs  : outputs/{pdf_filename} & outputs/{docx_filename}\n")
 
+    # Step 6c: Deterministic Verification (Audit Angka PDF vs Ground Truth)
+    if not getattr(args, "no_verify", False):
+        from kb.dda_generator import verify_desa_publication
+        print("\n🔍 Menjalankan verifikasi deterministik pasca-kompilasi PDF...")
+        try:
+            verify_desa_publication(
+                name_kebab=name_kebab,
+                pdf_path=str(pdf_path),
+                sheet_id=sheet_id,
+                year=year,
+                verbose=True,
+            )
+        except Exception as e:
+            print(f"⚠️ Peringatan saat verifikasi PDF: {e}")
+
     # Step 7: Auto-upload ke Google Drive jika token.json ada
     if not getattr(args, "no_upload", False) and os.path.exists("token.json"):
         from kb import cmd_gdrive_mirror
@@ -121,3 +136,28 @@ def handle_dda(args):
             force=False
         )
         cmd_gdrive_mirror.run_gdrive_mirror(upload_args)
+
+
+def handle_dda_verify(args):
+    """Handler khusus subcommand 'kb dda-verify'."""
+    from kb.dda_generator import verify_desa_publication
+    name_kebab = args.nama_desa.strip().lower()
+    sheet_id = getattr(args, "sheet_id", None)
+    year = getattr(args, "year", 2026)
+    pdf_path = getattr(args, "pdf", None)
+
+    try:
+        res = verify_desa_publication(
+            name_kebab=name_kebab,
+            pdf_path=pdf_path,
+            sheet_id=sheet_id,
+            year=year,
+            verbose=True,
+        )
+        if not res["all_matched"]:
+            import sys
+            sys.exit(1)
+    except Exception as e:
+        print(f"Error saat verifikasi: {e}")
+        import sys
+        sys.exit(2)

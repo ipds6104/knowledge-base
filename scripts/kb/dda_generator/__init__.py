@@ -8,6 +8,7 @@ from .fetcher import fetch_desa_data
 from .calculator import calculate_desa_metrics, build_capabilities_dto
 from .schemas import DesaPublicationData, VillageConfigDTO, StatisticalMetricsDTO, DatasetCapabilitiesDTO
 from .renderers import render_desa_html, render_desa_md, compile_html_to_pdf
+from .verifier import verify_desa_publication, extract_keystats_from_pdf, extract_structural_info
 
 
 def generate_publication(desa_kebab: str, sheet_id: str = None, year: int = 2026) -> dict:
@@ -76,4 +77,7 @@ __all__ = [
     "render_desa_md",
     "compile_html_to_pdf",
     "generate_publication",
+    "verify_desa_publication",
+    "extract_keystats_from_pdf",
+    "extract_structural_info",
 ]
