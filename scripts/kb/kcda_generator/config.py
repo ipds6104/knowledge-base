@@ -6,8 +6,10 @@ KCDA_KECAMATAN_CONFIG = {
         "nama_en": "Mempawah Hilir Subdistrict",
         "slug": "mempawah-hilir",
         "kode_wilayah": "6104050",
+        "no_katalog": "1102001.6104050",
         "no_publikasi": "61040.26012",
         "pic_nama": "Sukma Andini, S.Tr.Stat.",
+        "pic_nama_polos": "Sukma Andini",
         "ibukota_kecamatan": "Tanjung",
         "desa_list": [
             "Tanjung", "Kuala Secapah", "Tengah", "Terusan",
@@ -19,8 +21,10 @@ KCDA_KECAMATAN_CONFIG = {
         "nama_en": "Mempawah Timur Subdistrict",
         "slug": "mempawah-timur",
         "kode_wilayah": "6104051",
+        "no_katalog": "1102001.6104051",
         "no_publikasi": "61040.26004",
         "pic_nama": "Ahmad Aulia Rahman, S.Tr.Stat.",
+        "pic_nama_polos": "Ahmad Aulia Rahman",
         "ibukota_kecamatan": "Antibar",
         "desa_list": [
             "Pasir Wan Salim", "Sungai Bakau Kecil", "Pasir Panjang", "Pasir Palembang",
@@ -32,8 +36,10 @@ KCDA_KECAMATAN_CONFIG = {
         "nama_en": "Sungai Pinyuh Subdistrict",
         "slug": "sungai-pinyuh",
         "kode_wilayah": "6104040",
+        "no_katalog": "1102001.6104040",
         "no_publikasi": "61040.26011",
         "pic_nama": "Vaniya Dewi Wulandari, A.Md.Stat.",
+        "pic_nama_polos": "Vaniya Dewi Wulandari",
         "ibukota_kecamatan": "Sungai Pinyuh",
         "desa_list": [
             "Sungai Purun Kecil", "Peniraman", "Nusapati", "Galang",
@@ -46,8 +52,10 @@ KCDA_KECAMATAN_CONFIG = {
         "nama_en": "Sungai Kunyit Subdistrict",
         "slug": "sungai-kunyit",
         "kode_wilayah": "6104060",
+        "no_katalog": "1102001.6104060",
         "no_publikasi": "61040.26005",
         "pic_nama": "Sarah Pratiwi, S.Tr.Stat.",
+        "pic_nama_polos": "Sarah Pratiwi",
         "ibukota_kecamatan": "Sungai Kunyit Laut",
         "desa_list": [
             "Semudun", "Semparong Parit Raden", "Mendalok", "Sungai Dungun",
@@ -60,8 +68,10 @@ KCDA_KECAMATAN_CONFIG = {
         "nama_en": "Segedong Subdistrict",
         "slug": "segedong",
         "kode_wilayah": "6104030",
+        "no_katalog": "1102001.6104030",
         "no_publikasi": "61040.26010",
         "pic_nama": "Listio Jati Nandhiko, S.Tr.Stat.",
+        "pic_nama_polos": "Listio Jati Nandhiko",
         "ibukota_kecamatan": "Parit Bugis",
         "desa_list": [
             "Peniti Dalam I", "Sungai Burung", "Sungai Purun Besar",
@@ -73,8 +83,10 @@ KCDA_KECAMATAN_CONFIG = {
         "nama_en": "Toho Subdistrict",
         "slug": "toho",
         "kode_wilayah": "6104070",
+        "no_katalog": "1102001.6104070",
         "no_publikasi": "61040.26006",
         "pic_nama": "Arini Faurizah, S.Tr.Stat.",
+        "pic_nama_polos": "Arini Faurizah",
         "ibukota_kecamatan": "Toho",
         "desa_list": [
             "Sambora", "Benuang", "Pak Utan", "Sepang",
@@ -86,8 +98,10 @@ KCDA_KECAMATAN_CONFIG = {
         "nama_en": "Jongkat Subdistrict",
         "slug": "jongkat",
         "kode_wilayah": "6104020",
+        "no_katalog": "1102001.6104020",
         "no_publikasi": "61040.26008",
         "pic_nama": "Ihza Fikri Zaki Karunia, S.Tr.Stat.",
+        "pic_nama_polos": "Ihza Fikri Zaki Karunia",
         "ibukota_kecamatan": "Jungkat",
         "desa_list": [
             "Sungai Nipah", "Jungkat", "Wajok Hilir", "Wajok Hulu", "Peniti Luar"
@@ -98,8 +112,10 @@ KCDA_KECAMATAN_CONFIG = {
         "nama_en": "Anjongan Subdistrict",
         "slug": "anjongan",
         "kode_wilayah": "6104041",
+        "no_katalog": "1102001.6104041",
         "no_publikasi": "61040.26009",
         "pic_nama": "Rifky Mullah Syadriawan, A.Md.Stat.",
+        "pic_nama_polos": "Rifky Mullah Syadriawan",
         "ibukota_kecamatan": "Anjungan Melancar",
         "desa_list": [
             "Anjungan Melancar", "Anjungan Dalam", "Pak Bulu", "Dema", "Kepayang"
@@ -110,8 +126,10 @@ KCDA_KECAMATAN_CONFIG = {
         "nama_en": "Sadaniang Subdistrict",
         "slug": "sadaniang",
         "kode_wilayah": "6104080",
+        "no_katalog": "1102001.6104080",
         "no_publikasi": "61040.26007",
         "pic_nama": "Budiman Aller Silaban, S.Tr.Stat.",
+        "pic_nama_polos": "Budiman Aller Silaban",
         "ibukota_kecamatan": "Pentek",
         "desa_list": [
             "Pentek", "Sekabuk", "Bum-Bun", "Amawang", "Ansiap", "Suak Barangan"

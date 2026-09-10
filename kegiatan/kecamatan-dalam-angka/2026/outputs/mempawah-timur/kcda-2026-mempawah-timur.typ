@@ -1,76 +1,120 @@
-// Publikasi Resmi BPS Kabupaten Mempawah: Kecamatan Dalam Angka 2026
+// Publikasi Resmi BPS Kabupaten Mempawah: Kecamatan Dalam Angka 2026 (Ukuran A5)
 
 #set page(
-  paper: "a4",
+  paper: "a5",
   margin: (
-    inside: 2.5cm,
+    inside: 2.0cm,
     outside: 1.5cm,
     top: 2.0cm,
     bottom: 2.0cm,
   ),
   header: context {
     let page_num = counter(page).get().first()
-    // Running header hanya muncul pada halaman Arab bab isi (setelah frontmatter)
+    // Running header muncul setelah frontmatter (halaman 7 ke atas)
     if page_num >= 7 {
       if calc.even(page_num) {
-        align(left, text(8pt, fill: rgb("#D97706"), weight: "bold")[KECAMATAN MEMPAWAH TIMUR DALAM ANGKA 2026])
+        align(left, text(6.5pt, fill: rgb("#B45309"), weight: "bold")[KECAMATAN MEMPAWAH TIMUR DALAM ANGKA 2026])
       } else {
-        align(right, text(8pt, fill: rgb("#D97706"), weight: "bold")[BPS KABUPATEN MEMPAWAH])
+        align(right, text(6.5pt, fill: rgb("#B45309"), weight: "bold")[BPS KABUPATEN MEMPAWAH])
       }
     }
   },
   footer: context {
     let page_num = counter(page).get().first()
     if page_num > 1 and page_num < 7 {
-      // Halaman iii suppressed sesuai pedoman KCDA 2026
+      // Halaman iii suppressed sesuai pedoman resmi KCDA
       if page_num != 3 {
-        align(center, text(9pt)[#counter(page).display("i")])
+        align(center, text(7.5pt)[#counter(page).display("i")])
       }
     } else if page_num >= 7 {
       if calc.even(page_num) {
-        align(left, text(9pt, weight: "medium")[#counter(page).display("1")])
+        align(left, text(7.5pt, weight: "medium")[#counter(page).display("1")])
       } else {
-        align(right, text(9pt, weight: "medium")[#counter(page).display("1")])
+        align(right, text(7.5pt, weight: "medium")[#counter(page).display("1")])
       }
     }
   }
 )
 
-#set text(font: ("Liberation Sans", "Arial"), size: 8.5pt, lang: "id")
-#set par(justify: true, leading: 0.55em)
+#set text(font: ("Liberation Sans", "Arial"), size: 7.5pt, lang: "id")
+#set par(justify: true, leading: 0.5em)
 
 
 // ==========================================
-// 1. KOVER DEPAN (FRONT COVER)
+// 1. KOVER DEPAN (FRONT COVER) - TEMPLATE PUSAT
 // ==========================================
-#align(center)[
-  #v(1.2cm)
-  #text(10pt, weight: "bold", fill: rgb("#00A0E9"))[BADAN PUSAT STATISTIK KABUPATEN MEMPAWAH] \
-  #text(8pt, fill: rgb("#00A0E9"))[BPS-STATISTICS OF MEMPAWAH REGENCY]
-  
-  #v(3.5cm)
-  #block(
-    fill: rgb("#FEF3C7"),
-    inset: (x: 20pt, y: 25pt),
-    radius: 4pt,
-    width: 100%,
-    stroke: 1.5pt + rgb("#D97706"),
-    [
-      #text(22pt, weight: "bold", fill: rgb("#B45309"))[KECAMATAN MEMPAWAH TIMUR] \
-      #v(6pt)
-      #text(18pt, weight: "bold", fill: rgb("#B45309"))[DALAM ANGKA 2026] \
-      #v(10pt)
-      #text(13pt, style: "italic", fill: rgb("#92400E"))[Mempawah Timur Subdistrict in Figures 2026]
+#page(
+  margin: (top: 1.5cm, bottom: 1.5cm, left: 1.5cm, right: 1.5cm),
+  fill: rgb("#737373"),
+  header: none,
+  footer: none,
+)[
+  // Pojok kanan atas: Katalog & ISSN
+  #align(right)[
+    #text(7.5pt, fill: rgb("#F3F4F6"))[
+      #text(style: "italic")[Katalog/Catalogue:] \
+      #text(weight: "bold")[1102001.6104051] \
+      #text(style: "italic")[ISSN xxxx-xxxx]
     ]
-  )
-  
-  #v(4.0cm)
-  #rect(fill: rgb("#F3F4F6"), inset: 8pt, radius: 3pt)[
-    #text(8.5pt)[Nomor Publikasi / Publication Number: *61040.26004*]
   ]
-  
-  #v(1.5cm)
-  #text(10pt, weight: "bold", fill: rgb("#374151"))[BADAN PUSAT STATISTIK KABUPATEN MEMPAWAH]
+
+  #v(0.8cm)
+
+  // Judul Publikasi di Tengah Atas
+  #align(center)[
+    #text(16pt, weight: "bold", fill: white)[KECAMATAN MEMPAWAH TIMUR] \
+    #v(2pt)
+    #text(15pt, weight: "bold", fill: white)[DALAM ANGKA] \
+    #v(4pt)
+    #text(11pt, style: "italic", fill: rgb("#F3F4F6"))[Mempawah Timur District in Figures] \
+    #v(3pt)
+    #text(8.5pt, fill: rgb("#E5E7EB"))[Volume XX, 2026]
+  ]
+
+  // Lingkaran Putih Badge 2026 di kanan
+  #place(top + right, dx: 0.2cm, dy: 3.8cm)[
+    #circle(radius: 1.25cm, fill: white)[
+      #align(center + horizon)[
+        #text(15pt, weight: "bold", fill: rgb("#1F2937"))[2026]
+      ]
+    ]
+  ]
+
+  #v(1.0cm)
+
+  // Placeholder Foto / Ilustrasi Kover Depan
+  #align(center)[
+    #rect(
+      width: 6.8cm,
+      height: 4.8cm,
+      fill: rgb(255, 255, 255, 12%),
+      stroke: (paint: rgb(255, 255, 255, 60%), thickness: 1pt, dash: "dashed"),
+      radius: 6pt
+    )[
+      #align(center + horizon)[
+        #text(28pt)[📷] \
+        #v(4pt)
+        #text(9pt, weight: "bold", fill: rgb("#E5E7EB"))[COVER DEPAN]
+      ]
+    ]
+  ]
+
+  #v(1.2cm)
+
+  // Bawah Kover: Logo BPS & Nama Instansi
+  #align(center)[
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 8pt,
+      align: horizon,
+      image("/kegiatan/kecamatan-dalam-angka/2026/assets/logo_bps.png", height: 26pt),
+      align(left)[
+        #text(8pt, weight: "bold", fill: white)[BADAN PUSAT STATISTIK] \
+        #text(8pt, weight: "bold", fill: white)[KABUPATEN MEMPAWAH] \
+        #text(6.5pt, fill: rgb("#E5E7EB"))[BPS-STATISTICS OF MEMPAWAH REGENCY]
+      ]
+    )
+  ]
 ]
 
 #pagebreak()
@@ -78,146 +122,188 @@
 // ==========================================
 // 2. HALAMAN KATALOG & HAK CIPTA (HALAMAN ii)
 // ==========================================
-#v(1cm)
-#text(12pt, weight: "bold")[Kecamatan Mempawah Timur Dalam Angka 2026] \
-#text(10pt, style: "italic")[Mempawah Timur Subdistrict in Figures 2026]
-
-#v(12pt)
-#line(length: 100%, stroke: 0.5pt + rgb("#D1D5DB"))
-#v(6pt)
 #grid(
-  columns: (1.5fr, 3fr),
-  row-gutter: 8pt,
-  [*Nomor Publikasi*], [: 61040.26004],
-  [*Katalog BPS*], [: -],
-  [*Ukuran Buku*], [: 21 cm x 29,7 cm (A4)],
-  [*Jumlah Halaman*], [: viii + 48 halaman],
-  [*Naskah*], [: BPS Kabupaten Mempawah],
-  [*Penyunting*], [: Tim IPDS BPS Kabupaten Mempawah],
-  [*Desain Kover*], [: BPS Kabupaten Mempawah],
-  [*Penerbit*], [: © BPS Kabupaten Mempawah]
-)
-#v(6pt)
-#line(length: 100%, stroke: 0.5pt + rgb("#D1D5DB"))
-
-#v(15pt)
-#block(
-  fill: rgb("#F9FAFB"),
-  inset: 10pt,
-  stroke: 0.5pt + rgb("#E5E7EB"),
-  radius: 3pt,
-  [
-    #text(8pt)[
-      *Dilarang mengumumkan, mendistribusikan, mengomunikasikan, dan/atau menggandakan sebagian atau seluruh isi buku ini untuk tujuan komersial tanpa izin tertulis dari Badan Pusat Statistik.* \
-      _Prohibited to announce, distribute, communicate, and/or copy part or all of this book for commercial purposes without written permission from BPS-Statistics Indonesia._
-    ]
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: horizon,
+  image("/kegiatan/kecamatan-dalam-angka/2026/assets/logo_bps.png", height: 26pt),
+  align(left)[
+    #text(8pt, weight: "bold", fill: rgb("#00A0E9"))[BADAN PUSAT STATISTIK] \
+    #text(8pt, weight: "bold", fill: rgb("#00A0E9"))[KABUPATEN MEMPAWAH] \
+    #text(6.5pt, fill: rgb("#00A0E9"))[BPS-STATISTICS OF MEMPAWAH REGENCY]
   ]
 )
 
+#v(2pt)
+#line(length: 100%, stroke: 0.5pt + rgb("#D1D5DB"))
+
+#v(8pt)
+#text(10.5pt, weight: "bold")[KECAMATAN MEMPAWAH TIMUR DALAM ANGKA] \
+#text(9.5pt, style: "italic")[Mempawah Timur District in Figures] \
+#text(9.5pt)[2026] \
+#text(8pt, fill: luma(100))[Volume xx, 2026]
+
+#v(8pt)
+#grid(
+  columns: (1fr, 1.2fr),
+  row-gutter: 5pt,
+  [*Katalog/Catalogue:*], [1102001.6104051],
+  [*ISSN:*], [-],
+  [*Nomor Publikasi/Publication Number:*], [61040.26004],
+  [], [],
+  [*Ukuran Buku/Book Size:*], [14,8 cm x 21 cm],
+  [*Jumlah Halaman/Number of Pages:*], [viii + 35 hal/pages],
+  [], [],
+  [*Penyusun Naskah/Manuscript Drafter:*], [BPS Kabupaten Mempawah \ BPS-Statistics of Mempawah Regency],
+  [*Penyunting/Editor:*], [BPS Kabupaten Mempawah \ BPS-Statistics of Mempawah Regency],
+  [*Pembuat Kover/Cover Designer:*], [BPS Kabupaten Mempawah \ BPS-Statistics of Mempawah Regency],
+  [*Penerbit/Publisher:*], [© BPS Kabupaten Mempawah/BPS-Statistics of Mempawah Regency],
+  [*Sumber Ilustrasi/Illustration Source:*], [-]
+)
+
+#v(10pt)
+#text(6.5pt)[
+  *Dilarang mereproduksi dan/atau menggandakan sebagian atau seluruh isi buku ini untuk tujuan komersial tanpa izin tertulis dari Badan Pusat Statistik Kabupaten Mempawah.* \
+  _It is prohibited to reproduce and/or duplicate part or all of this book for commercial purpose without permission from BPS-Statistics of Mempawah Regency._
+]
+
 #pagebreak()
 
 // ==========================================
-// 3. TIM PENYUSUN & KONTRIBUTOR DATA (HALAMAN iii - Suppressed)
+// 3. TIM PENYUSUN / COMPILERS (HALAMAN iii)
+// ==========================================
+#align(right)[
+  #text(7pt, fill: luma(120))[ISSN xxxx-xxxx]
+]
+
+#v(0.6cm)
+
+#align(center)[
+  #text(10.5pt, weight: "bold")[TIM PENYUSUN/COMPILERS] \
+  #v(2pt)
+  #text(8.5pt, weight: "bold")[Kecamatan Mempawah Timur Dalam Angka 2026] \
+  #text(8pt, style: "italic")[Mempawah Timur District in Figures 2026] \
+  #text(7.5pt)[Volume xx, 2026]
+  
+  #v(16pt)
+  #text(8.5pt, weight: "bold")[Pengarah/Director] \
+  #text(8pt)[Munawir]
+  
+  #v(11pt)
+  #text(8.5pt, weight: "bold")[Penanggung Jawab/Persons in Charge] \
+  #text(8pt)[Munawir]
+  
+  #v(11pt)
+  #text(8.5pt, weight: "bold")[Penyunting/Editors] \
+  #text(8pt)[Kurniawan #sym.circle.filled.small Sukma Andini]
+  
+  #v(11pt)
+  #text(8.5pt, weight: "bold")[Pengolah Data dan Penulis Naskah/Data Processor and Writers] \
+  #text(8pt)[Ahmad Aulia Rahman]
+  
+  #v(11pt)
+  #text(8.5pt, weight: "bold")[Penata Letak/Layouters] \
+  #text(8pt)[Tim IPDS BPS Kabupaten Mempawah]
+  
+  #v(11pt)
+  #text(8.5pt, weight: "bold")[Penerjemah/Translators] \
+  #text(8pt)[Tim IPDS BPS Kabupaten Mempawah]
+]
+
+#pagebreak()
+
+// ==========================================
+// 4. KONTRIBUTOR DATA (HALAMAN iv)
 // ==========================================
 #align(center)[
-  #text(13pt, weight: "bold", fill: rgb("#B45309"))[TIM PENYUSUN / DRAFTING TEAM]
-]
-#v(15pt)
-
-#table(
-  columns: (1.8fr, 3fr),
-  stroke: none,
-  row-gutter: 10pt,
-  [*Pengarah / Director*], [Munawir, S.E., M.M. (Kepala BPS Kabupaten Mempawah)],
-  [*Penanggung Jawab / Person in Charge*], [Kurniawan, S.Si., M.E.],
-  [*Koordinator Teknis / Technical Coordinator*], [Sukma Andini, S.Tr.Stat.],
-  [*Penyusun Naskah / Author*], [Ahmad Aulia Rahman, S.Tr.Stat.],
-  [*Pengolah Data / Data Processor*], [Ahmad Aulia Rahman, S.Tr.Stat.],
-  [*Penata Letak / Layout Editor*], [Tim Otomasi Publikasi BPS Kabupaten Mempawah]
-)
-
-#v(25pt)
-#align(center)[
-  #text(13pt, weight: "bold", fill: rgb("#B45309"))[KONTRIBUTOR DATA / DATA CONTRIBUTORS]
+  #text(10.5pt, weight: "bold")[KONTRIBUTOR DATA/DATA CONTRIBUTORS]
 ]
 #v(12pt)
-#grid(
-  columns: (1fr, 1fr),
-  row-gutter: 8pt,
-  [1. Kantor Camat Mempawah Timur], [5. Dinas Pertanian, KP & P Kab. Mempawah],
-  [2. Dinas Kependudukan & Capil], [6. Dinas Perindagnaker Kab. Mempawah],
-  [3. Dinas Dikporapar Kab. Mempawah], [7. Dinas Kesehatan, PP & KB Kab. Mempawah],
-  [4. Kantor Kementerian Agama], [8. Bagian Tata Pemerintahan Setda Mempawah]
+
+#list(
+  [Kantor Camat Mempawah Timur],
+  [Kementerian Agama],
+  [Kementerian Pendidikan dan Kebudayaan],
+  [Dinas Pendidikan, Pemuda, Olahraga dan Pariwisata],
+  [Dinas Pertanian, Ketahanan Pangan dan Perikanan],
+  [Dinas Kesehatan, Pengendalian Penduduk dan KB],
+  [Dinas Perindustrian, Perdagangan dan Tenaga Kerja],
+  [Dinas Kependudukan dan Pencatatan Sipil],
+  [Badan Pusat Statistik]
 )
 
 #pagebreak()
 
 // ==========================================
-// 4. KATA PENGANTAR (HALAMAN v)
+// 5. KATA PENGANTAR (HALAMAN v)
 // ==========================================
 #align(center)[
-  #text(14pt, weight: "bold", fill: rgb("#B45309"))[KATA PENGANTAR / PREFACE]
+  #text(11pt, weight: "bold")[KATA PENGANTAR / PREFACE]
 ]
-#v(15pt)
+#v(10pt)
 
 #grid(
   columns: (1fr, 1fr),
-  column-gutter: 18pt,
+  column-gutter: 12pt,
   [
-    Puji syukur ke hadirat Tuhan Yang Maha Kuasa atas terbitnya publikasi *"Kecamatan Mempawah Timur Dalam Angka 2026"*. Publikasi ini merupakan publikasi tahunan yang menyajikan beragam data statistik dasar dan sektoral mengenai kondisi geografis, pemerintahan, kependudukan, sosial, pertanian, serta perekonomian di tingkat desa/kelurahan se-Kecamatan Mempawah Timur.
+    #text(7.5pt)[
+      Publikasi *Kecamatan Mempawah Timur Dalam Angka 2026* merupakan seri tahunan BPS Kabupaten Mempawah yang menyajikan beragam data dari BPS, kecamatan, kelurahan/desa, serta instansi terkait. Publikasi ini memuat gambaran umum mengenai geografi, pemerintahan, serta kondisi sosial demografi dan perekonomian di Kecamatan Mempawah Timur.
 
-    Data yang disajikan dihimpun dari instansi pemerintah daerah, kantor camat, dan hasil sensus/survei Badan Pusat Statistik. Diharapkan publikasi ini dapat menjadi rujukan utama dalam perencanaan dan evaluasi pembangunan daerah berbasis bukti (*evidence-based policy*).
+      Data yang disajikan diharapkan dapat menjadi indikator penting dalam mendukung perencanaan dan pengambilan kebijakan pembangunan daerah berbasis data akurat.
 
-    Kami menyampaikan penghargaan dan terima kasih yang setinggi-tingginya kepada Camat Mempawah Timur, kepala desa/lurah, serta seluruh pimpinan instansi atas kerja sama yang baik. Kritik dan saran konstruktif sangat kami harapkan guna penyempurnaan pada edisi mendatang.
+      Ucapan terima kasih disampaikan kepada Camat Mempawah Timur, para Lurah/Kepala Desa se-Kecamatan Mempawah Timur, serta seluruh pihak yang telah membantu dalam penyusunan publikasi ini. Kritik dan saran membangun sangat kami harapkan demi penyempurnaan edisi berikutnya.
+    ]
   ],
   [
-    #text(style: "italic")[
-      Praise be to God Almighty for the publication of *"Mempawah Timur Subdistrict in Figures 2026"*. This annual publication presents a wide range of basic and sectoral statistical data concerning geography, government, population, social, agriculture, and economic conditions across villages in Mempawah Timur Subdistrict.
+    #text(7.5pt, style: "italic")[
+      *"Mempawah Timur District in Figures 2026"* is an annual series issued by BPS-Statistics of Mempawah Regency, presenting various data collected from BPS, subdistrict offices, villages/urban villages, and related regional agencies. This publication provides a comprehensive overview of geography, governance, as well as social, demographic, and economic conditions across villages in Mempawah Timur District.
 
-      The data compiled originates from regional government agencies, subdistrict offices, and BPS censuses/surveys. We hope this publication serves as a primary reference in planning and evaluating regional development based on empirical evidence.
+      The data presented are expected to serve as vital empirical indicators to support evidence-based regional development planning and policy-making.
 
-      We express our highest appreciation and gratitude to the Head of Mempawah Timur Subdistrict, village heads, and agency leaders for their valuable cooperation. Constructive feedback is welcomed for future editions.
+      We express our sincere gratitude to the Head of Mempawah Timur District, village heads, and all collaborating institutions. Constructive feedback is warmly appreciated for continuous refinement.
     ]
   ]
 )
 
-#v(20pt)
+#v(14pt)
 #align(right)[
-  #block(width: 55%)[
-    Mempawah, September 2026 \
-    *Kepala BPS Kabupaten Mempawah* \
-    _Chief Statistician of Mempawah Regency_ \
-    #v(1.8cm)
-    *Munawir, S.E., M.M.* \
-    NIP. 19740510 199803 1 003
+  #block(width: 60%)[
+    #text(7.5pt)[
+      Mempawah, September 2026 \
+      *Kepala BPS Kabupaten Mempawah* \
+      _Chief Statistician of Mempawah Regency_ \
+      #v(1.4cm)
+      *Munawir*
+    ]
   ]
 ]
 
 #pagebreak()
 
 // ==========================================
-// 5. DAFTAR ISI (HALAMAN vii)
+// 6. DAFTAR ISI (HALAMAN vii)
 // ==========================================
-#text(14pt, weight: "bold", fill: rgb("#B45309"))[DAFTAR ISI / CONTENTS]
-#v(10pt)
-#line(length: 100%, stroke: 0.5pt + rgb("#D97706"))
-#v(8pt)
+#text(11pt, weight: "bold")[DAFTAR ISI / CONTENTS]
+#v(6pt)
+#line(length: 100%, stroke: 0.5pt + rgb("#D1D5DB"))
+#v(6pt)
 
 #grid(
   columns: (1fr, auto),
-  row-gutter: 8pt,
+  row-gutter: 6pt,
   [*Halaman Judul / Title Page*], [i],
   [*Halaman Katalog & Hak Cipta / Catalog and Copyright*], [ii],
-  [*Tim Penyusun & Kontributor / Drafting Team & Contributors*], [iii],
+  [*Tim Penyusun / Compilers*], [iii],
+  [*Kontributor Data / Data Contributors*], [iv],
   [*Kata Pengantar / Preface*], [v],
   [*Daftar Isi / Table of Contents*], [vii],
   [*Bab 1: Geografi dan Iklim / Geography and Climate*], [1],
   [*Bab 2: Pemerintahan / Government*], [5],
-  [*Bab 3: Kependudukan / Population*], [10],
-  [*Bab 4: Sosial dan Kesejahteraan Rakyat / Social and Welfare*], [13],
-  [*Bab 5: Pertanian / Agriculture*], [23],
-  [*Bab 6: Pariwisata, Transportasi & Komunikasi / Tourism, Transport & Comm.*], [31],
-  [*Bab 7: Perbankan, Koperasi & Perdagangan / Banking, Cooperative & Trade*], [35]
+  [*Bab 3: Kependudukan / Population*], [9],
+  [*Bab 4: Sosial dan Kesejahteraan Rakyat / Social and Welfare*], [11],
+  [*Bab 5: Pertanian / Agriculture*], [19],
+  [*Bab 6: Pariwisata, Transportasi & Komunikasi / Tourism, Transport & Comm.*], [25],
+  [*Bab 7: Perbankan, Koperasi & Perdagangan / Banking, Cooperative & Trade*], [28]
 )
 
 #pagebreak()
@@ -245,15 +331,17 @@ Kecamatan Mempawah Timur secara astronomis dan geografis terletak di wilayah pes
 
 #v(8pt)
 
-=== Tabel 1.1: Luas Daerah Menurut Desa/Kelurahan di Kecamatan Mempawah Timur, 2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 1.1: Total Area by Village/Subdistrict in Mempawah Timur Subdistrict, 2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 1.1: Luas Daerah Menurut Desa/Kelurahan di Kecamatan Mempawah Timur, 2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 1.1: Total Area by Village/Subdistrict in Mempawah Timur Subdistrict, 2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (2.5fr, 1.3fr, 1.2fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -274,22 +362,24 @@ Percentage (%)*], [(1)], [(2)], [(3)]),
   [Parit Banjar], [4.140], [11,67]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* Dinas Kependudukan dan Pencatatan Sipil / BAPEDDA Kabupaten Mempawah]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* Dinas Kependudukan dan Pencatatan Sipil / BAPEDDA Kabupaten Mempawah]
+#v(8pt)
 
 #pagebreak()
 
 
-=== Tabel 1.2: Jarak ke Ibukota Kecamatan dan Ibukota Kabupaten Menurut Desa/Kelurahan di Kecamatan Mempawah Timur, 2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 1.2: Distance to Subdistrict and Regency Capital by Village in Mempawah Timur Subdistrict, 2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 1.2: Jarak ke Ibukota Kecamatan dan Ibukota Kabupaten Menurut Desa/Kelurahan di Kecamatan Mempawah Timur, 2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 1.2: Distance to Subdistrict and Regency Capital by Village in Mempawah Timur Subdistrict, 2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (2.5fr, 1.3fr, 1.3fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -310,21 +400,23 @@ To Regency Capital (km)*], [(1)], [(2)], [(3)]),
   [Parit Banjar], [...], [...]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* Kantor Camat Mempawah Timur]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* Kantor Camat Mempawah Timur]
+#v(8pt)
 
 #v(10pt)
 
-=== Tabel 1.3: Batas Administrasi Kecamatan Mempawah Timur Menurut Arah Mata Angin, 2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 1.3: Administrative Borders of Mempawah Timur Subdistrict by Cardinal Direction, 2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 1.3: Batas Administrasi Kecamatan Mempawah Timur Menurut Arah Mata Angin, 2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 1.3: Administrative Borders of Mempawah Timur Subdistrict by Cardinal Direction, 2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (0.6fr, 1.8fr, 3.0fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -340,22 +432,24 @@ Bordering With*], [(1)], [(2)], [(3)]),
   [4], [Timur/East], [...]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* Kantor Camat Mempawah Timur / Bagian Tata Pemerintahan Setda Mempawah]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* Kantor Camat Mempawah Timur / Bagian Tata Pemerintahan Setda Mempawah]
+#v(8pt)
 
 #pagebreak()
 
 
-=== Tabel 1.4: Jarak Kantor Camat Mempawah Timur dengan Kota dan Tempat Penting Lainnya, 2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 1.4: Distance from Mempawah Timur Subdistrict Office to Other Important Places, 2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 1.4: Jarak Kantor Camat Mempawah Timur dengan Kota dan Tempat Penting Lainnya, 2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 1.4: Distance from Mempawah Timur Subdistrict Office to Other Important Places, 2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (0.6fr, 3.2fr, 1.2fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -372,9 +466,9 @@ Mempawah (Mempawah Hilir)], [...],
   [3], [Makam Juang Mandor], [...]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* Kantor Camat Mempawah Timur]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* Kantor Camat Mempawah Timur]
+#v(8pt)
 
 #pagebreak()
 
@@ -401,15 +495,17 @@ Secara administratif, Kecamatan Mempawah Timur terbagi menjadi 8 desa/kelurahan 
 
 #v(8pt)
 
-=== Tabel 2.1.1: Jumlah Dusun, Rukun Warga (RW), dan Rukun Tetangga (RT) Menurut Desa/Kelurahan di Kecamatan Mempawah Timur, 2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 2.1.1: Number of Hamlets, RW, and RT by Village/Subdistrict in Mempawah Timur Subdistrict, 2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 2.1.1: Jumlah Dusun, Rukun Warga (RW), dan Rukun Tetangga (RT) Menurut Desa/Kelurahan di Kecamatan Mempawah Timur, 2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 2.1.1: Number of Hamlets, RW, and RT by Village/Subdistrict in Mempawah Timur Subdistrict, 2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (2.2fr, 1.0fr, 1.0fr, 1.0fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -431,22 +527,24 @@ Hamlets*], [*Rukun Warga
   [Parit Banjar], [...], [...], [...]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* Kantor Camat Mempawah Timur]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* Kantor Camat Mempawah Timur]
+#v(8pt)
 
 #pagebreak()
 
 
-=== Tabel 2.1.2: Nama-Nama Camat yang Pernah/Masih Menjabat di Kecamatan Mempawah Timur
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 2.1.2: Names of District Heads of Mempawah Timur Subdistrict]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 2.1.2: Nama-Nama Camat yang Pernah/Masih Menjabat di Kecamatan Mempawah Timur] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 2.1.2: Names of District Heads of Mempawah Timur Subdistrict]
+#v(2pt)
 #align(center)[
 #table(
   columns: (0.6fr, 2.8fr, 1.6fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -459,21 +557,23 @@ Period*], [(1)], [(2)], [(3)]),
   [1], [...], [...]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* Kantor Camat Mempawah Timur]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* Kantor Camat Mempawah Timur]
+#v(8pt)
 
 #v(10pt)
 
-=== Tabel 2.1.3: Nama-Nama Kepala Desa/Lurah di Kecamatan Mempawah Timur, 2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 2.1.3: Names of Village Heads in Mempawah Timur Subdistrict, 2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 2.1.3: Nama-Nama Kepala Desa/Lurah di Kecamatan Mempawah Timur, 2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 2.1.3: Names of Village Heads in Mempawah Timur Subdistrict, 2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (0.6fr, 2.2fr, 2.8fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -493,22 +593,24 @@ Name of Village Head*], [(1)], [(2)], [(3)]),
   [8], [Parit Banjar], [...]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* Kantor Camat Mempawah Timur]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* Kantor Camat Mempawah Timur]
+#v(8pt)
 
 #pagebreak()
 
 
-=== Tabel 2.1.6: Status Desa Berdasarkan Indeks Desa Membangun (IDM) di Kecamatan Mempawah Timur, 2024/2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 2.1.6: Village Status Based on Developing Village Index (IDM) in Mempawah Timur Subdistrict, 2024/2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 2.1.6: Status Desa Berdasarkan Indeks Desa Membangun (IDM) di Kecamatan Mempawah Timur, 2024/2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 2.1.6: Village Status Based on Developing Village Index (IDM) in Mempawah Timur Subdistrict, 2024/2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (2.5fr, 1.2fr, 1.5fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -529,21 +631,23 @@ IDM Status*], [(1)], [(2)], [(3)]),
   [Parit Banjar], [...], [...]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* Kementerian Desa, Pembangunan Daerah Tertinggal, dan Transmigrasi]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* Kementerian Desa, Pembangunan Daerah Tertinggal, dan Transmigrasi]
+#v(8pt)
 
 #v(10pt)
 
-=== Tabel 2.2.1: Jumlah Pegawai Negeri Sipil Pemerintah Daerah Kecamatan Menurut Golongan di Kecamatan Mempawah Timur, 2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 2.2.1: Number of Civil Servants in Mempawah Timur Subdistrict Office by Rank/Class, 2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 2.2.1: Jumlah Pegawai Negeri Sipil Pemerintah Daerah Kecamatan Menurut Golongan di Kecamatan Mempawah Timur, 2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 2.2.1: Number of Civil Servants in Mempawah Timur Subdistrict Office by Rank/Class, 2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (2.2fr, 1.0fr, 1.0fr, 1.0fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -562,22 +666,24 @@ Total*], [(1)], [(2)], [(3)], [(4)]),
   [Jumlah / Total], [...], [...], [...]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* Kantor Camat Mempawah Timur]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* Kantor Camat Mempawah Timur]
+#v(8pt)
 
 #pagebreak()
 
 
-=== Tabel 2.2.2: Jumlah Pegawai Negeri Sipil Pemerintah Daerah Kecamatan Menurut Tingkat Pendidikan di Kecamatan Mempawah Timur, 2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 2.2.2: Number of Civil Servants in Mempawah Timur Subdistrict Office by Education Level, 2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 2.2.2: Jumlah Pegawai Negeri Sipil Pemerintah Daerah Kecamatan Menurut Tingkat Pendidikan di Kecamatan Mempawah Timur, 2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 2.2.2: Number of Civil Servants in Mempawah Timur Subdistrict Office by Education Level, 2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (2.2fr, 1.0fr, 1.0fr, 1.0fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -597,9 +703,9 @@ Total*], [(1)], [(2)], [(3)], [(4)]),
   [Jumlah / Total], [...], [...], [...]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* Kantor Camat Mempawah Timur]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* Kantor Camat Mempawah Timur]
+#v(8pt)
 
 #pagebreak()
 
@@ -626,15 +732,17 @@ Berdasarkan data registrasi semester II tahun 2025 dari Dinas Kependudukan dan P
 
 #v(8pt)
 
-=== Tabel 3.1: Penduduk, Distribusi Persentase, dan Kepadatan Penduduk Menurut Desa/Kelurahan di Kecamatan Mempawah Timur, 2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 3.1: Population, Percentage Distribution, and Density by Village/Subdistrict in Mempawah Timur Subdistrict, 2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 3.1: Penduduk, Distribusi Persentase, dan Kepadatan Penduduk Menurut Desa/Kelurahan di Kecamatan Mempawah Timur, 2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 3.1: Population, Percentage Distribution, and Density by Village/Subdistrict in Mempawah Timur Subdistrict, 2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (2.0fr, 1.0fr, 1.0fr, 1.1fr, 1.0fr, 1.2fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -658,9 +766,9 @@ Density (jiwa/km²)*], [(1)], [(2)], [(3)], [(4)], [(5)], [(6)]),
   [Parit Banjar], [2.093], [2.047], [4.140], [11,67], [232,85]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* Dinas Kependudukan dan Pencatatan Sipil Kabupaten Mempawah (Semester II 2025)]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* Dinas Kependudukan dan Pencatatan Sipil Kabupaten Mempawah (Semester II 2025)]
+#v(8pt)
 
 #pagebreak()
 
@@ -687,15 +795,17 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Mempawah Timur ditopang ol
 
 #v(8pt)
 
-=== Tabel 4.1.1: Banyaknya Desa/Kelurahan yang Memiliki Fasilitas Sekolah Menurut Tingkat Pendidikan di Kecamatan Mempawah Timur, 2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 4.1.1: Number of Villages Having Educational Facilities by Level in Mempawah Timur Subdistrict, 2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 4.1.1: Banyaknya Desa/Kelurahan yang Memiliki Fasilitas Sekolah Menurut Tingkat Pendidikan di Kecamatan Mempawah Timur, 2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 4.1.1: Number of Villages Having Educational Facilities by Level in Mempawah Timur Subdistrict, 2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (2.2fr, 1.0fr, 1.0fr, 1.1fr, 1.1fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -714,22 +824,24 @@ Village/Subdistrict*], [*SD / MI*], [*SMP / MTs*], [*SMA / SMK / MA*], [*Akademi
   [Parit Banjar], [...], [...], [...], [...]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* BPS, Pendataan Potensi Desa (Podes) 2025]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* BPS, Pendataan Potensi Desa (Podes) 2025]
+#v(8pt)
 
 #pagebreak()
 
 
-=== Tabel 4.1.2: Jumlah Satuan Pendidikan Menurut Tingkat Pendidikan di Kecamatan Mempawah Timur, 2024/2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 4.1.2: Number of Educational Units by Education Level in Mempawah Timur Subdistrict, 2024/2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 4.1.2: Jumlah Satuan Pendidikan Menurut Tingkat Pendidikan di Kecamatan Mempawah Timur, 2024/2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 4.1.2: Number of Educational Units by Education Level in Mempawah Timur Subdistrict, 2024/2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (2.5fr, 1.0fr, 1.0fr, 1.0fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -753,21 +865,23 @@ Total*], [(1)], [(2)], [(3)], [(4)]),
   [Jumlah / Total], [...], [...], [...]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi & Kementerian Agama]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi & Kementerian Agama]
+#v(8pt)
 
 #v(10pt)
 
-=== Tabel 4.1.3: Jumlah Kepala Sekolah dan Guru Menurut Tingkat Pendidikan di Kecamatan Mempawah Timur, 2024/2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 4.1.3: Number of Principals and Teachers by Education Level in Mempawah Timur Subdistrict, 2024/2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 4.1.3: Jumlah Kepala Sekolah dan Guru Menurut Tingkat Pendidikan di Kecamatan Mempawah Timur, 2024/2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 4.1.3: Number of Principals and Teachers by Education Level in Mempawah Timur Subdistrict, 2024/2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (2.5fr, 1.0fr, 1.0fr, 1.0fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -791,22 +905,24 @@ Total*], [(1)], [(2)], [(3)], [(4)]),
   [Jumlah / Total], [...], [...], [...]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi & Kementerian Agama]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi & Kementerian Agama]
+#v(8pt)
 
 #pagebreak()
 
 
-=== Tabel 4.1.4: Jumlah Peserta Didik Menurut Tingkat Pendidikan di Kecamatan Mempawah Timur, 2024/2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 4.1.4: Number of Students by Education Level in Mempawah Timur Subdistrict, 2024/2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 4.1.4: Jumlah Peserta Didik Menurut Tingkat Pendidikan di Kecamatan Mempawah Timur, 2024/2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 4.1.4: Number of Students by Education Level in Mempawah Timur Subdistrict, 2024/2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (2.5fr, 1.0fr, 1.0fr, 1.0fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -830,21 +946,23 @@ Total*], [(1)], [(2)], [(3)], [(4)]),
   [Jumlah / Total], [...], [...], [...]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi & Kementerian Agama]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi & Kementerian Agama]
+#v(8pt)
 
 #v(10pt)
 
-=== Tabel 4.2.1: Banyaknya Sarana Kesehatan Menurut Jenis Sarana di Kecamatan Mempawah Timur, 2023–2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 4.2.1: Number of Health Facilities by Type in Mempawah Timur Subdistrict, 2023–2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 4.2.1: Banyaknya Sarana Kesehatan Menurut Jenis Sarana di Kecamatan Mempawah Timur, 2023–2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 4.2.1: Number of Health Facilities by Type in Mempawah Timur Subdistrict, 2023–2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (2.5fr, 1.0fr, 1.0fr, 1.0fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -861,22 +979,24 @@ Type of Health Facility*], [*2023*], [*2024*], [*2025*], [(1)], [(2)], [(3)], [(
   [Apotek / Pharmacy], [...], [...], [...]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* Dinas Kesehatan, Pengendalian Penduduk dan KB Kabupaten Mempawah / Podes 2025]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* Dinas Kesehatan, Pengendalian Penduduk dan KB Kabupaten Mempawah / Podes 2025]
+#v(8pt)
 
 #pagebreak()
 
 
-=== Tabel 4.3.1: Banyaknya Keluarga Menurut Sumber Penerangan Utama di Kecamatan Mempawah Timur, 2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 4.3.1: Number of Families by Main Electricity Source in Mempawah Timur Subdistrict, 2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 4.3.1: Banyaknya Keluarga Menurut Sumber Penerangan Utama di Kecamatan Mempawah Timur, 2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 4.3.1: Number of Families by Main Electricity Source in Mempawah Timur Subdistrict, 2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (2.2fr, 1.0fr, 1.0fr, 1.0fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -895,21 +1015,23 @@ Village/Subdistrict*], [*Listrik PLN*], [*Listrik Non-PLN*], [*Bukan Listrik*], 
   [Parit Banjar], [...], [...], [...]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* BPS, Pendataan Potensi Desa (Podes) 2025]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* BPS, Pendataan Potensi Desa (Podes) 2025]
+#v(8pt)
 
 #v(10pt)
 
-=== Tabel 4.4.1: Banyaknya Kejadian Bencana Alam Menurut Jenis Bencana di Kecamatan Mempawah Timur, 2023–2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 4.4.1: Number of Natural Disaster Events by Type in Mempawah Timur Subdistrict, 2023–2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 4.4.1: Banyaknya Kejadian Bencana Alam Menurut Jenis Bencana di Kecamatan Mempawah Timur, 2023–2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 4.4.1: Number of Natural Disaster Events by Type in Mempawah Timur Subdistrict, 2023–2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (2.6fr, 1.0fr, 1.0fr, 1.0fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -927,9 +1049,9 @@ Type of Disaster*], [*2023*], [*2024*], [*2025*], [(1)], [(2)], [(3)], [(4)]),
   [Kebakaran Hutan dan Lahan / Forest Fire], [...], [...], [...]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* Badan Penanggulangan Bencana Daerah (BPBD) Kabupaten Mempawah / Podes 2025]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* Badan Penanggulangan Bencana Daerah (BPBD) Kabupaten Mempawah / Podes 2025]
+#v(8pt)
 
 #pagebreak()
 
@@ -956,15 +1078,17 @@ Sektor pertanian merupakan salah satu pilar penopang perekonomian masyarakat di 
 
 #v(8pt)
 
-=== Tabel 5.1: Luas Panen Tanaman Sayuran dan Buah-buahan Semusim Menurut Jenis Tanaman di Kecamatan Mempawah Timur, 2022–2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 5.1: Harvested Area of Seasonal Vegetables and Fruits by Kind of Plants in Mempawah Timur Subdistrict, 2022–2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 5.1: Luas Panen Tanaman Sayuran dan Buah-buahan Semusim Menurut Jenis Tanaman di Kecamatan Mempawah Timur, 2022–2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 5.1: Harvested Area of Seasonal Vegetables and Fruits by Kind of Plants in Mempawah Timur Subdistrict, 2022–2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (2.6fr, 0.9fr, 0.9fr, 0.9fr, 0.9fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -984,22 +1108,24 @@ Kind of Plants*], [*2022 (ha)*], [*2023 (ha)*], [*2024 (ha)*], [*2025 (ha)*], [(
   [Bayam / Spinach], [...], [...], [...], [...]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-SBS)]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-SBS)]
+#v(8pt)
 
 #pagebreak()
 
 
-=== Tabel 5.2: Produksi Tanaman Sayuran dan Buah-buahan Semusim Menurut Jenis Tanaman di Kecamatan Mempawah Timur, 2022–2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 5.2: Production of Seasonal Vegetables and Fruits by Kind of Plants in Mempawah Timur Subdistrict, 2022–2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 5.2: Produksi Tanaman Sayuran dan Buah-buahan Semusim Menurut Jenis Tanaman di Kecamatan Mempawah Timur, 2022–2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 5.2: Production of Seasonal Vegetables and Fruits by Kind of Plants in Mempawah Timur Subdistrict, 2022–2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (2.6fr, 0.9fr, 0.9fr, 0.9fr, 0.9fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -1019,22 +1145,24 @@ Kind of Plants*], [*2022 (ku)*], [*2023 (ku)*], [*2024 (ku)*], [*2025 (ku)*], [(
   [Bayam / Spinach], [...], [...], [...], [...]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-SBS)]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-SBS)]
+#v(8pt)
 
 #pagebreak()
 
 
-=== Tabel 5.3: Luas Panen Tanaman Biofarmaka Menurut Jenis Tanaman di Kecamatan Mempawah Timur, 2022–2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 5.3: Harvested Area of Medicinal Plants by Kind of Plants in Mempawah Timur Subdistrict, 2022–2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 5.3: Luas Panen Tanaman Biofarmaka Menurut Jenis Tanaman di Kecamatan Mempawah Timur, 2022–2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 5.3: Harvested Area of Medicinal Plants by Kind of Plants in Mempawah Timur Subdistrict, 2022–2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (2.6fr, 0.9fr, 0.9fr, 0.9fr, 0.9fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -1051,21 +1179,23 @@ Kind of Plants*], [*2022 (m²)*], [*2023 (m²)*], [*2024 (m²)*], [*2025 (m²)*]
   [Temulawak / Java Turmeric], [...], [...], [...], [...]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-TBF)]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-TBF)]
+#v(8pt)
 
 #v(10pt)
 
-=== Tabel 5.4: Produksi Tanaman Biofarmaka Menurut Jenis Tanaman di Kecamatan Mempawah Timur, 2022–2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 5.4: Production of Medicinal Plants by Kind of Plants in Mempawah Timur Subdistrict, 2022–2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 5.4: Produksi Tanaman Biofarmaka Menurut Jenis Tanaman di Kecamatan Mempawah Timur, 2022–2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 5.4: Production of Medicinal Plants by Kind of Plants in Mempawah Timur Subdistrict, 2022–2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (2.6fr, 0.9fr, 0.9fr, 0.9fr, 0.9fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -1082,22 +1212,24 @@ Kind of Plants*], [*2022 (kg)*], [*2023 (kg)*], [*2024 (kg)*], [*2025 (kg)*], [(
   [Temulawak / Java Turmeric], [...], [...], [...], [...]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-TBF)]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-TBF)]
+#v(8pt)
 
 #pagebreak()
 
 
-=== Tabel 5.7: Produksi Buah-Buahan dan Sayuran Tahunan Menurut Jenis Tanaman di Kecamatan Mempawah Timur, 2022–2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 5.7: Production of Annual Fruits and Vegetables by Kind of Plants in Mempawah Timur Subdistrict, 2022–2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 5.7: Produksi Buah-Buahan dan Sayuran Tahunan Menurut Jenis Tanaman di Kecamatan Mempawah Timur, 2022–2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 5.7: Production of Annual Fruits and Vegetables by Kind of Plants in Mempawah Timur Subdistrict, 2022–2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (2.6fr, 0.9fr, 0.9fr, 0.9fr, 0.9fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -1115,9 +1247,9 @@ Kind of Plants*], [*2022 (ku)*], [*2023 (ku)*], [*2024 (ku)*], [*2025 (ku)*], [(
   [Rambutan / Rambutan], [...], [...], [...], [...]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-BST)]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-BST)]
+#v(8pt)
 
 #pagebreak()
 
@@ -1144,15 +1276,17 @@ Konektivitas wilayah di Kecamatan Mempawah Timur terhubung oleh jaringan jalan d
 
 #v(8pt)
 
-=== Tabel 6.1.1: Banyaknya Desa/Kelurahan Menurut Keberadaan Sarana Transportasi Antardesa di Kecamatan Mempawah Timur, 2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 6.1.1: Number of Villages by Inter-Village Transportation Infrastructure in Mempawah Timur Subdistrict, 2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 6.1.1: Banyaknya Desa/Kelurahan Menurut Keberadaan Sarana Transportasi Antardesa di Kecamatan Mempawah Timur, 2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 6.1.1: Number of Villages by Inter-Village Transportation Infrastructure in Mempawah Timur Subdistrict, 2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (2.2fr, 1.1fr, 1.2fr, 1.1fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -1171,22 +1305,24 @@ Village/Subdistrict*], [*Jenis Lalu Lintas*], [*Jenis Permukaan Jalan*], [*Dapat
   [Parit Banjar], [...], [...], [...]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* BPS, Pendataan Potensi Desa (Podes) 2025]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* BPS, Pendataan Potensi Desa (Podes) 2025]
+#v(8pt)
 
 #pagebreak()
 
 
-=== Tabel 6.2.1: Banyaknya Desa/Kelurahan Menurut Keberadaan Kantor Pos dan Ekspedisi Swasta di Kecamatan Mempawah Timur, 2023–2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 6.2.1: Number of Villages by Availability of Post Office and Private Courier in Mempawah Timur Subdistrict, 2023–2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 6.2.1: Banyaknya Desa/Kelurahan Menurut Keberadaan Kantor Pos dan Ekspedisi Swasta di Kecamatan Mempawah Timur, 2023–2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 6.2.1: Number of Villages by Availability of Post Office and Private Courier in Mempawah Timur Subdistrict, 2023–2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (2.8fr, 1.0fr, 1.0fr, 1.0fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -1199,21 +1335,23 @@ Type of Postal/Courier Facility*], [*2023*], [*2024*], [*2025*], [(1)], [(2)], [
   [Perusahaan / Agen Jasa Ekspedisi Swasta], [...], [...], [...]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* BPS, Pendataan Potensi Desa (Podes) 2025]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* BPS, Pendataan Potensi Desa (Podes) 2025]
+#v(8pt)
 
 #v(10pt)
 
-=== Tabel 6.3.1: Banyaknya Menara BTS dan Kekuatan Sinyal Internet Seluler Menurut Desa di Kecamatan Mempawah Timur, 2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 6.3.1: Number of BTS Towers and Cellular Internet Signal Strength by Village in Mempawah Timur Subdistrict, 2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 6.3.1: Banyaknya Menara BTS dan Kekuatan Sinyal Internet Seluler Menurut Desa di Kecamatan Mempawah Timur, 2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 6.3.1: Number of BTS Towers and Cellular Internet Signal Strength by Village in Mempawah Timur Subdistrict, 2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (2.2fr, 1.0fr, 1.2fr, 1.2fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -1232,9 +1370,9 @@ Village/Subdistrict*], [*Jumlah Menara BTS*], [*Sinyal Telepon Seluler*], [*Siny
   [Parit Banjar], [...], [...], [...]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* BPS, Pendataan Potensi Desa (Podes) 2025]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* BPS, Pendataan Potensi Desa (Podes) 2025]
+#v(8pt)
 
 #pagebreak()
 
@@ -1261,15 +1399,17 @@ Aktivitas perniagaan di Kecamatan Mempawah Timur berkembang dinamis didukung ole
 
 #v(8pt)
 
-=== Tabel 7.1: Banyaknya Sarana Perdagangan Menurut Jenis Sarana di Kecamatan Mempawah Timur, 2023–2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 7.1: Number of Trade Facilities by Type in Mempawah Timur Subdistrict, 2023–2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 7.1: Banyaknya Sarana Perdagangan Menurut Jenis Sarana di Kecamatan Mempawah Timur, 2023–2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 7.1: Number of Trade Facilities by Type in Mempawah Timur Subdistrict, 2023–2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (2.6fr, 1.0fr, 1.0fr, 1.0fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -1287,22 +1427,24 @@ Type of Trade Facility*], [*2023*], [*2024*], [*2025*], [(1)], [(2)], [(3)], [(4
   [Hotel / Penginapan / Losmen], [...], [...], [...]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* Dinas Perindagnaker Kab. Mempawah / Podes 2025]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* Dinas Perindagnaker Kab. Mempawah / Podes 2025]
+#v(8pt)
 
 #pagebreak()
 
 
-=== Tabel 7.2: Banyaknya Koperasi Aktif Menurut Jenis Koperasi di Kecamatan Mempawah Timur, 2023–2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 7.2: Number of Active Cooperatives by Type in Mempawah Timur Subdistrict, 2023–2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 7.2: Banyaknya Koperasi Aktif Menurut Jenis Koperasi di Kecamatan Mempawah Timur, 2023–2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 7.2: Number of Active Cooperatives by Type in Mempawah Timur Subdistrict, 2023–2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (2.6fr, 1.0fr, 1.0fr, 1.0fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -1317,21 +1459,23 @@ Type of Cooperative*], [*2023*], [*2024*], [*2025*], [(1)], [(2)], [(3)], [(4)])
   [Jumlah / Total], [...], [...], [...]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* Dinas Perindagnaker Kab. Mempawah / Podes 2025]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* Dinas Perindagnaker Kab. Mempawah / Podes 2025]
+#v(8pt)
 
 #v(10pt)
 
-=== Tabel 7.3: Banyaknya Lembaga Keuangan Menurut Jenis Lembaga di Kecamatan Mempawah Timur, 2023–2025
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table 7.3: Number of Financial Institutions by Type in Mempawah Timur Subdistrict, 2023–2025]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel 7.3: Banyaknya Lembaga Keuangan Menurut Jenis Lembaga di Kecamatan Mempawah Timur, 2023–2025] \
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 7.3: Number of Financial Institutions by Type in Mempawah Timur Subdistrict, 2023–2025]
+#v(2pt)
 #align(center)[
 #table(
   columns: (2.8fr, 0.9fr, 0.9fr, 0.9fr),
-  stroke: (x, y) => if y == 0 { (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }
-                    else if y == 1 { (bottom: 1.2pt + rgb("#000000")) }
-                    else { (bottom: 0.4pt + rgb("#E5E7EB")) },
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 { (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }
+                    else if y == 1 { (bottom: 0.8pt + rgb("#000000")) }
+                    else { (bottom: 0.3pt + rgb("#E5E7EB")) },
   fill: (x, y) => if y <= 1 { rgb("#FEF3C7") }
                   else if calc.even(y) { rgb("#F9FAFB") }
                   else { white },
@@ -1346,9 +1490,9 @@ Type of Financial Institution*], [*2023*], [*2024*], [*2025*], [(1)], [(2)], [(3
   [Kantor Pegadaian], [...], [...], [...]
 )
 ]
-#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* Otoritas Jasa Keuangan (OJK) / Podes 2025]
-#v(12pt)
+#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* Otoritas Jasa Keuangan (OJK) / Podes 2025]
+#v(8pt)
 
 #pagebreak()
 

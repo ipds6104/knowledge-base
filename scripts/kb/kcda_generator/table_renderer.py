@@ -1,4 +1,4 @@
-"""Table renderer helper for KCDA 2026 Typst documents following BPS standards."""
+"""Table renderer helper for KCDA 2026 Typst documents following BPS standards (A5 Paper)."""
 
 from typing import List, Optional
 
@@ -13,13 +13,12 @@ def render_typst_table(
     source: str = "BPS Kabupaten Mempawah",
     note: Optional[str] = None
 ) -> str:
-    """Merender tabel berstandar BPS (Booktabs, bilingual title, column numbers, zebra fill, source)."""
+    """Merender tabel berstandar BPS untuk buku ukuran A5."""
     num_cols = len(headers)
     if col_widths and len(col_widths) == num_cols:
         col_spec = "(" + ", ".join(col_widths) + ")"
     else:
-        # Default: kolom pertama lebih lebar (nama wilayah/indikator)
-        widths = ["2.2fr"] + ["1.1fr"] * (num_cols - 1)
+        widths = ["2.2fr"] + ["1.0fr"] * (num_cols - 1)
         col_spec = "(" + ", ".join(widths) + ")"
 
     header_cells = ", ".join([f"[*{h}*]" for h in headers])
@@ -33,18 +32,20 @@ def render_typst_table(
         rendered_rows.append(", ".join(cells))
 
     rows_str = ",\n  ".join(rendered_rows)
-    note_str = f"#v(-3pt)\n#text(7pt, fill: luma(100))[{note}]\n" if note else ""
+    note_str = f"#v(-2pt)\n#text(6pt, fill: luma(100))[{note}]\n" if note else ""
 
     markup = f"""
-=== Tabel {table_no}: {title_id}
-#text(8pt, style: "italic", fill: rgb("#92400E"))[Table {table_no}: {title_en}]
-#v(3pt)
+#v(6pt)
+#text(7.5pt, weight: "bold")[Tabel {table_no}: {title_id}] \\
+#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table {table_no}: {title_en}]
+#v(2pt)
 #align(center)[
 #table(
   columns: {col_spec},
-  stroke: (x, y) => if y == 0 {{ (top: 1.5pt + rgb("#000000"), bottom: 0.5pt + rgb("#000000")) }}
-                    else if y == 1 {{ (bottom: 1.2pt + rgb("#000000")) }}
-                    else {{ (bottom: 0.4pt + rgb("#E5E7EB")) }},
+  inset: (x: 2.5pt, y: 3.5pt),
+  stroke: (x, y) => if y == 0 {{ (top: 1.2pt + rgb("#000000"), bottom: 0.4pt + rgb("#000000")) }}
+                    else if y == 1 {{ (bottom: 0.8pt + rgb("#000000")) }}
+                    else {{ (bottom: 0.3pt + rgb("#E5E7EB")) }},
   fill: (x, y) => if y <= 1 {{ rgb("#FEF3C7") }}
                   else if calc.even(y) {{ rgb("#F9FAFB") }}
                   else {{ white }},
@@ -55,8 +56,8 @@ def render_typst_table(
   {rows_str}
 )
 ]
-{note_str}#v(-4pt)
-#text(7.5pt, fill: luma(80))[*Sumber / Source:* {source}]
-#v(12pt)
+{note_str}#v(-3pt)
+#text(6.5pt, fill: luma(80))[*Sumber / Source:* {source}]
+#v(8pt)
 """
     return markup
