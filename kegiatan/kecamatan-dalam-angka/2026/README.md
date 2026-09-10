@@ -96,12 +96,20 @@ Berdasarkan surat edaran Kepala BPS Provinsi Kalimantan Barat serta arahan tekni
    * Terdapat **24 tabel wajib dari BPS Pusat** serta **tabel tambahan daerah/Kantor Camat** (total 40+ tabel acuan Kabupaten Mempawah).
    * Rincian seluruh tabel beserta tautan Google Sheets sumber data dan instansi penyedia dapat diakses pada dokumen:
      👉 **[Matriks Sumber Data & Tabel KCDA 2026](matriks-sumber-data-kcda-2026.md)**.
+   * Daftar perubahan format DDA/KCDA dari BPS Provinsi Kalbar:
+     👉 **[Daftar Perubahan Template DDA 2026](daftar-perubahan-dda-2026.md)**.
    * Template master naskah Mempawah tersimpan di:
      👉 **[templates/MEMPAWAH_Template_KCDA_2026_Final.docx](templates/MEMPAWAH_Template_KCDA_2026_Final.docx)**.
    * Berkas monitoring progres dan alokasi tersimpan di:
      👉 `monitoring/2026_Monitoring_ALL_KCDA.xlsx`.
 
-3. **Kewajiban Pengawasan Kualitas Konten (Pencegahan Temuan Pengguna)**:
+3. **📚 Pedoman Publikasi Baku & Dokumen QnA Resmi**:
+   * **[Tanya Jawab (QnA) Pedoman Publikasi BPS & KCDA 2026](qna-pedoman-kcda-2026.md)** — Intisari keputusan & fatwa teknis resmi Diseminasi BPS RI terkait ISSN, format kover, penomoran halaman, tabel carry-over, dan penulisan sumber.
+   * **[Pedoman Pembuatan Publikasi BPS Edisi 2023 (Lengkap)](../../../docs/pedoman-pembuatan-publikasi-bps-2023.md)** — Naskah utuh standar resmi BPS RI (Katalog: 1303004, No. Publikasi: 03200.2322).
+   * **[Pedoman Penyusunan Publikasi BPS (Sintesis Teknis & CSS/A4)](../../../docs/pedoman-penyusunan-publikasi-bps.md)** — Ringkasan aturan bilingual, running header, tata letak bab, dan format tabel.
+   * **[Typst Publication Handbook & Standards](../../../docs/typst-handbook.md)** — Panduan teknis kompilasi publikasi berstandar BPS menggunakan Typst.
+
+4. **Kewajiban Pengawasan Kualitas Konten (Pencegahan Temuan Pengguna)**:
    * ⚠️ **PENTING**: Kepala BPS Kabupaten/Kota penyusun KCDA **wajib memeriksa kebenaran naskah** yang tayang di website.
    * Langkah ini untuk memitigasi adanya temuan atau keluhan dari pengguna data mengenai isi publikasi KCDA yang tidak diperbarui (misalnya: petugas hanya mengganti kover publikasi sementara isi tabel di dalamnya kosong atau masih menggunakan data tahun sebelumnya tanpa konfirmasi).
 
