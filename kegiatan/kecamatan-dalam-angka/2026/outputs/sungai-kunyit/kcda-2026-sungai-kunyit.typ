@@ -332,10 +332,20 @@ Kecamatan Sungai Kunyit secara astronomis dan geografis terletak di wilayah pesi
 #v(8pt)
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 1.1: Luas Daerah Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 1.1: Total Area by Village/Subdistrict in Sungai Kunyit Subdistrict, 2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 1.1] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 1.1]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Luas Daerah Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Total Area by Village/Subdistrict in Sungai Kunyit Subdistrict, 2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (2.5fr, 1.3fr, 1.2fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -365,7 +375,6 @@ Percentage (%)*], [(1)], [(2)], [(3)]),
   [Sungai Duri I], [2.603], [8,43],
   [Sungai Duri II], [2.436], [7,89]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* Dinas Kependudukan dan Pencatatan Sipil / BAPEDDA Kabupaten Mempawah]
 #v(8pt)
@@ -374,10 +383,20 @@ Percentage (%)*], [(1)], [(2)], [(3)]),
 
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 1.2: Jarak ke Ibukota Kecamatan dan Ibukota Kabupaten Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 1.2: Distance to Subdistrict and Regency Capital by Village in Sungai Kunyit Subdistrict, 2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 1.2] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 1.2]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Jarak ke Ibukota Kecamatan dan Ibukota Kabupaten Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Distance to Subdistrict and Regency Capital by Village in Sungai Kunyit Subdistrict, 2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (2.5fr, 1.3fr, 1.3fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -407,7 +426,6 @@ To Regency Capital (km)*], [(1)], [(2)], [(3)]),
   [Sungai Duri I], [...], [...],
   [Sungai Duri II], [...], [...]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* Kantor Camat Sungai Kunyit]
 #v(8pt)
@@ -415,10 +433,20 @@ To Regency Capital (km)*], [(1)], [(2)], [(3)]),
 #v(10pt)
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 1.3: Batas Administrasi Kecamatan Sungai Kunyit Menurut Arah Mata Angin, 2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 1.3: Administrative Borders of Sungai Kunyit Subdistrict by Cardinal Direction, 2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 1.3] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 1.3]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Batas Administrasi Kecamatan Sungai Kunyit Menurut Arah Mata Angin, 2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Administrative Borders of Sungai Kunyit Subdistrict by Cardinal Direction, 2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (0.6fr, 1.8fr, 3.0fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -439,7 +467,6 @@ Bordering With*], [(1)], [(2)], [(3)]),
   [3], [Barat/West], [...],
   [4], [Timur/East], [...]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* Kantor Camat Sungai Kunyit / Bagian Tata Pemerintahan Setda Mempawah]
 #v(8pt)
@@ -448,10 +475,20 @@ Bordering With*], [(1)], [(2)], [(3)]),
 
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 1.4: Jarak Kantor Camat Sungai Kunyit dengan Kota dan Tempat Penting Lainnya, 2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 1.4: Distance from Sungai Kunyit Subdistrict Office to Other Important Places, 2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 1.4] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 1.4]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Jarak Kantor Camat Sungai Kunyit dengan Kota dan Tempat Penting Lainnya, 2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Distance from Sungai Kunyit Subdistrict Office to Other Important Places, 2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (0.6fr, 3.2fr, 1.2fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -473,7 +510,6 @@ Distance (km)*], [(1)], [(2)], [(3)]),
 Mempawah (Mempawah Hilir)], [...],
   [3], [Makam Juang Mandor], [...]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* Kantor Camat Sungai Kunyit]
 #v(8pt)
@@ -504,10 +540,20 @@ Secara administratif, Kecamatan Sungai Kunyit terbagi menjadi 12 desa/kelurahan 
 #v(8pt)
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 2.1.1: Jumlah Dusun, Rukun Warga (RW), dan Rukun Tetangga (RT) Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 2.1.1: Number of Hamlets, RW, and RT by Village/Subdistrict in Sungai Kunyit Subdistrict, 2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 2.1.1] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 2.1.1]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Jumlah Dusun, Rukun Warga (RW), dan Rukun Tetangga (RT) Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Number of Hamlets, RW, and RT by Village/Subdistrict in Sungai Kunyit Subdistrict, 2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (2.2fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -538,7 +584,6 @@ Hamlets*], [*Rukun Warga
   [Sungai Duri I], [...], [...], [...],
   [Sungai Duri II], [...], [...], [...]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* Kantor Camat Sungai Kunyit]
 #v(8pt)
@@ -547,10 +592,20 @@ Hamlets*], [*Rukun Warga
 
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 2.1.2: Nama-Nama Camat yang Pernah/Masih Menjabat di Kecamatan Sungai Kunyit] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 2.1.2: Names of District Heads of Sungai Kunyit Subdistrict]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 2.1.2] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 2.1.2]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Nama-Nama Camat yang Pernah/Masih Menjabat di Kecamatan Sungai Kunyit] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Names of District Heads of Sungai Kunyit Subdistrict]
+  ]
+)
+#v(3pt)
 #table(
   columns: (0.6fr, 2.8fr, 1.6fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -568,7 +623,6 @@ Name of District Head*], [*Periode Menjabat
 Period*], [(1)], [(2)], [(3)]),
   [1], [...], [...]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* Kantor Camat Sungai Kunyit]
 #v(8pt)
@@ -576,10 +630,20 @@ Period*], [(1)], [(2)], [(3)]),
 #v(10pt)
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 2.1.3: Nama-Nama Kepala Desa/Lurah di Kecamatan Sungai Kunyit, 2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 2.1.3: Names of Village Heads in Sungai Kunyit Subdistrict, 2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 2.1.3] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 2.1.3]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Nama-Nama Kepala Desa/Lurah di Kecamatan Sungai Kunyit, 2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Names of Village Heads in Sungai Kunyit Subdistrict, 2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (0.6fr, 2.2fr, 2.8fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -608,7 +672,6 @@ Name of Village Head*], [(1)], [(2)], [(3)]),
   [11], [Sungai Duri I], [...],
   [12], [Sungai Duri II], [...]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* Kantor Camat Sungai Kunyit]
 #v(8pt)
@@ -617,10 +680,20 @@ Name of Village Head*], [(1)], [(2)], [(3)]),
 
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 2.1.6: Status Desa Berdasarkan Indeks Desa Membangun (IDM) di Kecamatan Sungai Kunyit, 2024/2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 2.1.6: Village Status Based on Developing Village Index (IDM) in Sungai Kunyit Subdistrict, 2024/2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 2.1.6] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 2.1.6]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Status Desa Berdasarkan Indeks Desa Membangun (IDM) di Kecamatan Sungai Kunyit, 2024/2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Village Status Based on Developing Village Index (IDM) in Sungai Kunyit Subdistrict, 2024/2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (2.5fr, 1.2fr, 1.5fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -650,7 +723,6 @@ IDM Status*], [(1)], [(2)], [(3)]),
   [Sungai Duri I], [...], [...],
   [Sungai Duri II], [...], [...]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* Kementerian Desa, Pembangunan Daerah Tertinggal, dan Transmigrasi]
 #v(8pt)
@@ -658,10 +730,20 @@ IDM Status*], [(1)], [(2)], [(3)]),
 #v(10pt)
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 2.2.1: Jumlah Pegawai Negeri Sipil Pemerintah Daerah Kecamatan Menurut Golongan di Kecamatan Sungai Kunyit, 2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 2.2.1: Number of Civil Servants in Sungai Kunyit Subdistrict Office by Rank/Class, 2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 2.2.1] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 2.2.1]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Jumlah Pegawai Negeri Sipil Pemerintah Daerah Kecamatan Menurut Golongan di Kecamatan Sungai Kunyit, 2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Number of Civil Servants in Sungai Kunyit Subdistrict Office by Rank/Class, 2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (2.2fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -685,7 +767,6 @@ Total*], [(1)], [(2)], [(3)], [(4)]),
   [Golongan IV], [...], [...], [...],
   [Jumlah / Total], [...], [...], [...]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* Kantor Camat Sungai Kunyit]
 #v(8pt)
@@ -694,10 +775,20 @@ Total*], [(1)], [(2)], [(3)], [(4)]),
 
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 2.2.2: Jumlah Pegawai Negeri Sipil Pemerintah Daerah Kecamatan Menurut Tingkat Pendidikan di Kecamatan Sungai Kunyit, 2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 2.2.2: Number of Civil Servants in Sungai Kunyit Subdistrict Office by Education Level, 2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 2.2.2] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 2.2.2]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Jumlah Pegawai Negeri Sipil Pemerintah Daerah Kecamatan Menurut Tingkat Pendidikan di Kecamatan Sungai Kunyit, 2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Number of Civil Servants in Sungai Kunyit Subdistrict Office by Education Level, 2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (2.2fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -722,7 +813,6 @@ Total*], [(1)], [(2)], [(3)], [(4)]),
   [S2 / Master], [...], [...], [...],
   [Jumlah / Total], [...], [...], [...]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* Kantor Camat Sungai Kunyit]
 #v(8pt)
@@ -753,10 +843,20 @@ Berdasarkan data registrasi semester II tahun 2025 dari Dinas Kependudukan dan P
 #v(8pt)
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 3.1: Penduduk, Distribusi Persentase, dan Kepadatan Penduduk Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 3.1: Population, Percentage Distribution, and Density by Village/Subdistrict in Sungai Kunyit Subdistrict, 2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 3.1] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 3.1]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Penduduk, Distribusi Persentase, dan Kepadatan Penduduk Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Population, Percentage Distribution, and Density by Village/Subdistrict in Sungai Kunyit Subdistrict, 2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (2.0fr, 1.0fr, 1.0fr, 1.1fr, 1.0fr, 1.2fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -789,7 +889,6 @@ Density (jiwa/km²)*], [(1)], [(2)], [(3)], [(4)], [(5)], [(6)]),
   [Sungai Duri I], [1.326], [1.277], [2.603], [8,43], [1.517,08],
   [Sungai Duri II], [1.277], [1.159], [2.436], [7,89], [465,25]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* Dinas Kependudukan dan Pencatatan Sipil Kabupaten Mempawah (Semester II 2025)]
 #v(8pt)
@@ -820,10 +919,20 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Sungai Kunyit ditopang ole
 #v(8pt)
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 4.1.1: Banyaknya Desa/Kelurahan yang Memiliki Fasilitas Sekolah Menurut Tingkat Pendidikan di Kecamatan Sungai Kunyit, 2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 4.1.1: Number of Villages Having Educational Facilities by Level in Sungai Kunyit Subdistrict, 2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 4.1.1] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 4.1.1]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Banyaknya Desa/Kelurahan yang Memiliki Fasilitas Sekolah Menurut Tingkat Pendidikan di Kecamatan Sungai Kunyit, 2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Number of Villages Having Educational Facilities by Level in Sungai Kunyit Subdistrict, 2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (2.2fr, 1.0fr, 1.0fr, 1.1fr, 1.1fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -851,7 +960,6 @@ Village/Subdistrict*], [*SD / MI*], [*SMP / MTs*], [*SMA / SMK / MA*], [*Akademi
   [Sungai Duri I], [...], [...], [...], [...],
   [Sungai Duri II], [...], [...], [...], [...]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* BPS, Pendataan Potensi Desa (Podes) 2025]
 #v(8pt)
@@ -860,10 +968,20 @@ Village/Subdistrict*], [*SD / MI*], [*SMP / MTs*], [*SMA / SMK / MA*], [*Akademi
 
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 4.1.2: Jumlah Satuan Pendidikan Menurut Tingkat Pendidikan di Kecamatan Sungai Kunyit, 2024/2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 4.1.2: Number of Educational Units by Education Level in Sungai Kunyit Subdistrict, 2024/2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 4.1.2] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 4.1.2]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Jumlah Satuan Pendidikan Menurut Tingkat Pendidikan di Kecamatan Sungai Kunyit, 2024/2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Number of Educational Units by Education Level in Sungai Kunyit Subdistrict, 2024/2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (2.5fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -892,7 +1010,6 @@ Total*], [(1)], [(2)], [(3)], [(4)]),
   [Madrasah Aliyah (MA)], [...], [...], [...],
   [Jumlah / Total], [...], [...], [...]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi & Kementerian Agama]
 #v(8pt)
@@ -900,10 +1017,20 @@ Total*], [(1)], [(2)], [(3)], [(4)]),
 #v(10pt)
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 4.1.3: Jumlah Kepala Sekolah dan Guru Menurut Tingkat Pendidikan di Kecamatan Sungai Kunyit, 2024/2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 4.1.3: Number of Principals and Teachers by Education Level in Sungai Kunyit Subdistrict, 2024/2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 4.1.3] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 4.1.3]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Jumlah Kepala Sekolah dan Guru Menurut Tingkat Pendidikan di Kecamatan Sungai Kunyit, 2024/2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Number of Principals and Teachers by Education Level in Sungai Kunyit Subdistrict, 2024/2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (2.5fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -932,7 +1059,6 @@ Total*], [(1)], [(2)], [(3)], [(4)]),
   [Madrasah Aliyah (MA)], [...], [...], [...],
   [Jumlah / Total], [...], [...], [...]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi & Kementerian Agama]
 #v(8pt)
@@ -941,10 +1067,20 @@ Total*], [(1)], [(2)], [(3)], [(4)]),
 
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 4.1.4: Jumlah Peserta Didik Menurut Tingkat Pendidikan di Kecamatan Sungai Kunyit, 2024/2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 4.1.4: Number of Students by Education Level in Sungai Kunyit Subdistrict, 2024/2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 4.1.4] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 4.1.4]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Jumlah Peserta Didik Menurut Tingkat Pendidikan di Kecamatan Sungai Kunyit, 2024/2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Number of Students by Education Level in Sungai Kunyit Subdistrict, 2024/2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (2.5fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -973,7 +1109,6 @@ Total*], [(1)], [(2)], [(3)], [(4)]),
   [Madrasah Aliyah (MA)], [...], [...], [...],
   [Jumlah / Total], [...], [...], [...]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi & Kementerian Agama]
 #v(8pt)
@@ -981,10 +1116,20 @@ Total*], [(1)], [(2)], [(3)], [(4)]),
 #v(10pt)
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 4.2.1: Banyaknya Sarana Kesehatan Menurut Jenis Sarana di Kecamatan Sungai Kunyit, 2023–2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 4.2.1: Number of Health Facilities by Type in Sungai Kunyit Subdistrict, 2023–2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 4.2.1] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 4.2.1]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Banyaknya Sarana Kesehatan Menurut Jenis Sarana di Kecamatan Sungai Kunyit, 2023–2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Number of Health Facilities by Type in Sungai Kunyit Subdistrict, 2023–2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (2.5fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -1006,7 +1151,6 @@ Type of Health Facility*], [*2023*], [*2024*], [*2025*], [(1)], [(2)], [(3)], [(
   [Poliklinik / Balai Pengobatan], [...], [...], [...],
   [Apotek / Pharmacy], [...], [...], [...]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* Dinas Kesehatan, Pengendalian Penduduk dan KB Kabupaten Mempawah / Podes 2025]
 #v(8pt)
@@ -1015,10 +1159,20 @@ Type of Health Facility*], [*2023*], [*2024*], [*2025*], [(1)], [(2)], [(3)], [(
 
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 4.3.1: Banyaknya Keluarga Menurut Sumber Penerangan Utama di Kecamatan Sungai Kunyit, 2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 4.3.1: Number of Families by Main Electricity Source in Sungai Kunyit Subdistrict, 2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 4.3.1] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 4.3.1]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Banyaknya Keluarga Menurut Sumber Penerangan Utama di Kecamatan Sungai Kunyit, 2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Number of Families by Main Electricity Source in Sungai Kunyit Subdistrict, 2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (2.2fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -1046,7 +1200,6 @@ Village/Subdistrict*], [*Listrik PLN*], [*Listrik Non-PLN*], [*Bukan Listrik*], 
   [Sungai Duri I], [...], [...], [...],
   [Sungai Duri II], [...], [...], [...]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* BPS, Pendataan Potensi Desa (Podes) 2025]
 #v(8pt)
@@ -1054,10 +1207,20 @@ Village/Subdistrict*], [*Listrik PLN*], [*Listrik Non-PLN*], [*Bukan Listrik*], 
 #v(10pt)
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 4.4.1: Banyaknya Kejadian Bencana Alam Menurut Jenis Bencana di Kecamatan Sungai Kunyit, 2023–2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 4.4.1: Number of Natural Disaster Events by Type in Sungai Kunyit Subdistrict, 2023–2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 4.4.1] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 4.4.1]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Banyaknya Kejadian Bencana Alam Menurut Jenis Bencana di Kecamatan Sungai Kunyit, 2023–2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Number of Natural Disaster Events by Type in Sungai Kunyit Subdistrict, 2023–2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (2.6fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -1080,7 +1243,6 @@ Type of Disaster*], [*2023*], [*2024*], [*2025*], [(1)], [(2)], [(3)], [(4)]),
   [Angin Puyuh / Puting Beliung], [...], [...], [...],
   [Kebakaran Hutan dan Lahan / Forest Fire], [...], [...], [...]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* Badan Penanggulangan Bencana Daerah (BPBD) Kabupaten Mempawah / Podes 2025]
 #v(8pt)
@@ -1111,10 +1273,20 @@ Sektor pertanian merupakan salah satu pilar penopang perekonomian masyarakat di 
 #v(8pt)
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 5.1: Luas Panen Tanaman Sayuran dan Buah-buahan Semusim Menurut Jenis Tanaman di Kecamatan Sungai Kunyit, 2022–2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 5.1: Harvested Area of Seasonal Vegetables and Fruits by Kind of Plants in Sungai Kunyit Subdistrict, 2022–2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 5.1] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 5.1]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Luas Panen Tanaman Sayuran dan Buah-buahan Semusim Menurut Jenis Tanaman di Kecamatan Sungai Kunyit, 2022–2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Harvested Area of Seasonal Vegetables and Fruits by Kind of Plants in Sungai Kunyit Subdistrict, 2022–2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (2.6fr, 0.9fr, 0.9fr, 0.9fr, 0.9fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -1139,7 +1311,6 @@ Kind of Plants*], [*2022 (ha)*], [*2023 (ha)*], [*2024 (ha)*], [*2025 (ha)*], [(
   [Kangkung / Water Spinach], [...], [...], [...], [...],
   [Bayam / Spinach], [...], [...], [...], [...]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-SBS)]
 #v(8pt)
@@ -1148,10 +1319,20 @@ Kind of Plants*], [*2022 (ha)*], [*2023 (ha)*], [*2024 (ha)*], [*2025 (ha)*], [(
 
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 5.2: Produksi Tanaman Sayuran dan Buah-buahan Semusim Menurut Jenis Tanaman di Kecamatan Sungai Kunyit, 2022–2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 5.2: Production of Seasonal Vegetables and Fruits by Kind of Plants in Sungai Kunyit Subdistrict, 2022–2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 5.2] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 5.2]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Produksi Tanaman Sayuran dan Buah-buahan Semusim Menurut Jenis Tanaman di Kecamatan Sungai Kunyit, 2022–2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Production of Seasonal Vegetables and Fruits by Kind of Plants in Sungai Kunyit Subdistrict, 2022–2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (2.6fr, 0.9fr, 0.9fr, 0.9fr, 0.9fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -1176,7 +1357,6 @@ Kind of Plants*], [*2022 (ku)*], [*2023 (ku)*], [*2024 (ku)*], [*2025 (ku)*], [(
   [Kangkung / Water Spinach], [...], [...], [...], [...],
   [Bayam / Spinach], [...], [...], [...], [...]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-SBS)]
 #v(8pt)
@@ -1185,10 +1365,20 @@ Kind of Plants*], [*2022 (ku)*], [*2023 (ku)*], [*2024 (ku)*], [*2025 (ku)*], [(
 
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 5.3: Luas Panen Tanaman Biofarmaka Menurut Jenis Tanaman di Kecamatan Sungai Kunyit, 2022–2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 5.3: Harvested Area of Medicinal Plants by Kind of Plants in Sungai Kunyit Subdistrict, 2022–2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 5.3] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 5.3]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Luas Panen Tanaman Biofarmaka Menurut Jenis Tanaman di Kecamatan Sungai Kunyit, 2022–2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Harvested Area of Medicinal Plants by Kind of Plants in Sungai Kunyit Subdistrict, 2022–2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (2.6fr, 0.9fr, 0.9fr, 0.9fr, 0.9fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -1210,7 +1400,6 @@ Kind of Plants*], [*2022 (m²)*], [*2023 (m²)*], [*2024 (m²)*], [*2025 (m²)*]
   [Lempuyang], [...], [...], [...], [...],
   [Temulawak / Java Turmeric], [...], [...], [...], [...]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-TBF)]
 #v(8pt)
@@ -1218,10 +1407,20 @@ Kind of Plants*], [*2022 (m²)*], [*2023 (m²)*], [*2024 (m²)*], [*2025 (m²)*]
 #v(10pt)
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 5.4: Produksi Tanaman Biofarmaka Menurut Jenis Tanaman di Kecamatan Sungai Kunyit, 2022–2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 5.4: Production of Medicinal Plants by Kind of Plants in Sungai Kunyit Subdistrict, 2022–2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 5.4] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 5.4]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Produksi Tanaman Biofarmaka Menurut Jenis Tanaman di Kecamatan Sungai Kunyit, 2022–2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Production of Medicinal Plants by Kind of Plants in Sungai Kunyit Subdistrict, 2022–2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (2.6fr, 0.9fr, 0.9fr, 0.9fr, 0.9fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -1243,7 +1442,6 @@ Kind of Plants*], [*2022 (kg)*], [*2023 (kg)*], [*2024 (kg)*], [*2025 (kg)*], [(
   [Lempuyang], [...], [...], [...], [...],
   [Temulawak / Java Turmeric], [...], [...], [...], [...]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-TBF)]
 #v(8pt)
@@ -1252,10 +1450,20 @@ Kind of Plants*], [*2022 (kg)*], [*2023 (kg)*], [*2024 (kg)*], [*2025 (kg)*], [(
 
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 5.7: Produksi Buah-Buahan dan Sayuran Tahunan Menurut Jenis Tanaman di Kecamatan Sungai Kunyit, 2022–2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 5.7: Production of Annual Fruits and Vegetables by Kind of Plants in Sungai Kunyit Subdistrict, 2022–2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 5.7] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 5.7]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Produksi Buah-Buahan dan Sayuran Tahunan Menurut Jenis Tanaman di Kecamatan Sungai Kunyit, 2022–2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Production of Annual Fruits and Vegetables by Kind of Plants in Sungai Kunyit Subdistrict, 2022–2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (2.6fr, 0.9fr, 0.9fr, 0.9fr, 0.9fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -1278,7 +1486,6 @@ Kind of Plants*], [*2022 (ku)*], [*2023 (ku)*], [*2024 (ku)*], [*2025 (ku)*], [(
   [Nanas / Pineapple], [...], [...], [...], [...],
   [Rambutan / Rambutan], [...], [...], [...], [...]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-BST)]
 #v(8pt)
@@ -1309,10 +1516,20 @@ Konektivitas wilayah di Kecamatan Sungai Kunyit terhubung oleh jaringan jalan da
 #v(8pt)
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 6.1.1: Banyaknya Desa/Kelurahan Menurut Keberadaan Sarana Transportasi Antardesa di Kecamatan Sungai Kunyit, 2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 6.1.1: Number of Villages by Inter-Village Transportation Infrastructure in Sungai Kunyit Subdistrict, 2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 6.1.1] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 6.1.1]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Banyaknya Desa/Kelurahan Menurut Keberadaan Sarana Transportasi Antardesa di Kecamatan Sungai Kunyit, 2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Number of Villages by Inter-Village Transportation Infrastructure in Sungai Kunyit Subdistrict, 2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (2.2fr, 1.1fr, 1.2fr, 1.1fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -1340,7 +1557,6 @@ Village/Subdistrict*], [*Jenis Lalu Lintas*], [*Jenis Permukaan Jalan*], [*Dapat
   [Sungai Duri I], [...], [...], [...],
   [Sungai Duri II], [...], [...], [...]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* BPS, Pendataan Potensi Desa (Podes) 2025]
 #v(8pt)
@@ -1349,10 +1565,20 @@ Village/Subdistrict*], [*Jenis Lalu Lintas*], [*Jenis Permukaan Jalan*], [*Dapat
 
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 6.2.1: Banyaknya Desa/Kelurahan Menurut Keberadaan Kantor Pos dan Ekspedisi Swasta di Kecamatan Sungai Kunyit, 2023–2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 6.2.1: Number of Villages by Availability of Post Office and Private Courier in Sungai Kunyit Subdistrict, 2023–2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 6.2.1] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 6.2.1]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Banyaknya Desa/Kelurahan Menurut Keberadaan Kantor Pos dan Ekspedisi Swasta di Kecamatan Sungai Kunyit, 2023–2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Number of Villages by Availability of Post Office and Private Courier in Sungai Kunyit Subdistrict, 2023–2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (2.8fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -1370,7 +1596,6 @@ Type of Postal/Courier Facility*], [*2023*], [*2024*], [*2025*], [(1)], [(2)], [
   [Kantor Pos / Pos Pembantu / Rumah Pos], [...], [...], [...],
   [Perusahaan / Agen Jasa Ekspedisi Swasta], [...], [...], [...]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* BPS, Pendataan Potensi Desa (Podes) 2025]
 #v(8pt)
@@ -1378,10 +1603,20 @@ Type of Postal/Courier Facility*], [*2023*], [*2024*], [*2025*], [(1)], [(2)], [
 #v(10pt)
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 6.3.1: Banyaknya Menara BTS dan Kekuatan Sinyal Internet Seluler Menurut Desa di Kecamatan Sungai Kunyit, 2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 6.3.1: Number of BTS Towers and Cellular Internet Signal Strength by Village in Sungai Kunyit Subdistrict, 2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 6.3.1] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 6.3.1]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Banyaknya Menara BTS dan Kekuatan Sinyal Internet Seluler Menurut Desa di Kecamatan Sungai Kunyit, 2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Number of BTS Towers and Cellular Internet Signal Strength by Village in Sungai Kunyit Subdistrict, 2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (2.2fr, 1.0fr, 1.2fr, 1.2fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -1409,7 +1644,6 @@ Village/Subdistrict*], [*Jumlah Menara BTS*], [*Sinyal Telepon Seluler*], [*Siny
   [Sungai Duri I], [...], [...], [...],
   [Sungai Duri II], [...], [...], [...]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* BPS, Pendataan Potensi Desa (Podes) 2025]
 #v(8pt)
@@ -1440,10 +1674,20 @@ Aktivitas perniagaan di Kecamatan Sungai Kunyit berkembang dinamis didukung oleh
 #v(8pt)
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 7.1: Banyaknya Sarana Perdagangan Menurut Jenis Sarana di Kecamatan Sungai Kunyit, 2023–2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 7.1: Number of Trade Facilities by Type in Sungai Kunyit Subdistrict, 2023–2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 7.1] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 7.1]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Banyaknya Sarana Perdagangan Menurut Jenis Sarana di Kecamatan Sungai Kunyit, 2023–2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Number of Trade Facilities by Type in Sungai Kunyit Subdistrict, 2023–2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (2.6fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -1466,7 +1710,6 @@ Type of Trade Facility*], [*2023*], [*2024*], [*2025*], [(1)], [(2)], [(3)], [(4
   [Restoran / Rumah Makan / Warung Makan], [...], [...], [...],
   [Hotel / Penginapan / Losmen], [...], [...], [...]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* Dinas Perindagnaker Kab. Mempawah / Podes 2025]
 #v(8pt)
@@ -1475,10 +1718,20 @@ Type of Trade Facility*], [*2023*], [*2024*], [*2025*], [(1)], [(2)], [(3)], [(4
 
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 7.2: Banyaknya Koperasi Aktif Menurut Jenis Koperasi di Kecamatan Sungai Kunyit, 2023–2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 7.2: Number of Active Cooperatives by Type in Sungai Kunyit Subdistrict, 2023–2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 7.2] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 7.2]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Banyaknya Koperasi Aktif Menurut Jenis Koperasi di Kecamatan Sungai Kunyit, 2023–2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Number of Active Cooperatives by Type in Sungai Kunyit Subdistrict, 2023–2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (2.6fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -1498,7 +1751,6 @@ Type of Cooperative*], [*2023*], [*2024*], [*2025*], [(1)], [(2)], [(3)], [(4)])
   [Koperasi Lainnya (Non-KUD)], [...], [...], [...],
   [Jumlah / Total], [...], [...], [...]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* Dinas Perindagnaker Kab. Mempawah / Podes 2025]
 #v(8pt)
@@ -1506,10 +1758,20 @@ Type of Cooperative*], [*2023*], [*2024*], [*2025*], [(1)], [(2)], [(3)], [(4)])
 #v(10pt)
 
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel 7.3: Banyaknya Lembaga Keuangan Menurut Jenis Lembaga di Kecamatan Sungai Kunyit, 2023–2025] \
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table 7.3: Number of Financial Institutions by Type in Sungai Kunyit Subdistrict, 2023–2025]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel 7.3] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table 7.3]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Banyaknya Lembaga Keuangan Menurut Jenis Lembaga di Kecamatan Sungai Kunyit, 2023–2025] \
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Number of Financial Institutions by Type in Sungai Kunyit Subdistrict, 2023–2025]
+  ]
+)
+#v(3pt)
 #table(
   columns: (2.8fr, 0.9fr, 0.9fr, 0.9fr),
   inset: (x: 2.5pt, y: 3.5pt),
@@ -1529,7 +1791,6 @@ Type of Financial Institution*], [*2023*], [*2024*], [*2025*], [(1)], [(2)], [(3
   [Bank Perekonomian Rakyat (BPR)], [...], [...], [...],
   [Kantor Pegadaian], [...], [...], [...]
 )
-]
 #v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* Otoritas Jasa Keuangan (OJK) / Podes 2025]
 #v(8pt)

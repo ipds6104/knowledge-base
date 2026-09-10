@@ -13,7 +13,7 @@ def render_typst_table(
     source: str = "BPS Kabupaten Mempawah",
     note: Optional[str] = None
 ) -> str:
-    """Merender tabel berstandar BPS untuk buku ukuran A5."""
+    """Merender tabel berstandar BPS untuk buku ukuran A5 dengan format judul dua kolom (hanging indent) ala DDA."""
     num_cols = len(headers)
     if col_widths and len(col_widths) == num_cols:
         col_spec = "(" + ", ".join(col_widths) + ")"
@@ -36,10 +36,20 @@ def render_typst_table(
 
     markup = f"""
 #v(6pt)
-#text(7.5pt, weight: "bold")[Tabel {table_no}: {title_id}] \\
-#text(6.5pt, style: "italic", fill: rgb("#78350F"))[Table {table_no}: {title_en}]
-#v(2pt)
-#align(center)[
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #text(7.5pt, weight: "bold")[Tabel {table_no}] \\
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[Table {table_no}]
+  ],
+  [
+    #text(7.5pt, weight: "bold")[{title_id}] \\
+    #text(6.5pt, style: "italic", fill: rgb("#475569"))[{title_en}]
+  ]
+)
+#v(3pt)
 #table(
   columns: {col_spec},
   inset: (x: 2.5pt, y: 3.5pt),
@@ -55,7 +65,6 @@ def render_typst_table(
   table.header({header_cells}, {col_num_cells}),
   {rows_str}
 )
-]
 {note_str}#v(-3pt)
 #text(6.5pt, fill: luma(80))[*Sumber / Source:* {source}]
 #v(8pt)
