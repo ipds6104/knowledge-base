@@ -196,6 +196,29 @@ python scripts/kb.py dda [nama-desa-kebab] [--sheet-id SHEET_ID] [--year 2026]
    - **Aturan Running Header Halaman Romawi (Frontmatter)**: Sesuai Pedoman Diseminasi Publikasi BPS, running header pada bagian awal/romawi (Halaman ii s.d. ix) **WAJIB dimatikan/suppressed** (`show_header=False`). Running header (Judul Buku di halaman genap dan Nama Bab di halaman ganjil) **HANYA boleh muncul** pada halaman isi utama (Angka Arab: 1, 2, 3...).
    - **Halaman Katalog BPS & Hak Cipta (Halaman ii)**: Halaman 2 memuat Ukuran Buku (A4), Jumlah Halaman (`ix + 35 halaman`), Penanggung Jawab, Penyusun, Penyunting, Penerbit, dan Kotak Klausul Hak Cipta Resmi BPS (tanpa ISSN, Nomor Katalog, atau Nomor Publikasi).
 
+## 🖨️ SOP Penyusunan Publikasi, Buku, & Dokumen Cetak (Typst-First Policy)
+
+Untuk seluruh pembuatan dokumen formal, laporan teknis, dan buku publikasi cetak di repositori ini, AI Agent **WAJIB MEMATUHI KEBIJAKAN TYPST-FIRST BERIKUT**:
+
+1. **Mandat Absolut Typst-First**:
+   - Seluruh pembuatan buku publikasi (Desa Dalam Angka, Kecamatan Dalam Angka, Profil Statistik Sektoral), Standar Operasional Prosedur (SOP), dokumen naskah dinas formal, dan laporan siap cetak (A4/B5) **WAJIB MENGGUNAKAN TYPST (`.typ`)** sebagai engine rendering utama.
+   - Mengapa Typst? Typst dikompilasi langsung oleh biner Rust (< 1 detik bahkan untuk 500+ halaman), mendukung pengulangan baris kepala tabel multi-halaman (`table.header(repeat: true)`), dot leader otomatis pada Daftar Isi (`fill: repeat([. ])`), dan menghasilkan tata letak buku berstandar BPS tanpa kebocoran memori.
+2. **Larangan HTML-to-PDF & Puppeteer untuk Dokumen Buku**:
+   - **DILARANG KERAS** menggunakan pipeline HTML+CSS murni yang dikonversi melalui Puppeteer/Chromium/Paged.js untuk menghasilkan publikasi buku atau laporan multi-halaman.
+   - Pengecualian hanya berlaku jika output yang diminta adalah *dashboard web interaktif* (HTML) untuk dilihat di peramban, atau format Word (`.docx`) atas permintaan langsung pengguna.
+3. **Kewajiban Merujuk Handbook Teknis**:
+   - Sebelum menyusun atau merekayasa dokumen Typst, AI Agent **WAJIB MEMBACA DAN MENERAPKAN STANDAR** yang tercantum di:
+     **[docs/typst-handbook.md](file:///home/ihza/Projects/knowledge-base/docs/typst-handbook.md)**.
+   - Parameter baku yang wajib dipatuhi:
+     - Margin cermin (*recto-verso / mirror margins*): dalam 2.5 cm, luar 1.5 cm.
+     - Running header suppressed di halaman romawi frontmatter (Halaman ii s.d. ix).
+     - Judul tabel di atas (`caption(position: top)`), judul gambar di bawah (`caption(position: bottom)`).
+     - Gaya tabel *booktabs* (hanya 3 garis horizontal utama, tanpa border kisi-kisi vertikal).
+     - Fraksi matematika native Typst (`$ frac(A, B) $`).
+4. **Living Knowledge Loop & Post-Mortem Updates**:
+   - Jika dalam proses pengerjaan AI Agent menghadapi kendala layout Typst, compiler error, atau menemukan trik/solusi baru (seperti pemenggalan nama variabel underscore panjang, pemecahan halaman tabel kompleks, atau penyesuaian font):
+   - AI Agent **WAJIB LANGSUNG MEMPERBARUI** tabel *Living Gotchas & Workarounds Register* di dalam [docs/typst-handbook.md](file:///home/ihza/Projects/knowledge-base/docs/typst-handbook.md) agar seluruh AI agent pada sesi berikutnya tidak mengulang kesalahan yang sama.
+
 ---
 
 ## 📑 SOP Permintaan Data & Diseminasi Statistik Desa Cantik (Dual-Channel Delivery)
