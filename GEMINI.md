@@ -221,6 +221,30 @@ Untuk seluruh pembuatan dokumen formal, laporan teknis, dan buku publikasi cetak
 
 ---
 
+## ⚡ SOP Otomasi & Pipeline Data (Windmill-First Policy)
+
+Untuk seluruh mekanisme otomatisasi, pembaruan data dari hulu ke hilir (*ETL pipelines*), integrasi multi-sistem (Google Sheets, Portal SDI, Database Lokal, Web BPS), dan eksekusi tugas terjadwal (*scheduled cron jobs*), AI Agent **WAJIB MEMATUHI KEBIJAKAN WINDMILL-FIRST BERIKUT**:
+
+1. **Mandat Absolut Windmill-First**:
+   - Seluruh pipeline data terjadwal, sinkronisasi API/Sheets berkala, monitoring harian/mingguan, dan alur kerja multi-langkah (*multi-step DAG*) **WAJIB MENGGUNAKAN WINDMILL** sebagai automation engine dan orchestrator utama.
+   - Mengapa Windmill? Windmill dibangun di atas engine **Rust** berkinerja tinggi, mendukung 20+ bahasa (Python `uv`, TypeScript `Bun`, Bash, DuckDB/PostgreSQL), format deklaratif *Workflow-as-Code* (WAC), UI otomatis dari tipe data parameter, dan manajemen concurrency bawaan (`no_flow_overlap: true`).
+2. **Larangan Cron & Daemon Liar di Terminal**:
+   - **DILARANG KERAS** membuat script background liar di terminal lokal (seperti loop tak berujung `while true; do ... sleep 3600; done` atau daemon `nohup` yang rentan terputus saat restart/sleep) untuk kebutuhan alur kerja produksi atau pembaruan data berkala. Seluruh cron harus dideklarasikan via format standar 6-field `*.schedule.yaml` di Windmill.
+3. **Kewajiban Merujuk Handbook & Skill Teknis**:
+   - Sebelum membuat skrip, flow, atau schedule, AI Agent **WAJIB MEMBACA DAN MENERAPKAN STANDAR** yang tercantum di:
+     **[docs/windmill-handbook.md](file:///home/ihza/Projects/knowledge-base/docs/windmill-handbook.md)** dan skill **[.agents/skills/windmill-pipeline/SKILL.md](file:///home/ihza/Projects/knowledge-base/.agents/skills/windmill-pipeline/SKILL.md)**.
+   - Konfigurasi resmi:
+     - Remote URL: `https://wind.dvlpid.my.id`
+     - Workspace: `admins`
+     - Timezone Cron: `Asia/Jakarta`
+     - CLI Command: `wmill`
+4. **Pencegahan Overlap & Error Handling**:
+   - Seluruh jadwal pipeline data **wajib** menyertakan `no_flow_overlap: true` guna mencegah duplikasi eksekusi atau benturan state saat proses sinkronisasi sebelumnya belum selesai.
+5. **Living Knowledge Loop**:
+   - Jika terdapat use-case baru, integrasi resource koneksi baru, atau flow penting yang diimplementasikan, dokumentasikan konfigurasinya dan perbarui *handbook* agar dapat digunakan oleh agen dan tim pada sesi berikutnya.
+
+---
+
 ## 📑 SOP Permintaan Data & Diseminasi Statistik Desa Cantik (Dual-Channel Delivery)
 
 Setiap penyusunan dokumen Standar Operasional Prosedur (SOP) Permintaan Data untuk desa/kelurahan binaan Desa Cantik (Sungai Bakau Kecil, Pasir Palembang, Pasir Wan Salim, dll.) **WAJIB** menerapkan prinsip dan arsitektur berikut:
