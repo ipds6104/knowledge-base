@@ -20,6 +20,7 @@ from . import cmd_dda
 from . import cmd_gdrive_mirror
 from . import cmd_podes
 from . import cmd_epss
+from . import cmd_kcda
 
 __all__ = [
     "Colors",

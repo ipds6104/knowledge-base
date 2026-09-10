@@ -1,0 +1,227 @@
+{
+  "no": "7.2",
+  "nama": "Banyaknya Desa/Kelurahan\ndengan dengan Keberadaan\nKoperasi Aktif Menurut Jenis\nKoperasi di Kecamatan XXX",
+  "sumber": "Podes",
+  "disediakan_ipds": false,
+  "sheet_id": "1hPj8fk8Es7t_AC9IccV7eCbJ9Nmzx10th1YhsgxnHVc",
+  "spreadsheet_title": "7.2 Banyaknya Desa/Kelurahan dengan dengan Keberadaan Koperasi Aktif Menurut Jenis Koperasi",
+  "updated_at": "2026-09-10 17:50:17",
+  "tabs": {
+    "Mempawah Hilir": {
+      "raw_title": "Mempawah Hilir",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Bank\nType of Bank",
+          "2025"
+        ],
+        [
+          "Koperasi Unit Desa (KUD)\nVillage Cooperative Unit"
+        ],
+        [
+          "Koperasi industri kecil dan kerajinan rakyat (Kopinkra)\nSmall industry and citizen handicraft cooperative"
+        ],
+        [
+          "Koperasi simpan pinjam (kospin)\nSavings and loan cooperative"
+        ],
+        [
+          "Koperasi lainnya\nOther cooperative"
+        ]
+      ]
+    },
+    "Toho": {
+      "raw_title": "Toho",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Bank\nType of Bank",
+          "2025"
+        ],
+        [
+          "Koperasi Unit Desa (KUD)\nVillage Cooperative Unit"
+        ],
+        [
+          "Koperasi industri kecil dan kerajinan rakyat (Kopinkra)\nSmall industry and citizen handicraft cooperative"
+        ],
+        [
+          "Koperasi simpan pinjam (kospin)\nSavings and loan cooperative"
+        ],
+        [
+          "Koperasi lainnya\nOther cooperative"
+        ]
+      ]
+    },
+    "Sungai Pinyuh": {
+      "raw_title": "Sungai Pinyuh",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Bank\nType of Bank",
+          "2025"
+        ],
+        [
+          "Koperasi Unit Desa (KUD)\nVillage Cooperative Unit"
+        ],
+        [
+          "Koperasi industri kecil dan kerajinan rakyat (Kopinkra)\nSmall industry and citizen handicraft cooperative"
+        ],
+        [
+          "Koperasi simpan pinjam (kospin)\nSavings and loan cooperative"
+        ],
+        [
+          "Koperasi lainnya\nOther cooperative"
+        ]
+      ]
+    },
+    "Jongkat": {
+      "raw_title": "Jongkat",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Bank\nType of Bank",
+          "2025"
+        ],
+        [
+          "Koperasi Unit Desa (KUD)\nVillage Cooperative Unit"
+        ],
+        [
+          "Koperasi industri kecil dan kerajinan rakyat (Kopinkra)\nSmall industry and citizen handicraft cooperative"
+        ],
+        [
+          "Koperasi simpan pinjam (kospin)\nSavings and loan cooperative"
+        ],
+        [
+          "Koperasi lainnya\nOther cooperative"
+        ]
+      ]
+    },
+    "Sungai Kunyit": {
+      "raw_title": "Sungai Kunyit",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Bank\nType of Bank",
+          "2025"
+        ],
+        [
+          "Koperasi Unit Desa (KUD)\nVillage Cooperative Unit"
+        ],
+        [
+          "Koperasi industri kecil dan kerajinan rakyat (Kopinkra)\nSmall industry and citizen handicraft cooperative"
+        ],
+        [
+          "Koperasi simpan pinjam (kospin)\nSavings and loan cooperative"
+        ],
+        [
+          "Koperasi lainnya\nOther cooperative"
+        ]
+      ]
+    },
+    "Segedong": {
+      "raw_title": "Segedong",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Bank\nType of Bank",
+          "2025"
+        ],
+        [
+          "Koperasi Unit Desa (KUD)\nVillage Cooperative Unit"
+        ],
+        [
+          "Koperasi industri kecil dan kerajinan rakyat (Kopinkra)\nSmall industry and citizen handicraft cooperative"
+        ],
+        [
+          "Koperasi simpan pinjam (kospin)\nSavings and loan cooperative"
+        ],
+        [
+          "Koperasi lainnya\nOther cooperative"
+        ]
+      ]
+    },
+    "Anjongan": {
+      "raw_title": "Anjongan",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Bank\nType of Bank",
+          "2025"
+        ],
+        [
+          "Koperasi Unit Desa (KUD)\nVillage Cooperative Unit"
+        ],
+        [
+          "Koperasi industri kecil dan kerajinan rakyat (Kopinkra)\nSmall industry and citizen handicraft cooperative"
+        ],
+        [
+          "Koperasi simpan pinjam (kospin)\nSavings and loan cooperative"
+        ],
+        [
+          "Koperasi lainnya\nOther cooperative"
+        ]
+      ]
+    },
+    "Sadaniang": {
+      "raw_title": "Sadaniang",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Bank\nType of Bank",
+          "2025"
+        ],
+        [
+          "Koperasi Unit Desa (KUD)\nVillage Cooperative Unit"
+        ],
+        [
+          "Koperasi industri kecil dan kerajinan rakyat (Kopinkra)\nSmall industry and citizen handicraft cooperative"
+        ],
+        [
+          "Koperasi simpan pinjam (kospin)\nSavings and loan cooperative"
+        ],
+        [
+          "Koperasi lainnya\nOther cooperative"
+        ]
+      ]
+    },
+    "Mempawah Timur": {
+      "raw_title": "Mempawah Timur",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Bank\nType of Bank",
+          "2025"
+        ],
+        [
+          "Koperasi Unit Desa (KUD)\nVillage Cooperative Unit"
+        ],
+        [
+          "Koperasi industri kecil dan kerajinan rakyat (Kopinkra)\nSmall industry and citizen handicraft cooperative"
+        ],
+        [
+          "Koperasi simpan pinjam (kospin)\nSavings and loan cooperative"
+        ],
+        [
+          "Koperasi lainnya\nOther cooperative"
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,200 @@
+{
+  "no": "4.3.1",
+  "nama": "Banyaknya Desa/Kelurahan Menurut Sumber Penerangan Jalan Utama Desa/Kelurahan di Kecamatan XXX",
+  "sumber": "2023 + 2024 KCDA Tahun lalu\n2025 Podes",
+  "disediakan_ipds": false,
+  "sheet_id": "1B1URUs2wJzhtGMJ7i5snYXQ5J9phuaU-kmQUMXcSR1U",
+  "spreadsheet_title": "4.3.1 Banyaknya Desa/Kelurahan Menurut Sumber Penerangan Jalan Utama",
+  "updated_at": "2026-09-10 17:49:54",
+  "tabs": {
+    "Mempawah Hilir": {
+      "raw_title": "Mempawah Hilir",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Sumber Penerangan Jalan Utama\n Source of Main Street Illumination",
+          "2025"
+        ],
+        [
+          "Listrik Pemerintah/State Electricity"
+        ],
+        [
+          "Listrik Non-Pemerintah/Non-State Electricity"
+        ],
+        [
+          "Non Listrik/Non-Electric"
+        ]
+      ]
+    },
+    "Toho": {
+      "raw_title": "Toho",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Sumber Penerangan Jalan Utama\n Source of Main Street Illumination",
+          "2025"
+        ],
+        [
+          "Listrik Pemerintah/State Electricity"
+        ],
+        [
+          "Listrik Non-Pemerintah/Non-State Electricity"
+        ],
+        [
+          "Non Listrik/Non-Electric"
+        ]
+      ]
+    },
+    "Sungai Pinyuh": {
+      "raw_title": "Sungai Pinyuh",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Sumber Penerangan Jalan Utama\n Source of Main Street Illumination",
+          "2025"
+        ],
+        [
+          "Listrik Pemerintah/State Electricity"
+        ],
+        [
+          "Listrik Non-Pemerintah/Non-State Electricity"
+        ],
+        [
+          "Non Listrik/Non-Electric"
+        ]
+      ]
+    },
+    "Jongkat": {
+      "raw_title": "Jongkat",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Sumber Penerangan Jalan Utama\n Source of Main Street Illumination",
+          "2025"
+        ],
+        [
+          "Listrik Pemerintah/State Electricity"
+        ],
+        [
+          "Listrik Non-Pemerintah/Non-State Electricity"
+        ],
+        [
+          "Non Listrik/Non-Electric"
+        ]
+      ]
+    },
+    "Sungai Kunyit": {
+      "raw_title": "Sungai Kunyit",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Sumber Penerangan Jalan Utama\n Source of Main Street Illumination",
+          "2025"
+        ],
+        [
+          "Listrik Pemerintah/State Electricity"
+        ],
+        [
+          "Listrik Non-Pemerintah/Non-State Electricity"
+        ],
+        [
+          "Non Listrik/Non-Electric"
+        ]
+      ]
+    },
+    "Segedong": {
+      "raw_title": "Segedong",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Sumber Penerangan Jalan Utama\n Source of Main Street Illumination",
+          "2025"
+        ],
+        [
+          "Listrik Pemerintah/State Electricity"
+        ],
+        [
+          "Listrik Non-Pemerintah/Non-State Electricity"
+        ],
+        [
+          "Non Listrik/Non-Electric"
+        ]
+      ]
+    },
+    "Anjongan": {
+      "raw_title": "Anjongan ",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Sumber Penerangan Jalan Utama\n Source of Main Street Illumination",
+          "2025"
+        ],
+        [
+          "Listrik Pemerintah/State Electricity"
+        ],
+        [
+          "Listrik Non-Pemerintah/Non-State Electricity"
+        ],
+        [
+          "Non Listrik/Non-Electric"
+        ]
+      ]
+    },
+    "Sadaniang": {
+      "raw_title": "Sadaniang",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Sumber Penerangan Jalan Utama\n Source of Main Street Illumination",
+          "2025"
+        ],
+        [
+          "Listrik Pemerintah/State Electricity"
+        ],
+        [
+          "Listrik Non-Pemerintah/Non-State Electricity"
+        ],
+        [
+          "Non Listrik/Non-Electric"
+        ]
+      ]
+    },
+    "Mempawah Timur": {
+      "raw_title": "Mempawah Timur",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Sumber Penerangan Jalan Utama\n Source of Main Street Illumination",
+          "2025"
+        ],
+        [
+          "Listrik Pemerintah/State Electricity"
+        ],
+        [
+          "Listrik Non-Pemerintah/Non-State Electricity"
+        ],
+        [
+          "Non Listrik/Non-Electric"
+        ]
+      ]
+    }
+  }
+}

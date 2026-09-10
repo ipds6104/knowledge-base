@@ -31,6 +31,7 @@ from kb import (
     cmd_gdrive_mirror,
     cmd_podes,
     cmd_epss,
+    cmd_kcda,
     whoami_str,
 )
 
@@ -374,6 +375,9 @@ def main():
     # 15. EPSS command
     cmd_epss.add_subparser(subparsers)
 
+    # 16. KCDA command
+    cmd_kcda.register_kcda_subparser(subparsers)
+
     args = parser.parse_args()
 
     # Set cwd to repo root to make paths consistent
@@ -413,6 +417,8 @@ def main():
         cmd_dda.handle_dda_verify(args)
     elif args.command == "podes":
         cmd_podes.handle_podes(args)
+    elif args.command == "kcda":
+        cmd_kcda.handle_kcda(args)
     elif args.command == "epss":
         if hasattr(args, "func"):
             args.func(args)

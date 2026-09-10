@@ -1,0 +1,362 @@
+{
+  "no": "2.2.1",
+  "nama": "Jumlah Pegawai Negeri Sipil Menurut Pemerintah Daerah dan Jenis Kelamin",
+  "sumber": "Jumlah PNS per desa/kelurahan (Kantor Camat)",
+  "disediakan_ipds": false,
+  "sheet_id": "1Vqx2_TCs27HqnxYcoYHhLASZROf6gEJDvo6J6CjEQ8g",
+  "spreadsheet_title": "2.2.1 Jumlah Pegawai Negeri Sipil Menurut Pemerintah Daerah dan Jenis Kelamin",
+  "updated_at": "2026-09-10 17:49:33",
+  "tabs": {
+    "Mempawah Hilir": {
+      "raw_title": "Mempawah Hilir",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Pemerintah Daerah\nLocal Government",
+          "Laki-Laki\n Male",
+          "Perempuan\n Female",
+          "Jumlah\n Total"
+        ],
+        [
+          "Pemerintah Daerah Kecamatan Mempawah Hilir\nMempawah Hilir District Government"
+        ],
+        [
+          "Pemerintah Daerah Kelurahan Tanjung\nTanjung Kelurahan Government"
+        ],
+        [
+          "Pemerintah Daerah Desa Kuala Secapah\nKuala Secapah Village Government"
+        ],
+        [
+          "Pemerintah Daerah Kelurahan Tengah\nTengah Kelurahan Government"
+        ],
+        [
+          "Pemerintah Daerah Kelurahan Terusan\nTerusan Kelurahan Government"
+        ],
+        [
+          "Pemerintah Daerah Desa Pasir\nPasir Village Government"
+        ],
+        [
+          "Pemerintah Daerah Desa Penibung\nPenibung Village Government"
+        ],
+        [
+          "Pemerintah Daerah Desa Sengkubang\nSengkubang Village Government"
+        ],
+        [
+          "Pemerintah Daerah Desa Malikian\nMalikian Village Government"
+        ]
+      ]
+    },
+    "Toho": {
+      "raw_title": "Toho",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Pemerintah Daerah\n Local Government",
+          "Laki-Laki\n Male",
+          "Perempuan\n Female",
+          "Jumlah\n Total"
+        ],
+        [
+          "Pemerintah Daerah Kecamatan Toho\nMempawah Hilir District Government"
+        ],
+        [
+          "Sambora"
+        ],
+        [
+          "Benuang"
+        ],
+        [
+          "Pak Utan"
+        ],
+        [
+          "Sepang"
+        ],
+        [
+          "Pak Laheng"
+        ],
+        [
+          "Terap"
+        ],
+        [
+          "Kecurit"
+        ],
+        [
+          "Toho Ilir"
+        ]
+      ]
+    },
+    "Sungai Pinyuh": {
+      "raw_title": "Sungai Pinyuh",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Pemerintah Daerah\n Local Government",
+          "Laki-Laki\n Male",
+          "Perempuan\n Female",
+          "Jumlah\n Total"
+        ],
+        [
+          "Pemerintah Daerah Kecamatan Sungai Pinyuh\nSungai Pinyuh District Government"
+        ],
+        [
+          "Sungai Purun Kecil"
+        ],
+        [
+          "Peniraman"
+        ],
+        [
+          "Nusapati"
+        ],
+        [
+          "Galang"
+        ],
+        [
+          "Sungai Rasau"
+        ],
+        [
+          "Sungai Pinyuh"
+        ],
+        [
+          "Sungai Batang"
+        ],
+        [
+          "Sungai Bakau Besar Laut"
+        ],
+        [
+          "Sungai Bakau Besar Darat"
+        ]
+      ]
+    },
+    "Jongkat": {
+      "raw_title": "Jongkat",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Pemerintah Daerah\n Local Government",
+          "Laki-Laki\n Male",
+          "Perempuan\n Female",
+          "Jumlah\n Total"
+        ],
+        [
+          "Pemerintah Daerah Kecamatan Jongkat\nJongkat District Government"
+        ],
+        [
+          "Sungai Nipah"
+        ],
+        [
+          "Jungkat"
+        ],
+        [
+          "Wajok Hilir"
+        ],
+        [
+          "Wajok Hulu"
+        ],
+        [
+          "Peniti Luar"
+        ]
+      ]
+    },
+    "Sungai Kunyit": {
+      "raw_title": "Sungai Kunyit",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Pemerintah Daerah\n Local Government",
+          "Laki-Laki\n Male",
+          "Perempuan\n Female",
+          "Jumlah\n Total"
+        ],
+        [
+          "Pemerintah Daerah Kecamatan Sungai Kunyit\nSungai Kunyit District Government"
+        ],
+        [
+          "Semudun"
+        ],
+        [
+          "Semparong Parit Raden"
+        ],
+        [
+          "Mendalok"
+        ],
+        [
+          "Sungai Dungun"
+        ],
+        [
+          "Sungai Limau"
+        ],
+        [
+          "Sungai Kunyit Laut"
+        ],
+        [
+          "Sungai Kunyit Dalam"
+        ],
+        [
+          "Sungai Kunyit Hulu"
+        ],
+        [
+          "Bukit Batu"
+        ],
+        [
+          "Sungai Bundung Laut"
+        ],
+        [
+          "Sungai Duri I"
+        ],
+        [
+          "Sungai Duri Ii"
+        ]
+      ]
+    },
+    "Segedong": {
+      "raw_title": "Segedong",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Pemerintah Daerah\n Local Government",
+          "Laki-Laki\n Male",
+          "Perempuan\n Female",
+          "Jumlah\n Total"
+        ],
+        [
+          "Pemerintah Daerah Kecamatan Segedong\nSegedong District Government"
+        ],
+        [
+          "Peniti Dalam I"
+        ],
+        [
+          "Sungai Burung"
+        ],
+        [
+          "Sungai Purun Besar"
+        ],
+        [
+          "Parit Bugis"
+        ],
+        [
+          "Peniti Besar"
+        ],
+        [
+          "Peniti Dalam Ii"
+        ]
+      ]
+    },
+    "Anjongan": {
+      "raw_title": "Anjongan",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Pemerintah Daerah\n Local Government",
+          "Laki-Laki\n Male",
+          "Perempuan\n Female",
+          "Jumlah\n Total"
+        ],
+        [
+          "Pemerintah Daerah Kecamatan Anjongan\nAnjongan District Government"
+        ],
+        [
+          "Anjungan Melancar"
+        ],
+        [
+          "Anjungan Dalam"
+        ],
+        [
+          "Pak Bulu"
+        ],
+        [
+          "Dema"
+        ],
+        [
+          "Kepayang"
+        ]
+      ]
+    },
+    "Sadaniang": {
+      "raw_title": "Sadaniang",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Pemerintah Daerah\n Local Government",
+          "Laki-Laki\n Male",
+          "Perempuan\n Female",
+          "Jumlah\n Total"
+        ],
+        [
+          "Pemerintah Daerah Kecamatan Sadaniang\nSadaniang District Government"
+        ],
+        [
+          "Pentek"
+        ],
+        [
+          "Sekabuk"
+        ],
+        [
+          "Bum-Bun"
+        ],
+        [
+          "Amawang"
+        ],
+        [
+          "Ansiap"
+        ]
+      ]
+    },
+    "Mempawah Timur": {
+      "raw_title": "Mempawah Timur",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Pemerintah Daerah\n Local Government",
+          "Laki-Laki\n Male",
+          "Perempuan\n Female",
+          "Jumlah\n Total"
+        ],
+        [
+          "Pemerintah Daerah Kecamatan Mempawah Timur\nMempawah Timur District Government"
+        ],
+        [
+          "Pasir Wan Salim"
+        ],
+        [
+          "Sungai Bakau Kecil"
+        ],
+        [
+          "Pasir Panjang"
+        ],
+        [
+          "Pasir Palembang"
+        ],
+        [
+          "Pulau Pedalaman"
+        ],
+        [
+          "Antibar"
+        ],
+        [
+          "Sejegi"
+        ],
+        [
+          "Parit Banjar"
+        ]
+      ]
+    }
+  }
+}

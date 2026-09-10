@@ -1,0 +1,458 @@
+{
+  "no": "2.1.4",
+  "nama": "Nama-Nama Kepala Dusun di Kecamatan XXX",
+  "sumber": "KCDA 2025 + Kantor Camat",
+  "disediakan_ipds": false,
+  "sheet_id": "10eEof1SE5ucO6hUAvP7EJ8X7GQLyuGwiRpM4Ltc_Vkk",
+  "spreadsheet_title": "2.1.4 Nama-Nama Kepala Dusun ",
+  "updated_at": "2026-09-10 17:49:29",
+  "tabs": {
+    "Mempawah Hilir": {
+      "raw_title": "Mempawah Hilir",
+      "rows": [
+        [
+          "No",
+          "Desa/Kelurahan\n Village/Subdistrict",
+          "Dusun",
+          "Nama\n Name"
+        ],
+        [
+          "(1)",
+          "(2)",
+          "(3)",
+          "(4)"
+        ],
+        [
+          "1"
+        ],
+        [
+          "2"
+        ],
+        [
+          "3"
+        ],
+        [
+          "4"
+        ],
+        [
+          "5"
+        ]
+      ]
+    },
+    "Toho": {
+      "raw_title": "Toho",
+      "rows": [
+        [
+          "No",
+          "Desa/Kelurahan\n Village/Subdistrict",
+          "Dusun",
+          "Nama\n Name"
+        ],
+        [
+          "(1)",
+          "(2)",
+          "(3)",
+          "(4)"
+        ],
+        [
+          "1"
+        ],
+        [
+          "2"
+        ],
+        [
+          "3"
+        ],
+        [
+          "4"
+        ],
+        [
+          "5"
+        ]
+      ]
+    },
+    "Sungai Pinyuh": {
+      "raw_title": "Sungai Pinyuh",
+      "rows": [
+        [
+          "No",
+          "Desa/Kelurahan\n Village/Subdistrict",
+          "Dusun",
+          "Nama\n Name"
+        ],
+        [
+          "(1)",
+          "(2)",
+          "(3)",
+          "(4)"
+        ],
+        [
+          "1"
+        ],
+        [
+          "2"
+        ],
+        [
+          "3"
+        ],
+        [
+          "4"
+        ],
+        [
+          "5"
+        ]
+      ]
+    },
+    "Jongkat": {
+      "raw_title": "Jongkat",
+      "rows": [
+        [
+          "No",
+          "Desa/Kelurahan\n Village/Subdistrict",
+          "Dusun",
+          "Nama\n Name"
+        ],
+        [
+          "(1)",
+          "(2)",
+          "(3)",
+          "(4)"
+        ],
+        [
+          "1",
+          "Sungai Nipah",
+          "Dusun Mawar",
+          "Muhlis"
+        ],
+        [
+          "2",
+          "Sungai Nipah",
+          "Dusun Melati",
+          "Syarif Muslimat"
+        ],
+        [
+          "3",
+          "Jungkat",
+          "Dusun Pangsuma",
+          "Nor Uzeizi"
+        ],
+        [
+          "4",
+          "Jungkat",
+          "Dusun Uray Bawadi",
+          "Widi Apriadi, S.Sos"
+        ],
+        [
+          "5",
+          "Jungkat",
+          "Dusun Raden Wijaya",
+          "Muhammad Ridek"
+        ],
+        [
+          "6",
+          "Jungkat",
+          "Dusun Sultan Muhammad",
+          "Abdul Halim"
+        ],
+        [
+          "7",
+          "Jungkat",
+          "Dusun Pangeran Adipati",
+          "Wahyu"
+        ],
+        [
+          "8",
+          "Jungkat",
+          "Dusun Daeng Manambon",
+          "Annizar"
+        ],
+        [
+          "9",
+          "Jungkat",
+          "Dusun Rahadi Usman",
+          "Imran"
+        ],
+        [
+          "10",
+          "Jungkat",
+          "Dusun Raden Taufik",
+          "Aditia Anugrah Pratama"
+        ],
+        [
+          "11",
+          "Jungkat",
+          "Dusun Alianyang",
+          "Darmawan"
+        ],
+        [
+          "12",
+          "Jungkat",
+          "Dusun Sultan Abdurrahman",
+          "Noto Wahono"
+        ],
+        [
+          "13",
+          "Wajok Hilir",
+          "Dusun Palawija",
+          "Jalaludin"
+        ],
+        [
+          "14",
+          "Wajok Hilir",
+          "Dusun Coklat",
+          "Nasri"
+        ],
+        [
+          "15",
+          "Wajok Hilir",
+          "Dusun Kelapa",
+          "Jamaludin"
+        ],
+        [
+          "16",
+          "Wajok Hilir",
+          "Dusun Kopi",
+          "Hendi Sumaryo"
+        ],
+        [
+          "17",
+          "Wajok Hilir",
+          "Dusun Padi",
+          "Abdul Rais"
+        ],
+        [
+          "18",
+          "Wajok Hilir",
+          "Dusun Jeruk",
+          "Ida Marlina"
+        ],
+        [
+          "19",
+          "Wajok Hilir",
+          "Dusun Nanas",
+          "Jailani"
+        ],
+        [
+          "20",
+          "Wajok Hulu",
+          "Dusun Lapan",
+          "Meriyanah"
+        ],
+        [
+          "21",
+          "Wajok Hulu",
+          "Dusun Brahima",
+          "Muhammad Yusuf"
+        ],
+        [
+          "22",
+          "Wajok Hulu",
+          "Dusun Pandan",
+          "Dulasis"
+        ],
+        [
+          "23",
+          "Wajok Hulu",
+          "Dusun Kunyit",
+          "Fawaid"
+        ],
+        [
+          "24",
+          "Wajok Hulu",
+          "Dusun Telok Dalam",
+          "Jamal"
+        ],
+        [
+          "25",
+          "Wajok Hulu",
+          "Dusun Durian",
+          "Muhammad Yusuf"
+        ],
+        [
+          "26",
+          "Wajok Hulu",
+          "Dusun Mambo",
+          "Aswanto"
+        ],
+        [
+          "27",
+          "Peniti Luar",
+          "Dusun Panca Bhakti",
+          "Muhammad Daud"
+        ],
+        [
+          "28",
+          "Peniti Luar",
+          "Dusun Taruna Bhakti",
+          "Hidayat"
+        ],
+        [
+          "29",
+          "Peniti Luar",
+          "Dusun Karya Bhakti",
+          "Adriansyah, S.Pd"
+        ]
+      ]
+    },
+    "Sungai Kunyit": {
+      "raw_title": "Sungai Kunyit",
+      "rows": [
+        [
+          "No",
+          "Desa/Kelurahan\n Village/Subdistrict",
+          "Dusun",
+          "Nama\n Name"
+        ],
+        [
+          "(1)",
+          "(2)",
+          "(3)",
+          "(4)"
+        ],
+        [
+          "1"
+        ],
+        [
+          "2"
+        ],
+        [
+          "3"
+        ],
+        [
+          "4"
+        ],
+        [
+          "5"
+        ]
+      ]
+    },
+    "Segedong": {
+      "raw_title": "Segedong",
+      "rows": [
+        [
+          "No",
+          "Desa/Kelurahan\n Village/Subdistrict",
+          "Dusun",
+          "Nama\n Name"
+        ],
+        [
+          "(1)",
+          "(2)",
+          "(3)",
+          "(4)"
+        ],
+        [
+          "1"
+        ],
+        [
+          "2"
+        ],
+        [
+          "3"
+        ],
+        [
+          "4"
+        ],
+        [
+          "5"
+        ]
+      ]
+    },
+    "Sadaniang": {
+      "raw_title": "Sadaniang",
+      "rows": [
+        [
+          "No",
+          "Desa/Kelurahan\n Village/Subdistrict",
+          "Dusun",
+          "Nama\n Name"
+        ],
+        [
+          "(1)",
+          "(2)",
+          "(3)",
+          "(4)"
+        ],
+        [
+          "1"
+        ],
+        [
+          "2"
+        ],
+        [
+          "3"
+        ],
+        [
+          "4"
+        ],
+        [
+          "5"
+        ]
+      ]
+    },
+    "Anjongan": {
+      "raw_title": "Anjongan",
+      "rows": [
+        [
+          "No",
+          "Desa/Kelurahan\n Village/Subdistrict",
+          "Dusun",
+          "Nama\n Name"
+        ],
+        [
+          "(1)",
+          "(2)",
+          "(3)",
+          "(4)"
+        ],
+        [
+          "1"
+        ],
+        [
+          "2"
+        ],
+        [
+          "3"
+        ],
+        [
+          "4"
+        ],
+        [
+          "5"
+        ]
+      ]
+    },
+    "Mempawah Timur": {
+      "raw_title": "Mempawah Timur",
+      "rows": [
+        [
+          "No",
+          "Desa/Kelurahan\n Village/Subdistrict",
+          "Dusun",
+          "Nama\n Name"
+        ],
+        [
+          "(1)",
+          "(2)",
+          "(3)",
+          "(4)"
+        ],
+        [
+          "1"
+        ],
+        [
+          "2"
+        ],
+        [
+          "3"
+        ],
+        [
+          "4"
+        ],
+        [
+          "5"
+        ]
+      ]
+    }
+  }
+}

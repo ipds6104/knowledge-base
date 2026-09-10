@@ -1,0 +1,443 @@
+{
+  "no": "4.3.2",
+  "nama": "Banyaknya Desa/Kelurahan Menurut Jenis Bahan Bakar untuk Memasak yang Digunakan Sebagian Besar Keluarga di\nKecamatan XXX",
+  "sumber": "Podes",
+  "disediakan_ipds": false,
+  "sheet_id": "1akeeI22aBu5g2hQFj2BL5wcxEWpr3eAChsYoI5LBm6Q",
+  "spreadsheet_title": "4.3.2 Banyaknya Desa/Kelurahan Menurut Jenis Bahan Bakar untuk Memasak",
+  "updated_at": "2026-09-10 17:49:56",
+  "tabs": {
+    "Mempawah Hilir": {
+      "raw_title": "Mempawah Hilir",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Bahan Bakar untuk Memasak\n Type of Cooking Fuel",
+          "2025"
+        ],
+        [
+          "Listrik/Electric"
+        ],
+        [
+          "Elpiji 5,5 kg/5.5 kg-LPG"
+        ],
+        [
+          "Elpiji 12 kg/12 kg-LPG"
+        ],
+        [
+          "Elpiji 3 kg/3 kg-LPG"
+        ],
+        [
+          "Gas Kota/City Gas"
+        ],
+        [
+          "Biogas/Biogas"
+        ],
+        [
+          "Minyak Tanah/Kerosene"
+        ],
+        [
+          "Briket/Briquettes"
+        ],
+        [
+          "Arang/Charcoal"
+        ],
+        [
+          "Kayu Bakar/Firewood"
+        ],
+        [
+          "Lainnya/Others"
+        ],
+        [
+          "Jumlah/Total"
+        ]
+      ]
+    },
+    "Toho": {
+      "raw_title": "Toho",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Bahan Bakar untuk Memasak\n Type of Cooking Fuel",
+          "2025"
+        ],
+        [
+          "Listrik/Electric"
+        ],
+        [
+          "Elpiji 5,5 kg/5.5 kg-LPG"
+        ],
+        [
+          "Elpiji 12 kg/12 kg-LPG"
+        ],
+        [
+          "Elpiji 3 kg/3 kg-LPG"
+        ],
+        [
+          "Gas Kota/City Gas"
+        ],
+        [
+          "Biogas/Biogas"
+        ],
+        [
+          "Minyak Tanah/Kerosene"
+        ],
+        [
+          "Briket/Briquettes"
+        ],
+        [
+          "Arang/Charcoal"
+        ],
+        [
+          "Kayu Bakar/Firewood"
+        ],
+        [
+          "Lainnya/Others"
+        ],
+        [
+          "Jumlah/Total"
+        ]
+      ]
+    },
+    "Sungai Pinyuh": {
+      "raw_title": "Sungai Pinyuh",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Bahan Bakar untuk Memasak\n Type of Cooking Fuel",
+          "2025"
+        ],
+        [
+          "Listrik/Electric"
+        ],
+        [
+          "Elpiji 5,5 kg/5.5 kg-LPG"
+        ],
+        [
+          "Elpiji 12 kg/12 kg-LPG"
+        ],
+        [
+          "Elpiji 3 kg/3 kg-LPG"
+        ],
+        [
+          "Gas Kota/City Gas"
+        ],
+        [
+          "Biogas/Biogas"
+        ],
+        [
+          "Minyak Tanah/Kerosene"
+        ],
+        [
+          "Briket/Briquettes"
+        ],
+        [
+          "Arang/Charcoal"
+        ],
+        [
+          "Kayu Bakar/Firewood"
+        ],
+        [
+          "Lainnya/Others"
+        ],
+        [
+          "Jumlah/Total"
+        ]
+      ]
+    },
+    "Jongkat": {
+      "raw_title": "Jongkat",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Bahan Bakar untuk Memasak\n Type of Cooking Fuel",
+          "2025"
+        ],
+        [
+          "Listrik/Electric"
+        ],
+        [
+          "Elpiji 5,5 kg/5.5 kg-LPG"
+        ],
+        [
+          "Elpiji 12 kg/12 kg-LPG"
+        ],
+        [
+          "Elpiji 3 kg/3 kg-LPG"
+        ],
+        [
+          "Gas Kota/City Gas"
+        ],
+        [
+          "Biogas/Biogas"
+        ],
+        [
+          "Minyak Tanah/Kerosene"
+        ],
+        [
+          "Briket/Briquettes"
+        ],
+        [
+          "Arang/Charcoal"
+        ],
+        [
+          "Kayu Bakar/Firewood"
+        ],
+        [
+          "Lainnya/Others"
+        ],
+        [
+          "Jumlah/Total"
+        ]
+      ]
+    },
+    "Sungai Kunyit": {
+      "raw_title": "Sungai Kunyit",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Bahan Bakar untuk Memasak\n Type of Cooking Fuel",
+          "2025"
+        ],
+        [
+          "Listrik/Electric"
+        ],
+        [
+          "Elpiji 5,5 kg/5.5 kg-LPG"
+        ],
+        [
+          "Elpiji 12 kg/12 kg-LPG"
+        ],
+        [
+          "Elpiji 3 kg/3 kg-LPG"
+        ],
+        [
+          "Gas Kota/City Gas"
+        ],
+        [
+          "Biogas/Biogas"
+        ],
+        [
+          "Minyak Tanah/Kerosene"
+        ],
+        [
+          "Briket/Briquettes"
+        ],
+        [
+          "Arang/Charcoal"
+        ],
+        [
+          "Kayu Bakar/Firewood"
+        ],
+        [
+          "Lainnya/Others"
+        ],
+        [
+          "Jumlah/Total"
+        ]
+      ]
+    },
+    "Segedong": {
+      "raw_title": "Segedong ",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Bahan Bakar untuk Memasak\n Type of Cooking Fuel",
+          "2025"
+        ],
+        [
+          "Listrik/Electric"
+        ],
+        [
+          "Elpiji 5,5 kg/5.5 kg-LPG"
+        ],
+        [
+          "Elpiji 12 kg/12 kg-LPG"
+        ],
+        [
+          "Elpiji 3 kg/3 kg-LPG"
+        ],
+        [
+          "Gas Kota/City Gas"
+        ],
+        [
+          "Biogas/Biogas"
+        ],
+        [
+          "Minyak Tanah/Kerosene"
+        ],
+        [
+          "Briket/Briquettes"
+        ],
+        [
+          "Arang/Charcoal"
+        ],
+        [
+          "Kayu Bakar/Firewood"
+        ],
+        [
+          "Lainnya/Others"
+        ],
+        [
+          "Jumlah/Total"
+        ]
+      ]
+    },
+    "Anjongan": {
+      "raw_title": "Anjongan",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Bahan Bakar untuk Memasak\n Type of Cooking Fuel",
+          "2025"
+        ],
+        [
+          "Listrik/Electric"
+        ],
+        [
+          "Elpiji 5,5 kg/5.5 kg-LPG"
+        ],
+        [
+          "Elpiji 12 kg/12 kg-LPG"
+        ],
+        [
+          "Elpiji 3 kg/3 kg-LPG"
+        ],
+        [
+          "Gas Kota/City Gas"
+        ],
+        [
+          "Biogas/Biogas"
+        ],
+        [
+          "Minyak Tanah/Kerosene"
+        ],
+        [
+          "Briket/Briquettes"
+        ],
+        [
+          "Arang/Charcoal"
+        ],
+        [
+          "Kayu Bakar/Firewood"
+        ],
+        [
+          "Lainnya/Others"
+        ],
+        [
+          "Jumlah/Total"
+        ]
+      ]
+    },
+    "Sadaniang": {
+      "raw_title": "Sadaniang",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Bahan Bakar untuk Memasak\n Type of Cooking Fuel",
+          "2025"
+        ],
+        [
+          "Listrik/Electric"
+        ],
+        [
+          "Elpiji 5,5 kg/5.5 kg-LPG"
+        ],
+        [
+          "Elpiji 12 kg/12 kg-LPG"
+        ],
+        [
+          "Elpiji 3 kg/3 kg-LPG"
+        ],
+        [
+          "Gas Kota/City Gas"
+        ],
+        [
+          "Biogas/Biogas"
+        ],
+        [
+          "Minyak Tanah/Kerosene"
+        ],
+        [
+          "Briket/Briquettes"
+        ],
+        [
+          "Arang/Charcoal"
+        ],
+        [
+          "Kayu Bakar/Firewood"
+        ],
+        [
+          "Lainnya/Others"
+        ],
+        [
+          "Jumlah/Total"
+        ]
+      ]
+    },
+    "Mempawah Timur": {
+      "raw_title": "Mempawah Timur",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Bahan Bakar untuk Memasak\n Type of Cooking Fuel",
+          "2025"
+        ],
+        [
+          "Listrik/Electric"
+        ],
+        [
+          "Elpiji 5,5 kg/5.5 kg-LPG"
+        ],
+        [
+          "Elpiji 12 kg/12 kg-LPG"
+        ],
+        [
+          "Elpiji 3 kg/3 kg-LPG"
+        ],
+        [
+          "Gas Kota/City Gas"
+        ],
+        [
+          "Biogas/Biogas"
+        ],
+        [
+          "Minyak Tanah/Kerosene"
+        ],
+        [
+          "Briket/Briquettes"
+        ],
+        [
+          "Arang/Charcoal"
+        ],
+        [
+          "Kayu Bakar/Firewood"
+        ],
+        [
+          "Lainnya/Others"
+        ],
+        [
+          "Jumlah/Total"
+        ]
+      ]
+    }
+  }
+}

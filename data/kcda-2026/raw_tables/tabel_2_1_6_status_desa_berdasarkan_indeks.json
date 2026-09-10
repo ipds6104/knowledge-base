@@ -1,0 +1,428 @@
+{
+  "no": "2.1.6",
+  "nama": "Status Desa berdasarkan Indeks Desa Membangun di Kecamatan XXX, 2024",
+  "sumber": "REKOMENDASI_IDM_PROVINSI_61_KALBAR-2023",
+  "disediakan_ipds": true,
+  "sheet_id": "1qdrqJe5xgh2JW0A1RiIQdHgSSawMMdcNXZpsnSNE9EU",
+  "spreadsheet_title": "2.1.6 Status Desa berdasarkan Indeks Desa Membangun",
+  "updated_at": "2026-09-10 17:49:31",
+  "tabs": {
+    "Mempawah Hilir": {
+      "raw_title": "Mempawah Hilir",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "No ",
+          "Desa/Kelurahan\nVillage/Subdistrict\n",
+          "Status Indeks Desa Mandiri\nIndependent Village Index Status21\n"
+        ],
+        [
+          "1",
+          "Tanjung"
+        ],
+        [
+          "2",
+          "Kuala Secapah"
+        ],
+        [
+          "3",
+          "Tengah"
+        ],
+        [
+          "4",
+          "Terusan"
+        ],
+        [
+          "5",
+          "Pasir"
+        ],
+        [
+          "6",
+          "Penibung"
+        ],
+        [
+          "7",
+          "Sengkubang"
+        ],
+        [
+          "8",
+          "Malikian"
+        ]
+      ]
+    },
+    "Toho": {
+      "raw_title": "Toho",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "No ",
+          "Desa/Kelurahan\nVillage/Subdistrict\n",
+          "Status Indeks Desa Mandiri\nIndependent Village Index Status21\n"
+        ],
+        [
+          "1",
+          "Sambora"
+        ],
+        [
+          "2",
+          "Benuang"
+        ],
+        [
+          "3",
+          "Pak Utan"
+        ],
+        [
+          "4",
+          "Sepang"
+        ],
+        [
+          "5",
+          "Pak Laheng"
+        ],
+        [
+          "6",
+          "Terap"
+        ],
+        [
+          "7",
+          "Kecurit"
+        ],
+        [
+          "8",
+          "Toho Ilir"
+        ],
+        [
+          "9",
+          "Kecamatan  Toho"
+        ]
+      ]
+    },
+    "Sungai Pinyuh": {
+      "raw_title": "Sungai Pinyuh",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "No ",
+          "Desa/Kelurahan\nVillage/Subdistrict\n",
+          "Status Indeks Desa Mandiri\nIndependent Village Index Status21\n"
+        ],
+        [
+          "1",
+          "Sungai Purun Kecil"
+        ],
+        [
+          "2",
+          "Peniraman"
+        ],
+        [
+          "3",
+          "Nusapati"
+        ],
+        [
+          "4",
+          "Galang"
+        ],
+        [
+          "5",
+          "Sungai Rasau"
+        ],
+        [
+          "6",
+          "Sungai Pinyuh"
+        ],
+        [
+          "7",
+          "Sungai Batang"
+        ],
+        [
+          "8",
+          "Sungai Bakau Besar Laut"
+        ],
+        [
+          "9",
+          "Sungai Bakau Besar Darat"
+        ],
+        [
+          "10",
+          "Kecamatan  Sungai Pinyuh"
+        ]
+      ]
+    },
+    "Jongkat": {
+      "raw_title": "Jongkat",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "No ",
+          "Desa/Kelurahan\nVillage/Subdistrict\n",
+          "Status Indeks Desa Mandiri\nIndependent Village Index Status21\n"
+        ],
+        [
+          "1",
+          "Sungai Nipah"
+        ],
+        [
+          "2",
+          "Jungkat"
+        ],
+        [
+          "3",
+          "Wajok Hilir"
+        ],
+        [
+          "4",
+          "Wajok Hulu"
+        ],
+        [
+          "5",
+          "Peniti Luar"
+        ],
+        [
+          "6",
+          "Kecamatan Jongkat"
+        ]
+      ]
+    },
+    "Sungai Kunyit": {
+      "raw_title": "Sungai Kunyit",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "No ",
+          "Desa/Kelurahan\nVillage/Subdistrict\n",
+          "Status Indeks Desa Mandiri\nIndependent Village Index Status21\n"
+        ],
+        [
+          "1",
+          "Semudun"
+        ],
+        [
+          "2",
+          "Semparong Parit Raden"
+        ],
+        [
+          "3",
+          "Mendalok"
+        ],
+        [
+          "4",
+          "Sungai Dungun"
+        ],
+        [
+          "5",
+          "Sungai Limau"
+        ],
+        [
+          "6",
+          "Sungai Kunyit Laut"
+        ],
+        [
+          "7",
+          "Sungai Kunyit Dalam"
+        ],
+        [
+          "8",
+          "Sungai Kunyit Hulu"
+        ],
+        [
+          "9",
+          "Bukit Batu"
+        ],
+        [
+          "10",
+          "Sungai Bundung Laut"
+        ],
+        [
+          "11",
+          "Sungai Duri I"
+        ],
+        [
+          "12",
+          "Sungai Duri Ii"
+        ],
+        [
+          "13",
+          "Kecamatan Sungai Kunyit"
+        ]
+      ]
+    },
+    "Segedong": {
+      "raw_title": "Segedong",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "No ",
+          "Desa/Kelurahan\nVillage/Subdistrict\n",
+          "Status Indeks Desa Mandiri\nIndependent Village Index Status21\n"
+        ],
+        [
+          "1",
+          "Peniti Dalam I"
+        ],
+        [
+          "2",
+          "Sungai Burung"
+        ],
+        [
+          "3",
+          "Sungai Purun Besar"
+        ],
+        [
+          "4",
+          "Parit Bugis"
+        ],
+        [
+          "5",
+          "Peniti Besar"
+        ],
+        [
+          "6",
+          "Peniti Dalam Ii"
+        ],
+        [
+          "7",
+          "Kecamatan Segedong"
+        ]
+      ]
+    },
+    "Sadaniang": {
+      "raw_title": "Sadaniang",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "No ",
+          "Desa/Kelurahan\nVillage/Subdistrict\n",
+          "Status Indeks Desa Mandiri\nIndependent Village Index Status21\n"
+        ],
+        [
+          "1",
+          "Pentek"
+        ],
+        [
+          "2",
+          "Sekabuk"
+        ],
+        [
+          "3",
+          "Bum-Bun"
+        ],
+        [
+          "4",
+          "Amawang"
+        ],
+        [
+          "5",
+          "Ansiap"
+        ],
+        [
+          "6",
+          "Suak Barangan"
+        ],
+        [
+          "7",
+          "Kecamatan Sadaniang"
+        ]
+      ]
+    },
+    "Anjongan": {
+      "raw_title": "Anjongan",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "No ",
+          "Desa/Kelurahan\nVillage/Subdistrict\n",
+          "Status Indeks Desa Mandiri\nIndependent Village Index Status21\n"
+        ],
+        [
+          "1",
+          "Anjungan Melancar"
+        ],
+        [
+          "2",
+          "Anjungan Dalam"
+        ],
+        [
+          "3",
+          "Pak Bulu"
+        ],
+        [
+          "4",
+          "Dema"
+        ],
+        [
+          "5",
+          "Kepayang"
+        ],
+        [
+          "6",
+          "Kecamatan Anjongan"
+        ]
+      ]
+    },
+    "Mempawah Timur": {
+      "raw_title": "Mempawah Timur",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "No ",
+          "Desa/Kelurahan\nVillage/Subdistrict\n",
+          "Status Indeks Desa Mandiri\nIndependent Village Index Status21\n"
+        ],
+        [
+          "1",
+          "Pasir Wan Salim"
+        ],
+        [
+          "2",
+          "Sungai Bakau Kecil"
+        ],
+        [
+          "3",
+          "Pasir Panjang"
+        ],
+        [
+          "4",
+          "Pasir Palembang"
+        ],
+        [
+          "5",
+          "Pulau Pedalaman"
+        ],
+        [
+          "6",
+          "Antibar"
+        ],
+        [
+          "7",
+          "Sejegi"
+        ],
+        [
+          "8",
+          "Parit Banjar"
+        ],
+        [
+          "9",
+          "Kecamatan Mempawah Timur"
+        ]
+      ]
+    }
+  }
+}
