@@ -4,8 +4,8 @@
   "sumber": "Jumlah PNS per desa/kelurahan (Kantor Camat)",
   "disediakan_ipds": false,
   "sheet_id": "1Vqx2_TCs27HqnxYcoYHhLASZROf6gEJDvo6J6CjEQ8g",
-  "spreadsheet_title": "2.2.1 Jumlah Pegawai Negeri Sipil Menurut Pemerintah Daerah dan Jenis Kelamin",
-  "updated_at": "2026-09-10 17:49:33",
+  "spreadsheet_title": "Jumlah Pegawai Negeri Sipil Menurut Pemerintah Daerah dan Jenis Kelamin",
+  "updated_at": "2026-09-10 20:46:24",
   "tabs": {
     "Mempawah Hilir": {
       "raw_title": "Mempawah Hilir",
@@ -48,8 +48,8 @@
         ]
       ]
     },
-    "Toho": {
-      "raw_title": "Toho",
+    "Mempawah Timur": {
+      "raw_title": "Mempawah Timur",
       "rows": [
         [
           "2025"
@@ -61,31 +61,31 @@
           "Jumlah\n Total"
         ],
         [
-          "Pemerintah Daerah Kecamatan Toho\nMempawah Hilir District Government"
+          "Pemerintah Daerah Kecamatan Mempawah Timur\nMempawah Timur District Government"
         ],
         [
-          "Sambora"
+          "Pasir Wan Salim"
         ],
         [
-          "Benuang"
+          "Sungai Bakau Kecil"
         ],
         [
-          "Pak Utan"
+          "Pasir Panjang"
         ],
         [
-          "Sepang"
+          "Pasir Palembang"
         ],
         [
-          "Pak Laheng"
+          "Pulau Pedalaman"
         ],
         [
-          "Terap"
+          "Antibar"
         ],
         [
-          "Kecurit"
+          "Sejegi"
         ],
         [
-          "Toho Ilir"
+          "Parit Banjar"
         ]
       ]
     },
@@ -130,38 +130,6 @@
         ],
         [
           "Sungai Bakau Besar Darat"
-        ]
-      ]
-    },
-    "Jongkat": {
-      "raw_title": "Jongkat",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Pemerintah Daerah\n Local Government",
-          "Laki-Laki\n Male",
-          "Perempuan\n Female",
-          "Jumlah\n Total"
-        ],
-        [
-          "Pemerintah Daerah Kecamatan Jongkat\nJongkat District Government"
-        ],
-        [
-          "Sungai Nipah"
-        ],
-        [
-          "Jungkat"
-        ],
-        [
-          "Wajok Hilir"
-        ],
-        [
-          "Wajok Hulu"
-        ],
-        [
-          "Peniti Luar"
         ]
       ]
     },
@@ -253,6 +221,79 @@
         ]
       ]
     },
+    "Toho": {
+      "raw_title": "Toho",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Pemerintah Daerah\n Local Government",
+          "Laki-Laki\n Male",
+          "Perempuan\n Female",
+          "Jumlah\n Total"
+        ],
+        [
+          "Pemerintah Daerah Kecamatan Toho\nMempawah Hilir District Government"
+        ],
+        [
+          "Sambora"
+        ],
+        [
+          "Benuang"
+        ],
+        [
+          "Pak Utan"
+        ],
+        [
+          "Sepang"
+        ],
+        [
+          "Pak Laheng"
+        ],
+        [
+          "Terap"
+        ],
+        [
+          "Kecurit"
+        ],
+        [
+          "Toho Ilir"
+        ]
+      ]
+    },
+    "Jongkat": {
+      "raw_title": "Jongkat",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Pemerintah Daerah\n Local Government",
+          "Laki-Laki\n Male",
+          "Perempuan\n Female",
+          "Jumlah\n Total"
+        ],
+        [
+          "Pemerintah Daerah Kecamatan Jongkat\nJongkat District Government"
+        ],
+        [
+          "Sungai Nipah"
+        ],
+        [
+          "Jungkat"
+        ],
+        [
+          "Wajok Hilir"
+        ],
+        [
+          "Wajok Hulu"
+        ],
+        [
+          "Peniti Luar"
+        ]
+      ]
+    },
     "Anjongan": {
       "raw_title": "Anjongan",
       "rows": [
@@ -314,47 +355,6 @@
         ],
         [
           "Ansiap"
-        ]
-      ]
-    },
-    "Mempawah Timur": {
-      "raw_title": "Mempawah Timur",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Pemerintah Daerah\n Local Government",
-          "Laki-Laki\n Male",
-          "Perempuan\n Female",
-          "Jumlah\n Total"
-        ],
-        [
-          "Pemerintah Daerah Kecamatan Mempawah Timur\nMempawah Timur District Government"
-        ],
-        [
-          "Pasir Wan Salim"
-        ],
-        [
-          "Sungai Bakau Kecil"
-        ],
-        [
-          "Pasir Panjang"
-        ],
-        [
-          "Pasir Palembang"
-        ],
-        [
-          "Pulau Pedalaman"
-        ],
-        [
-          "Antibar"
-        ],
-        [
-          "Sejegi"
-        ],
-        [
-          "Parit Banjar"
         ]
       ]
     }

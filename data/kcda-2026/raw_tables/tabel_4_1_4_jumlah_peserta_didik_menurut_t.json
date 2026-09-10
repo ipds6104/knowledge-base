@@ -4,8 +4,8 @@
   "sumber": "Kemdikbud:\nTK\nSD\nSMP\nSMA\nSMK\n\nKemenag:\nRA\nMI\nMTS\nMA",
   "disediakan_ipds": true,
   "sheet_id": "1VK7v1ZgUHzsT6RSTNk95ZvvUv-Eow7CgsI0GHaWbo8E",
-  "spreadsheet_title": "4.1.4 Jumlah Peserta Didik Menurut Tingkat Pendidikan",
-  "updated_at": "2026-09-10 17:49:51",
+  "spreadsheet_title": "Jumlah Peserta Didik Menurut Tingkat Pendidikan di Kecamatan XXX",
+  "updated_at": "2026-09-10 20:46:27",
   "tabs": {
     "Mempawah Hilir": {
       "raw_title": "Mempawah Hilir",
@@ -59,8 +59,8 @@
         ]
       ]
     },
-    "Toho": {
-      "raw_title": "Toho",
+    "Mempawah Timur": {
+      "raw_title": "Mempawah Timur",
       "rows": [
         [
           "2025"
@@ -113,58 +113,6 @@
     },
     "Sungai Pinyuh": {
       "raw_title": "Sungai Pinyuh",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Tingkat Pendidikan\n Educational Level",
-          "Negeri/Public",
-          "",
-          "Swasta/Private",
-          "",
-          "Jumlah/Total"
-        ],
-        [
-          "",
-          "2024/2025",
-          "2025/2026",
-          "2025/2026",
-          "2025/2026",
-          "2024/2025",
-          "2025/2026"
-        ],
-        [
-          "Taman Kanak-Kanak \n(TK)1/Kindergarten1"
-        ],
-        [
-          "Raudatul Athfal (RA)2\nRaudatul Athfal (RA)2"
-        ],
-        [
-          "Sekolah Dasar (SD)1\nPrimary School1"
-        ],
-        [
-          "Madrasah Ibtidaiyah \n(MI)2/Madrasah \nIbtidaiyah (MI) 2"
-        ],
-        [
-          "Sekolah Menengah \nPertama (SMP)1\nJunior High School1"
-        ],
-        [
-          "Madrasah \nTsanawiyah (MTs)2\nMadrasah \nTsanawiyah (MTs) 2"
-        ],
-        [
-          "Sekolah Menengah \nAtas (SMA)1\nSenior High School1"
-        ],
-        [
-          "Sekolah Menengah \nKejuruan (SMK)1\nVocational High \nSchool1"
-        ],
-        [
-          "Madrasah Aliyah \n(MA)2\nMadrasah Aliyah \n(MA)2"
-        ]
-      ]
-    },
-    "Jongkat": {
-      "raw_title": "Jongkat",
       "rows": [
         [
           "2025"
@@ -319,6 +267,110 @@
         ]
       ]
     },
+    "Toho": {
+      "raw_title": "Toho",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Tingkat Pendidikan\n Educational Level",
+          "Negeri/Public",
+          "",
+          "Swasta/Private",
+          "",
+          "Jumlah/Total"
+        ],
+        [
+          "",
+          "2024/2025",
+          "2025/2026",
+          "2025/2026",
+          "2025/2026",
+          "2024/2025",
+          "2025/2026"
+        ],
+        [
+          "Taman Kanak-Kanak \n(TK)1/Kindergarten1"
+        ],
+        [
+          "Raudatul Athfal (RA)2\nRaudatul Athfal (RA)2"
+        ],
+        [
+          "Sekolah Dasar (SD)1\nPrimary School1"
+        ],
+        [
+          "Madrasah Ibtidaiyah \n(MI)2/Madrasah \nIbtidaiyah (MI) 2"
+        ],
+        [
+          "Sekolah Menengah \nPertama (SMP)1\nJunior High School1"
+        ],
+        [
+          "Madrasah \nTsanawiyah (MTs)2\nMadrasah \nTsanawiyah (MTs) 2"
+        ],
+        [
+          "Sekolah Menengah \nAtas (SMA)1\nSenior High School1"
+        ],
+        [
+          "Sekolah Menengah \nKejuruan (SMK)1\nVocational High \nSchool1"
+        ],
+        [
+          "Madrasah Aliyah \n(MA)2\nMadrasah Aliyah \n(MA)2"
+        ]
+      ]
+    },
+    "Jongkat": {
+      "raw_title": "Jongkat",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Tingkat Pendidikan\n Educational Level",
+          "Negeri/Public",
+          "",
+          "Swasta/Private",
+          "",
+          "Jumlah/Total"
+        ],
+        [
+          "",
+          "2024/2025",
+          "2025/2026",
+          "2025/2026",
+          "2025/2026",
+          "2024/2025",
+          "2025/2026"
+        ],
+        [
+          "Taman Kanak-Kanak \n(TK)1/Kindergarten1"
+        ],
+        [
+          "Raudatul Athfal (RA)2\nRaudatul Athfal (RA)2"
+        ],
+        [
+          "Sekolah Dasar (SD)1\nPrimary School1"
+        ],
+        [
+          "Madrasah Ibtidaiyah \n(MI)2/Madrasah \nIbtidaiyah (MI) 2"
+        ],
+        [
+          "Sekolah Menengah \nPertama (SMP)1\nJunior High School1"
+        ],
+        [
+          "Madrasah \nTsanawiyah (MTs)2\nMadrasah \nTsanawiyah (MTs) 2"
+        ],
+        [
+          "Sekolah Menengah \nAtas (SMA)1\nSenior High School1"
+        ],
+        [
+          "Sekolah Menengah \nKejuruan (SMK)1\nVocational High \nSchool1"
+        ],
+        [
+          "Madrasah Aliyah \n(MA)2\nMadrasah Aliyah \n(MA)2"
+        ]
+      ]
+    },
     "Anjongan": {
       "raw_title": "Anjongan",
       "rows": [
@@ -373,58 +425,6 @@
     },
     "Sadaniang": {
       "raw_title": "Sadaniang",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Tingkat Pendidikan\n Educational Level",
-          "Negeri/Public",
-          "",
-          "Swasta/Private",
-          "",
-          "Jumlah/Total"
-        ],
-        [
-          "",
-          "2024/2025",
-          "2025/2026",
-          "2025/2026",
-          "2025/2026",
-          "2024/2025",
-          "2025/2026"
-        ],
-        [
-          "Taman Kanak-Kanak \n(TK)1/Kindergarten1"
-        ],
-        [
-          "Raudatul Athfal (RA)2\nRaudatul Athfal (RA)2"
-        ],
-        [
-          "Sekolah Dasar (SD)1\nPrimary School1"
-        ],
-        [
-          "Madrasah Ibtidaiyah \n(MI)2/Madrasah \nIbtidaiyah (MI) 2"
-        ],
-        [
-          "Sekolah Menengah \nPertama (SMP)1\nJunior High School1"
-        ],
-        [
-          "Madrasah \nTsanawiyah (MTs)2\nMadrasah \nTsanawiyah (MTs) 2"
-        ],
-        [
-          "Sekolah Menengah \nAtas (SMA)1\nSenior High School1"
-        ],
-        [
-          "Sekolah Menengah \nKejuruan (SMK)1\nVocational High \nSchool1"
-        ],
-        [
-          "Madrasah Aliyah \n(MA)2\nMadrasah Aliyah \n(MA)2"
-        ]
-      ]
-    },
-    "Mempawah Timur": {
-      "raw_title": "Mempawah Timur",
       "rows": [
         [
           "2025"

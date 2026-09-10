@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 153.5" width="100%" style="font-family: 'Liberation Sans', Arial, sans-serif;">
+<rect width="340" height="153.5" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.8"/>
+<rect x="85" y="8" width="11" height="7" rx="2" fill="#0284C7"/>
+<text x="100" y="14" font-size="6" font-weight="bold" fill="#334155">Laki-laki/<tspan font-style="italic">Male</tspan></text>
+<rect x="180.4" y="8" width="11" height="7" rx="2" fill="#F5A623"/>
+<text x="195.4" y="14" font-size="6" font-weight="bold" fill="#334155">Perempuan/<tspan font-style="italic">Female</tspan></text>
+<line x1="85.0" y1="26" x2="85.0" y2="138.5" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="85.0" y="149.5" font-size="5.5" fill="#94A3B8" text-anchor="middle">0</text>
+<line x1="135.75" y1="26" x2="135.75" y2="138.5" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="135.75" y="149.5" font-size="5.5" fill="#94A3B8" text-anchor="middle">2.500</text>
+<line x1="186.5" y1="26" x2="186.5" y2="138.5" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="186.5" y="149.5" font-size="5.5" fill="#94A3B8" text-anchor="middle">5.000</text>
+<line x1="237.25" y1="26" x2="237.25" y2="138.5" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="237.25" y="149.5" font-size="5.5" fill="#94A3B8" text-anchor="middle">7.500</text>
+<line x1="288.0" y1="26" x2="288.0" y2="138.5" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="288.0" y="149.5" font-size="5.5" fill="#94A3B8" text-anchor="middle">10.000</text>
+<line x1="85" y1="26" x2="85" y2="138.5" stroke="#CBD5E1" stroke-width="1"/>
+<text x="79" y="37.5" font-size="6.5" fill="#334155" text-anchor="end">Jungkat</text>
+<rect x="85" y="29.0" width="162.9075" height="5.5" rx="1.5" fill="#0284C7"/>
+<text x="250.9075" y="33.5" font-size="5.5" fill="#475569">8.025</text>
+<rect x="85" y="36.0" width="156.8378" height="5.5" rx="1.5" fill="#F5A623"/>
+<text x="244.8378" y="40.5" font-size="5.5" fill="#475569">7.726</text>
+<text x="79" y="60.0" font-size="6.5" fill="#334155" text-anchor="end">Wajok Hulu</text>
+<rect x="85" y="51.5" width="155.84310000000002" height="5.5" rx="1.5" fill="#0284C7"/>
+<text x="243.84310000000002" y="56.0" font-size="5.5" fill="#475569">7.677</text>
+<rect x="85" y="58.5" width="148.9208" height="5.5" rx="1.5" fill="#F5A623"/>
+<text x="236.9208" y="63.0" font-size="5.5" fill="#475569">7.336</text>
+<text x="79" y="82.5" font-size="6.5" fill="#334155" text-anchor="end">Wajok Hilir</text>
+<rect x="85" y="74.0" width="117.4761" height="5.5" rx="1.5" fill="#0284C7"/>
+<text x="205.4761" y="78.5" font-size="5.5" fill="#475569">5.787</text>
+<rect x="85" y="81.0" width="112.9492" height="5.5" rx="1.5" fill="#F5A623"/>
+<text x="200.94920000000002" y="85.5" font-size="5.5" fill="#475569">5.564</text>
+<text x="79" y="105.0" font-size="6.5" fill="#334155" text-anchor="end">Sungai Nipah</text>
+<rect x="85" y="96.5" width="55.216" height="5.5" rx="1.5" fill="#0284C7"/>
+<text x="143.216" y="101.0" font-size="5.5" fill="#475569">2.720</text>
+<rect x="85" y="103.5" width="55.6626" height="5.5" rx="1.5" fill="#F5A623"/>
+<text x="143.6626" y="108.0" font-size="5.5" fill="#475569">2.742</text>
+<text x="79" y="127.5" font-size="6.5" fill="#334155" text-anchor="end">Peniti Luar</text>
+<rect x="85" y="119.0" width="41.0263" height="5.5" rx="1.5" fill="#0284C7"/>
+<text x="129.0263" y="123.5" font-size="5.5" fill="#475569">2.021</text>
+<rect x="85" y="126.0" width="37.8595" height="5.5" rx="1.5" fill="#F5A623"/>
+<text x="125.8595" y="130.5" font-size="5.5" fill="#475569">1.865</text>
+</svg>

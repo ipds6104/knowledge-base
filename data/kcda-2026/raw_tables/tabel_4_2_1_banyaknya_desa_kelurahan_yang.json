@@ -4,8 +4,8 @@
   "sumber": "2023 dan 2024\nKCDA.\n 2025 menggunakan data podes",
   "disediakan_ipds": false,
   "sheet_id": "1iR8SKLkz_eLSrNJbfdZVU-GJ9LlSVgv8BtMX9yA0zt0",
-  "spreadsheet_title": "4.2.1 Banyaknya Desa/Kelurahan yang Memiliki Sarana Kesehatan Menurut Jenis Sarana Kesehatan ",
-  "updated_at": "2026-09-10 17:49:53",
+  "spreadsheet_title": "Banyaknya Desa/Kelurahan yang Memiliki Sarana Kesehatan Menurut Jenis Sarana Kesehatan di Kecamatan XXX",
+  "updated_at": "2026-09-10 20:46:27",
   "tabs": {
     "Mempawah Hilir": {
       "raw_title": "Mempawah Hilir",
@@ -33,8 +33,8 @@
         ]
       ]
     },
-    "Toho": {
-      "raw_title": "Toho",
+    "Mempawah Timur": {
+      "raw_title": "Mempawah Timur",
       "rows": [
         [
           "2025"
@@ -61,32 +61,6 @@
     },
     "Sungai Pinyuh": {
       "raw_title": "Sungai Pinyuh",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Jenis Sarana Kesehatan\n Type of Health Facilities",
-          "2023",
-          "2024",
-          "2025"
-        ],
-        [
-          "Rumah Sakit\nHospital"
-        ],
-        [
-          "Puskesmas Rawat Inap\nPublic Health Center with Inpatient Care"
-        ],
-        [
-          "Puskesmas Tanpa Rawat Inap\nPublic Health Center without Inpatient Care"
-        ],
-        [
-          "Apotek\nPharmacy"
-        ]
-      ]
-    },
-    "Jongkat": {
-      "raw_title": "Jongkat",
       "rows": [
         [
           "2025"
@@ -163,6 +137,58 @@
         ]
       ]
     },
+    "Toho": {
+      "raw_title": "Toho",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Sarana Kesehatan\n Type of Health Facilities",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        [
+          "Rumah Sakit\nHospital"
+        ],
+        [
+          "Puskesmas Rawat Inap\nPublic Health Center with Inpatient Care"
+        ],
+        [
+          "Puskesmas Tanpa Rawat Inap\nPublic Health Center without Inpatient Care"
+        ],
+        [
+          "Apotek\nPharmacy"
+        ]
+      ]
+    },
+    "Jongkat": {
+      "raw_title": "Jongkat",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Sarana Kesehatan\n Type of Health Facilities",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        [
+          "Rumah Sakit\nHospital"
+        ],
+        [
+          "Puskesmas Rawat Inap\nPublic Health Center with Inpatient Care"
+        ],
+        [
+          "Puskesmas Tanpa Rawat Inap\nPublic Health Center without Inpatient Care"
+        ],
+        [
+          "Apotek\nPharmacy"
+        ]
+      ]
+    },
     "Anjongan": {
       "raw_title": "Anjongan",
       "rows": [
@@ -191,32 +217,6 @@
     },
     "Sadaniang": {
       "raw_title": "Sadaniang",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Jenis Sarana Kesehatan\n Type of Health Facilities",
-          "2023",
-          "2024",
-          "2025"
-        ],
-        [
-          "Rumah Sakit\nHospital"
-        ],
-        [
-          "Puskesmas Rawat Inap\nPublic Health Center with Inpatient Care"
-        ],
-        [
-          "Puskesmas Tanpa Rawat Inap\nPublic Health Center without Inpatient Care"
-        ],
-        [
-          "Apotek\nPharmacy"
-        ]
-      ]
-    },
-    "Mempawah Timur": {
-      "raw_title": "Mempawah Timur",
       "rows": [
         [
           "2025"

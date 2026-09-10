@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 144" width="100%" style="font-family: 'Liberation Sans', Arial, sans-serif;">
+<rect width="340" height="144" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.8"/>
+<line x1="85.0" y1="14" x2="85.0" y2="128" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="85.0" y="139" font-size="5.5" fill="#94A3B8" text-anchor="middle">0</text>
+<line x1="136.75" y1="14" x2="136.75" y2="128" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="136.75" y="139" font-size="5.5" fill="#94A3B8" text-anchor="middle">2</text>
+<line x1="188.5" y1="14" x2="188.5" y2="128" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="188.5" y="139" font-size="5.5" fill="#94A3B8" text-anchor="middle">5</text>
+<line x1="240.25" y1="14" x2="240.25" y2="128" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="240.25" y="139" font-size="5.5" fill="#94A3B8" text-anchor="middle">7</text>
+<line x1="292.0" y1="14" x2="292.0" y2="128" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="292.0" y="139" font-size="5.5" fill="#94A3B8" text-anchor="middle">10</text>
+<line x1="85" y1="14" x2="85" y2="128" stroke="#CBD5E1" stroke-width="1"/>
+<text x="79" y="26.25" font-size="6.5" fill="#334155" text-anchor="end">Sungai Purun Besar</text>
+<rect x="85" y="18.25" width="163.53" height="10.5" rx="2.5" fill="#F5A623"/>
+<text x="252.03" y="26.25" font-size="6.5" font-weight="bold" fill="#0F172A">7,90</text>
+<text x="79" y="45.25" font-size="6.5" fill="#334155" text-anchor="end">Peniti Dalam II</text>
+<rect x="85" y="37.25" width="101.43" height="10.5" rx="2.5" fill="#F5A623"/>
+<text x="189.93" y="45.25" font-size="6.5" font-weight="bold" fill="#0F172A">4,90</text>
+<text x="79" y="64.25" font-size="6.5" fill="#334155" text-anchor="end">Sungai Burung</text>
+<rect x="85" y="56.25" width="97.29" height="10.5" rx="2.5" fill="#F5A623"/>
+<text x="185.79000000000002" y="64.25" font-size="6.5" font-weight="bold" fill="#0F172A">4,70</text>
+<text x="79" y="83.25" font-size="6.5" fill="#334155" text-anchor="end">Peniti Besar</text>
+<rect x="85" y="75.25" width="39.33" height="10.5" rx="2.5" fill="#F5A623"/>
+<text x="127.83" y="83.25" font-size="6.5" font-weight="bold" fill="#0F172A">1,90</text>
+<text x="79" y="102.25" font-size="6.5" fill="#334155" text-anchor="end">Peniti Dalam I</text>
+<rect x="85" y="94.25" width="28.979999999999997" height="10.5" rx="2.5" fill="#F5A623"/>
+<text x="117.47999999999999" y="102.25" font-size="6.5" font-weight="bold" fill="#0F172A">1,40</text>
+<text x="79" y="121.25" font-size="6.5" fill="#334155" text-anchor="end">Parit Bugis</text>
+<rect x="85" y="113.25" width="15.524999999999999" height="10.5" rx="2.5" fill="#F5A623"/>
+<text x="104.025" y="121.25" font-size="6.5" font-weight="bold" fill="#0F172A">0,75</text>
+</svg>

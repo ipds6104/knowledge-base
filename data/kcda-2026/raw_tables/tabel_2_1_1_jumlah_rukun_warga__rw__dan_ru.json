@@ -4,8 +4,8 @@
   "sumber": "KCDA 2025 + Kantor Camat",
   "disediakan_ipds": false,
   "sheet_id": "1Z-0jhg8zWUhqZrL1Raaju-W5fpGUwn_gBCViU-ZeL88",
-  "spreadsheet_title": "2.1.1 Jumlah Rukun Warga (RW) dan Rukun Tetangga (RT)",
-  "updated_at": "2026-09-10 17:49:24",
+  "spreadsheet_title": "Jumlah Rukun Warga (RW) dan Rukun Tetangga (RT) Menurut Desa/Kelurahan di Kecamatan XXX",
+  "updated_at": "2026-09-10 20:46:22",
   "tabs": {
     "Mempawah Hilir": {
       "raw_title": "Mempawah Hilir",
@@ -26,31 +26,58 @@
           "(4)"
         ],
         [
-          "Tanjung"
+          "Tanjung",
+          "–",
+          "3",
+          "6"
         ],
         [
-          "Kuala Secapah"
+          "Kuala Secapah",
+          "4",
+          "8",
+          "15"
         ],
         [
-          "Tengah"
+          "Tengah",
+          "–",
+          "8",
+          "24"
         ],
         [
-          "Terusan"
+          "Terusan",
+          "–",
+          "17",
+          "41"
         ],
         [
-          "Pasir"
+          "Pasir",
+          "7",
+          "10",
+          "34"
         ],
         [
-          "Penibung"
+          "Penibung",
+          "3",
+          "8",
+          "16"
         ],
         [
-          "Sengkubang"
+          "Sengkubang",
+          "4",
+          "7",
+          "16"
         ],
         [
-          "Malikian"
+          "Malikian",
+          "8",
+          "10",
+          "27"
         ],
         [
-          "Kecamatan Mempawah \nHilir"
+          "Kecamatan Mempawah Hilir",
+          "26",
+          "71",
+          "179"
         ]
       ]
     },
@@ -73,31 +100,58 @@
           "(4)"
         ],
         [
-          "Sambora"
+          "Sambora",
+          "2",
+          "4",
+          "15"
         ],
         [
-          "Benuang"
+          "Benuang",
+          "2",
+          "2",
+          "9"
         ],
         [
-          "Pak Utan"
+          "Pak Utan",
+          "4",
+          "4",
+          "12"
         ],
         [
-          "Sepang"
+          "Sepang",
+          "2",
+          "2",
+          "14"
         ],
         [
-          "Pak Laheng"
+          "Pak Laheng",
+          "3",
+          "3",
+          "9"
         ],
         [
-          "Terap"
+          "Terap",
+          "2",
+          "4",
+          "11"
         ],
         [
-          "Kecurit"
+          "Kecurit",
+          "2",
+          "2",
+          "6"
         ],
         [
-          "Toho Ilir"
+          "Toho Ilir",
+          "4",
+          "4",
+          "13"
         ],
         [
-          "Kecamatan  Toho"
+          "Kecamatan Toho",
+          "21",
+          "25",
+          "89"
         ]
       ]
     },
@@ -120,34 +174,64 @@
           "(4)"
         ],
         [
-          "Sungai Purun Kecil"
+          "Sungai Purun Kecil",
+          "5",
+          "10",
+          "21"
         ],
         [
-          "Peniraman"
+          "Peniraman",
+          "5",
+          "10",
+          "22"
         ],
         [
-          "Nusapati"
+          "Nusapati",
+          "5",
+          "10",
+          "20"
         ],
         [
-          "Galang"
+          "Galang",
+          "4",
+          "4",
+          "11"
         ],
         [
-          "Sungai Rasau"
+          "Sungai Rasau",
+          "2",
+          "4",
+          "9"
         ],
         [
-          "Sungai Pinyuh"
+          "Sungai Pinyuh",
+          "–",
+          "6",
+          "58"
         ],
         [
-          "Sungai Batang"
+          "Sungai Batang",
+          "2",
+          "2",
+          "9"
         ],
         [
-          "Sungai Bakau Besar Laut"
+          "Sungai Bakau Besar Laut",
+          "2",
+          "4",
+          "16"
         ],
         [
-          "Sungai Bakau Besar Darat"
+          "Sungai Bakau Besar Darat",
+          "5",
+          "10",
+          "20"
         ],
         [
-          "Kecamatan  Sungai Pinyuh"
+          "Kecamatan Sungai Pinyuh",
+          "30",
+          "60",
+          "188"
         ]
       ]
     },
@@ -170,22 +254,40 @@
           "(4)"
         ],
         [
-          "Sungai Nipah"
+          "Sungai Nipah",
+          "2",
+          "4",
+          "24"
         ],
         [
-          "Jungkat"
+          "Jungkat",
+          "10",
+          "24",
+          "70"
         ],
         [
-          "Wajok Hilir"
+          "Wajok Hilir",
+          "7",
+          "14",
+          "41"
         ],
         [
-          "Wajok Hulu"
+          "Wajok Hulu",
+          "7",
+          "19",
+          "72"
         ],
         [
-          "Peniti Luar"
+          "Peniti Luar",
+          "3",
+          "5",
+          "19"
         ],
         [
-          "Kecamatan Jongkat"
+          "Kecamatan Jongkat",
+          "29",
+          "66",
+          "226"
         ]
       ]
     },
@@ -208,43 +310,82 @@
           "(4)"
         ],
         [
-          "Semudun"
+          "Semudun",
+          "4",
+          "8",
+          "16"
         ],
         [
-          "Semparong Parit Raden"
+          "Semparong Parit Raden",
+          "3",
+          "3",
+          "9"
         ],
         [
-          "Mendalok"
+          "Mendalok",
+          "3",
+          "3",
+          "11"
         ],
         [
-          "Sungai Dungun"
+          "Sungai Dungun",
+          "3",
+          "3",
+          "9"
         ],
         [
-          "Sungai Limau"
+          "Sungai Limau",
+          "3",
+          "3",
+          "9"
         ],
         [
-          "Sungai Kunyit Laut"
+          "Sungai Kunyit Laut",
+          "3",
+          "6",
+          "13"
         ],
         [
-          "Sungai Kunyit Dalam"
+          "Sungai Kunyit Dalam",
+          "3",
+          "3",
+          "9"
         ],
         [
-          "Sungai Kunyit Hulu"
+          "Sungai Kunyit Hulu",
+          "3",
+          "3",
+          "10"
         ],
         [
-          "Bukit Batu"
+          "Bukit Batu",
+          "3",
+          "3",
+          "10"
         ],
         [
-          "Sungai Bundung Laut"
+          "Sungai Bundung Laut",
+          "3",
+          "3",
+          "12"
         ],
         [
-          "Sungai Duri I"
+          "Sungai Duri I",
+          "3",
+          "3",
+          "12"
         ],
         [
-          "Sungai Duri Ii"
+          "Sungai Duri II",
+          "3",
+          "3",
+          "11"
         ],
         [
-          "Kecamatan Sungai Kunyit"
+          "Kecamatan Sungai Kunyit",
+          "37",
+          "44",
+          "131"
         ]
       ]
     },
@@ -267,25 +408,46 @@
           "(4)"
         ],
         [
-          "Peniti Dalam I"
+          "Peniti Dalam I",
+          "3",
+          "6",
+          "24"
         ],
         [
-          "Sungai Burung"
+          "Sungai Burung",
+          "2",
+          "2",
+          "9"
         ],
         [
-          "Sungai Purun Besar"
+          "Sungai Purun Besar",
+          "4",
+          "8",
+          "21"
         ],
         [
-          "Parit Bugis"
+          "Parit Bugis",
+          "2",
+          "4",
+          "10"
         ],
         [
-          "Peniti Besar"
+          "Peniti Besar",
+          "7",
+          "15",
+          "36"
         ],
         [
-          "Peniti Dalam Ii"
+          "Peniti Dalam II",
+          "4",
+          "8",
+          "25"
         ],
         [
-          "Kecamatan Segedong"
+          "Kecamatan Segedong",
+          "22",
+          "43",
+          "125"
         ]
       ]
     },
@@ -308,22 +470,40 @@
           "(4)"
         ],
         [
-          "Anjungan Melancar"
+          "Anjungan Melancar",
+          "–",
+          "4",
+          "23"
         ],
         [
-          "Anjungan Dalam"
+          "Anjungan Dalam",
+          "2",
+          "2",
+          "11"
         ],
         [
-          "Pak Bulu"
+          "Pak Bulu",
+          "2",
+          "2",
+          "8"
         ],
         [
-          "Dema"
+          "Dema",
+          "3",
+          "3",
+          "12"
         ],
         [
-          "Kepayang"
+          "Kepayang",
+          "4",
+          "4",
+          "18"
         ],
         [
-          "Kecamatan Anjongan"
+          "Kecamatan Anjongan",
+          "11",
+          "15",
+          "72"
         ]
       ]
     },
@@ -346,25 +526,46 @@
           "(4)"
         ],
         [
-          "Pentek"
+          "Pentek",
+          "5",
+          "6",
+          "12"
         ],
         [
-          "Sekabuk"
+          "Sekabuk",
+          "4",
+          "6",
+          "10"
         ],
         [
-          "Bum-Bun"
+          "Bumbun",
+          "4",
+          "4",
+          "11"
         ],
         [
-          "Amawang"
+          "Amawang",
+          "5",
+          "5",
+          "14"
         ],
         [
-          "Ansiap"
+          "Ansiap",
+          "3",
+          "–",
+          "7"
         ],
         [
-          "Suak Barangan"
+          "Suak Barangan",
+          "4",
+          "4",
+          "10"
         ],
         [
-          "Kecamatan Sadaniang"
+          "Sadaniang",
+          "25",
+          "25",
+          "64"
         ]
       ]
     },

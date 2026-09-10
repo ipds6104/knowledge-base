@@ -32,8 +32,8 @@ def compile_kecamatan(slug: str, output_dir: str = "kegiatan/kecamatan-dalam-ang
     typ_path = out_base / f"kcda-2026-{slug}.typ"
     pdf_path = out_base / f"kcda-2026-{slug}.pdf"
 
-    # Generate Typst content
-    typst_code = build_kcda_typst(slug)
+    # Generate Typst content & charts
+    typst_code = build_kcda_typst(slug, out_dir=out_base)
     with open(typ_path, "w", encoding="utf-8") as f:
         f.write(typst_code)
 

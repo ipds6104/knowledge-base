@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 201" width="100%" style="font-family: 'Liberation Sans', Arial, sans-serif;">
+<rect width="340" height="201" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.8"/>
+<line x1="85.0" y1="14" x2="85.0" y2="185" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="85.0" y="196" font-size="5.5" fill="#94A3B8" text-anchor="middle">0</text>
+<line x1="136.75" y1="14" x2="136.75" y2="185" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="136.75" y="196" font-size="5.5" fill="#94A3B8" text-anchor="middle">12</text>
+<line x1="188.5" y1="14" x2="188.5" y2="185" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="188.5" y="196" font-size="5.5" fill="#94A3B8" text-anchor="middle">25</text>
+<line x1="240.25" y1="14" x2="240.25" y2="185" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="240.25" y="196" font-size="5.5" fill="#94A3B8" text-anchor="middle">37</text>
+<line x1="292.0" y1="14" x2="292.0" y2="185" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="292.0" y="196" font-size="5.5" fill="#94A3B8" text-anchor="middle">50</text>
+<line x1="85" y1="14" x2="85" y2="185" stroke="#CBD5E1" stroke-width="1"/>
+<text x="79" y="26.25" font-size="6.5" fill="#334155" text-anchor="end">Sungai Purun Kecil</text>
+<rect x="85" y="18.25" width="163.323" height="10.5" rx="2.5" fill="#0284C7"/>
+<text x="251.823" y="26.25" font-size="6.5" font-weight="bold" fill="#0F172A">39,45</text>
+<text x="79" y="45.25" font-size="6.5" fill="#334155" text-anchor="end">Nusapati</text>
+<rect x="85" y="37.25" width="97.8282" height="10.5" rx="2.5" fill="#0284C7"/>
+<text x="186.32819999999998" y="45.25" font-size="6.5" font-weight="bold" fill="#0F172A">23,63</text>
+<text x="79" y="64.25" font-size="6.5" fill="#334155" text-anchor="end">Sungai Bakau Besar Darat</text>
+<rect x="85" y="56.25" width="97.4556" height="10.5" rx="2.5" fill="#0284C7"/>
+<text x="185.9556" y="64.25" font-size="6.5" font-weight="bold" fill="#0F172A">23,54</text>
+<text x="79" y="83.25" font-size="6.5" fill="#334155" text-anchor="end">Sungai Rasau</text>
+<rect x="85" y="75.25" width="95.26140000000001" height="10.5" rx="2.5" fill="#0284C7"/>
+<text x="183.7614" y="83.25" font-size="6.5" font-weight="bold" fill="#0F172A">23,01</text>
+<text x="79" y="102.25" font-size="6.5" fill="#334155" text-anchor="end">Peniraman</text>
+<rect x="85" y="94.25" width="93.77099999999999" height="10.5" rx="2.5" fill="#0284C7"/>
+<text x="182.271" y="102.25" font-size="6.5" font-weight="bold" fill="#0F172A">22,65</text>
+<text x="79" y="121.25" font-size="6.5" fill="#334155" text-anchor="end">Galang</text>
+<rect x="85" y="113.25" width="68.80680000000001" height="10.5" rx="2.5" fill="#0284C7"/>
+<text x="157.3068" y="121.25" font-size="6.5" font-weight="bold" fill="#0F172A">16,62</text>
+<text x="79" y="140.25" font-size="6.5" fill="#334155" text-anchor="end">Sungai Pinyuh</text>
+<rect x="85" y="132.25" width="33.575399999999995" height="10.5" rx="2.5" fill="#0284C7"/>
+<text x="122.0754" y="140.25" font-size="6.5" font-weight="bold" fill="#0F172A">8,11</text>
+<text x="79" y="159.25" font-size="6.5" fill="#334155" text-anchor="end">Sungai Batang</text>
+<rect x="85" y="151.25" width="29.228399999999997" height="10.5" rx="2.5" fill="#0284C7"/>
+<text x="117.7284" y="159.25" font-size="6.5" font-weight="bold" fill="#0F172A">7,06</text>
+<text x="79" y="178.25" font-size="6.5" fill="#334155" text-anchor="end">Sungai Bakau Besar Laut</text>
+<rect x="85" y="170.25" width="29.1456" height="10.5" rx="2.5" fill="#0284C7"/>
+<text x="117.6456" y="178.25" font-size="6.5" font-weight="bold" fill="#0F172A">7,04</text>
+</svg>

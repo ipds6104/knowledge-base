@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 144" width="100%" style="font-family: 'Liberation Sans', Arial, sans-serif;">
+<rect width="340" height="144" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.8"/>
+<line x1="85.0" y1="14" x2="85.0" y2="128" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="85.0" y="139" font-size="5.5" fill="#94A3B8" text-anchor="middle">0</text>
+<line x1="136.75" y1="14" x2="136.75" y2="128" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="136.75" y="139" font-size="5.5" fill="#94A3B8" text-anchor="middle">50</text>
+<line x1="188.5" y1="14" x2="188.5" y2="128" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="188.5" y="139" font-size="5.5" fill="#94A3B8" text-anchor="middle">100</text>
+<line x1="240.25" y1="14" x2="240.25" y2="128" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="240.25" y="139" font-size="5.5" fill="#94A3B8" text-anchor="middle">150</text>
+<line x1="292.0" y1="14" x2="292.0" y2="128" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="292.0" y="139" font-size="5.5" fill="#94A3B8" text-anchor="middle">200</text>
+<line x1="85" y1="14" x2="85" y2="128" stroke="#CBD5E1" stroke-width="1"/>
+<text x="79" y="26.25" font-size="6.5" fill="#334155" text-anchor="end">Ansiap</text>
+<rect x="85" y="18.25" width="105.2802" height="10.5" rx="2.5" fill="#0284C7"/>
+<text x="193.78019999999998" y="26.25" font-size="6.5" font-weight="bold" fill="#0F172A">101,72</text>
+<text x="79" y="45.25" font-size="6.5" fill="#334155" text-anchor="end">Bum-Bun</text>
+<rect x="85" y="37.25" width="93.45015000000001" height="10.5" rx="2.5" fill="#0284C7"/>
+<text x="181.95015" y="45.25" font-size="6.5" font-weight="bold" fill="#0F172A">90,29</text>
+<text x="79" y="64.25" font-size="6.5" fill="#334155" text-anchor="end">Sekabuk</text>
+<rect x="85" y="56.25" width="86.04990000000001" height="10.5" rx="2.5" fill="#0284C7"/>
+<text x="174.5499" y="64.25" font-size="6.5" font-weight="bold" fill="#0F172A">83,14</text>
+<text x="79" y="83.25" font-size="6.5" fill="#334155" text-anchor="end">Pentek</text>
+<rect x="85" y="75.25" width="76.18635" height="10.5" rx="2.5" fill="#0284C7"/>
+<text x="164.68635" y="83.25" font-size="6.5" font-weight="bold" fill="#0F172A">73,61</text>
+<text x="79" y="102.25" font-size="6.5" fill="#334155" text-anchor="end">Suak Barangan</text>
+<rect x="85" y="94.25" width="52.847100000000005" height="10.5" rx="2.5" fill="#0284C7"/>
+<text x="141.3471" y="102.25" font-size="6.5" font-weight="bold" fill="#0F172A">51,06</text>
+<text x="79" y="121.25" font-size="6.5" fill="#334155" text-anchor="end">Amawang</text>
+<rect x="85" y="113.25" width="47.0925" height="10.5" rx="2.5" fill="#0284C7"/>
+<text x="135.5925" y="121.25" font-size="6.5" font-weight="bold" fill="#0F172A">45,50</text>
+</svg>

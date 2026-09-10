@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 221.0" width="100%" style="font-family: 'Liberation Sans', Arial, sans-serif;">
+<rect width="340" height="221.0" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.8"/>
+<rect x="85" y="8" width="11" height="7" rx="2" fill="#0284C7"/>
+<text x="100" y="14" font-size="6" font-weight="bold" fill="#334155">Laki-laki/<tspan font-style="italic">Male</tspan></text>
+<rect x="180.4" y="8" width="11" height="7" rx="2" fill="#F5A623"/>
+<text x="195.4" y="14" font-size="6" font-weight="bold" fill="#334155">Perempuan/<tspan font-style="italic">Female</tspan></text>
+<line x1="85.0" y1="26" x2="85.0" y2="206.0" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="85.0" y="217.0" font-size="5.5" fill="#94A3B8" text-anchor="middle">0</text>
+<line x1="135.75" y1="26" x2="135.75" y2="206.0" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="135.75" y="217.0" font-size="5.5" fill="#94A3B8" text-anchor="middle">750</text>
+<line x1="186.5" y1="26" x2="186.5" y2="206.0" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="186.5" y="217.0" font-size="5.5" fill="#94A3B8" text-anchor="middle">1.500</text>
+<line x1="237.25" y1="26" x2="237.25" y2="206.0" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="237.25" y="217.0" font-size="5.5" fill="#94A3B8" text-anchor="middle">2.250</text>
+<line x1="288.0" y1="26" x2="288.0" y2="206.0" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="288.0" y="217.0" font-size="5.5" fill="#94A3B8" text-anchor="middle">3.000</text>
+<line x1="85" y1="26" x2="85" y2="206.0" stroke="#CBD5E1" stroke-width="1"/>
+<text x="79" y="37.5" font-size="6.5" fill="#334155" text-anchor="end">Sepang</text>
+<rect x="85" y="29.0" width="134.52133333333333" height="5.5" rx="1.5" fill="#0284C7"/>
+<text x="222.52133333333333" y="33.5" font-size="5.5" fill="#475569">1.988</text>
+<rect x="85" y="36.0" width="122.20599999999999" height="5.5" rx="1.5" fill="#F5A623"/>
+<text x="210.206" y="40.5" font-size="5.5" fill="#475569">1.806</text>
+<text x="79" y="60.0" font-size="6.5" fill="#334155" text-anchor="end">Sambora</text>
+<rect x="85" y="51.5" width="125.251" height="5.5" rx="1.5" fill="#0284C7"/>
+<text x="213.251" y="56.0" font-size="5.5" fill="#475569">1.851</text>
+<rect x="85" y="58.5" width="117.943" height="5.5" rx="1.5" fill="#F5A623"/>
+<text x="205.94299999999998" y="63.0" font-size="5.5" fill="#475569">1.743</text>
+<text x="79" y="82.5" font-size="6.5" fill="#334155" text-anchor="end">Pak Utan</text>
+<rect x="85" y="74.0" width="127.41633333333334" height="5.5" rx="1.5" fill="#0284C7"/>
+<text x="215.41633333333334" y="78.5" font-size="5.5" fill="#475569">1.883</text>
+<rect x="85" y="81.0" width="115.23633333333333" height="5.5" rx="1.5" fill="#F5A623"/>
+<text x="203.23633333333333" y="85.5" font-size="5.5" fill="#475569">1.703</text>
+<text x="79" y="105.0" font-size="6.5" fill="#334155" text-anchor="end">Terap</text>
+<rect x="85" y="96.5" width="116.04833333333333" height="5.5" rx="1.5" fill="#0284C7"/>
+<text x="204.04833333333335" y="101.0" font-size="5.5" fill="#475569">1.715</text>
+<rect x="85" y="103.5" width="108.67266666666667" height="5.5" rx="1.5" fill="#F5A623"/>
+<text x="196.67266666666666" y="108.0" font-size="5.5" fill="#475569">1.606</text>
+<text x="79" y="127.5" font-size="6.5" fill="#334155" text-anchor="end">Toho Ilir</text>
+<rect x="85" y="119.0" width="101.43233333333333" height="5.5" rx="1.5" fill="#0284C7"/>
+<text x="189.43233333333333" y="123.5" font-size="5.5" fill="#475569">1.499</text>
+<rect x="85" y="126.0" width="93.31233333333333" height="5.5" rx="1.5" fill="#F5A623"/>
+<text x="181.31233333333333" y="130.5" font-size="5.5" fill="#475569">1.379</text>
+<text x="79" y="150.0" font-size="6.5" fill="#334155" text-anchor="end">Pak Laheng</text>
+<rect x="85" y="141.5" width="91.89133333333334" height="5.5" rx="1.5" fill="#0284C7"/>
+<text x="179.89133333333334" y="146.0" font-size="5.5" fill="#475569">1.358</text>
+<rect x="85" y="148.5" width="87.22233333333332" height="5.5" rx="1.5" fill="#F5A623"/>
+<text x="175.22233333333332" y="153.0" font-size="5.5" fill="#475569">1.289</text>
+<text x="79" y="172.5" font-size="6.5" fill="#334155" text-anchor="end">Benuang</text>
+<rect x="85" y="164.0" width="83.027" height="5.5" rx="1.5" fill="#0284C7"/>
+<text x="171.027" y="168.5" font-size="5.5" fill="#475569">1.227</text>
+<rect x="85" y="171.0" width="78.764" height="5.5" rx="1.5" fill="#F5A623"/>
+<text x="166.764" y="175.5" font-size="5.5" fill="#475569">1.164</text>
+<text x="79" y="195.0" font-size="6.5" fill="#334155" text-anchor="end">Kecurit</text>
+<rect x="85" y="186.5" width="68.07266666666666" height="5.5" rx="1.5" fill="#0284C7"/>
+<text x="156.07266666666666" y="191.0" font-size="5.5" fill="#475569">1.006</text>
+<rect x="85" y="193.5" width="65.772" height="5.5" rx="1.5" fill="#F5A623"/>
+<text x="153.772" y="198.0" font-size="5.5" fill="#475569">972</text>
+</svg>

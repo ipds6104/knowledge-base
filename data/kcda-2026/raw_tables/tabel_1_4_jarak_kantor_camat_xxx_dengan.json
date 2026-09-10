@@ -4,8 +4,8 @@
   "sumber": "KCDA 2025 + Kantor Camat",
   "disediakan_ipds": false,
   "sheet_id": "10DAiZQaRpS7-w0qfA6OO_D6oIPCLzmVODciMRdu5Guo",
-  "spreadsheet_title": "1.4 Jarak Kantor Camat ",
-  "updated_at": "2026-09-10 17:49:21",
+  "spreadsheet_title": "Jarak Kantor Camat XXX Dengan Kota dan Tempat Penting Lainnya (km)",
+  "updated_at": "2026-09-10 20:46:22",
   "tabs": {
     "Mempawah Hilir": {
       "raw_title": "Mempawah Hilir",
@@ -25,225 +25,18 @@
         ],
         [
           "1",
-          "Ibukota Provinsi Kalimantan Barat \n(Kota Pontianak)"
+          "Ibukota Provinsi Kalimantan Barat (Kota Pontianak)",
+          "63,00"
         ],
         [
           "2",
-          "Pusat Pemerintahan Kabupaten \nMempawah (Mempawah Hilir)"
+          "Pusat Pemerintahan Kabupaten Mempawah (Mempawah Hilir)",
+          "2,80"
         ],
         [
           "3",
-          "Makam Juang Mandor"
-        ]
-      ]
-    },
-    "Toho": {
-      "raw_title": "Toho",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "No",
-          "Nama Kota dan Tempat Penting Lainnya\n Other Importance Place",
-          "Jarak\n Distance (km)"
-        ],
-        [
-          "(1)",
-          "(2)",
-          "(3)"
-        ],
-        [
-          "1",
-          "Ibukota Provinsi Kalimantan Barat \n(Kota Pontianak)"
-        ],
-        [
-          "2",
-          "Pusat Pemerintahan Kabupaten \nMempawah (Mempawah Hilir)"
-        ],
-        [
-          "3",
-          "Makam Juang Mandor"
-        ]
-      ]
-    },
-    "Sungai Pinyuh": {
-      "raw_title": "Sungai Pinyuh",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "No",
-          "Nama Kota dan Tempat Penting Lainnya\n Other Importance Place",
-          "Jarak\n Distance (km)"
-        ],
-        [
-          "(1)",
-          "(2)",
-          "(3)"
-        ],
-        [
-          "1",
-          "Ibukota Provinsi Kalimantan Barat \n(Kota Pontianak)"
-        ],
-        [
-          "2",
-          "Pusat Pemerintahan Kabupaten \nMempawah (Mempawah Hilir)"
-        ],
-        [
-          "3",
-          "Makam Juang Mandor"
-        ]
-      ]
-    },
-    "Jongkat": {
-      "raw_title": "Jongkat",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "No",
-          "Nama Kota dan Tempat Penting Lainnya\n Other Importance Place",
-          "Jarak\n Distance (km)"
-        ],
-        [
-          "(1)",
-          "(2)",
-          "(3)"
-        ],
-        [
-          "1",
-          "Ibukota Provinsi Kalimantan Barat \n(Kota Pontianak)"
-        ],
-        [
-          "2",
-          "Pusat Pemerintahan Kabupaten \nMempawah (Mempawah Hilir)"
-        ],
-        [
-          "3",
-          "Makam Juang Mandor"
-        ]
-      ]
-    },
-    "Sungai Kunyit": {
-      "raw_title": "Sungai Kunyit",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "No",
-          "Nama Kota dan Tempat Penting Lainnya\n Other Importance Place",
-          "Jarak\n Distance (km)"
-        ],
-        [
-          "(1)",
-          "(2)",
-          "(3)"
-        ],
-        [
-          "1",
-          "Ibukota Provinsi Kalimantan Barat \n(Kota Pontianak)"
-        ],
-        [
-          "2",
-          "Pusat Pemerintahan Kabupaten \nMempawah (Mempawah Hilir)"
-        ],
-        [
-          "3",
-          "Makam Juang Mandor"
-        ]
-      ]
-    },
-    "Segedong": {
-      "raw_title": "Segedong",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "No",
-          "Nama Kota dan Tempat Penting Lainnya\n Other Importance Place",
-          "Jarak\n Distance (km)"
-        ],
-        [
-          "(1)",
-          "(2)",
-          "(3)"
-        ],
-        [
-          "1",
-          "Ibukota Provinsi Kalimantan Barat \n(Kota Pontianak)"
-        ],
-        [
-          "2",
-          "Pusat Pemerintahan Kabupaten \nMempawah (Mempawah Hilir)"
-        ],
-        [
-          "3",
-          "Makam Juang Mandor"
-        ]
-      ]
-    },
-    "Anjongan": {
-      "raw_title": "Anjongan",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "No",
-          "Nama Kota dan Tempat Penting Lainnya\n Other Importance Place",
-          "Jarak\n Distance (km)"
-        ],
-        [
-          "(1)",
-          "(2)",
-          "(3)"
-        ],
-        [
-          "1",
-          "Ibukota Provinsi Kalimantan Barat \n(Kota Pontianak)"
-        ],
-        [
-          "2",
-          "Pusat Pemerintahan Kabupaten \nMempawah (Mempawah Hilir)"
-        ],
-        [
-          "3",
-          "Makam Juang Mandor"
-        ]
-      ]
-    },
-    "Sadaniang": {
-      "raw_title": "Sadaniang",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "No",
-          "Nama Kota dan Tempat Penting Lainnya\n Other Importance Place",
-          "Jarak\n Distance (km)"
-        ],
-        [
-          "(1)",
-          "(2)",
-          "(3)"
-        ],
-        [
-          "1",
-          "Ibukota Provinsi Kalimantan Barat \n(Kota Pontianak)"
-        ],
-        [
-          "2",
-          "Pusat Pemerintahan Kabupaten \nMempawah (Mempawah Hilir)"
-        ],
-        [
-          "3",
-          "Makam Juang Mandor"
+          "Makam Juang Mandor",
+          "50,00"
         ]
       ]
     },
@@ -265,15 +58,254 @@
         ],
         [
           "1",
-          "Ibukota Provinsi Kalimantan Barat \n(Kota Pontianak)"
+          "Ibukota Provinsi Kalimantan Barat (Kota Pontianak)/Capital of West Kalimantan Province (Pontianak City)",
+          "78,2"
         ],
         [
           "2",
-          "Pusat Pemerintahan Kabupaten \nMempawah (Mempawah Hilir)"
+          "Pusat Pemerintahan Kabupaten Mempawah (Mempawah Hilir)/ Mempawah Regency Government Center (Mempawah Hilir)",
+          "2,3"
         ],
         [
           "3",
-          "Makam Juang Mandor"
+          "Makam Juang Mandor/Tomb Of Juang Mandor",
+          "46,2"
+        ]
+      ]
+    },
+    "Sungai Pinyuh": {
+      "raw_title": "Sungai Pinyuh",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "No",
+          "Nama Kota dan Tempat Penting Lainnya\n Other Importance Place",
+          "Jarak\n Distance (km)"
+        ],
+        [
+          "(1)",
+          "(2)",
+          "(3)"
+        ],
+        [
+          "1",
+          "Ibukota Provinsi Kalimantan Barat (Kota Pontianak)",
+          "67 km"
+        ],
+        [
+          "2",
+          "Pusat Pemerintahan Kabupaten Mempawah (Mempawah Hilir)",
+          "19,7 km"
+        ],
+        [
+          "3",
+          "Makam Juang Mandor",
+          "36,2 km"
+        ]
+      ]
+    },
+    "Sungai Kunyit": {
+      "raw_title": "Sungai Kunyit",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "No",
+          "Nama Kota dan Tempat Penting Lainnya\n Other Importance Place",
+          "Jarak\n Distance (km)"
+        ],
+        [
+          "(1)",
+          "(2)",
+          "(3)"
+        ],
+        [
+          "1",
+          "Ibu Kota Propinsi Kalimantan Barat (Kota Pontianak)",
+          "94,00"
+        ],
+        [
+          "2",
+          "Pusat Pemerintahan Kabupaten Mempawah (Mempawah Hilir)",
+          "19,00"
+        ],
+        [
+          "3",
+          "Makam Juang Mandor",
+          "66,00"
+        ],
+        [
+          "4",
+          "Kecamatan Sungai Pinyuh",
+          "35,00"
+        ]
+      ]
+    },
+    "Segedong": {
+      "raw_title": "Segedong",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "No",
+          "Nama Kota dan Tempat Penting Lainnya\n Other Importance Place",
+          "Jarak\n Distance (km)"
+        ],
+        [
+          "(1)",
+          "(2)",
+          "(3)"
+        ],
+        [
+          "1",
+          "Ibukota Provinsi Kalimantan Barat (Kota Pontianak)",
+          "42,10"
+        ],
+        [
+          "2",
+          "Pusat Pemerintahan Kabupaten Mempawah (Mempawah Hilir)",
+          "40,30"
+        ],
+        [
+          "3",
+          "Makam Juang Mandor",
+          "59,60"
+        ],
+        [
+          "4",
+          "Kota Sungai Pinyuh",
+          "22,40"
+        ]
+      ]
+    },
+    "Toho": {
+      "raw_title": "Toho",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "No",
+          "Nama Kota dan Tempat Penting Lainnya\n Other Importance Place",
+          "Jarak\n Distance (km)"
+        ],
+        [
+          "(1)",
+          "(2)",
+          "(3)"
+        ],
+        [
+          "1",
+          "Ibu Kota Provinsi Kalimantan Barat (Kota Pontianak)",
+          "82,60"
+        ],
+        [
+          "2",
+          "Pusat Pemerintahan Kabupaten Mempawah (Mempawah Hilir)",
+          "35,50"
+        ]
+      ]
+    },
+    "Jongkat": {
+      "raw_title": "Jongkat",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "No",
+          "Nama Kota dan Tempat Penting Lainnya\n Other Importance Place",
+          "Jarak\n Distance (km)"
+        ],
+        [
+          "(1)",
+          "(2)",
+          "(3)"
+        ],
+        [
+          "1",
+          "Ibu Kota Provinsi Kalimantan Barat (Kota Pontianak)",
+          "28,1"
+        ],
+        [
+          "2",
+          "Pusat Pemerintahan Kabupaten Mempawah (Mempawah Hilir)",
+          "47,9"
+        ],
+        [
+          "3",
+          "Pasar Sungai Pinyuh",
+          "30,4"
+        ]
+      ]
+    },
+    "Anjongan": {
+      "raw_title": "Anjongan",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "No",
+          "Nama Kota dan Tempat Penting Lainnya\n Other Importance Place",
+          "Jarak\n Distance (km)"
+        ],
+        [
+          "(1)",
+          "(2)",
+          "(3)"
+        ],
+        [
+          "1",
+          "Ibukota Provinsi Kalimantan Barat (Kota Pontianak)",
+          "73,90"
+        ],
+        [
+          "2",
+          "Pusat Pemerintahan Kabupaten Mempawah (Mempawah Hilir)",
+          "32,80"
+        ],
+        [
+          "3",
+          "Makam Juang Mandor",
+          "21,50"
+        ]
+      ]
+    },
+    "Sadaniang": {
+      "raw_title": "Sadaniang",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "No",
+          "Nama Kota dan Tempat Penting Lainnya\n Other Importance Place",
+          "Jarak\n Distance (km)"
+        ],
+        [
+          "(1)",
+          "(2)",
+          "(3)"
+        ],
+        [
+          "1",
+          "Ibukota Provinsi Kalimantan Barat (Kota Pontianak)",
+          "99,00"
+        ],
+        [
+          "2",
+          "Pusat Pemerintahan Kabupaten Mempawah (Mempawah Hilir)",
+          "36,10"
+        ],
+        [
+          "3",
+          "Makam Juang Mandor",
+          "50,90"
         ]
       ]
     }

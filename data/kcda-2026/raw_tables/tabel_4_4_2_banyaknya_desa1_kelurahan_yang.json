@@ -4,8 +4,8 @@
   "sumber": "Podes",
   "disediakan_ipds": false,
   "sheet_id": "10fFJ5wHgKICRGG-aYuXkyTpHDoI68HEIhVvI2JJWrco",
-  "spreadsheet_title": "4.4.2 Banyaknya Desa1/Kelurahan yang Terdapat Korban Jiwa Akibat Bencana Alam Menurut Jenis Bencana Alam",
-  "updated_at": "2026-09-10 17:49:57",
+  "spreadsheet_title": "Banyaknya Desa1/Kelurahan yang Terdapat Korban Jiwa Akibat Bencana Alam Menurut Jenis Bencana Alam di Kecamatan XXX",
+  "updated_at": "2026-09-10 20:46:29",
   "tabs": {
     "Mempawah Hilir": {
       "raw_title": "Mempawah Hilir",
@@ -52,8 +52,8 @@
         ]
       ]
     },
-    "Toho": {
-      "raw_title": "Toho",
+    "Mempawah Timur": {
+      "raw_title": "Mempawah Timur",
       "rows": [
         [
           "2025"
@@ -99,51 +99,6 @@
     },
     "Sungai Pinyuh": {
       "raw_title": "Sungai Pinyuh",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Jenis Bencana Alam\nType of Natural Disaster",
-          "2025"
-        ],
-        [
-          "Gempa Bumi/Earthquake"
-        ],
-        [
-          "Tsunami"
-        ],
-        [
-          "Gunung Meletus/Volcanic Eruption"
-        ],
-        [
-          "Tanah Longsor/Landslide"
-        ],
-        [
-          "Banjir/Floods"
-        ],
-        [
-          "Banjir Bandang/Flash Floods"
-        ],
-        [
-          "Kekeringan/Drought"
-        ],
-        [
-          "Kebakaran Hutan dan Lahan/Forest and Land \nFires"
-        ],
-        [
-          "Angin Puyuh/Puting Beliung/\nTopan/Tornado/Typhoon"
-        ],
-        [
-          "Gelombang Pasang/Tidal Wave"
-        ],
-        [
-          "Abrasi/Abrasion"
-        ]
-      ]
-    },
-    "Jongkat": {
-      "raw_title": "Jongkat",
       "rows": [
         [
           "2025"
@@ -277,6 +232,96 @@
         ]
       ]
     },
+    "Toho": {
+      "raw_title": "Toho",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Bencana Alam\nType of Natural Disaster",
+          "2025"
+        ],
+        [
+          "Gempa Bumi/Earthquake"
+        ],
+        [
+          "Tsunami"
+        ],
+        [
+          "Gunung Meletus/Volcanic Eruption"
+        ],
+        [
+          "Tanah Longsor/Landslide"
+        ],
+        [
+          "Banjir/Floods"
+        ],
+        [
+          "Banjir Bandang/Flash Floods"
+        ],
+        [
+          "Kekeringan/Drought"
+        ],
+        [
+          "Kebakaran Hutan dan Lahan/Forest and Land \nFires"
+        ],
+        [
+          "Angin Puyuh/Puting Beliung/\nTopan/Tornado/Typhoon"
+        ],
+        [
+          "Gelombang Pasang/Tidal Wave"
+        ],
+        [
+          "Abrasi/Abrasion"
+        ]
+      ]
+    },
+    "Jongkat": {
+      "raw_title": "Jongkat",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Bencana Alam\nType of Natural Disaster",
+          "2025"
+        ],
+        [
+          "Gempa Bumi/Earthquake"
+        ],
+        [
+          "Tsunami"
+        ],
+        [
+          "Gunung Meletus/Volcanic Eruption"
+        ],
+        [
+          "Tanah Longsor/Landslide"
+        ],
+        [
+          "Banjir/Floods"
+        ],
+        [
+          "Banjir Bandang/Flash Floods"
+        ],
+        [
+          "Kekeringan/Drought"
+        ],
+        [
+          "Kebakaran Hutan dan Lahan/Forest and Land \nFires"
+        ],
+        [
+          "Angin Puyuh/Puting Beliung/\nTopan/Tornado/Typhoon"
+        ],
+        [
+          "Gelombang Pasang/Tidal Wave"
+        ],
+        [
+          "Abrasi/Abrasion"
+        ]
+      ]
+    },
     "Anjongan": {
       "raw_title": "Anjongan",
       "rows": [
@@ -324,51 +369,6 @@
     },
     "Sadaniang": {
       "raw_title": "Sadaniang",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Jenis Bencana Alam\nType of Natural Disaster",
-          "2025"
-        ],
-        [
-          "Gempa Bumi/Earthquake"
-        ],
-        [
-          "Tsunami"
-        ],
-        [
-          "Gunung Meletus/Volcanic Eruption"
-        ],
-        [
-          "Tanah Longsor/Landslide"
-        ],
-        [
-          "Banjir/Floods"
-        ],
-        [
-          "Banjir Bandang/Flash Floods"
-        ],
-        [
-          "Kekeringan/Drought"
-        ],
-        [
-          "Kebakaran Hutan dan Lahan/Forest and Land \nFires"
-        ],
-        [
-          "Angin Puyuh/Puting Beliung/\nTopan/Tornado/Typhoon"
-        ],
-        [
-          "Gelombang Pasang/Tidal Wave"
-        ],
-        [
-          "Abrasi/Abrasion"
-        ]
-      ]
-    },
-    "Mempawah Timur": {
-      "raw_title": "Mempawah Timur",
       "rows": [
         [
           "2025"

@@ -4,8 +4,8 @@
   "sumber": "Podes",
   "disediakan_ipds": false,
   "sheet_id": "1y4JMdC7saKnuNhRymYJFuuJtW-wiqaLxTv3WFQAqk6E",
-  "spreadsheet_title": "6.1.1 Banyaknya Desa/Kelurahan dengan Keberadaan Sarana Akomodasi Menurut Jenis Akomodasi",
-  "updated_at": "2026-09-10 17:50:11",
+  "spreadsheet_title": "Banyaknya Desa/Kelurahan dengan Keberadaan Sarana Akomodasi Menurut Jenis Akomodasi di Kecamatan XXX",
+  "updated_at": "2026-09-10 20:46:33",
   "tabs": {
     "Mempawah Hilir": {
       "raw_title": "Mempawah Hilir",
@@ -25,8 +25,8 @@
         ]
       ]
     },
-    "Toho": {
-      "raw_title": "Toho",
+    "Mempawah Timur": {
+      "raw_title": "Mempawah Timur",
       "rows": [
         [
           "2025"
@@ -45,24 +45,6 @@
     },
     "Sungai Pinyuh": {
       "raw_title": "Sungai Pinyuh",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Jenis Akomodasi\n Type of Accomodation",
-          "2025"
-        ],
-        [
-          "Hotel"
-        ],
-        [
-          "Penginapan\nInn"
-        ]
-      ]
-    },
-    "Jongkat": {
-      "raw_title": "Jongkat",
       "rows": [
         [
           "2025"
@@ -115,6 +97,42 @@
         ]
       ]
     },
+    "Toho": {
+      "raw_title": "Toho",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Akomodasi\n Type of Accomodation",
+          "2025"
+        ],
+        [
+          "Hotel"
+        ],
+        [
+          "Penginapan\nInn"
+        ]
+      ]
+    },
+    "Jongkat": {
+      "raw_title": "Jongkat",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Akomodasi\n Type of Accomodation",
+          "2025"
+        ],
+        [
+          "Hotel"
+        ],
+        [
+          "Penginapan\nInn"
+        ]
+      ]
+    },
     "Anjongan": {
       "raw_title": "Anjongan",
       "rows": [
@@ -135,24 +153,6 @@
     },
     "Sadaniang": {
       "raw_title": "Sadaniang",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Jenis Akomodasi\n Type of Accomodation",
-          "2025"
-        ],
-        [
-          "Hotel"
-        ],
-        [
-          "Penginapan\nInn"
-        ]
-      ]
-    },
-    "Mempawah Timur": {
-      "raw_title": "Mempawah Timur",
       "rows": [
         [
           "2025"

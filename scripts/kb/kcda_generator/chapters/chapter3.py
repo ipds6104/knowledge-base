@@ -1,14 +1,21 @@
 """Chapter 3: Kependudukan Generator for KCDA 2026."""
 
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
+from pathlib import Path
 from ..data_loader import get_kecamatan_tab_rows, clean_cell_value
 from ..table_renderer import render_typst_table
+from ..chart_generator import get_chapter3_charts
 
-def render_chapter3(cfg: Dict[str, Any]) -> str:
+def render_chapter3(cfg: Dict[str, Any], out_dir: Optional[Any] = None) -> str:
     nama_resmi = cfg["nama_resmi"]
     nama_en = cfg["nama_en"]
     nama_singkat = nama_resmi.replace("Kecamatan ", "")
     desa_list = cfg["desa_list"]
+    slug = cfg.get("slug", "")
+
+    # Grafik dinamis data-driven dari Google Sheets
+    charts_markup = get_chapter3_charts(slug, nama_singkat, nama_en, Path(out_dir) if out_dir else None)
+    chart_section = f"\n{charts_markup}\n#pagebreak()\n" if charts_markup.strip() else "\n#v(8pt)\n"
 
     # --- 3.1 Penduduk & Kepadatan ---
     rows_31_raw = get_kecamatan_tab_rows("3.1", nama_singkat)
@@ -42,13 +49,28 @@ def render_chapter3(cfg: Dict[str, Any]) -> str:
         col_numbers=["(1)", "(2)", "(3)", "(4)", "(5)", "(6)"],
         rows=t31_rows,
         col_widths=["2.0fr", "1.0fr", "1.0fr", "1.1fr", "1.0fr", "1.2fr"],
-        source="Dinas Kependudukan dan Pencatatan Sipil Kabupaten Mempawah (Semester II 2025)"
+        source="Dinas Kependudukan dan Pencatatan Sipil Kabupaten Mempawah (Semester II 2025) / Population and Civil Registration Service of Mempawah Regency (Semester II 2025)"
     )
+
+    # Infografis Halaman Bab 3
+    infografis_markup = f"\n{charts_markup}\n" if charts_markup.strip() else """
+#v(1.5cm)
+#align(center)[
+  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
+    #align(center + horizon)[
+      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS KEPENDUDUKAN]\
+      #v(6pt)
+      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan """ + nama_singkat + """]
+    ]
+  ]
+]
+"""
 
     return f"""
 // ==========================================
-// BAB 3: KEPENDUDUKAN
+// BAB 3: KEPENDUDUKAN (HALAMAN PEMBATAS & INFOGRAFIS)
 // ==========================================
+#is_chapter_page.update(true)
 #v(0.5cm)
 #block(
   fill: rgb("#FEF3C7"),
@@ -62,11 +84,18 @@ def render_chapter3(cfg: Dict[str, Any]) -> str:
 )
 #v(10pt)
 
-#text(8.5pt)[
-Berdasarkan data registrasi semester II tahun 2025 dari Dinas Kependudukan dan Pencatatan Sipil Kabupaten Mempawah, jumlah penduduk Kecamatan {nama_singkat} terdistribusi di {len(desa_list)} desa/kelurahan dengan struktur demografi yang produktif. Komposisi penduduk laki-laki dan perempuan relatif berimbang, mencerminkan kestabilan demografis wilayah.
-]
+{infografis_markup}
 
-#v(8pt)
-{t31_markup}
 #pagebreak()
+#is_chapter_page.update(false)
+
+// ==========================================
+// ISI BAB 3: ULASAN NARASI & TABEL DATA
+// ==========================================
+#text(8.5pt)[
+Berdasdasarkan data registrasi semester II tahun 2025 dari Dinas Kependudukan dan Pencatatan Sipil Kabupaten Mempawah, jumlah penduduk Kecamatan {nama_singkat} terdistribusi di {len(desa_list)} desa/kelurahan dengan struktur demografi yang produktif. Komposisi penduduk laki-laki dan perempuan relatif berimbang, mencerminkan kestabilan demografis wilayah.
+]
+#v(12pt)
+
+{t31_markup}
 """

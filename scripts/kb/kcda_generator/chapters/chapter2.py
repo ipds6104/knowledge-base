@@ -1,14 +1,21 @@
 """Chapter 2: Pemerintahan Generator for KCDA 2026."""
 
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
+from pathlib import Path
 from ..data_loader import get_kecamatan_tab_rows, clean_cell_value
 from ..table_renderer import render_typst_table
+from ..chart_generator import get_chapter2_charts
 
-def render_chapter2(cfg: Dict[str, Any]) -> str:
+def render_chapter2(cfg: Dict[str, Any], out_dir: Optional[Any] = None) -> str:
     nama_resmi = cfg["nama_resmi"]
     nama_en = cfg["nama_en"]
     nama_singkat = nama_resmi.replace("Kecamatan ", "")
     desa_list = cfg["desa_list"]
+    slug = cfg.get("slug", "")
+
+    # Grafik dinamis data-driven dari Google Sheets
+    charts_markup = get_chapter2_charts(slug, nama_singkat, nama_en, Path(out_dir) if out_dir else None)
+    chart_section = f"\n{charts_markup}\n#pagebreak()\n" if charts_markup.strip() else "\n#v(8pt)\n"
 
     # --- 2.1.1 RW & RT ---
     rows_211_raw = get_kecamatan_tab_rows("2.1.1", nama_singkat)
@@ -142,10 +149,25 @@ def render_chapter2(cfg: Dict[str, Any]) -> str:
         source=f"Kantor Camat {nama_singkat}"
     )
 
+    # Infografis Halaman Bab 2
+    infografis_markup = f"\n{charts_markup}\n" if charts_markup.strip() else """
+#v(1.5cm)
+#align(center)[
+  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
+    #align(center + horizon)[
+      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS PEMERINTAHAN]\
+      #v(6pt)
+      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan """ + nama_singkat + """]
+    ]
+  ]
+]
+"""
+
     return f"""
 // ==========================================
-// BAB 2: PEMERINTAHAN
+// BAB 2: PEMERINTAHAN (HALAMAN PEMBATAS & INFOGRAFIS)
 // ==========================================
+#is_chapter_page.update(true)
 #v(0.5cm)
 #block(
   fill: rgb("#FEF3C7"),
@@ -159,11 +181,19 @@ def render_chapter2(cfg: Dict[str, Any]) -> str:
 )
 #v(10pt)
 
+{infografis_markup}
+
+#pagebreak()
+#is_chapter_page.update(false)
+
+// ==========================================
+// ISI BAB 2: ULASAN NARASI & TABEL DATA
+// ==========================================
 #text(8.5pt)[
 Secara administratif, Kecamatan {nama_singkat} terbagi menjadi {len(desa_list)} desa/kelurahan yang dipimpin oleh kepala desa dan lurah definitif, didukung oleh aparatur pemerintah desa, Badan Permusyawaratan Desa (BPD), serta kelembagaan RT dan RW sebagai garda terdepan pelayanan kemasyarakatan.
 ]
+#v(12pt)
 
-#v(8pt)
 {t211_markup}
 #pagebreak()
 
@@ -178,5 +208,4 @@ Secara administratif, Kecamatan {nama_singkat} terbagi menjadi {len(desa_list)} 
 #pagebreak()
 
 {t222_markup}
-#pagebreak()
 """

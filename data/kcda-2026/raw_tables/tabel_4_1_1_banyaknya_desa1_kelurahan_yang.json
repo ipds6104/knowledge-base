@@ -4,8 +4,8 @@
   "sumber": "2023: tergantung ketersediaan data di daerah.\n2024 dan 2025: menggunakan data podes",
   "disediakan_ipds": false,
   "sheet_id": "1X5rNuK6ZMWNZQxnEFpQomXi1Fgv-c-6MfdF-kB_UCUY",
-  "spreadsheet_title": "4.1.1 Banyaknya Desa1/Kelurahan yang Memiliki Fasilitas Sekolah Menurut Tingkat Pendidikan",
-  "updated_at": "2026-09-10 17:49:47",
+  "spreadsheet_title": "Banyaknya Desa1/Kelurahan yang Memiliki Fasilitas Sekolah Menurut Tingkat Pendidikan di Kecamatan XXX",
+  "updated_at": "2026-09-10 20:46:25",
   "tabs": {
     "Mempawah Hilir": {
       "raw_title": "Mempawah Hilir",
@@ -54,8 +54,8 @@
         ]
       ]
     },
-    "Toho": {
-      "raw_title": "Toho",
+    "Mempawah Timur": {
+      "raw_title": "Mempawah Timur",
       "rows": [
         [
           "2025"
@@ -103,53 +103,6 @@
     },
     "Sungai Pinyuh": {
       "raw_title": "Sungai Pinyuh",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Tingkat Pendidikan\n Educational Level",
-          "2022",
-          "2023",
-          "2024",
-          "2025",
-          "",
-          "Tapi nanti template di publikasinya disatukan"
-        ],
-        [
-          "Taman Kanak-Kanak (TK)\nKindergarten"
-        ],
-        [
-          "Raudatul Athfal (RA)\nRaudatul Athfal (RA)"
-        ],
-        [
-          "Sekolah Dasar (SD)\nPrimary School"
-        ],
-        [
-          "Madrasah Ibtidaiyah (MI)\nMadrasah Ibtidaiyah (MI)"
-        ],
-        [
-          "Sekolah Menengah Pertama (SMP)\nJunior High School"
-        ],
-        [
-          "Madrasah Tsanawiyah (MTs)\nMadrasah Tsanawiyah (MTs)"
-        ],
-        [
-          "Sekolah Menengah Atas (SMA)\nSenior High School"
-        ],
-        [
-          "Sekolah Menengah Kejuruan (SMK)\nVocational High School"
-        ],
-        [
-          "Madrasah Aliyah (MA)\nMadrasah Aliyah (MA)"
-        ],
-        [
-          "Akademi/Perguruan Tinggi\nAcademy/University"
-        ]
-      ]
-    },
-    "Jongkat": {
-      "raw_title": "Jongkat",
       "rows": [
         [
           "2025"
@@ -289,6 +242,104 @@
         ]
       ]
     },
+    "Toho": {
+      "raw_title": "Toho",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Tingkat Pendidikan\n Educational Level",
+          "2022",
+          "2023",
+          "2024",
+          "2025",
+          "",
+          "Tapi nanti template di publikasinya disatukan"
+        ],
+        [
+          "Taman Kanak-Kanak (TK)\nKindergarten"
+        ],
+        [
+          "Raudatul Athfal (RA)\nRaudatul Athfal (RA)"
+        ],
+        [
+          "Sekolah Dasar (SD)\nPrimary School",
+          "2",
+          "3",
+          "3",
+          "4"
+        ],
+        [
+          "Madrasah Ibtidaiyah (MI)\nMadrasah Ibtidaiyah (MI)"
+        ],
+        [
+          "Sekolah Menengah Pertama (SMP)\nJunior High School"
+        ],
+        [
+          "Madrasah Tsanawiyah (MTs)\nMadrasah Tsanawiyah (MTs)"
+        ],
+        [
+          "Sekolah Menengah Atas (SMA)\nSenior High School"
+        ],
+        [
+          "Sekolah Menengah Kejuruan (SMK)\nVocational High School"
+        ],
+        [
+          "Madrasah Aliyah (MA)\nMadrasah Aliyah (MA)"
+        ],
+        [
+          "Akademi/Perguruan Tinggi\nAcademy/University"
+        ]
+      ]
+    },
+    "Jongkat": {
+      "raw_title": "Jongkat",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Tingkat Pendidikan\n Educational Level",
+          "2022",
+          "2023",
+          "2024",
+          "2025",
+          "",
+          "Tapi nanti template di publikasinya disatukan"
+        ],
+        [
+          "Taman Kanak-Kanak (TK)\nKindergarten"
+        ],
+        [
+          "Raudatul Athfal (RA)\nRaudatul Athfal (RA)"
+        ],
+        [
+          "Sekolah Dasar (SD)\nPrimary School"
+        ],
+        [
+          "Madrasah Ibtidaiyah (MI)\nMadrasah Ibtidaiyah (MI)"
+        ],
+        [
+          "Sekolah Menengah Pertama (SMP)\nJunior High School"
+        ],
+        [
+          "Madrasah Tsanawiyah (MTs)\nMadrasah Tsanawiyah (MTs)"
+        ],
+        [
+          "Sekolah Menengah Atas (SMA)\nSenior High School"
+        ],
+        [
+          "Sekolah Menengah Kejuruan (SMK)\nVocational High School"
+        ],
+        [
+          "Madrasah Aliyah (MA)\nMadrasah Aliyah (MA)"
+        ],
+        [
+          "Akademi/Perguruan Tinggi\nAcademy/University"
+        ]
+      ]
+    },
     "Anjongan": {
       "raw_title": "Anjongan",
       "rows": [
@@ -338,53 +389,6 @@
     },
     "Sadaniang": {
       "raw_title": "Sadaniang",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Tingkat Pendidikan\n Educational Level",
-          "2022",
-          "2023",
-          "2024",
-          "2025",
-          "",
-          "Tapi nanti template di publikasinya disatukan"
-        ],
-        [
-          "Taman Kanak-Kanak (TK)\nKindergarten"
-        ],
-        [
-          "Raudatul Athfal (RA)\nRaudatul Athfal (RA)"
-        ],
-        [
-          "Sekolah Dasar (SD)\nPrimary School"
-        ],
-        [
-          "Madrasah Ibtidaiyah (MI)\nMadrasah Ibtidaiyah (MI)"
-        ],
-        [
-          "Sekolah Menengah Pertama (SMP)\nJunior High School"
-        ],
-        [
-          "Madrasah Tsanawiyah (MTs)\nMadrasah Tsanawiyah (MTs)"
-        ],
-        [
-          "Sekolah Menengah Atas (SMA)\nSenior High School"
-        ],
-        [
-          "Sekolah Menengah Kejuruan (SMK)\nVocational High School"
-        ],
-        [
-          "Madrasah Aliyah (MA)\nMadrasah Aliyah (MA)"
-        ],
-        [
-          "Akademi/Perguruan Tinggi\nAcademy/University"
-        ]
-      ]
-    },
-    "Mempawah Timur": {
-      "raw_title": "Mempawah Timur",
       "rows": [
         [
           "2025"

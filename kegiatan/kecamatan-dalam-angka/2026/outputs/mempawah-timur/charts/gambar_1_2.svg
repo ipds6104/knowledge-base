@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 182" width="100%" style="font-family: 'Liberation Sans', Arial, sans-serif;">
+<rect width="340" height="182" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.8"/>
+<line x1="85.0" y1="14" x2="85.0" y2="166" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="85.0" y="177" font-size="5.5" fill="#94A3B8" text-anchor="middle">0</text>
+<line x1="136.75" y1="14" x2="136.75" y2="166" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="136.75" y="177" font-size="5.5" fill="#94A3B8" text-anchor="middle">12</text>
+<line x1="188.5" y1="14" x2="188.5" y2="166" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="188.5" y="177" font-size="5.5" fill="#94A3B8" text-anchor="middle">25</text>
+<line x1="240.25" y1="14" x2="240.25" y2="166" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="240.25" y="177" font-size="5.5" fill="#94A3B8" text-anchor="middle">37</text>
+<line x1="292.0" y1="14" x2="292.0" y2="166" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="292.0" y="177" font-size="5.5" fill="#94A3B8" text-anchor="middle">50</text>
+<line x1="85" y1="14" x2="85" y2="166" stroke="#CBD5E1" stroke-width="1"/>
+<text x="79" y="26.25" font-size="6.5" fill="#334155" text-anchor="end">Antibar</text>
+<rect x="85" y="18.25" width="162.1638" height="10.5" rx="2.5" fill="#0284C7"/>
+<text x="250.6638" y="26.25" font-size="6.5" font-weight="bold" fill="#0F172A">39,17</text>
+<text x="79" y="45.25" font-size="6.5" fill="#334155" text-anchor="end">Sejegi</text>
+<rect x="85" y="37.25" width="123.86880000000001" height="10.5" rx="2.5" fill="#0284C7"/>
+<text x="212.36880000000002" y="45.25" font-size="6.5" font-weight="bold" fill="#0F172A">29,92</text>
+<text x="79" y="64.25" font-size="6.5" fill="#334155" text-anchor="end">Parit Banjar</text>
+<rect x="85" y="56.25" width="73.6092" height="10.5" rx="2.5" fill="#0284C7"/>
+<text x="162.1092" y="64.25" font-size="6.5" font-weight="bold" fill="#0F172A">17,78</text>
+<text x="79" y="83.25" font-size="6.5" fill="#334155" text-anchor="end">Sungai Bakau Kecil</text>
+<rect x="85" y="75.25" width="55.476000000000006" height="10.5" rx="2.5" fill="#0284C7"/>
+<text x="143.976" y="83.25" font-size="6.5" font-weight="bold" fill="#0F172A">13,40</text>
+<text x="79" y="102.25" font-size="6.5" fill="#334155" text-anchor="end">Pasir Palembang</text>
+<rect x="85" y="94.25" width="35.31419999999999" height="10.5" rx="2.5" fill="#0284C7"/>
+<text x="123.8142" y="102.25" font-size="6.5" font-weight="bold" fill="#0F172A">8,53</text>
+<text x="79" y="121.25" font-size="6.5" fill="#334155" text-anchor="end">Pasir Panjang</text>
+<rect x="85" y="113.25" width="25.5024" height="10.5" rx="2.5" fill="#0284C7"/>
+<text x="114.0024" y="121.25" font-size="6.5" font-weight="bold" fill="#0F172A">6,16</text>
+<text x="79" y="140.25" font-size="6.5" fill="#334155" text-anchor="end">Pasir Wan Salim</text>
+<rect x="85" y="132.25" width="19.251" height="10.5" rx="2.5" fill="#0284C7"/>
+<text x="107.751" y="140.25" font-size="6.5" font-weight="bold" fill="#0F172A">4,65</text>
+<text x="79" y="159.25" font-size="6.5" fill="#334155" text-anchor="end">Pulau Pedalaman</text>
+<rect x="85" y="151.25" width="3.2292" height="10.5" rx="2.5" fill="#0284C7"/>
+<text x="91.7292" y="159.25" font-size="6.5" font-weight="bold" fill="#0F172A">0,78</text>
+</svg>

@@ -1,15 +1,22 @@
 """Chapter 1: Geografi dan Iklim Generator for KCDA 2026."""
 
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
+from pathlib import Path
 from ..data_loader import get_kecamatan_tab_rows, clean_cell_value
 from ..table_renderer import render_typst_table
+from ..chart_generator import get_chapter1_charts
 
-def render_chapter1(cfg: Dict[str, Any]) -> str:
+def render_chapter1(cfg: Dict[str, Any], out_dir: Optional[Any] = None) -> str:
     nama_resmi = cfg["nama_resmi"]
     nama_en = cfg["nama_en"]
     nama_singkat = nama_resmi.replace("Kecamatan ", "")
     ibukota = cfg["ibukota_kecamatan"]
     desa_list = cfg["desa_list"]
+    slug = cfg.get("slug", "")
+
+    # Grafik dinamis data-driven dari Google Sheets
+    charts_markup = get_chapter1_charts(slug, nama_singkat, nama_en, Path(out_dir) if out_dir else None)
+    chart_section = f"\n{charts_markup}\n#pagebreak()\n" if charts_markup.strip() else "\n#v(8pt)\n"
 
     # --- 1.1 Luas Daerah ---
     rows_1_1_raw = get_kecamatan_tab_rows("1.1.", nama_singkat)
@@ -33,7 +40,7 @@ def render_chapter1(cfg: Dict[str, Any]) -> str:
         col_numbers=["(1)", "(2)", "(3)"],
         rows=t1_1_rows,
         col_widths=["2.5fr", "1.3fr", "1.2fr"],
-        source="Dinas Kependudukan dan Pencatatan Sipil / BAPEDDA Kabupaten Mempawah"
+        source="Dinas Kependudukan dan Pencatatan Sipil/BAPEDDA Kabupaten Mempawah / Population and Civil Registration Service/Regional Development Planning Agency of Mempawah Regency"
     )
 
     # --- 1.2 Jarak ke Ibukota Kecamatan & Kabupaten ---
@@ -117,10 +124,25 @@ def render_chapter1(cfg: Dict[str, Any]) -> str:
         source=f"Kantor Camat {nama_singkat}"
     )
 
+    # Infografis Halaman Bab 1
+    infografis_markup = f"\n{charts_markup}\n" if charts_markup.strip() else """
+#v(1.5cm)
+#align(center)[
+  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
+    #align(center + horizon)[
+      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS GEOGRAFI & IKLIM]\
+      #v(6pt)
+      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan """ + nama_singkat + """]
+    ]
+  ]
+]
+"""
+
     return f"""
 // ==========================================
-// BAB 1: GEOGRAFI DAN IKLIM
+// BAB 1: GEOGRAFI DAN IKLIM (HALAMAN PEMBATAS & INFOGRAFIS)
 // ==========================================
+#is_chapter_page.update(true)
 #v(0.5cm)
 #block(
   fill: rgb("#FEF3C7"),
@@ -134,11 +156,19 @@ def render_chapter1(cfg: Dict[str, Any]) -> str:
 )
 #v(10pt)
 
+{infografis_markup}
+
+#pagebreak()
+#is_chapter_page.update(false)
+
+// ==========================================
+// ISI BAB 1: ULASAN NARASI & TABEL DATA
+// ==========================================
 #text(8.5pt)[
 Kecamatan {nama_singkat} secara astronomis dan geografis terletak di wilayah pesisir dan daratan Kabupaten Mempawah, Provinsi Kalimantan Barat dengan ibukota kecamatan berada di {ibukota}. Wilayah ini terbagi ke dalam {len(desa_list)} desa/kelurahan dengan akses perhubungan darat dan air yang menghubungkan pusat-pusat kegiatan ekonomi lokal dengan ibukota kabupaten.
 ]
+#v(12pt)
 
-#v(8pt)
 {t1_1_markup}
 #pagebreak()
 
@@ -148,5 +178,4 @@ Kecamatan {nama_singkat} secara astronomis dan geografis terletak di wilayah pes
 #pagebreak()
 
 {t1_4_markup}
-#pagebreak()
 """

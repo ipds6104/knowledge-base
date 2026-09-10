@@ -4,8 +4,8 @@
   "sumber": "BPS, Statistik Pertanian Hortikultura SPH-SBS",
   "disediakan_ipds": true,
   "sheet_id": "154iUA-guAt5HWlHYNr8RAWc7jVLGjwhZs8Y5lGi5FOk",
-  "spreadsheet_title": "5.3 Luas Panen Tanaman Biofarmaka",
-  "updated_at": "2026-09-10 17:50:02",
+  "spreadsheet_title": "Luas Panen Tanaman Biofarmaka Menurut Jenis Tanaman di Kecamatan XXX (m2)",
+  "updated_at": "2026-09-10 20:46:31",
   "tabs": {
     "Mempawah Hilir": {
       "raw_title": "Mempawah Hilir",
@@ -34,8 +34,8 @@
         ]
       ]
     },
-    "Toho": {
-      "raw_title": "Toho",
+    "Mempawah Timur": {
+      "raw_title": "Mempawah Timur",
       "rows": [
         [
           "2025"
@@ -63,33 +63,6 @@
     },
     "Sungai Pinyuh": {
       "raw_title": "Sungai Pinyuh",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Jenis Tanaman\n Kind of Plants",
-          "2022",
-          "2023",
-          "2024",
-          "2025"
-        ],
-        [
-          "Jahe/Ginger"
-        ],
-        [
-          "Laos/Lengkuas/Galanga"
-        ],
-        [
-          "Kencur/East Indian Galangal"
-        ],
-        [
-          "Kunyit/Turmeric"
-        ]
-      ]
-    },
-    "Jongkat": {
-      "raw_title": "Jongkat",
       "rows": [
         [
           "2025"
@@ -169,6 +142,60 @@
         ]
       ]
     },
+    "Toho": {
+      "raw_title": "Toho",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Tanaman\n Kind of Plants",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        [
+          "Jahe/Ginger"
+        ],
+        [
+          "Laos/Lengkuas/Galanga"
+        ],
+        [
+          "Kencur/East Indian Galangal"
+        ],
+        [
+          "Kunyit/Turmeric"
+        ]
+      ]
+    },
+    "Jongkat": {
+      "raw_title": "Jongkat",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Tanaman\n Kind of Plants",
+          "2022",
+          "2023",
+          "2024",
+          "2025"
+        ],
+        [
+          "Jahe/Ginger"
+        ],
+        [
+          "Laos/Lengkuas/Galanga"
+        ],
+        [
+          "Kencur/East Indian Galangal"
+        ],
+        [
+          "Kunyit/Turmeric"
+        ]
+      ]
+    },
     "Anjongan": {
       "raw_title": "Anjongan",
       "rows": [
@@ -198,33 +225,6 @@
     },
     "Sadaniang": {
       "raw_title": "Sadaniang",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Jenis Tanaman\n Kind of Plants",
-          "2022",
-          "2023",
-          "2024",
-          "2025"
-        ],
-        [
-          "Jahe/Ginger"
-        ],
-        [
-          "Laos/Lengkuas/Galanga"
-        ],
-        [
-          "Kencur/East Indian Galangal"
-        ],
-        [
-          "Kunyit/Turmeric"
-        ]
-      ]
-    },
-    "Mempawah Timur": {
-      "raw_title": "Mempawah Timur",
       "rows": [
         [
           "2025"

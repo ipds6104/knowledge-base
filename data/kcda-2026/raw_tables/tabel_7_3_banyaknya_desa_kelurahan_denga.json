@@ -4,8 +4,8 @@
   "sumber": "Podes",
   "disediakan_ipds": false,
   "sheet_id": "1fPF2Yb8rJXtNJAuK5wnVnBLCpZyYLQDHb5EGQf4bk_0",
-  "spreadsheet_title": "7.3 Banyaknya Desa/Kelurahan dengan Keberadaan Sarana Perdagangan Menurut Jenis Sarana Perdagangan",
-  "updated_at": "2026-09-10 17:50:19",
+  "spreadsheet_title": "Banyaknya Desa/Kelurahan\ndengan Keberadaan Sarana\nPerdagangan Menurut Jenis\nSarana Perdagangan di Kecamatan\nXXX",
+  "updated_at": "2026-09-10 20:46:35",
   "tabs": {
     "Mempawah Hilir": {
       "raw_title": "Mempawah Hilir",
@@ -37,8 +37,8 @@
         ]
       ]
     },
-    "Toho": {
-      "raw_title": "Toho",
+    "Mempawah Timur": {
+      "raw_title": "Mempawah Timur",
       "rows": [
         [
           "2025"
@@ -69,36 +69,6 @@
     },
     "Sungai Pinyuh": {
       "raw_title": "Sungai Pinyuh",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Jenis Sarana Perdagangan\n Type of Trade Facilities",
-          "2025"
-        ],
-        [
-          "Kelompok pertokoan\nShopping complexs"
-        ],
-        [
-          "Pasar dengan bangunan permanen\nMarkets in permanent building"
-        ],
-        [
-          "Pasar dengan bangunan semi permanen\nMarket in semi permanent buildin"
-        ],
-        [
-          "Pasar tanpa bangunan\nMarket without permanent building"
-        ],
-        [
-          "Mini market/swalayan/supermarket"
-        ],
-        [
-          "Restoran/rumah makan\nRestaurant/food stall"
-        ]
-      ]
-    },
-    "Jongkat": {
-      "raw_title": "Jongkat",
       "rows": [
         [
           "2025"
@@ -187,6 +157,66 @@
         ]
       ]
     },
+    "Toho": {
+      "raw_title": "Toho",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Sarana Perdagangan\n Type of Trade Facilities",
+          "2025"
+        ],
+        [
+          "Kelompok pertokoan\nShopping complexs"
+        ],
+        [
+          "Pasar dengan bangunan permanen\nMarkets in permanent building"
+        ],
+        [
+          "Pasar dengan bangunan semi permanen\nMarket in semi permanent buildin"
+        ],
+        [
+          "Pasar tanpa bangunan\nMarket without permanent building"
+        ],
+        [
+          "Mini market/swalayan/supermarket"
+        ],
+        [
+          "Restoran/rumah makan\nRestaurant/food stall"
+        ]
+      ]
+    },
+    "Jongkat": {
+      "raw_title": "Jongkat",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Sarana Perdagangan\n Type of Trade Facilities",
+          "2025"
+        ],
+        [
+          "Kelompok pertokoan\nShopping complexs"
+        ],
+        [
+          "Pasar dengan bangunan permanen\nMarkets in permanent building"
+        ],
+        [
+          "Pasar dengan bangunan semi permanen\nMarket in semi permanent buildin"
+        ],
+        [
+          "Pasar tanpa bangunan\nMarket without permanent building"
+        ],
+        [
+          "Mini market/swalayan/supermarket"
+        ],
+        [
+          "Restoran/rumah makan\nRestaurant/food stall"
+        ]
+      ]
+    },
     "Anjongan": {
       "raw_title": "Anjongan",
       "rows": [
@@ -219,36 +249,6 @@
     },
     "Sadaniang": {
       "raw_title": "Sadaniang",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Jenis Sarana Perdagangan\n Type of Trade Facilities",
-          "2025"
-        ],
-        [
-          "Kelompok pertokoan\nShopping complexs"
-        ],
-        [
-          "Pasar dengan bangunan permanen\nMarkets in permanent building"
-        ],
-        [
-          "Pasar dengan bangunan semi permanen\nMarket in semi permanent buildin"
-        ],
-        [
-          "Pasar tanpa bangunan\nMarket without permanent building"
-        ],
-        [
-          "Mini market/swalayan/supermarket"
-        ],
-        [
-          "Restoran/rumah makan\nRestaurant/food stall"
-        ]
-      ]
-    },
-    "Mempawah Timur": {
-      "raw_title": "Mempawah Timur",
       "rows": [
         [
           "2025"
