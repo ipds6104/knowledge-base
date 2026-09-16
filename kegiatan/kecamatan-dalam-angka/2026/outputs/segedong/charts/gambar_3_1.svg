@@ -1,48 +1,48 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 176.0" width="100%" style="font-family: 'Liberation Sans', Arial, sans-serif;">
-<rect width="340" height="176.0" rx="4" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="0.8"/>
-<rect x="85" y="8" width="11" height="7" rx="2" fill="#0284C7"/>
-<text x="100" y="14" font-size="6" font-weight="bold" fill="#334155">Laki-laki/<tspan font-style="italic">Male</tspan></text>
-<rect x="180.4" y="8" width="11" height="7" rx="2" fill="#F5A623"/>
-<text x="195.4" y="14" font-size="6" font-weight="bold" fill="#334155">Perempuan/<tspan font-style="italic">Female</tspan></text>
-<line x1="85.0" y1="26" x2="85.0" y2="161.0" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
-<text x="85.0" y="172.0" font-size="5.5" fill="#94A3B8" text-anchor="middle">0</text>
-<line x1="135.75" y1="26" x2="135.75" y2="161.0" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
-<text x="135.75" y="172.0" font-size="5.5" fill="#94A3B8" text-anchor="middle">1.000</text>
-<line x1="186.5" y1="26" x2="186.5" y2="161.0" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
-<text x="186.5" y="172.0" font-size="5.5" fill="#94A3B8" text-anchor="middle">2.000</text>
-<line x1="237.25" y1="26" x2="237.25" y2="161.0" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
-<text x="237.25" y="172.0" font-size="5.5" fill="#94A3B8" text-anchor="middle">3.000</text>
-<line x1="288.0" y1="26" x2="288.0" y2="161.0" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
-<text x="288.0" y="172.0" font-size="5.5" fill="#94A3B8" text-anchor="middle">4.000</text>
-<line x1="85" y1="26" x2="85" y2="161.0" stroke="#CBD5E1" stroke-width="1"/>
-<text x="79" y="37.5" font-size="6.5" fill="#334155" text-anchor="end">Peniti Besar</text>
-<rect x="85" y="29.0" width="158.137" height="5.5" rx="1.5" fill="#0284C7"/>
-<text x="246.137" y="33.5" font-size="5.5" fill="#475569">3.116</text>
-<rect x="85" y="36.0" width="149.408" height="5.5" rx="1.5" fill="#F5A623"/>
-<text x="237.408" y="40.5" font-size="5.5" fill="#475569">2.944</text>
-<text x="79" y="60.0" font-size="6.5" fill="#334155" text-anchor="end">Sungai Purun Besar</text>
-<rect x="85" y="51.5" width="155.95475" height="5.5" rx="1.5" fill="#0284C7"/>
-<text x="243.95475" y="56.0" font-size="5.5" fill="#475569">3.073</text>
-<rect x="85" y="58.5" width="148.0885" height="5.5" rx="1.5" fill="#F5A623"/>
-<text x="236.0885" y="63.0" font-size="5.5" fill="#475569">2.918</text>
-<text x="79" y="82.5" font-size="6.5" fill="#334155" text-anchor="end">Peniti Dalam Ii</text>
-<rect x="85" y="74.0" width="114.49199999999999" height="5.5" rx="1.5" fill="#0284C7"/>
-<text x="202.492" y="78.5" font-size="5.5" fill="#475569">2.256</text>
-<rect x="85" y="81.0" width="109.82300000000001" height="5.5" rx="1.5" fill="#F5A623"/>
-<text x="197.823" y="85.5" font-size="5.5" fill="#475569">2.164</text>
-<text x="79" y="105.0" font-size="6.5" fill="#334155" text-anchor="end">Peniti Dalam I</text>
-<rect x="85" y="96.5" width="104.44349999999999" height="5.5" rx="1.5" fill="#0284C7"/>
-<text x="192.44349999999997" y="101.0" font-size="5.5" fill="#475569">2.058</text>
-<rect x="85" y="103.5" width="101.55075" height="5.5" rx="1.5" fill="#F5A623"/>
-<text x="189.55075" y="108.0" font-size="5.5" fill="#475569">2.001</text>
-<text x="79" y="127.5" font-size="6.5" fill="#334155" text-anchor="end">Sungai Burung</text>
-<rect x="85" y="119.0" width="80.84475" height="5.5" rx="1.5" fill="#0284C7"/>
-<text x="168.84475" y="123.5" font-size="5.5" fill="#475569">1.593</text>
-<rect x="85" y="126.0" width="79.22075" height="5.5" rx="1.5" fill="#F5A623"/>
-<text x="167.22075" y="130.5" font-size="5.5" fill="#475569">1.561</text>
-<text x="79" y="150.0" font-size="6.5" fill="#334155" text-anchor="end">Parit Bugis</text>
-<rect x="85" y="141.5" width="63.488249999999994" height="5.5" rx="1.5" fill="#0284C7"/>
-<text x="151.48825" y="146.0" font-size="5.5" fill="#475569">1.251</text>
-<rect x="85" y="148.5" width="65.01075" height="5.5" rx="1.5" fill="#F5A623"/>
-<text x="153.01075" y="153.0" font-size="5.5" fill="#475569">1.281</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 172" width="100%" height="172pt" style="font-family: 'Liberation Sans', Arial, sans-serif;">
+<rect width="340" height="172" fill="#FAFAFA" rx="4"/>
+<rect x="95" y="8" width="11" height="7" rx="2" fill="#0284C7"/>
+<text x="110" y="14" font-size="6" font-weight="bold" fill="#334155">Laki-laki/<tspan font-style="italic">Male</tspan></text>
+<rect x="190.4" y="8" width="11" height="7" rx="2" fill="#F5A623"/>
+<text x="205.4" y="14" font-size="6" font-weight="bold" fill="#334155">Perempuan/<tspan font-style="italic">Female</tspan></text>
+<line x1="95.0" y1="24" x2="95.0" y2="156" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="95.0" y="168" font-size="5.5" fill="#94A3B8" text-anchor="middle">0</text>
+<line x1="146.25" y1="24" x2="146.25" y2="156" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="146.25" y="168" font-size="5.5" fill="#94A3B8" text-anchor="middle">919</text>
+<line x1="197.5" y1="24" x2="197.5" y2="156" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="197.5" y="168" font-size="5.5" fill="#94A3B8" text-anchor="middle">1.838</text>
+<line x1="248.75" y1="24" x2="248.75" y2="156" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="248.75" y="168" font-size="5.5" fill="#94A3B8" text-anchor="middle">2.757</text>
+<line x1="300.0" y1="24" x2="300.0" y2="156" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="300.0" y="168" font-size="5.5" fill="#94A3B8" text-anchor="middle">3.676</text>
+<line x1="95" y1="24" x2="95" y2="156" stroke="#CBD5E1" stroke-width="1"/>
+<text x="89" y="35.5" font-size="6.5" fill="#334155" text-anchor="end">Peniti Besar</text>
+<rect x="95" y="27" width="173.72881355932205" height="5.5" rx="1.5" fill="#0284C7"/>
+<text x="271.728813559322" y="31.5" font-size="5.5" fill="#475569">3.116</text>
+<rect x="95" y="34" width="164.1391614629795" height="5.5" rx="1.5" fill="#F5A623"/>
+<text x="262.1391614629795" y="38.5" font-size="5.5" fill="#475569">2.944</text>
+<text x="89" y="57.5" font-size="6.5" fill="#334155" text-anchor="end">Sungai Purun Besar</text>
+<rect x="95" y="49" width="171.3314005352364" height="5.5" rx="1.5" fill="#0284C7"/>
+<text x="269.3314005352364" y="53.5" font-size="5.5" fill="#475569">3.073</text>
+<rect x="95" y="56" width="162.68956289027656" height="5.5" rx="1.5" fill="#F5A623"/>
+<text x="260.68956289027653" y="60.5" font-size="5.5" fill="#475569">2.918</text>
+<text x="89" y="79.5" font-size="6.5" fill="#334155" text-anchor="end">Peniti Dalam Ii</text>
+<rect x="95" y="71" width="125.7805530776093" height="5.5" rx="1.5" fill="#0284C7"/>
+<text x="223.78055307760928" y="75.5" font-size="5.5" fill="#475569">2.256</text>
+<rect x="95" y="78" width="120.65120428189118" height="5.5" rx="1.5" fill="#F5A623"/>
+<text x="218.65120428189118" y="82.5" font-size="5.5" fill="#475569">2.164</text>
+<text x="89" y="101.5" font-size="6.5" fill="#334155" text-anchor="end">Peniti Dalam I</text>
+<rect x="95" y="93" width="114.7413024085638" height="5.5" rx="1.5" fill="#0284C7"/>
+<text x="212.7413024085638" y="97.5" font-size="5.5" fill="#475569">2.058</text>
+<rect x="95" y="100" width="111.56333630686886" height="5.5" rx="1.5" fill="#F5A623"/>
+<text x="209.56333630686885" y="104.5" font-size="5.5" fill="#475569">2.001</text>
+<text x="89" y="123.5" font-size="6.5" fill="#334155" text-anchor="end">Sungai Burung</text>
+<rect x="95" y="115" width="88.81578947368422" height="5.5" rx="1.5" fill="#0284C7"/>
+<text x="186.81578947368422" y="119.5" font-size="5.5" fill="#475569">1.593</text>
+<rect x="95" y="122" width="87.03166815343444" height="5.5" rx="1.5" fill="#F5A623"/>
+<text x="185.03166815343445" y="126.5" font-size="5.5" fill="#475569">1.561</text>
+<text x="89" y="145.5" font-size="6.5" fill="#334155" text-anchor="end">Parit Bugis</text>
+<rect x="95" y="137" width="69.74799286351472" height="5.5" rx="1.5" fill="#0284C7"/>
+<text x="167.74799286351472" y="141.5" font-size="5.5" fill="#475569">1.251</text>
+<rect x="95" y="144" width="71.42060660124889" height="5.5" rx="1.5" fill="#F5A623"/>
+<text x="169.4206066012489" y="148.5" font-size="5.5" fill="#475569">1.281</text>
 </svg>

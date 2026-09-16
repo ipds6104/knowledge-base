@@ -153,7 +153,7 @@ def render_chapter1(cfg: Dict[str, Any], out_dir: Optional[Any] = None) -> str:
     #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 1: GEOGRAFI DAN IKLIM] \\
     #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 1: GEOGRAPHY AND CLIMATE]
   ]
-)
+) <chapter_page>
 #v(10pt)
 
 {infografis_markup}

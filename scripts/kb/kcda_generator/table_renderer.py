@@ -212,8 +212,8 @@ def render_typst_table(
   columns: {col_spec},
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 {{ rgb("#FFC934") }}
-                      else if row == 1 {{ rgb("#FFDC8A") }}
+  fill: (col, row) => if row == 0 {{ cmyk(0%, 20%, 90%, 0%) }}
+                      else if row == 1 {{ cmyk(0%, 10%, 45%, 0%) }}
                       else if calc.even(row) {{ rgb("#FFF8E7") }}
                       else {{ rgb("#FFF4D4") }},
   align: (col, row) => if row <= 1 {{ center + horizon }}

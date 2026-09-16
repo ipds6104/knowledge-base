@@ -63,6 +63,7 @@ kegiatan/evaluasi-epss/**/materi-pelatihan/
 *.sqlite3
 test_*.png
 test_*.typ
+test_*.svg
 
 
 
@@ -82,8 +83,10 @@ venv/
 env/
 *.log
 .pytest_cache/
+.ruff_cache/
 .coverage
 htmlcov/
+*.egg-info/
 
 # OS Junk & Editor Configurations
 .DS_Store

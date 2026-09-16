@@ -82,7 +82,7 @@ def render_chapter6(cfg: Dict[str, Any]) -> str:
     #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 6: PARIWISATA, TRANSPORTASI & KOMUNIKASI] \\
     #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 6: TOURISM, TRANSPORTATION AND COMMUNICATION]
   ]
-)
+) <chapter_page>
 #v(10pt)
 
 {infografis_markup}

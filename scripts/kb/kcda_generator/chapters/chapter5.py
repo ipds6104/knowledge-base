@@ -136,7 +136,7 @@ def render_chapter5(cfg: Dict[str, Any], out_dir: Optional[Any] = None) -> str:
     #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 5: PERTANIAN] \\
     #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 5: AGRICULTURE]
   ]
-)
+) <chapter_page>
 #v(10pt)
 
 {infografis_markup}

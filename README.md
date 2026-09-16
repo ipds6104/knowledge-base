@@ -186,7 +186,7 @@ python scripts/kb.py dda [nama-desa-kebab] --sheet-id [GOOGLE_SHEET_ID]
 ```
 
 *Panduan Agentic Workflow:* [.agents/skills/dda-publication/SKILL.md](file:///home/ihza/Projects/knowledge-base/.agents/skills/dda-publication/SKILL.md)  
-*Pedoman Layout BPS:* [docs/pedoman-penyusunan-publikasi-bps.md](file:///home/ihza/Projects/knowledge-base/docs/pedoman-penyusunan-publikasi-bps.md)
+*Pedoman Layout BPS:* [docs/pedoman-publikasi-bps-2023.md](file:///home/ihza/Projects/knowledge-base/docs/pedoman-publikasi-bps-2023.md)
 
 ---
 
@@ -214,11 +214,11 @@ Menjalankan seluruh rangkaian otomasi harian secara berurutan dan bebas OS (OS-i
 
 ---
 
-### 8. Pedoman Penyusunan Publikasi BPS (`pedoman-penyusunan-publikasi-bps.md`)
-Pedoman teknis penyusunan publikasi statistik yang dibakukan berbasis standar BPS RI / BPS Provinsi Kalimantan Barat (*Kalimantan Barat Dalam Angka 2026*).
-*   **Dokumen Pedoman**: [docs/pedoman-penyusunan-publikasi-bps.md](docs/pedoman-penyusunan-publikasi-bps.md)
-*   **Opsi Mode Bahasa**: Mode 1 Bahasa (Bahasa Indonesia) & Mode 2 Bahasa / Bilingual (Bahasa Indonesia & English).
-*   **Fitur Utama**: Anatomi 14 bagian halaman baku, penulisan KDT/Tim Penyusun/Kontributor Data, layout foto Pimpinan di Kata Pengantar, ulasan deskriptif analisis narasi di setiap bab, serta alur build HTML -> Headless Chrome PDF A4 Print-ready.
+### 8. Pedoman Pembuatan Publikasi BPS Edisi 2023 (`pedoman-publikasi-bps-2023.md`)
+Single Source of Truth (SSOT) teknis tata letak, desain grafis, tipografi, dan penomoran seluruh publikasi resmi BPS berdasar Buku Pedoman Pembuatan Publikasi BPS Edisi 2023 (Katalog BPS 1303004).
+*   **Dokumen SSOT**: [docs/pedoman-publikasi-bps-2023.md](file:///home/ihza/Projects/knowledge-base/docs/pedoman-publikasi-bps-2023.md)
+*   **Berkas PDF Asli**: [data/pedoman-publikasi/Pedoman_Pembuatan_Publikasi_BPS_2023.pdf](file:///home/ihza/Projects/knowledge-base/data/pedoman-publikasi/Pedoman_Pembuatan_Publikasi_BPS_2023.pdf)
+*   **Fitur Utama**: Anatomi halaman baku, aturan penomoran angka polos tanpa badge/pill, legalitas running footer untuk judul dwibahasa, format tabel booktabs, kaidah desimal & ribuan, dan checklist mandiri pre-release.
 
 
 ---

@@ -2,7 +2,31 @@
 
 #let in_frontmatter = state("in_frontmatter", true)
 #let active_chapter = state("active_chapter", "")
+#let active_chapter_en = state("active_chapter_en", "")
 #let is_chapter_page = state("is_chapter_page", false)
+
+// Warna Utama & Warna Running Title Resmi BPS (Pedoman KCDA 2026 Bagian B)
+#let main_theme_color = cmyk(0%, 20%, 90%, 0%)
+#let running_title_color = cmyk(0%, 35%, 95%, 0%)
+
+// Badge pill numbering resmi BPS Pusat (Aturan KCDA 2026: main_theme_color, 49.2pt x 21pt)
+#let page_badge(val) = box(
+  fill: main_theme_color,
+  radius: 10.5pt,
+  width: 49.2pt,
+  height: 21pt,
+)[
+  #align(center + horizon)[
+    #text(9pt, font: ("Metropolis", "Liberation Sans", "Arial"), weight: "bold", fill: white)[#val]
+  ]
+]
+
+#show heading: it => [ #it #metadata("h") <page_marker> ]
+#show table: it => [ #it #metadata("t") <page_marker> ]
+#show grid: it => [ #it #metadata("g") <page_marker> ]
+#show par: it => [ #it #metadata("p") <page_marker> ]
+#show figure: it => [ #it #metadata("f") <page_marker> ]
+#show image: it => [ #it #metadata("i") <page_marker> ]
 
 #set page(
   paper: "a5",
@@ -12,34 +36,78 @@
     top: 2.0cm,
     bottom: 2.0cm,
   ),
+  header-ascent: 40%,
   header: context {
-    if not in_frontmatter.get() and not is_chapter_page.get() {
+    let p = here().page()
+    let has_c = query(selector(<page_marker>)).any(m => {
+      let pos = m.location().position()
+      pos.page == p and pos.y > 1.4cm and pos.y < 19.4cm
+    })
+    let is_ch = query(selector(<chapter_page>)).any(m => m.location().page() == p)
+    if has_c and not in_frontmatter.get() and not is_ch {
       let page_num = counter(page).get().first()
-      let chapter_title = active_chapter.get()
+      let titles = query(selector(<chapter_title>)).filter(m => m.location().page() <= p)
+      let chapter_title = if titles.len() > 0 { titles.last().value } else { "" }
       if calc.even(page_num) {
-        align(left, text(6.5pt, font: ("Metropolis", "Liberation Sans", "Arial"), fill: rgb("#374151"), weight: "bold")[KECAMATAN SUNGAI KUNYIT DALAM ANGKA 2026])
+        // Halaman Genap (Verso/Kiri): Judul Publikasi Bahasa Indonesia (Metropolis, 8pt, running_title_color, bold)
+        align(left, text(8pt, font: ("Metropolis", "Liberation Sans", "Arial"), fill: running_title_color, weight: "bold")[KECAMATAN SUNGAI KUNYIT DALAM ANGKA 2026])
       } else {
+        // Halaman Ganjil (Rekto/Kanan): Judul Bab Bahasa Indonesia (Metropolis, 8pt, running_title_color, bold)
         let right_text = if chapter_title != "" { chapter_title } else { "BPS KABUPATEN MEMPAWAH" }
-        align(right, text(6.5pt, font: ("Metropolis", "Liberation Sans", "Arial"), fill: rgb("#374151"), weight: "bold")[#right_text])
+        align(right, text(8pt, font: ("Metropolis", "Liberation Sans", "Arial"), fill: running_title_color, weight: "bold")[#right_text])
       }
     }
   },
   footer: context {
-    let page_num = counter(page).get().first()
-    if in_frontmatter.get() {
-      // Sesuai Pedoman Publikasi BPS 2023 & Aturan KCDA 2026:
-      // Halaman i (Judul Utama), ii (Katalog), iii (Tim Penyusun), iv (Kontributor) TIDAK dicantumkan nomor halamannya
-      // Nomor halaman fisik baru mulai dicetak pada Kata Pengantar (halaman v)
+    let p = here().page()
+    let has_c = query(selector(<page_marker>)).any(m => {
+      let pos = m.location().position()
+      pos.page == p and pos.y > 1.4cm and pos.y < 19.4cm
+    })
+    let is_ch = query(selector(<chapter_page>)).any(m => m.location().page() == p)
+    if not has_c or is_ch {
+      // Sesuai Pedoman Publikasi BPS 2023 Subbab 4.1.3 Poin 9 & Subbab 4.4.1 (Hal. 47, 88):
+      // Lembar pembatas bab dihitung sebagai halaman arab tetapi TANPA running title dan TANPA nomor halaman fisik.
+      // Halaman kosong sisipan juga TANPA running title dan nomor halaman fisik.
+      none
+    } else if in_frontmatter.get() {
+      let page_num = counter(page).get().first()
+      // Sesuai Pedoman Publikasi BPS 2023 Subbab 4.1.3 Poin 1 & 2 (Hal. 46) serta Subbab 4.3 (Hal. 75):
+      // - Halaman i (Judul Utama), ii (Katalog), iii (Tim Penyusun), iv (Kontributor) TIDAK dicetak nomornya.
+      // - Nomor fisik baru mulai dicetak pada Kata Pengantar (halaman v ke atas).
+      // - Mengikuti prinsip Rekto-Verso baku: Kiri untuk Genap (Verso) dan Kanan untuk Ganjil (Rekto).
       if page_num >= 5 {
         let display_val = counter(page).display("i")
-        align(center, text(7.5pt, font: ("Myriad Pro", "Liberation Sans", "Arial"), fill: rgb("#4B5563"), weight: "bold")[#display_val])
+        if calc.even(page_num) {
+          align(left + top, text(7.5pt, font: ("Myriad Pro", "Liberation Sans", "Arial"), fill: rgb("#4B5563"), weight: "bold")[#v(3pt) #display_val])
+        } else {
+          align(right + top, text(7.5pt, font: ("Myriad Pro", "Liberation Sans", "Arial"), fill: rgb("#4B5563"), weight: "bold")[#v(3pt) #display_val])
+        }
       }
     } else {
+      let page_num = counter(page).get().first()
       let display_val = counter(page).display("1")
+      let titles_en = query(selector(<chapter_title_en>)).filter(m => m.location().page() <= p)
+      let chapter_en = if titles_en.len() > 0 { titles_en.last().value } else { "" }
       if calc.even(page_num) {
-        align(left, text(7.5pt, font: ("Myriad Pro", "Liberation Sans", "Arial"), fill: rgb("#1F2937"), weight: "bold")[#display_val])
+        // Halaman Genap (Verso/Kiri): Badge No Halaman di kiri + Judul Publikasi Bahasa Inggris (Metropolis, 8pt, running_title_color, italic)
+        grid(
+          columns: (auto, auto),
+          align: horizon,
+          column-gutter: 8pt,
+          page_badge(display_val),
+          text(8pt, font: ("Metropolis", "Liberation Sans", "Arial"), style: "italic", fill: running_title_color)[SUNGAI KUNYIT DISTRICT IN FIGURES 2026]
+        )
       } else {
-        align(right, text(7.5pt, font: ("Myriad Pro", "Liberation Sans", "Arial"), fill: rgb("#1F2937"), weight: "bold")[#display_val])
+        // Halaman Ganjil (Rekto/Kanan): Judul Bab Bahasa Inggris + Badge No Halaman di kanan (Metropolis, 8pt, running_title_color, italic)
+        let right_en_text = if chapter_en != "" { upper(chapter_en) } else { "SUNGAI KUNYIT DISTRICT IN FIGURES 2026" }
+        grid(
+          columns: (1fr, auto),
+          align: horizon,
+          column-gutter: 8pt,
+          align(right, text(8pt, font: ("Metropolis", "Liberation Sans", "Arial"), style: "italic", fill: running_title_color)[#right_en_text]),
+          page_badge(display_val)
+        )
       }
     }
   }
@@ -55,7 +123,6 @@
 #show figure.where(kind: image): set figure(supplement: none)
 #show figure.where(kind: image): set figure.caption(separator: none)
 
-
 // ==========================================
 // 1. KOVER DEPAN (FRONT COVER) - TEMPLATE PUSAT
 // ==========================================
@@ -69,8 +136,7 @@
   #align(right)[
     #text(7.5pt, fill: rgb("#F3F4F6"))[
       #text(style: "italic")[Katalog/Catalogue:] \
-      #text(weight: "bold")[1102001.6104060] \
-      #text(style: "italic")[ISSN xxxx-xxxx]
+      #text(weight: "bold")[1102001.6104060]
     ]
   ]
 
@@ -84,7 +150,7 @@
     #v(4pt)
     #text(11pt, style: "italic", fill: rgb("#F3F4F6"))[Sungai Kunyit District in Figures] \
     #v(3pt)
-    #text(8.5pt, fill: rgb("#E5E7EB"))[Volume XX, 2026]
+    #text(8.5pt, fill: rgb("#E5E7EB"))[Volume 48, 2026]
   ]
 
   // Lingkaran Putih Badge 2026 di kanan
@@ -101,24 +167,25 @@
   // Placeholder Foto / Ilustrasi Kover Depan
   #align(center)[
     #rect(
-      width: 6.8cm,
-      height: 4.8cm,
+      width: 100%,
+      height: 7.5cm,
       fill: rgb(255, 255, 255, 12%),
-      stroke: (paint: rgb(255, 255, 255, 60%), thickness: 1pt, dash: "dashed"),
-      radius: 6pt
+      radius: 4pt,
+      stroke: 0.5pt + rgb(255, 255, 255, 30%),
     )[
       #align(center + horizon)[
-        #text(28pt)[📷] \
-        #v(4pt)
-        #text(9pt, weight: "bold", fill: rgb("#E5E7EB"))[COVER DEPAN]
+        #image("/kegiatan/kecamatan-dalam-angka/2026/assets/logo_bps.png", height: 48pt) \
+        #v(8pt)
+        #text(9pt, weight: "bold", fill: rgb("#E5E7EB"))[COVER DEPAN] \
+        #text(7pt, fill: rgb("#D1D5DB"))[Kecamatan Sungai Kunyit Dalam Angka 2026]
       ]
     ]
   ]
 
-  #v(1.2cm)
+  #v(1fr)
 
-  // Bawah Kover: Logo BPS & Nama Instansi
-  #align(center)[
+  // Logo & Identitas Resmi BPS di Kiri Bawah
+  #align(left)[
     #grid(
       columns: (auto, auto),
       column-gutter: 8pt,
@@ -133,19 +200,23 @@
   ]
 ]
 
-#pagebreak()
+// ==========================================
+// HALAMAN KOSONG DI BALIK KOVER DEPAN (INSIDE COVER / FLYLEAF)
+// Sesuai Pedoman Pembuatan Publikasi BPS 2023 Subbab 4.1.2 Poin 6 (Hal. 45) & Terbitan Statistik Indonesia BPS RI.
+// Halaman setelah kover depan tidak dihitung sebagai halaman dan tidak diberi nomor halaman.
+// ==========================================
+#page(header: none, footer: none)[ ]
 
 // ==========================================
 // 2. HALAMAN JUDUL UTAMA / TITLE PAGE (HALAMAN i)
-// ==========================================
-// Kover depan tidak dihitung sebagai halaman buku.
+// Terletak pada halaman ganjil (rekto/kanan) sesuai Pedoman Publikasi BPS 2023 Subbab 4.3.1 (Hal. 75).
 // Perhitungan angka romawi resmi dimulai pada Halaman Judul Utama (halaman i).
+// ==========================================
 #counter(page).update(1)
 
 #align(right)[
   #text(7.5pt)[
-    #text(style: "italic")[Katalog/Catalogue:] 1102001.6104060 \
-    ISSN: 2477-6777
+    #text(style: "italic")[Katalog/Catalogue:] 1102001.6104060
   ]
 ]
 
@@ -178,35 +249,23 @@
 // ==========================================
 // 3. HALAMAN KATALOG & HAK CIPTA (HALAMAN ii)
 // ==========================================
-#grid(
-  columns: (auto, 1fr),
-  column-gutter: 8pt,
-  align: horizon,
-  image("/kegiatan/kecamatan-dalam-angka/2026/assets/logo_bps.png", height: 26pt),
-  align(left)[
-    #text(8pt, weight: "bold", fill: rgb("#00A0E9"))[BADAN PUSAT STATISTIK] \
-    #text(8pt, weight: "bold", fill: rgb("#00A0E9"))[KABUPATEN MEMPAWAH] \
-    #text(6.5pt, fill: rgb("#00A0E9"))[BPS-STATISTICS OF MEMPAWAH REGENCY]
-  ]
-)
 
+// Judul Publikasi Langsung di Bagian Atas (Hitam)
+#text(10.5pt, weight: "bold", fill: black)[KECAMATAN SUNGAI KUNYIT DALAM ANGKA 2026] \
+#v(1pt)
+#text(9pt, style: "italic", fill: black)[SUNGAI KUNYIT DISTRICT IN FIGURES 2026] \
 #v(2pt)
-#line(length: 100%, stroke: 0.5pt + rgb("#D1D5DB"))
-
-#v(8pt)
-#text(10.5pt, weight: "bold")[KECAMATAN SUNGAI KUNYIT DALAM ANGKA] \
-#text(9.5pt, style: "italic")[Sungai Kunyit District in Figures] \
-#text(9.5pt)[2026] \
-#text(8pt, fill: luma(100))[Volume 48, 2026]
+#text(7.5pt, fill: black)[Volume 48, 2026]
 
 #let total_frontmatter_pages = context {
   let elems = query(<transisi_isi>)
   if elems.len() > 0 {
     let loc = elems.first().location()
     let p = counter(page).at(loc).first()
-    numbering("i", p)
+    let final_p = if calc.odd(p) { p + 1 } else { p }
+    numbering("i", final_p)
   } else {
-    "x"
+    "xii"
   }
 }
 #let total_arabic_pages = context {
@@ -220,39 +279,66 @@
   }
 }
 
-#v(8pt)
-#grid(
-  columns: (1fr, 1.2fr),
-  row-gutter: 5pt,
-  [*Katalog/_Catalogue_:*], [1102001.6104060],
-  [*ISSN:*], [2477-6777],
-  [*Nomor Publikasi/_Publication Number_:*], [61040.26005],
-  [], [],
-  [*Ukuran Buku/_Book Size_:*], [14,8 cm x 21 cm],
-  [*Jumlah Halaman/_Number of Pages_:*], [#total_frontmatter_pages + #total_arabic_pages hal/pages],
-  [], [],
-  [*Penyusun Naskah/_Manuscript Drafter_:*], [BPS Kabupaten Mempawah \ _BPS-Statistics of Mempawah Regency_],
-  [*Penyunting/_Editor_:*], [BPS Kabupaten Mempawah \ _BPS-Statistics of Mempawah Regency_],
-  [*Pembuat Kover/_Cover Designer_:*], [BPS Kabupaten Mempawah \ _BPS-Statistics of Mempawah Regency_],
-  [*Penerbit/_Publisher_:*], [© BPS Kabupaten Mempawah/_BPS-Statistics of Mempawah Regency_],
-  [*Sumber Ilustrasi/_Illustration Source_:*], [-]
-)
+#v(9pt)
+#text(7.5pt)[
+  #text(weight: "bold")[Katalog/Catalogue:] 1102001.6104060
+  #v(2pt)
+  #text(weight: "bold")[Nomor Publikasi/Publication Number:] 61040.26005
+]
 
-#v(10pt)
-#text(6.5pt)[
-  *Dilarang mereproduksi dan/atau menggandakan sebagian atau seluruh isi buku ini untuk tujuan komersial tanpa izin tertulis dari Badan Pusat Statistik Kabupaten Mempawah.* \
-  _It is prohibited to reproduce and/or duplicate part or all of this book for commercial purpose without permission from BPS-Statistics of Mempawah Regency._
+#v(7pt)
+#text(7.5pt)[
+  #text(weight: "bold")[Ukuran Buku/Book Size:] 14,8 cm x 21,0 cm \
+  #v(2pt)
+  #text(weight: "bold")[Jumlah Halaman/Number of Pages:] #total_frontmatter_pages+#total_arabic_pages Halaman/Pages
+]
+
+#v(7pt)
+#text(7.5pt)[
+  #text(weight: "bold")[Penyusun Naskah/Manuscript Drafter:] \
+  #text(weight: "bold")[BPS Kabupaten Mempawah] \
+  #text(style: "italic")[BPS-Statistics of Mempawah Regency]
+]
+
+#v(5pt)
+#text(7.5pt)[
+  #text(weight: "bold")[Penyunting/Editor:] \
+  #text(weight: "bold")[BPS Kabupaten Mempawah] \
+  #text(style: "italic")[BPS-Statistics of Mempawah Regency]
+]
+
+#v(5pt)
+#text(7.5pt)[
+  #text(weight: "bold")[Pembuat Kover/Cover Designer:] \
+  #text(weight: "bold")[BPS Kabupaten Mempawah] \
+  #text(style: "italic")[BPS-Statistics of Mempawah Regency]
+]
+
+#v(5pt)
+#text(7.5pt)[
+  #text(weight: "bold")[Sumber Ilustrasi/Illustration Source:] \
+  magnific.com, unsplash.com, BPS Kabupaten Mempawah
+]
+
+#v(5pt)
+#text(7.5pt)[
+  #text(weight: "bold")[Penerbit/Publisher:] \
+  #text(weight: "bold")[© Badan Pusat Statistik Kabupaten Mempawah/]#text(style: "italic")[BPS-Statistics of Mempawah Regency]
+]
+
+#v(1fr)
+
+#text(6.8pt)[
+  #text(weight: "bold")[Dilarang mereproduksi dan/atau menggandakan sebagian atau seluruh isi buku ini untuk tujuan komersial tanpa izin tertulis dari Badan Pusat Statistik] \
+  #v(2pt)
+  #text(style: "italic")[It is prohibited to reproduce and/or duplicate part or all of this book for commercial purpose without permission from BPS-Statistics Indonesia]
 ]
 
 #pagebreak()
 
 // ==========================================
-// 3. TIM PENYUSUN / COMPILERS (HALAMAN iii)
+// 4. TIM PENYUSUN / COMPILERS (HALAMAN iii)
 // ==========================================
-#align(right)[
-  #text(7pt, fill: luma(120))[ISSN xxxx-xxxx]
-]
-
 #v(0.6cm)
 
 #align(center)[
@@ -260,7 +346,7 @@
   #v(2pt)
   #text(8.5pt, weight: "bold")[Kecamatan Sungai Kunyit Dalam Angka 2026] \
   #text(8pt, style: "italic")[Sungai Kunyit District in Figures 2026] \
-  #text(7.5pt)[Volume xx, 2026]
+  #text(7.5pt)[Volume 48, 2026]
   
   #v(16pt)
   #text(8.5pt, weight: "bold")[Pengarah/_Director_] \
@@ -290,7 +376,7 @@
 #pagebreak()
 
 // ==========================================
-// 4. KONTRIBUTOR DATA (HALAMAN iv)
+// 5. KONTRIBUTOR DATA (HALAMAN iv)
 // ==========================================
 #align(center)[
   #text(10.5pt, weight: "bold")[KONTRIBUTOR DATA/]#text(10.5pt, weight: "bold", style: "italic")[DATA CONTRIBUTORS]
@@ -315,107 +401,165 @@
 #pagebreak()
 
 // ==========================================
-// 5. KATA PENGANTAR (HALAMAN v - INDONESIA)
+// 6. KATA PENGANTAR (HALAMAN v - INDONESIA)
 // ==========================================
+// ------------------------------------------
+// KATA PENGANTAR (kata_pengantar)
+// ------------------------------------------
 #metadata("kata_pengantar") <kata_pengantar>
-#align(center)[
-  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/logo_bps.png", height: 28pt)
-  #v(8pt)
-  #text(11pt, weight: "bold")[KATA PENGANTAR]
+
+#block(width: 100%)[
+  #text(11pt, weight: "bold", fill: rgb("#1F2937"))[KATA PENGANTAR]
+  #v(3pt)
+  #line(length: 4.5cm, stroke: 1.5pt + rgb("#FFA50C"))
 ]
-#v(12pt)
+#v(6pt)
 
-#set par(justify: true, leading: 0.65em, first-line-indent: 0pt)
-#text(8pt)[
-  Publikasi *Kecamatan Sungai Kunyit Dalam Angka 2026* merupakan seri publikasi tahunan BPS Kabupaten Mempawah yang menyajikan beragam data statistik sektoral bersumber dari instansi pemerintah daerah, kantor camat, desa/kelurahan, serta survei dan sensus BPS. Publikasi ini memuat gambaran umum mengenai geografi, pemerintahan, serta perkembangan kondisi sosial-demografi dan perekonomian di wilayah Kecamatan Sungai Kunyit.
+#import "@preview/meander:0.2.2"
 
-  #v(5pt)
-  Data yang disajikan diharapkan dapat menjadi rujukan empiris dan indikator penting dalam mendukung perencanaan, pemantauan, serta evaluasi kebijakan pembangunan daerah demi terwujudnya Satu Data Indonesia.
+#let profile = (0.000, 0.000, 0.000, 0.566, 0.605, 0.624, 0.636, 0.642, 0.644, 0.644, 0.655, 0.653, 0.648, 0.641, 0.623, 0.614, 0.621, 0.654, 0.723, 0.788, 0.824, 0.837, 0.846, 0.855, 0.863, 0.870, 0.878, 0.884, 0.891, 0.898, 0.904, 0.912, 0.921, 0.928, 0.924, 0.888, 0.884, 0.879, 0.873, 0.857, 0.813, 0.800, 0.802, 0.803, 0.808, 0.813, 0.818, 0.821, 0.821, 0.822)
 
-  #v(5pt)
-  Ucapan terima kasih dan penghargaan setinggi-tingginya disampaikan kepada Camat Sungai Kunyit, para Kepala Desa/Lurah se-Kecamatan Sungai Kunyit, serta pimpinan instansi dinas/lembaga atas koordinasi dan kontribusi data yang diberikan dalam penyusunan buku ini.
+#block[
+  #set text(hyphenate: false, size: 8pt)
+  #set par(leading: 0.65em)
+  #meander.reflow({
+    import meander: *
 
-  #v(5pt)
-  Kami menyadari masih terdapat ruang penyempurnaan dalam penyajian publikasi ini. Oleh karena itu, masukan dan saran yang membangun sangat kami harapkan guna penyempurnaan edisi di masa mendatang. Semoga publikasi ini memberikan manfaat bagi segenap pemangku kepentingan, perencana kebijakan, akademisi, dan masyarakat luas.
-]
+    // Kontur organik 50-slice resolusi tinggi menyerupai Adobe InDesign
+    placed(
+      bottom + left,
+      dx: -3.2cm,
+      boundary: contour.horiz(div: 50, frac => {
+        let idx = calc.min(49, calc.max(0, calc.floor(frac * 50)))
+        let bound = profile.at(idx)
+        if bound == 0.0 {
+          (0.0, 0.0)
+        } else {
+          (0.0, bound)
+        }
+      }),
+      box(
+        width: 10.68cm,
+        height: 12.5cm,
+        image("/kegiatan/kecamatan-dalam-angka/2026/assets/kepala_bps.png", width: 100%, height: 100%)
+      )
+    )
 
-#v(1fr)
+    container()
+    content[
+      
+        #text(fill: rgb("#EA580C"), weight: "bold")[Publikasi Kecamatan Sungai Kunyit Dalam Angka 2026] merupakan seri publikasi tahunan BPS Kabupaten Mempawah yang menyajikan beragam data statistik sektoral bersumber dari instansi pemerintah daerah, kantor camat, desa/kelurahan, serta survei dan sensus BPS. Publikasi ini memuat gambaran umum mengenai geografi, pemerintahan, serta perkembangan kondisi sosial-demografi dan perekonomian di wilayah Kecamatan Sungai Kunyit secara menyeluruh.
 
-#grid(
-  columns: (46%, 54%),
-  column-gutter: 10pt,
-  align: (left + bottom, left + bottom),
-  [
-    #image("/kegiatan/kecamatan-dalam-angka/2026/assets/kepala_bps.png", width: 96%)
-  ],
-  [
-    #block(inset: (bottom: 1.1cm))[
-      #text(8pt)[
-        Mempawah, September 2026 \
-        Kepala BPS Kabupaten Mempawah \
-        #v(4pt)
-        #image("/kegiatan/kecamatan-dalam-angka/2026/assets/ttd_kepala_bps.png", height: 38pt) \
-        #v(4pt)
-        *MUNAWIR*
-      ]
+        #v(3.5pt)
+        Data yang disajikan diharapkan dapat menjadi rujukan empiris dan indikator penting dalam mendukung perencanaan, pemantauan, serta evaluasi kebijakan pembangunan daerah demi terwujudnya Satu Data Indonesia. Seiring dinamika pembangunan dan kebutuhan data berkualitas, publikasi ini terus disempurnakan baik sistematika penyajian maupun visualisasinya.
+
+        #v(3.5pt)
+        Ucapan terima kasih dan penghargaan setinggi-tingginya kami sampaikan kepada Camat Sungai Kunyit, para Kepala Desa dan Lurah se-Kecamatan Sungai Kunyit, serta pimpinan Organisasi Perangkat Daerah atas koordinasi dan kontribusi data yang diberikan sehingga penyusunan publikasi ini selesai tepat waktu.
+
+        #v(3.5pt)
+        Kami menyadari publikasi ini masih memiliki ruang penyempurnaan. Oleh karena itu, saran dan masukan konstruktif sangat kami harapkan guna perbaikan edisi mendatang. Semoga publikasi ini memberikan manfaat nyata bagi seluruh pemangku kepentingan.
+
+        #v(6pt)
+        #align(right)[
+          #block(width: 4.8cm)[
+            #set align(left)
+            Mempawah, September 2026 \
+            Kepala BPS Kabupaten Mempawah \
+            #v(3pt)
+            #image("/kegiatan/kecamatan-dalam-angka/2026/assets/ttd_kepala_bps.png", height: 26pt) \
+            #v(2pt)
+            *MUNAWIR*
+          ]
+        ]
+      
+      #metadata("p") <page_marker>
     ]
-  ]
-)
+  })
+]
 
 #pagebreak()
 
 // ==========================================
-// 6. PREFACE (HALAMAN vi - ENGLISH)
+// 7. PREFACE (HALAMAN vi - ENGLISH)
 // ==========================================
+// ------------------------------------------
+// PREFACE (preface)
+// ------------------------------------------
 #metadata("preface") <preface>
-#align(center)[
-  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/logo_bps.png", height: 28pt)
-  #v(8pt)
-  #text(11pt, weight: "bold", style: "italic")[PREFACE]
+
+#block(width: 100%)[
+  #text(11pt, weight: "bold", style: "italic", fill: rgb("#1F2937"))[PREFACE]
+  #v(3pt)
+  #line(length: 4.5cm, stroke: 1.5pt + rgb("#FFA50C"))
 ]
-#v(12pt)
+#v(6pt)
 
-#set par(justify: true, leading: 0.65em, first-line-indent: 0pt)
-#text(8pt, style: "italic")[
-  *Sungai Kunyit District in Figures 2026* is an annual publication series issued by BPS-Statistics of Mempawah Regency, presenting various sectoral statistical data sourced from regional government institutions, the subdistrict office, village administrations, as well as surveys and censuses conducted by BPS. This publication provides a comprehensive overview of geography, governance, and the socio-demographic and economic development in Sungai Kunyit District.
+#import "@preview/meander:0.2.2"
 
-  #v(5pt)
-  The statistical indicators presented are expected to serve as essential empirical references to support evidence-based regional development planning, monitoring, and evaluation within the framework of Satu Data Indonesia (One Data Indonesia).
+#let profile = (0.000, 0.000, 0.000, 0.566, 0.605, 0.624, 0.636, 0.642, 0.644, 0.644, 0.655, 0.653, 0.648, 0.641, 0.623, 0.614, 0.621, 0.654, 0.723, 0.788, 0.824, 0.837, 0.846, 0.855, 0.863, 0.870, 0.878, 0.884, 0.891, 0.898, 0.904, 0.912, 0.921, 0.928, 0.924, 0.888, 0.884, 0.879, 0.873, 0.857, 0.813, 0.800, 0.802, 0.803, 0.808, 0.813, 0.818, 0.821, 0.821, 0.822)
 
-  #v(5pt)
-  We would like to express our highest gratitude and appreciation to the Head of Sungai Kunyit District, Village Heads throughout Sungai Kunyit District, and all collaborating regional agencies for their valuable data contributions and seamless cooperation.
+#block[
+  #set text(hyphenate: false, size: 8pt)
+  #set par(leading: 0.65em)
+  #meander.reflow({
+    import meander: *
 
-  #v(5pt)
-  We realize that there is still room for improvement in this publication. Therefore, constructive suggestions and feedback are warmly welcomed to enhance future editions. It is our hope that this publication will be beneficial for policy makers, researchers, academicians, and the general public.
-]
+    // Kontur organik 50-slice resolusi tinggi menyerupai Adobe InDesign
+    placed(
+      bottom + left,
+      dx: -3.2cm,
+      boundary: contour.horiz(div: 50, frac => {
+        let idx = calc.min(49, calc.max(0, calc.floor(frac * 50)))
+        let bound = profile.at(idx)
+        if bound == 0.0 {
+          (0.0, 0.0)
+        } else {
+          (0.0, bound)
+        }
+      }),
+      box(
+        width: 10.68cm,
+        height: 12.5cm,
+        image("/kegiatan/kecamatan-dalam-angka/2026/assets/kepala_bps.png", width: 100%, height: 100%)
+      )
+    )
 
-#v(1fr)
+    container()
+    content[
+      #text(style: "italic")[
+        #text(fill: rgb("#EA580C"), weight: "bold")[Sungai Kunyit District in Figures 2026] is an annual publication series issued by BPS-Statistics of Mempawah Regency, presenting various sectoral statistical data sourced from regional government institutions, the subdistrict office, village administrations, as well as surveys and censuses conducted by BPS. This publication provides a comprehensive overview of geography, governance, and socio-demographic and economic development in Sungai Kunyit District.
 
-#grid(
-  columns: (46%, 54%),
-  column-gutter: 10pt,
-  align: (left + bottom, left + bottom),
-  [
-    #image("/kegiatan/kecamatan-dalam-angka/2026/assets/kepala_bps.png", width: 96%)
-  ],
-  [
-    #block(inset: (bottom: 1.1cm))[
-      #text(8pt, style: "italic")[
-        Mempawah, September 2026 \
-        Chief Statistician of Mempawah Regency \
-        #v(4pt)
-        #image("/kegiatan/kecamatan-dalam-angka/2026/assets/ttd_kepala_bps.png", height: 38pt) \
-        #v(4pt)
-        #text(weight: "bold", style: "normal")[MUNAWIR]
+        #v(3.5pt)
+        The statistical indicators presented are expected to serve as essential empirical references to support evidence-based regional development planning, monitoring, and evaluation within the framework of Satu Data Indonesia (One Data Indonesia). In line with the growing need for high-quality data, this publication continues to be refined.
+
+        #v(3.5pt)
+        We would like to express our highest gratitude and appreciation to the Head of Sungai Kunyit District, Village Heads throughout Sungai Kunyit District, and all collaborating regional agencies for their valuable data contributions and seamless cooperation.
+
+        #v(3.5pt)
+        We realize that there is still room for improvement in this publication. Therefore, constructive suggestions and feedback are warmly welcomed to enhance future editions. It is our hope that this publication will be beneficial for policy makers, researchers, and the public.
+
+        #v(6pt)
+        #align(right)[
+          #block(width: 4.8cm)[
+            #set align(left)
+            Mempawah, September 2026 \
+            Chief Statistician of Mempawah Regency \
+            #v(3pt)
+            #image("/kegiatan/kecamatan-dalam-angka/2026/assets/ttd_kepala_bps.png", height: 26pt) \
+            #v(2pt)
+            #text(weight: "bold", style: "normal")[MUNAWIR]
+          ]
+        ]
       ]
+      #metadata("p") <page_marker>
     ]
-  ]
-)
+  })
+]
 
 #pagebreak()
 
 // ==========================================
-// 6. DAFTAR ISI / CONTENTS
+// 8. DAFTAR ISI / CONTENTS
 // ==========================================
 #metadata("daftar_isi") <daftar_isi>
 
@@ -465,6 +609,19 @@
   )
 }
 
+#let toc_subchapter(no, id_title, en_title, page_val) = {
+  grid(
+    columns: (24pt, 1fr, auto),
+    column-gutter: (4pt, 6pt),
+    align: (top + left, top + left, bottom + right),
+    [#no],
+    [
+      #id_title/#text(style: "italic")[#en_title] #box(width: 1fr, repeat[ . ])
+    ],
+    [#page_val]
+  )
+}
+
 #let toc_entry_item(no, id_title, en_title, page_val) = {
   grid(
     columns: (24pt, 1fr, auto),
@@ -472,15 +629,11 @@
     align: (top + left, top + left, bottom + right),
     [#no],
     [
-      #id_title \
-      #text(style: "italic")[#en_title] #box(width: 1fr, repeat[ . ])
+      #id_title/#text(style: "italic")[#en_title] #box(width: 1fr, repeat[ . ])
     ],
     [#page_val]
   )
 }
-
-#align(right)[#text(7pt)[ISSN: 2477-6777]]
-#v(4pt)
 
 #align(center)[
   #text(10pt, weight: "bold")[DAFTAR ISI/CONTENTS] \
@@ -530,7 +683,7 @@
 #pagebreak()
 
 // ==========================================
-// 7. DAFTAR TABEL / LIST OF TABLES
+// 9. DAFTAR TABEL / LIST OF TABLES
 // ==========================================
 #metadata("daftar_tabel") <daftar_tabel>
 #align(center)[
@@ -574,7 +727,7 @@
 #pagebreak()
 
 // ==========================================
-// 8. DAFTAR GAMBAR / LIST OF FIGURES
+// 10. DAFTAR GAMBAR / LIST OF FIGURES
 // ==========================================
 #metadata("daftar_gambar") <daftar_gambar>
 #align(center)[
@@ -608,7 +761,7 @@
 #pagebreak()
 
 // ==========================================
-// 9. PENJELASAN UMUM / EXPLANATORY NOTES
+// 11. PENJELASAN UMUM / EXPLANATORY NOTES
 // ==========================================
 #metadata("penjelasan_umum") <penjelasan_umum>
 #align(center)[
@@ -641,12 +794,12 @@ Catatan Pembulatan: Karena adanya pembulatan, angka-angka dalam penjumlahan bari
 _Rounding Note: Due to rounding, figures in line/column totals may not strictly equal the sum of constituent elements._
 ]
 
-// --- TRANSISI KE ARABIC NUMBERING ---
 #metadata("transisi_isi") <transisi_isi>
+// --- TRANSISI KE ARABIC NUMBERING ---
+#pagebreak(to: "odd")
 #in_frontmatter.update(false)
-#active_chapter.update("1. GEOGRAFI DAN IKLIM")
-#is_chapter_page.update(true)
-#pagebreak()
+#metadata("1. GEOGRAFI DAN IKLIM") <chapter_title>
+#metadata("Geography and Climate") <chapter_title_en>
 #counter(page).update(1)
 #metadata("bab1") <bab1>
 
@@ -664,86 +817,19 @@ _Rounding Note: Due to rounding, figures in line/column totals may not strictly 
     #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 1: GEOGRAFI DAN IKLIM] \
     #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 1: GEOGRAPHY AND CLIMATE]
   ]
-)
+) <chapter_page>
 #v(10pt)
 
 
-
-#v(6pt)
+#v(1.5cm)
 #align(center)[
-  #image("charts/gambar_1_1.svg", width: 100%)
-]
-#v(-2pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office]]
-#v(4pt)
-#metadata("fig_1_1") <fig_1_1>
-#grid(
-  columns: (auto, 1fr),
-  column-gutter: 8pt,
-  align: (top + left, top + left),
-  [
-    #grid(
-      columns: (auto, auto),
-      column-gutter: 4.5pt,
-      align: (top + center, horizon),
-      [
-        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Gambar]
-        ] \
-        #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Figures]
-      ],
-      [
-        #text(8.5pt, weight: "bold")[1.1]
-      ]
-    )
-  ],
-  [
-    #text(7.5pt, weight: "bold")[Jarak dari Desa/Kelurahan ke Ibukota Kecamatan di Sungai Kunyit, 2025 (km)] \
-    #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Distance from Village/Subdistrict to District Capital in Sungai Kunyit Subdistrict, 2025 (km)]
+  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
+    #align(center + horizon)[
+      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS GEOGRAFI & IKLIM]      #v(6pt)
+      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan Sungai Kunyit]
+    ]
   ]
-)
-#v(10pt)
-
-
-#v(6pt)
-#align(center)[
-  #image("charts/gambar_1_2.svg", width: 100%)
 ]
-#v(-2pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Dinas Kependudukan dan Pencatatan Sipil/BAPEDDA Kabupaten Mempawah/#text(style: "italic")[Population and Civil Registration Service/Regional Development Planning Agency of Mempawah Regency]]
-#v(4pt)
-#metadata("fig_1_2") <fig_1_2>
-#grid(
-  columns: (auto, 1fr),
-  column-gutter: 8pt,
-  align: (top + left, top + left),
-  [
-    #grid(
-      columns: (auto, auto),
-      column-gutter: 4.5pt,
-      align: (top + center, horizon),
-      [
-        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Gambar]
-        ] \
-        #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Figures]
-      ],
-      [
-        #text(8.5pt, weight: "bold")[1.2]
-      ]
-    )
-  ],
-  [
-    #text(7.5pt, weight: "bold")[Luas Wilayah menurut Desa/Kelurahan di Sungai Kunyit, 2025 (km²)] \
-    #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Total Area by Village/Subdistrict in Sungai Kunyit Subdistrict, 2025 (sq.km)]
-  ]
-)
-#v(10pt)
-
 
 
 #pagebreak()
@@ -793,8 +879,8 @@ Kecamatan Sungai Kunyit secara astronomis dan geografis terletak di wilayah pesi
   columns: (2.5fr, 1.3fr, 1.2fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -856,8 +942,8 @@ Kecamatan Sungai Kunyit secara astronomis dan geografis terletak di wilayah pesi
   columns: (2.5fr, 1.3fr, 1.3fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -918,8 +1004,8 @@ Kecamatan Sungai Kunyit secara astronomis dan geografis terletak di wilayah pesi
   columns: (0.6fr, 1.8fr, 3.0fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -973,8 +1059,8 @@ Kecamatan Sungai Kunyit secara astronomis dan geografis terletak di wilayah pesi
   columns: (0.6fr, 3.2fr, 1.2fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -991,9 +1077,9 @@ Kecamatan Sungai Kunyit secara astronomis dan geografis terletak di wilayah pesi
 #v(8pt)
 
 
-#active_chapter.update("2. PEMERINTAHAN")
-#is_chapter_page.update(true)
-#pagebreak()
+#pagebreak(to: "odd")
+#metadata("2. PEMERINTAHAN") <chapter_title>
+#metadata("Government") <chapter_title_en>
 #metadata("bab2") <bab2>
 
 // ==========================================
@@ -1010,48 +1096,19 @@ Kecamatan Sungai Kunyit secara astronomis dan geografis terletak di wilayah pesi
     #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 2: PEMERINTAHAN] \
     #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 2: GOVERNMENT]
   ]
-)
+) <chapter_page>
 #v(10pt)
 
 
-
-#v(6pt)
+#v(1.5cm)
 #align(center)[
-  #image("charts/gambar_2_1.svg", width: 100%)
-]
-#v(-2pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office]]
-#v(4pt)
-#metadata("fig_2_1") <fig_2_1>
-#grid(
-  columns: (auto, 1fr),
-  column-gutter: 8pt,
-  align: (top + left, top + left),
-  [
-    #grid(
-      columns: (auto, auto),
-      column-gutter: 4.5pt,
-      align: (top + center, horizon),
-      [
-        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Gambar]
-        ] \
-        #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Figures]
-      ],
-      [
-        #text(8.5pt, weight: "bold")[2.1]
-      ]
-    )
-  ],
-  [
-    #text(7.5pt, weight: "bold")[Jumlah Rukun Tetangga (RT) menurut Desa/Kelurahan di Sungai Kunyit, 2025] \
-    #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Neighborhood Units (RT) by Village/Subdistrict in Sungai Kunyit Subdistrict, 2025]
+  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
+    #align(center + horizon)[
+      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS PEMERINTAHAN]      #v(6pt)
+      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan Sungai Kunyit]
+    ]
   ]
-)
-#v(10pt)
-
+]
 
 
 #pagebreak()
@@ -1101,8 +1158,8 @@ Secara administratif, Kecamatan Sungai Kunyit terbagi menjadi 12 desa/kelurahan 
   columns: (2.2fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -1164,8 +1221,8 @@ Secara administratif, Kecamatan Sungai Kunyit terbagi menjadi 12 desa/kelurahan 
   columns: (0.6fr, 2.8fr, 1.6fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -1226,8 +1283,8 @@ Secara administratif, Kecamatan Sungai Kunyit terbagi menjadi 12 desa/kelurahan 
   columns: (0.6fr, 2.2fr, 2.8fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -1289,8 +1346,8 @@ Secara administratif, Kecamatan Sungai Kunyit terbagi menjadi 12 desa/kelurahan 
   columns: (2.5fr, 1.2fr, 1.5fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -1351,8 +1408,8 @@ Secara administratif, Kecamatan Sungai Kunyit terbagi menjadi 12 desa/kelurahan 
   columns: (2.2fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -1407,8 +1464,8 @@ Secara administratif, Kecamatan Sungai Kunyit terbagi menjadi 12 desa/kelurahan 
   columns: (2.2fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -1427,9 +1484,9 @@ Secara administratif, Kecamatan Sungai Kunyit terbagi menjadi 12 desa/kelurahan 
 #v(8pt)
 
 
-#active_chapter.update("3. KEPENDUDUKAN")
-#is_chapter_page.update(true)
-#pagebreak()
+#pagebreak(to: "odd")
+#metadata("3. KEPENDUDUKAN") <chapter_title>
+#metadata("Population") <chapter_title_en>
 #metadata("bab3") <bab3>
 
 // ==========================================
@@ -1446,48 +1503,19 @@ Secara administratif, Kecamatan Sungai Kunyit terbagi menjadi 12 desa/kelurahan 
     #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 3: KEPENDUDUKAN] \
     #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 3: POPULATION]
   ]
-)
+) <chapter_page>
 #v(10pt)
 
 
-
-#v(6pt)
+#v(1.5cm)
 #align(center)[
-  #image("charts/gambar_3_1.svg", width: 100%)
-]
-#v(-2pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Dinas Kependudukan dan Pencatatan Sipil Kabupaten Mempawah (Semester II 2025)/#text(style: "italic")[Population and Civil Registration Service of Mempawah Regency (Semester II 2025)]]
-#v(4pt)
-#metadata("fig_3_1") <fig_3_1>
-#grid(
-  columns: (auto, 1fr),
-  column-gutter: 8pt,
-  align: (top + left, top + left),
-  [
-    #grid(
-      columns: (auto, auto),
-      column-gutter: 4.5pt,
-      align: (top + center, horizon),
-      [
-        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Gambar]
-        ] \
-        #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Figures]
-      ],
-      [
-        #text(8.5pt, weight: "bold")[3.1]
-      ]
-    )
-  ],
-  [
-    #text(7.5pt, weight: "bold")[Jumlah Penduduk menurut Jenis Kelamin dan Desa/Kelurahan di Sungai Kunyit, 2025] \
-    #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Population by Sex and Village/Subdistrict in Sungai Kunyit Subdistrict, 2025]
+  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
+    #align(center + horizon)[
+      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS KEPENDUDUKAN]      #v(6pt)
+      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan Sungai Kunyit]
+    ]
   ]
-)
-#v(10pt)
-
+]
 
 
 #pagebreak()
@@ -1537,8 +1565,8 @@ Berdasdasarkan data registrasi semester II tahun 2025 dari Dinas Kependudukan da
   columns: (2.0fr, 1.0fr, 1.0fr, 1.1fr, 1.0fr, 1.2fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -1563,9 +1591,9 @@ Berdasdasarkan data registrasi semester II tahun 2025 dari Dinas Kependudukan da
 #v(8pt)
 
 
-#active_chapter.update("4. SOSIAL DAN KESEJAHTERAAN RAKYAT")
-#is_chapter_page.update(true)
-#pagebreak()
+#pagebreak(to: "odd")
+#metadata("4. SOSIAL DAN KESEJAHTERAAN RAKYAT") <chapter_title>
+#metadata("Social and Welfare") <chapter_title_en>
 #metadata("bab4") <bab4>
 
 // ==========================================
@@ -1582,7 +1610,7 @@ Berdasdasarkan data registrasi semester II tahun 2025 dari Dinas Kependudukan da
     #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 4: SOSIAL DAN KESEJAHTERAAN RAKYAT] \
     #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 4: SOCIAL AND WELFARE]
   ]
-)
+) <chapter_page>
 #v(10pt)
 
 
@@ -1644,8 +1672,8 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Sungai Kunyit ditopang ole
   columns: (2.6fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -1705,8 +1733,8 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Sungai Kunyit ditopang ole
   columns: (2.5fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -1765,8 +1793,8 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Sungai Kunyit ditopang ole
   columns: (2.5fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -1826,8 +1854,8 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Sungai Kunyit ditopang ole
   columns: (2.5fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -1886,8 +1914,8 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Sungai Kunyit ditopang ole
   columns: (2.5fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -1943,8 +1971,8 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Sungai Kunyit ditopang ole
   columns: (2.2fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -2005,8 +2033,8 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Sungai Kunyit ditopang ole
   columns: (2.6fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -2026,9 +2054,9 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Sungai Kunyit ditopang ole
 #v(8pt)
 
 
-#active_chapter.update("5. PERTANIAN")
-#is_chapter_page.update(true)
-#pagebreak()
+#pagebreak(to: "odd")
+#metadata("5. PERTANIAN") <chapter_title>
+#metadata("Agriculture") <chapter_title_en>
 #metadata("bab5") <bab5>
 
 // ==========================================
@@ -2045,7 +2073,7 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Sungai Kunyit ditopang ole
     #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 5: PERTANIAN] \
     #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 5: AGRICULTURE]
   ]
-)
+) <chapter_page>
 #v(10pt)
 
 
@@ -2107,8 +2135,8 @@ Sektor pertanian merupakan salah satu pilar penopang perekonomian masyarakat di 
   columns: (2.6fr, 0.9fr, 0.9fr, 0.9fr, 0.9fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -2167,8 +2195,8 @@ Sektor pertanian merupakan salah satu pilar penopang perekonomian masyarakat di 
   columns: (2.6fr, 0.9fr, 0.9fr, 0.9fr, 0.9fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -2227,8 +2255,8 @@ Sektor pertanian merupakan salah satu pilar penopang perekonomian masyarakat di 
   columns: (2.6fr, 0.9fr, 0.9fr, 0.9fr, 0.9fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -2283,8 +2311,8 @@ Sektor pertanian merupakan salah satu pilar penopang perekonomian masyarakat di 
   columns: (2.6fr, 0.9fr, 0.9fr, 0.9fr, 0.9fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -2340,8 +2368,8 @@ Sektor pertanian merupakan salah satu pilar penopang perekonomian masyarakat di 
   columns: (2.6fr, 0.9fr, 0.9fr, 0.9fr, 0.9fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -2361,9 +2389,9 @@ Sektor pertanian merupakan salah satu pilar penopang perekonomian masyarakat di 
 #v(8pt)
 
 
-#active_chapter.update("6. PARIWISATA, TRANSPORTASI, DAN KOMUNIKASI")
-#is_chapter_page.update(true)
-#pagebreak()
+#pagebreak(to: "odd")
+#metadata("6. PARIWISATA, TRANSPORTASI, DAN KOMUNIKASI") <chapter_title>
+#metadata("Tourism, Transportation, and Communication") <chapter_title_en>
 #metadata("bab6") <bab6>
 
 // ==========================================
@@ -2380,7 +2408,7 @@ Sektor pertanian merupakan salah satu pilar penopang perekonomian masyarakat di 
     #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 6: PARIWISATA, TRANSPORTASI & KOMUNIKASI] \
     #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 6: TOURISM, TRANSPORTATION AND COMMUNICATION]
   ]
-)
+) <chapter_page>
 #v(10pt)
 
 
@@ -2442,8 +2470,8 @@ Konektivitas wilayah di Kecamatan Sungai Kunyit terhubung oleh jaringan jalan da
   columns: (2.2fr, 1.1fr, 1.2fr, 1.1fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -2505,8 +2533,8 @@ Konektivitas wilayah di Kecamatan Sungai Kunyit terhubung oleh jaringan jalan da
   columns: (2.8fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -2557,8 +2585,8 @@ Konektivitas wilayah di Kecamatan Sungai Kunyit terhubung oleh jaringan jalan da
   columns: (2.2fr, 1.0fr, 1.2fr, 1.2fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -2583,9 +2611,9 @@ Konektivitas wilayah di Kecamatan Sungai Kunyit terhubung oleh jaringan jalan da
 #v(8pt)
 
 
-#active_chapter.update("7. PERBANKAN, KOPERASI, DAN PERDAGANGAN")
-#is_chapter_page.update(true)
-#pagebreak()
+#pagebreak(to: "odd")
+#metadata("7. PERBANKAN, KOPERASI, DAN PERDAGANGAN") <chapter_title>
+#metadata("Banking, Cooperative, and Trade") <chapter_title_en>
 #metadata("bab7") <bab7>
 
 // ==========================================
@@ -2602,7 +2630,7 @@ Konektivitas wilayah di Kecamatan Sungai Kunyit terhubung oleh jaringan jalan da
     #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 7: PERBANKAN, KOPERASI & PERDAGANGAN] \
     #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 7: BANKING, COOPERATIVES AND TRADE]
   ]
-)
+) <chapter_page>
 #v(10pt)
 
 
@@ -2664,8 +2692,8 @@ Aktivitas perniagaan di Kecamatan Sungai Kunyit berkembang dinamis didukung oleh
   columns: (2.6fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -2722,8 +2750,8 @@ Aktivitas perniagaan di Kecamatan Sungai Kunyit berkembang dinamis didukung oleh
   columns: (2.6fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -2776,8 +2804,8 @@ Aktivitas perniagaan di Kecamatan Sungai Kunyit berkembang dinamis didukung oleh
   columns: (2.8fr, 0.9fr, 0.9fr, 0.9fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { rgb("#FFC934") }
-                      else if row == 1 { rgb("#FFDC8A") }
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
   align: (col, row) => if row <= 1 { center + horizon }
@@ -2794,21 +2822,30 @@ Aktivitas perniagaan di Kecamatan Sungai Kunyit berkembang dinamis didukung oleh
 #v(8pt)
 
 
-#active_chapter.update("DAFTAR PUSTAKA")
-#pagebreak()
+#pagebreak(to: "odd")
+#metadata("DAFTAR PUSTAKA") <chapter_title>
+#metadata("Bibliography") <chapter_title_en>
 
 // ==========================================
-// DAFTAR PUSTAKA / BIBLIOGRAPHY
+// DAFTAR PUSTAKA (BIBLIOGRAPHY)
 // ==========================================
-#metadata("daftar_pustaka") <daftar_pustaka>
-#v(0.8cm)
-#align(center)[
-  #text(11pt, weight: "bold")[DAFTAR PUSTAKA/]#text(11pt, weight: "bold", style: "italic")[BIBLIOGRAPHY]
-]
-#v(16pt)
+#v(0.5cm)
+#block[
+  #text(12pt, weight: "bold")[DAFTAR PUSTAKA] \
+  #text(9pt, style: "italic", fill: rgb("#4B5563"))[BIBLIOGRAPHY]
+] <chapter_page>
+#v(10pt)
 
-#set par(justify: true, first-line-indent: -1.5em, hanging-indent: 1.5em, leading: 0.65em)
 #text(8pt)[
+  Badan Pusat Statistik Kabupaten Mempawah. 2025. _Kabupaten Mempawah Dalam Angka 2025_. Mempawah: BPS Kabupaten Mempawah.
+
+  #v(8pt)
+  Badan Pusat Statistik. 2024. _Indikator Pertanian 2023/2024_. Jakarta: Badan Pusat Statistik.
+
+  #v(8pt)
+  Badan Pusat Statistik. 2023. _Statistik Indonesia 2023_. Jakarta: Badan Pusat Statistik.
+
+  #v(8pt)
   Badan Pusat Statistik. 2022. _Buku 3: Konsep dan Definisi Podes 2022_. Jakarta: Badan Pusat Statistik.
 
   #v(8pt)
@@ -2819,6 +2856,7 @@ Aktivitas perniagaan di Kecamatan Sungai Kunyit berkembang dinamis didukung oleh
 ]
 
 #metadata("akhir_buku") <akhir_buku>
+#pagebreak(to: "even")
 
 // ==========================================
 // KOVER BELAKANG (BACK COVER) - GENERATED NATIVELY VIA TYPST
@@ -2954,21 +2992,5 @@ Aktivitas perniagaan di Kecamatan Sungai Kunyit berkembang dinamis didukung oleh
         ]
       ]
     )
-  ]
-
-  // 5. Barcode & Kotak ISSN Resmi (Kanan Bawah)
-  #place(bottom + right, dx: -0.9cm, dy: -1.0cm)[
-    #rect(
-      fill: white,
-      radius: 1.5pt,
-      inset: (x: 8pt, top: 6pt, bottom: 5pt),
-      stroke: none,
-    )[
-      #align(center)[
-        #text(font: ("Liberation Sans", "Arial"), size: 5.8pt, weight: "bold", fill: black)[ISSN 2477-6777]
-        #v(3pt)
-        #image("/kegiatan/kecamatan-dalam-angka/2026/assets/backcover_barcode_clean.png", width: 1.95cm)
-      ]
-    ]
   ]
 ]

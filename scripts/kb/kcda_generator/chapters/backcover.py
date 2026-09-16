@@ -3,7 +3,27 @@
 from typing import Dict, Any
 
 def render_backcover(cfg: Dict[str, Any]) -> str:
-    return """
+    issn = cfg.get("issn")
+    barcode_markup = ""
+    if issn:
+        barcode_markup = f"""
+  // 5. Barcode & Kotak ISSN Resmi (Kanan Bawah)
+  #place(bottom + right, dx: -0.9cm, dy: -1.0cm)[
+    #rect(
+      fill: white,
+      radius: 1.5pt,
+      inset: (x: 8pt, top: 6pt, bottom: 5pt),
+      stroke: none,
+    )[
+      #align(center)[
+        #text(font: ("Liberation Sans", "Arial"), size: 5.8pt, weight: "bold", fill: black)[ISSN {issn}]
+        #v(3pt)
+        #image("/kegiatan/kecamatan-dalam-angka/2026/assets/backcover_barcode_clean.png", width: 1.95cm)
+      ]
+    ]
+  ]"""
+
+    return f"""
 // ==========================================
 // KOVER BELAKANG (BACK COVER) - GENERATED NATIVELY VIA TYPST
 // ==========================================
@@ -16,7 +36,7 @@ def render_backcover(cfg: Dict[str, Any]) -> str:
 )[
   // 1. Pita Dekoratif Melengkung Khas Publikasi (Typst Bezier Curves)
   #place(top + left)[
-    #let ribbon_left(dx, dy, alpha, thick) = {
+    #let ribbon_left(dx, dy, alpha, thick) = {{
       curve(
         stroke: (paint: rgb(220, 130, 125, alpha), thickness: thick),
         curve.move((dx + -30pt, dy + 320pt)),
@@ -26,7 +46,7 @@ def render_backcover(cfg: Dict[str, Any]) -> str:
           (dx + 220pt, dy + -30pt),
         ),
       )
-    }
+    }}
     #ribbon_left(-55pt, 60pt, 5%, 3.5pt)
     #ribbon_left(-40pt, 75pt, 8%, 3.5pt)
     #ribbon_left(-25pt, 90pt, 12%, 3.5pt)
@@ -37,7 +57,7 @@ def render_backcover(cfg: Dict[str, Any]) -> str:
   ]
 
   #place(bottom + right)[
-    #let ribbon_right(dx, dy, alpha, thick) = {
+    #let ribbon_right(dx, dy, alpha, thick) = {{
       curve(
         stroke: (paint: rgb(220, 130, 125, alpha), thickness: thick),
         curve.move((dx + 40pt, dy + 40pt)),
@@ -47,7 +67,7 @@ def render_backcover(cfg: Dict[str, Any]) -> str:
           (dx - 160pt, dy - 440pt),
         ),
       )
-    }
+    }}
     #ribbon_right(-15pt, 15pt, 5%, 4pt)
     #ribbon_right(0pt, 0pt, 8%, 4pt)
     #ribbon_right(15pt, -15pt, 12%, 4pt)
@@ -138,22 +158,6 @@ def render_backcover(cfg: Dict[str, Any]) -> str:
         ]
       ]
     )
-  ]
-
-  // 5. Barcode & Kotak ISSN Resmi (Kanan Bawah)
-  #place(bottom + right, dx: -0.9cm, dy: -1.0cm)[
-    #rect(
-      fill: white,
-      radius: 1.5pt,
-      inset: (x: 8pt, top: 6pt, bottom: 5pt),
-      stroke: none,
-    )[
-      #align(center)[
-        #text(font: ("Liberation Sans", "Arial"), size: 5.8pt, weight: "bold", fill: black)[ISSN 2477-6777]
-        #v(3pt)
-        #image("/kegiatan/kecamatan-dalam-angka/2026/assets/backcover_barcode_clean.png", width: 1.95cm)
-      ]
-    ]
-  ]
+  ]{barcode_markup}
 ]
 """

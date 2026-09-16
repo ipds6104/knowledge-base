@@ -29,7 +29,7 @@ SKIP_EXTENSIONS = {
     # Arsip & compress
     ".zip", ".tar", ".gz", ".bz2", ".xz", ".rar", ".7z",
     # Office & dokumen
-    ".xlsx", ".xls", ".ods", ".pdf", ".docx", ".doc", ".pptx", ".ppt",
+    ".xlsx", ".xls", ".ods", ".pdf", ".docx", ".doc", ".pptx", ".ppt", ".typ",
     # Gambar & media
     ".png", ".jpg", ".jpeg", ".gif", ".svg", ".ico", ".webp", ".bmp",
     ".mp3", ".mp4", ".wav", ".avi", ".mov", ".mkv",

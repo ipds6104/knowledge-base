@@ -179,7 +179,7 @@ def render_chapter4(cfg: Dict[str, Any], out_dir: Optional[Any] = None) -> str:
     #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 4: SOSIAL DAN KESEJAHTERAAN RAKYAT] \\
     #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 4: SOCIAL AND WELFARE]
   ]
-)
+) <chapter_page>
 #v(10pt)
 
 {infografis_markup}

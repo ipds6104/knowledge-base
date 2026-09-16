@@ -81,7 +81,7 @@ def render_chapter3(cfg: Dict[str, Any], out_dir: Optional[Any] = None) -> str:
     #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 3: KEPENDUDUKAN] \\
     #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 3: POPULATION]
   ]
-)
+) <chapter_page>
 #v(10pt)
 
 {infografis_markup}

@@ -20,8 +20,8 @@ def register_kcda_subparser(subparsers):
         "action",
         nargs="?",
         default="audit",
-        choices=["audit", "sync", "report", "build", "seed-legacy"],
-        help="Aksi: 'audit' (evaluasi data), 'sync' (unduh dari Sheets), 'build' (kompilasi naskah), 'seed-legacy' (ekstrak & injeksi data carry-over 2025)",
+        choices=["audit", "sync", "report", "build", "seed-legacy", "audit-layout", "test-layout"],
+        help="Aksi: 'audit' (evaluasi data), 'sync' (unduh Sheets), 'build' (kompilasi naskah), 'audit-layout' (audit kepatuhan PDF), 'seed-legacy' (injeksi data 2025)",
     )
     parser.add_argument(
         "--kecamatan", "-k",
@@ -62,8 +62,36 @@ def handle_kcda(args):
         download_all_kcda_tables()
         print("✅ Sinkronisasi selesai. Menjalankan audit...")
         run_kcda_audit(filter_kec=args.kecamatan)
-    elif action in ["audit", "report"]:
-        run_kcda_audit(filter_kec=args.kecamatan)
+    elif action in ["audit-layout", "test-layout"]:
+        from .pdf_audit import KcdaPdfAuditor
+        auditor = KcdaPdfAuditor()
+        pdf_pattern = "kegiatan/kecamatan-dalam-angka/2026/outputs/*/kcda-2026-*.pdf"
+        all_pdfs = sorted(glob.glob(pdf_pattern))
+        if args.kecamatan:
+            slug = args.kecamatan.lower().strip().replace("kecamatan ", "").replace(" ", "-")
+            target_pdfs = [p for p in all_pdfs if slug in p]
+        else:
+            target_pdfs = all_pdfs
+
+        if not target_pdfs:
+            print("⚠️ Tidak ditemukan berkas PDF KCDA untuk diaudit. Silakan jalankan 'kb kcda build' terlebih dahulu.")
+            sys.exit(1)
+
+        print(f"\n🔍 Menjalankan Audit Kepatuhan Layout Typst PDF ({len(target_pdfs)} berkas)...")
+        print("=" * 75)
+        all_passed = True
+        for pdf_path in target_pdfs:
+            res = auditor.audit_file(pdf_path)
+            print(auditor.format_cli_report(res))
+            print("-" * 75)
+            if not res.is_passed:
+                all_passed = False
+
+        if all_passed:
+            print("🎉 SELURUH DOKUMEN 100% MEMENUHI PEDOMAN PUBLIKASI BPS EDISI 2023!\n")
+        else:
+            print("❌ Ditemukan pelanggaran layout yang harus diperbaiki!\n")
+            sys.exit(1)
     elif action == "build":
         # 1. Step 1: Tarik data terbaru dari Google Sheets hulu (default: aktif)
         if not args.no_sync:
