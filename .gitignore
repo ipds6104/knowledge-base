@@ -65,7 +65,8 @@ test_*.png
 test_*.typ
 test_*.svg
 
-
+# Local Binaries & Tool Executables
+bin/
 
 # Cache & Output Tergenerasi / PDF Verifikasi
 pdf_verifikasi_rt*/
@@ -76,6 +77,11 @@ sample_lembar_verifikasi_*
 pdf_gdrive_links.json
 *.pdf
 scratch/
+*.part
+*.tmp
+
+# Spreadsheet & Office Files (Data Anggaran/SAKTI & Olahan)
+data/**/*.xlsx
 
 # Virtual Environments, Logs & Testing Artifacts
 .venv/
@@ -84,6 +90,7 @@ env/
 *.log
 .pytest_cache/
 .ruff_cache/
+.mypy_cache/
 .coverage
 htmlcov/
 *.egg-info/

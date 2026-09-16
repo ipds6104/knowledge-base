@@ -465,6 +465,8 @@ Berikut adalah daftar PPL dengan rasio usaha keluarga Non-Aktif (Closed / Not Fo
   Surat Dinas BPS Provinsi Kalbar No. B-713/61000/VS.190/2026 mengenai jadwal pelatihan BPS Kab/Kota (7–11 September 2026), beban 500 SLS/bulan per petugas, materi, serta format SPK dan BAST.
 * 📚 **[Materi Lengkap Pengolahan Wilkerstat SE2026 (10 Modul)](materi-pengolahan/README.md)**  
   Arsip komprehensif materi pelatihan Inda & Petugas Pengolahan Wilkerstat SE2026 (10 modul PDF & Markdown LLM-ready, diagram alur kerja, standar beban kerja mitra, dan juknis pengolahan).
+* 📄 **[Audit Rekonsiliasi Prelist DTSEN Hilang ke Regsosek CETAR Kalbar](docs/audit-dtsen-hilang-regsosek-cetar.md)**  
+  Hasil audit matching data prelist DTSEN desil rendah (<7) ke database Regsosek CETAR se-Kalbar: analisis 6.662 KK tidak ditemukan (1.839 KK terdeteksi koordinat di CETAR), klasifikasi 6 tipologi catatan petugas CAPI/Fasih, mitigasi resiko catatan kosong/tautologi, dan rujukan spreadsheet master [Audit DTSEN Hilang](https://docs.google.com/spreadsheets/d/1iK-N0xVKViNbzTIc64qBOjESJFdcR9IEtv1RjMWN9b0/edit?pli=1&gid=2072569417#gid=2072569417).
 
 ---
 
