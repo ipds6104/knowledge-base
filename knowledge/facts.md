@@ -48,3 +48,13 @@
      - Kegiatan Statistik Lainnya: Statistik Harga (2903: Rp 495,2 jt), Kesra/Susenas (2906: Rp 385,2 jt), Pertanian (2910: Rp 211 jt), Kependudukan/Ketenagakerjaan (2905: Rp 141,1 jt), Industri (2904: Rp 87,3 jt), Peternakan/Perikanan (2909: Rp 69,1 jt), dll.
   2. **Program Dukungan Manajemen (054.01.WA / 2886)**: **Rp 4.110.595.000,-**
      - Gaji, tunjangan operasional, dan pemeliharaan perkantoran BPS Kabupaten Mempawah.
+
+## Skala Gaji Pokok PNS (PP Nomor 5 Tahun 2024)
+- **Dasar Hukum**: Peraturan Pemerintah Republik Indonesia Nomor 5 Tahun 2024 tentang Perubahan Kesembilan Belas atas Peraturan Pemerintah Nomor 7 Tahun 1977 tentang Peraturan Gaji Pegawai Negeri Sipil (LNRI 2024 No. 15, TLNRI No. 6917).
+- **TMT Berlaku**: **1 Januari 2024** (ditetapkan dan diundangkan 26 Januari 2024).
+- **Penyesuaian**: Kenaikan gaji pokok rata-rata sebesar **8%** dari ketentuan sebelumnya (PP No. 15 Tahun 2019).
+- **Sifat Angka Gaji Pokok**: **Nominal Baku Tunggal (Fixed Basic Salary Scale)**, **BUKAN** upah minimum (*floor wage*). Instansi/bendahara tidak dapat mengubah atau menegosiasikan besaran ini. Besaran mengikat nasional untuk seluruh ASN PNS sesuai Golongan Ruang dan Masa Kerja Golongan (MKG).
+- **MKG (Masa Kerja Golongan)**: Akumulasi masa dinas sah dalam golongan bersangkutan (0–27 tahun untuk Gol I; 0–33 tahun untuk Gol II; 0–32 tahun untuk Gol III & IV). Setiap 2 tahun memenuhi syarat berhak atas Kenaikan Gaji Berkala (KGB).
+- **Komponen Penghasilan Tambahan**: Di luar gaji pokok, PNS menerima hak tunjangan melekat (suami/istri 10%, anak 2%, uang makan, tunjangan beras) serta Tunjangan Kinerja (Tukin BPS berdasarkan Perpres) dan tunjangan fungsional/jabatan.
+- **Rujukan Google Spreadsheet**: [Tabel Gaji Pokok PNS - PP Nomor 5 Tahun 2024 (BPS Mempawah)](https://docs.google.com/spreadsheets/d/1JXiDTejaxXRqasALOMsXYWfPydCatZtmf1kIzqLeFpA/edit?usp=sharing)
+- **Lokasi Folder Google Drive**: Folder `Kepegawaian` (ID: `1RrF76RT2GOqQjKREL14x-TXizqQgXCSP`, [Akses Google Drive](https://drive.google.com/drive/folders/1RrF76RT2GOqQjKREL14x-TXizqQgXCSP)).
