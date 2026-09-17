@@ -467,6 +467,8 @@ Berikut adalah daftar PPL dengan rasio usaha keluarga Non-Aktif (Closed / Not Fo
   Arsip komprehensif materi pelatihan Inda & Petugas Pengolahan Wilkerstat SE2026 (10 modul PDF & Markdown LLM-ready, diagram alur kerja, standar beban kerja mitra, dan juknis pengolahan).
 * 📄 **[Audit Rekonsiliasi Prelist DTSEN Hilang ke Regsosek CETAR Kalbar](docs/audit-dtsen-hilang-regsosek-cetar.md)**  
   Hasil audit matching data prelist DTSEN desil rendah (<7) ke database Regsosek CETAR se-Kalbar: analisis 6.662 KK tidak ditemukan (1.839 KK terdeteksi koordinat di CETAR), klasifikasi 6 tipologi catatan petugas CAPI/Fasih, mitigasi resiko catatan kosong/tautologi, dan rujukan spreadsheet master [Audit DTSEN Hilang](https://docs.google.com/spreadsheets/d/1iK-N0xVKViNbzTIc64qBOjESJFdcR9IEtv1RjMWN9b0/edit?pli=1&gid=2072569417#gid=2072569417).
+* 📄 **[Mekanisme Cleanup Assignment FASIH, Alokasi Petugas & Syarat Pembayaran Honor SE2026](docs/mekanisme-cleanup-fasih-dan-alokasi-petugas.md)**  
+  SOP resmi cleanup assignment per device via FASIH-SM (http://s.bps.go.id/CleanUp_SE2026) sebagai syarat penarikan data ke BOS/SOBAT untuk pembuatan FP honor & BAST, tata cara perpindahan role PML ke PPL, serta manajemen alokasi petugas periode 17–30 September 2026.
 
 ---
 

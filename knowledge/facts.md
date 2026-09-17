@@ -5,6 +5,18 @@
 - **Sistem**: Aina asisten mandiri berbasis Rust & Google Antigravity CLI.
 - **Zona Waktu**: Asia/Jakarta (WIB, UTC+7).
 
+## Server Database SurrealDB (SE2026 / FASIH Sync)
+- **Host / Endpoint**: `http://100.88.216.97:8900` (Tailscale)
+- **Namespace**: `bps_mempawah`
+- **Database**: `se2026`
+- **Autentikasi**: Basic Auth `root:root`
+- **Endpoint SQL**: `http://100.88.216.97:8900/sql`
+- **Endpoint RPC**: `http://100.88.216.97:8900/rpc`
+- **Daftar Tabel**: `assignment`, `kp_nested`, `nested_dtsen`, `nested_dtsen_var`, `nested_meteran`, `se2026_nested`.
+- **Status Koneksi**: Terverifikasi aktif dan terhubung langsung dari server Aina via Tailnet (latensi ~1ms).
+- **Helper Query**: `python3 scripts/query_surreal.py "<SQL>"`
+
+
 ## Indikator Strategis Makro Kabupaten Mempawah (s.bps.go.id/indikator_strategis6104)
 - **Persentase Kemiskinan**:
   - 2023: 5,21%
@@ -32,6 +44,7 @@
 
 ## Monitoring Sensus Ekonomi 2026 (SE2026)
 - **Siklus Pembaruan Status Tandai Selesai SLS**: Pembaruan/sinkronisasi status tandai selesai SLS pada spreadsheet monitoring (`1QWwKu8VMg3jwTW6q1SShMBzS10jkBy6Y4wEd7IDWzb0`) ditarik berkala 1 jam sekali, tepat setiap jam di menit :00 (misal: 14:00, 15:00, dst).
+- **Mekanisme Cleanup FASIH & Penarikan Data Honor ke BOS**: Syarat penarikan data petugas SE ke BOS untuk pembuatan Form Pembayaran (FP) honor & BAST mewajibkan petugas berstatus clean (petugas uninstall FASIH Mobile setelah submit survei lain, lalu Admin Kab/Kota eksekusi Cleanup Data per device di FASIH-SM via `s.bps.go.id/CleanUp_SE2026`). Dokumen: [`mekanisme-cleanup-fasih-dan-alokasi-petugas.md`](../kegiatan/sensus-ekonomi-2026/2026/docs/mekanisme-cleanup-fasih-dan-alokasi-petugas.md).
 
 ## POK BPS Kabupaten Mempawah TA 2026 (SAKTI Kemenkeu)
 - **Sumber Data**: Sistem SAKTI Kementerian Keuangan (Rincian Kertas Kerja Satker).
