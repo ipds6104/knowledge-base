@@ -26,12 +26,39 @@ deadlines:
     status: "selesai"
   - tanggal: "2026-09-07"
     kegiatan: "Mulai Pelatihan Petugas Pengolahan Peta (Wilkerstat) SE2026 BPS Kab/Kota"
+    status: "selesai"
+  - tanggal: "2026-09-25"
+    kegiatan: "Batas Akhir Pelatihan Petugas Pengolahan Peta Wilkerstat (Surat B-330)"
     status: "belum"
-  - tanggal: "2026-09-11"
-    kegiatan: "Batas Akhir Pelatihan Petugas Pengolahan Peta (Wilkerstat) SE2026 BPS Kab/Kota"
+  - tanggal: "2026-09-30"
+    kegiatan: "Batas Akhir Entri & Approval Perubahan SLS di FRS-MFDOnline (Surat B-362)"
     status: "belum"
-  - tanggal: "2026-10-11"
-    kegiatan: "Target Akhir Pengolahan Peta & Muatan Wilkerstat SE2026 (Durasi 1 Bulan)"
+  - tanggal: "2026-10-01"
+    kegiatan: "Mulai Pengolahan Peta Wilkerstat BPS Kab/Kota (Surat B-330)"
+    status: "belum"
+  - tanggal: "2026-10-23"
+    kegiatan: "Mulai Unggah Peta ke Geospatial System (BPS Kab/Kota)"
+    status: "belum"
+  - tanggal: "2026-11-02"
+    kegiatan: "Mulai Rekonsiliasi Batas & Approval Peta Provinsi di Geospatial System"
+    status: "belum"
+  - tanggal: "2026-11-06"
+    kegiatan: "Batas Akhir Pengolahan Peta Wilkerstat BPS Kab/Kota (Surat B-330)"
+    status: "belum"
+  - tanggal: "2026-11-16"
+    kegiatan: "Mulai Unggah Geotagging ke Geospatial System (BPS Kab/Kota)"
+    status: "belum"
+  - tanggal: "2026-11-20"
+    kegiatan: "Batas Akhir Unggah Peta ke Geospatial System & Rekonsiliasi Batas"
+    status: "belum"
+  - tanggal: "2026-11-27"
+    kegiatan: "Batas Akhir Approval Peta di Geospatial System oleh BPS Provinsi"
+    status: "belum"
+  - tanggal: "2026-12-04"
+    kegiatan: "Batas Akhir Unggah Geotagging ke Geospatial System (BPS Kab/Kota)"
+    status: "belum"
+  - tanggal: "2026-12-18"
+    kegiatan: "Batas Akhir Finalisasi Hasil Pengolahan Peta Wilkerstat (BPS Pusat)"
     status: "belum"
 ---
 # Sensus Ekonomi 2026 (2026)
@@ -463,6 +490,8 @@ Berikut adalah daftar PPL dengan rasio usaha keluarga Non-Aktif (Closed / Not Fo
   10 klausul pengamanan data dan aturan kerahasiaan BPS RI untuk aktivasi akun FASIH-DATA.
 * 📄 **[Surat Pelatihan Petugas Pengolahan Wilkerstat SE2026](docs/surat-pelatihan-petugas-pengolahan-wilkerstat-se2026.md)**  
   Surat Dinas BPS Provinsi Kalbar No. B-713/61000/VS.190/2026 mengenai jadwal pelatihan BPS Kab/Kota (7–11 September 2026), beban 500 SLS/bulan per petugas, materi, serta format SPK dan BAST.
+* 📄 **[Surat Perubahan Jumlah Petugas dan Moda Pelatihan Wilkerstat SE2026](docs/surat-perubahan-petugas-dan-moda-pelatihan-wilkerstat-se2026.md)**  
+  Surat Dinas BPS RI No. B-805/02100/VS.190/2026 mengenai ketentuan beban baku 500 SLS/bulan, koordinasi usulan perubahan jumlah petugas ke Dit. Metodologi Statistik & Sains Data, persetujuan moda pelatihan luring/tambahan hari (max honor mengajar 18 OJP), dan acuan revisi anggaran PMK 41/2026.
 * 📚 **[Materi Lengkap Pengolahan Wilkerstat SE2026 (10 Modul)](materi-pengolahan/README.md)**  
   Arsip komprehensif materi pelatihan Inda & Petugas Pengolahan Wilkerstat SE2026 (10 modul PDF & Markdown LLM-ready, diagram alur kerja, standar beban kerja mitra, dan juknis pengolahan).
 * 📄 **[Audit Rekonsiliasi Prelist DTSEN Hilang ke Regsosek CETAR Kalbar](docs/audit-dtsen-hilang-regsosek-cetar.md)**  
