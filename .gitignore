@@ -108,3 +108,6 @@ ehthumbs.db
 # Legacy Remote Agent Daemon & Scripts (Migrated to antigravity-repo-explorer Monorepo)
 agent-daemon/
 agent.py
+
+# Aset Visual & Persona Internal Aina (Tersimpan di persistent volume server)
+/assets/
