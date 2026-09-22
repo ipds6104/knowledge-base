@@ -26,18 +26,25 @@ def get_drive_service():
     from google.oauth2.credentials import Credentials
     from googleapiclient.discovery import build
 
+    repo_root = Path(__file__).resolve().parents[2]
+    token_path = repo_root / 'token.json' if (repo_root / 'token.json').exists() else Path('token.json')
+
     creds = None
-    if os.path.exists('token.json'):
-        creds = Credentials.from_authorized_user_file('token.json', SCOPES)
+    if token_path.exists():
+        creds = Credentials.from_authorized_user_file(str(token_path), SCOPES)
 
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
             try:
                 creds.refresh(Request())
-            except Exception:
+                with open(token_path, 'w') as f:
+                    f.write(creds.to_json())
+            except Exception as e:
+                print(f"⚠️ Gagal refresh drive creds: {e}")
                 creds = None
         if not creds:
-            if not os.path.exists('credentials.json'):
+            cred_file = repo_root / 'credentials.json' if (repo_root / 'credentials.json').exists() else Path('credentials.json')
+            if not cred_file.exists():
                 raise FileNotFoundError(
                     "Berkas 'credentials.json' tidak ditemukan. "
                     "Pastikan Anda telah mengunduh OAuth Credentials dari Google Cloud Console."

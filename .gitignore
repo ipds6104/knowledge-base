@@ -109,5 +109,16 @@ ehthumbs.db
 agent-daemon/
 agent.py
 
+# Nested Cloned Repositories (External Projects)
+repos/
+
 # Aset Visual & Persona Internal Aina (Tersimpan di persistent volume server)
 /assets/
+
+# Aset Desain Berat Publikasi (Master tersimpan di Google Drive BPS)
+kegiatan/**/assets/covers/
+**/covers/
+
+# Ekspor Kontak & Dokumen Lampiran Chat (PII)
+*.vcf
+data/chats/**/documents/

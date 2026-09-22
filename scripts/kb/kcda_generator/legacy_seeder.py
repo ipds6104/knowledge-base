@@ -253,6 +253,14 @@ def push_seeded_data_to_gsheet(target_mappings, all_extracted):
         return
 
     creds = Credentials.from_authorized_user_file('token.json')
+    if creds and creds.expired and creds.refresh_token:
+        try:
+            from google.auth.transport.requests import Request
+            creds.refresh(Request())
+            with open('token.json', 'w') as f:
+                f.write(creds.to_json())
+        except Exception as e:
+            print(f"⚠️ Gagal me-refresh token: {e}")
     service = build('sheets', 'v4', credentials=creds)
 
     for key, json_name in target_mappings:

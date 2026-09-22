@@ -37,6 +37,7 @@
     bottom: 2.0cm,
   ),
   header-ascent: 40%,
+  footer-descent: 20%,
   header: context {
     let p = here().page()
     let has_c = query(selector(<page_marker>)).any(m => {
@@ -821,15 +822,82 @@ _Rounding Note: Due to rounding, figures in line/column totals may not strictly 
 #v(10pt)
 
 
-#v(1.5cm)
+
+#v(6pt)
 #align(center)[
-  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
-    #align(center + horizon)[
-      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS GEOGRAFI & IKLIM]      #v(6pt)
-      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan Sungai Kunyit]
-    ]
-  ]
+  #image("charts/gambar_1_1.svg", width: 100%)
 ]
+#v(-2pt)
+#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office]]
+#v(4pt)
+#metadata("fig_1_1") <fig_1_1>
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 4.5pt,
+      align: (top + center, horizon),
+      [
+        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
+          #text(7.5pt, weight: "bold")[Gambar]
+        ] \
+        #v(-3.5pt)
+        #text(6.5pt, style: "italic")[Figures]
+      ],
+      [
+        #text(8.5pt, weight: "bold")[1.1]
+      ]
+    )
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Jarak dari Desa/Kelurahan ke Ibukota Kecamatan di Sungai Kunyit, 2025 (km)] \
+    #v(-2pt)
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Distance from Village/Subdistrict to District Capital in Sungai Kunyit Subdistrict, 2025 (km)]
+  ]
+)
+#v(10pt)
+
+
+#v(6pt)
+#align(center)[
+  #image("charts/gambar_1_2.svg", width: 100%)
+]
+#v(-2pt)
+#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Dinas Kependudukan dan Pencatatan Sipil/BAPEDDA Kabupaten Mempawah/#text(style: "italic")[Population and Civil Registration Service/Regional Development Planning Agency of Mempawah Regency]]
+#v(4pt)
+#metadata("fig_1_2") <fig_1_2>
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 4.5pt,
+      align: (top + center, horizon),
+      [
+        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
+          #text(7.5pt, weight: "bold")[Gambar]
+        ] \
+        #v(-3.5pt)
+        #text(6.5pt, style: "italic")[Figures]
+      ],
+      [
+        #text(8.5pt, weight: "bold")[1.2]
+      ]
+    )
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Luas Wilayah menurut Desa/Kelurahan di Sungai Kunyit, 2025 (km²)] \
+    #v(-2pt)
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Total Area by Village/Subdistrict in Sungai Kunyit Subdistrict, 2025 (sq.km)]
+  ]
+)
+#v(10pt)
+
 
 
 #pagebreak()
@@ -1067,10 +1135,11 @@ Kecamatan Sungai Kunyit secara astronomis dan geografis terletak di wilayah pesi
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[No]], [#strong[Nama Kota dan Tempat Penting] \ #text(6pt, weight: "bold", style: "italic")[Other Important Places]], [#strong[Jarak] \ #text(6pt, weight: "bold", style: "italic")[Distance (km)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]]),
-  [1], [Ibu Kota Propinsi Kalimantan Barat (Kota Pontianak)], [94,00],
-  [2], [Pusat Pemerintahan Kabupaten Mempawah (Mempawah Hilir)], [19,00],
-  [3], [Makam Juang Mandor], [66,00],
-  [4], [Kecamatan Sungai Pinyuh], [35,00]
+  [1], [Ibukota Provinsi Kalimantan Barat 
+(Kota Pontianak)], [94,00],
+  [2], [Pusat Pemerintahan Kabupaten 
+Mempawah (Mempawah Hilir)], [19,00],
+  [3], [Makam Juang Mandor], [...]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office]]
@@ -1100,15 +1169,44 @@ Kecamatan Sungai Kunyit secara astronomis dan geografis terletak di wilayah pesi
 #v(10pt)
 
 
-#v(1.5cm)
+
+#v(6pt)
 #align(center)[
-  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
-    #align(center + horizon)[
-      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS PEMERINTAHAN]      #v(6pt)
-      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan Sungai Kunyit]
-    ]
-  ]
+  #image("charts/gambar_2_1.svg", width: 100%)
 ]
+#v(-2pt)
+#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office]]
+#v(4pt)
+#metadata("fig_2_1") <fig_2_1>
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 4.5pt,
+      align: (top + center, horizon),
+      [
+        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
+          #text(7.5pt, weight: "bold")[Gambar]
+        ] \
+        #v(-3.5pt)
+        #text(6.5pt, style: "italic")[Figures]
+      ],
+      [
+        #text(8.5pt, weight: "bold")[2.1]
+      ]
+    )
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Jumlah Rukun Tetangga (RT) menurut Desa/Kelurahan di Sungai Kunyit, 2025] \
+    #v(-2pt)
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Neighborhood Units (RT) by Village/Subdistrict in Sungai Kunyit Subdistrict, 2025]
+  ]
+)
+#v(10pt)
+
 
 
 #pagebreak()
@@ -1229,18 +1327,7 @@ Secara administratif, Kecamatan Sungai Kunyit terbagi menjadi 12 desa/kelurahan 
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[No]], [#strong[Nama Camat] \ #text(6pt, weight: "bold", style: "italic")[Name of District Head]], [#strong[Periode Menjabat] \ #text(6pt, weight: "bold", style: "italic")[Period]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]]),
-  [1], [M. Kasim Basok], [1962 – 1963],
-  [2], [M. Djamil Achmad], [1963 – 1969],
-  [3], [Drs. Uray Roekiyat], [1969 – 1973],
-  [4], [Sinyor Mantar], [1973 – 1979],
-  [5], [M. Oesman Akad], [1979 – 1981],
-  [6], [Drs. Sadri Ilyas], [1981 – 1987],
-  [7], [Pahlevie Alhani, BA], [1987 – 1990],
-  [8], [Drs. Idrus], [1990 – 1995],
-  [9], [Dra. Syarkiah Sani], [1995 – 1999],
-  [10], [Drs. Fauzi Kasim], [1999 – 2001],
-  [11], [Drs. Nuradi], [2001 – 2002],
-  [12], [Bachtiar K, S.Sos], [2002 – 2003]
+  [22], [Ir. Teddy Prawoto, M.Si], [2023 – 2024]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office]]
@@ -1507,15 +1594,44 @@ Secara administratif, Kecamatan Sungai Kunyit terbagi menjadi 12 desa/kelurahan 
 #v(10pt)
 
 
-#v(1.5cm)
+
+#v(6pt)
 #align(center)[
-  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
-    #align(center + horizon)[
-      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS KEPENDUDUKAN]      #v(6pt)
-      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan Sungai Kunyit]
-    ]
-  ]
+  #image("charts/gambar_3_1.svg", width: 100%)
 ]
+#v(-2pt)
+#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Dinas Kependudukan dan Pencatatan Sipil Kabupaten Mempawah (Semester II 2025)/#text(style: "italic")[Population and Civil Registration Service of Mempawah Regency (Semester II 2025)]]
+#v(4pt)
+#metadata("fig_3_1") <fig_3_1>
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 4.5pt,
+      align: (top + center, horizon),
+      [
+        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
+          #text(7.5pt, weight: "bold")[Gambar]
+        ] \
+        #v(-3.5pt)
+        #text(6.5pt, style: "italic")[Figures]
+      ],
+      [
+        #text(8.5pt, weight: "bold")[3.1]
+      ]
+    )
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Jumlah Penduduk menurut Jenis Kelamin dan Desa/Kelurahan di Sungai Kunyit, 2025] \
+    #v(-2pt)
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Population by Sex and Village/Subdistrict in Sungai Kunyit Subdistrict, 2025]
+  ]
+)
+#v(10pt)
+
 
 
 #pagebreak()
@@ -1680,16 +1796,16 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Sungai Kunyit ditopang ole
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[Tingkat Pendidikan] \ #text(6pt, weight: "bold", style: "italic")[Educational Level]], [#strong[2023]], [#strong[2024]], [#strong[2025]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Taman Kanak-Kanak (TK)], [...], [...], [...],
-  [Raudatul Athfal (RA)], [...], [...], [...],
-  [Sekolah Dasar (SD)], [...], [...], [...],
-  [Madrasah Ibtidaiyah (MI)], [...], [...], [...],
-  [Sekolah Menengah Pertama (SMP)], [...], [...], [...],
-  [Madrasah Tsanawiyah (MTs)], [...], [...], [...],
-  [Sekolah Menengah Atas (SMA)], [...], [...], [...],
-  [Sekolah Menengah Kejuruan (SMK)], [...], [...], [...],
-  [Madrasah Aliyah (MA)], [...], [...], [...],
-  [Akademi/Perguruan Tinggi], [...], [...], [...]
+  [Taman Kanak-Kanak (TK)], [...], [...], [6],
+  [Raudatul Athfal (RA)], [...], [...], [0],
+  [Sekolah Dasar (SD)], [...], [...], [11],
+  [Madrasah Ibtidaiyah (MI)], [...], [...], [0],
+  [Sekolah Menengah Pertama (SMP)], [...], [...], [9],
+  [Madrasah Tsanawiyah (MTs)], [...], [...], [0],
+  [Sekolah Menengah Atas (SMA)], [...], [...], [3],
+  [Sekolah Menengah Kejuruan (SMK)], [...], [...], [1],
+  [Madrasah Aliyah (MA)], [...], [...], [0],
+  [Akademi/Perguruan Tinggi], [...], [...], [0]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS, Pendataan Potensi Desa (Podes)/#text(style: "italic")[BPS-Statistics Indonesia, Village Potential Census (Podes)]]
@@ -2871,14 +2987,10 @@ Aktivitas perniagaan di Kecamatan Sungai Kunyit berkembang dinamis didukung oleh
   // 1. Pita Dekoratif Melengkung Khas Publikasi (Typst Bezier Curves)
   #place(top + left)[
     #let ribbon_left(dx, dy, alpha, thick) = {
-      curve(
+      path(
         stroke: (paint: rgb(220, 130, 125, alpha), thickness: thick),
-        curve.move((dx + -30pt, dy + 320pt)),
-        curve.cubic(
-          (dx + 90pt, dy + 250pt),
-          (dx + 180pt, dy + 130pt),
-          (dx + 220pt, dy + -30pt),
-        ),
+        (dx + -30pt, dy + 320pt),
+        ((dx + 90pt, dy + 250pt), (dx + 180pt, dy + 130pt), (dx + 220pt, dy + -30pt)),
       )
     }
     #ribbon_left(-55pt, 60pt, 5%, 3.5pt)
@@ -2892,14 +3004,10 @@ Aktivitas perniagaan di Kecamatan Sungai Kunyit berkembang dinamis didukung oleh
 
   #place(bottom + right)[
     #let ribbon_right(dx, dy, alpha, thick) = {
-      curve(
+      path(
         stroke: (paint: rgb(220, 130, 125, alpha), thickness: thick),
-        curve.move((dx + 40pt, dy + 40pt)),
-        curve.cubic(
-          (dx - 70pt, dy - 140pt),
-          (dx - 140pt, dy - 290pt),
-          (dx - 160pt, dy - 440pt),
-        ),
+        (dx + 40pt, dy + 40pt),
+        ((dx - 70pt, dy - 140pt), (dx - 140pt, dy - 290pt), (dx - 160pt, dy - 440pt)),
       )
     }
     #ribbon_right(-15pt, 15pt, 5%, 4pt)

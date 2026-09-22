@@ -37,6 +37,7 @@
     bottom: 2.0cm,
   ),
   header-ascent: 40%,
+  footer-descent: 20%,
   header: context {
     let p = here().page()
     let has_c = query(selector(<page_marker>)).any(m => {
@@ -821,15 +822,82 @@ _Rounding Note: Due to rounding, figures in line/column totals may not strictly 
 #v(10pt)
 
 
-#v(1.5cm)
+
+#v(6pt)
 #align(center)[
-  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
-    #align(center + horizon)[
-      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS GEOGRAFI & IKLIM]      #v(6pt)
-      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan Sungai Pinyuh]
-    ]
-  ]
+  #image("charts/gambar_1_1.svg", width: 100%)
 ]
+#v(-2pt)
+#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Sungai Pinyuh/#text(style: "italic")[Sungai Pinyuh District Office]]
+#v(4pt)
+#metadata("fig_1_1") <fig_1_1>
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 4.5pt,
+      align: (top + center, horizon),
+      [
+        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
+          #text(7.5pt, weight: "bold")[Gambar]
+        ] \
+        #v(-3.5pt)
+        #text(6.5pt, style: "italic")[Figures]
+      ],
+      [
+        #text(8.5pt, weight: "bold")[1.1]
+      ]
+    )
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Jarak dari Desa/Kelurahan ke Ibukota Kecamatan di Sungai Pinyuh, 2025 (km)] \
+    #v(-2pt)
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Distance from Village/Subdistrict to District Capital in Sungai Pinyuh Subdistrict, 2025 (km)]
+  ]
+)
+#v(10pt)
+
+
+#v(6pt)
+#align(center)[
+  #image("charts/gambar_1_2.svg", width: 100%)
+]
+#v(-2pt)
+#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Dinas Kependudukan dan Pencatatan Sipil/BAPEDDA Kabupaten Mempawah/#text(style: "italic")[Population and Civil Registration Service/Regional Development Planning Agency of Mempawah Regency]]
+#v(4pt)
+#metadata("fig_1_2") <fig_1_2>
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 4.5pt,
+      align: (top + center, horizon),
+      [
+        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
+          #text(7.5pt, weight: "bold")[Gambar]
+        ] \
+        #v(-3.5pt)
+        #text(6.5pt, style: "italic")[Figures]
+      ],
+      [
+        #text(8.5pt, weight: "bold")[1.2]
+      ]
+    )
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Luas Wilayah menurut Desa/Kelurahan di Sungai Pinyuh, 2025 (km²)] \
+    #v(-2pt)
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Total Area by Village/Subdistrict in Sungai Pinyuh Subdistrict, 2025 (sq.km)]
+  ]
+)
+#v(10pt)
+
 
 
 #pagebreak()
@@ -947,15 +1015,15 @@ Kecamatan Sungai Pinyuh secara astronomis dan geografis terletak di wilayah pesi
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], [#strong[Ke Ibukota Kec.] \ #text(6pt, weight: "bold", style: "italic")[To District Capital (km)]], [#strong[Ke Ibukota Kab.] \ #text(6pt, weight: "bold", style: "italic")[To Regency Capital (km)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]]),
-  [Sungai Purun Kecil], [12,9], [28,0],
-  [Peniraman], [9,1], [24,2],
-  [Nusapati], [4,6], [19,8],
-  [Galang], [2,2], [20,2],
-  [Sungai Rasau], [5,1], [18,0],
-  [Sungai Pinyuh], [2,1], [16,8],
-  [Sungai Batang], [5,0], [13,0],
-  [Sungai Bakau Besar Laut], [10,6], [11,8],
-  [Sungai Bakau Besar Darat], [8,5], [14,0]
+  [Sungai Purun Kecil], [12,90], [28,00],
+  [Peniraman], [9,10], [24,20],
+  [Nusapati], [4,60], [19,80],
+  [Galang], [2,20], [20,20],
+  [Sungai Rasau], [5,10], [18,00],
+  [Sungai Pinyuh], [2,10], [16,80],
+  [Sungai Batang], [5,00], [13,00],
+  [Sungai Bakau Besar Laut], [10,60], [11,80],
+  [Sungai Bakau Besar Darat], [8,50], [14,00]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Sungai Pinyuh/#text(style: "italic")[Sungai Pinyuh District Office]]
@@ -1061,9 +1129,11 @@ Kecamatan Sungai Pinyuh secara astronomis dan geografis terletak di wilayah pesi
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[No]], [#strong[Nama Kota dan Tempat Penting] \ #text(6pt, weight: "bold", style: "italic")[Other Important Places]], [#strong[Jarak] \ #text(6pt, weight: "bold", style: "italic")[Distance (km)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]]),
-  [1], [Ibukota Provinsi Kalimantan Barat (Kota Pontianak)], [67 km],
-  [2], [Pusat Pemerintahan Kabupaten Mempawah (Mempawah Hilir)], [19,7 km],
-  [3], [Makam Juang Mandor], [36,2 km]
+  [1], [Ibukota Provinsi Kalimantan Barat 
+(Kota Pontianak)], [67 km],
+  [2], [Pusat Pemerintahan Kabupaten 
+Mempawah (Mempawah Hilir)], [19,7 km],
+  [3], [Makam Juang Mandor], [...]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Sungai Pinyuh/#text(style: "italic")[Sungai Pinyuh District Office]]
@@ -1093,15 +1163,44 @@ Kecamatan Sungai Pinyuh secara astronomis dan geografis terletak di wilayah pesi
 #v(10pt)
 
 
-#v(1.5cm)
+
+#v(6pt)
 #align(center)[
-  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
-    #align(center + horizon)[
-      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS PEMERINTAHAN]      #v(6pt)
-      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan Sungai Pinyuh]
-    ]
-  ]
+  #image("charts/gambar_2_1.svg", width: 100%)
 ]
+#v(-2pt)
+#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Sungai Pinyuh/#text(style: "italic")[Sungai Pinyuh District Office]]
+#v(4pt)
+#metadata("fig_2_1") <fig_2_1>
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 4.5pt,
+      align: (top + center, horizon),
+      [
+        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
+          #text(7.5pt, weight: "bold")[Gambar]
+        ] \
+        #v(-3.5pt)
+        #text(6.5pt, style: "italic")[Figures]
+      ],
+      [
+        #text(8.5pt, weight: "bold")[2.1]
+      ]
+    )
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Jumlah Rukun Tetangga (RT) menurut Desa/Kelurahan di Sungai Pinyuh, 2025] \
+    #v(-2pt)
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Neighborhood Units (RT) by Village/Subdistrict in Sungai Pinyuh Subdistrict, 2025]
+  ]
+)
+#v(10pt)
+
 
 
 #pagebreak()
@@ -1164,7 +1263,7 @@ Secara administratif, Kecamatan Sungai Pinyuh terbagi menjadi 9 desa/kelurahan y
   [Nusapati], [5], [10], [20],
   [Galang], [4], [4], [11],
   [Sungai Rasau], [2], [4], [9],
-  [Sungai Pinyuh], [–], [6], [58],
+  [Sungai Pinyuh], [0], [6], [58],
   [Sungai Batang], [2], [2], [9],
   [Sungai Bakau Besar Laut], [2], [4], [16],
   [Sungai Bakau Besar Darat], [5], [10], [20]
@@ -1219,18 +1318,7 @@ Secara administratif, Kecamatan Sungai Pinyuh terbagi menjadi 9 desa/kelurahan y
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[No]], [#strong[Nama Camat] \ #text(6pt, weight: "bold", style: "italic")[Name of District Head]], [#strong[Periode Menjabat] \ #text(6pt, weight: "bold", style: "italic")[Period]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]]),
-  [1], [Abdul Hamid E. Umar], [1957 – 1963],
-  [2], [Abdul Madjid Rani], [1963 – 1973],
-  [3], [Gst. Amiruddin Hamid], [1973 – 1980],
-  [4], [Drs. Uray Rukiyat], [1980 – 1985],
-  [5], [Drs. Mochtar Pawi], [1985 – 1989],
-  [6], [Drs. H. Abang Rasmansyah], [1989 – 1999],
-  [7], [Drs. H. Suhardi Sakim], [1999 – 2000],
-  [8], [Drs. Fausi Kasim], [2000 – 2002],
-  [9], [H. Ibrahim Thahir, SIP], [2002 – 2003],
-  [10], [Gusti Hadriyani, S.Sos], [2003 – 2008],
-  [11], [Muhamad Shaleh, S.Sos], [2009 – 2010],
-  [12], [Drs. Syamsyul Rizal, M.Si], [2010 – 2016]
+  [22], [Ibrahim, S.ST.], [2021 – Sekarang]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Sungai Pinyuh/#text(style: "italic")[Sungai Pinyuh District Office]]
@@ -1491,15 +1579,44 @@ Secara administratif, Kecamatan Sungai Pinyuh terbagi menjadi 9 desa/kelurahan y
 #v(10pt)
 
 
-#v(1.5cm)
+
+#v(6pt)
 #align(center)[
-  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
-    #align(center + horizon)[
-      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS KEPENDUDUKAN]      #v(6pt)
-      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan Sungai Pinyuh]
-    ]
-  ]
+  #image("charts/gambar_3_1.svg", width: 100%)
 ]
+#v(-2pt)
+#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Dinas Kependudukan dan Pencatatan Sipil Kabupaten Mempawah (Semester II 2025)/#text(style: "italic")[Population and Civil Registration Service of Mempawah Regency (Semester II 2025)]]
+#v(4pt)
+#metadata("fig_3_1") <fig_3_1>
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 4.5pt,
+      align: (top + center, horizon),
+      [
+        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
+          #text(7.5pt, weight: "bold")[Gambar]
+        ] \
+        #v(-3.5pt)
+        #text(6.5pt, style: "italic")[Figures]
+      ],
+      [
+        #text(8.5pt, weight: "bold")[3.1]
+      ]
+    )
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Jumlah Penduduk menurut Jenis Kelamin dan Desa/Kelurahan di Sungai Pinyuh, 2025] \
+    #v(-2pt)
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Population by Sex and Village/Subdistrict in Sungai Pinyuh Subdistrict, 2025]
+  ]
+)
+#v(10pt)
+
 
 
 #pagebreak()
@@ -1661,16 +1778,16 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Sungai Pinyuh ditopang ole
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[Tingkat Pendidikan] \ #text(6pt, weight: "bold", style: "italic")[Educational Level]], [#strong[2023]], [#strong[2024]], [#strong[2025]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Taman Kanak-Kanak (TK)], [...], [...], [...],
-  [Raudatul Athfal (RA)], [...], [...], [...],
-  [Sekolah Dasar (SD)], [...], [...], [...],
-  [Madrasah Ibtidaiyah (MI)], [...], [...], [...],
-  [Sekolah Menengah Pertama (SMP)], [...], [...], [...],
-  [Madrasah Tsanawiyah (MTs)], [...], [...], [...],
-  [Sekolah Menengah Atas (SMA)], [...], [...], [...],
-  [Sekolah Menengah Kejuruan (SMK)], [...], [...], [...],
-  [Madrasah Aliyah (MA)], [...], [...], [...],
-  [Akademi/Perguruan Tinggi], [...], [...], [...]
+  [Taman Kanak-Kanak (TK)], [...], [...], [8],
+  [Raudatul Athfal (RA)], [...], [...], [0],
+  [Sekolah Dasar (SD)], [...], [...], [9],
+  [Madrasah Ibtidaiyah (MI)], [...], [...], [0],
+  [Sekolah Menengah Pertama (SMP)], [...], [...], [8],
+  [Madrasah Tsanawiyah (MTs)], [...], [...], [0],
+  [Sekolah Menengah Atas (SMA)], [...], [...], [6],
+  [Sekolah Menengah Kejuruan (SMK)], [...], [...], [1],
+  [Madrasah Aliyah (MA)], [...], [...], [0],
+  [Akademi/Perguruan Tinggi], [...], [...], [1]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS, Pendataan Potensi Desa (Podes)/#text(style: "italic")[BPS-Statistics Indonesia, Village Potential Census (Podes)]]
@@ -2843,14 +2960,10 @@ Aktivitas perniagaan di Kecamatan Sungai Pinyuh berkembang dinamis didukung oleh
   // 1. Pita Dekoratif Melengkung Khas Publikasi (Typst Bezier Curves)
   #place(top + left)[
     #let ribbon_left(dx, dy, alpha, thick) = {
-      curve(
+      path(
         stroke: (paint: rgb(220, 130, 125, alpha), thickness: thick),
-        curve.move((dx + -30pt, dy + 320pt)),
-        curve.cubic(
-          (dx + 90pt, dy + 250pt),
-          (dx + 180pt, dy + 130pt),
-          (dx + 220pt, dy + -30pt),
-        ),
+        (dx + -30pt, dy + 320pt),
+        ((dx + 90pt, dy + 250pt), (dx + 180pt, dy + 130pt), (dx + 220pt, dy + -30pt)),
       )
     }
     #ribbon_left(-55pt, 60pt, 5%, 3.5pt)
@@ -2864,14 +2977,10 @@ Aktivitas perniagaan di Kecamatan Sungai Pinyuh berkembang dinamis didukung oleh
 
   #place(bottom + right)[
     #let ribbon_right(dx, dy, alpha, thick) = {
-      curve(
+      path(
         stroke: (paint: rgb(220, 130, 125, alpha), thickness: thick),
-        curve.move((dx + 40pt, dy + 40pt)),
-        curve.cubic(
-          (dx - 70pt, dy - 140pt),
-          (dx - 140pt, dy - 290pt),
-          (dx - 160pt, dy - 440pt),
-        ),
+        (dx + 40pt, dy + 40pt),
+        ((dx - 70pt, dy - 140pt), (dx - 140pt, dy - 290pt), (dx - 160pt, dy - 440pt)),
       )
     }
     #ribbon_right(-15pt, 15pt, 5%, 4pt)

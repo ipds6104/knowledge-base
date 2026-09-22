@@ -24,10 +24,22 @@ deadlines:
   - tanggal: "2026-09-11"
     kegiatan: "KCDA 2026: Target Selesai Pemeriksaan Silang (Peer Review) Antar PIC"
     status: "belum"
-  - tanggal: "2026-09-20"
-    kegiatan: "KCDA 2026: Target Batas Internal Upload KCDA (3 Hari Sebelum ARC)"
+  - tanggal: "2026-09-18"
+    kegiatan: "KCDA 2026: Batas Akhir Konfirmasi & Pengisian Data oleh Pihak Kecamatan (via WA)"
     status: "belum"
-  - tanggal: "2026-09-23"
+  - tanggal: "2026-09-21"
+    kegiatan: "KCDA 2026: Batas Akhir Penerimaan Data Sesuai Surat Dinas (B-1091 s.d. B-1100)"
+    status: "belum"
+  - tanggal: "2026-09-22"
+    kegiatan: "KCDA 2026: Upload Draft KCDA Semua Kecamatan (Deadline Internal Tim)"
+    status: "belum"
+  - tanggal: "2026-09-22"
+    kegiatan: "KCDA 2026: Target Penyelesaian Desain Cover Depan KCDA"
+    status: "belum"
+  - tanggal: "2026-09-22"
+    kegiatan: "KCDA 2026: Target Penyelesaian Tampilan Pembatas Bab KCDA"
+    status: "belum"
+  - tanggal: "2026-09-25"
     kegiatan: "KCDA 2026: Batas Akhir Upload Publikasi ke Portal Web (Sistem ARC)"
     status: "belum"
   - tanggal: "2026-09-28"
@@ -53,8 +65,11 @@ Kegiatan ini didasarkan pada Surat Dinas BPS Provinsi Kalimantan Barat Nomor **B
 | **Perjadin & Kroscek Camat** | **3–14 Agustus 2026** | Seluruh PIC Kecamatan | Pengumpulan data ke Kantor Camat sebelum puncak CAPI Sakernas/SE. |
 | **Penyusunan Draft KCDA** | **18 Agt – 4 Sep 2026** | Seluruh PIC Kecamatan | Migrasi data (copy-paste) dan penulisan caption narasi bab. |
 | **Pemeriksaan Silang (Peer)** | **7–11 September 2026**| Saling Silang PIC | Peer review wajib rampung sebelum CPNS klasikal Latsar (12 Sep). |
-| **Batas Internal Upload** | **20 September 2026** | Tim Penyusun Kabupaten | Target unggah awal (3 hari sebelum batas ARC) untuk pemeriksaan internal. |
-| **Batas Akhir Upload (ARC)** | **23 September 2026** | Operator/Penyusun KCDA | Batas akhir pengunggahan file publikasi KCDA 2026 ke portal web (sistem ARC). |
+| **Batas Konfirmasi Camat (WA)** | **18 September 2026** | Pihak Kantor Camat & PIC | Batas akhir pengisian/konfirmasi data via Google Sheets sesuai pesan WA. |
+| **Batas Resmi Surat Dinas** | **21 September 2026** | Kantor Camat 9 Wilayah | Batas akhir penerimaan data sesuai Surat BPS No. B-1091 s.d. B-1100. |
+| **Upload Draft KCDA Internal** | **22 September 2026** | Seluruh PIC Kecamatan | Batas internal upload draft publikasi KCDA 2026 semua kecamatan ke Google Drive tim. |
+| **Cover & Batas Bab KCDA** | **22 September 2026** | Tim IPDS / Penyusun KCDA | Target penyelesaian desain cover depan dan tampilan pembatas bab KCDA. |
+| **Batas Akhir Upload (ARC)** | **25 September 2026** | Operator/Penyusun KCDA | Batas akhir pengunggahan file publikasi KCDA 2026 ke portal web (sistem ARC, maksimal upload H-3 rilis). |
 | **Batas Akhir Rilis (Publikasi)**| **28 September 2026** | Kepala BPS Kabupaten/Kota | Rilis resmi publikasi KCDA 2026 di website BPS Kabupaten/Kota masing-masing. |
 
 ---
@@ -73,8 +88,11 @@ Proses penyusunan publikasi KCDA 2026 mengikuti alur kerja sistematis berikut de
 6. **Migrasi Data (Copy-Paste)** (*18–28 Agustus 2026*): PIC menyalin data yang telah valid dari Google Sheets ke berkas template Microsoft Word/Excel masing-masing kecamatan.
 7. **Pengisian Narasi/Caption Bab** (*31 Agustus – 4 September 2026*): PIC menyusun dan mengisi narasi pembuka serta analisis singkat (*caption*) pada setiap bab di publikasi.
 8. **Pemeriksaan Silang (Peer Review)** (*7–11 September 2026*): Melakukan saling silang pemeriksaan draf KCDA antar PIC untuk memitigasi kesalahan ketik (*typo*) atau anomali data. Tahap ini wajib rampung sebelum CPNS berangkat klasikal Latsar (12 September).
-9. **Target Unggah Awal (H-3 ARC)** (*18–20 September 2026*): Mengunggah file publikasi KCDA ke sistem ARC pada tanggal **20 September 2026** (3 hari sebelum batas akhir resmi) untuk pengawasan kualitas awal.
-10. **Revisi Pasca Upload** (*21–28 September 2026*): Melakukan revisi dan perbaikan jika ditemukan kesalahan cetak atau anomali data pasca pengunggahan awal di sistem ARC hingga batas akhir resmi (23 September) dan rilis resmi (28 September).
+9. **Permintaan & Konfirmasi Data ke Kantor Camat** (*17–21 September 2026*):
+   * Penerbitan Surat Dinas Resmi BPS Kab. Mempawah Nomor `B-1091` s.d. `B-1100` per tanggal 17 September 2026 dengan batas akhir resmi **21 September 2026**.
+   * Penyampaian pengingat/reminder via WhatsApp dengan batas pengisian dipercepat hingga **18 September 2026** melalui Google Sheets per kecamatan (`s.bps.go.id/kcda26-<slug>`).
+10. **Batas Akhir Upload ke Web / ARC (H-3 Rilis)** (*25 September 2026*): Mengunggah file publikasi KCDA ke sistem ARC pada tanggal **25 September 2026** (maksimal upload 3 hari sebelum jadwal rilis resmi).
+11. **Revisi Pasca Upload & Rilis Resmi** (*26–28 September 2026*): Melakukan revisi akhir jika ditemukan kesalahan teknis dan persiapan rilis serentak di website pada tanggal **28 September 2026**.
 
 ---
 
@@ -149,16 +167,17 @@ Berikut adalah daftar lengkap 24 tabel wajib KCDA 2026 beserta tahun data, sumbe
 
 ## 🏢 Daftar Publikasi KCDA Kabupaten Mempawah (9 Kecamatan)
 
-Berdasarkan data acuan pengerjaan tahun lalu (2025), berikut adalah daftar pembagian PIC, estimasi nomor publikasi, serta jadwal pengunggahan dan rilis untuk 9 kecamatan di Kabupaten Mempawah pada KCDA 2026:
+Daftar 9 publikasi Kecamatan Dalam Angka 2026 Kabupaten Mempawah beserta estimasi nomor publikasi, jadwal pengunggahan, dan batas rilis ARC:
 
-| No | Kecamatan | Nomor Publikasi (Estimasi) | PIC Penanggung Jawab | Batas Akhir Upload (ARC) | Jadwal Rilis Resmi | Status |
-| :---: | :--- | :---: | :--- | :---: | :---: | :---: |
-| 1 | Kecamatan Mempawah Timur Dalam Angka 2026 | `61040.26004` | Ahmad Aulia Rahman, S.Tr.Stat. | 23 Sep 2026 | 28 Sep 2026 | `belum` |
-| 2 | Kecamatan Mempawah Hilir Dalam Angka 2026 | `61040.26012` | Sukma Andini, S.Tr.Stat. | 23 Sep 2026 | 28 Sep 2026 | `belum` |
-| 3 | Kecamatan Sungai Pinyuh Dalam Angka 2026 | `61040.26011` | Vaniya Dewi Wulandari, A.Md.Stat. | 23 Sep 2026 | 28 Sep 2026 | `belum` |
-| 4 | Kecamatan Sungai Kunyit Dalam Angka 2026 | `61040.26005` | Sarah Pratiwi, S.Tr.Stat. | 23 Sep 2026 | 28 Sep 2026 | `belum` |
-| 5 | Kecamatan Segedong Dalam Angka 2026 | `61040.26010` | Listio Jati Nandhiko, S.Tr.Stat. | 23 Sep 2026 | 28 Sep 2026 | `belum` |
-| 6 | Kecamatan Toho Dalam Angka 2026 | `61040.26006` | Arini Faurizah, S.Tr.Stat. | 23 Sep 2026 | 28 Sep 2026 | `belum` |
-| 7 | Kecamatan Jongkat Dalam Angka 2026 | `61040.26008` | Ihza Fikri Zaki Karunia, S.Tr.Stat. | 23 Sep 2026 | 28 Sep 2026 | `belum` |
-| 8 | Kecamatan Anjongan Dalam Angka 2026 | `61040.26009` | Rifky Mullah Syadriawan, A.Md.Stat. | 23 Sep 2026 | 28 Sep 2026 | `belum` |
-| 9 | Kecamatan Sadaniang Dalam Angka 2026 | `61040.26007` | Budiman Aller Silaban, S.Tr.Stat. | 23 Sep 2026 | 28 Sep 2026 | `belum` |
+| No | Kecamatan | Nomor Publikasi (Estimasi) | Batas Akhir Upload (ARC) | Jadwal Rilis Resmi | Status |
+| :---: | :--- | :---: | :---: | :---: | :---: |
+| 1 | Kecamatan Mempawah Timur Dalam Angka 2026 | `61040.26004` | 25 Sep 2026 | 28 Sep 2026 | `belum` |
+| 2 | Kecamatan Mempawah Hilir Dalam Angka 2026 | `61040.26012` | 25 Sep 2026 | 28 Sep 2026 | `belum` |
+| 3 | Kecamatan Sungai Pinyuh Dalam Angka 2026 | `61040.26011` | 25 Sep 2026 | 28 Sep 2026 | `belum` |
+| 4 | Kecamatan Sungai Kunyit Dalam Angka 2026 | `61040.26005` | 25 Sep 2026 | 28 Sep 2026 | `belum` |
+| 5 | Kecamatan Segedong Dalam Angka 2026 | `61040.26010` | 25 Sep 2026 | 28 Sep 2026 | `belum` |
+| 6 | Kecamatan Toho Dalam Angka 2026 | `61040.26006` | 25 Sep 2026 | 28 Sep 2026 | `belum` |
+| 7 | Kecamatan Jongkat Dalam Angka 2026 | `61040.26008` | 25 Sep 2026 | 28 Sep 2026 | `belum` |
+| 8 | Kecamatan Anjongan Dalam Angka 2026 | `61040.26009` | 25 Sep 2026 | 28 Sep 2026 | `belum` |
+| 9 | Kecamatan Sadaniang Dalam Angka 2026 | `61040.26007` | 25 Sep 2026 | 28 Sep 2026 | `belum` |
+

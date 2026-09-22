@@ -5,7 +5,7 @@
   "disediakan_ipds": false,
   "sheet_id": "1yj4Jew3vvERyuhlG-I1scbT4nOYv1VmRKAMR_Ka10dQ",
   "spreadsheet_title": "Banyaknya Desa/Kelurahan dengan Keberadaan Sarana\nLembaga Keuangan Bank Menurut Jenis Bank di Kecamatan XXX",
-  "updated_at": "2026-09-10 20:46:34",
+  "updated_at": "2026-09-22 08:29:48",
   "tabs": {
     "Mempawah Hilir": {
       "raw_title": "Mempawah Hilir",
@@ -18,97 +18,16 @@
           "2025"
         ],
         [
-          "Bank Umum Pemerintah\nGovernment Bank"
+          "Bank Umum Pemerintah\nGovernment Bank",
+          "6"
         ],
         [
-          "Bank Umum Swasta\nPrivate Bank"
+          "Bank Umum Swasta\nPrivate Bank",
+          "1"
         ],
         [
-          "Bank Perkreditan Rakyat (BPR)\nRural Bank"
-        ]
-      ]
-    },
-    "Mempawah Timur": {
-      "raw_title": "Mempawah Timur",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Jenis Bank\nType of Bank",
-          "2025"
-        ],
-        [
-          "Bank Umum Pemerintah\nGovernment Bank"
-        ],
-        [
-          "Bank Umum Swasta\nPrivate Bank"
-        ],
-        [
-          "Bank Perkreditan Rakyat (BPR)\nRural Bank"
-        ]
-      ]
-    },
-    "Sungai Pinyuh": {
-      "raw_title": "Sungai Pinyuh",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Jenis Bank\nType of Bank",
-          "2025"
-        ],
-        [
-          "Bank Umum Pemerintah\nGovernment Bank"
-        ],
-        [
-          "Bank Umum Swasta\nPrivate Bank"
-        ],
-        [
-          "Bank Perkreditan Rakyat (BPR)\nRural Bank"
-        ]
-      ]
-    },
-    "Sungai Kunyit": {
-      "raw_title": "Sungai Kunyit",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Jenis Bank\nType of Bank",
-          "2025"
-        ],
-        [
-          "Bank Umum Pemerintah\nGovernment Bank"
-        ],
-        [
-          "Bank Umum Swasta\nPrivate Bank"
-        ],
-        [
-          "Bank Perkreditan Rakyat (BPR)\nRural Bank"
-        ]
-      ]
-    },
-    "Segedong": {
-      "raw_title": "Segedong",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Jenis Bank\nType of Bank",
-          "2025"
-        ],
-        [
-          "Bank Umum Pemerintah\nGovernment Bank"
-        ],
-        [
-          "Bank Umum Swasta\nPrivate Bank"
-        ],
-        [
-          "Bank Perkreditan Rakyat (BPR)\nRural Bank"
+          "Bank Perkreditan Rakyat (BPR)\nRural Bank",
+          "0"
         ]
       ]
     },
@@ -123,13 +42,40 @@
           "2025"
         ],
         [
-          "Bank Umum Pemerintah\nGovernment Bank"
+          "Bank Umum Pemerintah\nGovernment Bank",
+          "0"
         ],
         [
-          "Bank Umum Swasta\nPrivate Bank"
+          "Bank Umum Swasta\nPrivate Bank",
+          "0"
         ],
         [
-          "Bank Perkreditan Rakyat (BPR)\nRural Bank"
+          "Bank Perkreditan Rakyat (BPR)\nRural Bank",
+          "0"
+        ]
+      ]
+    },
+    "Sungai Pinyuh": {
+      "raw_title": "Sungai Pinyuh",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Bank\nType of Bank",
+          "2025"
+        ],
+        [
+          "Bank Umum Pemerintah\nGovernment Bank",
+          "4"
+        ],
+        [
+          "Bank Umum Swasta\nPrivate Bank",
+          "2"
+        ],
+        [
+          "Bank Perkreditan Rakyat (BPR)\nRural Bank",
+          "1"
         ]
       ]
     },
@@ -144,13 +90,64 @@
           "2025"
         ],
         [
-          "Bank Umum Pemerintah\nGovernment Bank"
+          "Bank Umum Pemerintah\nGovernment Bank",
+          "2"
         ],
         [
-          "Bank Umum Swasta\nPrivate Bank"
+          "Bank Umum Swasta\nPrivate Bank",
+          "0"
         ],
         [
-          "Bank Perkreditan Rakyat (BPR)\nRural Bank"
+          "Bank Perkreditan Rakyat (BPR)\nRural Bank",
+          "0"
+        ]
+      ]
+    },
+    "Sungai Kunyit": {
+      "raw_title": "Sungai Kunyit",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Bank\nType of Bank",
+          "2025"
+        ],
+        [
+          "Bank Umum Pemerintah\nGovernment Bank",
+          "1"
+        ],
+        [
+          "Bank Umum Swasta\nPrivate Bank",
+          "0"
+        ],
+        [
+          "Bank Perkreditan Rakyat (BPR)\nRural Bank",
+          "0"
+        ]
+      ]
+    },
+    "Segedong": {
+      "raw_title": "Segedong",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Bank\nType of Bank",
+          "2025"
+        ],
+        [
+          "Bank Umum Pemerintah\nGovernment Bank",
+          "1"
+        ],
+        [
+          "Bank Umum Swasta\nPrivate Bank",
+          "0"
+        ],
+        [
+          "Bank Perkreditan Rakyat (BPR)\nRural Bank",
+          "0"
         ]
       ]
     },
@@ -165,13 +162,16 @@
           "2025"
         ],
         [
-          "Bank Umum Pemerintah\nGovernment Bank"
+          "Bank Umum Pemerintah\nGovernment Bank",
+          "2"
         ],
         [
-          "Bank Umum Swasta\nPrivate Bank"
+          "Bank Umum Swasta\nPrivate Bank",
+          "0"
         ],
         [
-          "Bank Perkreditan Rakyat (BPR)\nRural Bank"
+          "Bank Perkreditan Rakyat (BPR)\nRural Bank",
+          "0"
         ]
       ]
     },
@@ -186,13 +186,40 @@
           "2025"
         ],
         [
-          "Bank Umum Pemerintah\nGovernment Bank"
+          "Bank Umum Pemerintah\nGovernment Bank",
+          "0"
         ],
         [
-          "Bank Umum Swasta\nPrivate Bank"
+          "Bank Umum Swasta\nPrivate Bank",
+          "0"
         ],
         [
-          "Bank Perkreditan Rakyat (BPR)\nRural Bank"
+          "Bank Perkreditan Rakyat (BPR)\nRural Bank",
+          "0"
+        ]
+      ]
+    },
+    "Mempawah Timur": {
+      "raw_title": "Mempawah Timur",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Bank\nType of Bank",
+          "2025"
+        ],
+        [
+          "Bank Umum Pemerintah\nGovernment Bank",
+          "0"
+        ],
+        [
+          "Bank Umum Swasta\nPrivate Bank",
+          "0"
+        ],
+        [
+          "Bank Perkreditan Rakyat (BPR)\nRural Bank",
+          "0"
         ]
       ]
     }

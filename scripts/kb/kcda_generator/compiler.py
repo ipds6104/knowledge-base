@@ -39,7 +39,9 @@ def compile_kecamatan(slug: str, output_dir: str = "kegiatan/kecamatan-dalam-ang
 
     # Compile via typst CLI with repo root
     repo_root = Path(__file__).resolve().parents[3]
-    cmd = ["typst", "compile", "--root", str(repo_root), str(typ_path), str(pdf_path)]
+    typst_bin = repo_root / "bin" / "typst"
+    typst_cmd = str(typst_bin) if typst_bin.exists() else "typst"
+    cmd = [typst_cmd, "compile", "--root", str(repo_root), str(typ_path), str(pdf_path)]
     res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     if res.returncode != 0:
         raise RuntimeError(f"Typst compilation failed for {slug}:\n{res.stderr}")

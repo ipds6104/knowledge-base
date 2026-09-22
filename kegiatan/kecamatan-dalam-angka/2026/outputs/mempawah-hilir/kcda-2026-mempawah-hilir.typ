@@ -37,6 +37,7 @@
     bottom: 2.0cm,
   ),
   header-ascent: 40%,
+  footer-descent: 20%,
   header: context {
     let p = here().page()
     let has_c = query(selector(<page_marker>)).any(m => {
@@ -821,15 +822,82 @@ _Rounding Note: Due to rounding, figures in line/column totals may not strictly 
 #v(10pt)
 
 
-#v(1.5cm)
+
+#v(6pt)
 #align(center)[
-  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
-    #align(center + horizon)[
-      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS GEOGRAFI & IKLIM]      #v(6pt)
-      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan Mempawah Hilir]
-    ]
-  ]
+  #image("charts/gambar_1_1.svg", width: 100%)
 ]
+#v(-2pt)
+#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Mempawah Hilir/#text(style: "italic")[Mempawah Hilir District Office]]
+#v(4pt)
+#metadata("fig_1_1") <fig_1_1>
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 4.5pt,
+      align: (top + center, horizon),
+      [
+        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
+          #text(7.5pt, weight: "bold")[Gambar]
+        ] \
+        #v(-3.5pt)
+        #text(6.5pt, style: "italic")[Figures]
+      ],
+      [
+        #text(8.5pt, weight: "bold")[1.1]
+      ]
+    )
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Jarak dari Desa/Kelurahan ke Ibukota Kecamatan di Mempawah Hilir, 2025 (km)] \
+    #v(-2pt)
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Distance from Village/Subdistrict to District Capital in Mempawah Hilir Subdistrict, 2025 (km)]
+  ]
+)
+#v(10pt)
+
+
+#v(6pt)
+#align(center)[
+  #image("charts/gambar_1_2.svg", width: 100%)
+]
+#v(-2pt)
+#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Dinas Kependudukan dan Pencatatan Sipil/BAPEDDA Kabupaten Mempawah/#text(style: "italic")[Population and Civil Registration Service/Regional Development Planning Agency of Mempawah Regency]]
+#v(4pt)
+#metadata("fig_1_2") <fig_1_2>
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 4.5pt,
+      align: (top + center, horizon),
+      [
+        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
+          #text(7.5pt, weight: "bold")[Gambar]
+        ] \
+        #v(-3.5pt)
+        #text(6.5pt, style: "italic")[Figures]
+      ],
+      [
+        #text(8.5pt, weight: "bold")[1.2]
+      ]
+    )
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Luas Wilayah menurut Desa/Kelurahan di Mempawah Hilir, 2025 (km²)] \
+    #v(-2pt)
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Total Area by Village/Subdistrict in Mempawah Hilir Subdistrict, 2025 (sq.km)]
+  ]
+)
+#v(10pt)
+
 
 
 #pagebreak()
@@ -1059,9 +1127,11 @@ Kecamatan Mempawah Hilir secara astronomis dan geografis terletak di wilayah pes
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[No]], [#strong[Nama Kota dan Tempat Penting] \ #text(6pt, weight: "bold", style: "italic")[Other Important Places]], [#strong[Jarak] \ #text(6pt, weight: "bold", style: "italic")[Distance (km)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]]),
-  [1], [Ibukota Provinsi Kalimantan Barat (Kota Pontianak)], [63,00],
-  [2], [Pusat Pemerintahan Kabupaten Mempawah (Mempawah Hilir)], [2,80],
-  [3], [Makam Juang Mandor], [50,00]
+  [1], [Ibukota Provinsi Kalimantan Barat 
+(Kota Pontianak)], [63,00],
+  [2], [Pusat Pemerintahan Kabupaten 
+Mempawah (Mempawah Hilir)], [2,80],
+  [3], [Makam Juang Mandor], [...]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Mempawah Hilir/#text(style: "italic")[Mempawah Hilir District Office]]
@@ -1091,15 +1161,44 @@ Kecamatan Mempawah Hilir secara astronomis dan geografis terletak di wilayah pes
 #v(10pt)
 
 
-#v(1.5cm)
+
+#v(6pt)
 #align(center)[
-  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
-    #align(center + horizon)[
-      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS PEMERINTAHAN]      #v(6pt)
-      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan Mempawah Hilir]
-    ]
-  ]
+  #image("charts/gambar_2_1.svg", width: 100%)
 ]
+#v(-2pt)
+#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Mempawah Hilir/#text(style: "italic")[Mempawah Hilir District Office]]
+#v(4pt)
+#metadata("fig_2_1") <fig_2_1>
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 4.5pt,
+      align: (top + center, horizon),
+      [
+        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
+          #text(7.5pt, weight: "bold")[Gambar]
+        ] \
+        #v(-3.5pt)
+        #text(6.5pt, style: "italic")[Figures]
+      ],
+      [
+        #text(8.5pt, weight: "bold")[2.1]
+      ]
+    )
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Jumlah Rukun Tetangga (RT) menurut Desa/Kelurahan di Mempawah Hilir, 2025] \
+    #v(-2pt)
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Neighborhood Units (RT) by Village/Subdistrict in Mempawah Hilir Subdistrict, 2025]
+  ]
+)
+#v(10pt)
+
 
 
 #pagebreak()
@@ -1157,10 +1256,10 @@ Secara administratif, Kecamatan Mempawah Hilir terbagi menjadi 8 desa/kelurahan 
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], [#strong[Jumlah Dusun] \ #text(6pt, weight: "bold", style: "italic")[Hamlets]], [#strong[Rukun Warga] \ #text(6pt, weight: "bold", style: "italic")[(RW)]], [#strong[Rukun Tetangga] \ #text(6pt, weight: "bold", style: "italic")[(RT)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Tanjung], [–], [3], [6],
+  [Tanjung], [0], [3], [6],
   [Kuala Secapah], [4], [8], [15],
-  [Tengah], [–], [8], [24],
-  [Terusan], [–], [17], [41],
+  [Tengah], [0], [8], [24],
+  [Terusan], [0], [17], [41],
   [Pasir], [7], [10], [34],
   [Penibung], [3], [8], [16],
   [Sengkubang], [4], [7], [16],
@@ -1486,15 +1585,44 @@ Secara administratif, Kecamatan Mempawah Hilir terbagi menjadi 8 desa/kelurahan 
 #v(10pt)
 
 
-#v(1.5cm)
+
+#v(6pt)
 #align(center)[
-  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
-    #align(center + horizon)[
-      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS KEPENDUDUKAN]      #v(6pt)
-      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan Mempawah Hilir]
-    ]
-  ]
+  #image("charts/gambar_3_1.svg", width: 100%)
 ]
+#v(-2pt)
+#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Dinas Kependudukan dan Pencatatan Sipil Kabupaten Mempawah (Semester II 2025)/#text(style: "italic")[Population and Civil Registration Service of Mempawah Regency (Semester II 2025)]]
+#v(4pt)
+#metadata("fig_3_1") <fig_3_1>
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 4.5pt,
+      align: (top + center, horizon),
+      [
+        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
+          #text(7.5pt, weight: "bold")[Gambar]
+        ] \
+        #v(-3.5pt)
+        #text(6.5pt, style: "italic")[Figures]
+      ],
+      [
+        #text(8.5pt, weight: "bold")[3.1]
+      ]
+    )
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Jumlah Penduduk menurut Jenis Kelamin dan Desa/Kelurahan di Mempawah Hilir, 2025] \
+    #v(-2pt)
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Population by Sex and Village/Subdistrict in Mempawah Hilir Subdistrict, 2025]
+  ]
+)
+#v(10pt)
+
 
 
 #pagebreak()
@@ -1655,16 +1783,16 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Mempawah Hilir ditopang ol
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[Tingkat Pendidikan] \ #text(6pt, weight: "bold", style: "italic")[Educational Level]], [#strong[2023]], [#strong[2024]], [#strong[2025]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Taman Kanak-Kanak (TK)], [...], [...], [...],
-  [Raudatul Athfal (RA)], [...], [...], [...],
-  [Sekolah Dasar (SD)], [...], [...], [...],
-  [Madrasah Ibtidaiyah (MI)], [...], [...], [...],
-  [Sekolah Menengah Pertama (SMP)], [...], [...], [...],
-  [Madrasah Tsanawiyah (MTs)], [...], [...], [...],
-  [Sekolah Menengah Atas (SMA)], [...], [...], [...],
-  [Sekolah Menengah Kejuruan (SMK)], [...], [...], [...],
-  [Madrasah Aliyah (MA)], [...], [...], [...],
-  [Akademi/Perguruan Tinggi], [...], [...], [...]
+  [Taman Kanak-Kanak (TK)], [...], [...], [6],
+  [Raudatul Athfal (RA)], [...], [...], [0],
+  [Sekolah Dasar (SD)], [...], [...], [8],
+  [Madrasah Ibtidaiyah (MI)], [...], [...], [0],
+  [Sekolah Menengah Pertama (SMP)], [...], [...], [7],
+  [Madrasah Tsanawiyah (MTs)], [...], [...], [0],
+  [Sekolah Menengah Atas (SMA)], [...], [...], [5],
+  [Sekolah Menengah Kejuruan (SMK)], [...], [...], [3],
+  [Madrasah Aliyah (MA)], [...], [...], [0],
+  [Akademi/Perguruan Tinggi], [...], [...], [1]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS, Pendataan Potensi Desa (Podes)/#text(style: "italic")[BPS-Statistics Indonesia, Village Potential Census (Podes)]]
@@ -2834,14 +2962,10 @@ Aktivitas perniagaan di Kecamatan Mempawah Hilir berkembang dinamis didukung ole
   // 1. Pita Dekoratif Melengkung Khas Publikasi (Typst Bezier Curves)
   #place(top + left)[
     #let ribbon_left(dx, dy, alpha, thick) = {
-      curve(
+      path(
         stroke: (paint: rgb(220, 130, 125, alpha), thickness: thick),
-        curve.move((dx + -30pt, dy + 320pt)),
-        curve.cubic(
-          (dx + 90pt, dy + 250pt),
-          (dx + 180pt, dy + 130pt),
-          (dx + 220pt, dy + -30pt),
-        ),
+        (dx + -30pt, dy + 320pt),
+        ((dx + 90pt, dy + 250pt), (dx + 180pt, dy + 130pt), (dx + 220pt, dy + -30pt)),
       )
     }
     #ribbon_left(-55pt, 60pt, 5%, 3.5pt)
@@ -2855,14 +2979,10 @@ Aktivitas perniagaan di Kecamatan Mempawah Hilir berkembang dinamis didukung ole
 
   #place(bottom + right)[
     #let ribbon_right(dx, dy, alpha, thick) = {
-      curve(
+      path(
         stroke: (paint: rgb(220, 130, 125, alpha), thickness: thick),
-        curve.move((dx + 40pt, dy + 40pt)),
-        curve.cubic(
-          (dx - 70pt, dy - 140pt),
-          (dx - 140pt, dy - 290pt),
-          (dx - 160pt, dy - 440pt),
-        ),
+        (dx + 40pt, dy + 40pt),
+        ((dx - 70pt, dy - 140pt), (dx - 140pt, dy - 290pt), (dx - 160pt, dy - 440pt)),
       )
     }
     #ribbon_right(-15pt, 15pt, 5%, 4pt)

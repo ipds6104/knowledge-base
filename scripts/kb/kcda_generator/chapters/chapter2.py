@@ -91,29 +91,53 @@ def render_chapter2(cfg: Dict[str, Any], out_dir: Optional[Any] = None) -> str:
         source=f"Kantor Camat {nama_singkat}"
     )
 
+    # --- 2.1.5 Klasifikasi Desa/Kelurahan Perdesaan dan Perkotaan ---
+    rows_215_raw = get_kecamatan_tab_rows("2.1.5", nama_singkat)
+    klas_map = {}
+    for r in rows_215_raw[2:]:
+        if len(r) > 2 and r[1].strip() and not any(r[1].lower().startswith(x) for x in ['jumlah', 'total', 'sumber']):
+            wil_adm = clean_cell_value(r[2] if len(r) > 2 else "Desa")
+            klas = clean_cell_value(r[3] if len(r) > 3 else "Perdesaan")
+            klas_map[r[1].strip().lower()] = [wil_adm, klas]
+
+    t215_rows = []
+    for idx, d in enumerate(desa_list, 1):
+        v = klas_map.get(d.lower(), ["Desa", "Perdesaan"])
+        t215_rows.append([str(idx), d, v[0], v[1]])
+
+    t215_markup = render_typst_table(
+        table_no="2.1.5",
+        title_id=f"Klasifikasi Desa/Kelurahan Perdesaan dan Perkotaan di {nama_resmi}, 2024",
+        title_en=f"Urban and Rural Classification of Village/Subdistrict in {nama_en}, 2024",
+        headers=["No", "Desa/Kelurahan\nVillage/Subdistrict", "Wilayah Administratif\nAdministrative Area", "Klasifikasi Desa/Kelurahan\nUrban/Rural Classification"],
+        col_numbers=["(1)", "(2)", "(3)", "(4)"],
+        rows=t215_rows,
+        col_widths=["0.6fr", "2.2fr", "1.6fr", "1.6fr"],
+        source="Peraturan Kepala BPS No. 120 Tahun 2020 / Chief of BPS Regulation No. 120 of 2020"
+    )
+
     # --- 2.1.6 IDM Desa ---
     rows_216_raw = get_kecamatan_tab_rows("2.1.6", nama_singkat)
     idm_map = {}
-    for r in rows_216_raw[3:]:
-        if len(r) > 1 and r[0].strip() and not any(r[0].lower().startswith(x) for x in ['jumlah', 'total', 'sumber']):
-            skor = clean_cell_value(r[1] if len(r) > 1 else "...")
-            status = clean_cell_value(r[2] if len(r) > 2 else "...")
-            idm_map[r[0].strip().lower()] = [skor, status]
+    for r in rows_216_raw[2:]:
+        if len(r) > 2 and r[1].strip() and not any(r[1].lower().startswith(x) for x in ['jumlah', 'total', 'sumber']):
+            status = clean_cell_value(r[2])
+            idm_map[r[1].strip().lower()] = status
 
     t216_rows = []
-    for d in desa_list:
-        v = idm_map.get(d.lower(), ["...", "..."])
-        t216_rows.append([d, v[0], v[1]])
+    for idx, d in enumerate(desa_list, 1):
+        status_idm = idm_map.get(d.lower(), "...")
+        t216_rows.append([str(idx), d, status_idm])
 
     t216_markup = render_typst_table(
         table_no="2.1.6",
-        title_id=f"Status Desa Berdasarkan Indeks Desa Membangun (IDM) di {nama_resmi}, 2024/2025",
-        title_en=f"Village Status Based on Developing Village Index (IDM) in {nama_en}, 2024/2025",
-        headers=["Desa/Kelurahan\nVillage/Subdistrict", "Skor IDM\nIDM Score", "Status IDM\nIDM Status"],
+        title_id=f"Status Desa Berdasarkan Indeks Desa Membangun (IDM) di {nama_resmi}, 2024",
+        title_en=f"Village Status Based on Developing Village Index (IDM) in {nama_en}, 2024",
+        headers=["No", "Desa/Kelurahan\nVillage/Subdistrict", "Status Indeks Desa Membangun\nDeveloping Village Index Status"],
         col_numbers=["(1)", "(2)", "(3)"],
         rows=t216_rows,
-        col_widths=["2.5fr", "1.2fr", "1.5fr"],
-        source="Kementerian Desa, Pembangunan Daerah Tertinggal, dan Transmigrasi"
+        col_widths=["0.6fr", "2.5fr", "2.5fr"],
+        source="Kementerian Desa, Pembangunan Daerah Tertinggal, dan Transmigrasi / Ministry of Villages, Disadvantaged Regions Development, and Transmigration"
     )
 
     # --- 2.2.1 PNS menurut Golongan ---
@@ -149,43 +173,11 @@ def render_chapter2(cfg: Dict[str, Any], out_dir: Optional[Any] = None) -> str:
         source=f"Kantor Camat {nama_singkat}"
     )
 
-    # Infografis Halaman Bab 2
-    infografis_markup = f"\n{charts_markup}\n" if charts_markup.strip() else """
-#v(1.5cm)
-#align(center)[
-  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
-    #align(center + horizon)[
-      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS PEMERINTAHAN]\
-      #v(6pt)
-      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan """ + nama_singkat + """]
-    ]
-  ]
-]
-"""
-
     return f"""
 // ==========================================
-// BAB 2: PEMERINTAHAN (HALAMAN PEMBATAS & INFOGRAFIS)
+// BAB 2: PEMERINTAHAN (INFOGRAFIS & NARASI)
 // ==========================================
-#is_chapter_page.update(true)
-#v(0.5cm)
-#block(
-  fill: rgb("#FEF3C7"),
-  inset: 12pt,
-  width: 100%,
-  stroke: (left: 4pt + rgb("#D97706")),
-  [
-    #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 2: PEMERINTAHAN] \\
-    #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 2: GOVERNMENT]
-  ]
-) <chapter_page>
-#v(10pt)
-
-{infografis_markup}
-
-#pagebreak()
-#is_chapter_page.update(false)
-
+{chart_section}
 // ==========================================
 // ISI BAB 2: ULASAN NARASI & TABEL DATA
 // ==========================================
@@ -202,10 +194,12 @@ Secara administratif, Kecamatan {nama_singkat} terbagi menjadi {len(desa_list)} 
 {t213_markup}
 #pagebreak()
 
-{t216_markup}
+{t215_markup}
 #v(10pt)
-{t221_markup}
+{t216_markup}
 #pagebreak()
 
+{t221_markup}
+#v(10pt)
 {t222_markup}
 """

@@ -37,6 +37,7 @@
     bottom: 2.0cm,
   ),
   header-ascent: 40%,
+  footer-descent: 20%,
   header: context {
     let p = here().page()
     let has_c = query(selector(<page_marker>)).any(m => {
@@ -821,15 +822,82 @@ _Rounding Note: Due to rounding, figures in line/column totals may not strictly 
 #v(10pt)
 
 
-#v(1.5cm)
+
+#v(6pt)
 #align(center)[
-  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
-    #align(center + horizon)[
-      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS GEOGRAFI & IKLIM]      #v(6pt)
-      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan Segedong]
-    ]
-  ]
+  #image("charts/gambar_1_1.svg", width: 100%)
 ]
+#v(-2pt)
+#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Segedong/#text(style: "italic")[Segedong District Office]]
+#v(4pt)
+#metadata("fig_1_1") <fig_1_1>
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 4.5pt,
+      align: (top + center, horizon),
+      [
+        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
+          #text(7.5pt, weight: "bold")[Gambar]
+        ] \
+        #v(-3.5pt)
+        #text(6.5pt, style: "italic")[Figures]
+      ],
+      [
+        #text(8.5pt, weight: "bold")[1.1]
+      ]
+    )
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Jarak dari Desa/Kelurahan ke Ibukota Kecamatan di Segedong, 2025 (km)] \
+    #v(-2pt)
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Distance from Village/Subdistrict to District Capital in Segedong Subdistrict, 2025 (km)]
+  ]
+)
+#v(10pt)
+
+
+#v(6pt)
+#align(center)[
+  #image("charts/gambar_1_2.svg", width: 100%)
+]
+#v(-2pt)
+#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Dinas Kependudukan dan Pencatatan Sipil/BAPEDDA Kabupaten Mempawah/#text(style: "italic")[Population and Civil Registration Service/Regional Development Planning Agency of Mempawah Regency]]
+#v(4pt)
+#metadata("fig_1_2") <fig_1_2>
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 4.5pt,
+      align: (top + center, horizon),
+      [
+        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
+          #text(7.5pt, weight: "bold")[Gambar]
+        ] \
+        #v(-3.5pt)
+        #text(6.5pt, style: "italic")[Figures]
+      ],
+      [
+        #text(8.5pt, weight: "bold")[1.2]
+      ]
+    )
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Luas Wilayah menurut Desa/Kelurahan di Segedong, 2025 (km²)] \
+    #v(-2pt)
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Total Area by Village/Subdistrict in Segedong Subdistrict, 2025 (sq.km)]
+  ]
+)
+#v(10pt)
+
 
 
 #pagebreak()
@@ -1055,10 +1123,11 @@ Kecamatan Segedong secara astronomis dan geografis terletak di wilayah pesisir d
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[No]], [#strong[Nama Kota dan Tempat Penting] \ #text(6pt, weight: "bold", style: "italic")[Other Important Places]], [#strong[Jarak] \ #text(6pt, weight: "bold", style: "italic")[Distance (km)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]]),
-  [1], [Ibukota Provinsi Kalimantan Barat (Kota Pontianak)], [42,10],
-  [2], [Pusat Pemerintahan Kabupaten Mempawah (Mempawah Hilir)], [40,30],
-  [3], [Makam Juang Mandor], [59,60],
-  [4], [Kota Sungai Pinyuh], [22,40]
+  [1], [Ibukota Provinsi Kalimantan Barat 
+(Kota Pontianak)], [42,10],
+  [2], [Pusat Pemerintahan Kabupaten 
+Mempawah (Mempawah Hilir)], [40,30],
+  [3], [Makam Juang Mandor], [...]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Segedong/#text(style: "italic")[Segedong District Office]]
@@ -1088,15 +1157,44 @@ Kecamatan Segedong secara astronomis dan geografis terletak di wilayah pesisir d
 #v(10pt)
 
 
-#v(1.5cm)
+
+#v(6pt)
 #align(center)[
-  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
-    #align(center + horizon)[
-      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS PEMERINTAHAN]      #v(6pt)
-      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan Segedong]
-    ]
-  ]
+  #image("charts/gambar_2_1.svg", width: 100%)
 ]
+#v(-2pt)
+#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Segedong/#text(style: "italic")[Segedong District Office]]
+#v(4pt)
+#metadata("fig_2_1") <fig_2_1>
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 4.5pt,
+      align: (top + center, horizon),
+      [
+        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
+          #text(7.5pt, weight: "bold")[Gambar]
+        ] \
+        #v(-3.5pt)
+        #text(6.5pt, style: "italic")[Figures]
+      ],
+      [
+        #text(8.5pt, weight: "bold")[2.1]
+      ]
+    )
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Jumlah Rukun Tetangga (RT) menurut Desa/Kelurahan di Segedong, 2025] \
+    #v(-2pt)
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Neighborhood Units (RT) by Village/Subdistrict in Segedong Subdistrict, 2025]
+  ]
+)
+#v(10pt)
+
 
 
 #pagebreak()
@@ -1211,12 +1309,7 @@ Secara administratif, Kecamatan Segedong terbagi menjadi 6 desa/kelurahan yang d
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[No]], [#strong[Nama Camat] \ #text(6pt, weight: "bold", style: "italic")[Name of District Head]], [#strong[Periode Menjabat] \ #text(6pt, weight: "bold", style: "italic")[Period]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]]),
-  [1], [Drs. Herman, M.Si], [2006 – 2008],
-  [2], [Enok Yuniarti, S.IP], [2009 – 2010],
-  [3], [Sukarjo, S.Sos], [2010 – 2013],
-  [4], [Abdul Malik, SH, M.Si], [2013 – 2018],
-  [5], [H. Iskandar, S.Sos], [2018 – 2021],
-  [6], [H. Arifin, S.Pd, M.Pd], [2021 – Sekarang]
+  [22], [H. Arifin, S.Pd, M.Pd], [2021 – Sekarang]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Segedong/#text(style: "italic")[Segedong District Office]]
@@ -1471,15 +1564,44 @@ Secara administratif, Kecamatan Segedong terbagi menjadi 6 desa/kelurahan yang d
 #v(10pt)
 
 
-#v(1.5cm)
+
+#v(6pt)
 #align(center)[
-  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
-    #align(center + horizon)[
-      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS KEPENDUDUKAN]      #v(6pt)
-      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan Segedong]
-    ]
-  ]
+  #image("charts/gambar_3_1.svg", width: 100%)
 ]
+#v(-2pt)
+#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Dinas Kependudukan dan Pencatatan Sipil Kabupaten Mempawah (Semester II 2025)/#text(style: "italic")[Population and Civil Registration Service of Mempawah Regency (Semester II 2025)]]
+#v(4pt)
+#metadata("fig_3_1") <fig_3_1>
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 4.5pt,
+      align: (top + center, horizon),
+      [
+        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
+          #text(7.5pt, weight: "bold")[Gambar]
+        ] \
+        #v(-3.5pt)
+        #text(6.5pt, style: "italic")[Figures]
+      ],
+      [
+        #text(8.5pt, weight: "bold")[3.1]
+      ]
+    )
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Jumlah Penduduk menurut Jenis Kelamin dan Desa/Kelurahan di Segedong, 2025] \
+    #v(-2pt)
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Population by Sex and Village/Subdistrict in Segedong Subdistrict, 2025]
+  ]
+)
+#v(10pt)
+
 
 
 #pagebreak()
@@ -1638,16 +1760,16 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Segedong ditopang oleh per
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[Tingkat Pendidikan] \ #text(6pt, weight: "bold", style: "italic")[Educational Level]], [#strong[2023]], [#strong[2024]], [#strong[2025]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Taman Kanak-Kanak (TK)], [...], [...], [...],
-  [Raudatul Athfal (RA)], [...], [...], [...],
-  [Sekolah Dasar (SD)], [...], [...], [...],
-  [Madrasah Ibtidaiyah (MI)], [...], [...], [...],
-  [Sekolah Menengah Pertama (SMP)], [...], [...], [...],
-  [Madrasah Tsanawiyah (MTs)], [...], [...], [...],
-  [Sekolah Menengah Atas (SMA)], [...], [...], [...],
-  [Sekolah Menengah Kejuruan (SMK)], [...], [...], [...],
-  [Madrasah Aliyah (MA)], [...], [...], [...],
-  [Akademi/Perguruan Tinggi], [...], [...], [...]
+  [Taman Kanak-Kanak (TK)], [...], [...], [4],
+  [Raudatul Athfal (RA)], [...], [...], [0],
+  [Sekolah Dasar (SD)], [...], [...], [6],
+  [Madrasah Ibtidaiyah (MI)], [...], [...], [0],
+  [Sekolah Menengah Pertama (SMP)], [...], [...], [5],
+  [Madrasah Tsanawiyah (MTs)], [...], [...], [0],
+  [Sekolah Menengah Atas (SMA)], [...], [...], [3],
+  [Sekolah Menengah Kejuruan (SMK)], [...], [...], [0],
+  [Madrasah Aliyah (MA)], [...], [...], [0],
+  [Akademi/Perguruan Tinggi], [...], [...], [1]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS, Pendataan Potensi Desa (Podes)/#text(style: "italic")[BPS-Statistics Indonesia, Village Potential Census (Podes)]]
@@ -2811,14 +2933,10 @@ Aktivitas perniagaan di Kecamatan Segedong berkembang dinamis didukung oleh sara
   // 1. Pita Dekoratif Melengkung Khas Publikasi (Typst Bezier Curves)
   #place(top + left)[
     #let ribbon_left(dx, dy, alpha, thick) = {
-      curve(
+      path(
         stroke: (paint: rgb(220, 130, 125, alpha), thickness: thick),
-        curve.move((dx + -30pt, dy + 320pt)),
-        curve.cubic(
-          (dx + 90pt, dy + 250pt),
-          (dx + 180pt, dy + 130pt),
-          (dx + 220pt, dy + -30pt),
-        ),
+        (dx + -30pt, dy + 320pt),
+        ((dx + 90pt, dy + 250pt), (dx + 180pt, dy + 130pt), (dx + 220pt, dy + -30pt)),
       )
     }
     #ribbon_left(-55pt, 60pt, 5%, 3.5pt)
@@ -2832,14 +2950,10 @@ Aktivitas perniagaan di Kecamatan Segedong berkembang dinamis didukung oleh sara
 
   #place(bottom + right)[
     #let ribbon_right(dx, dy, alpha, thick) = {
-      curve(
+      path(
         stroke: (paint: rgb(220, 130, 125, alpha), thickness: thick),
-        curve.move((dx + 40pt, dy + 40pt)),
-        curve.cubic(
-          (dx - 70pt, dy - 140pt),
-          (dx - 140pt, dy - 290pt),
-          (dx - 160pt, dy - 440pt),
-        ),
+        (dx + 40pt, dy + 40pt),
+        ((dx - 70pt, dy - 140pt), (dx - 140pt, dy - 290pt), (dx - 160pt, dy - 440pt)),
       )
     }
     #ribbon_right(-15pt, 15pt, 5%, 4pt)

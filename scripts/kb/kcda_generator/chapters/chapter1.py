@@ -21,26 +21,39 @@ def render_chapter1(cfg: Dict[str, Any], out_dir: Optional[Any] = None) -> str:
     # --- 1.1 Luas Daerah ---
     rows_1_1_raw = get_kecamatan_tab_rows("1.1.", nama_singkat)
     luas_map = {}
+    total_luas = "..."
     for r in rows_1_1_raw[3:]:
-        if len(r) > 1 and r[0].strip() and not any(r[0].lower().startswith(x) for x in ['jumlah', 'total', 'sumber']):
-            luas_val = clean_cell_value(r[3] if len(r) > 3 else r[1])
-            pct_val = clean_cell_value(r[4] if len(r) > 4 else "...")
-            luas_map[r[0].strip().lower()] = [luas_val, pct_val]
+        if len(r) > 0 and r[0].strip():
+            nama_d = r[0].strip()
+            if any(nama_d.lower().startswith(x) for x in ['jumlah', 'total', 'kecamatan']):
+                if len(r) > 7 and r[7].strip():
+                    total_luas = clean_cell_value(r[7])
+                continue
+            if any(nama_d.lower().startswith(x) for x in ['sumber', 'catatan']):
+                continue
+
+            luas_val = clean_cell_value(r[7] if len(r) > 7 else r[1])
+            pct_val = clean_cell_value(r[8] if len(r) > 8 else "...")
+            status_val = clean_cell_value(r[9] if len(r) > 9 else "Indikatif")
+            luas_map[nama_d.lower()] = [luas_val, pct_val, status_val]
 
     t1_1_rows = []
     for d in desa_list:
-        v = luas_map.get(d.lower(), ["...", "..."])
-        t1_1_rows.append([d, v[0], v[1]])
+        v = luas_map.get(d.lower(), ["...", "...", "Indikatif"])
+        t1_1_rows.append([d, v[0], v[1], v[2]])
+
+    t1_1_rows.append([f"Kecamatan {nama_singkat} / Total", total_luas, "100,00", ""])
 
     t1_1_markup = render_typst_table(
         table_no="1.1",
         title_id=f"Luas Daerah Menurut Desa/Kelurahan di {nama_resmi}, 2025",
         title_en=f"Total Area by Village/Subdistrict in {nama_en}, 2025",
-        headers=["Desa/Kelurahan\nVillage/Subdistrict", "Luas Daerah\nTotal Area (km²)", "Persentase\nPercentage (%)"],
-        col_numbers=["(1)", "(2)", "(3)"],
+        headers=["Desa/Kelurahan\nVillage/Subdistrict", "Luas Daerah\nTotal Area (km²)", "Persentase\nPercentage (%)", "Status Batas\nBoundary Status"],
+        col_numbers=["(1)", "(2)", "(3)", "(4)"],
         rows=t1_1_rows,
-        col_widths=["2.5fr", "1.3fr", "1.2fr"],
-        source="Dinas Kependudukan dan Pencatatan Sipil/BAPEDDA Kabupaten Mempawah / Population and Civil Registration Service/Regional Development Planning Agency of Mempawah Regency"
+        col_widths=["2.2fr", "1.1fr", "1.0fr", "1.3fr"],
+        source="Dinas Kependudukan dan Pencatatan Sipil/BAPEDDA Kabupaten Mempawah / Population and Civil Registration Service/Regional Development Planning Agency of Mempawah Regency",
+        note="Untuk desa/kelurahan dengan status Indikatif masih perlu dilakukan pelacakan ke lapangan dan kesepakatan batas antarwilayah yang berbatasan. / For villages/subdistricts with Indicative status, field tracking and boundary agreements between adjacent areas are still required."
     )
 
     # --- 1.2 Jarak ke Ibukota Kecamatan & Kabupaten ---
@@ -140,27 +153,9 @@ def render_chapter1(cfg: Dict[str, Any], out_dir: Optional[Any] = None) -> str:
 
     return f"""
 // ==========================================
-// BAB 1: GEOGRAFI DAN IKLIM (HALAMAN PEMBATAS & INFOGRAFIS)
+// BAB 1: GEOGRAFI DAN IKLIM (INFOGRAFIS & NARASI)
 // ==========================================
-#is_chapter_page.update(true)
-#v(0.5cm)
-#block(
-  fill: rgb("#FEF3C7"),
-  inset: 12pt,
-  width: 100%,
-  stroke: (left: 4pt + rgb("#D97706")),
-  [
-    #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 1: GEOGRAFI DAN IKLIM] \\
-    #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 1: GEOGRAPHY AND CLIMATE]
-  ]
-) <chapter_page>
-#v(10pt)
-
-{infografis_markup}
-
-#pagebreak()
-#is_chapter_page.update(false)
-
+{chart_section}
 // ==========================================
 // ISI BAB 1: ULASAN NARASI & TABEL DATA
 // ==========================================

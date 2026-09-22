@@ -27,12 +27,18 @@ deadlines:
   - tanggal: "2026-09-07"
     kegiatan: "Mulai Pelatihan Petugas Pengolahan Peta (Wilkerstat) SE2026 BPS Kab/Kota"
     status: "selesai"
+  - tanggal: "2026-09-22"
+    kegiatan: "Briefing Zoom: Perubahan Juknis Pengolahan Geotagging Wilkerstat SE2026 (09.00 WIB)"
+    status: "belum"
   - tanggal: "2026-09-25"
     kegiatan: "Batas Akhir Pelatihan Petugas Pengolahan Peta Wilkerstat (Surat B-330)"
     status: "belum"
   - tanggal: "2026-09-30"
     kegiatan: "Batas Akhir Entri & Approval Perubahan SLS di FRS-MFDOnline (Surat B-362)"
     status: "belum"
+  - tanggal: "2026-09-30"
+    kegiatan: "SE2026: Batas Akhir Penyisiran Lapangan oleh Pegawai Organik (Alokasi Fasih-SM)"
+    status: "aktif"
   - tanggal: "2026-10-01"
     kegiatan: "Mulai Pengolahan Peta Wilkerstat BPS Kab/Kota (Surat B-330)"
     status: "belum"
@@ -498,6 +504,9 @@ Berikut adalah daftar PPL dengan rasio usaha keluarga Non-Aktif (Closed / Not Fo
   Hasil audit matching data prelist DTSEN desil rendah (<7) ke database Regsosek CETAR se-Kalbar: analisis 6.662 KK tidak ditemukan (1.839 KK terdeteksi koordinat di CETAR), klasifikasi 6 tipologi catatan petugas CAPI/Fasih, mitigasi resiko catatan kosong/tautologi, dan rujukan spreadsheet master [Audit DTSEN Hilang](https://docs.google.com/spreadsheets/d/1iK-N0xVKViNbzTIc64qBOjESJFdcR9IEtv1RjMWN9b0/edit?pli=1&gid=2072569417#gid=2072569417).
 * 📄 **[Mekanisme Cleanup Assignment FASIH, Alokasi Petugas & Syarat Pembayaran Honor SE2026](docs/mekanisme-cleanup-fasih-dan-alokasi-petugas.md)**  
   SOP resmi cleanup assignment per device via FASIH-SM (http://s.bps.go.id/CleanUp_SE2026) sebagai syarat penarikan data ke BOS/SOBAT untuk pembuatan FP honor & BAST, tata cara perpindahan role PML ke PPL, serta manajemen alokasi petugas periode 17–30 September 2026.
+* 📹 **[Briefing Perubahan Juknis Pengolahan Geotagging Wilkerstat SE2026]**  
+  Pertemuan virtual Inda Pengolahan Wilkerstat SE2026 pada Selasa, 22 September 2026 pukul 09.00 WIB via Zoom: [s.bps.go.id/briefing-wilkerstat-6100](http://s.bps.go.id/briefing-wilkerstat-6100).
+
 
 ---
 

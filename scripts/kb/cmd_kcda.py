@@ -62,6 +62,8 @@ def handle_kcda(args):
         download_all_kcda_tables()
         print("✅ Sinkronisasi selesai. Menjalankan audit...")
         run_kcda_audit(filter_kec=args.kecamatan)
+    elif action in ["audit", "report"]:
+        run_kcda_audit(filter_kec=args.kecamatan)
     elif action in ["audit-layout", "test-layout"]:
         from .pdf_audit import KcdaPdfAuditor
         auditor = KcdaPdfAuditor()

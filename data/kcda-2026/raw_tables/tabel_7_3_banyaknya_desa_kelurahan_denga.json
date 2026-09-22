@@ -5,7 +5,7 @@
   "disediakan_ipds": false,
   "sheet_id": "1fPF2Yb8rJXtNJAuK5wnVnBLCpZyYLQDHb5EGQf4bk_0",
   "spreadsheet_title": "Banyaknya Desa/Kelurahan\ndengan Keberadaan Sarana\nPerdagangan Menurut Jenis\nSarana Perdagangan di Kecamatan\nXXX",
-  "updated_at": "2026-09-10 20:46:35",
+  "updated_at": "2026-09-22 08:29:51",
   "tabs": {
     "Mempawah Hilir": {
       "raw_title": "Mempawah Hilir",
@@ -18,142 +18,28 @@
           "2025"
         ],
         [
-          "Kelompok pertokoan\nShopping complexs"
+          "Kelompok pertokoan\nShopping complexs",
+          "9"
         ],
         [
-          "Pasar dengan bangunan permanen\nMarkets in permanent building"
+          "Pasar dengan bangunan permanen\nMarkets in permanent building",
+          "1"
         ],
         [
-          "Pasar dengan bangunan semi permanen\nMarket in semi permanent buildin"
+          "Pasar dengan bangunan semi permanen\nMarket in semi permanent buildin",
+          "1"
         ],
         [
-          "Pasar tanpa bangunan\nMarket without permanent building"
+          "Pasar tanpa bangunan\nMarket without permanent building",
+          "0"
         ],
         [
-          "Mini market/swalayan/supermarket"
+          "Mini market/swalayan/supermarket",
+          "23"
         ],
         [
-          "Restoran/rumah makan\nRestaurant/food stall"
-        ]
-      ]
-    },
-    "Mempawah Timur": {
-      "raw_title": "Mempawah Timur",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Jenis Sarana Perdagangan\n Type of Trade Facilities",
-          "2025"
-        ],
-        [
-          "Kelompok pertokoan\nShopping complexs"
-        ],
-        [
-          "Pasar dengan bangunan permanen\nMarkets in permanent building"
-        ],
-        [
-          "Pasar dengan bangunan semi permanen\nMarket in semi permanent buildin"
-        ],
-        [
-          "Pasar tanpa bangunan\nMarket without permanent building"
-        ],
-        [
-          "Mini market/swalayan/supermarket"
-        ],
-        [
-          "Restoran/rumah makan\nRestaurant/food stall"
-        ]
-      ]
-    },
-    "Sungai Pinyuh": {
-      "raw_title": "Sungai Pinyuh",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Jenis Sarana Perdagangan\n Type of Trade Facilities",
-          "2025"
-        ],
-        [
-          "Kelompok pertokoan\nShopping complexs"
-        ],
-        [
-          "Pasar dengan bangunan permanen\nMarkets in permanent building"
-        ],
-        [
-          "Pasar dengan bangunan semi permanen\nMarket in semi permanent buildin"
-        ],
-        [
-          "Pasar tanpa bangunan\nMarket without permanent building"
-        ],
-        [
-          "Mini market/swalayan/supermarket"
-        ],
-        [
-          "Restoran/rumah makan\nRestaurant/food stall"
-        ]
-      ]
-    },
-    "Sungai Kunyit": {
-      "raw_title": "Sungai Kunyit",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Jenis Sarana Perdagangan\n Type of Trade Facilities",
-          "2025"
-        ],
-        [
-          "Kelompok pertokoan\nShopping complexs"
-        ],
-        [
-          "Pasar dengan bangunan permanen\nMarkets in permanent building"
-        ],
-        [
-          "Pasar dengan bangunan semi permanen\nMarket in semi permanent buildin"
-        ],
-        [
-          "Pasar tanpa bangunan\nMarket without permanent building"
-        ],
-        [
-          "Mini market/swalayan/supermarket"
-        ],
-        [
-          "Restoran/rumah makan\nRestaurant/food stall"
-        ]
-      ]
-    },
-    "Segedong": {
-      "raw_title": "Segedong",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Jenis Sarana Perdagangan\n Type of Trade Facilities",
-          "2025"
-        ],
-        [
-          "Kelompok pertokoan\nShopping complexs"
-        ],
-        [
-          "Pasar dengan bangunan permanen\nMarkets in permanent building"
-        ],
-        [
-          "Pasar dengan bangunan semi permanen\nMarket in semi permanent buildin"
-        ],
-        [
-          "Pasar tanpa bangunan\nMarket without permanent building"
-        ],
-        [
-          "Mini market/swalayan/supermarket"
-        ],
-        [
-          "Restoran/rumah makan\nRestaurant/food stall"
+          "Restoran/rumah makan\nRestaurant/food stall",
+          "23"
         ]
       ]
     },
@@ -168,22 +54,64 @@
           "2025"
         ],
         [
-          "Kelompok pertokoan\nShopping complexs"
+          "Kelompok pertokoan\nShopping complexs",
+          "2"
         ],
         [
-          "Pasar dengan bangunan permanen\nMarkets in permanent building"
+          "Pasar dengan bangunan permanen\nMarkets in permanent building",
+          "1"
         ],
         [
-          "Pasar dengan bangunan semi permanen\nMarket in semi permanent buildin"
+          "Pasar dengan bangunan semi permanen\nMarket in semi permanent buildin",
+          "0"
         ],
         [
-          "Pasar tanpa bangunan\nMarket without permanent building"
+          "Pasar tanpa bangunan\nMarket without permanent building",
+          "0"
         ],
         [
-          "Mini market/swalayan/supermarket"
+          "Mini market/swalayan/supermarket",
+          "5"
         ],
         [
-          "Restoran/rumah makan\nRestaurant/food stall"
+          "Restoran/rumah makan\nRestaurant/food stall",
+          "0"
+        ]
+      ]
+    },
+    "Sungai Pinyuh": {
+      "raw_title": "Sungai Pinyuh",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Sarana Perdagangan\n Type of Trade Facilities",
+          "2025"
+        ],
+        [
+          "Kelompok pertokoan\nShopping complexs",
+          "30"
+        ],
+        [
+          "Pasar dengan bangunan permanen\nMarkets in permanent building",
+          "4"
+        ],
+        [
+          "Pasar dengan bangunan semi permanen\nMarket in semi permanent buildin",
+          "4"
+        ],
+        [
+          "Pasar tanpa bangunan\nMarket without permanent building",
+          "0"
+        ],
+        [
+          "Mini market/swalayan/supermarket",
+          "19"
+        ],
+        [
+          "Restoran/rumah makan\nRestaurant/food stall",
+          "18"
         ]
       ]
     },
@@ -198,22 +126,100 @@
           "2025"
         ],
         [
-          "Kelompok pertokoan\nShopping complexs"
+          "Kelompok pertokoan\nShopping complexs",
+          "3"
         ],
         [
-          "Pasar dengan bangunan permanen\nMarkets in permanent building"
+          "Pasar dengan bangunan permanen\nMarkets in permanent building",
+          "2"
         ],
         [
-          "Pasar dengan bangunan semi permanen\nMarket in semi permanent buildin"
+          "Pasar dengan bangunan semi permanen\nMarket in semi permanent buildin",
+          "0"
         ],
         [
-          "Pasar tanpa bangunan\nMarket without permanent building"
+          "Pasar tanpa bangunan\nMarket without permanent building",
+          "0"
         ],
         [
-          "Mini market/swalayan/supermarket"
+          "Mini market/swalayan/supermarket",
+          "9"
         ],
         [
-          "Restoran/rumah makan\nRestaurant/food stall"
+          "Restoran/rumah makan\nRestaurant/food stall",
+          "17"
+        ]
+      ]
+    },
+    "Sungai Kunyit": {
+      "raw_title": "Sungai Kunyit",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Sarana Perdagangan\n Type of Trade Facilities",
+          "2025"
+        ],
+        [
+          "Kelompok pertokoan\nShopping complexs",
+          "3"
+        ],
+        [
+          "Pasar dengan bangunan permanen\nMarkets in permanent building",
+          "1"
+        ],
+        [
+          "Pasar dengan bangunan semi permanen\nMarket in semi permanent buildin",
+          "0"
+        ],
+        [
+          "Pasar tanpa bangunan\nMarket without permanent building",
+          "1"
+        ],
+        [
+          "Mini market/swalayan/supermarket",
+          "5"
+        ],
+        [
+          "Restoran/rumah makan\nRestaurant/food stall",
+          "16"
+        ]
+      ]
+    },
+    "Segedong": {
+      "raw_title": "Segedong",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Sarana Perdagangan\n Type of Trade Facilities",
+          "2025"
+        ],
+        [
+          "Kelompok pertokoan\nShopping complexs",
+          "1"
+        ],
+        [
+          "Pasar dengan bangunan permanen\nMarkets in permanent building",
+          "3"
+        ],
+        [
+          "Pasar dengan bangunan semi permanen\nMarket in semi permanent buildin",
+          "1"
+        ],
+        [
+          "Pasar tanpa bangunan\nMarket without permanent building",
+          "0"
+        ],
+        [
+          "Mini market/swalayan/supermarket",
+          "3"
+        ],
+        [
+          "Restoran/rumah makan\nRestaurant/food stall",
+          "1"
         ]
       ]
     },
@@ -228,22 +234,28 @@
           "2025"
         ],
         [
-          "Kelompok pertokoan\nShopping complexs"
+          "Kelompok pertokoan\nShopping complexs",
+          "5"
         ],
         [
-          "Pasar dengan bangunan permanen\nMarkets in permanent building"
+          "Pasar dengan bangunan permanen\nMarkets in permanent building",
+          "2"
         ],
         [
-          "Pasar dengan bangunan semi permanen\nMarket in semi permanent buildin"
+          "Pasar dengan bangunan semi permanen\nMarket in semi permanent buildin",
+          "0"
         ],
         [
-          "Pasar tanpa bangunan\nMarket without permanent building"
+          "Pasar tanpa bangunan\nMarket without permanent building",
+          "0"
         ],
         [
-          "Mini market/swalayan/supermarket"
+          "Mini market/swalayan/supermarket",
+          "14"
         ],
         [
-          "Restoran/rumah makan\nRestaurant/food stall"
+          "Restoran/rumah makan\nRestaurant/food stall",
+          "4"
         ]
       ]
     },
@@ -258,22 +270,64 @@
           "2025"
         ],
         [
-          "Kelompok pertokoan\nShopping complexs"
+          "Kelompok pertokoan\nShopping complexs",
+          "0"
         ],
         [
-          "Pasar dengan bangunan permanen\nMarkets in permanent building"
+          "Pasar dengan bangunan permanen\nMarkets in permanent building",
+          "0"
         ],
         [
-          "Pasar dengan bangunan semi permanen\nMarket in semi permanent buildin"
+          "Pasar dengan bangunan semi permanen\nMarket in semi permanent buildin",
+          "0"
         ],
         [
-          "Pasar tanpa bangunan\nMarket without permanent building"
+          "Pasar tanpa bangunan\nMarket without permanent building",
+          "0"
         ],
         [
-          "Mini market/swalayan/supermarket"
+          "Mini market/swalayan/supermarket",
+          "0"
         ],
         [
-          "Restoran/rumah makan\nRestaurant/food stall"
+          "Restoran/rumah makan\nRestaurant/food stall",
+          "0"
+        ]
+      ]
+    },
+    "Mempawah Timur": {
+      "raw_title": "Mempawah Timur",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Sarana Perdagangan\n Type of Trade Facilities",
+          "2025"
+        ],
+        [
+          "Kelompok pertokoan\nShopping complexs",
+          "5"
+        ],
+        [
+          "Pasar dengan bangunan permanen\nMarkets in permanent building",
+          "3"
+        ],
+        [
+          "Pasar dengan bangunan semi permanen\nMarket in semi permanent buildin",
+          "1"
+        ],
+        [
+          "Pasar tanpa bangunan\nMarket without permanent building",
+          "0"
+        ],
+        [
+          "Mini market/swalayan/supermarket",
+          "9"
+        ],
+        [
+          "Restoran/rumah makan\nRestaurant/food stall",
+          "6"
         ]
       ]
     }

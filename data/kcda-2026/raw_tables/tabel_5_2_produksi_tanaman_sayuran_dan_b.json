@@ -5,7 +5,7 @@
   "disediakan_ipds": true,
   "sheet_id": "1b2aZw_swBnyiz3QHWjq_EAl1ibhCTwLSu1QjB2tvmuc",
   "spreadsheet_title": "Produksi Tanaman Sayuran dan Buah-buahan Semusim Menurut Jenis Tanaman di Kecamatan XXX (kuintal)",
-  "updated_at": "2026-09-10 20:46:31",
+  "updated_at": "2026-09-22 08:29:30",
   "tabs": {
     "Mempawah Hilir": {
       "raw_title": "Mempawah Hilir",
@@ -24,47 +24,98 @@
           "Sayuran/Vegetables:"
         ],
         [
-          "Bawang Merah/Shallots"
+          "Bawang Merah/Shallots",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Cabai Besar/TW/Teropong\nChili/Big Chili"
+          "Cabai Besar/TW/Teropong Chili/Big Chili",
+          "41",
+          "67",
+          "-",
+          "-"
         ],
         [
-          "Cabai Keriting\nCurly Chili"
+          "Cabai Keriting Curly Chili",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Cabai Rawit\nChili/Cayenne Pepper"
+          "Cabai Rawit Chili/Cayenne Pepper",
+          "78",
+          "230",
+          "66",
+          "87"
         ],
         [
-          "Kentang/Potato"
+          "Kentang/Potato",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Kubis/Cabbage"
+          "Kubis/Cabbage",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Tomat/Tomato"
+          "Tomat/Tomato",
+          "62",
+          "45",
+          "-",
+          "-"
         ],
         [
-          "Bawang Putih/Garlic"
+          "Bawang Putih/Garlic",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Bawang Daun/ Scallion"
+          "Bawang Daun/ Scallion",
+          "144",
+          "140",
+          "87",
+          "72"
         ],
         [
-          "Kacang Panjang/ Long Beans"
+          "Kacang Panjang/ Long Beans",
+          "167",
+          "183",
+          "126",
+          "112"
         ],
         [
-          "Ketimun/ Cucumber"
+          "Ketimun/ Cucumber",
+          "282",
+          "161",
+          "135",
+          "128"
         ],
         [
-          "Petsai/Sawi/ Chinese \nCabbage/mustard green"
+          "Petsai/Sawi/ Chinese Cabbage/mustard green",
+          "290",
+          "330",
+          "328",
+          "241"
         ],
-        [],
         [
           "Buah–buahan/Fruits:"
         ],
         [
-          "Semangka/ Water Melon"
+          "Semangka/ Water Melon",
+          "-",
+          "550",
+          "-",
+          "150"
         ]
       ]
     },
@@ -85,47 +136,81 @@
           "Sayuran/Vegetables:"
         ],
         [
-          "Bawang Merah/Shallots"
+          "Bawang Merah/Shallots",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Cabai Besar/TW/Teropong\nChili/Big Chili"
+          "Cabai Besar/TW/Teropong Chili/Big Chili",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Cabai Keriting\nCurly Chili"
+          "Cabai Keiting Curly Chili",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Cabai Rawit\nChili/Cayenne Pepper"
+          "Cabai Rawit Chili/Cayenne Pepper",
+          "52",
+          "348",
+          "751",
+          "479"
         ],
         [
-          "Kentang/Potato"
+          "Kentang/Potato",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Kubis/Cabbage"
+          "Kubis/Cabbage",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Tomat/Tomato"
+          "Tomat/Tomato",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Bawang Putih/Garlic"
+          "Bawang Putih/Garlic",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Bawang Daun/ Scallion"
+          "Kacang Panjang/Long Beans",
+          "301",
+          "244",
+          "3289",
+          "281"
         ],
         [
-          "Kacang Panjang/ Long Beans"
+          "Ketimun/Cucumber",
+          "478",
+          "2950",
+          "7599",
+          "6290"
         ],
         [
-          "Ketimun/ Cucumber"
-        ],
-        [
-          "Petsai/Sawi/ Chinese \nCabbage/mustard green"
-        ],
-        [],
-        [
-          "Buah–buahan/Fruits:"
-        ],
-        [
-          "Semangka/ Water Melon"
+          "Terung/Eggplant",
+          "341",
+          "442",
+          "4216",
+          "2024"
         ]
       ]
     },
@@ -146,47 +231,105 @@
           "Sayuran/Vegetables:"
         ],
         [
-          "Bawang Merah/Shallots"
+          "Bawang Merah/Shallots",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Cabai Besar/TW/Teropong\nChili/Big Chili"
+          "Cabai Besar/TW/Teropong Chili/Big Chili",
+          "-",
+          "18",
+          "46",
+          "39"
         ],
         [
-          "Cabai Keriting\nCurly Chili"
+          "Cabai Keiting Curly Chili",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Cabai Rawit\nChili/Cayenne Pepper"
+          "Cabai Rawit Chili/Cayenne Pepper",
+          "132",
+          "88",
+          "196",
+          "67"
         ],
         [
-          "Kentang/Potato"
+          "Kentang/Potato",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Kubis/Cabbage"
+          "Kubis/Cabbage",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Tomat/Tomato"
+          "Tomat/Tomato",
+          "130",
+          "75",
+          "110",
+          "100"
         ],
         [
-          "Bawang Putih/Garlic"
+          "Bawang Putih/Garlic",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Bawang Daun/ Scallion"
+          "Kacang Panjang/ Long Beans",
+          "164",
+          "119",
+          "169",
+          "110"
         ],
         [
-          "Kacang Panjang/ Long Beans"
+          "Kangkung/ Water Spinach",
+          "79",
+          "52",
+          "113",
+          "77"
         ],
         [
-          "Ketimun/ Cucumber"
+          "Ketimun/ Cucumber",
+          "166",
+          "151",
+          "272",
+          "257"
         ],
         [
-          "Petsai/Sawi/ Chinese \nCabbage/mustard green"
+          "Petsai/Sawi/ Chinese Cabbage/ mustard green",
+          "-",
+          "20",
+          "81",
+          "55"
         ],
-        [],
+        [
+          "Terung/ Eggplant",
+          "175",
+          "90",
+          "163",
+          "128"
+        ],
         [
           "Buah–buahan/Fruits:"
         ],
         [
-          "Semangka/ Water Melon"
+          "Semangka/ Water Melon",
+          "-",
+          "14",
+          "115",
+          "151"
         ]
       ]
     },
@@ -207,47 +350,105 @@
           "Sayuran/Vegetables:"
         ],
         [
-          "Bawang Merah/Shallots"
+          "Bawang Merah/Shallots",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Cabai Besar/TW/Teropong\nChili/Big Chili"
+          "Cabai Besar/TW/Teropong Chili/Big Chili",
+          "52",
+          "55",
+          "208",
+          "-"
         ],
         [
-          "Cabai Keriting\nCurly Chili"
+          "Cabai Keriting Curly Chili",
+          "15",
+          "2",
+          "-",
+          "-"
         ],
         [
-          "Cabai Rawit\nChili/Cayenne Pepper"
+          "Cabai Rawit Chili/Cayenne Pepper",
+          "153",
+          "569",
+          "358",
+          "189"
         ],
         [
-          "Kentang/Potato"
+          "Kentang/Potato",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Kubis/Cabbage"
+          "Kubis/Cabbage",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Tomat/Tomato"
+          "Tomat/Tomato",
+          "356",
+          "438",
+          "385",
+          "-"
         ],
         [
-          "Bawang Putih/Garlic"
+          "Bawang Putih/Garlic",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Bawang Daun/ Scallion"
+          "Kacang Panjang/ Long Beans",
+          "525",
+          "670",
+          "594",
+          "606"
         ],
         [
-          "Kacang Panjang/ Long Beans"
+          "Kangkung/ Water Spinach",
+          "483",
+          "458",
+          "347",
+          "412"
         ],
         [
-          "Ketimun/ Cucumber"
+          "Ketimun/ Cucumber",
+          "747",
+          "617",
+          "864",
+          "752"
         ],
         [
-          "Petsai/Sawi/ Chinese \nCabbage/mustard green"
+          "Petsai/Sawi/ Chinese Cabbage/ mustard green",
+          "446",
+          "585",
+          "529",
+          "512"
         ],
-        [],
+        [
+          "Terung/ Eggplant",
+          "470",
+          "387",
+          "137",
+          "239"
+        ],
         [
           "Buah–buahan/Fruits:"
         ],
         [
-          "Semangka/ Water Melon"
+          "Semangka/ Water Melon",
+          "15010",
+          "5750",
+          "3000",
+          "2600"
         ]
       ]
     },
@@ -268,47 +469,105 @@
           "Sayuran/Vegetables:"
         ],
         [
-          "Bawang Merah/Shallots"
+          "Bawang Merah/Shallots",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Cabai Besar/TW/Teropong\nChili/Big Chili"
+          "Cabai Besar/TW/Teropong Chili/Big Chili",
+          "-",
+          "24",
+          "86",
+          "48"
         ],
         [
-          "Cabai Keriting\nCurly Chili"
+          "Cabai Keiting Curly Chili",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Cabai Rawit\nChili/Cayenne Pepper"
+          "Cabai Rawit Chili/Cayenne Pepper",
+          "35",
+          "215",
+          "874",
+          "745"
         ],
         [
-          "Kentang/Potato"
+          "Kentang/Potato",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Kubis/Cabbage"
+          "Kubis/Cabbage",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Tomat/Tomato"
+          "Tomat/Tomato",
+          "-",
+          "40",
+          "417",
+          "549"
         ],
         [
-          "Bawang Putih/Garlic"
+          "Bawang Putih/Garlic",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Bawang Daun/ Scallion"
+          "Kacang Panjang/ Long Beans",
+          "32",
+          "193",
+          "344",
+          "728"
         ],
         [
-          "Kacang Panjang/ Long Beans"
+          "Kangkung/ Water Spinach",
+          "4",
+          "106",
+          "102",
+          "214"
         ],
         [
-          "Ketimun/ Cucumber"
+          "Ketimun/ Cucumber",
+          "237",
+          "264",
+          "861",
+          "810"
         ],
         [
-          "Petsai/Sawi/ Chinese \nCabbage/mustard green"
+          "Petsai/Sawi/ Chinese Cabbage/ mustard green",
+          "260",
+          "64",
+          "-",
+          "-"
         ],
-        [],
+        [
+          "Terung/ Eggplant",
+          "85",
+          "144",
+          "263",
+          "760"
+        ],
         [
           "Buah–buahan/Fruits:"
         ],
         [
-          "Semangka/ Water Melon"
+          "Semangka/ Water Melon",
+          "-",
+          "150",
+          "553",
+          "750"
         ]
       ]
     },
@@ -329,47 +588,119 @@
           "Sayuran/Vegetables:"
         ],
         [
-          "Bawang Merah/Shallots"
+          "Bawang Merah/Shallots",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Cabai Besar/TW/Teropong\nChili/Big Chili"
+          "Cabai Besar/TW/Teropong Chili/Big Chili",
+          "-",
+          "80",
+          "-",
+          "-"
         ],
         [
-          "Cabai Keriting\nCurly Chili"
+          "Cabai Keiting Curly Chili",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Cabai Rawit\nChili/Cayenne Pepper"
+          "Cabai Rawit Chili/Cayenne Pepper",
+          "191",
+          "158",
+          "943",
+          "709"
         ],
         [
-          "Kentang/Potato"
+          "Kentang/Potato",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Kubis/Cabbage"
+          "Kubis/Cabbage",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Tomat/Tomato"
+          "Tomat/Tomato",
+          "35",
+          "1016",
+          "667",
+          "490"
         ],
         [
-          "Bawang Putih/Garlic"
+          "Bawang Putih/Garlic",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Bawang Daun/ Scallion"
+          "Kacang Panjang/Long Beans",
+          "86",
+          "101",
+          "443",
+          "200"
         ],
         [
-          "Kacang Panjang/ Long Beans"
+          "Kangkung/Water Spinach",
+          "133",
+          "232",
+          "186",
+          "245"
         ],
         [
-          "Ketimun/ Cucumber"
+          "Ketimun/Cucumber",
+          "152",
+          "300",
+          "1094",
+          "854"
         ],
         [
-          "Petsai/Sawi/ Chinese \nCabbage/mustard green"
+          "Petsai/Sawi/Chinese Cabbage/Mustard Green",
+          "167",
+          "222",
+          "380",
+          "545"
         ],
-        [],
+        [
+          "Terung/Eggplant",
+          "74",
+          "200",
+          "364",
+          "384"
+        ],
+        [
+          "Bayam/Spinach",
+          "38",
+          "40",
+          "79",
+          "30"
+        ],
+        [
+          "Bawang Daun/Scallion",
+          "132",
+          "358",
+          "499",
+          "370"
+        ],
         [
           "Buah–buahan/Fruits:"
         ],
         [
-          "Semangka/ Water Melon"
+          "Semangka/Water Melon",
+          "2540",
+          "1803",
+          "326",
+          "698"
         ]
       ]
     },
@@ -390,47 +721,91 @@
           "Sayuran/Vegetables:"
         ],
         [
-          "Bawang Merah/Shallots"
+          "Bawang Merah/Shallots",
+          "150",
+          "79",
+          "-",
+          "-"
         ],
         [
-          "Cabai Besar/TW/Teropong\nChili/Big Chili"
+          "Cabai Besar/TW/Teropong Chili/Big Chili",
+          "272",
+          "394",
+          "841",
+          "375"
         ],
         [
-          "Cabai Keriting\nCurly Chili"
+          "Cabai Keiting Curly Chili",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Cabai Rawit\nChili/Cayenne Pepper"
+          "Cabai Rawit Chili/Cayenne Pepper",
+          "331",
+          "769",
+          "1929",
+          "1094"
         ],
         [
-          "Kentang/Potato"
+          "Kentang/Potato",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Kubis/Cabbage"
+          "Kubis/Cabbage",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Tomat/Tomato"
+          "Tomat/Tomato",
+          "367",
+          "382",
+          "1050",
+          "260"
         ],
         [
-          "Bawang Putih/Garlic"
+          "Bawang Putih/Garlic",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Bawang Daun/ Scallion"
+          "Bayam/ Spinach",
+          "345",
+          "451",
+          "575",
+          "240"
         ],
         [
-          "Kacang Panjang/ Long Beans"
+          "Kacang Panjang/ Long Beans",
+          "916",
+          "871",
+          "2224",
+          "192"
         ],
-        [
-          "Ketimun/ Cucumber"
-        ],
-        [
-          "Petsai/Sawi/ Chinese \nCabbage/mustard green"
-        ],
-        [],
         [
           "Buah–buahan/Fruits:"
         ],
         [
-          "Semangka/ Water Melon"
+          "Semangka/ Watermelon",
+          "3058",
+          "4185",
+          "3024",
+          "577"
+        ],
+        [
+          "Melon/ Melon",
+          "-",
+          "-",
+          "-",
+          "-"
         ]
       ]
     },
@@ -451,47 +826,105 @@
           "Sayuran/Vegetables:"
         ],
         [
-          "Bawang Merah/Shallots"
+          "Bawang Daun/ Scallion",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Cabai Besar/TW/Teropong\nChili/Big Chili"
+          "Bawang Merah/ Shallots",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Cabai Keriting\nCurly Chili"
+          "Bawang Putih/ Garlic",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Cabai Rawit\nChili/Cayenne Pepper"
+          "Bayam/ Spinach",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Kentang/Potato"
+          "Blewah/ Blewah",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Kubis/Cabbage"
+          "Buncis/ String Bean",
+          "2",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Tomat/Tomato"
+          "Cabai Besar/ Chili/Big Chili",
+          "49",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Bawang Putih/Garlic"
+          "Cabai Rawit/Chili/Cayanenne Pepper",
+          "156",
+          "129",
+          "442",
+          "-"
         ],
         [
-          "Bawang Daun/ Scallion"
+          "Kacang Panjang/ Long Beans",
+          "32",
+          "44",
+          "21",
+          "-"
         ],
         [
-          "Kacang Panjang/ Long Beans"
+          "Kangkung/ Water Spinach",
+          "29",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Ketimun/ Cucumber"
+          "Ketimun/ Cucumber",
+          "211",
+          "113",
+          "213",
+          "107"
         ],
         [
-          "Petsai/Sawi/ Chinese \nCabbage/mustard green"
+          "Terung/ Eggplant",
+          "113",
+          "1119",
+          "1589",
+          "-"
         ],
-        [],
+        [
+          "Tomat/ Tomato",
+          "-",
+          "-",
+          "-",
+          "-"
+        ],
         [
           "Buah–buahan/Fruits:"
         ],
         [
-          "Semangka/ Water Melon"
+          "Semangka/ Water Melon",
+          "-",
+          "-",
+          "-",
+          "-"
         ]
       ]
     },
@@ -512,47 +945,109 @@
           "Sayuran/Vegetables:"
         ],
         [
-          "Bawang Merah/Shallots"
+          "Bawang Merah/Shallots",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Cabai Besar/TW/Teropong\nChili/Big Chili"
+          "Cabai Besar/TW/Teropong\nChili/Big Chili",
+          "226",
+          "17",
+          "-",
+          "-"
         ],
         [
-          "Cabai Keriting\nCurly Chili"
+          "Cabai Keriting\nCurly Chili",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Cabai Rawit\nChili/Cayenne Pepper"
+          "Cabai Rawit\nChili/Cayenne Pepper",
+          "1164",
+          "1735",
+          "417",
+          "542"
         ],
         [
-          "Kentang/Potato"
+          "Kentang/Potato",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Kubis/Cabbage"
+          "Kubis/Cabbage",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Tomat/Tomato"
+          "Tomat/Tomato",
+          "199",
+          "238",
+          "1021",
+          "25"
         ],
         [
-          "Bawang Putih/Garlic"
+          "Bawang Putih/Garlic",
+          "-",
+          "-",
+          "-",
+          "-"
         ],
         [
-          "Bawang Daun/ Scallion"
+          "Bawang Daun/Scallion",
+          "198",
+          "645",
+          "1261",
+          "495"
         ],
         [
-          "Kacang Panjang/ Long Beans"
+          "Kacang Panjang/ Long Beans",
+          "45",
+          "350",
+          "2030",
+          "1610"
         ],
         [
-          "Ketimun/ Cucumber"
+          "Kangkung/ Water Spinach",
+          "709",
+          "190",
+          "1257",
+          "860"
         ],
         [
-          "Petsai/Sawi/ Chinese \nCabbage/mustard green"
+          "Bayam/Spinach",
+          "223",
+          "203",
+          "-",
+          "-"
         ],
-        [],
         [
-          "Buah–buahan/Fruits:"
+          "Ketimun/Cucumber",
+          "1605",
+          "1205",
+          "799",
+          "865"
         ],
         [
-          "Semangka/ Water Melon"
+          "Petsai/Sawi/ Chinese Cabbage/\nmustard green",
+          "625",
+          "826",
+          "969",
+          "393"
+        ],
+        [
+          "Terung/ Eggplant",
+          "1955",
+          "880",
+          "3153",
+          "2031"
         ]
       ]
     }

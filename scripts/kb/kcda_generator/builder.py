@@ -62,6 +62,7 @@ def build_kcda_typst(slug: str, out_dir: Any = None) -> str:
     bottom: 2.0cm,
   ),
   header-ascent: 40%,
+  footer-descent: 20%,
   header: context {{
     let p = here().page()
     let has_c = query(selector(<page_marker>)).any(m => {{
@@ -180,6 +181,21 @@ def build_kcda_typst(slug: str, out_dir: Any = None) -> str:
 ]
 """
 
+    def render_pembatas(bab_num: int) -> str:
+        return f"""
+// ==========================================
+// LEMBAR PEMBATAS BAB {bab_num} (FULL-BLEED A5)
+// ==========================================
+#page(
+  paper: "a5",
+  margin: 0cm,
+  header: none,
+  footer: none,
+)[
+  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/pembatas/Bab {bab_num}.png", width: 100%, height: 100%)
+] <chapter_page>
+"""
+
     parts = [
         "// Publikasi Resmi BPS Kabupaten Mempawah: Kecamatan Dalam Angka 2026 (Ukuran A5)",
         header_logic,
@@ -188,37 +204,44 @@ def build_kcda_typst(slug: str, out_dir: Any = None) -> str:
         "// --- TRANSISI KE ARABIC NUMBERING ---",
         '#pagebreak(to: "odd")',
         '#in_frontmatter.update(false)',
+        '#counter(page).update(1)',
+        render_pembatas(1),
         '#metadata("1. GEOGRAFI DAN IKLIM") <chapter_title>',
         '#metadata("Geography and Climate") <chapter_title_en>',
-        "#counter(page).update(1)",
         '#metadata("bab1") <bab1>',
         render_chapter1(cfg, out_dir),
         '#pagebreak(to: "odd")',
+        render_pembatas(2),
         '#metadata("2. PEMERINTAHAN") <chapter_title>',
         '#metadata("Government") <chapter_title_en>',
         '#metadata("bab2") <bab2>',
         render_chapter2(cfg, out_dir),
         '#pagebreak(to: "odd")',
+        render_pembatas(3),
         '#metadata("3. KEPENDUDUKAN") <chapter_title>',
         '#metadata("Population") <chapter_title_en>',
         '#metadata("bab3") <bab3>',
         render_chapter3(cfg, out_dir),
         '#pagebreak(to: "odd")',
+        render_pembatas(4),
         '#metadata("4. SOSIAL DAN KESEJAHTERAAN RAKYAT") <chapter_title>',
         '#metadata("Social and Welfare") <chapter_title_en>',
         '#metadata("bab4") <bab4>',
         render_chapter4(cfg, out_dir),
         '#pagebreak(to: "odd")',
+        render_pembatas(5),
         '#metadata("5. PERTANIAN") <chapter_title>',
         '#metadata("Agriculture") <chapter_title_en>',
         '#metadata("bab5") <bab5>',
         render_chapter5(cfg, out_dir),
         '#pagebreak(to: "odd")',
+        render_pembatas(6),
         '#metadata("6. PARIWISATA, TRANSPORTASI, DAN KOMUNIKASI") <chapter_title>',
         '#metadata("Tourism, Transportation, and Communication") <chapter_title_en>',
         '#metadata("bab6") <bab6>',
         render_chapter6(cfg),
         '#pagebreak(to: "odd")',
+        render_pembatas(7),
         '#metadata("7. PERBANKAN, KOPERASI, DAN PERDAGANGAN") <chapter_title>',
         '#metadata("Banking, Cooperative, and Trade") <chapter_title_en>',
         '#metadata("bab7") <bab7>',

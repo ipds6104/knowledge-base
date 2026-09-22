@@ -5,7 +5,7 @@
   "disediakan_ipds": false,
   "sheet_id": "1y4JMdC7saKnuNhRymYJFuuJtW-wiqaLxTv3WFQAqk6E",
   "spreadsheet_title": "Banyaknya Desa/Kelurahan dengan Keberadaan Sarana Akomodasi Menurut Jenis Akomodasi di Kecamatan XXX",
-  "updated_at": "2026-09-10 20:46:33",
+  "updated_at": "2026-09-22 08:29:42",
   "tabs": {
     "Mempawah Hilir": {
       "raw_title": "Mempawah Hilir",
@@ -18,82 +18,12 @@
           "2025"
         ],
         [
-          "Hotel"
+          "Hotel",
+          "1"
         ],
         [
-          "Penginapan\nInn"
-        ]
-      ]
-    },
-    "Mempawah Timur": {
-      "raw_title": "Mempawah Timur",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Jenis Akomodasi\n Type of Accomodation",
-          "2025"
-        ],
-        [
-          "Hotel"
-        ],
-        [
-          "Penginapan\nInn"
-        ]
-      ]
-    },
-    "Sungai Pinyuh": {
-      "raw_title": "Sungai Pinyuh",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Jenis Akomodasi\n Type of Accomodation",
-          "2025"
-        ],
-        [
-          "Hotel"
-        ],
-        [
-          "Penginapan\nInn"
-        ]
-      ]
-    },
-    "Sungai Kunyit": {
-      "raw_title": "Sungai Kunyit",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Jenis Akomodasi\n Type of Accomodation",
-          "2025"
-        ],
-        [
-          "Hotel"
-        ],
-        [
-          "Penginapan\nInn"
-        ]
-      ]
-    },
-    "Segedong": {
-      "raw_title": "Segedong",
-      "rows": [
-        [
-          "2025"
-        ],
-        [
-          "Jenis Akomodasi\n Type of Accomodation",
-          "2025"
-        ],
-        [
-          "Hotel"
-        ],
-        [
-          "Penginapan\nInn"
+          "Penginapan\nInn",
+          "6"
         ]
       ]
     },
@@ -108,10 +38,32 @@
           "2025"
         ],
         [
-          "Hotel"
+          "Hotel",
+          "0"
         ],
         [
-          "Penginapan\nInn"
+          "Penginapan\nInn",
+          "2"
+        ]
+      ]
+    },
+    "Sungai Pinyuh": {
+      "raw_title": "Sungai Pinyuh",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Akomodasi\n Type of Accomodation",
+          "2025"
+        ],
+        [
+          "Hotel",
+          "2"
+        ],
+        [
+          "Penginapan\nInn",
+          "3"
         ]
       ]
     },
@@ -126,10 +78,52 @@
           "2025"
         ],
         [
-          "Hotel"
+          "Hotel",
+          "0"
         ],
         [
-          "Penginapan\nInn"
+          "Penginapan\nInn",
+          "0"
+        ]
+      ]
+    },
+    "Sungai Kunyit": {
+      "raw_title": "Sungai Kunyit",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Akomodasi\n Type of Accomodation",
+          "2025"
+        ],
+        [
+          "Hotel",
+          "0"
+        ],
+        [
+          "Penginapan\nInn",
+          "7"
+        ]
+      ]
+    },
+    "Segedong": {
+      "raw_title": "Segedong",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Akomodasi\n Type of Accomodation",
+          "2025"
+        ],
+        [
+          "Hotel",
+          "0"
+        ],
+        [
+          "Penginapan\nInn",
+          "0"
         ]
       ]
     },
@@ -144,10 +138,12 @@
           "2025"
         ],
         [
-          "Hotel"
+          "Hotel",
+          "0"
         ],
         [
-          "Penginapan\nInn"
+          "Penginapan\nInn",
+          "6"
         ]
       ]
     },
@@ -162,10 +158,32 @@
           "2025"
         ],
         [
-          "Hotel"
+          "Hotel",
+          "0"
         ],
         [
-          "Penginapan\nInn"
+          "Penginapan\nInn",
+          "0"
+        ]
+      ]
+    },
+    "Mempawah Timur": {
+      "raw_title": "Mempawah Timur",
+      "rows": [
+        [
+          "2025"
+        ],
+        [
+          "Jenis Akomodasi\n Type of Accomodation",
+          "2025"
+        ],
+        [
+          "Hotel",
+          "0"
+        ],
+        [
+          "Penginapan\nInn",
+          "2"
         ]
       ]
     }

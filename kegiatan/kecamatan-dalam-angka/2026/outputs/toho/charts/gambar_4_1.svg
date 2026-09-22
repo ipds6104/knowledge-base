@@ -3,24 +3,24 @@
 <line x1="100.0" y1="18" x2="100.0" y2="94" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
 <text x="100.0" y="107" font-size="5.5" fill="#94A3B8" text-anchor="middle">0</text>
 <line x1="148.75" y1="18" x2="148.75" y2="94" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
-<text x="148.75" y="107" font-size="5.5" fill="#94A3B8" text-anchor="middle">1</text>
+<text x="148.75" y="107" font-size="5.5" fill="#94A3B8" text-anchor="middle">2</text>
 <line x1="197.5" y1="18" x2="197.5" y2="94" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
-<text x="197.5" y="107" font-size="5.5" fill="#94A3B8" text-anchor="middle">2</text>
+<text x="197.5" y="107" font-size="5.5" fill="#94A3B8" text-anchor="middle">4</text>
 <line x1="246.25" y1="18" x2="246.25" y2="94" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
-<text x="246.25" y="107" font-size="5.5" fill="#94A3B8" text-anchor="middle">3</text>
+<text x="246.25" y="107" font-size="5.5" fill="#94A3B8" text-anchor="middle">6</text>
 <line x1="295.0" y1="18" x2="295.0" y2="94" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
-<text x="295.0" y="107" font-size="5.5" fill="#94A3B8" text-anchor="middle">4</text>
+<text x="295.0" y="107" font-size="5.5" fill="#94A3B8" text-anchor="middle">9</text>
 <line x1="100" y1="18" x2="100" y2="94" stroke="#CBD5E1" stroke-width="1"/>
 <text x="94" y="30.5" font-size="6.5" fill="#334155" text-anchor="end">2022</text>
-<rect x="100" y="22" width="84.78260869565219" height="11" rx="2" fill="#10B981"/>
-<text x="188.7826086956522" y="30.5" font-size="6" font-weight="bold" fill="#1E293B">2 Unit</text>
+<rect x="100" y="22" width="42.39130434782609" height="11" rx="2" fill="#10B981"/>
+<text x="146.3913043478261" y="30.5" font-size="6" font-weight="bold" fill="#1E293B">2 Unit</text>
 <text x="94" y="49.5" font-size="6.5" fill="#334155" text-anchor="end">2023</text>
-<rect x="100" y="41" width="127.17391304347827" height="11" rx="2" fill="#10B981"/>
-<text x="231.17391304347825" y="49.5" font-size="6" font-weight="bold" fill="#1E293B">3 Unit</text>
+<rect x="100" y="41" width="63.58695652173913" height="11" rx="2" fill="#10B981"/>
+<text x="167.58695652173913" y="49.5" font-size="6" font-weight="bold" fill="#1E293B">3 Unit</text>
 <text x="94" y="68.5" font-size="6.5" fill="#334155" text-anchor="end">2024</text>
-<rect x="100" y="60" width="127.17391304347827" height="11" rx="2" fill="#10B981"/>
-<text x="231.17391304347825" y="68.5" font-size="6" font-weight="bold" fill="#1E293B">3 Unit</text>
+<rect x="100" y="60" width="63.58695652173913" height="11" rx="2" fill="#10B981"/>
+<text x="167.58695652173913" y="68.5" font-size="6" font-weight="bold" fill="#1E293B">3 Unit</text>
 <text x="94" y="87.5" font-size="6.5" fill="#334155" text-anchor="end">2025</text>
 <rect x="100" y="79" width="169.56521739130437" height="11" rx="2" fill="#10B981"/>
-<text x="273.5652173913044" y="87.5" font-size="6" font-weight="bold" fill="#1E293B">4 Unit</text>
+<text x="273.5652173913044" y="87.5" font-size="6" font-weight="bold" fill="#1E293B">8 Unit</text>
 </svg>

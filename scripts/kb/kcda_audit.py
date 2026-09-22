@@ -127,6 +127,14 @@ def download_all_kcda_tables(max_workers: int = 5):
 
     os.makedirs('data/kcda-2026/raw_tables', exist_ok=True)
     creds = Credentials.from_authorized_user_file('token.json')
+    if creds and creds.expired and creds.refresh_token:
+        try:
+            from google.auth.transport.requests import Request
+            creds.refresh(Request())
+            with open('token.json', 'w') as f:
+                f.write(creds.to_json())
+        except Exception as e:
+            print(f"⚠️ Gagal me-refresh token: {e}")
     total = len(tables)
 
     print(f"⚡ Mengunduh {total} spreadsheet KCDA 2026 secara paralel ({max_workers} threads, single batchGet)...")

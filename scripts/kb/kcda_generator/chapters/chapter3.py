@@ -68,27 +68,9 @@ def render_chapter3(cfg: Dict[str, Any], out_dir: Optional[Any] = None) -> str:
 
     return f"""
 // ==========================================
-// BAB 3: KEPENDUDUKAN (HALAMAN PEMBATAS & INFOGRAFIS)
+// BAB 3: KEPENDUDUKAN (INFOGRAFIS & NARASI)
 // ==========================================
-#is_chapter_page.update(true)
-#v(0.5cm)
-#block(
-  fill: rgb("#FEF3C7"),
-  inset: 12pt,
-  width: 100%,
-  stroke: (left: 4pt + rgb("#D97706")),
-  [
-    #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 3: KEPENDUDUKAN] \\
-    #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 3: POPULATION]
-  ]
-) <chapter_page>
-#v(10pt)
-
-{infografis_markup}
-
-#pagebreak()
-#is_chapter_page.update(false)
-
+{chart_section}
 // ==========================================
 // ISI BAB 3: ULASAN NARASI & TABEL DATA
 // ==========================================
