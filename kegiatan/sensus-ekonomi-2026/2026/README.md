@@ -504,6 +504,8 @@ Berikut adalah daftar PPL dengan rasio usaha keluarga Non-Aktif (Closed / Not Fo
   Hasil audit matching data prelist DTSEN desil rendah (<7) ke database Regsosek CETAR se-Kalbar: analisis 6.662 KK tidak ditemukan (1.839 KK terdeteksi koordinat di CETAR), klasifikasi 6 tipologi catatan petugas CAPI/Fasih, mitigasi resiko catatan kosong/tautologi, dan rujukan spreadsheet master [Audit DTSEN Hilang](https://docs.google.com/spreadsheets/d/1iK-N0xVKViNbzTIc64qBOjESJFdcR9IEtv1RjMWN9b0/edit?pli=1&gid=2072569417#gid=2072569417).
 * 📄 **[Mekanisme Cleanup Assignment FASIH, Alokasi Petugas & Syarat Pembayaran Honor SE2026](docs/mekanisme-cleanup-fasih-dan-alokasi-petugas.md)**  
   SOP resmi cleanup assignment per device via FASIH-SM (http://s.bps.go.id/CleanUp_SE2026) sebagai syarat penarikan data ke BOS/SOBAT untuk pembuatan FP honor & BAST, tata cara perpindahan role PML ke PPL, serta manajemen alokasi petugas periode 17–30 September 2026.
+* 📄 **[Penyesuaian Petunjuk Teknis Pengolahan Wilkerstat SE2026](docs/penyesuaian-juknis-pengolahan-wilkerstat-se2026.md)**  
+  Pedoman resmi Tim Wilkerstat DIT. MMSD BPS RI (18 September 2026): penyederhanaan alur pengolahan titik geotagging hanya pada SLS yang berubah (PSLS), pemangkasan model QGIS menjadi 2 model, sentralisasi perhitungan muatan 100% oleh BPS Pusat, rincian 22 atribut upload Geospatial System (GS), serta timeline batas upload peta 31 Oktober 2026.
 * 📹 **[Briefing Perubahan Juknis Pengolahan Geotagging Wilkerstat SE2026]**  
   Pertemuan virtual Inda Pengolahan Wilkerstat SE2026 pada Selasa, 22 September 2026 pukul 09.00 WIB via Zoom: [s.bps.go.id/briefing-wilkerstat-6100](http://s.bps.go.id/briefing-wilkerstat-6100).
 
