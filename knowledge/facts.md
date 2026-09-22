@@ -72,3 +72,13 @@
 - **Rujukan Google Spreadsheet**: [Tabel Gaji Pokok PNS - PP Nomor 5 Tahun 2024 (BPS Mempawah)](https://docs.google.com/spreadsheets/d/1JXiDTejaxXRqasALOMsXYWfPydCatZtmf1kIzqLeFpA/edit?usp=sharing)
 - **Lokasi Folder Google Drive**: Folder `Kepegawaian` (ID: `1RrF76RT2GOqQjKREL14x-TXizqQgXCSP`, [Akses Google Drive](https://drive.google.com/drive/folders/1RrF76RT2GOqQjKREL14x-TXizqQgXCSP)).
 - **Data Estimasi Pegawai Pemda Mempawah (3.928 Pegawai)**: Spreadsheet [Data Pegawai Pemda Mempawah](https://docs.google.com/spreadsheets/d/1kepnSo7ETu8h-oJpU4_9r90NJp1W33NDwQJ-Yhjh7cA/edit?gid=0#gid=0) telah dilengkapi kolom estimasi gaji pokok minimal (PP 5/2024), tunjangan umum minimal (Perpres 12/2006), tunjangan beras 1 jiwa, uang makan bulanan SBM (22 HK), total penghasilan dasar minimal, dan tab pedoman dasar hukum.
+
+## Pengolahan Wilkerstat SE2026 — Kebijakan Beban Kerja & Moda Pelatihan (Surat Sestama BPS RI)
+- **Dasar Dokumen**: Surat Dinas BPS RI (Sekretariat Utama) Nomor `B-805/02100/VS.190/2026` tanggal 17 September 2026 ditandatangani Sestama Zulkipli.
+- **Hal**: Perubahan Jumlah Petugas dan Moda Pelatihan Wilkerstat SE2026.
+- **Beban Baku Petugas**: Beban kerja petugas pengolahan peta (Wilkerstat) adalah sekitar **500 SLS/sub-SLS/non-SLS** per orang selama **1 (satu) bulan**.
+- **Regulasi Penambahan Petugas**: Setiap usulan perubahan jumlah petugas wajib dikoordinasikan dan dievaluasi oleh Direktorat Metodologi Statistik dan Sains Data (Dit. MMSD BPS RI).
+- **Moda Pelatihan Luring & Tambahan Hari**: Disetujui dengan ketentuan batas pembayaran honor mengajar pengajar/Inda maksimal **18 OJP** (Orang Jam Pelajaran) dan mengoptimalkan anggaran satker masing-masing.
+- **Acuan Revisi Anggaran**: Berpedoman pada prinsip efektif, efisien, akuntabel, serta **PMK Nomor 41 Tahun 2026** (perubahan kedua atas PMK Nomor 62 Tahun 2023 tentang Perencanaan, Pelaksanaan, serta Akuntansi dan Pelaporan Keuangan).
+- **Dokumen Teknis & PDF**: [`surat-perubahan-petugas-dan-moda-pelatihan-wilkerstat-se2026.md`](../kegiatan/sensus-ekonomi-2026/2026/docs/surat-perubahan-petugas-dan-moda-pelatihan-wilkerstat-se2026.md) dan berkas sumber PDF [`B-805_02100_VS.190_2026.pdf`](../kegiatan/sensus-ekonomi-2026/2026/docs/pdf/B-805_02100_VS.190_2026.pdf).
+
