@@ -23,25 +23,32 @@ Direktori ini memuat arsip terstruktur seluruh materi pelatihan **Instruktur Dae
 
 ## 🔄 Alur Tahapan Pengolahan Wilkerstat SE2026
 
+> [!IMPORTANT]
+> **Penyesuaian Juknis Pengolahan Wilkerstat SE2026 (18 September 2026)**:
+> 1. **Pengolahan Titik Geotagging**: Hanya dilakukan pada SLS/Sub-SLS yang mengalami perubahan batas (PSLS) hasil lapangan SE2026. Model pengolahan titik dipangkas menjadi **hanya 2 model**, dan titik yang diunggah ke GS tetap mempertahankan skema atribut lapangan (`2025_2`), tanpa perlu update manual ke `2026_1` di Kab/Kota.
+> 2. **Pengolahan Muatan Terpusat 100% di BPS Pusat**: BPS Kab/Kota **tidak lagi menghitung muatan** (Model `04 Pengolahan Muatan.model3` tidak dijalankan di daerah). BPS Pusat akan menghitung muatan 2026_1 vs 2025_2 secara terpusat dan menerbitkan daftar anomali muatan untuk diverifikasi BPS Kab/Kota.
+> 3. **Lihat Rincian Lengkap**: [📄 Penyesuaian Petunjuk Teknis Pengolahan Wilkerstat SE2026](../docs/penyesuaian-juknis-pengolahan-wilkerstat-se2026.md) dan salinan presentasi [📑 PDF Juknis 18 September 2026](../docs/pdf/2026-09-18_Penyesuaian_Juknis_Pengolahan_Wilkerstat.pdf).
+
 ```mermaid
 flowchart TD
-    subgraph S1["Fase 1: Persiapan & Master"]
-        A["1. Persiapan Software & Folder Kerja"] --> B["2. Pemutakhiran Master SLS via FRS-MFDOnline"]
-        B --> C["3. Penataan Dokumen SE2026-PSLS"]
+    subgraph S1["Fase 1: Persiapan & Identifikasi Batas (01 - 12 Okt 2026)"]
+        A["1. Batas Akhir Master FRS-MFDOnline (30 Sep 2026)"] --> B["2. Penataan Dokumen SE2026-PSLS & Sketsa Lapangan"]
+        B --> C["3. Scanning Peta Sketsa & Georeferencing di QGIS"]
+        C --> D["4. Identifikasi & Edit Awal Batas SLS Berubah (Peta 2025_2)"]
     end
     
-    subgraph S2["Fase 2: Geospasial & Peta"]
-        C --> D["4. Import & Pemeriksaan Titik Geotagging"]
-        D --> E["5. Georeferencing Peta Sketsa Lapangan"]
-        E --> F["6. Digitasi Batas Poligon SLS di QGIS"]
-        F --> G["7. Topology Checker (Anti Gap & Overlap)"]
+    subgraph S2["Fase 2: Geospasial & Peta Digital (13 Okt - 06 Nov 2026)"]
+        D --> E["5. Unduh Geotagging SE2026 dari GS (Ready ~10-12 Okt)"]
+        E --> F["6. Pengolahan Geotagging Khusus PSLS (2 Model QGIS)"]
+        F --> G["7. Pengolahan Peta Digital (Pecah, Gabung, Cleaning, Validasi)"]
+        G --> H["8. Topology Checker (Anti Gap & Overlap Batas)"]
     end
     
-    subgraph S3["Fase 3: Muatan & Finalisasi"]
-        G --> H["8. Penghitungan & Unggah Muatan"]
-        H --> I["9. Unggah Geodatabase ke Geospatial System"]
-        I --> J["10. Rekonsiliasi Batas Antar Wilayah"]
-        J --> K["11. Approval Final Peta SE2026"]
+    subgraph S3["Fase 3: Unggah, Rekon & Muatan Terpusat (23 Okt - 18 Des 2026)"]
+        H --> I["9. Unggah Peta Digital 2026_1 ke GS (23 Okt - 20 Nov 2026)"]
+        I --> J["10. Rekonsiliasi Batas Daring & Approval Provinsi (s.d. 27 Nov 2026)"]
+        J --> K["11. Unggah Peta Geotagging Koreksi ke GS (16 Nov - 04 Des 2026)"]
+        K --> L["12. Pengolahan Muatan Terpusat BPS Pusat & Verifikasi Anomali (s.d. 18 Des 2026)"]
     end
 ```
 
@@ -49,21 +56,31 @@ flowchart TD
 
 ## 🎯 Panduan Praktis Inda (Ihza) — Pelaksanaan Pengolahan BPS Mempawah
 
-1. **Jadwal Pelatihan Petugas di BPS Mempawah**: **7 – 11 September 2026**.
+1. **Jadwal Pelatihan Petugas di BPS Mempawah**: **7 – 11 September 2026** (Telah terlaksana).
 2. **Standar Beban Petugas Mitra**: **500 SLS/sub-SLS/non-SLS** per orang selama **1 bulan**.
-3. **Target Akhir Penyelesaian**: **11 Oktober 2026** (Pengolahan tuntas dan terunggah ke Geospatial System).
-4. **Tools Utama**: QGIS 4.x / LTR dengan 6 plugin aktif, Bulk Rename Utility, FRS-MFDOnline, dan Web Geospatial System.
+3. **Timeline Kritis Pengolahan**:
+   * **30 September 2026**: Batas akhir entri & approval Master SLS di FRS-MFDOnline (Surat B-362).
+   * **01 – 12 Oktober 2026**: Scanning peta, identifikasi SLS berubah, georeferencing, edit batas di awal.
+   * **10 – 12 Oktober 2026**: Ketersediaan data geotagging SE2026 di Geospatial System (GS) siap unduh.
+   * **13 Oktober – 06 November 2026**: Pengolahan Geotagging SE2026 (PSLS) & digitasi/cleaning peta digital.
+   * **20 November 2026**: **BATAS MAKSIMAL UNGGAH PETA DIGITAL 2026_1 KE GEOSPATIAL SYSTEM** (Window unggah: 23 Okt – 20 Nov).
+   * **02 – 20 November 2026**: Rekonsiliasi batas antar-kabupaten/kota & provinsi (Daring).
+   * **27 November 2026**: **BATAS MAKSIMAL APPROVAL PETA DIGITAL OLEH BPS PROVINSI**.
+   * **04 Desember 2026**: **BATAS MAKSIMAL UNGGAH PETA GEOTAGGING HASIL KOREKSI KE GEOSPATIAL SYSTEM** (Window unggah: 16 Nov – 04 Des).
+   * **18 Desember 2026**: Batas akhir cleaning final BPS Pusat & verifikasi anomali muatan oleh BPS Kab/Kota.
+4. **Tools Utama**: QGIS 4.x / LTR dengan plugin terstandar, Bulk Rename Utility, FRS-MFDOnline, Tools Python Splitting BPS Pusat, dan Web Geospatial System.
 
 ---
 
 ## 🛠️ Inventaris Tools, Model QGIS, & Template Terpasang
 
-| Kategori | Nama Berkas / Komponen | Lokasi di Knowledge Base | Lokasi Profil QGIS Sistem |
+| Kategori | Nama Berkas / Komponen | Catatan Operasional (Juknis 18 Sept 2026) | Lokasi di Knowledge Base |
 | :--- | :--- | :--- | :--- |
-| **Model QGIS Titik & Muatan** | `01 Identifikasi Titik.model3`<br>`02 Pengecekan Titik.model3`<br>`03 Updating Posisi Titik Sesuai Peta 2026_1.model3`<br>`04 Pengolahan Muatan.model3` | [`models/`](models/) | `~/.local/share/QGIS/QGIS3/profiles/default/processing/models/` |
-| **Model QGIS Cleaning & QC** | `25_Cek_Master_PetaSLS.model3`<br>`25_Cek_Validitas.model3`<br>`25_Dissolve_Desa_Kec.model3`<br>`25_Fill_Gaps.model3`<br>`26_Pengecekan Keselarasan BS dan Desa-SLS_rev.model3` | [`models/`](models/) | `~/.local/share/QGIS/QGIS3/profiles/default/processing/models/` |
-| **QGIS Style (.qml)** | `cek_titik.qml` *(Style Geotagging)*<br>`batas_wilkerstat.qml` *(Style Batas Wilayah)* | [`styles/`](styles/) | `~/.local/share/QGIS/QGIS3/profiles/default/styles/` |
-| **Template Layout Peta** | `Layout_PETA_WAWBWSWSS-2025.qpt` | [`templates/`](templates/) | `~/.local/share/QGIS/QGIS3/profiles/default/composer_templates/` |
-| **Project Master Layout** | `xxxx_Layout_Peta_WAWBWSWSS-2025.qgz` *(+ Batas GPKG & Logo)* | [`layout_project/`](layout_project/) | - |
-| **Bulk Rename Utility** | `Bulk Rename Utility.exe` (Portable 64-bit via Wine) | - | `~/.local/share/bulk-rename-utility/64-bit/` |
+| **Model QGIS Titik & Muatan** | `01 Identifikasi Titik.model3`<br>`02 Pengecekan Titik.model3`<br>*(Model 03 & 04 Tidak Digunakan)* | **Hanya 2 Model Digunakan** (01 & 02) khusus untuk SLS yang berubah (PSLS). Model 03 (Updating ke 2026_1) & Model 04 (Muatan) **ditiadakan** di kab/kota. | [`models/`](models/) |
+| **Model QGIS Cleaning & QC** | `25_Cek_Master_PetaSLS.model3`<br>`25_Cek_Validitas.model3`<br>`25_Dissolve_Desa_Kec.model3`<br>`25_Fill_Gaps.model3`<br>`26_Pengecekan Keselarasan BS dan Desa-SLS_rev.model3` | Digunakan penuh untuk validasi topologi batas wilayah kerja statistik. | [`models/`](models/) |
+| **QGIS Style (.qml)** | `cek_titik.qml` *(Style Geotagging)*<br>`batas_wilkerstat.qml` *(Style Batas Wilayah)* | Simbologi terstandar verifikasi visual titik dan batas SLS. | [`styles/`](styles/) |
+| **Template Layout Peta** | `Layout_PETA_WAWBWSWSS-2025.qpt` | Layout kartografi pencetakan/ekspor peta. | [`templates/`](templates/) |
+| **Project Master Layout** | `xxxx_Layout_Peta_WAWBWSWSS-2025.qgz` | Template proyek kerja QGIS terpadu (+ GPKG & Logo). | [`layout_project/`](layout_project/) |
+| **Tools Distribusi Beban** | *Skrip Python Splitting Data Geotagging* | Disediakan oleh BPS Pusat untuk membagi data geotagging per petugas (.zip). | - |
+| **Bulk Rename Utility** | `Bulk Rename Utility.exe` | Standardisasi nama berkas pindaian peta (Wine 64-bit). | `~/.local/share/bulk-rename-utility/` |
 

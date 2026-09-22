@@ -125,19 +125,27 @@ Alur perhitungan muatan baru SE2026:
 ## 📅 Timeline Operasional Pengolahan Wilkerstat SE2026
 
 ```
-30 Sep 2026  : Batas akhir perubahan Master di FRS & Closing Data Lapangan SE2026
-01 - 06 Okt  : Finalisasi & transfer data geotagging FASIH -> Wilkerstat BPS Pusat
-01 - 06 Okt  : Preprocessing, splitting data geotagging & finalisasi Master 2026_1 di BPS Pusat
-07 Okt 2026  : Ketersediaan data Geotagging SE2026 di Geospatial System (GS)
-07 - 30 Okt  : Pengolahan di Kab/Kota:
-               • Scanning peta, identifikasi perubahan SLS, georeferencing, perbaikan batas
-               • Pengolahan geotagging & pengolahan peta (pecah, gabung, cleaning, validasi)
-31 Okt 2026  : DEADLINE MAKSIMAL UPLOAD PETA DIGITAL Periode 2026_1 ke Geospatial System
-01 - 27 Nov  : Rekonsiliasi batas antar kab/kota & provinsi (daring)
-               Upload Peta Geotagging Hasil Koreksi ke GS
-27 Nov 2026  : BATAS MAKSIMAL APPROVAL PETA DIGITAL di Geospatial System
-01 - 18 Des  : Cleaning Akhir di BPS Pusat, pengolahan muatan terpusat, dan verifikasi muatan
+30 Sep 2026  : Batas akhir perubahan Master di FRS (Surat B-362) & Estimasi Closing Data Lapangan SE2026
+01 - 03 Okt  : Finalisasi & transfer data geotagging SE2026 dari FASIH ke Tim Wilkerstat BPS Pusat
+04 - 09 Okt  : Preprocessing & splitting data geotagging serta finalisasi pengolahan Master 2026_1 di BPS Pusat
+10 - 12 Okt  : Estimasi tersedianya data Geotagging SE2026 di Geospatial System (GS) *)
+01 - 12 Okt  : Operasional Awal BPS Kab/Kota:
+               • Scanning peta sketsa lapangan, identifikasi perubahan SLS, georeferencing
+               • Pengolahan perubahan batas (edit batas di awal pada peta 2025_2)
+13 Okt - 06 Nov : Pengolahan Utama BPS Kab/Kota:
+               • Pengolahan Geotagging (hanya pada SLS/Sub-SLS yang berubah batas / PSLS dengan 2 Model QGIS)
+               • Pengolahan Peta Digital (pemekaran, penggabungan, cleaning topologi, dan validasi)
+23 Okt - 20 Nov : Unggah Peta Digital Periode 2026 Semester 1 ke Geospatial System (BPS Kab/Kota)
+               • DEADLINE MAKSIMAL UPLOAD PETA DIGITAL: 20 November 2026
+02 - 20 Nov  : Rekonsiliasi Batas Antar Kab/Kota dan Provinsi (Daring)
+02 - 27 Nov  : Approval dan Checking Peta Digital di Geospatial System oleh BPS Provinsi
+               • BATAS MAKSIMAL APPROVAL PETA DIGITAL: 27 November 2026
+16 Nov - 04 Des : Unggah Peta Geotagging Hasil Koreksi ke Geospatial System (BPS Kab/Kota)
+               • BATAS MAKSIMAL UPLOAD GEOTAGGING: 04 Desember 2026
+01 - 18 Des  : Cleaning Akhir di BPS Pusat, Pengolahan Muatan Terpusat oleh BPS Pusat, dan Verifikasi Muatan oleh Kab/Kota
+               • Master Wilkerstat Periode 2026 Semester 1 Final rilis 18 Desember 2026
 ```
+*(Catatan: Timeline dapat berubah sewaktu-waktu menyesuaikan ketersediaan dan kesiapan data SE2026)*
 
 ---
 
@@ -146,10 +154,10 @@ Alur perhitungan muatan baru SE2026:
 ### 1. BPS Kabupaten / Kota (Kab. Mempawah)
 * Mengidentifikasi SLS yang mengalami perubahan batas (PSLS) hasil lapangan SE2026.
 * Mengedit peta digital SLS 2025_2 untuk batas yang berubah (bukan pecah-gabung).
-* Menjalankan 2 Model QGIS Pengolahan Titik untuk SLS yang berubah.
-* Mengunggah Peta Digital 2026 Semester 1 ke GS paling lambat **31 Oktober 2026**.
-* Mengunggah Peta Geotagging Hasil Koreksi ke GS.
-* Mengikuti rekonsiliasi batas antar-kabupaten/kota secara daring.
+* Menjalankan 2 Model QGIS Pengolahan Titik untuk SLS yang berubah (PSLS).
+* Mengunggah Peta Digital 2026 Semester 1 ke GS paling lambat **20 November 2026** (periode unggah: 23 Okt – 20 Nov).
+* Mengunggah Peta Geotagging Hasil Koreksi ke GS paling lambat **04 Desember 2026** (periode unggah: 16 Nov – 04 Des).
+* Mengikuti rekonsiliasi batas antar-kabupaten/kota dan provinsi secara daring (02 – 20 Nov).
 * Melakukan verifikasi anomali muatan berdasarkan daftar yang dirilis BPS Pusat.
 
 ### 2. BPS Provinsi (Kalimantan Barat)
