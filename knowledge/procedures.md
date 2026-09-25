@@ -42,3 +42,17 @@ Seluruh pembuatan surat dinas/surat keluar BPS Kabupaten Mempawah (untuk konteks
 - **Tanda Tangan & Cap**: Bagian penutup surat menyematkan tanda tangan resmi Kepala BPS Kabupaten Mempawah (Munawir, S.E., M.M.).
 - **Jumlah Halaman**: Diatur rapi dan presisi tanpa baris menggantung (*orphan lines*). Untuk surat dengan lampiran matriks variabel, naskah surat dinas berada di Halaman 1 dan lampiran matriks data di Halaman 2.
 
+## 3. SOP Manajemen Kredensial & Secrets Vault (Infisical Universal-Auth)
+Seluruh autentikasi API token (GitHub, Google Cloud/Drive, 9Router AI Gateway, OAuth) dikelola secara terpusat melalui Infisical:
+- **Backend Vault**: `infisical vault set file`
+- **Instance API**: `https://secrets.dvlpid.my.id/api`
+- **Metode Autentikasi**: `universal-auth` (Machine Identity non-interaktif)
+  * Project ID: `f13379e0-9661-4f8e-81ef-0e81d1502da1`
+  * Environment: `dev`
+- **Utilitas CLI Helper**:
+  * Sinkronisasi berkala: `infisical-exec sync` (menghasilkan `/etc/infisical/env` terenkripsi dengan izin `0600`)
+  * Eksekusi terinjeksi: `infisical-run run -- <command>`
+- **GitHub Integration**:
+  * Autentikasi `gh` dan git credential helper diarahkan ke akun organisasi `ipds6104` via token Infisical.
+
+
