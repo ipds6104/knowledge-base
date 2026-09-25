@@ -125,80 +125,15 @@
 #show figure.where(kind: image): set figure.caption(separator: none)
 
 // ==========================================
-// 1. KOVER DEPAN (FRONT COVER) - TEMPLATE PUSAT
+// 1. KOVER DEPAN (FRONT COVER) - DESAIN RESMI TERBARU
 // ==========================================
 #page(
-  margin: (top: 1.5cm, bottom: 1.5cm, left: 1.5cm, right: 1.5cm),
-  fill: rgb("#737373"),
+  paper: "a5",
+  margin: 0cm,
   header: none,
   footer: none,
 )[
-  // Pojok kanan atas: Katalog & ISSN
-  #align(right)[
-    #text(7.5pt, fill: rgb("#F3F4F6"))[
-      #text(style: "italic")[Katalog/Catalogue:] \
-      #text(weight: "bold")[1102001.6104050]
-    ]
-  ]
-
-  #v(0.8cm)
-
-  // Judul Publikasi di Tengah Atas
-  #align(center)[
-    #text(16pt, weight: "bold", fill: white)[KECAMATAN MEMPAWAH HILIR] \
-    #v(2pt)
-    #text(15pt, weight: "bold", fill: white)[DALAM ANGKA] \
-    #v(4pt)
-    #text(11pt, style: "italic", fill: rgb("#F3F4F6"))[Mempawah Hilir District in Figures] \
-    #v(3pt)
-    #text(8.5pt, fill: rgb("#E5E7EB"))[Volume 48, 2026]
-  ]
-
-  // Lingkaran Putih Badge 2026 di kanan
-  #place(top + right, dx: 0.2cm, dy: 3.8cm)[
-    #circle(radius: 1.25cm, fill: white)[
-      #align(center + horizon)[
-        #text(15pt, weight: "bold", fill: rgb("#1F2937"))[2026]
-      ]
-    ]
-  ]
-
-  #v(1.0cm)
-
-  // Placeholder Foto / Ilustrasi Kover Depan
-  #align(center)[
-    #rect(
-      width: 100%,
-      height: 7.5cm,
-      fill: rgb(255, 255, 255, 12%),
-      radius: 4pt,
-      stroke: 0.5pt + rgb(255, 255, 255, 30%),
-    )[
-      #align(center + horizon)[
-        #image("/kegiatan/kecamatan-dalam-angka/2026/assets/logo_bps.png", height: 48pt) \
-        #v(8pt)
-        #text(9pt, weight: "bold", fill: rgb("#E5E7EB"))[COVER DEPAN] \
-        #text(7pt, fill: rgb("#D1D5DB"))[Kecamatan Mempawah Hilir Dalam Angka 2026]
-      ]
-    ]
-  ]
-
-  #v(1fr)
-
-  // Logo & Identitas Resmi BPS di Kiri Bawah
-  #align(left)[
-    #grid(
-      columns: (auto, auto),
-      column-gutter: 8pt,
-      align: horizon,
-      image("/kegiatan/kecamatan-dalam-angka/2026/assets/logo_bps.png", height: 26pt),
-      align(left)[
-        #text(8pt, weight: "bold", fill: white)[BADAN PUSAT STATISTIK] \
-        #text(8pt, weight: "bold", fill: white)[KABUPATEN MEMPAWAH] \
-        #text(6.5pt, fill: rgb("#E5E7EB"))[BPS-STATISTICS OF MEMPAWAH REGENCY]
-      ]
-    )
-  ]
+  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/depan/Mempawah Hilir1.jpg", width: 100%, height: 100%)
 ]
 
 // ==========================================
@@ -206,7 +141,12 @@
 // Sesuai Pedoman Pembuatan Publikasi BPS 2023 Subbab 4.1.2 Poin 6 (Hal. 45) & Terbitan Statistik Indonesia BPS RI.
 // Halaman setelah kover depan tidak dihitung sebagai halaman dan tidak diberi nomor halaman.
 // ==========================================
-#page(header: none, footer: none)[ ]
+#page(
+  paper: "a5",
+  margin: 0cm,
+  header: none,
+  footer: none,
+)[ ]
 
 // ==========================================
 // 2. HALAMAN JUDUL UTAMA / TITLE PAGE (HALAMAN i)
@@ -215,37 +155,14 @@
 // ==========================================
 #counter(page).update(1)
 
-#align(right)[
-  #text(7.5pt)[
-    #text(style: "italic")[Katalog/Catalogue:] 1102001.6104050
-  ]
+#page(
+  paper: "a5",
+  margin: 0cm,
+  header: none,
+  footer: none,
+)[
+  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/depan/Mempawah Hilir2.jpg", width: 100%, height: 100%)
 ]
-
-#v(1fr)
-
-#text(16pt, weight: "bold")[KECAMATAN MEMPAWAH HILIR] \
-#v(2pt)
-#text(16pt, weight: "bold")[DALAM ANGKA] \
-#v(4pt)
-#text(11.5pt, style: "italic", fill: rgb("#F5A623"))[Mempawah Hilir District in Figures] \
-#v(3pt)
-#text(9pt, weight: "medium")[Volume 48, 2026]
-
-#v(14pt)
-
-#grid(
-  columns: (auto, auto),
-  column-gutter: 8pt,
-  align: horizon,
-  image("/kegiatan/kecamatan-dalam-angka/2026/assets/logo_bps.png", height: 26pt),
-  align(left)[
-    #text(8pt, weight: "bold", fill: rgb("#00A0E9"))[BADAN PUSAT STATISTIK] \
-    #text(8pt, weight: "bold", fill: rgb("#00A0E9"))[KABUPATEN MEMPAWAH] \
-    #text(6.5pt, fill: rgb("#00A0E9"))[BPS-STATISTICS OF MEMPAWAH REGENCY]
-  ]
-)
-
-#pagebreak()
 
 // ==========================================
 // 3. HALAMAN KATALOG & HAK CIPTA (HALAMAN ii)
@@ -418,7 +335,7 @@
 
 #import "@preview/meander:0.2.2"
 
-#let profile = (0.000, 0.000, 0.000, 0.566, 0.605, 0.624, 0.636, 0.642, 0.644, 0.644, 0.655, 0.653, 0.648, 0.641, 0.623, 0.614, 0.621, 0.654, 0.723, 0.788, 0.824, 0.837, 0.846, 0.855, 0.863, 0.870, 0.878, 0.884, 0.891, 0.898, 0.904, 0.912, 0.921, 0.928, 0.924, 0.888, 0.884, 0.879, 0.873, 0.857, 0.813, 0.800, 0.802, 0.803, 0.808, 0.813, 0.818, 0.821, 0.821, 0.822)
+#let profile = (0.000, 0.000, 0.000, 0.541, 0.582, 0.602, 0.626, 0.639, 0.644, 0.644, 0.655, 0.651, 0.644, 0.624, 0.614, 0.626, 0.699, 0.781, 0.827, 0.842, 0.852, 0.861, 0.870, 0.879, 0.888, 0.897, 0.906, 0.915, 0.925, 0.927, 0.886, 0.882, 0.876, 0.861, 0.809, 0.800, 0.803, 0.808, 0.815, 0.819, 0.821, 0.822, 0.823, 0.823, 0.823, 0.823, 0.823, 0.823, 0.823, 0.823)
 
 #block[
   #set text(hyphenate: false, size: 8pt)
@@ -497,7 +414,7 @@
 
 #import "@preview/meander:0.2.2"
 
-#let profile = (0.000, 0.000, 0.000, 0.566, 0.605, 0.624, 0.636, 0.642, 0.644, 0.644, 0.655, 0.653, 0.648, 0.641, 0.623, 0.614, 0.621, 0.654, 0.723, 0.788, 0.824, 0.837, 0.846, 0.855, 0.863, 0.870, 0.878, 0.884, 0.891, 0.898, 0.904, 0.912, 0.921, 0.928, 0.924, 0.888, 0.884, 0.879, 0.873, 0.857, 0.813, 0.800, 0.802, 0.803, 0.808, 0.813, 0.818, 0.821, 0.821, 0.822)
+#let profile = (0.000, 0.000, 0.000, 0.541, 0.582, 0.602, 0.626, 0.639, 0.644, 0.644, 0.655, 0.651, 0.644, 0.624, 0.614, 0.626, 0.699, 0.781, 0.827, 0.842, 0.852, 0.861, 0.870, 0.879, 0.888, 0.897, 0.906, 0.915, 0.925, 0.927, 0.886, 0.882, 0.876, 0.861, 0.809, 0.800, 0.803, 0.808, 0.815, 0.819, 0.821, 0.822, 0.823, 0.823, 0.823, 0.823, 0.823, 0.823, 0.823, 0.823)
 
 #block[
   #set text(hyphenate: false, size: 8pt)
@@ -799,28 +716,27 @@ _Rounding Note: Due to rounding, figures in line/column totals may not strictly 
 // --- TRANSISI KE ARABIC NUMBERING ---
 #pagebreak(to: "odd")
 #in_frontmatter.update(false)
+#counter(page).update(1)
+
+// ==========================================
+// LEMBAR PEMBATAS BAB 1 (FULL-BLEED A5)
+// ==========================================
+#page(
+  paper: "a5",
+  margin: 0cm,
+  header: none,
+  footer: none,
+)[
+  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/pembatas/Bab 1.jpg", width: 100%, height: 100%)
+] <chapter_page>
+
 #metadata("1. GEOGRAFI DAN IKLIM") <chapter_title>
 #metadata("Geography and Climate") <chapter_title_en>
-#counter(page).update(1)
 #metadata("bab1") <bab1>
 
 // ==========================================
-// BAB 1: GEOGRAFI DAN IKLIM (HALAMAN PEMBATAS & INFOGRAFIS)
+// BAB 1: GEOGRAFI DAN IKLIM (INFOGRAFIS & NARASI)
 // ==========================================
-#is_chapter_page.update(true)
-#v(0.5cm)
-#block(
-  fill: rgb("#FEF3C7"),
-  inset: 12pt,
-  width: 100%,
-  stroke: (left: 4pt + rgb("#D97706")),
-  [
-    #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 1: GEOGRAFI DAN IKLIM] \
-    #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 1: GEOGRAPHY AND CLIMATE]
-  ]
-) <chapter_page>
-#v(10pt)
-
 
 
 #v(6pt)
@@ -898,10 +814,7 @@ _Rounding Note: Due to rounding, figures in line/column totals may not strictly 
 )
 #v(10pt)
 
-
-
 #pagebreak()
-#is_chapter_page.update(false)
 
 // ==========================================
 // ISI BAB 1: ULASAN NARASI & TABEL DATA
@@ -944,7 +857,7 @@ Kecamatan Mempawah Hilir secara astronomis dan geografis terletak di wilayah pes
 #v(3pt)
 #show table.cell: set par(justify: false)
 #table(
-  columns: (2.5fr, 1.3fr, 1.2fr),
+  columns: (2.2fr, 1.1fr, 1.0fr, 1.3fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
   fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
@@ -954,16 +867,19 @@ Kecamatan Mempawah Hilir secara astronomis dan geografis terletak di wilayah pes
   align: (col, row) => if row <= 1 { center + horizon }
                        else if col == 0 { left + horizon }
                        else { right + horizon },
-  table.header([#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], [#strong[Luas Daerah] \ #text(6pt, weight: "bold", style: "italic")[Total Area (km²)]], [#strong[Persentase] \ #text(6pt, weight: "bold", style: "italic")[Percentage (%)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]]),
-  [Tanjung], [1.217], [2,62],
-  [Kuala Secapah], [5.337], [11,50],
-  [Tengah], [6.621], [14,26],
-  [Terusan], [13.175], [28,38],
-  [Pasir], [9.345], [20,13],
-  [Penibung], [2.491], [5,37],
-  [Sengkubang], [3.976], [8,56],
-  [Malikian], [4.262], [9,18]
+  table.header([#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], [#strong[Luas Daerah] \ #text(6pt, weight: "bold", style: "italic")[Total Area (km²)]], [#strong[Persentase] \ #text(6pt, weight: "bold", style: "italic")[Percentage (%)]], [#strong[Status Batas] \ #text(6pt, weight: "bold", style: "italic")[Boundary Status]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
+  [Tanjung], [8,37], [5,43], [Indikatif],
+  [Kuala Secapah], [10,42], [6,76], [Indikatif],
+  [Tengah], [7,04], [4,57], [Indikatif],
+  [Terusan], [6,74], [4,37], [Indikatif],
+  [Pasir], [54,84], [35,58], [Indikatif],
+  [Penibung], [11,59], [7,52], [Indikatif],
+  [Sengkubang], [24,62], [15,98], [Indikatif],
+  [Malikian], [30,50], [19,79], [Indikatif],
+  [Kecamatan Mempawah Hilir/_Total_], [154,13], [100,00], []
 )
+#v(-2pt)
+#text(6pt, fill: luma(60))[Catatan/#text(style: "italic")[Note] : Untuk desa/kelurahan dengan status Indikatif masih perlu dilakukan pelacakan ke lapangan dan kesepakatan batas antarwilayah yang berbatasan. / For villages/subdistricts with Indicative status, field tracking and boundary agreements between adjacent areas are still required.]
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Dinas Kependudukan dan Pencatatan Sipil/BAPEDDA Kabupaten Mempawah / Population and Civil Registration Service/#text(style: "italic")[Regional Development Planning Agency of Mempawah Regency]]
 #v(8pt)
@@ -1139,27 +1055,26 @@ Mempawah (Mempawah Hilir)], [2,80],
 
 
 #pagebreak(to: "odd")
+
+// ==========================================
+// LEMBAR PEMBATAS BAB 2 (FULL-BLEED A5)
+// ==========================================
+#page(
+  paper: "a5",
+  margin: 0cm,
+  header: none,
+  footer: none,
+)[
+  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/pembatas/Bab 2.jpg", width: 100%, height: 100%)
+] <chapter_page>
+
 #metadata("2. PEMERINTAHAN") <chapter_title>
 #metadata("Government") <chapter_title_en>
 #metadata("bab2") <bab2>
 
 // ==========================================
-// BAB 2: PEMERINTAHAN (HALAMAN PEMBATAS & INFOGRAFIS)
+// BAB 2: PEMERINTAHAN (INFOGRAFIS & NARASI)
 // ==========================================
-#is_chapter_page.update(true)
-#v(0.5cm)
-#block(
-  fill: rgb("#FEF3C7"),
-  inset: 12pt,
-  width: 100%,
-  stroke: (left: 4pt + rgb("#D97706")),
-  [
-    #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 2: PEMERINTAHAN] \
-    #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 2: GOVERNMENT]
-  ]
-) <chapter_page>
-#v(10pt)
-
 
 
 #v(6pt)
@@ -1199,10 +1114,7 @@ Mempawah (Mempawah Hilir)], [2,80],
 )
 #v(10pt)
 
-
-
 #pagebreak()
-#is_chapter_page.update(false)
 
 // ==========================================
 // ISI BAB 2: ULASAN NARASI & TABEL DATA
@@ -1393,6 +1305,64 @@ Secara administratif, Kecamatan Mempawah Hilir terbagi menjadi 8 desa/kelurahan 
 #pagebreak()
 
 
+#metadata("tab_2_1_5") <tab_2_1_5>
+#v(6pt)
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 4.5pt,
+      align: (top + center, horizon),
+      [
+        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
+          #text(7.5pt, weight: "bold")[Tabel]
+        ] \
+        #v(-3.5pt)
+        #text(6.5pt, style: "italic")[Tables]
+      ],
+      [
+        #text(8.5pt, weight: "bold")[2.1.5]
+      ]
+    )
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Klasifikasi Desa/Kelurahan Perdesaan dan Perkotaan di Kecamatan Mempawah Hilir, 2024] \
+    #v(-2pt)
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Urban and Rural Classification of Village/Subdistrict in Mempawah Hilir Subdistrict, 2024]
+  ]
+)
+#v(3pt)
+#show table.cell: set par(justify: false)
+#table(
+  columns: (0.6fr, 2.2fr, 1.6fr, 1.6fr),
+  inset: (x: 3.5pt, y: 4.5pt),
+  stroke: none,
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
+                      else if calc.even(row) { rgb("#FFF8E7") }
+                      else { rgb("#FFF4D4") },
+  align: (col, row) => if row <= 1 { center + horizon }
+                       else if col == 0 { left + horizon }
+                       else { right + horizon },
+  table.header([#strong[No]], [#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], [#strong[Wilayah Administratif] \ #text(6pt, weight: "bold", style: "italic")[Administrative Area]], [#strong[Klasifikasi Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Urban/Rural Classification]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
+  [1], [Tanjung], [Kelurahan], [Perdesaan],
+  [2], [Kuala Secapah], [Desa], [Perkotaan],
+  [3], [Tengah], [Kelurahan], [Perkotaan],
+  [4], [Terusan], [Kelurahan], [Perkotaan],
+  [5], [Pasir], [Desa], [Perkotaan],
+  [6], [Penibung], [Desa], [Perdesaan],
+  [7], [Sengkubang], [Desa], [Perdesaan],
+  [8], [Malikian], [Desa], [Perdesaan]
+)
+#v(-3pt)
+#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Peraturan Kepala BPS No. 120 Tahun 2020 / Chief of BPS Regulation No. 120 of 2020/#text(style: "italic")[Peraturan Kepala BPS No. 120 Tahun 2020 / Chief of BPS Regulation No. 120 of 2020]]
+#v(8pt)
+
+#v(10pt)
+
 #metadata("tab_2_1_6") <tab_2_1_6>
 #v(6pt)
 #grid(
@@ -1417,15 +1387,15 @@ Secara administratif, Kecamatan Mempawah Hilir terbagi menjadi 8 desa/kelurahan 
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Status Desa Berdasarkan Indeks Desa Membangun (IDM) di Kecamatan Mempawah Hilir, 2024/2025] \
+    #text(7.5pt, weight: "bold")[Status Desa Berdasarkan Indeks Desa Membangun (IDM) di Kecamatan Mempawah Hilir, 2024] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Village Status Based on Developing Village Index (IDM) in Mempawah Hilir Subdistrict, 2024/2025]
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Village Status Based on Developing Village Index (IDM) in Mempawah Hilir Subdistrict, 2024]
   ]
 )
 #v(3pt)
 #show table.cell: set par(justify: false)
 #table(
-  columns: (2.5fr, 1.2fr, 1.5fr),
+  columns: (0.6fr, 2.5fr, 2.5fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
   fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
@@ -1435,21 +1405,22 @@ Secara administratif, Kecamatan Mempawah Hilir terbagi menjadi 8 desa/kelurahan 
   align: (col, row) => if row <= 1 { center + horizon }
                        else if col == 0 { left + horizon }
                        else { right + horizon },
-  table.header([#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], [#strong[Skor IDM] \ #text(6pt, weight: "bold", style: "italic")[IDM Score]], [#strong[Status IDM] \ #text(6pt, weight: "bold", style: "italic")[IDM Status]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]]),
-  [Tanjung], [...], [...],
-  [Kuala Secapah], [...], [...],
-  [Tengah], [...], [...],
-  [Terusan], [...], [...],
-  [Pasir], [...], [...],
-  [Penibung], [...], [...],
-  [Sengkubang], [...], [...],
-  [Malikian], [...], [...]
+  table.header([#strong[No]], [#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], [#strong[Status Indeks Desa Membangun] \ #text(6pt, weight: "bold", style: "italic")[Developing Village Index Status]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]]),
+  [1], [Tanjung], [–],
+  [2], [Kuala Secapah], [Mandiri],
+  [3], [Tengah], [–],
+  [4], [Terusan], [–],
+  [5], [Pasir], [Mandiri],
+  [6], [Penibung], [Mandiri],
+  [7], [Sengkubang], [Mandiri],
+  [8], [Malikian], [Mandiri]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kementerian Desa, Pembangunan Daerah Tertinggal, dan Transmigrasi/#text(style: "italic")[Ministry of Villages, Disadvantaged Regions Development, and Transmigration]]
 #v(8pt)
 
-#v(10pt)
+#pagebreak()
+
 
 #metadata("tab_2_2_1") <tab_2_2_1>
 #v(6pt)
@@ -1504,8 +1475,7 @@ Secara administratif, Kecamatan Mempawah Hilir terbagi menjadi 8 desa/kelurahan 
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Mempawah Hilir/#text(style: "italic")[Mempawah Hilir District Office]]
 #v(8pt)
 
-#pagebreak()
-
+#v(10pt)
 
 #metadata("tab_2_2_2") <tab_2_2_2>
 #v(6pt)
@@ -1563,27 +1533,26 @@ Secara administratif, Kecamatan Mempawah Hilir terbagi menjadi 8 desa/kelurahan 
 
 
 #pagebreak(to: "odd")
+
+// ==========================================
+// LEMBAR PEMBATAS BAB 3 (FULL-BLEED A5)
+// ==========================================
+#page(
+  paper: "a5",
+  margin: 0cm,
+  header: none,
+  footer: none,
+)[
+  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/pembatas/Bab 3.jpg", width: 100%, height: 100%)
+] <chapter_page>
+
 #metadata("3. KEPENDUDUKAN") <chapter_title>
 #metadata("Population") <chapter_title_en>
 #metadata("bab3") <bab3>
 
 // ==========================================
-// BAB 3: KEPENDUDUKAN (HALAMAN PEMBATAS & INFOGRAFIS)
+// BAB 3: KEPENDUDUKAN (INFOGRAFIS & NARASI)
 // ==========================================
-#is_chapter_page.update(true)
-#v(0.5cm)
-#block(
-  fill: rgb("#FEF3C7"),
-  inset: 12pt,
-  width: 100%,
-  stroke: (left: 4pt + rgb("#D97706")),
-  [
-    #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 3: KEPENDUDUKAN] \
-    #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 3: POPULATION]
-  ]
-) <chapter_page>
-#v(10pt)
-
 
 
 #v(6pt)
@@ -1623,10 +1592,7 @@ Secara administratif, Kecamatan Mempawah Hilir terbagi menjadi 8 desa/kelurahan 
 )
 #v(10pt)
 
-
-
 #pagebreak()
-#is_chapter_page.update(false)
 
 // ==========================================
 // ISI BAB 3: ULASAN NARASI & TABEL DATA
@@ -1695,41 +1661,28 @@ Berdasdasarkan data registrasi semester II tahun 2025 dari Dinas Kependudukan da
 
 
 #pagebreak(to: "odd")
+
+// ==========================================
+// LEMBAR PEMBATAS BAB 4 (FULL-BLEED A5)
+// ==========================================
+#page(
+  paper: "a5",
+  margin: 0cm,
+  header: none,
+  footer: none,
+)[
+  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/pembatas/Bab 4.jpg", width: 100%, height: 100%)
+] <chapter_page>
+
 #metadata("4. SOSIAL DAN KESEJAHTERAAN RAKYAT") <chapter_title>
 #metadata("Social and Welfare") <chapter_title_en>
 #metadata("bab4") <bab4>
 
 // ==========================================
-// BAB 4: SOSIAL DAN KESEJAHTERAAN RAKYAT (HALAMAN PEMBATAS & INFOGRAFIS)
+// BAB 4: SOSIAL DAN KESEJAHTERAAN RAKYAT (INFOGRAFIS & NARASI)
 // ==========================================
-#is_chapter_page.update(true)
-#v(0.5cm)
-#block(
-  fill: rgb("#FEF3C7"),
-  inset: 12pt,
-  width: 100%,
-  stroke: (left: 4pt + rgb("#D97706")),
-  [
-    #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 4: SOSIAL DAN KESEJAHTERAAN RAKYAT] \
-    #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 4: SOCIAL AND WELFARE]
-  ]
-) <chapter_page>
-#v(10pt)
 
-
-#v(1.5cm)
-#align(center)[
-  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
-    #align(center + horizon)[
-      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS SOSIAL & KESEJAHTERAAN RAKYAT]      #v(6pt)
-      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan Mempawah Hilir]
-    ]
-  ]
-]
-
-
-#pagebreak()
-#is_chapter_page.update(false)
+#v(8pt)
 
 // ==========================================
 // ISI BAB 4: ULASAN NARASI & TABEL DATA
@@ -1783,16 +1736,16 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Mempawah Hilir ditopang ol
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[Tingkat Pendidikan] \ #text(6pt, weight: "bold", style: "italic")[Educational Level]], [#strong[2023]], [#strong[2024]], [#strong[2025]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Taman Kanak-Kanak (TK)], [...], [...], [6],
-  [Raudatul Athfal (RA)], [...], [...], [0],
-  [Sekolah Dasar (SD)], [...], [...], [8],
-  [Madrasah Ibtidaiyah (MI)], [...], [...], [0],
-  [Sekolah Menengah Pertama (SMP)], [...], [...], [7],
-  [Madrasah Tsanawiyah (MTs)], [...], [...], [0],
-  [Sekolah Menengah Atas (SMA)], [...], [...], [5],
-  [Sekolah Menengah Kejuruan (SMK)], [...], [...], [3],
-  [Madrasah Aliyah (MA)], [...], [...], [0],
-  [Akademi/Perguruan Tinggi], [...], [...], [1]
+  [Taman Kanak-Kanak (TK)], [6], [6], [...],
+  [Raudatul Athfal (RA)], [2], [0], [...],
+  [Sekolah Dasar (SD)], [8], [8], [...],
+  [Madrasah Ibtidaiyah (MI)], [7], [0], [...],
+  [Sekolah Menengah Pertama (SMP)], [5], [7], [...],
+  [Madrasah Tsanawiyah (MTs)], [6], [0], [...],
+  [Sekolah Menengah Atas (SMA)], [2], [5], [...],
+  [Sekolah Menengah Kejuruan (SMK)], [3], [3], [...],
+  [Madrasah Aliyah (MA)], [3], [0], [...],
+  [Akademi/Perguruan Tinggi], [1], [1], [...]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS, Pendataan Potensi Desa (Podes)/#text(style: "italic")[BPS-Statistics Indonesia, Village Potential Census (Podes)]]
@@ -1825,9 +1778,9 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Mempawah Hilir ditopang ol
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Jumlah Satuan Pendidikan Menurut Tingkat Pendidikan di Kecamatan Mempawah Hilir, 2024/2025] \
+    #text(7.5pt, weight: "bold")[Jumlah Satuan Pendidikan Menurut Tingkat Pendidikan di Kecamatan Mempawah Hilir, 2024/2025–2025/2026] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Educational Units by Education Level in Mempawah Hilir Subdistrict, 2024/2025]
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Educational Units by Education Level in Mempawah Hilir Subdistrict, 2024/2025–2025/2026]
   ]
 )
 #v(3pt)
@@ -1844,16 +1797,15 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Mempawah Hilir ditopang ol
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[Tingkat Pendidikan] \ #text(6pt, weight: "bold", style: "italic")[Educational Level]], [#strong[Negeri] \ #text(6pt, weight: "bold", style: "italic")[Public]], [#strong[Swasta] \ #text(6pt, weight: "bold", style: "italic")[Private]], [#strong[Jumlah] \ #text(6pt, weight: "bold", style: "italic")[Total]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Taman Kanak-Kanak (TK)], [...], [...], [...],
-  [Raudatul Athfal (RA)], [...], [...], [...],
-  [Sekolah Dasar (SD)], [...], [...], [...],
-  [Madrasah Ibtidaiyah (MI)], [...], [...], [...],
-  [Sekolah Menengah Pertama (SMP)], [...], [...], [...],
-  [Madrasah Tsanawiyah (MTs)], [...], [...], [...],
-  [Sekolah Menengah Atas (SMA)], [...], [...], [...],
-  [Sekolah Menengah Kejuruan (SMK)], [...], [...], [...],
-  [Madrasah Aliyah (MA)], [...], [...], [...],
-  [Jumlah/_Total_], [...], [...], [...]
+  [Taman Kanak-Kanak (TK)1/Kindergarten1], [3], [5], [8],
+  [Raudatul Athfal (RA)2], [0], [3], [3],
+  [Sekolah Dasar (SD)1], [24], [2], [26],
+  [Madrasah Ibtidaiyah], [0], [12], [12],
+  [Sekolah Menengah Pertama (SMP)1], [4], [3], [7],
+  [Madrasah Tsanawiyah (MTs)2], [1], [11], [12],
+  [Sekolah Menengah Atas (SMA)1], [2], [0], [2],
+  [Sekolah Menengah Kejuruan (SMK)1], [1], [3], [4],
+  [Madrasah Aliyah (MA)2], [0], [7], [7]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi & Kementerian Agama/#text(style: "italic")[Ministry of Education, Culture, Research, and Technology & Ministry of Religious Affairs]]
@@ -1885,9 +1837,9 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Mempawah Hilir ditopang ol
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Jumlah Kepala Sekolah dan Guru Menurut Tingkat Pendidikan di Kecamatan Mempawah Hilir, 2024/2025] \
+    #text(7.5pt, weight: "bold")[Jumlah Kepala Sekolah dan Pendidik Menurut Tingkat Pendidikan di Kecamatan Mempawah Hilir, 2024/2025–2025/2026] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Principals and Teachers by Education Level in Mempawah Hilir Subdistrict, 2024/2025]
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Principals and Teachers by Education Level in Mempawah Hilir Subdistrict, 2024/2025–2025/2026]
   ]
 )
 #v(3pt)
@@ -1904,16 +1856,15 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Mempawah Hilir ditopang ol
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[Tingkat Pendidikan] \ #text(6pt, weight: "bold", style: "italic")[Educational Level]], [#strong[Negeri] \ #text(6pt, weight: "bold", style: "italic")[Public]], [#strong[Swasta] \ #text(6pt, weight: "bold", style: "italic")[Private]], [#strong[Jumlah] \ #text(6pt, weight: "bold", style: "italic")[Total]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Taman Kanak-Kanak (TK)], [...], [...], [...],
-  [Raudatul Athfal (RA)], [...], [...], [...],
-  [Sekolah Dasar (SD)], [...], [...], [...],
-  [Madrasah Ibtidaiyah (MI)], [...], [...], [...],
-  [Sekolah Menengah Pertama (SMP)], [...], [...], [...],
-  [Madrasah Tsanawiyah (MTs)], [...], [...], [...],
-  [Sekolah Menengah Atas (SMA)], [...], [...], [...],
-  [Sekolah Menengah Kejuruan (SMK)], [...], [...], [...],
-  [Madrasah Aliyah (MA)], [...], [...], [...],
-  [Jumlah/_Total_], [...], [...], [...]
+  [Taman Kanak-Kanak], [16], [27], [43],
+  [Raudatul Athfal (RA)2], [0], [13], [13],
+  [Sekolah Dasar (SD)1,3], [237], [28], [265],
+  [Madrasah Ibtidaiyah], [0], [139], [139],
+  [Sekolah Menengah], [92], [20], [112],
+  [Madrasah], [33], [126], [159],
+  [Sekolah Menengah], [72], [0], [72],
+  [Sekolah Menengah], [65], [26], [91],
+  [Madrasah Aliyah (MA)2], [0], [96], [96]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi & Kementerian Agama/#text(style: "italic")[Ministry of Education, Culture, Research, and Technology & Ministry of Religious Affairs]]
@@ -1946,9 +1897,9 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Mempawah Hilir ditopang ol
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Jumlah Peserta Didik Menurut Tingkat Pendidikan di Kecamatan Mempawah Hilir, 2024/2025] \
+    #text(7.5pt, weight: "bold")[Jumlah Peserta Didik Menurut Tingkat Pendidikan di Kecamatan Mempawah Hilir, 2024/2025–2025/2026] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Students by Education Level in Mempawah Hilir Subdistrict, 2024/2025]
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Students by Education Level in Mempawah Hilir Subdistrict, 2024/2025–2025/2026]
   ]
 )
 #v(3pt)
@@ -1965,16 +1916,15 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Mempawah Hilir ditopang ol
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[Tingkat Pendidikan] \ #text(6pt, weight: "bold", style: "italic")[Educational Level]], [#strong[Negeri] \ #text(6pt, weight: "bold", style: "italic")[Public]], [#strong[Swasta] \ #text(6pt, weight: "bold", style: "italic")[Private]], [#strong[Jumlah] \ #text(6pt, weight: "bold", style: "italic")[Total]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Taman Kanak-Kanak (TK)], [...], [...], [...],
-  [Raudatul Athfal (RA)], [...], [...], [...],
-  [Sekolah Dasar (SD)], [...], [...], [...],
-  [Madrasah Ibtidaiyah (MI)], [...], [...], [...],
-  [Sekolah Menengah Pertama (SMP)], [...], [...], [...],
-  [Madrasah Tsanawiyah (MTs)], [...], [...], [...],
-  [Sekolah Menengah Atas (SMA)], [...], [...], [...],
-  [Sekolah Menengah Kejuruan (SMK)], [...], [...], [...],
-  [Madrasah Aliyah (MA)], [...], [...], [...],
-  [Jumlah/_Total_], [...], [...], [...]
+  [Taman Kanak-Kanak], [145], [270], [415],
+  [Raudatul Athfal (RA)2], [0], [130], [130],
+  [Sekolah Dasar (SD)1], [2.626], [429], [3.055],
+  [Madrasah Ibtidaiyah], [0], [1828], [1828],
+  [Sekolah Menengah], [1.331], [138], [1.469],
+  [Madrasah], [614], [1397], [2011],
+  [Sekolah Menengah], [1.369], [0], [1.369],
+  [Sekolah Menengah], [1.016], [164], [1.180],
+  [Madrasah Aliyah], [0], [1048], [1048]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi & Kementerian Agama/#text(style: "italic")[Ministry of Education, Culture, Research, and Technology & Ministry of Religious Affairs]]
@@ -2154,41 +2104,66 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Mempawah Hilir ditopang ol
 
 
 #pagebreak(to: "odd")
+
+// ==========================================
+// LEMBAR PEMBATAS BAB 5 (FULL-BLEED A5)
+// ==========================================
+#page(
+  paper: "a5",
+  margin: 0cm,
+  header: none,
+  footer: none,
+)[
+  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/pembatas/Bab 5.jpg", width: 100%, height: 100%)
+] <chapter_page>
+
 #metadata("5. PERTANIAN") <chapter_title>
 #metadata("Agriculture") <chapter_title_en>
 #metadata("bab5") <bab5>
 
 // ==========================================
-// BAB 5: PERTANIAN (HALAMAN PEMBATAS & INFOGRAFIS)
+// BAB 5: PERTANIAN (INFOGRAFIS & NARASI)
 // ==========================================
-#is_chapter_page.update(true)
-#v(0.5cm)
-#block(
-  fill: rgb("#FEF3C7"),
-  inset: 12pt,
-  width: 100%,
-  stroke: (left: 4pt + rgb("#D97706")),
+
+
+#v(6pt)
+#align(center)[
+  #image("charts/gambar_5_1.svg", width: 100%)
+]
+#v(-2pt)
+#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-BST)/#text(style: "italic")[BPS-Statistics Indonesia - Ministry of Agriculture, Horticultural Agricultural Survey (SPH-BST)]]
+#v(4pt)
+#metadata("fig_5_1") <fig_5_1>
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
   [
-    #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 5: PERTANIAN] \
-    #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 5: AGRICULTURE]
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 4.5pt,
+      align: (top + center, horizon),
+      [
+        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
+          #text(7.5pt, weight: "bold")[Gambar]
+        ] \
+        #v(-3.5pt)
+        #text(6.5pt, style: "italic")[Figures]
+      ],
+      [
+        #text(8.5pt, weight: "bold")[5.1]
+      ]
+    )
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Produksi Buah-buahan Utama di Mempawah Hilir, 2025 (Kuintal)] \
+    #v(-2pt)
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Production of Major Fruits in Mempawah Hilir Subdistrict, 2025 (Quintal)]
   ]
-) <chapter_page>
+)
 #v(10pt)
 
-
-#v(1.5cm)
-#align(center)[
-  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
-    #align(center + horizon)[
-      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS PERTANIAN]      #v(6pt)
-      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan Mempawah Hilir]
-    ]
-  ]
-]
-
-
 #pagebreak()
-#is_chapter_page.update(false)
 
 // ==========================================
 // ISI BAB 5: ULASAN NARASI & TABEL DATA
@@ -2242,15 +2217,19 @@ Sektor pertanian merupakan salah satu pilar penopang perekonomian masyarakat di 
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[Jenis Tanaman] \ #text(6pt, weight: "bold", style: "italic")[Kind of Plants]], [#strong[2022 (ha)]], [#strong[2023 (ha)]], [#strong[2024 (ha)]], [#strong[2025 (ha)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]], [#strong[(5)]]),
-  [Bawang Merah/_Shallots_], [...], [...], [...], [...],
-  [Cabai Besar/_Big Chili_], [...], [...], [...], [...],
-  [Cabai Rawit/_Cayenne Pepper_], [...], [...], [...], [...],
-  [Tomat/_Tomato_], [...], [...], [...], [...],
-  [Terung/_Eggplant_], [...], [...], [...], [...],
-  [Kacang Panjang/_Long Beans_], [...], [...], [...], [...],
-  [Ketimun/_Cucumber_], [...], [...], [...], [...],
-  [Kangkung/_Water Spinach_], [...], [...], [...], [...],
-  [Bayam/_Spinach_], [...], [...], [...], [...]
+  [Bawang Merah/Shallots], [...], [...], [...], [...],
+  [Cabai Besar/TW/Teropong Chili/Big Chili], [1], [1], [...], [...],
+  [Cabai Keriting Curly Chili], [...], [...], [...], [...],
+  [Cabai Rawit Chili/Cayenne Pepper], [2], [6], [5], [3],
+  [Kentang/Potato], [...], [...], [...], [...],
+  [Kubis/Cabbage], [...], [...], [...], [...],
+  [Tomat/Tomato], [1], [1], [...], [...],
+  [Bawang Putih/Garlic], [...], [...], [...], [...],
+  [Bawang Daun/ Scallion], [3], [3], [2], [3],
+  [Kacang Panjang/ Long Beans], [3], [3], [2], [2],
+  [Ketimun/ Cucumber], [3], [2], [3], [1],
+  [Petsai/Sawi/ Chinese Cabbage/mustard green], [13], [15], [11], [11],
+  [Semangka/ Water Melon], [...], [3], [...], [1]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-SBS)/#text(style: "italic")[BPS-Statistics Indonesia - Ministry of Agriculture, Horticultural Agricultural Survey (SPH-SBS)]]
@@ -2302,15 +2281,19 @@ Sektor pertanian merupakan salah satu pilar penopang perekonomian masyarakat di 
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[Jenis Tanaman] \ #text(6pt, weight: "bold", style: "italic")[Kind of Plants]], [#strong[2022 (ku)]], [#strong[2023 (ku)]], [#strong[2024 (ku)]], [#strong[2025 (ku)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]], [#strong[(5)]]),
-  [Bawang Merah/_Shallots_], [...], [...], [...], [...],
-  [Cabai Besar/_Big Chili_], [...], [...], [...], [...],
-  [Cabai Rawit/_Cayenne Pepper_], [...], [...], [...], [...],
-  [Tomat/_Tomato_], [...], [...], [...], [...],
-  [Terung/_Eggplant_], [...], [...], [...], [...],
-  [Kacang Panjang/_Long Beans_], [...], [...], [...], [...],
-  [Ketimun/_Cucumber_], [...], [...], [...], [...],
-  [Kangkung/_Water Spinach_], [...], [...], [...], [...],
-  [Bayam/_Spinach_], [...], [...], [...], [...]
+  [Bawang Merah/Shallots], [...], [...], [...], [...],
+  [Cabai Besar/TW/Teropong Chili/Big Chili], [41], [67], [...], [...],
+  [Cabai Keriting Curly Chili], [...], [...], [...], [...],
+  [Cabai Rawit Chili/Cayenne Pepper], [78], [230], [66], [87],
+  [Kentang/Potato], [...], [...], [...], [...],
+  [Kubis/Cabbage], [...], [...], [...], [...],
+  [Tomat/Tomato], [62], [45], [...], [...],
+  [Bawang Putih/Garlic], [...], [...], [...], [...],
+  [Bawang Daun/ Scallion], [144], [140], [87], [72],
+  [Kacang Panjang/ Long Beans], [167], [183], [126], [112],
+  [Ketimun/ Cucumber], [282], [161], [135], [128],
+  [Petsai/Sawi/ Chinese Cabbage/mustard green], [290], [330], [328], [241],
+  [Semangka/ Water Melon], [...], [550], [...], [150]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-SBS)/#text(style: "italic")[BPS-Statistics Indonesia - Ministry of Agriculture, Horticultural Agricultural Survey (SPH-SBS)]]
@@ -2362,12 +2345,10 @@ Sektor pertanian merupakan salah satu pilar penopang perekonomian masyarakat di 
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[Jenis Tanaman] \ #text(6pt, weight: "bold", style: "italic")[Kind of Plants]], [#strong[2022 (m²)]], [#strong[2023 (m²)]], [#strong[2024 (m²)]], [#strong[2025 (m²)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]], [#strong[(5)]]),
-  [Jahe/_Ginger_], [...], [...], [...], [...],
-  [Lengkuas/_Galangal_], [...], [...], [...], [...],
-  [Kencur/_East Indian Galangal_], [...], [...], [...], [...],
-  [Kunyit/_Turmeric_], [...], [...], [...], [...],
-  [Lempuyang], [...], [...], [...], [...],
-  [Temulawak/_Java Turmeric_], [...], [...], [...], [...]
+  [Jahe/Ginger], [14.000], [11.000], [12.000], [5.000],
+  [Laos/Lengkuas/Galanga], [40], [10], [25], [12],
+  [Kencur/East Indian Galangal], [20], [10], [7], [3],
+  [Kunyit/Turmeric], [30], [10], [12], [...]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-TBF)/#text(style: "italic")[BPS-Statistics Indonesia - Ministry of Agriculture, Horticultural Agricultural Survey (SPH-TBF)]]
@@ -2418,12 +2399,10 @@ Sektor pertanian merupakan salah satu pilar penopang perekonomian masyarakat di 
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[Jenis Tanaman] \ #text(6pt, weight: "bold", style: "italic")[Kind of Plants]], [#strong[2022 (kg)]], [#strong[2023 (kg)]], [#strong[2024 (kg)]], [#strong[2025 (kg)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]], [#strong[(5)]]),
-  [Jahe/_Ginger_], [...], [...], [...], [...],
-  [Lengkuas/_Galangal_], [...], [...], [...], [...],
-  [Kencur/_East Indian Galangal_], [...], [...], [...], [...],
-  [Kunyit/_Turmeric_], [...], [...], [...], [...],
-  [Lempuyang], [...], [...], [...], [...],
-  [Temulawak/_Java Turmeric_], [...], [...], [...], [...]
+  [Jahe/Ginger], [30.500], [32.400], [36.000], [30.000],
+  [Laos/Lengkuas/Galanga], [128], [28], [69], [39],
+  [Kencur/East Indian Galangal], [20], [20], [19], [5],
+  [Kunyit/Turmeric], [30], [10], [20], [...]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-TBF)/#text(style: "italic")[BPS-Statistics Indonesia - Ministry of Agriculture, Horticultural Agricultural Survey (SPH-TBF)]]
@@ -2475,13 +2454,22 @@ Sektor pertanian merupakan salah satu pilar penopang perekonomian masyarakat di 
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[Jenis Tanaman] \ #text(6pt, weight: "bold", style: "italic")[Kind of Plants]], [#strong[2022 (ku)]], [#strong[2023 (ku)]], [#strong[2024 (ku)]], [#strong[2025 (ku)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]], [#strong[(5)]]),
-  [Durian/_Durian_], [...], [...], [...], [...],
-  [Mangga/_Mango_], [...], [...], [...], [...],
-  [Jeruk Siam/_Siamese Orange_], [...], [...], [...], [...],
-  [Pisang/_Banana_], [...], [...], [...], [...],
-  [Pepaya/_Papaya_], [...], [...], [...], [...],
-  [Nanas/_Pineapple_], [...], [...], [...], [...],
-  [Rambutan/_Rambutan_], [...], [...], [...], [...]
+  [Mangga/Mango], [1.650], [2.180], [...], [1250],
+  [Durian/Durian], [1.570], [3.550], [525], [2620],
+  [Jeruk Siam/Keprok/Orange/Tangerine], [5.260], [5.200], [3.900], [3.300],
+  [Pisang/Banana], [233.579], [123.855], [60.307], [69.601],
+  [Pepaya/Papaya], [308], [62], [106], [...],
+  [Salak/Snakefruit], [30], [80], [3], [...],
+  [Sawo/ Sapodilla/Sawo], [1.618], [1.478], [375], [525],
+  [Rambutan/ Rambutan], [1.250], [893], [400], [875],
+  [Jeruk Besar/ Pomelo], [453], [980], [15], [...],
+  [Nangka/Cempedak/ Jackfruit], [455], [580], [100], [112],
+  [Nenas/ Pineapple], [118.612], [77.670], [70.130], [86.682],
+  [Lengkeng/ Dimocarpus Longan], [496], [560], [11], [...],
+  [Sukun/ Breadfruit], [220], [630], [160], [...],
+  [Jengkol/Jengkol], [420], [120], [118], [106],
+  [Melinjo/ Gnetum/Melinjo], [575], [850], [443], [76],
+  [Petai/ Twisted Cluster Bean], [400], [155], [145], [90]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-BST)/#text(style: "italic")[BPS-Statistics Indonesia - Ministry of Agriculture, Horticultural Agricultural Survey (SPH-BST)]]
@@ -2489,41 +2477,22 @@ Sektor pertanian merupakan salah satu pilar penopang perekonomian masyarakat di 
 
 
 #pagebreak(to: "odd")
+
+// ==========================================
+// LEMBAR PEMBATAS BAB 6 (FULL-BLEED A5)
+// ==========================================
+#page(
+  paper: "a5",
+  margin: 0cm,
+  header: none,
+  footer: none,
+)[
+  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/pembatas/Bab 6.jpg", width: 100%, height: 100%)
+] <chapter_page>
+
 #metadata("6. PARIWISATA, TRANSPORTASI, DAN KOMUNIKASI") <chapter_title>
 #metadata("Tourism, Transportation, and Communication") <chapter_title_en>
 #metadata("bab6") <bab6>
-
-// ==========================================
-// BAB 6: PARIWISATA, TRANSPORTASI & KOMUNIKASI (HALAMAN PEMBATAS & INFOGRAFIS)
-// ==========================================
-#is_chapter_page.update(true)
-#v(0.5cm)
-#block(
-  fill: rgb("#FEF3C7"),
-  inset: 12pt,
-  width: 100%,
-  stroke: (left: 4pt + rgb("#D97706")),
-  [
-    #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 6: PARIWISATA, TRANSPORTASI & KOMUNIKASI] \
-    #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 6: TOURISM, TRANSPORTATION AND COMMUNICATION]
-  ]
-) <chapter_page>
-#v(10pt)
-
-
-#v(1.5cm)
-#align(center)[
-  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
-    #align(center + horizon)[
-      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS PARIWISATA, TRANSPORTASI & KOMUNIKASI]      #v(6pt)
-      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan Mempawah Hilir]
-    ]
-  ]
-]
-
-
-#pagebreak()
-#is_chapter_page.update(false)
 
 // ==========================================
 // ISI BAB 6: ULASAN NARASI & TABEL DATA
@@ -2703,41 +2672,22 @@ Konektivitas wilayah di Kecamatan Mempawah Hilir terhubung oleh jaringan jalan d
 
 
 #pagebreak(to: "odd")
+
+// ==========================================
+// LEMBAR PEMBATAS BAB 7 (FULL-BLEED A5)
+// ==========================================
+#page(
+  paper: "a5",
+  margin: 0cm,
+  header: none,
+  footer: none,
+)[
+  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/pembatas/Bab 7.jpg", width: 100%, height: 100%)
+] <chapter_page>
+
 #metadata("7. PERBANKAN, KOPERASI, DAN PERDAGANGAN") <chapter_title>
 #metadata("Banking, Cooperative, and Trade") <chapter_title_en>
 #metadata("bab7") <bab7>
-
-// ==========================================
-// BAB 7: PERBANKAN, KOPERASI & PERDAGANGAN (HALAMAN PEMBATAS & INFOGRAFIS)
-// ==========================================
-#is_chapter_page.update(true)
-#v(0.5cm)
-#block(
-  fill: rgb("#FEF3C7"),
-  inset: 12pt,
-  width: 100%,
-  stroke: (left: 4pt + rgb("#D97706")),
-  [
-    #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 7: PERBANKAN, KOPERASI & PERDAGANGAN] \
-    #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 7: BANKING, COOPERATIVES AND TRADE]
-  ]
-) <chapter_page>
-#v(10pt)
-
-
-#v(1.5cm)
-#align(center)[
-  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
-    #align(center + horizon)[
-      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS PERBANKAN, KOPERASI & PERDAGANGAN]      #v(6pt)
-      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan Mempawah Hilir]
-    ]
-  ]
-]
-
-
-#pagebreak()
-#is_chapter_page.update(false)
 
 // ==========================================
 // ISI BAB 7: ULASAN NARASI & TABEL DATA
@@ -2948,132 +2898,14 @@ Aktivitas perniagaan di Kecamatan Mempawah Hilir berkembang dinamis didukung ole
 
 #metadata("akhir_buku") <akhir_buku>
 #pagebreak(to: "even")
-
 // ==========================================
-// KOVER BELAKANG (BACK COVER) - GENERATED NATIVELY VIA TYPST
+// KOVER BELAKANG (BACK COVER) - DESAIN VISUAL RESMI
 // ==========================================
 #page(
   paper: "a5",
-  margin: (top: 0cm, bottom: 0cm, left: 0cm, right: 0cm),
+  margin: 0cm,
   header: none,
   footer: none,
-  fill: gradient.linear(angle: 145deg, rgb("#440815"), rgb("#2E040C"), rgb("#180206")),
 )[
-  // 1. Pita Dekoratif Melengkung Khas Publikasi (Typst Bezier Curves)
-  #place(top + left)[
-    #let ribbon_left(dx, dy, alpha, thick) = {
-      path(
-        stroke: (paint: rgb(220, 130, 125, alpha), thickness: thick),
-        (dx + -30pt, dy + 320pt),
-        ((dx + 90pt, dy + 250pt), (dx + 180pt, dy + 130pt), (dx + 220pt, dy + -30pt)),
-      )
-    }
-    #ribbon_left(-55pt, 60pt, 5%, 3.5pt)
-    #ribbon_left(-40pt, 75pt, 8%, 3.5pt)
-    #ribbon_left(-25pt, 90pt, 12%, 3.5pt)
-    #ribbon_left(-10pt, 105pt, 16%, 3.5pt)
-    #ribbon_left(5pt, 120pt, 14%, 3.5pt)
-    #ribbon_left(20pt, 135pt, 9%, 3.5pt)
-    #ribbon_left(35pt, 150pt, 5%, 3.5pt)
-  ]
-
-  #place(bottom + right)[
-    #let ribbon_right(dx, dy, alpha, thick) = {
-      path(
-        stroke: (paint: rgb(220, 130, 125, alpha), thickness: thick),
-        (dx + 40pt, dy + 40pt),
-        ((dx - 70pt, dy - 140pt), (dx - 140pt, dy - 290pt), (dx - 160pt, dy - 440pt)),
-      )
-    }
-    #ribbon_right(-15pt, 15pt, 5%, 4pt)
-    #ribbon_right(0pt, 0pt, 8%, 4pt)
-    #ribbon_right(15pt, -15pt, 12%, 4pt)
-    #ribbon_right(30pt, -30pt, 17%, 4pt)
-    #ribbon_right(45pt, -45pt, 14%, 4pt)
-    #ribbon_right(60pt, -60pt, 9%, 4pt)
-    #ribbon_right(75pt, -75pt, 5%, 4pt)
-  ]
-
-  // 2. Logo Resmi Nasional Kanan Atas (SE 2026, BerAKHLAK, Bangga Melayani Bangsa)
-  #place(top + right, dx: -1.2cm, dy: 1.2cm)[
-    #image("/kegiatan/kecamatan-dalam-angka/2026/assets/backcover_top_logos.png", width: 3.35cm)
-  ]
-
-  // 3. Tipografi Utama di Tengah: SEJAJAR DAN SAMA PANJANG DENGAN PRESISI
-  // Lebar blok utama: 11.0cm (ujung kiri dan kanan sejajar vertikal)
-  #let block_w = 11.0cm
-
-  #place(center + horizon)[
-    #align(center)[
-      #box(width: block_w)[
-        #stack(
-          dir: ttb,
-          spacing: 11pt,
-
-          // Baris 1: DATA - Huruf D di paling kiri, huruf A di paling kanan
-          grid(
-            columns: (auto, 1fr, auto, 1fr, auto, 1fr, auto),
-            align: (left + bottom, horizon, center + bottom, horizon, center + bottom, horizon, right + bottom),
-            text(font: ("Metropolis", "Liberation Sans", "Arial"), size: 78pt, weight: "black", fill: white)[D],
-            [],
-            text(font: ("Metropolis", "Liberation Sans", "Arial"), size: 78pt, weight: "black", fill: white)[A],
-            [],
-            text(font: ("Metropolis", "Liberation Sans", "Arial"), size: 78pt, weight: "black", fill: white)[T],
-            [],
-            text(font: ("Metropolis", "Liberation Sans", "Arial"), size: 78pt, weight: "black", fill: white)[A],
-          ),
-
-          // Baris 2: MENCERDASKAN BANGSA - Lebar tepat sama 11.0cm (rata kiri ke kanan)
-          text(
-            font: ("Liberation Sans", "Arial"),
-            stretch: 80%,
-            size: 16.5pt,
-            weight: "bold",
-            fill: white,
-            tracking: 0.32em,
-          )[MENCERDASKAN#box(width: 0.8em)[]BANGSA],
-
-          v(2pt),
-
-          // Baris 3: Enlighten The Nation - Garis kiri dan kanan membentang pas sampai batas tepi 11.0cm
-          grid(
-            columns: (1fr, auto, 1fr),
-            gutter: 10pt,
-            align: horizon,
-            line(length: 100%, stroke: 0.9pt + white),
-            text(
-              font: ("Liberation Serif", "Times New Roman"),
-              size: 13pt,
-              style: "italic",
-              fill: white,
-            )[Enlighten The Nation],
-            line(length: 100%, stroke: 0.9pt + white),
-          ),
-        )
-      ]
-    ]
-  ]
-
-  // 4. Identitas Resmi BPS Kabupaten Mempawah (Kiri Bawah)
-  #place(bottom + left, dx: 0.9cm, dy: -1.0cm)[
-    #grid(
-      columns: (auto, auto),
-      gutter: 10pt,
-      align: horizon,
-      image("/kegiatan/kecamatan-dalam-angka/2026/assets/logo_bps.png", width: 1.55cm),
-      [
-        #set text(font: ("Metropolis", "Liberation Sans", "Arial"), fill: white)
-        #text(size: 7.5pt, weight: "bold", style: "italic")[BADAN PUSAT STATISTIK\ KABUPATEN MEMPAWAH]\
-        #v(2.5pt)
-        #block[
-          #set par(leading: 0.44em)
-          #text(size: 5.5pt)[
-            Jl. Raden Kusno No. 1, Mempawah 79511\
-            Telp (0561) 691030, Email : bps6104\@bps.go.id\
-            Homepage : https://mempawahkab.bps.go.id
-          ]
-        ]
-      ]
-    )
-  ]
+  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/belakang/Mempawah hilir.jpg", width: 100%, height: 100%)
 ]

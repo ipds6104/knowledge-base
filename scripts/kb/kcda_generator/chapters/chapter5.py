@@ -16,6 +16,24 @@ def render_chapter5(cfg: Dict[str, Any], out_dir: Optional[Any] = None) -> str:
     charts_markup = get_chapter5_charts(slug, nama_singkat, nama_en, Path(out_dir) if out_dir else None)
     chart_section = f"\n{charts_markup}\n#pagebreak()\n" if charts_markup.strip() else "\n#v(8pt)\n"
 
+    def extract_pertanian_rows(table_no, default_items):
+        rows_raw = get_kecamatan_tab_rows(table_no, nama_singkat)
+        res = []
+        if len(rows_raw) > 2:
+            for r in rows_raw[2:]:
+                if r and r[0].strip() and not any(r[0].lower().startswith(x) for x in ['sumber', 'catatan']):
+                    if r[0].endswith(':'):
+                        continue
+                    t_name = r[0].split('\n')[0].strip()
+                    y22 = clean_cell_value(r[1] if len(r) > 1 else "-")
+                    y23 = clean_cell_value(r[2] if len(r) > 2 else "-")
+                    y24 = clean_cell_value(r[3] if len(r) > 3 else "-")
+                    y25 = clean_cell_value(r[4] if len(r) > 4 else "-")
+                    res.append([t_name, y22, y23, y24, y25])
+        if not res:
+            res = [[s, "...", "...", "...", "..."] for s in default_items]
+        return res
+
     # --- 5.1 & 5.2 Sayuran ---
     sayuran_list = [
         "Bawang Merah / Shallots",
@@ -28,7 +46,7 @@ def render_chapter5(cfg: Dict[str, Any], out_dir: Optional[Any] = None) -> str:
         "Kangkung / Water Spinach",
         "Bayam / Spinach"
     ]
-    t51_rows = [[s, "...", "...", "...", "..."] for s in sayuran_list]
+    t51_rows = extract_pertanian_rows("5.1", sayuran_list)
     t51_markup = render_typst_table(
         table_no="5.1",
         title_id=f"Luas Panen Tanaman Sayuran dan Buah-buahan Semusim Menurut Jenis Tanaman di {nama_resmi}, 2022–2025",
@@ -40,7 +58,7 @@ def render_chapter5(cfg: Dict[str, Any], out_dir: Optional[Any] = None) -> str:
         source="BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-SBS)"
     )
 
-    t52_rows = [[s, "...", "...", "...", "..."] for s in sayuran_list]
+    t52_rows = extract_pertanian_rows("5.2", sayuran_list)
     t52_markup = render_typst_table(
         table_no="5.2",
         title_id=f"Produksi Tanaman Sayuran dan Buah-buahan Semusim Menurut Jenis Tanaman di {nama_resmi}, 2022–2025",
@@ -61,7 +79,7 @@ def render_chapter5(cfg: Dict[str, Any], out_dir: Optional[Any] = None) -> str:
         "Lempuyang",
         "Temulawak / Java Turmeric"
     ]
-    t53_rows = [[b, "...", "...", "...", "..."] for b in bio_list]
+    t53_rows = extract_pertanian_rows("5.3", bio_list)
     t53_markup = render_typst_table(
         table_no="5.3",
         title_id=f"Luas Panen Tanaman Biofarmaka Menurut Jenis Tanaman di {nama_resmi}, 2022–2025",
@@ -73,7 +91,7 @@ def render_chapter5(cfg: Dict[str, Any], out_dir: Optional[Any] = None) -> str:
         source="BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-TBF)"
     )
 
-    t54_rows = [[b, "...", "...", "...", "..."] for b in bio_list]
+    t54_rows = extract_pertanian_rows("5.4", bio_list)
     t54_markup = render_typst_table(
         table_no="5.4",
         title_id=f"Produksi Tanaman Biofarmaka Menurut Jenis Tanaman di {nama_resmi}, 2022–2025",
@@ -95,7 +113,7 @@ def render_chapter5(cfg: Dict[str, Any], out_dir: Optional[Any] = None) -> str:
         "Nanas / Pineapple",
         "Rambutan / Rambutan"
     ]
-    t57_rows = [[f, "...", "...", "...", "..."] for f in buah_list]
+    t57_rows = extract_pertanian_rows("5.7", buah_list)
     t57_markup = render_typst_table(
         table_no="5.7",
         title_id=f"Produksi Buah-Buahan dan Sayuran Tahunan Menurut Jenis Tanaman di {nama_resmi}, 2022–2025",
@@ -107,43 +125,11 @@ def render_chapter5(cfg: Dict[str, Any], out_dir: Optional[Any] = None) -> str:
         source="BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-BST)"
     )
 
-    # Infografis Halaman Bab 5
-    infografis_markup = f"\n{charts_markup}\n" if charts_markup.strip() else """
-#v(1.5cm)
-#align(center)[
-  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
-    #align(center + horizon)[
-      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS PERTANIAN]\
-      #v(6pt)
-      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan """ + nama_singkat + """]
-    ]
-  ]
-]
-"""
-
     return f"""
 // ==========================================
-// BAB 5: PERTANIAN (HALAMAN PEMBATAS & INFOGRAFIS)
+// BAB 5: PERTANIAN (INFOGRAFIS & NARASI)
 // ==========================================
-#is_chapter_page.update(true)
-#v(0.5cm)
-#block(
-  fill: rgb("#FEF3C7"),
-  inset: 12pt,
-  width: 100%,
-  stroke: (left: 4pt + rgb("#D97706")),
-  [
-    #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 5: PERTANIAN] \\
-    #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 5: AGRICULTURE]
-  ]
-) <chapter_page>
-#v(10pt)
-
-{infografis_markup}
-
-#pagebreak()
-#is_chapter_page.update(false)
-
+{chart_section}
 // ==========================================
 // ISI BAB 5: ULASAN NARASI & TABEL DATA
 // ==========================================

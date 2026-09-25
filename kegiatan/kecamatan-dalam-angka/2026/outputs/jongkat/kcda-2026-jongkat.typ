@@ -125,80 +125,15 @@
 #show figure.where(kind: image): set figure.caption(separator: none)
 
 // ==========================================
-// 1. KOVER DEPAN (FRONT COVER) - TEMPLATE PUSAT
+// 1. KOVER DEPAN (FRONT COVER) - DESAIN RESMI TERBARU
 // ==========================================
 #page(
-  margin: (top: 1.5cm, bottom: 1.5cm, left: 1.5cm, right: 1.5cm),
-  fill: rgb("#737373"),
+  paper: "a5",
+  margin: 0cm,
   header: none,
   footer: none,
 )[
-  // Pojok kanan atas: Katalog & ISSN
-  #align(right)[
-    #text(7.5pt, fill: rgb("#F3F4F6"))[
-      #text(style: "italic")[Katalog/Catalogue:] \
-      #text(weight: "bold")[1102001.6104020]
-    ]
-  ]
-
-  #v(0.8cm)
-
-  // Judul Publikasi di Tengah Atas
-  #align(center)[
-    #text(16pt, weight: "bold", fill: white)[KECAMATAN JONGKAT] \
-    #v(2pt)
-    #text(15pt, weight: "bold", fill: white)[DALAM ANGKA] \
-    #v(4pt)
-    #text(11pt, style: "italic", fill: rgb("#F3F4F6"))[Jongkat District in Figures] \
-    #v(3pt)
-    #text(8.5pt, fill: rgb("#E5E7EB"))[Volume 48, 2026]
-  ]
-
-  // Lingkaran Putih Badge 2026 di kanan
-  #place(top + right, dx: 0.2cm, dy: 3.8cm)[
-    #circle(radius: 1.25cm, fill: white)[
-      #align(center + horizon)[
-        #text(15pt, weight: "bold", fill: rgb("#1F2937"))[2026]
-      ]
-    ]
-  ]
-
-  #v(1.0cm)
-
-  // Placeholder Foto / Ilustrasi Kover Depan
-  #align(center)[
-    #rect(
-      width: 100%,
-      height: 7.5cm,
-      fill: rgb(255, 255, 255, 12%),
-      radius: 4pt,
-      stroke: 0.5pt + rgb(255, 255, 255, 30%),
-    )[
-      #align(center + horizon)[
-        #image("/kegiatan/kecamatan-dalam-angka/2026/assets/logo_bps.png", height: 48pt) \
-        #v(8pt)
-        #text(9pt, weight: "bold", fill: rgb("#E5E7EB"))[COVER DEPAN] \
-        #text(7pt, fill: rgb("#D1D5DB"))[Kecamatan Jongkat Dalam Angka 2026]
-      ]
-    ]
-  ]
-
-  #v(1fr)
-
-  // Logo & Identitas Resmi BPS di Kiri Bawah
-  #align(left)[
-    #grid(
-      columns: (auto, auto),
-      column-gutter: 8pt,
-      align: horizon,
-      image("/kegiatan/kecamatan-dalam-angka/2026/assets/logo_bps.png", height: 26pt),
-      align(left)[
-        #text(8pt, weight: "bold", fill: white)[BADAN PUSAT STATISTIK] \
-        #text(8pt, weight: "bold", fill: white)[KABUPATEN MEMPAWAH] \
-        #text(6.5pt, fill: rgb("#E5E7EB"))[BPS-STATISTICS OF MEMPAWAH REGENCY]
-      ]
-    )
-  ]
+  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/depan/Jongkat1.jpg", width: 100%, height: 100%)
 ]
 
 // ==========================================
@@ -206,7 +141,12 @@
 // Sesuai Pedoman Pembuatan Publikasi BPS 2023 Subbab 4.1.2 Poin 6 (Hal. 45) & Terbitan Statistik Indonesia BPS RI.
 // Halaman setelah kover depan tidak dihitung sebagai halaman dan tidak diberi nomor halaman.
 // ==========================================
-#page(header: none, footer: none)[ ]
+#page(
+  paper: "a5",
+  margin: 0cm,
+  header: none,
+  footer: none,
+)[ ]
 
 // ==========================================
 // 2. HALAMAN JUDUL UTAMA / TITLE PAGE (HALAMAN i)
@@ -215,37 +155,14 @@
 // ==========================================
 #counter(page).update(1)
 
-#align(right)[
-  #text(7.5pt)[
-    #text(style: "italic")[Katalog/Catalogue:] 1102001.6104020
-  ]
+#page(
+  paper: "a5",
+  margin: 0cm,
+  header: none,
+  footer: none,
+)[
+  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/depan/Jongkat2.jpg", width: 100%, height: 100%)
 ]
-
-#v(1fr)
-
-#text(16pt, weight: "bold")[KECAMATAN JONGKAT] \
-#v(2pt)
-#text(16pt, weight: "bold")[DALAM ANGKA] \
-#v(4pt)
-#text(11.5pt, style: "italic", fill: rgb("#F5A623"))[Jongkat District in Figures] \
-#v(3pt)
-#text(9pt, weight: "medium")[Volume 48, 2026]
-
-#v(14pt)
-
-#grid(
-  columns: (auto, auto),
-  column-gutter: 8pt,
-  align: horizon,
-  image("/kegiatan/kecamatan-dalam-angka/2026/assets/logo_bps.png", height: 26pt),
-  align(left)[
-    #text(8pt, weight: "bold", fill: rgb("#00A0E9"))[BADAN PUSAT STATISTIK] \
-    #text(8pt, weight: "bold", fill: rgb("#00A0E9"))[KABUPATEN MEMPAWAH] \
-    #text(6.5pt, fill: rgb("#00A0E9"))[BPS-STATISTICS OF MEMPAWAH REGENCY]
-  ]
-)
-
-#pagebreak()
 
 // ==========================================
 // 3. HALAMAN KATALOG & HAK CIPTA (HALAMAN ii)
@@ -418,7 +335,7 @@
 
 #import "@preview/meander:0.2.2"
 
-#let profile = (0.000, 0.000, 0.000, 0.566, 0.605, 0.624, 0.636, 0.642, 0.644, 0.644, 0.655, 0.653, 0.648, 0.641, 0.623, 0.614, 0.621, 0.654, 0.723, 0.788, 0.824, 0.837, 0.846, 0.855, 0.863, 0.870, 0.878, 0.884, 0.891, 0.898, 0.904, 0.912, 0.921, 0.928, 0.924, 0.888, 0.884, 0.879, 0.873, 0.857, 0.813, 0.800, 0.802, 0.803, 0.808, 0.813, 0.818, 0.821, 0.821, 0.822)
+#let profile = (0.000, 0.000, 0.000, 0.541, 0.582, 0.602, 0.626, 0.639, 0.644, 0.644, 0.655, 0.651, 0.644, 0.624, 0.614, 0.626, 0.699, 0.781, 0.827, 0.842, 0.852, 0.861, 0.870, 0.879, 0.888, 0.897, 0.906, 0.915, 0.925, 0.927, 0.886, 0.882, 0.876, 0.861, 0.809, 0.800, 0.803, 0.808, 0.815, 0.819, 0.821, 0.822, 0.823, 0.823, 0.823, 0.823, 0.823, 0.823, 0.823, 0.823)
 
 #block[
   #set text(hyphenate: false, size: 8pt)
@@ -497,7 +414,7 @@
 
 #import "@preview/meander:0.2.2"
 
-#let profile = (0.000, 0.000, 0.000, 0.566, 0.605, 0.624, 0.636, 0.642, 0.644, 0.644, 0.655, 0.653, 0.648, 0.641, 0.623, 0.614, 0.621, 0.654, 0.723, 0.788, 0.824, 0.837, 0.846, 0.855, 0.863, 0.870, 0.878, 0.884, 0.891, 0.898, 0.904, 0.912, 0.921, 0.928, 0.924, 0.888, 0.884, 0.879, 0.873, 0.857, 0.813, 0.800, 0.802, 0.803, 0.808, 0.813, 0.818, 0.821, 0.821, 0.822)
+#let profile = (0.000, 0.000, 0.000, 0.541, 0.582, 0.602, 0.626, 0.639, 0.644, 0.644, 0.655, 0.651, 0.644, 0.624, 0.614, 0.626, 0.699, 0.781, 0.827, 0.842, 0.852, 0.861, 0.870, 0.879, 0.888, 0.897, 0.906, 0.915, 0.925, 0.927, 0.886, 0.882, 0.876, 0.861, 0.809, 0.800, 0.803, 0.808, 0.815, 0.819, 0.821, 0.822, 0.823, 0.823, 0.823, 0.823, 0.823, 0.823, 0.823, 0.823)
 
 #block[
   #set text(hyphenate: false, size: 8pt)
@@ -799,28 +716,27 @@ _Rounding Note: Due to rounding, figures in line/column totals may not strictly 
 // --- TRANSISI KE ARABIC NUMBERING ---
 #pagebreak(to: "odd")
 #in_frontmatter.update(false)
+#counter(page).update(1)
+
+// ==========================================
+// LEMBAR PEMBATAS BAB 1 (FULL-BLEED A5)
+// ==========================================
+#page(
+  paper: "a5",
+  margin: 0cm,
+  header: none,
+  footer: none,
+)[
+  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/pembatas/Bab 1.jpg", width: 100%, height: 100%)
+] <chapter_page>
+
 #metadata("1. GEOGRAFI DAN IKLIM") <chapter_title>
 #metadata("Geography and Climate") <chapter_title_en>
-#counter(page).update(1)
 #metadata("bab1") <bab1>
 
 // ==========================================
-// BAB 1: GEOGRAFI DAN IKLIM (HALAMAN PEMBATAS & INFOGRAFIS)
+// BAB 1: GEOGRAFI DAN IKLIM (INFOGRAFIS & NARASI)
 // ==========================================
-#is_chapter_page.update(true)
-#v(0.5cm)
-#block(
-  fill: rgb("#FEF3C7"),
-  inset: 12pt,
-  width: 100%,
-  stroke: (left: 4pt + rgb("#D97706")),
-  [
-    #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 1: GEOGRAFI DAN IKLIM] \
-    #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 1: GEOGRAPHY AND CLIMATE]
-  ]
-) <chapter_page>
-#v(10pt)
-
 
 
 #v(6pt)
@@ -898,10 +814,7 @@ _Rounding Note: Due to rounding, figures in line/column totals may not strictly 
 )
 #v(10pt)
 
-
-
 #pagebreak()
-#is_chapter_page.update(false)
 
 // ==========================================
 // ISI BAB 1: ULASAN NARASI & TABEL DATA
@@ -944,7 +857,7 @@ Kecamatan Jongkat secara astronomis dan geografis terletak di wilayah pesisir da
 #v(3pt)
 #show table.cell: set par(justify: false)
 #table(
-  columns: (2.5fr, 1.3fr, 1.2fr),
+  columns: (2.2fr, 1.1fr, 1.0fr, 1.3fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
   fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
@@ -954,13 +867,16 @@ Kecamatan Jongkat secara astronomis dan geografis terletak di wilayah pesisir da
   align: (col, row) => if row <= 1 { center + horizon }
                        else if col == 0 { left + horizon }
                        else { right + horizon },
-  table.header([#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], [#strong[Luas Daerah] \ #text(6pt, weight: "bold", style: "italic")[Total Area (km²)]], [#strong[Persentase] \ #text(6pt, weight: "bold", style: "italic")[Percentage (%)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]]),
-  [Sungai Nipah], [5.437], [10,60],
-  [Jungkat], [15.765], [30,74],
-  [Wajok Hilir], [11.264], [21,96],
-  [Wajok Hulu], [14.947], [29,15],
-  [Peniti Luar], [3.871], [7,55]
+  table.header([#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], [#strong[Luas Daerah] \ #text(6pt, weight: "bold", style: "italic")[Total Area (km²)]], [#strong[Persentase] \ #text(6pt, weight: "bold", style: "italic")[Percentage (%)]], [#strong[Status Batas] \ #text(6pt, weight: "bold", style: "italic")[Boundary Status]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
+  [Sungai Nipah], [12,00], [4,12], [Definitif],
+  [Jungkat], [43,39], [14,91], [Definitif],
+  [Wajok Hilir], [72,47], [24,91], [Indikatif],
+  [Wajok Hulu], [127,84], [43,94], [Indikatif],
+  [Peniti Luar], [35,23], [12,11], [Definitif],
+  [Kecamatan Jongkat/_Total_], [290,93], [100,00], []
 )
+#v(-2pt)
+#text(6pt, fill: luma(60))[Catatan/#text(style: "italic")[Note] : Untuk desa/kelurahan dengan status Indikatif masih perlu dilakukan pelacakan ke lapangan dan kesepakatan batas antarwilayah yang berbatasan. / For villages/subdistricts with Indicative status, field tracking and boundary agreements between adjacent areas are still required.]
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Dinas Kependudukan dan Pencatatan Sipil/BAPEDDA Kabupaten Mempawah / Population and Civil Registration Service/#text(style: "italic")[Regional Development Planning Agency of Mempawah Regency]]
 #v(8pt)
@@ -1133,27 +1049,26 @@ Mempawah (Mempawah Hilir)], [47,90],
 
 
 #pagebreak(to: "odd")
+
+// ==========================================
+// LEMBAR PEMBATAS BAB 2 (FULL-BLEED A5)
+// ==========================================
+#page(
+  paper: "a5",
+  margin: 0cm,
+  header: none,
+  footer: none,
+)[
+  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/pembatas/Bab 2.jpg", width: 100%, height: 100%)
+] <chapter_page>
+
 #metadata("2. PEMERINTAHAN") <chapter_title>
 #metadata("Government") <chapter_title_en>
 #metadata("bab2") <bab2>
 
 // ==========================================
-// BAB 2: PEMERINTAHAN (HALAMAN PEMBATAS & INFOGRAFIS)
+// BAB 2: PEMERINTAHAN (INFOGRAFIS & NARASI)
 // ==========================================
-#is_chapter_page.update(true)
-#v(0.5cm)
-#block(
-  fill: rgb("#FEF3C7"),
-  inset: 12pt,
-  width: 100%,
-  stroke: (left: 4pt + rgb("#D97706")),
-  [
-    #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 2: PEMERINTAHAN] \
-    #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 2: GOVERNMENT]
-  ]
-) <chapter_page>
-#v(10pt)
-
 
 
 #v(6pt)
@@ -1193,10 +1108,7 @@ Mempawah (Mempawah Hilir)], [47,90],
 )
 #v(10pt)
 
-
-
 #pagebreak()
-#is_chapter_page.update(false)
 
 // ==========================================
 // ISI BAB 2: ULASAN NARASI & TABEL DATA
@@ -1370,6 +1282,61 @@ Secara administratif, Kecamatan Jongkat terbagi menjadi 5 desa/kelurahan yang di
 #pagebreak()
 
 
+#metadata("tab_2_1_5") <tab_2_1_5>
+#v(6pt)
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 4.5pt,
+      align: (top + center, horizon),
+      [
+        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
+          #text(7.5pt, weight: "bold")[Tabel]
+        ] \
+        #v(-3.5pt)
+        #text(6.5pt, style: "italic")[Tables]
+      ],
+      [
+        #text(8.5pt, weight: "bold")[2.1.5]
+      ]
+    )
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Klasifikasi Desa/Kelurahan Perdesaan dan Perkotaan di Kecamatan Jongkat, 2024] \
+    #v(-2pt)
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Urban and Rural Classification of Village/Subdistrict in Jongkat Subdistrict, 2024]
+  ]
+)
+#v(3pt)
+#show table.cell: set par(justify: false)
+#table(
+  columns: (0.6fr, 2.2fr, 1.6fr, 1.6fr),
+  inset: (x: 3.5pt, y: 4.5pt),
+  stroke: none,
+  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
+                      else if calc.even(row) { rgb("#FFF8E7") }
+                      else { rgb("#FFF4D4") },
+  align: (col, row) => if row <= 1 { center + horizon }
+                       else if col == 0 { left + horizon }
+                       else { right + horizon },
+  table.header([#strong[No]], [#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], [#strong[Wilayah Administratif] \ #text(6pt, weight: "bold", style: "italic")[Administrative Area]], [#strong[Klasifikasi Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Urban/Rural Classification]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
+  [1], [Sungai Nipah], [Desa], [Perkotaan],
+  [2], [Jungkat], [Desa], [Perkotaan],
+  [3], [Wajok Hilir], [Desa], [Perkotaan],
+  [4], [Wajok Hulu], [Desa], [Perkotaan],
+  [5], [Peniti Luar], [Desa], [Perdesaan]
+)
+#v(-3pt)
+#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Peraturan Kepala BPS No. 120 Tahun 2020 / Chief of BPS Regulation No. 120 of 2020/#text(style: "italic")[Peraturan Kepala BPS No. 120 Tahun 2020 / Chief of BPS Regulation No. 120 of 2020]]
+#v(8pt)
+
+#v(10pt)
+
 #metadata("tab_2_1_6") <tab_2_1_6>
 #v(6pt)
 #grid(
@@ -1394,15 +1361,15 @@ Secara administratif, Kecamatan Jongkat terbagi menjadi 5 desa/kelurahan yang di
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Status Desa Berdasarkan Indeks Desa Membangun (IDM) di Kecamatan Jongkat, 2024/2025] \
+    #text(7.5pt, weight: "bold")[Status Desa Berdasarkan Indeks Desa Membangun (IDM) di Kecamatan Jongkat, 2024] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Village Status Based on Developing Village Index (IDM) in Jongkat Subdistrict, 2024/2025]
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Village Status Based on Developing Village Index (IDM) in Jongkat Subdistrict, 2024]
   ]
 )
 #v(3pt)
 #show table.cell: set par(justify: false)
 #table(
-  columns: (2.5fr, 1.2fr, 1.5fr),
+  columns: (0.6fr, 2.5fr, 2.5fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
   fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
@@ -1412,18 +1379,19 @@ Secara administratif, Kecamatan Jongkat terbagi menjadi 5 desa/kelurahan yang di
   align: (col, row) => if row <= 1 { center + horizon }
                        else if col == 0 { left + horizon }
                        else { right + horizon },
-  table.header([#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], [#strong[Skor IDM] \ #text(6pt, weight: "bold", style: "italic")[IDM Score]], [#strong[Status IDM] \ #text(6pt, weight: "bold", style: "italic")[IDM Status]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]]),
-  [Sungai Nipah], [...], [...],
-  [Jungkat], [...], [...],
-  [Wajok Hilir], [...], [...],
-  [Wajok Hulu], [...], [...],
-  [Peniti Luar], [...], [...]
+  table.header([#strong[No]], [#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], [#strong[Status Indeks Desa Membangun] \ #text(6pt, weight: "bold", style: "italic")[Developing Village Index Status]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]]),
+  [1], [Sungai Nipah], [Mandiri],
+  [2], [Jungkat], [Mandiri],
+  [3], [Wajok Hilir], [Mandiri],
+  [4], [Wajok Hulu], [Mandiri],
+  [5], [Peniti Luar], [Mandiri]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kementerian Desa, Pembangunan Daerah Tertinggal, dan Transmigrasi/#text(style: "italic")[Ministry of Villages, Disadvantaged Regions Development, and Transmigration]]
 #v(8pt)
 
-#v(10pt)
+#pagebreak()
+
 
 #metadata("tab_2_2_1") <tab_2_2_1>
 #v(6pt)
@@ -1478,8 +1446,7 @@ Secara administratif, Kecamatan Jongkat terbagi menjadi 5 desa/kelurahan yang di
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Jongkat/#text(style: "italic")[Jongkat District Office]]
 #v(8pt)
 
-#pagebreak()
-
+#v(10pt)
 
 #metadata("tab_2_2_2") <tab_2_2_2>
 #v(6pt)
@@ -1537,27 +1504,26 @@ Secara administratif, Kecamatan Jongkat terbagi menjadi 5 desa/kelurahan yang di
 
 
 #pagebreak(to: "odd")
+
+// ==========================================
+// LEMBAR PEMBATAS BAB 3 (FULL-BLEED A5)
+// ==========================================
+#page(
+  paper: "a5",
+  margin: 0cm,
+  header: none,
+  footer: none,
+)[
+  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/pembatas/Bab 3.jpg", width: 100%, height: 100%)
+] <chapter_page>
+
 #metadata("3. KEPENDUDUKAN") <chapter_title>
 #metadata("Population") <chapter_title_en>
 #metadata("bab3") <bab3>
 
 // ==========================================
-// BAB 3: KEPENDUDUKAN (HALAMAN PEMBATAS & INFOGRAFIS)
+// BAB 3: KEPENDUDUKAN (INFOGRAFIS & NARASI)
 // ==========================================
-#is_chapter_page.update(true)
-#v(0.5cm)
-#block(
-  fill: rgb("#FEF3C7"),
-  inset: 12pt,
-  width: 100%,
-  stroke: (left: 4pt + rgb("#D97706")),
-  [
-    #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 3: KEPENDUDUKAN] \
-    #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 3: POPULATION]
-  ]
-) <chapter_page>
-#v(10pt)
-
 
 
 #v(6pt)
@@ -1597,10 +1563,7 @@ Secara administratif, Kecamatan Jongkat terbagi menjadi 5 desa/kelurahan yang di
 )
 #v(10pt)
 
-
-
 #pagebreak()
-#is_chapter_page.update(false)
 
 // ==========================================
 // ISI BAB 3: ULASAN NARASI & TABEL DATA
@@ -1666,41 +1629,28 @@ Berdasdasarkan data registrasi semester II tahun 2025 dari Dinas Kependudukan da
 
 
 #pagebreak(to: "odd")
+
+// ==========================================
+// LEMBAR PEMBATAS BAB 4 (FULL-BLEED A5)
+// ==========================================
+#page(
+  paper: "a5",
+  margin: 0cm,
+  header: none,
+  footer: none,
+)[
+  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/pembatas/Bab 4.jpg", width: 100%, height: 100%)
+] <chapter_page>
+
 #metadata("4. SOSIAL DAN KESEJAHTERAAN RAKYAT") <chapter_title>
 #metadata("Social and Welfare") <chapter_title_en>
 #metadata("bab4") <bab4>
 
 // ==========================================
-// BAB 4: SOSIAL DAN KESEJAHTERAAN RAKYAT (HALAMAN PEMBATAS & INFOGRAFIS)
+// BAB 4: SOSIAL DAN KESEJAHTERAAN RAKYAT (INFOGRAFIS & NARASI)
 // ==========================================
-#is_chapter_page.update(true)
-#v(0.5cm)
-#block(
-  fill: rgb("#FEF3C7"),
-  inset: 12pt,
-  width: 100%,
-  stroke: (left: 4pt + rgb("#D97706")),
-  [
-    #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 4: SOSIAL DAN KESEJAHTERAAN RAKYAT] \
-    #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 4: SOCIAL AND WELFARE]
-  ]
-) <chapter_page>
-#v(10pt)
 
-
-#v(1.5cm)
-#align(center)[
-  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
-    #align(center + horizon)[
-      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS SOSIAL & KESEJAHTERAAN RAKYAT]      #v(6pt)
-      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan Jongkat]
-    ]
-  ]
-]
-
-
-#pagebreak()
-#is_chapter_page.update(false)
+#v(8pt)
 
 // ==========================================
 // ISI BAB 4: ULASAN NARASI & TABEL DATA
@@ -1754,16 +1704,16 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Jongkat ditopang oleh perl
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[Tingkat Pendidikan] \ #text(6pt, weight: "bold", style: "italic")[Educational Level]], [#strong[2023]], [#strong[2024]], [#strong[2025]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Taman Kanak-Kanak (TK)], [...], [...], [4],
-  [Raudatul Athfal (RA)], [...], [...], [0],
-  [Sekolah Dasar (SD)], [...], [...], [5],
-  [Madrasah Ibtidaiyah (MI)], [...], [...], [0],
-  [Sekolah Menengah Pertama (SMP)], [...], [...], [5],
-  [Madrasah Tsanawiyah (MTs)], [...], [...], [0],
-  [Sekolah Menengah Atas (SMA)], [...], [...], [5],
-  [Sekolah Menengah Kejuruan (SMK)], [...], [...], [1],
-  [Madrasah Aliyah (MA)], [...], [...], [0],
-  [Akademi/Perguruan Tinggi], [...], [...], [0]
+  [Taman Kanak-Kanak (TK)], [2], [4], [...],
+  [Raudatul Athfal (RA)], [2], [0], [...],
+  [Sekolah Dasar (SD)], [5], [5], [...],
+  [Madrasah Ibtidaiyah (MI)], [5], [0], [...],
+  [Sekolah Menengah Pertama (SMP)], [4], [5], [...],
+  [Madrasah Tsanawiyah (MTs)], [4], [0], [...],
+  [Sekolah Menengah Atas (SMA)], [1], [5], [...],
+  [Sekolah Menengah Kejuruan (SMK)], [1], [1], [...],
+  [Madrasah Aliyah (MA)], [4], [0], [...],
+  [Akademi/Perguruan Tinggi], [–], [0], [...]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS, Pendataan Potensi Desa (Podes)/#text(style: "italic")[BPS-Statistics Indonesia, Village Potential Census (Podes)]]
@@ -1796,9 +1746,9 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Jongkat ditopang oleh perl
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Jumlah Satuan Pendidikan Menurut Tingkat Pendidikan di Kecamatan Jongkat, 2024/2025] \
+    #text(7.5pt, weight: "bold")[Jumlah Satuan Pendidikan Menurut Tingkat Pendidikan di Kecamatan Jongkat, 2024/2025–2025/2026] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Educational Units by Education Level in Jongkat Subdistrict, 2024/2025]
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Educational Units by Education Level in Jongkat Subdistrict, 2024/2025–2025/2026]
   ]
 )
 #v(3pt)
@@ -1815,16 +1765,15 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Jongkat ditopang oleh perl
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[Tingkat Pendidikan] \ #text(6pt, weight: "bold", style: "italic")[Educational Level]], [#strong[Negeri] \ #text(6pt, weight: "bold", style: "italic")[Public]], [#strong[Swasta] \ #text(6pt, weight: "bold", style: "italic")[Private]], [#strong[Jumlah] \ #text(6pt, weight: "bold", style: "italic")[Total]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Taman Kanak-Kanak (TK)], [...], [...], [...],
-  [Raudatul Athfal (RA)], [...], [...], [...],
-  [Sekolah Dasar (SD)], [...], [...], [...],
-  [Madrasah Ibtidaiyah (MI)], [...], [...], [...],
-  [Sekolah Menengah Pertama (SMP)], [...], [...], [...],
-  [Madrasah Tsanawiyah (MTs)], [...], [...], [...],
-  [Sekolah Menengah Atas (SMA)], [...], [...], [...],
-  [Sekolah Menengah Kejuruan (SMK)], [...], [...], [...],
-  [Madrasah Aliyah (MA)], [...], [...], [...],
-  [Jumlah/_Total_], [...], [...], [...]
+  [Taman Kanak-Kanak (TK)1/Kindergarten1], [1], [2], [3],
+  [Raudatul Athfal (RA)2], [0], [4], [4],
+  [Sekolah Dasar (SD)1], [22], [0], [22],
+  [Madrasah Ibtidaiyah], [0], [9], [9],
+  [Sekolah Menengah Pertama (SMP)1], [4], [3], [7],
+  [Madrasah Tsanawiyah (MTs)2], [1], [5], [6],
+  [Sekolah Menengah Atas (SMA)1], [1], [1], [2],
+  [Sekolah Menengah Kejuruan (SMK)1], [0], [1], [1],
+  [Madrasah Aliyah (MA)2], [0], [5], [5]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi & Kementerian Agama/#text(style: "italic")[Ministry of Education, Culture, Research, and Technology & Ministry of Religious Affairs]]
@@ -1856,9 +1805,9 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Jongkat ditopang oleh perl
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Jumlah Kepala Sekolah dan Guru Menurut Tingkat Pendidikan di Kecamatan Jongkat, 2024/2025] \
+    #text(7.5pt, weight: "bold")[Jumlah Kepala Sekolah dan Pendidik Menurut Tingkat Pendidikan di Kecamatan Jongkat, 2024/2025–2025/2026] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Principals and Teachers by Education Level in Jongkat Subdistrict, 2024/2025]
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Principals and Teachers by Education Level in Jongkat Subdistrict, 2024/2025–2025/2026]
   ]
 )
 #v(3pt)
@@ -1875,16 +1824,15 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Jongkat ditopang oleh perl
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[Tingkat Pendidikan] \ #text(6pt, weight: "bold", style: "italic")[Educational Level]], [#strong[Negeri] \ #text(6pt, weight: "bold", style: "italic")[Public]], [#strong[Swasta] \ #text(6pt, weight: "bold", style: "italic")[Private]], [#strong[Jumlah] \ #text(6pt, weight: "bold", style: "italic")[Total]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Taman Kanak-Kanak (TK)], [...], [...], [...],
-  [Raudatul Athfal (RA)], [...], [...], [...],
-  [Sekolah Dasar (SD)], [...], [...], [...],
-  [Madrasah Ibtidaiyah (MI)], [...], [...], [...],
-  [Sekolah Menengah Pertama (SMP)], [...], [...], [...],
-  [Madrasah Tsanawiyah (MTs)], [...], [...], [...],
-  [Sekolah Menengah Atas (SMA)], [...], [...], [...],
-  [Sekolah Menengah Kejuruan (SMK)], [...], [...], [...],
-  [Madrasah Aliyah (MA)], [...], [...], [...],
-  [Jumlah/_Total_], [...], [...], [...]
+  [Taman Kanak-Kanak], [3], [11], [14],
+  [Raudatul Athfal (RA)2], [0], [13], [13],
+  [Sekolah Dasar (SD)1,3], [252], [0], [252],
+  [Madrasah Ibtidaiyah], [0], [92], [92],
+  [Sekolah Menengah], [76], [21], [97],
+  [Madrasah], [38], [50], [88],
+  [Sekolah Menengah], [49], [7], [56],
+  [Sekolah Menengah], [0], [4], [4],
+  [Madrasah Aliyah (MA)2], [0], [41], [41]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi & Kementerian Agama/#text(style: "italic")[Ministry of Education, Culture, Research, and Technology & Ministry of Religious Affairs]]
@@ -1917,9 +1865,9 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Jongkat ditopang oleh perl
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Jumlah Peserta Didik Menurut Tingkat Pendidikan di Kecamatan Jongkat, 2024/2025] \
+    #text(7.5pt, weight: "bold")[Jumlah Peserta Didik Menurut Tingkat Pendidikan di Kecamatan Jongkat, 2024/2025–2025/2026] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Students by Education Level in Jongkat Subdistrict, 2024/2025]
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Students by Education Level in Jongkat Subdistrict, 2024/2025–2025/2026]
   ]
 )
 #v(3pt)
@@ -1936,16 +1884,15 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Jongkat ditopang oleh perl
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[Tingkat Pendidikan] \ #text(6pt, weight: "bold", style: "italic")[Educational Level]], [#strong[Negeri] \ #text(6pt, weight: "bold", style: "italic")[Public]], [#strong[Swasta] \ #text(6pt, weight: "bold", style: "italic")[Private]], [#strong[Jumlah] \ #text(6pt, weight: "bold", style: "italic")[Total]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Taman Kanak-Kanak (TK)], [...], [...], [...],
-  [Raudatul Athfal (RA)], [...], [...], [...],
-  [Sekolah Dasar (SD)], [...], [...], [...],
-  [Madrasah Ibtidaiyah (MI)], [...], [...], [...],
-  [Sekolah Menengah Pertama (SMP)], [...], [...], [...],
-  [Madrasah Tsanawiyah (MTs)], [...], [...], [...],
-  [Sekolah Menengah Atas (SMA)], [...], [...], [...],
-  [Sekolah Menengah Kejuruan (SMK)], [...], [...], [...],
-  [Madrasah Aliyah (MA)], [...], [...], [...],
-  [Jumlah/_Total_], [...], [...], [...]
+  [Taman Kanak-Kanak], [43], [105], [148],
+  [Raudatul Athfal (RA)2], [0], [201], [201],
+  [Sekolah Dasar (SD)1], [4.228], [0], [4.228],
+  [Madrasah Ibtidaiyah], [0], [1324], [1324],
+  [Sekolah Menengah], [1.123], [164], [1.287],
+  [Madrasah], [644], [488], [1132],
+  [Sekolah Menengah], [837], [42], [879],
+  [Sekolah Menengah], [0], [18], [18],
+  [Madrasah Aliyah], [0], [402], [402]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi & Kementerian Agama/#text(style: "italic")[Ministry of Education, Culture, Research, and Technology & Ministry of Religious Affairs]]
@@ -2122,41 +2069,66 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Jongkat ditopang oleh perl
 
 
 #pagebreak(to: "odd")
+
+// ==========================================
+// LEMBAR PEMBATAS BAB 5 (FULL-BLEED A5)
+// ==========================================
+#page(
+  paper: "a5",
+  margin: 0cm,
+  header: none,
+  footer: none,
+)[
+  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/pembatas/Bab 5.jpg", width: 100%, height: 100%)
+] <chapter_page>
+
 #metadata("5. PERTANIAN") <chapter_title>
 #metadata("Agriculture") <chapter_title_en>
 #metadata("bab5") <bab5>
 
 // ==========================================
-// BAB 5: PERTANIAN (HALAMAN PEMBATAS & INFOGRAFIS)
+// BAB 5: PERTANIAN (INFOGRAFIS & NARASI)
 // ==========================================
-#is_chapter_page.update(true)
-#v(0.5cm)
-#block(
-  fill: rgb("#FEF3C7"),
-  inset: 12pt,
-  width: 100%,
-  stroke: (left: 4pt + rgb("#D97706")),
+
+
+#v(6pt)
+#align(center)[
+  #image("charts/gambar_5_1.svg", width: 100%)
+]
+#v(-2pt)
+#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-BST)/#text(style: "italic")[BPS-Statistics Indonesia - Ministry of Agriculture, Horticultural Agricultural Survey (SPH-BST)]]
+#v(4pt)
+#metadata("fig_5_1") <fig_5_1>
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
   [
-    #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 5: PERTANIAN] \
-    #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 5: AGRICULTURE]
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 4.5pt,
+      align: (top + center, horizon),
+      [
+        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
+          #text(7.5pt, weight: "bold")[Gambar]
+        ] \
+        #v(-3.5pt)
+        #text(6.5pt, style: "italic")[Figures]
+      ],
+      [
+        #text(8.5pt, weight: "bold")[5.1]
+      ]
+    )
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Produksi Buah-buahan Utama di Jongkat, 2025 (Kuintal)] \
+    #v(-2pt)
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Production of Major Fruits in Jongkat Subdistrict, 2025 (Quintal)]
   ]
-) <chapter_page>
+)
 #v(10pt)
 
-
-#v(1.5cm)
-#align(center)[
-  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
-    #align(center + horizon)[
-      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS PERTANIAN]      #v(6pt)
-      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan Jongkat]
-    ]
-  ]
-]
-
-
 #pagebreak()
-#is_chapter_page.update(false)
 
 // ==========================================
 // ISI BAB 5: ULASAN NARASI & TABEL DATA
@@ -2210,15 +2182,20 @@ Sektor pertanian merupakan salah satu pilar penopang perekonomian masyarakat di 
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[Jenis Tanaman] \ #text(6pt, weight: "bold", style: "italic")[Kind of Plants]], [#strong[2022 (ha)]], [#strong[2023 (ha)]], [#strong[2024 (ha)]], [#strong[2025 (ha)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]], [#strong[(5)]]),
-  [Bawang Merah/_Shallots_], [...], [...], [...], [...],
-  [Cabai Besar/_Big Chili_], [...], [...], [...], [...],
-  [Cabai Rawit/_Cayenne Pepper_], [...], [...], [...], [...],
-  [Tomat/_Tomato_], [...], [...], [...], [...],
-  [Terung/_Eggplant_], [...], [...], [...], [...],
-  [Kacang Panjang/_Long Beans_], [...], [...], [...], [...],
-  [Ketimun/_Cucumber_], [...], [...], [...], [...],
-  [Kangkung/_Water Spinach_], [...], [...], [...], [...],
-  [Bayam/_Spinach_], [...], [...], [...], [...]
+  [Bawang Merah/Shallots], [...], [...], [...], [...],
+  [Cabai Besar/TW/Teropong Chili/Big Chili], [3], [6], [3], [...],
+  [Cabai Keriting Curly Chili], [1], [...], [...], [...],
+  [Cabai Rawit Chili/Cayenne Pepper], [4], [13], [19], [8],
+  [Kentang/Potato], [...], [...], [...], [...],
+  [Kubis/Cabbage], [...], [...], [...], [...],
+  [Tomat/Tomato], [9], [18], [7], [...],
+  [Bawang Putih/Garlic], [...], [...], [...], [...],
+  [Kacang Panjang/ Long Beans], [19], [26], [16], [31],
+  [Kangkung/ Water Spinach], [25], [18], [11], [4],
+  [Ketimun/ Cucumber], [23], [18], [17], [29],
+  [Petsai/Sawi/ Chinese Cabbage/ mustard green], [21], [19], [14], [11],
+  [Terung/ Eggplant], [11], [10], [5], [5],
+  [Semangka/ Water Melon], [241], [306], [100], [180]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-SBS)/#text(style: "italic")[BPS-Statistics Indonesia - Ministry of Agriculture, Horticultural Agricultural Survey (SPH-SBS)]]
@@ -2270,15 +2247,20 @@ Sektor pertanian merupakan salah satu pilar penopang perekonomian masyarakat di 
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[Jenis Tanaman] \ #text(6pt, weight: "bold", style: "italic")[Kind of Plants]], [#strong[2022 (ku)]], [#strong[2023 (ku)]], [#strong[2024 (ku)]], [#strong[2025 (ku)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]], [#strong[(5)]]),
-  [Bawang Merah/_Shallots_], [...], [...], [...], [...],
-  [Cabai Besar/_Big Chili_], [...], [...], [...], [...],
-  [Cabai Rawit/_Cayenne Pepper_], [...], [...], [...], [...],
-  [Tomat/_Tomato_], [...], [...], [...], [...],
-  [Terung/_Eggplant_], [...], [...], [...], [...],
-  [Kacang Panjang/_Long Beans_], [...], [...], [...], [...],
-  [Ketimun/_Cucumber_], [...], [...], [...], [...],
-  [Kangkung/_Water Spinach_], [...], [...], [...], [...],
-  [Bayam/_Spinach_], [...], [...], [...], [...]
+  [Bawang Merah/Shallots], [...], [...], [...], [...],
+  [Cabai Besar/TW/Teropong Chili/Big Chili], [52], [55], [208], [...],
+  [Cabai Keriting Curly Chili], [15], [2], [...], [...],
+  [Cabai Rawit Chili/Cayenne Pepper], [153], [569], [358], [189],
+  [Kentang/Potato], [...], [...], [...], [...],
+  [Kubis/Cabbage], [...], [...], [...], [...],
+  [Tomat/Tomato], [356], [438], [385], [...],
+  [Bawang Putih/Garlic], [...], [...], [...], [...],
+  [Kacang Panjang/ Long Beans], [525], [670], [594], [606],
+  [Kangkung/ Water Spinach], [483], [458], [347], [412],
+  [Ketimun/ Cucumber], [747], [617], [864], [752],
+  [Petsai/Sawi/ Chinese Cabbage/ mustard green], [446], [585], [529], [512],
+  [Terung/ Eggplant], [470], [387], [137], [239],
+  [Semangka/ Water Melon], [15010], [5750], [3000], [2600]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-SBS)/#text(style: "italic")[BPS-Statistics Indonesia - Ministry of Agriculture, Horticultural Agricultural Survey (SPH-SBS)]]
@@ -2330,12 +2312,10 @@ Sektor pertanian merupakan salah satu pilar penopang perekonomian masyarakat di 
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[Jenis Tanaman] \ #text(6pt, weight: "bold", style: "italic")[Kind of Plants]], [#strong[2022 (m²)]], [#strong[2023 (m²)]], [#strong[2024 (m²)]], [#strong[2025 (m²)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]], [#strong[(5)]]),
-  [Jahe/_Ginger_], [...], [...], [...], [...],
-  [Lengkuas/_Galangal_], [...], [...], [...], [...],
-  [Kencur/_East Indian Galangal_], [...], [...], [...], [...],
-  [Kunyit/_Turmeric_], [...], [...], [...], [...],
-  [Lempuyang], [...], [...], [...], [...],
-  [Temulawak/_Java Turmeric_], [...], [...], [...], [...]
+  [Jahe/Ginger], [95.000], [115.000], [120.000], [70.000],
+  [Laos/Lengkuas/Galanga], [4500], [2500], [3500], [...],
+  [Kencur/East Indian Galangal], [200], [250], [350], [300],
+  [Kunyit/Turmeric], [3500], [7000], [10000], [3500]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-TBF)/#text(style: "italic")[BPS-Statistics Indonesia - Ministry of Agriculture, Horticultural Agricultural Survey (SPH-TBF)]]
@@ -2386,12 +2366,10 @@ Sektor pertanian merupakan salah satu pilar penopang perekonomian masyarakat di 
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[Jenis Tanaman] \ #text(6pt, weight: "bold", style: "italic")[Kind of Plants]], [#strong[2022 (kg)]], [#strong[2023 (kg)]], [#strong[2024 (kg)]], [#strong[2025 (kg)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]], [#strong[(5)]]),
-  [Jahe/_Ginger_], [...], [...], [...], [...],
-  [Lengkuas/_Galangal_], [...], [...], [...], [...],
-  [Kencur/_East Indian Galangal_], [...], [...], [...], [...],
-  [Kunyit/_Turmeric_], [...], [...], [...], [...],
-  [Lempuyang], [...], [...], [...], [...],
-  [Temulawak/_Java Turmeric_], [...], [...], [...], [...]
+  [Jahe/Ginger], [91.850], [87.000], [122.040], [43.000],
+  [Laos/Lengkuas/Galanga], [1980], [3775], [2000], [...],
+  [Kencur/East Indian Galangal], [136], [900], [1050], [190],
+  [Kunyit/Turmeric], [1505], [11500], [27828], [3100]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-TBF)/#text(style: "italic")[BPS-Statistics Indonesia - Ministry of Agriculture, Horticultural Agricultural Survey (SPH-TBF)]]
@@ -2443,13 +2421,20 @@ Sektor pertanian merupakan salah satu pilar penopang perekonomian masyarakat di 
                        else if col == 0 { left + horizon }
                        else { right + horizon },
   table.header([#strong[Jenis Tanaman] \ #text(6pt, weight: "bold", style: "italic")[Kind of Plants]], [#strong[2022 (ku)]], [#strong[2023 (ku)]], [#strong[2024 (ku)]], [#strong[2025 (ku)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]], [#strong[(5)]]),
-  [Durian/_Durian_], [...], [...], [...], [...],
-  [Mangga/_Mango_], [...], [...], [...], [...],
-  [Jeruk Siam/_Siamese Orange_], [...], [...], [...], [...],
-  [Pisang/_Banana_], [...], [...], [...], [...],
-  [Pepaya/_Papaya_], [...], [...], [...], [...],
-  [Nanas/_Pineapple_], [...], [...], [...], [...],
-  [Rambutan/_Rambutan_], [...], [...], [...], [...]
+  [Mangga/Mango], [1.165], [293], [1.775], [209],
+  [Durian/Durian], [...], [178], [121], [186],
+  [Jeruk Siam/Keprok/Orange/Tangerine], [102], [101], [108], [164],
+  [Pisang/Banana], [1.262], [1.179], [962], [7.220],
+  [Pepaya/Papaya], [271], [522], [314], [255],
+  [Salak/Snakefruit], [9], [12], [6], [5],
+  [Sawo/ Sapodilla/Sawo], [37], [655], [391], [52],
+  [Rambutan/ Rambutan], [...], [166], [104], [55],
+  [Jeruk Besar/ Pomelo], [33], [34], [50], [34],
+  [Nangka/Cempedak/ Jackfruit], [544], [191], [348], [775],
+  [Nenas/ Pineapple], [565], [730], [725], [780],
+  [Lengkeng/ Dimocarpus Longan], [40], [855], [1425], [17],
+  [Sukun/ Breadfruit], [164], [144], [577], [175],
+  [Petai/ Twisted Cluster Bean], [...], [124], [240], [129]
 )
 #v(-3pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-BST)/#text(style: "italic")[BPS-Statistics Indonesia - Ministry of Agriculture, Horticultural Agricultural Survey (SPH-BST)]]
@@ -2457,41 +2442,22 @@ Sektor pertanian merupakan salah satu pilar penopang perekonomian masyarakat di 
 
 
 #pagebreak(to: "odd")
+
+// ==========================================
+// LEMBAR PEMBATAS BAB 6 (FULL-BLEED A5)
+// ==========================================
+#page(
+  paper: "a5",
+  margin: 0cm,
+  header: none,
+  footer: none,
+)[
+  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/pembatas/Bab 6.jpg", width: 100%, height: 100%)
+] <chapter_page>
+
 #metadata("6. PARIWISATA, TRANSPORTASI, DAN KOMUNIKASI") <chapter_title>
 #metadata("Tourism, Transportation, and Communication") <chapter_title_en>
 #metadata("bab6") <bab6>
-
-// ==========================================
-// BAB 6: PARIWISATA, TRANSPORTASI & KOMUNIKASI (HALAMAN PEMBATAS & INFOGRAFIS)
-// ==========================================
-#is_chapter_page.update(true)
-#v(0.5cm)
-#block(
-  fill: rgb("#FEF3C7"),
-  inset: 12pt,
-  width: 100%,
-  stroke: (left: 4pt + rgb("#D97706")),
-  [
-    #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 6: PARIWISATA, TRANSPORTASI & KOMUNIKASI] \
-    #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 6: TOURISM, TRANSPORTATION AND COMMUNICATION]
-  ]
-) <chapter_page>
-#v(10pt)
-
-
-#v(1.5cm)
-#align(center)[
-  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
-    #align(center + horizon)[
-      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS PARIWISATA, TRANSPORTASI & KOMUNIKASI]      #v(6pt)
-      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan Jongkat]
-    ]
-  ]
-]
-
-
-#pagebreak()
-#is_chapter_page.update(false)
 
 // ==========================================
 // ISI BAB 6: ULASAN NARASI & TABEL DATA
@@ -2665,41 +2631,22 @@ Konektivitas wilayah di Kecamatan Jongkat terhubung oleh jaringan jalan darat an
 
 
 #pagebreak(to: "odd")
+
+// ==========================================
+// LEMBAR PEMBATAS BAB 7 (FULL-BLEED A5)
+// ==========================================
+#page(
+  paper: "a5",
+  margin: 0cm,
+  header: none,
+  footer: none,
+)[
+  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/pembatas/Bab 7.jpg", width: 100%, height: 100%)
+] <chapter_page>
+
 #metadata("7. PERBANKAN, KOPERASI, DAN PERDAGANGAN") <chapter_title>
 #metadata("Banking, Cooperative, and Trade") <chapter_title_en>
 #metadata("bab7") <bab7>
-
-// ==========================================
-// BAB 7: PERBANKAN, KOPERASI & PERDAGANGAN (HALAMAN PEMBATAS & INFOGRAFIS)
-// ==========================================
-#is_chapter_page.update(true)
-#v(0.5cm)
-#block(
-  fill: rgb("#FEF3C7"),
-  inset: 12pt,
-  width: 100%,
-  stroke: (left: 4pt + rgb("#D97706")),
-  [
-    #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 7: PERBANKAN, KOPERASI & PERDAGANGAN] \
-    #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 7: BANKING, COOPERATIVES AND TRADE]
-  ]
-) <chapter_page>
-#v(10pt)
-
-
-#v(1.5cm)
-#align(center)[
-  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
-    #align(center + horizon)[
-      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS PERBANKAN, KOPERASI & PERDAGANGAN]      #v(6pt)
-      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan Jongkat]
-    ]
-  ]
-]
-
-
-#pagebreak()
-#is_chapter_page.update(false)
 
 // ==========================================
 // ISI BAB 7: ULASAN NARASI & TABEL DATA
@@ -2910,132 +2857,14 @@ Aktivitas perniagaan di Kecamatan Jongkat berkembang dinamis didukung oleh saran
 
 #metadata("akhir_buku") <akhir_buku>
 #pagebreak(to: "even")
-
 // ==========================================
-// KOVER BELAKANG (BACK COVER) - GENERATED NATIVELY VIA TYPST
+// KOVER BELAKANG (BACK COVER) - DESAIN VISUAL RESMI
 // ==========================================
 #page(
   paper: "a5",
-  margin: (top: 0cm, bottom: 0cm, left: 0cm, right: 0cm),
+  margin: 0cm,
   header: none,
   footer: none,
-  fill: gradient.linear(angle: 145deg, rgb("#440815"), rgb("#2E040C"), rgb("#180206")),
 )[
-  // 1. Pita Dekoratif Melengkung Khas Publikasi (Typst Bezier Curves)
-  #place(top + left)[
-    #let ribbon_left(dx, dy, alpha, thick) = {
-      path(
-        stroke: (paint: rgb(220, 130, 125, alpha), thickness: thick),
-        (dx + -30pt, dy + 320pt),
-        ((dx + 90pt, dy + 250pt), (dx + 180pt, dy + 130pt), (dx + 220pt, dy + -30pt)),
-      )
-    }
-    #ribbon_left(-55pt, 60pt, 5%, 3.5pt)
-    #ribbon_left(-40pt, 75pt, 8%, 3.5pt)
-    #ribbon_left(-25pt, 90pt, 12%, 3.5pt)
-    #ribbon_left(-10pt, 105pt, 16%, 3.5pt)
-    #ribbon_left(5pt, 120pt, 14%, 3.5pt)
-    #ribbon_left(20pt, 135pt, 9%, 3.5pt)
-    #ribbon_left(35pt, 150pt, 5%, 3.5pt)
-  ]
-
-  #place(bottom + right)[
-    #let ribbon_right(dx, dy, alpha, thick) = {
-      path(
-        stroke: (paint: rgb(220, 130, 125, alpha), thickness: thick),
-        (dx + 40pt, dy + 40pt),
-        ((dx - 70pt, dy - 140pt), (dx - 140pt, dy - 290pt), (dx - 160pt, dy - 440pt)),
-      )
-    }
-    #ribbon_right(-15pt, 15pt, 5%, 4pt)
-    #ribbon_right(0pt, 0pt, 8%, 4pt)
-    #ribbon_right(15pt, -15pt, 12%, 4pt)
-    #ribbon_right(30pt, -30pt, 17%, 4pt)
-    #ribbon_right(45pt, -45pt, 14%, 4pt)
-    #ribbon_right(60pt, -60pt, 9%, 4pt)
-    #ribbon_right(75pt, -75pt, 5%, 4pt)
-  ]
-
-  // 2. Logo Resmi Nasional Kanan Atas (SE 2026, BerAKHLAK, Bangga Melayani Bangsa)
-  #place(top + right, dx: -1.2cm, dy: 1.2cm)[
-    #image("/kegiatan/kecamatan-dalam-angka/2026/assets/backcover_top_logos.png", width: 3.35cm)
-  ]
-
-  // 3. Tipografi Utama di Tengah: SEJAJAR DAN SAMA PANJANG DENGAN PRESISI
-  // Lebar blok utama: 11.0cm (ujung kiri dan kanan sejajar vertikal)
-  #let block_w = 11.0cm
-
-  #place(center + horizon)[
-    #align(center)[
-      #box(width: block_w)[
-        #stack(
-          dir: ttb,
-          spacing: 11pt,
-
-          // Baris 1: DATA - Huruf D di paling kiri, huruf A di paling kanan
-          grid(
-            columns: (auto, 1fr, auto, 1fr, auto, 1fr, auto),
-            align: (left + bottom, horizon, center + bottom, horizon, center + bottom, horizon, right + bottom),
-            text(font: ("Metropolis", "Liberation Sans", "Arial"), size: 78pt, weight: "black", fill: white)[D],
-            [],
-            text(font: ("Metropolis", "Liberation Sans", "Arial"), size: 78pt, weight: "black", fill: white)[A],
-            [],
-            text(font: ("Metropolis", "Liberation Sans", "Arial"), size: 78pt, weight: "black", fill: white)[T],
-            [],
-            text(font: ("Metropolis", "Liberation Sans", "Arial"), size: 78pt, weight: "black", fill: white)[A],
-          ),
-
-          // Baris 2: MENCERDASKAN BANGSA - Lebar tepat sama 11.0cm (rata kiri ke kanan)
-          text(
-            font: ("Liberation Sans", "Arial"),
-            stretch: 80%,
-            size: 16.5pt,
-            weight: "bold",
-            fill: white,
-            tracking: 0.32em,
-          )[MENCERDASKAN#box(width: 0.8em)[]BANGSA],
-
-          v(2pt),
-
-          // Baris 3: Enlighten The Nation - Garis kiri dan kanan membentang pas sampai batas tepi 11.0cm
-          grid(
-            columns: (1fr, auto, 1fr),
-            gutter: 10pt,
-            align: horizon,
-            line(length: 100%, stroke: 0.9pt + white),
-            text(
-              font: ("Liberation Serif", "Times New Roman"),
-              size: 13pt,
-              style: "italic",
-              fill: white,
-            )[Enlighten The Nation],
-            line(length: 100%, stroke: 0.9pt + white),
-          ),
-        )
-      ]
-    ]
-  ]
-
-  // 4. Identitas Resmi BPS Kabupaten Mempawah (Kiri Bawah)
-  #place(bottom + left, dx: 0.9cm, dy: -1.0cm)[
-    #grid(
-      columns: (auto, auto),
-      gutter: 10pt,
-      align: horizon,
-      image("/kegiatan/kecamatan-dalam-angka/2026/assets/logo_bps.png", width: 1.55cm),
-      [
-        #set text(font: ("Metropolis", "Liberation Sans", "Arial"), fill: white)
-        #text(size: 7.5pt, weight: "bold", style: "italic")[BADAN PUSAT STATISTIK\ KABUPATEN MEMPAWAH]\
-        #v(2.5pt)
-        #block[
-          #set par(leading: 0.44em)
-          #text(size: 5.5pt)[
-            Jl. Raden Kusno No. 1, Mempawah 79511\
-            Telp (0561) 691030, Email : bps6104\@bps.go.id\
-            Homepage : https://mempawahkab.bps.go.id
-          ]
-        ]
-      ]
-    )
-  ]
+  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/belakang/Jongkat.jpg", width: 100%, height: 100%)
 ]

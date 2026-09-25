@@ -192,7 +192,7 @@ def build_kcda_typst(slug: str, out_dir: Any = None) -> str:
   header: none,
   footer: none,
 )[
-  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/pembatas/Bab {bab_num}.png", width: 100%, height: 100%)
+  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/pembatas/Bab {bab_num}.jpg", width: 100%, height: 100%)
 ] <chapter_page>
 """
 

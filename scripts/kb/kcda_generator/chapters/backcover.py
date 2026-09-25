@@ -3,15 +3,15 @@
 from typing import Dict, Any
 
 COVER_BELAKANG_MAP = {
-    "mempawah-hilir": "Mempawah hilir.png",
-    "mempawah-timur": "Mempawah Timur.png",
-    "sungai-pinyuh": "Sungai Pinyuh.png",
-    "sungai-kunyit": "Sungai Kunyit.png",
-    "segedong": "Segedong.png",
-    "toho": "Toho.png",
-    "jongkat": "Jongkat.png",
-    "anjongan": "Anjongan.png",
-    "sadaniang": "Sadaniang.png"
+    "mempawah-hilir": "Mempawah hilir.jpg",
+    "mempawah-timur": "Mempawah Timur.jpg",
+    "sungai-pinyuh": "Sungai Pinyuh.jpg",
+    "sungai-kunyit": "Sungai Kunyit.jpg",
+    "segedong": "Segedong.jpg",
+    "toho": "Toho.jpg",
+    "jongkat": "Jongkat.jpg",
+    "anjongan": "Anjongan.jpg",
+    "sadaniang": "Sadaniang.jpg"
 }
 
 def render_backcover(cfg: Dict[str, Any]) -> str:

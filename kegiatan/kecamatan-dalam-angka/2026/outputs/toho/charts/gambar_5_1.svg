@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 188" width="100%" height="188pt" style="font-family: 'Liberation Sans', Arial, sans-serif;">
+<rect width="340" height="188" fill="#FAFAFA" rx="4"/>
+<line x1="100.0" y1="18" x2="100.0" y2="170" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="100.0" y="183" font-size="5.5" fill="#94A3B8" text-anchor="middle">0</text>
+<line x1="148.75" y1="18" x2="148.75" y2="170" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="148.75" y="183" font-size="5.5" fill="#94A3B8" text-anchor="middle">224</text>
+<line x1="197.5" y1="18" x2="197.5" y2="170" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="197.5" y="183" font-size="5.5" fill="#94A3B8" text-anchor="middle">449</text>
+<line x1="246.25" y1="18" x2="246.25" y2="170" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="246.25" y="183" font-size="5.5" fill="#94A3B8" text-anchor="middle">674</text>
+<line x1="295.0" y1="18" x2="295.0" y2="170" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="295.0" y="183" font-size="5.5" fill="#94A3B8" text-anchor="middle">899</text>
+<line x1="100" y1="18" x2="100" y2="170" stroke="#CBD5E1" stroke-width="1"/>
+<text x="94" y="30.5" font-size="6.5" fill="#334155" text-anchor="end">Pepaya</text>
+<rect x="100" y="22" width="169.56521739130437" height="11" rx="2" fill="#F5A623"/>
+<text x="273.5652173913044" y="30.5" font-size="6" font-weight="bold" fill="#1E293B">782 Kuintal</text>
+<text x="94" y="49.5" font-size="6.5" fill="#334155" text-anchor="end">Durian</text>
+<rect x="100" y="41" width="142.24396753030135" height="11" rx="2" fill="#F5A623"/>
+<text x="246.24396753030135" y="49.5" font-size="6" font-weight="bold" fill="#1E293B">656 Kuintal</text>
+<text x="94" y="68.5" font-size="6.5" fill="#334155" text-anchor="end">Pisang</text>
+<rect x="100" y="60" width="119.47625931279886" height="11" rx="2" fill="#F5A623"/>
+<text x="223.47625931279885" y="68.5" font-size="6" font-weight="bold" fill="#1E293B">551 Kuintal</text>
+<text x="94" y="87.5" font-size="6.5" fill="#334155" text-anchor="end">Nangka</text>
+<rect x="100" y="79" width="112.10385855665518" height="11" rx="2" fill="#F5A623"/>
+<text x="216.10385855665518" y="87.5" font-size="6" font-weight="bold" fill="#1E293B">517 Kuintal</text>
+<text x="94" y="106.5" font-size="6.5" fill="#334155" text-anchor="end">Rambutan</text>
+<rect x="100" y="98" width="101.91259868786834" height="11" rx="2" fill="#F5A623"/>
+<text x="205.91259868786835" y="106.5" font-size="6" font-weight="bold" fill="#1E293B">470 Kuintal</text>
+<text x="94" y="125.5" font-size="6.5" fill="#334155" text-anchor="end">Mangga</text>
+<rect x="100" y="117" width="55.72667630379184" height="11" rx="2" fill="#F5A623"/>
+<text x="159.72667630379183" y="125.5" font-size="6" font-weight="bold" fill="#1E293B">257 Kuintal</text>
+<text x="94" y="144.5" font-size="6.5" fill="#334155" text-anchor="end">Sawo</text>
+<rect x="100" y="136" width="11.0586011342155" height="11" rx="2" fill="#F5A623"/>
+<text x="115.05860113421551" y="144.5" font-size="6" font-weight="bold" fill="#1E293B">51 Kuintal</text>
+<text x="94" y="163.5" font-size="6.5" fill="#334155" text-anchor="end">Lengkeng</text>
+<rect x="100" y="155" width="8.890247970643834" height="11" rx="2" fill="#F5A623"/>
+<text x="112.89024797064383" y="163.5" font-size="6" font-weight="bold" fill="#1E293B">41 Kuintal</text>
+</svg>

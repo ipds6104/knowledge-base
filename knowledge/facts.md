@@ -14,7 +14,14 @@
 - **Endpoint RPC**: `http://100.88.216.97:8900/rpc`
 - **Daftar Tabel**: `assignment`, `kp_nested`, `nested_dtsen`, `nested_dtsen_var`, `nested_meteran`, `se2026_nested`.
 - **Status Koneksi**: Terverifikasi aktif dan terhubung langsung dari server Aina via Tailnet (latensi ~1ms).
-- **Helper Query**: `python3 scripts/query_surreal.py "<SQL>"`
+- **Helper Query SurrealDB**: `python3 scripts/query_surreal.py "<SQL>"`
+- **Mekanisme Mirror & Query Lokal (Single Source of Truth Mirror)**:
+  * **File Database Lokal**: `/app/shared_data/se2026_local.db` (SQLite mode WAL).
+  * **Tabel Lokal**: `se2026_nested` (unit usaha level baris), `assignment_geo` (koordinat latitude/longitude, KK, alamat), `sync_history`.
+  * **Engine Sinkronisasi**: `python3 scripts/sync_se2026_local.py sync --sls <sls_code>` atau `--desa <kode_desa>`.
+  * **Query Lokal Instan**: `python3 scripts/sync_se2026_local.py query "<SQL>"` atau `sqlite3 /app/shared_data/se2026_local.db`.
+  * **Statistik Mirror**: `python3 scripts/sync_se2026_local.py stats`.
+
 
 
 ## Indikator Strategis Makro Kabupaten Mempawah (s.bps.go.id/indikator_strategis6104)

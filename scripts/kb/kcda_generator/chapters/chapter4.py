@@ -48,19 +48,34 @@ def render_chapter4(cfg: Dict[str, Any], out_dir: Optional[Any] = None) -> str:
         source="BPS, Pendataan Potensi Desa (Podes)"
     )
 
+    def extract_edu_rows(raw_rows):
+        res = []
+        if len(raw_rows) > 3:
+            for r in raw_rows[3:]:
+                if r and r[0].strip() and not any(r[0].lower().startswith(x) for x in ['sumber', 'catatan']):
+                    lvl = r[0].split('\n')[0].strip()
+                    neg = clean_cell_value(r[2] if len(r) > 2 and r[2].strip() else (r[1] if len(r) > 1 else "0"))
+                    swa = clean_cell_value(r[4] if len(r) > 4 and r[4].strip() else (r[3] if len(r) > 3 else "0"))
+                    jml = clean_cell_value(r[6] if len(r) > 6 and r[6].strip() else (r[5] if len(r) > 5 else "0"))
+                    res.append([lvl, neg, swa, jml])
+        if not res:
+            default_jenjang = [
+                "Taman Kanak-Kanak (TK)", "Raudatul Athfal (RA)",
+                "Sekolah Dasar (SD)", "Madrasah Ibtidaiyah (MI)",
+                "Sekolah Menengah Pertama (SMP)", "Madrasah Tsanawiyah (MTs)",
+                "Sekolah Menengah Atas (SMA)", "Sekolah Menengah Kejuruan (SMK)",
+                "Madrasah Aliyah (MA)", "Jumlah / Total"
+            ]
+            res = [[j, "...", "...", "..."] for j in default_jenjang]
+        return res
+
     # --- 4.1.2 Satuan Pendidikan (TK, SD, SMP, SMA) ---
-    jenjang_list = [
-        "Taman Kanak-Kanak (TK)", "Raudatul Athfal (RA)",
-        "Sekolah Dasar (SD)", "Madrasah Ibtidaiyah (MI)",
-        "Sekolah Menengah Pertama (SMP)", "Madrasah Tsanawiyah (MTs)",
-        "Sekolah Menengah Atas (SMA)", "Sekolah Menengah Kejuruan (SMK)",
-        "Madrasah Aliyah (MA)", "Jumlah / Total"
-    ]
-    t412_rows = [[j, "...", "...", "..."] for j in jenjang_list]
+    rows_412_raw = get_kecamatan_tab_rows("4.1.2", nama_singkat)
+    t412_rows = extract_edu_rows(rows_412_raw)
     t412_markup = render_typst_table(
         table_no="4.1.2",
-        title_id=f"Jumlah Satuan Pendidikan Menurut Tingkat Pendidikan di {nama_resmi}, 2024/2025",
-        title_en=f"Number of Educational Units by Education Level in {nama_en}, 2024/2025",
+        title_id=f"Jumlah Satuan Pendidikan Menurut Tingkat Pendidikan di {nama_resmi}, 2024/2025–2025/2026",
+        title_en=f"Number of Educational Units by Education Level in {nama_en}, 2024/2025–2025/2026",
         headers=["Tingkat Pendidikan\nEducational Level", "Negeri\nPublic", "Swasta\nPrivate", "Jumlah\nTotal"],
         col_numbers=["(1)", "(2)", "(3)", "(4)"],
         rows=t412_rows,
@@ -69,11 +84,12 @@ def render_chapter4(cfg: Dict[str, Any], out_dir: Optional[Any] = None) -> str:
     )
 
     # --- 4.1.3 Pendidik/Guru ---
-    t413_rows = [[j, "...", "...", "..."] for j in jenjang_list]
+    rows_413_raw = get_kecamatan_tab_rows("4.1.3", nama_singkat)
+    t413_rows = extract_edu_rows(rows_413_raw)
     t413_markup = render_typst_table(
         table_no="4.1.3",
-        title_id=f"Jumlah Kepala Sekolah dan Guru Menurut Tingkat Pendidikan di {nama_resmi}, 2024/2025",
-        title_en=f"Number of Principals and Teachers by Education Level in {nama_en}, 2024/2025",
+        title_id=f"Jumlah Kepala Sekolah dan Pendidik Menurut Tingkat Pendidikan di {nama_resmi}, 2024/2025–2025/2026",
+        title_en=f"Number of Principals and Teachers by Education Level in {nama_en}, 2024/2025–2025/2026",
         headers=["Tingkat Pendidikan\nEducational Level", "Negeri\nPublic", "Swasta\nPrivate", "Jumlah\nTotal"],
         col_numbers=["(1)", "(2)", "(3)", "(4)"],
         rows=t413_rows,
@@ -82,11 +98,12 @@ def render_chapter4(cfg: Dict[str, Any], out_dir: Optional[Any] = None) -> str:
     )
 
     # --- 4.1.4 Siswa/Peserta Didik ---
-    t414_rows = [[j, "...", "...", "..."] for j in jenjang_list]
+    rows_414_raw = get_kecamatan_tab_rows("4.1.4", nama_singkat)
+    t414_rows = extract_edu_rows(rows_414_raw)
     t414_markup = render_typst_table(
         table_no="4.1.4",
-        title_id=f"Jumlah Peserta Didik Menurut Tingkat Pendidikan di {nama_resmi}, 2024/2025",
-        title_en=f"Number of Students by Education Level in {nama_en}, 2024/2025",
+        title_id=f"Jumlah Peserta Didik Menurut Tingkat Pendidikan di {nama_resmi}, 2024/2025–2025/2026",
+        title_en=f"Number of Students by Education Level in {nama_en}, 2024/2025–2025/2026",
         headers=["Tingkat Pendidikan\nEducational Level", "Negeri\nPublic", "Swasta\nPrivate", "Jumlah\nTotal"],
         col_numbers=["(1)", "(2)", "(3)", "(4)"],
         rows=t414_rows,
@@ -166,27 +183,9 @@ def render_chapter4(cfg: Dict[str, Any], out_dir: Optional[Any] = None) -> str:
 
     return f"""
 // ==========================================
-// BAB 4: SOSIAL DAN KESEJAHTERAAN RAKYAT (HALAMAN PEMBATAS & INFOGRAFIS)
+// BAB 4: SOSIAL DAN KESEJAHTERAAN RAKYAT (INFOGRAFIS & NARASI)
 // ==========================================
-#is_chapter_page.update(true)
-#v(0.5cm)
-#block(
-  fill: rgb("#FEF3C7"),
-  inset: 12pt,
-  width: 100%,
-  stroke: (left: 4pt + rgb("#D97706")),
-  [
-    #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 4: SOSIAL DAN KESEJAHTERAAN RAKYAT] \\
-    #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 4: SOCIAL AND WELFARE]
-  ]
-) <chapter_page>
-#v(10pt)
-
-{infografis_markup}
-
-#pagebreak()
-#is_chapter_page.update(false)
-
+{chart_section}
 // ==========================================
 // ISI BAB 4: ULASAN NARASI & TABEL DATA
 // ==========================================

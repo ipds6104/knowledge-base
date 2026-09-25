@@ -6,27 +6,27 @@ Menangani Kover Depan dan Halaman Judul Utama (Halaman i).
 from typing import Dict, Any
 
 COVER_DEPAN_MAP = {
-    "mempawah-hilir": "Mempawah Hilir1.png",
-    "mempawah-timur": "Mempawah Timur1.png",
-    "sungai-pinyuh": "Sungai Pinyuh1.png",
-    "sungai-kunyit": "Sungai Kunyit1.png",
-    "segedong": "Segedong1.png",
-    "toho": "Toho1.png",
-    "jongkat": "Jongkat1.png",
-    "anjongan": "Anjongan1.png",
-    "sadaniang": "Sadaniang1.png"
+    "mempawah-hilir": "Mempawah Hilir1.jpg",
+    "mempawah-timur": "Mempawah Timur1.jpg",
+    "sungai-pinyuh": "Sungai Pinyuh1.jpg",
+    "sungai-kunyit": "Sungai Kunyit1.jpg",
+    "segedong": "Segedong1.jpg",
+    "toho": "Toho1.jpg",
+    "jongkat": "Jongkat1.jpg",
+    "anjongan": "Anjongan1.jpg",
+    "sadaniang": "Sadaniang1.jpg"
 }
 
 COVER_DALAM_MAP = {
-    "mempawah-hilir": "Mempawah Hilir2.png",
-    "mempawah-timur": "Mempawah Timur2.png",
-    "sungai-pinyuh": "Sungai Pinyuh2.png",
-    "sungai-kunyit": "Sungai Kunyit2.png",
-    "segedong": "Segedong2.png",
-    "toho": "Toho2.png",
-    "jongkat": "Jongkat2.png",
-    "anjongan": "Anjongan2.png",
-    "sadaniang": "Sadaniang2.png"
+    "mempawah-hilir": "Mempawah Hilir2.jpg",
+    "mempawah-timur": "Mempawah Timur2.jpg",
+    "sungai-pinyuh": "Sungai Pinyuh2.jpg",
+    "sungai-kunyit": "Sungai Kunyit2.jpg",
+    "segedong": "Segedong2.jpg",
+    "toho": "Toho2.jpg",
+    "jongkat": "Jongkat2.jpg",
+    "anjongan": "Anjongan2.jpg",
+    "sadaniang": "Sadaniang2.jpg"
 }
 
 def render_cover_and_title_page(cfg: Dict[str, Any]) -> str:

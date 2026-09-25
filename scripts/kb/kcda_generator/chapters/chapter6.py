@@ -53,43 +53,7 @@ def render_chapter6(cfg: Dict[str, Any]) -> str:
         source="BPS, Pendataan Potensi Desa (Podes) 2025"
     )
 
-    # Infografis Halaman Bab 6
-    infografis_markup = """
-#v(1.5cm)
-#align(center)[
-  #rect(width: 95%, height: 11cm, fill: rgb("#FFFBEB"), stroke: (paint: rgb("#F59E0B"), thickness: 1.5pt, dash: "dashed"), radius: 6pt)[
-    #align(center + horizon)[
-      #text(12pt, weight: "bold", fill: rgb("#B45309"))[INFOGRAFIS PARIWISATA, TRANSPORTASI & KOMUNIKASI]\
-      #v(6pt)
-      #text(8.5pt, fill: rgb("#92400E"), style: "italic")[Kecamatan """ + nama_singkat + """]
-    ]
-  ]
-]
-"""
-
     return f"""
-// ==========================================
-// BAB 6: PARIWISATA, TRANSPORTASI & KOMUNIKASI (HALAMAN PEMBATAS & INFOGRAFIS)
-// ==========================================
-#is_chapter_page.update(true)
-#v(0.5cm)
-#block(
-  fill: rgb("#FEF3C7"),
-  inset: 12pt,
-  width: 100%,
-  stroke: (left: 4pt + rgb("#D97706")),
-  [
-    #text(14pt, weight: "bold", fill: rgb("#92400E"))[BAB 6: PARIWISATA, TRANSPORTASI & KOMUNIKASI] \\
-    #text(10pt, style: "italic", fill: rgb("#B45309"))[CHAPTER 6: TOURISM, TRANSPORTATION AND COMMUNICATION]
-  ]
-) <chapter_page>
-#v(10pt)
-
-{infografis_markup}
-
-#pagebreak()
-#is_chapter_page.update(false)
-
 // ==========================================
 // ISI BAB 6: ULASAN NARASI & TABEL DATA
 // ==========================================

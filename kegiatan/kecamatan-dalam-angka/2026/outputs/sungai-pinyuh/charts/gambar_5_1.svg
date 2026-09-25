@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 188" width="100%" height="188pt" style="font-family: 'Liberation Sans', Arial, sans-serif;">
+<rect width="340" height="188" fill="#FAFAFA" rx="4"/>
+<line x1="100.0" y1="18" x2="100.0" y2="170" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="100.0" y="183" font-size="5.5" fill="#94A3B8" text-anchor="middle">0</text>
+<line x1="148.75" y1="18" x2="148.75" y2="170" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="148.75" y="183" font-size="5.5" fill="#94A3B8" text-anchor="middle">1.090</text>
+<line x1="197.5" y1="18" x2="197.5" y2="170" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="197.5" y="183" font-size="5.5" fill="#94A3B8" text-anchor="middle">2.180</text>
+<line x1="246.25" y1="18" x2="246.25" y2="170" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="246.25" y="183" font-size="5.5" fill="#94A3B8" text-anchor="middle">3.270</text>
+<line x1="295.0" y1="18" x2="295.0" y2="170" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="295.0" y="183" font-size="5.5" fill="#94A3B8" text-anchor="middle">4.360</text>
+<line x1="100" y1="18" x2="100" y2="170" stroke="#CBD5E1" stroke-width="1"/>
+<text x="94" y="30.5" font-size="6.5" fill="#334155" text-anchor="end">Durian</text>
+<rect x="100" y="22" width="169.56521739130437" height="11" rx="2" fill="#F5A623"/>
+<text x="273.5652173913044" y="30.5" font-size="6" font-weight="bold" fill="#1E293B">3.792 Kuintal</text>
+<text x="94" y="49.5" font-size="6.5" fill="#334155" text-anchor="end">Pisang</text>
+<rect x="100" y="41" width="135.08874518436988" height="11" rx="2" fill="#F5A623"/>
+<text x="239.08874518436988" y="49.5" font-size="6" font-weight="bold" fill="#1E293B">3.021 Kuintal</text>
+<text x="94" y="68.5" font-size="6.5" fill="#334155" text-anchor="end">Mangga</text>
+<rect x="100" y="60" width="35.683819482663736" height="11" rx="2" fill="#F5A623"/>
+<text x="139.68381948266375" y="68.5" font-size="6" font-weight="bold" fill="#1E293B">798 Kuintal</text>
+<text x="94" y="87.5" font-size="6.5" fill="#334155" text-anchor="end">Duku</text>
+<rect x="100" y="79" width="14.89061640066043" height="11" rx="2" fill="#F5A623"/>
+<text x="118.89061640066043" y="87.5" font-size="6" font-weight="bold" fill="#1E293B">333 Kuintal</text>
+<text x="94" y="106.5" font-size="6.5" fill="#334155" text-anchor="end">Jeruk Siam</text>
+<rect x="100" y="98" width="12.520638414969733" height="11" rx="2" fill="#F5A623"/>
+<text x="116.52063841496974" y="106.5" font-size="6" font-weight="bold" fill="#1E293B">280 Kuintal</text>
+<text x="94" y="125.5" font-size="6.5" fill="#334155" text-anchor="end">Pepaya</text>
+<rect x="100" y="117" width="6.528618602091361" height="11" rx="2" fill="#F5A623"/>
+<text x="110.52861860209136" y="125.5" font-size="6" font-weight="bold" fill="#1E293B">146 Kuintal</text>
+<text x="94" y="144.5" font-size="6.5" fill="#334155" text-anchor="end">Jambu Air</text>
+<rect x="100" y="136" width="5.2765547605943866" height="11" rx="2" fill="#F5A623"/>
+<text x="109.2765547605944" y="144.5" font-size="6" font-weight="bold" fill="#1E293B">118 Kuintal</text>
+<text x="94" y="163.5" font-size="6.5" fill="#334155" text-anchor="end">Salak</text>
+<rect x="100" y="155" width="2.4594111172261974" height="11" rx="2" fill="#F5A623"/>
+<text x="106.4594111172262" y="163.5" font-size="6" font-weight="bold" fill="#1E293B">55 Kuintal</text>
+</svg>

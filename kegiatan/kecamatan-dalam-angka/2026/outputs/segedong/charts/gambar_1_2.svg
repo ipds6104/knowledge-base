@@ -12,21 +12,21 @@
 <text x="295.0" y="145" font-size="5.5" fill="#94A3B8" text-anchor="middle">141</text>
 <line x1="100" y1="18" x2="100" y2="132" stroke="#CBD5E1" stroke-width="1"/>
 <text x="94" y="30.5" font-size="6.5" fill="#334155" text-anchor="end">Peniti Dalam I</text>
-<rect x="100" y="22" width="169.56521739130437" height="11" rx="2" fill="#0284C7"/>
-<text x="273.5652173913044" y="30.5" font-size="6" font-weight="bold" fill="#1E293B">123,28 km²</text>
+<rect x="100" y="22" width="169.56521739130434" height="11" rx="2" fill="#0284C7"/>
+<text x="273.5652173913044" y="30.5" font-size="6" font-weight="bold" fill="#1E293B">123,29 km²</text>
 <text x="94" y="49.5" font-size="6.5" fill="#334155" text-anchor="end">Peniti Dalam Ii</text>
-<rect x="100" y="41" width="77.56150720875773" height="11" rx="2" fill="#0284C7"/>
-<text x="181.56150720875775" y="49.5" font-size="6" font-weight="bold" fill="#1E293B">56,39 km²</text>
+<rect x="100" y="41" width="77.5552162275582" height="11" rx="2" fill="#0284C7"/>
+<text x="181.55521622755822" y="49.5" font-size="6" font-weight="bold" fill="#1E293B">56,39 km²</text>
 <text x="94" y="68.5" font-size="6.5" fill="#334155" text-anchor="end">Peniti Besar</text>
-<rect x="100" y="60" width="68.4560420957594" height="11" rx="2" fill="#0284C7"/>
-<text x="172.45604209575941" y="68.5" font-size="6" font-weight="bold" fill="#1E293B">49,77 km²</text>
+<rect x="100" y="60" width="65.65855688426367" height="11" rx="2" fill="#0284C7"/>
+<text x="169.65855688426367" y="68.5" font-size="6" font-weight="bold" fill="#1E293B">47,74 km²</text>
 <text x="94" y="87.5" font-size="6.5" fill="#334155" text-anchor="end">Sungai Purun Besar</text>
-<rect x="100" y="79" width="35.85792681206444" height="11" rx="2" fill="#0284C7"/>
-<text x="139.85792681206445" y="87.5" font-size="6" font-weight="bold" fill="#1E293B">26,07 km²</text>
+<rect x="100" y="79" width="39.527166419223676" height="11" rx="2" fill="#0284C7"/>
+<text x="143.52716641922368" y="87.5" font-size="6" font-weight="bold" fill="#1E293B">28,74 km²</text>
 <text x="94" y="106.5" font-size="6.5" fill="#334155" text-anchor="end">Sungai Burung</text>
-<rect x="100" y="98" width="12.942964760319388" height="11" rx="2" fill="#0284C7"/>
-<text x="116.94296476031938" y="106.5" font-size="6" font-weight="bold" fill="#1E293B">9,41 km²</text>
+<rect x="100" y="98" width="13.945910490289773" height="11" rx="2" fill="#0284C7"/>
+<text x="117.94591049028978" y="106.5" font-size="6" font-weight="bold" fill="#1E293B">10,14 km²</text>
 <text x="94" y="125.5" font-size="6.5" fill="#334155" text-anchor="end">Parit Bugis</text>
-<rect x="100" y="117" width="11.718816127302993" height="11" rx="2" fill="#0284C7"/>
-<text x="115.718816127303" y="125.5" font-size="6" font-weight="bold" fill="#1E293B">8,52 km²</text>
+<rect x="100" y="117" width="9.847408196299288" height="11" rx="2" fill="#0284C7"/>
+<text x="113.84740819629928" y="125.5" font-size="6" font-weight="bold" fill="#1E293B">7,16 km²</text>
 </svg>

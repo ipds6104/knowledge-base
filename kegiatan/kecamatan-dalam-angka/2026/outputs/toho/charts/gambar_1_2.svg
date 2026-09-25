@@ -12,27 +12,27 @@
 <text x="295.0" y="183" font-size="5.5" fill="#94A3B8" text-anchor="middle">82</text>
 <line x1="100" y1="18" x2="100" y2="170" stroke="#CBD5E1" stroke-width="1"/>
 <text x="94" y="30.5" font-size="6.5" fill="#334155" text-anchor="end">Toho Ilir</text>
-<rect x="100" y="22" width="169.56521739130437" height="11" rx="2" fill="#0284C7"/>
-<text x="273.5652173913044" y="30.5" font-size="6" font-weight="bold" fill="#1E293B">72,17 km²</text>
+<rect x="100" y="22" width="169.56521739130434" height="11" rx="2" fill="#0284C7"/>
+<text x="273.5652173913044" y="30.5" font-size="6" font-weight="bold" fill="#1E293B">72,16 km²</text>
 <text x="94" y="49.5" font-size="6.5" fill="#334155" text-anchor="end">Terap</text>
-<rect x="100" y="41" width="76.75898090860349" height="11" rx="2" fill="#0284C7"/>
-<text x="180.7589809086035" y="49.5" font-size="6" font-weight="bold" fill="#1E293B">32,67 km²</text>
+<rect x="100" y="41" width="76.76961823966066" height="11" rx="2" fill="#0284C7"/>
+<text x="180.76961823966064" y="49.5" font-size="6" font-weight="bold" fill="#1E293B">32,67 km²</text>
 <text x="94" y="68.5" font-size="6.5" fill="#334155" text-anchor="end">Kecurit</text>
-<rect x="100" y="60" width="60.1713345904296" height="11" rx="2" fill="#0284C7"/>
-<text x="164.1713345904296" y="68.5" font-size="6" font-weight="bold" fill="#1E293B">25,61 km²</text>
+<rect x="100" y="60" width="60.17967319001253" height="11" rx="2" fill="#0284C7"/>
+<text x="164.17967319001252" y="68.5" font-size="6" font-weight="bold" fill="#1E293B">25,61 km²</text>
 <text x="94" y="87.5" font-size="6.5" fill="#334155" text-anchor="end">Pak Laheng</text>
-<rect x="100" y="79" width="54.93189389786193" height="11" rx="2" fill="#0284C7"/>
-<text x="158.93189389786193" y="87.5" font-size="6" font-weight="bold" fill="#1E293B">23,38 km²</text>
+<rect x="100" y="79" width="54.93950641087438" height="11" rx="2" fill="#0284C7"/>
+<text x="158.93950641087437" y="87.5" font-size="6" font-weight="bold" fill="#1E293B">23,38 km²</text>
 <text x="94" y="106.5" font-size="6.5" fill="#334155" text-anchor="end">Sepang</text>
-<rect x="100" y="98" width="54.48548415275528" height="11" rx="2" fill="#0284C7"/>
-<text x="158.48548415275528" y="106.5" font-size="6" font-weight="bold" fill="#1E293B">23,19 km²</text>
+<rect x="100" y="98" width="54.49303480188953" height="11" rx="2" fill="#0284C7"/>
+<text x="158.49303480188954" y="106.5" font-size="6" font-weight="bold" fill="#1E293B">23,19 km²</text>
 <text x="94" y="125.5" font-size="6.5" fill="#334155" text-anchor="end">Pak Utan</text>
-<rect x="100" y="117" width="49.01109096276304" height="11" rx="2" fill="#0284C7"/>
-<text x="153.01109096276303" y="125.5" font-size="6" font-weight="bold" fill="#1E293B">20,86 km²</text>
+<rect x="100" y="117" width="49.01788296539092" height="11" rx="2" fill="#0284C7"/>
+<text x="153.01788296539092" y="125.5" font-size="6" font-weight="bold" fill="#1E293B">20,86 km²</text>
 <text x="94" y="144.5" font-size="6.5" fill="#334155" text-anchor="end">Sambora</text>
-<rect x="100" y="136" width="42.244459036935744" height="11" rx="2" fill="#0284C7"/>
-<text x="146.24445903693575" y="144.5" font-size="6" font-weight="bold" fill="#1E293B">17,98 km²</text>
+<rect x="100" y="136" width="42.25031331340982" height="11" rx="2" fill="#0284C7"/>
+<text x="146.25031331340983" y="144.5" font-size="6" font-weight="bold" fill="#1E293B">17,98 km²</text>
 <text x="94" y="163.5" font-size="6.5" fill="#334155" text-anchor="end">Benuang</text>
-<rect x="100" y="155" width="23.871173738335216" height="11" rx="2" fill="#0284C7"/>
-<text x="127.87117373833522" y="163.5" font-size="6" font-weight="bold" fill="#1E293B">10,16 km²</text>
+<rect x="100" y="155" width="23.874481827822233" height="11" rx="2" fill="#0284C7"/>
+<text x="127.87448182782224" y="163.5" font-size="6" font-weight="bold" fill="#1E293B">10,16 km²</text>
 </svg>

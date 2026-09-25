@@ -23,19 +23,22 @@ def render_chapter1(cfg: Dict[str, Any], out_dir: Optional[Any] = None) -> str:
     luas_map = {}
     total_luas = "..."
     for r in rows_1_1_raw[3:]:
-        if len(r) > 0 and r[0].strip():
+        if len(r) > 1 and r[0].strip():
             nama_d = r[0].strip()
+            if nama_d.isdigit() or any(nama_d.lower().startswith(x) for x in ['desa/kelurahan', 'kelurahan/desa', 'tabel']):
+                continue
             if any(nama_d.lower().startswith(x) for x in ['jumlah', 'total', 'kecamatan']):
-                if len(r) > 7 and r[7].strip():
+                if len(r) > 7 and r[7].strip() and total_luas == "...":
                     total_luas = clean_cell_value(r[7])
                 continue
             if any(nama_d.lower().startswith(x) for x in ['sumber', 'catatan']):
                 continue
 
-            luas_val = clean_cell_value(r[7] if len(r) > 7 else r[1])
-            pct_val = clean_cell_value(r[8] if len(r) > 8 else "...")
-            status_val = clean_cell_value(r[9] if len(r) > 9 else "Indikatif")
-            luas_map[nama_d.lower()] = [luas_val, pct_val, status_val]
+            if nama_d.lower() not in luas_map:
+                luas_val = clean_cell_value(r[7] if len(r) > 7 else r[1])
+                pct_val = clean_cell_value(r[8] if len(r) > 8 else "...")
+                status_val = clean_cell_value(r[9] if len(r) > 9 else "Indikatif")
+                luas_map[nama_d.lower()] = [luas_val, pct_val, status_val]
 
     t1_1_rows = []
     for d in desa_list:

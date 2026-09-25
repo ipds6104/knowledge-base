@@ -13,20 +13,20 @@
 <line x1="100" y1="18" x2="100" y2="132" stroke="#CBD5E1" stroke-width="1"/>
 <text x="94" y="30.5" font-size="6.5" fill="#334155" text-anchor="end">Ansiap</text>
 <rect x="100" y="22" width="169.56521739130437" height="11" rx="2" fill="#0284C7"/>
-<text x="273.5652173913044" y="30.5" font-size="6" font-weight="bold" fill="#1E293B">101,72 km²</text>
+<text x="273.5652173913044" y="30.5" font-size="6" font-weight="bold" fill="#1E293B">101,68 km²</text>
 <text x="94" y="49.5" font-size="6.5" fill="#334155" text-anchor="end">Bum-Bun</text>
-<rect x="100" y="41" width="150.51163466634753" height="11" rx="2" fill="#0284C7"/>
-<text x="254.51163466634753" y="49.5" font-size="6" font-weight="bold" fill="#1E293B">90,29 km²</text>
+<rect x="100" y="41" width="150.58752095234837" height="11" rx="2" fill="#0284C7"/>
+<text x="254.58752095234837" y="49.5" font-size="6" font-weight="bold" fill="#1E293B">90,30 km²</text>
 <text x="94" y="68.5" font-size="6.5" fill="#334155" text-anchor="end">Sekabuk</text>
-<rect x="100" y="60" width="138.592726837525" height="11" rx="2" fill="#0284C7"/>
-<text x="242.592726837525" y="68.5" font-size="6" font-weight="bold" fill="#1E293B">83,14 km²</text>
+<rect x="100" y="60" width="138.64724797318098" height="11" rx="2" fill="#0284C7"/>
+<text x="242.64724797318098" y="68.5" font-size="6" font-weight="bold" fill="#1E293B">83,14 km²</text>
 <text x="94" y="87.5" font-size="6.5" fill="#334155" text-anchor="end">Pentek</text>
-<rect x="100" y="79" width="122.70640633281472" height="11" rx="2" fill="#0284C7"/>
-<text x="226.7064063328147" y="87.5" font-size="6" font-weight="bold" fill="#1E293B">73,61 km²</text>
+<rect x="100" y="79" width="122.77135429138303" height="11" rx="2" fill="#0284C7"/>
+<text x="226.77135429138303" y="87.5" font-size="6" font-weight="bold" fill="#1E293B">73,62 km²</text>
 <text x="94" y="106.5" font-size="6.5" fill="#334155" text-anchor="end">Suak Barangan</text>
-<rect x="100" y="98" width="85.11600471883602" height="11" rx="2" fill="#0284C7"/>
-<text x="189.11600471883602" y="106.5" font-size="6" font-weight="bold" fill="#1E293B">51,06 km²</text>
+<rect x="100" y="98" width="85.14948859166012" height="11" rx="2" fill="#0284C7"/>
+<text x="189.14948859166012" y="106.5" font-size="6" font-weight="bold" fill="#1E293B">51,06 km²</text>
 <text x="94" y="125.5" font-size="6.5" fill="#334155" text-anchor="end">Amawang</text>
-<rect x="100" y="117" width="75.84759527432509" height="11" rx="2" fill="#0284C7"/>
-<text x="179.8475952743251" y="125.5" font-size="6" font-weight="bold" fill="#1E293B">45,50 km²</text>
+<rect x="100" y="117" width="75.877433038005" height="11" rx="2" fill="#0284C7"/>
+<text x="179.877433038005" y="125.5" font-size="6" font-weight="bold" fill="#1E293B">45,50 km²</text>
 </svg>

@@ -13,29 +13,29 @@
 <line x1="100" y1="18" x2="100" y2="189" stroke="#CBD5E1" stroke-width="1"/>
 <text x="94" y="30.5" font-size="6.5" fill="#334155" text-anchor="end">Sungai Purun Kecil</text>
 <rect x="100" y="22" width="169.56521739130437" height="11" rx="2" fill="#0284C7"/>
-<text x="273.5652173913044" y="30.5" font-size="6" font-weight="bold" fill="#1E293B">39,45 km²</text>
+<text x="273.5652173913044" y="30.5" font-size="6" font-weight="bold" fill="#1E293B">39,50 km²</text>
 <text x="94" y="49.5" font-size="6.5" fill="#334155" text-anchor="end">Nusapati</text>
-<rect x="100" y="41" width="101.56720119027938" height="11" rx="2" fill="#0284C7"/>
-<text x="205.56720119027938" y="49.5" font-size="6" font-weight="bold" fill="#1E293B">23,63 km²</text>
+<rect x="100" y="41" width="101.6103467253715" height="11" rx="2" fill="#0284C7"/>
+<text x="205.6103467253715" y="49.5" font-size="6" font-weight="bold" fill="#1E293B">23,67 km²</text>
 <text x="94" y="68.5" font-size="6.5" fill="#334155" text-anchor="end">Sungai Bakau Besar Darat</text>
-<rect x="100" y="60" width="101.18036039014711" height="11" rx="2" fill="#0284C7"/>
-<text x="205.18036039014711" y="68.5" font-size="6" font-weight="bold" fill="#1E293B">23,54 km²</text>
+<rect x="100" y="60" width="100.8376444689048" height="11" rx="2" fill="#0284C7"/>
+<text x="204.83764446890478" y="68.5" font-size="6" font-weight="bold" fill="#1E293B">23,49 km²</text>
 <text x="94" y="87.5" font-size="6.5" fill="#334155" text-anchor="end">Sungai Rasau</text>
-<rect x="100" y="79" width="98.90229790047944" height="11" rx="2" fill="#0284C7"/>
-<text x="202.90229790047943" y="87.5" font-size="6" font-weight="bold" fill="#1E293B">23,01 km²</text>
+<rect x="100" y="79" width="98.60539350577875" height="11" rx="2" fill="#0284C7"/>
+<text x="202.60539350577875" y="87.5" font-size="6" font-weight="bold" fill="#1E293B">22,97 km²</text>
 <text x="94" y="106.5" font-size="6.5" fill="#334155" text-anchor="end">Peniraman</text>
-<rect x="100" y="98" width="97.35493469995039" height="11" rx="2" fill="#0284C7"/>
-<text x="201.35493469995038" y="106.5" font-size="6" font-weight="bold" fill="#1E293B">22,65 km²</text>
+<rect x="100" y="98" width="97.78976334617504" height="11" rx="2" fill="#0284C7"/>
+<text x="201.78976334617505" y="106.5" font-size="6" font-weight="bold" fill="#1E293B">22,78 km²</text>
 <text x="94" y="125.5" font-size="6.5" fill="#334155" text-anchor="end">Galang</text>
-<rect x="100" y="117" width="71.43660109108944" height="11" rx="2" fill="#0284C7"/>
-<text x="175.43660109108944" y="125.5" font-size="6" font-weight="bold" fill="#1E293B">16,62 km²</text>
+<rect x="100" y="117" width="71.13153549807376" height="11" rx="2" fill="#0284C7"/>
+<text x="175.13153549807376" y="125.5" font-size="6" font-weight="bold" fill="#1E293B">16,57 km²</text>
 <text x="94" y="144.5" font-size="6.5" fill="#334155" text-anchor="end">Sungai Pinyuh</text>
-<rect x="100" y="136" width="34.858654323028595" height="11" rx="2" fill="#0284C7"/>
-<text x="138.8586543230286" y="144.5" font-size="6" font-weight="bold" fill="#1E293B">8,11 km²</text>
-<text x="94" y="163.5" font-size="6.5" fill="#334155" text-anchor="end">Sungai Batang</text>
-<rect x="100" y="155" width="30.345511654818974" height="11" rx="2" fill="#0284C7"/>
-<text x="134.34551165481898" y="163.5" font-size="6" font-weight="bold" fill="#1E293B">7,06 km²</text>
-<text x="94" y="182.5" font-size="6.5" fill="#334155" text-anchor="end">Sungai Bakau Besar Laut</text>
-<rect x="100" y="174" width="30.259547032567365" height="11" rx="2" fill="#0284C7"/>
-<text x="134.25954703256735" y="182.5" font-size="6" font-weight="bold" fill="#1E293B">7,04 km²</text>
+<rect x="100" y="136" width="34.81452944413869" height="11" rx="2" fill="#0284C7"/>
+<text x="138.81452944413869" y="144.5" font-size="6" font-weight="bold" fill="#1E293B">8,11 km²</text>
+<text x="94" y="163.5" font-size="6.5" fill="#334155" text-anchor="end">Sungai Bakau Besar Laut</text>
+<rect x="100" y="155" width="30.178315905338472" height="11" rx="2" fill="#0284C7"/>
+<text x="134.17831590533848" y="163.5" font-size="6" font-weight="bold" fill="#1E293B">7,03 km²</text>
+<text x="94" y="182.5" font-size="6.5" fill="#334155" text-anchor="end">Sungai Batang</text>
+<rect x="100" y="174" width="30.092460099064393" height="11" rx="2" fill="#0284C7"/>
+<text x="134.0924600990644" y="182.5" font-size="6" font-weight="bold" fill="#1E293B">7,01 km²</text>
 </svg>

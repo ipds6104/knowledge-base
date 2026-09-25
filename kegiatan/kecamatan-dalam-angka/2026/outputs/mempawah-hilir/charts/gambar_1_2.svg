@@ -12,27 +12,27 @@
 <text x="295.0" y="183" font-size="5.5" fill="#94A3B8" text-anchor="middle">63</text>
 <line x1="100" y1="18" x2="100" y2="170" stroke="#CBD5E1" stroke-width="1"/>
 <text x="94" y="30.5" font-size="6.5" fill="#334155" text-anchor="end">Pasir</text>
-<rect x="100" y="22" width="169.56521739130437" height="11" rx="2" fill="#0284C7"/>
-<text x="273.5652173913044" y="30.5" font-size="6" font-weight="bold" fill="#1E293B">54,91 km²</text>
+<rect x="100" y="22" width="169.56521739130434" height="11" rx="2" fill="#0284C7"/>
+<text x="273.5652173913044" y="30.5" font-size="6" font-weight="bold" fill="#1E293B">54,84 km²</text>
 <text x="94" y="49.5" font-size="6.5" fill="#334155" text-anchor="end">Malikian</text>
-<rect x="100" y="41" width="94.52542896280872" height="11" rx="2" fill="#0284C7"/>
-<text x="198.52542896280872" y="49.5" font-size="6" font-weight="bold" fill="#1E293B">30,61 km²</text>
+<rect x="100" y="41" width="94.30596517933593" height="11" rx="2" fill="#0284C7"/>
+<text x="198.30596517933594" y="49.5" font-size="6" font-weight="bold" fill="#1E293B">30,50 km²</text>
 <text x="94" y="68.5" font-size="6.5" fill="#334155" text-anchor="end">Sengkubang</text>
-<rect x="100" y="60" width="76.42941414013447" height="11" rx="2" fill="#0284C7"/>
-<text x="180.42941414013447" y="68.5" font-size="6" font-weight="bold" fill="#1E293B">24,75 km²</text>
+<rect x="100" y="60" width="76.1250118923033" height="11" rx="2" fill="#0284C7"/>
+<text x="180.1250118923033" y="68.5" font-size="6" font-weight="bold" fill="#1E293B">24,62 km²</text>
 <text x="94" y="87.5" font-size="6.5" fill="#334155" text-anchor="end">Penibung</text>
-<rect x="100" y="79" width="36.284671359457775" height="11" rx="2" fill="#0284C7"/>
-<text x="140.28467135945777" y="87.5" font-size="6" font-weight="bold" fill="#1E293B">11,75 km²</text>
-<text x="94" y="106.5" font-size="6.5" fill="#334155" text-anchor="end">Tanjung</text>
-<rect x="100" y="98" width="30.139437656877263" height="11" rx="2" fill="#0284C7"/>
-<text x="134.13943765687725" y="106.5" font-size="6" font-weight="bold" fill="#1E293B">9,76 km²</text>
-<text x="94" y="125.5" font-size="6.5" fill="#334155" text-anchor="end">Kuala Secapah</text>
-<rect x="100" y="117" width="29.98503480002851" height="11" rx="2" fill="#0284C7"/>
-<text x="133.9850348000285" y="125.5" font-size="6" font-weight="bold" fill="#1E293B">9,71 km²</text>
+<rect x="100" y="79" width="35.83626676814765" height="11" rx="2" fill="#0284C7"/>
+<text x="139.83626676814765" y="87.5" font-size="6" font-weight="bold" fill="#1E293B">11,59 km²</text>
+<text x="94" y="106.5" font-size="6.5" fill="#334155" text-anchor="end">Kuala Secapah</text>
+<rect x="100" y="98" width="32.218628103891156" height="11" rx="2" fill="#0284C7"/>
+<text x="136.21862810389115" y="106.5" font-size="6" font-weight="bold" fill="#1E293B">10,42 km²</text>
+<text x="94" y="125.5" font-size="6.5" fill="#334155" text-anchor="end">Tanjung</text>
+<rect x="100" y="117" width="25.88003044429645" height="11" rx="2" fill="#0284C7"/>
+<text x="129.88003044429644" y="125.5" font-size="6" font-weight="bold" fill="#1E293B">8,37 km²</text>
 <text x="94" y="144.5" font-size="6.5" fill="#334155" text-anchor="end">Tengah</text>
-<rect x="100" y="136" width="25.75439652237258" height="11" rx="2" fill="#0284C7"/>
-<text x="129.7543965223726" y="144.5" font-size="6" font-weight="bold" fill="#1E293B">8,34 km²</text>
+<rect x="100" y="136" width="21.767671962705734" height="11" rx="2" fill="#0284C7"/>
+<text x="125.76767196270573" y="144.5" font-size="6" font-weight="bold" fill="#1E293B">7,04 km²</text>
 <text x="94" y="163.5" font-size="6.5" fill="#334155" text-anchor="end">Terusan</text>
-<rect x="100" y="155" width="15.131479971178136" height="11" rx="2" fill="#0284C7"/>
-<text x="119.13147997117814" y="163.5" font-size="6" font-weight="bold" fill="#1E293B">4,90 km²</text>
+<rect x="100" y="155" width="20.840072305204075" height="11" rx="2" fill="#0284C7"/>
+<text x="124.84007230520407" y="163.5" font-size="6" font-weight="bold" fill="#1E293B">6,74 km²</text>
 </svg>
