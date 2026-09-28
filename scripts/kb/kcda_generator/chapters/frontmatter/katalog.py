@@ -165,7 +165,7 @@ def render_katalog_and_contributors(cfg: Dict[str, Any]) -> str:
 #text(7.5pt)[
   #text(weight: "bold")[Ukuran Buku/Book Size:] 14,8 cm x 21,0 cm \\
   #v(2pt)
-  #text(weight: "bold")[Jumlah Halaman/Number of Pages:] #total_frontmatter_pages \+ #total_arabic_pages Halaman/Pages
+  #text(weight: "bold")[Jumlah Halaman/Number of Pages:] #total_frontmatter_pages + #total_arabic_pages Halaman/Pages
 ]
 
 #v(7pt)
