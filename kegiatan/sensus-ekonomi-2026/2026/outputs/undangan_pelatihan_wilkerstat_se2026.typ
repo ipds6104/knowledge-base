@@ -241,13 +241,13 @@ Demikian undangan ini kami sampaikan. Atas perhatian, kesiapan, dan kerja sama S
   // Data Rows (Ukuran font konsisten 8.5pt)
   [08.00 - 08.30], [Registrasi Peserta, Administrasi, & Pembagian Starter Kit], [Panitia Pelatihan], [Tatap Muka],
   [08.30 - 09.00], [*Pembukaan Resmi Pelatihan* & Arahan Kebijakan SE2026], [Kepala BPS Kab. Mempawah], [Pleno],
-  [09.00 - 09.30], [Pre-Test Pemahaman Konsep Pemetaan & Geometri Spasial], [Instruktur Pemetaan], [Ujian Mandiri],
+  [09.00 - 09.30], [Pre-Test Pemahaman Konsep Pemetaan & Geometri Spasial], [Instruktur Daerah], [Ujian Mandiri],
   [09.30 - 10.30], [*Modul 01 - 03:* Konsep Wilkerstat, Batas SLS/Non-SLS, dan Regulasi], [Instruktur Daerah], [Paparan & Diskusi],
   [10.30 - 12.00], [*Modul 05:* Master SLS, Kodifikasi ID SLS, dan Pengenalan Landmark], [Instruktur Daerah], [Simulasi Data],
   [12.00 - 13.00], [*ISHOMA* (Istirahat, Sholat, dan Makan Siang Bersama)], [Panitia & Seluruh Peserta], [Istirahat],
-  [13.00 - 14.30], [*Modul 04:* Setup Lingkungan GIS, QGIS 3.44 LTR, dan CRS EPSG:4326], [Tim IT & Fasilitator GIS], [Praktik Komputer],
-  [14.30 - 16.30], [*Modul 07:* Teknik Digitasi, Editing Batas SLS, dan Snap Geometri], [Fasilitator GIS], [Praktik Mandiri],
-  [16.30 - 17.00], [Review Hasil Hari 1, Evaluasi Geometri, dan Tugas Asynchronous], [Fasilitator GIS], [Evaluasi]
+  [13.00 - 14.30], [*Modul 04:* Setup Lingkungan GIS, QGIS 3.44 LTR, dan CRS EPSG:4326], [Instruktur Daerah], [Praktik Komputer],
+  [14.30 - 16.30], [*Modul 07:* Teknik Digitasi, Editing Batas SLS, dan Snap Geometri], [Instruktur Daerah], [Praktik Mandiri],
+  [16.30 - 17.00], [Review Hasil Hari 1, Evaluasi Geometri, dan Tugas Asynchronous], [Instruktur Daerah], [Evaluasi]
 )
 
 #v(8pt)
@@ -270,11 +270,11 @@ Demikian undangan ini kami sampaikan. Atas perhatian, kesiapan, dan kerja sama S
   ),
   
   // Data Rows (Ukuran font konsisten 8.5pt)
-  [08.00 - 08.30], [Presensi Peserta & Pembahasan Tugas Mandiri (Asynchronous)], [Fasilitator GIS], [Diskusi Kelas],
+  [08.00 - 08.30], [Presensi Peserta & Pembahasan Tugas Mandiri (Asynchronous)], [Instruktur Daerah], [Diskusi Kelas],
   [08.30 - 10.00], [Pembahasan Kasus Khusus: Pemekaran SLS, Batas, Gap & Overlap], [Instruktur Daerah], [Bedah Kasus],
-  [10.00 - 12.00], [*Modul 07:* Praktik Mandiri Terbimbing Pengolahan Peta Digital], [Petugas & Pendamping], [Praktik Mandiri],
+  [10.00 - 12.00], [*Modul 07:* Praktik Mandiri Terbimbing Pengolahan Peta Digital], [Instruktur Daerah], [Praktik Mandiri],
   [12.00 - 13.00], [*ISHOMA* (Istirahat, Sholat, dan Makan Siang Bersama)], [Panitia & Seluruh Peserta], [Istirahat],
-  [13.00 - 14.30], [*Validasi Topologi Geometri* (Target 0 Error) & Kendali Mutu], [Fasilitator GIS], [Quality Control],
-  [14.30 - 15.30], [*Evaluasi Akhir & Post-Test* Kompetensi Pengolahan Wilkerstat], [Tim Penilai BPS], [Ujian Mandiri],
-  [15.30 - 16.30], [*Penutupan Resmi Pelatihan*, Penandatanganan BA, & Foto Bersama], [Kepala BPS Kab. Mempawah], [Pleno]
+  [13.00 - 14.30], [*Validasi Topologi Geometri* (Target 0 Error) & Kendali Mutu], [Instruktur Daerah], [Quality Control],
+  [14.30 - 15.30], [*Evaluasi Akhir & Post-Test* Kompetensi Pengolahan Wilkerstat], [Instruktur Daerah], [Ujian Mandiri],
+  [15.30 - 16.30], [*Penutupan Resmi Pelatihan*, Penandatanganan BA, & Foto Bersama], [Instruktur Daerah], [Pleno]
 )
