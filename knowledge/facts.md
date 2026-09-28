@@ -240,6 +240,25 @@
   - Narasi Ulasan Dinamis terhubung langsung dengan tabel agregat (PNS, kepala desa, komoditas unggulan pertanian, fasilitas akomodasi, dan koperasi).
 - **Langkah Selanjutnya**: Review dan penyesuaian/revisi isi tabel bersama tim (Mba Akma Batrisyia dkk.).
 
+## Surat Dinas B-362 (FRS) & Penyesuaian Pengolahan Wilkerstat SE2026
+- **Surat Dinas B-362/02300/VS.100/2026**:
+  - Mengatur batas akhir perubahan Master di FRS (Format Rekapitulasi Spasial / FRS-MFDOnline) dan estimasi closing data lapangan SE2026 per **30 September 2026**.
+  - Wajib memastikan seluruh usulan perubahan wilayah SLS (pemekaran, penggabungan, perubahan kode/nama) dari lapangan sudah diajukan dan disetujui di FRS-MFDOnline sebelum cut-off.
+- **Penyesuaian Juknis Pengolahan Wilkerstat SE2026 (18 September 2026 - Dit. MMSD BPS RI)**:
+  - **Fokus Titik Geotagging**: Pengolahan titik geotagging di BPS Kab/Kota HANYA dilakukan pada SLS/Sub-SLS yang mengalami perubahan batas (PSLS). SLS yang tidak berubah batas tidak perlu diedit titiknya.
+  - **Simplifikasi Model QGIS**: Dipangkas menjadi hanya 2 model QGIS (`01 Identifikasi Titik.model3` dan `02 Pengecekan Titik.model3`).
+  - **Muatan 100% Diambil Alih BPS Pusat**: BPS Kab/Kota tidak perlu menghitung muatan bangunan/usaha di QGIS. Pusat yang menghitung dan membandingkan 2026_1 vs 2025_2 secara agregat; daerah cukup mengonfirmasi daftar anomali yang diturunkan.
+- **Milestone Pengolahan Pasca 30 September 2026**:
+  - *01–12 Oktober*: Tahap awal Kab/Kota (scanning peta WB/WS sketsa lapangan, identifikasi PSLS, georeferencing, edit batas awal di layer 2025_2).
+  - *01–09 Oktober*: Finalisasi transfer data Fasih, preprocessing, dan finalisasi Master 2026_1 di BPS Pusat.
+  - *10–12 Oktober*: Pengunduhan data geotagging per kabupaten dari Geospatial System (GS).
+  - *13 Oktober – 06 November*: Periode utama pengolahan QGIS Kab/Kota (running 2 model khusus PSLS).
+  - *20 November 2026*: Batas akhir unggah peta digital ke Geospatial System.
+  - *27 November 2026*: Batas akhir approval peta digital oleh BPS Provinsi.
+  - *04 Desember 2026*: Batas akhir unggah peta geotagging hasil koreksi ke Geospatial System.
+  - *18 Desember 2026*: Finalisasi Master Wilkerstat 2026 Semester 1 oleh BPS Pusat.
+
+
 
 
 
