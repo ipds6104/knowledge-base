@@ -257,6 +257,9 @@
   - *27 November 2026*: Batas akhir approval peta digital oleh BPS Provinsi.
   - *04 Desember 2026*: Batas akhir unggah peta geotagging hasil koreksi ke Geospatial System.
   - *18 Desember 2026*: Finalisasi Master Wilkerstat 2026 Semester 1 oleh BPS Pusat.
+- **Kertas Kendali & Verifikasi PSLS SE2026 (Google Sheets Kolaboratif)**:
+  - Tautan Spreadsheet: https://docs.google.com/spreadsheets/d/1XrnJEuJi5Se34K21j83S8VmcDlaMBXeO4O4EJ-2m6cY/edit?usp=sharing
+  - Memuat 4 lembar kerja: `1. Kendali Verifikasi Berkas` (QC Visual Magang), `2. Draf Input FRS Online` (Bahan Baku Bang Ihza input FRS-MFDOnline), `3. Progres Per Kecamatan` (Rekapitulasi 9 kecamatan), dan `Panduan & SOP Verifikasi`.
 
 
 
