@@ -1,9 +1,13 @@
-"""Data loader module for KCDA 2026 tables with clean caching and fallback handling."""
+"""
+Data loader module for KCDA tables with clean caching and fallback handling.
+"""
 
 import os
 import json
 import glob
+from pathlib import Path
 from typing import Dict, Any, List, Optional
+from .config import REPO_ROOT
 
 _RAW_TABLES_CACHE: Dict[str, Any] = {}
 
@@ -13,7 +17,8 @@ def get_table_data(table_no: str) -> Optional[Dict[str, Any]]:
         return _RAW_TABLES_CACHE[table_no]
 
     clean_no = table_no.replace('.', '_').strip('_')
-    pattern = f"data/kcda-2026/raw_tables/tabel_{clean_no}_*.json"
+    raw_dir = REPO_ROOT / "data" / "raw_tables"
+    pattern = str(raw_dir / f"tabel_{clean_no}_*.json")
     matches = glob.glob(pattern)
     if matches:
         with open(matches[0], encoding='utf-8') as f:
@@ -29,11 +34,11 @@ def get_kecamatan_tab_rows(table_no: str, nama_kecamatan_singkat: str) -> List[L
         return []
     tabs = tbl.get("tabs", {})
     target_tab = None
+    target_clean = nama_kecamatan_singkat.lower().strip()
+
     for tname in tabs.keys():
-        if tname.lower().strip() == nama_kecamatan_singkat.lower().strip():
-            target_tab = tname
-            break
-        if nama_kecamatan_singkat.lower().strip() in tname.lower().strip():
+        tname_clean = tname.lower().strip()
+        if tname_clean == target_clean or target_clean in tname_clean:
             target_tab = tname
             break
 

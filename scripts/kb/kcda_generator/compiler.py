@@ -1,12 +1,17 @@
-"""Compiler module for KCDA 2026 Typst documents."""
+"""
+Compiler module for KCDA Typst documents.
+Executes typst CLI with proper repo root and font paths.
+"""
 
 import os
 import subprocess
 import time
 from pathlib import Path
 from typing import Dict, Any, List, Optional
-from .config import KCDA_KECAMATAN_CONFIG
+
+from .config import REPO_ROOT, KCDA_KECAMATAN_CONFIG
 from .builder import build_kcda_typst
+from .validator import KCDAValidator
 
 def get_page_count(pdf_path: str) -> Optional[int]:
     """Mendapatkan jumlah halaman PDF menggunakan pdfinfo jika tersedia."""
@@ -19,29 +24,28 @@ def get_page_count(pdf_path: str) -> Optional[int]:
         pass
     return None
 
-def compile_kecamatan(slug: str, output_dir: str = "kegiatan/kecamatan-dalam-angka/2026/outputs") -> Dict[str, Any]:
+def compile_kecamatan(slug: str, output_dir: Optional[str] = None) -> Dict[str, Any]:
     """Mengompilasi naskah Typst untuk satu kecamatan."""
     cfg = KCDA_KECAMATAN_CONFIG.get(slug)
     if not cfg:
-        raise ValueError(f"Kecamatan slug '{slug}' tidak ditemukan.")
+        raise ValueError(f"Kecamatan slug '{slug}' tidak ditemukan di konfigurasi.")
 
-    t0 = time.time()
-    out_base = Path(output_dir) / slug
+    out_base = Path(output_dir) if output_dir else (REPO_ROOT / "outputs" / slug)
     out_base.mkdir(parents=True, exist_ok=True)
 
-    typ_path = out_base / f"kcda-2026-{slug}.typ"
-    pdf_path = out_base / f"kcda-2026-{slug}.pdf"
+    typ_path = out_base / f"kcda-{slug}.typ"
+    pdf_path = out_base / f"kcda-{slug}.pdf"
 
-    # Generate Typst content & charts
+    t0 = time.time()
+
+    # 1. Build Typst Code
     typst_code = build_kcda_typst(slug, out_dir=out_base)
     with open(typ_path, "w", encoding="utf-8") as f:
         f.write(typst_code)
 
-    # Compile via typst CLI with repo root
-    repo_root = Path(__file__).resolve().parents[3]
-    typst_bin = repo_root / "bin" / "typst"
-    typst_cmd = str(typst_bin) if typst_bin.exists() else "typst"
-    cmd = [typst_cmd, "compile", "--root", str(repo_root), str(typ_path), str(pdf_path)]
+    # 2. Compile via Typst CLI
+    fonts_dir = REPO_ROOT / "assets" / "fonts"
+    cmd = ["typst", "compile", "--root", str(REPO_ROOT), "--font-path", str(fonts_dir), str(typ_path), str(pdf_path)]
     res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     if res.returncode != 0:
         raise RuntimeError(f"Typst compilation failed for {slug}:\n{res.stderr}")
@@ -53,7 +57,7 @@ def compile_kecamatan(slug: str, output_dir: str = "kegiatan/kecamatan-dalam-ang
     return {
         "slug": slug,
         "nama_resmi": cfg["nama_resmi"],
-        "no_publikasi": cfg["no_publikasi"],
+        "no_publikasi": cfg.get("no_publikasi", "-"),
         "typ_path": str(typ_path),
         "pdf_path": str(pdf_path),
         "file_size_kb": file_size_kb,
@@ -62,22 +66,33 @@ def compile_kecamatan(slug: str, output_dir: str = "kegiatan/kecamatan-dalam-ang
         "status": "SUCCESS"
     }
 
-def compile_all_kcda(output_dir: str = "kegiatan/kecamatan-dalam-angka/2026/outputs") -> List[Dict[str, Any]]:
-    """Mengompilasi seluruh 9 kecamatan secara batch."""
+def compile_all_kcda(output_dir: Optional[str] = None) -> List[Dict[str, Any]]:
+    """Mengompilasi seluruh kecamatan yang terdaftar secara batch."""
+    validator = KCDAValidator()
+    if validator.check_placeholder_status():
+        print(validator.warnings[0])
+        print("--------------------------------------------------------------------------------")
+
     results = []
-    print(f"🚀 Memulai kompilasi publikasi KCDA 2026 untuk 9 kecamatan...")
-    for slug in KCDA_KECAMATAN_CONFIG.keys():
-        print(f"   ⚙️  Mengompilasi: {KCDA_KECAMATAN_CONFIG[slug]['nama_resmi']} ({slug})...")
+    total = len(KCDA_KECAMATAN_CONFIG)
+    print(f"🚀 Memulai kompilasi KCDA untuk {total} kecamatan...")
+
+    for idx, slug in enumerate(KCDA_KECAMATAN_CONFIG.keys(), 1):
+        kname = KCDA_KECAMATAN_CONFIG[slug]["nama_resmi"]
+        print(f"[{idx:>2}/{total}] ⚙️  Mengompilasi: {kname} ({slug})...")
         try:
-            res = compile_kecamatan(slug, output_dir)
-            print(f"      ✅ Selesai ({res['pages']} halaman, {res['file_size_kb']} KB, {res['duration_sec']}s)")
+            res = compile_kecamatan(slug, output_dir=output_dir)
             results.append(res)
+            print(f"         ✅ Berhasil! {res['pages']} halaman, {res['file_size_kb']} KB ({res['duration_sec']}s)")
         except Exception as e:
-            print(f"      ❌ Gagal: {e}")
+            print(f"         ❌ Gagal: {e}")
             results.append({
                 "slug": slug,
-                "nama_resmi": KCDA_KECAMATAN_CONFIG[slug]["nama_resmi"],
+                "nama_resmi": kname,
                 "status": "FAILED",
                 "error": str(e)
             })
+
     return results
+
+compile_all = compile_all_kcda

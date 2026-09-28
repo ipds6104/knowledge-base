@@ -1,8 +1,20 @@
-"""KCDA 2026 Typst Document Builder Engine (Orchestrator - A5 Template Pusat)."""
+"""
+KCDA Typst Document Builder Engine (Orchestrator - A5 Template Resmi BPS).
+Assembles frontmatter, chapters 1 to 7, charts, bibliography, and backcover dynamically based on regency configuration.
+"""
 
-from typing import Dict, Any
+import os
 from pathlib import Path
-from .config import KCDA_KECAMATAN_CONFIG
+from typing import Dict, Any, Optional
+
+from .config import (
+    REPO_ROOT,
+    KCDA_KECAMATAN_CONFIG,
+    get_regency_info,
+    get_instansi_info,
+    get_pimpinan_info,
+    get_publikasi_info
+)
 from .chapters.frontmatter import render_frontmatter
 from .chapters.chapter1 import render_chapter1
 from .chapters.chapter2 import render_chapter2
@@ -14,27 +26,39 @@ from .chapters.chapter7 import render_chapter7
 from .chapters.backcover import render_backcover
 
 def build_kcda_typst(slug: str, out_dir: Any = None) -> str:
-    """Menyusun kode dokumen Typst lengkap ukuran A5 sesuai Template Resmi KCDA 2026 BPS Pusat."""
+    """Menyusun kode dokumen Typst lengkap ukuran A5 sesuai Template Resmi KCDA BPS Pusat."""
     cfg = KCDA_KECAMATAN_CONFIG.get(slug)
     if not cfg:
         raise ValueError(f"Kecamatan slug '{slug}' tidak ditemukan di KCDA_KECAMATAN_CONFIG.")
 
+    regency_info = get_regency_info()
+    instansi_info = get_instansi_info()
+    pub_info = get_publikasi_info()
+
     nama_resmi = cfg["nama_resmi"]
     nama_en = cfg["nama_en"].replace(" Subdistrict", "")
-    nama_singkat = nama_resmi.replace("Kecamatan ", "").strip()
+    nama_singkat = cfg.get("nama_singkat", nama_resmi.replace("Kecamatan ", "").strip())
 
-    # Header & Footer Logic Typst untuk A5 (Sesuai Pedoman Publikasi BPS 2023 & Template Resmi KCDA 2026)
+    tahun_rilis = pub_info.get("tahun_rilis", 2026)
+    tahun_data = pub_info.get("tahun_data", 2025)
+    nama_kabupaten = regency_info.get("nama_resmi", "Kabupaten")
+    nama_kabupaten_singkat = regency_info.get("nama_singkat", "")
+    nama_instansi_singkat = instansi_info.get("nama_singkat", "BPS").upper()
+    warna_tema = pub_info.get("warna_tema_cmyk", "cmyk(0%, 20%, 90%, 0%)")
+    warna_running = pub_info.get("warna_running_cmyk", "cmyk(0%, 35%, 95%, 0%)")
+
+    # Header & Footer Logic Typst untuk A5 (Sesuai Pedoman Publikasi BPS 2023 & Template Resmi KCDA)
     header_logic = f"""
 #let in_frontmatter = state("in_frontmatter", true)
 #let active_chapter = state("active_chapter", "")
 #let active_chapter_en = state("active_chapter_en", "")
 #let is_chapter_page = state("is_chapter_page", false)
 
-// Warna Utama & Warna Running Title Resmi BPS (Pedoman KCDA 2026 Bagian B)
-#let main_theme_color = cmyk(0%, 20%, 90%, 0%)
-#let running_title_color = cmyk(0%, 35%, 95%, 0%)
+// Warna Utama & Warna Running Title Resmi BPS (Pedoman KCDA)
+#let main_theme_color = {warna_tema}
+#let running_title_color = {warna_running}
 
-// Badge pill numbering resmi BPS Pusat (Aturan KCDA 2026: main_theme_color, 49.2pt x 21pt)
+// Badge pill numbering resmi BPS Pusat (Aturan KCDA: main_theme_color, 49.2pt x 21pt)
 #let page_badge(val) = box(
   fill: main_theme_color,
   radius: 10.5pt,
@@ -53,99 +77,91 @@ def build_kcda_typst(slug: str, out_dir: Any = None) -> str:
 #show figure: it => [ #it #metadata("f") <page_marker> ]
 #show image: it => [ #it #metadata("i") <page_marker> ]
 
-#set page(
-  paper: "a5",
-  margin: (
-    inside: 2.0cm,
-    outside: 1.5cm,
-    top: 2.0cm,
-    bottom: 2.0cm,
-  ),
-  header-ascent: 40%,
-  footer-descent: 20%,
-  header: context {{
-    let p = here().page()
-    let has_c = query(selector(<page_marker>)).any(m => {{
-      let pos = m.location().position()
-      pos.page == p and pos.y > 1.4cm and pos.y < 19.4cm
-    }})
-    let is_ch = query(selector(<chapter_page>)).any(m => m.location().page() == p)
-    if has_c and not in_frontmatter.get() and not is_ch {{
-      let page_num = counter(page).get().first()
-      let titles = query(selector(<chapter_title>)).filter(m => m.location().page() <= p)
-      let chapter_title = if titles.len() > 0 {{ titles.last().value }} else {{ "" }}
-      if calc.even(page_num) {{
-        // Halaman Genap (Verso/Kiri): Judul Publikasi Bahasa Indonesia (Metropolis, 8pt, running_title_color, bold)
-        align(left, text(8pt, font: ("Metropolis", "Liberation Sans", "Arial"), fill: running_title_color, weight: "bold")[KECAMATAN {nama_singkat.upper()} DALAM ANGKA 2026])
-      }} else {{
-        // Halaman Ganjil (Rekto/Kanan): Judul Bab Bahasa Indonesia (Metropolis, 8pt, running_title_color, bold)
-        let right_text = if chapter_title != "" {{ chapter_title }} else {{ "BPS KABUPATEN MEMPAWAH" }}
-        align(right, text(8pt, font: ("Metropolis", "Liberation Sans", "Arial"), fill: running_title_color, weight: "bold")[#right_text])
-      }}
-    }}
-  }},
-  footer: context {{
-    let p = here().page()
-    let has_c = query(selector(<page_marker>)).any(m => {{
-      let pos = m.location().position()
-      pos.page == p and pos.y > 1.4cm and pos.y < 19.4cm
-    }})
-    let is_ch = query(selector(<chapter_page>)).any(m => m.location().page() == p)
-    if not has_c or is_ch {{
-      // Sesuai Pedoman Publikasi BPS 2023 Subbab 4.1.3 Poin 9 & Subbab 4.4.1 (Hal. 47, 88):
-      // Lembar pembatas bab dihitung sebagai halaman arab tetapi TANPA running title dan TANPA nomor halaman fisik.
-      // Halaman kosong sisipan juga TANPA running title dan nomor halaman fisik.
-      none
-    }} else if in_frontmatter.get() {{
-      let page_num = counter(page).get().first()
-      // Sesuai Pedoman Publikasi BPS 2023 Subbab 4.1.3 Poin 1 & 2 (Hal. 46) serta Subbab 4.3 (Hal. 75):
-      // - Halaman i (Judul Utama), ii (Katalog), iii (Tim Penyusun), iv (Kontributor) TIDAK dicetak nomornya.
-      // - Nomor fisik baru mulai dicetak pada Kata Pengantar (halaman v ke atas).
-      // - Mengikuti prinsip Rekto-Verso baku: Kiri untuk Genap (Verso) dan Kanan untuk Ganjil (Rekto).
-      if page_num >= 5 {{
-        let display_val = counter(page).display("i")
-        if calc.even(page_num) {{
-          align(left + top, text(7.5pt, font: ("Myriad Pro", "Liberation Sans", "Arial"), fill: rgb("#4B5563"), weight: "bold")[#v(3pt) #display_val])
-        }} else {{
-          align(right + top, text(7.5pt, font: ("Myriad Pro", "Liberation Sans", "Arial"), fill: rgb("#4B5563"), weight: "bold")[#v(3pt) #display_val])
-        }}
-      }}
-    }} else {{
-      let page_num = counter(page).get().first()
-      let display_val = counter(page).display("1")
-      let titles_en = query(selector(<chapter_title_en>)).filter(m => m.location().page() <= p)
-      let chapter_en = if titles_en.len() > 0 {{ titles_en.last().value }} else {{ "" }}
-      if calc.even(page_num) {{
-        // Halaman Genap (Verso/Kiri): Badge No Halaman di kiri + Judul Publikasi Bahasa Inggris (Metropolis, 8pt, running_title_color, italic)
-        grid(
-          columns: (auto, auto),
-          align: horizon,
-          column-gutter: 8pt,
-          page_badge(display_val),
-          text(8pt, font: ("Metropolis", "Liberation Sans", "Arial"), style: "italic", fill: running_title_color)[{nama_en.upper()} DISTRICT IN FIGURES 2026]
-        )
-      }} else {{
-        // Halaman Ganjil (Rekto/Kanan): Judul Bab Bahasa Inggris + Badge No Halaman di kanan (Metropolis, 8pt, running_title_color, italic)
-        let right_en_text = if chapter_en != "" {{ upper(chapter_en) }} else {{ "{nama_en.upper()} DISTRICT IN FIGURES 2026" }}
-        grid(
-          columns: (1fr, auto),
-          align: horizon,
-          column-gutter: 8pt,
-          align(right, text(8pt, font: ("Metropolis", "Liberation Sans", "Arial"), style: "italic", fill: running_title_color)[#right_en_text]),
-          page_badge(display_val)
-        )
-      }}
-    }}
-  }}
+#let normal_margins = (
+  inside: 2.0cm,
+  outside: 1.5cm,
+  top: 2.0cm,
+  bottom: 2.0cm,
 )
 
-#set text(font: ("Myriad Pro", "Liberation Sans", "Arial"), size: 7.5pt, lang: "id")
+#let page_header = context {{
+  let p = here().page()
+  let has_c = query(selector(<page_marker>)).any(m => {{
+    let pos = m.location().position()
+    pos.page == p and pos.y > 1.4cm and pos.y < 19.4cm
+  }})
+  if has_c and not in_frontmatter.get() {{
+    let page_num = counter(page).get().first()
+    let titles = query(selector(<chapter_title>)).filter(m => m.location().page() <= p)
+    let chapter_title = if titles.len() > 0 {{ titles.last().value }} else {{ "" }}
+    if calc.even(page_num) {{
+      // Halaman Genap (Verso/Kiri): Judul Publikasi Bahasa Indonesia
+      align(left, text(8pt, font: ("Metropolis", "Liberation Sans"), fill: running_title_color, weight: "bold")[KECAMATAN {nama_singkat.upper()} DALAM ANGKA {tahun_rilis}])
+    }} else {{
+      // Halaman Ganjil (Rekto/Kanan): Judul Bab Bahasa Indonesia
+      let right_text = if chapter_title != "" {{ chapter_title }} else {{ "{nama_instansi_singkat}" }}
+      align(right, text(8pt, font: ("Metropolis", "Liberation Sans"), fill: running_title_color, weight: "bold")[#right_text])
+    }}
+  }}
+}}
+
+#let page_footer = context {{
+  let p = here().page()
+  let has_c = query(selector(<page_marker>)).any(m => {{
+    let pos = m.location().position()
+    pos.page == p and pos.y > 1.4cm and pos.y < 19.4cm
+  }})
+  if not has_c {{
+    none
+  }} else if in_frontmatter.get() {{
+    let page_num = counter(page).get().first()
+    if page_num >= 5 {{
+      let display_val = counter(page).display("i")
+      if calc.even(page_num) {{
+        align(left + top, text(7.5pt, font: ("Myriad Pro", "Liberation Sans"), fill: rgb("#4B5563"), weight: "bold")[#v(3pt) #display_val])
+      }} else {{
+        align(right + top, text(7.5pt, font: ("Myriad Pro", "Liberation Sans"), fill: rgb("#4B5563"), weight: "bold")[#v(3pt) #display_val])
+      }}
+    }}
+  }} else {{
+    let page_num = counter(page).get().first()
+    let display_val = counter(page).display("1")
+    let titles_en = query(selector(<chapter_title_en>)).filter(m => m.location().page() <= p)
+    let chapter_en = if titles_en.len() > 0 {{ titles_en.last().value }} else {{ "" }}
+    if calc.even(page_num) {{
+      grid(
+        columns: (auto, auto),
+        align: horizon,
+        column-gutter: 8pt,
+        page_badge(display_val),
+        text(8pt, font: ("Metropolis", "Liberation Sans"), style: "italic", fill: running_title_color)[{nama_en.upper()} DISTRICT IN FIGURES {tahun_rilis}]
+      )
+    }} else {{
+      let right_en_text = if chapter_en != "" {{ upper(chapter_en) }} else {{ "{nama_en.upper()} DISTRICT IN FIGURES {tahun_rilis}" }}
+      grid(
+        columns: (1fr, auto),
+        align: horizon,
+        column-gutter: 8pt,
+        align(right, text(8pt, font: ("Metropolis", "Liberation Sans"), style: "italic", fill: running_title_color)[#right_en_text]),
+        page_badge(display_val)
+      )
+    }}
+  }}
+}}
+
+#set page(
+  paper: "a5",
+  margin: normal_margins,
+  header-ascent: 40%,
+  footer-descent: 20%,
+  header: page_header,
+  footer: page_footer,
+)
+
+#set text(font: ("Myriad Pro", "Liberation Sans"), size: 7.5pt, lang: "id")
 #set par(justify: true, leading: 0.5em)
 
-// Matikan justify pada seluruh sel tabel agar spasi antar kata di header & data tabel tidak meregang
 #show table.cell: set par(justify: false)
-
-// Standarisasi Penulisan Judul Gambar BPS (Di Bawah Gambar tanpa prefix dobel)
 #show figure.where(kind: image): set figure(supplement: none)
 #show figure.where(kind: image): set figure.caption(separator: none)
 """
@@ -154,15 +170,19 @@ def build_kcda_typst(slug: str, out_dir: Any = None) -> str:
 // ==========================================
 // DAFTAR PUSTAKA (BIBLIOGRAPHY)
 // ==========================================
+#pagebreak()
+#metadata("DAFTAR PUSTAKA") <chapter_title>
+#metadata("BIBLIOGRAPHY") <chapter_title_en>
+#metadata("daftar_pustaka") <daftar_pustaka>
 #v(0.5cm)
 #block[
   #text(12pt, weight: "bold")[DAFTAR PUSTAKA] \\
   #text(9pt, style: "italic", fill: rgb("#4B5563"))[BIBLIOGRAPHY]
-] <chapter_page>
+]
 #v(10pt)
 
 #text(8pt)[
-  Badan Pusat Statistik Kabupaten Mempawah. 2025. _Kabupaten Mempawah Dalam Angka 2025_. Mempawah: BPS Kabupaten Mempawah.
+  {instansi_info.get("nama_resmi", "Badan Pusat Statistik")}. {tahun_data}. _{nama_kabupaten} Dalam Angka {tahun_data}_. {nama_kabupaten_singkat}: {instansi_info.get("nama_singkat", "BPS")}.
 
   #v(8pt)
   Badan Pusat Statistik. 2024. _Indikator Pertanian 2023/2024_. Jakarta: Badan Pusat Statistik.
@@ -179,80 +199,26 @@ def build_kcda_typst(slug: str, out_dir: Any = None) -> str:
   #v(8pt)
   Kementerian Pertanian & Badan Pusat Statistik. 2023. _Pedoman Statistik Pertanian Hortikultura (SPH)_. Jakarta: Kementerian Pertanian.
 ]
+#metadata("akhir_buku") <akhir_buku>
 """
 
-    def render_pembatas(bab_num: int) -> str:
-        return f"""
-// ==========================================
-// LEMBAR PEMBATAS BAB {bab_num} (FULL-BLEED A5)
-// ==========================================
-#page(
-  paper: "a5",
-  margin: 0cm,
-  header: none,
-  footer: none,
-)[
-  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/pembatas/Bab {bab_num}.jpg", width: 100%, height: 100%)
-] <chapter_page>
-"""
-
+    # Assemble Document
     parts = [
-        "// Publikasi Resmi BPS Kabupaten Mempawah: Kecamatan Dalam Angka 2026 (Ukuran A5)",
         header_logic,
         render_frontmatter(cfg),
-        '#metadata("transisi_isi") <transisi_isi>',
-        "// --- TRANSISI KE ARABIC NUMBERING ---",
-        '#pagebreak(to: "odd")',
-        '#in_frontmatter.update(false)',
-        '#counter(page).update(1)',
-        render_pembatas(1),
-        '#metadata("1. GEOGRAFI DAN IKLIM") <chapter_title>',
-        '#metadata("Geography and Climate") <chapter_title_en>',
-        '#metadata("bab1") <bab1>',
-        render_chapter1(cfg, out_dir),
-        '#pagebreak(to: "odd")',
-        render_pembatas(2),
-        '#metadata("2. PEMERINTAHAN") <chapter_title>',
-        '#metadata("Government") <chapter_title_en>',
-        '#metadata("bab2") <bab2>',
-        render_chapter2(cfg, out_dir),
-        '#pagebreak(to: "odd")',
-        render_pembatas(3),
-        '#metadata("3. KEPENDUDUKAN") <chapter_title>',
-        '#metadata("Population") <chapter_title_en>',
-        '#metadata("bab3") <bab3>',
-        render_chapter3(cfg, out_dir),
-        '#pagebreak(to: "odd")',
-        render_pembatas(4),
-        '#metadata("4. SOSIAL DAN KESEJAHTERAAN RAKYAT") <chapter_title>',
-        '#metadata("Social and Welfare") <chapter_title_en>',
-        '#metadata("bab4") <bab4>',
-        render_chapter4(cfg, out_dir),
-        '#pagebreak(to: "odd")',
-        render_pembatas(5),
-        '#metadata("5. PERTANIAN") <chapter_title>',
-        '#metadata("Agriculture") <chapter_title_en>',
-        '#metadata("bab5") <bab5>',
-        render_chapter5(cfg, out_dir),
-        '#pagebreak(to: "odd")',
-        render_pembatas(6),
-        '#metadata("6. PARIWISATA, TRANSPORTASI, DAN KOMUNIKASI") <chapter_title>',
-        '#metadata("Tourism, Transportation, and Communication") <chapter_title_en>',
-        '#metadata("bab6") <bab6>',
-        render_chapter6(cfg),
-        '#pagebreak(to: "odd")',
-        render_pembatas(7),
-        '#metadata("7. PERBANKAN, KOPERASI, DAN PERDAGANGAN") <chapter_title>',
-        '#metadata("Banking, Cooperative, and Trade") <chapter_title_en>',
-        '#metadata("bab7") <bab7>',
-        render_chapter7(cfg),
-        '#pagebreak(to: "odd")',
-        '#metadata("DAFTAR PUSTAKA") <chapter_title>',
-        '#metadata("Bibliography") <chapter_title_en>',
+        """
+#metadata("transisi_isi") <transisi_isi>
+""",
+        render_chapter1(cfg, out_dir=out_dir),
+        render_chapter2(cfg, out_dir=out_dir),
+        render_chapter3(cfg, out_dir=out_dir),
+        render_chapter4(cfg, out_dir=out_dir),
+        render_chapter5(cfg, out_dir=out_dir),
+        render_chapter6(cfg, out_dir=out_dir),
+        render_chapter7(cfg, out_dir=out_dir),
         daftar_pustaka_markup,
-        '#metadata("akhir_buku") <akhir_buku>',
-        '#pagebreak(to: "even")',
         render_backcover(cfg)
     ]
 
     return "\n".join(parts)
+

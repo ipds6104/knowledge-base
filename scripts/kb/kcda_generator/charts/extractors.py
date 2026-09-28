@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Optional
 from ..data_loader import get_kecamatan_tab_rows
 from ..table_renderer import format_bilingual_source
+from ..config import get_regency_info
 from .svg_engine import (
     parse_number,
     format_figure_header,
@@ -80,7 +81,9 @@ def get_chapter1_charts(slug: str, nama_singkat: str, nama_en: str, out_dir: Opt
         chart_path_luas = charts_dir / "gambar_1_2.svg"
         chart_path_luas.write_text(svg_code_luas, encoding="utf-8")
 
-        src_fmt_luas = format_bilingual_source("Dinas Kependudukan dan Pencatatan Sipil / BAPEDDA Kabupaten Mempawah")
+        reg = get_regency_info()
+        nama_kab = reg.get("nama_resmi", "Kabupaten")
+        src_fmt_luas = format_bilingual_source(f"Dinas Kependudukan dan Pencatatan Sipil / BAPEDDA {nama_kab}")
         fig_header_luas = format_figure_header(
             "1.2",
             f"Luas Wilayah menurut Desa/Kelurahan di {nama_singkat}, 2025 (km²)",
@@ -187,7 +190,9 @@ def get_chapter3_charts(slug: str, nama_singkat: str, nama_en: str, out_dir: Opt
     chart_path = charts_dir / "gambar_3_1.svg"
     chart_path.write_text(svg_code, encoding="utf-8")
 
-    src_fmt = format_bilingual_source("Dinas Kependudukan dan Pencatatan Sipil Kabupaten Mempawah (Semester II 2025)")
+    reg = get_regency_info()
+    nama_kab = reg.get("nama_resmi", "Kabupaten")
+    src_fmt = format_bilingual_source(f"Dinas Kependudukan dan Pencatatan Sipil {nama_kab} (Semester II 2025)")
     fig_header = format_figure_header(
         "3.1",
         f"Jumlah Penduduk menurut Jenis Kelamin dan Desa/Kelurahan di {nama_singkat}, 2025",

@@ -1,38 +1,24 @@
 """
-Frontmatter: Cover & Title Page for KCDA 2026.
+Frontmatter: Cover & Title Page for KCDA.
 Menangani Kover Depan dan Halaman Judul Utama (Halaman i).
 """
 
+import os
+from pathlib import Path
 from typing import Dict, Any
-
-COVER_DEPAN_MAP = {
-    "mempawah-hilir": "Mempawah Hilir1.jpg",
-    "mempawah-timur": "Mempawah Timur1.jpg",
-    "sungai-pinyuh": "Sungai Pinyuh1.jpg",
-    "sungai-kunyit": "Sungai Kunyit1.jpg",
-    "segedong": "Segedong1.jpg",
-    "toho": "Toho1.jpg",
-    "jongkat": "Jongkat1.jpg",
-    "anjongan": "Anjongan1.jpg",
-    "sadaniang": "Sadaniang1.jpg"
-}
-
-COVER_DALAM_MAP = {
-    "mempawah-hilir": "Mempawah Hilir2.jpg",
-    "mempawah-timur": "Mempawah Timur2.jpg",
-    "sungai-pinyuh": "Sungai Pinyuh2.jpg",
-    "sungai-kunyit": "Sungai Kunyit2.jpg",
-    "segedong": "Segedong2.jpg",
-    "toho": "Toho2.jpg",
-    "jongkat": "Jongkat2.jpg",
-    "anjongan": "Anjongan2.jpg",
-    "sadaniang": "Sadaniang2.jpg"
-}
 
 def render_cover_and_title_page(cfg: Dict[str, Any]) -> str:
     slug = cfg.get("slug", "")
-    cover_depan = COVER_DEPAN_MAP.get(slug, "Anjongan1.png")
-    cover_dalam = COVER_DALAM_MAP.get(slug, "Anjongan2.png")
+    
+    # 1. Prioritas dari konfigurasi kecamatan
+    cover_depan = cfg.get("cover_depan", f"assets/covers/depan/{slug.title()}1.jpg")
+    cover_dalam = cfg.get("cover_dalam", f"assets/covers/depan/{slug.title()}2.jpg")
+
+    # Format path untuk Typst (relatif terhadap repo root /)
+    if not cover_depan.startswith("/"):
+        cover_depan = "/" + cover_depan
+    if not cover_dalam.startswith("/"):
+        cover_dalam = "/" + cover_dalam
 
     return f"""// ==========================================
 // 1. KOVER DEPAN (FRONT COVER) - DESAIN RESMI TERBARU
@@ -43,7 +29,7 @@ def render_cover_and_title_page(cfg: Dict[str, Any]) -> str:
   header: none,
   footer: none,
 )[
-  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/depan/{cover_depan}", width: 100%, height: 100%)
+  #image("{cover_depan}", width: 100%, height: 100%)
 ]
 
 // ==========================================
@@ -71,6 +57,6 @@ def render_cover_and_title_page(cfg: Dict[str, Any]) -> str:
   header: none,
   footer: none,
 )[
-  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/depan/{cover_dalam}", width: 100%, height: 100%)
+  #image("{cover_dalam}", width: 100%, height: 100%)
 ]
 """
