@@ -2,7 +2,7 @@
 
 from typing import Dict, Any, List, Optional
 from pathlib import Path
-from ..data_loader import get_kecamatan_tab_rows, clean_cell_value
+from ..data_loader import get_kecamatan_tab_rows, clean_cell_value, match_village_row, normalize_village_name
 from ..table_renderer import render_typst_table, render_subchapter_heading
 from ..chart_generator import get_chapter2_charts
 from .narrative_helper import render_chapter_intro
@@ -15,7 +15,7 @@ def render_chapter2(cfg: Dict[str, Any], out_dir: Optional[Any] = None, fig_no: 
     slug = cfg.get("slug", "")
 
     year_213 = "2025" if slug == "toho" else "2026"
-    year_214 = "2025" if slug == "toho" else "2026"
+    year_213 = "2025" if slug == "toho" else "2026"
     has_214 = slug not in ["mempawah-hilir", "sungai-pinyuh"]
 
     # Grafik dinamis data-driven dari Google Sheets
@@ -26,17 +26,43 @@ def render_chapter2(cfg: Dict[str, Any], out_dir: Optional[Any] = None, fig_no: 
     # --- 2.1.1 Dusun, RW & RT ---
     rows_211_raw = get_kecamatan_tab_rows("2.1.1", nama_singkat)
     rw_rt_map = {}
+    tot_dusun = None
+    tot_rw = None
+    tot_rt = None
+
     for r in rows_211_raw[3:]:
-        if len(r) > 1 and r[0].strip() and not any(r[0].lower().startswith(x) for x in ['jumlah', 'total', 'sumber']):
+        if len(r) > 1 and r[0].strip():
+            row_label = r[0].strip().lower()
+            if any(row_label.startswith(x) for x in ['jumlah', 'total', 'kecamatan']):
+                if tot_dusun is None:
+                    tot_dusun = clean_cell_value(r[1] if len(r) > 1 else "–")
+                    tot_rw = clean_cell_value(r[2] if len(r) > 2 else "–")
+                    tot_rt = clean_cell_value(r[3] if len(r) > 3 else "–")
+                continue
+            if row_label.startswith('sumber') or row_label.startswith('catatan'):
+                continue
             dusun = clean_cell_value(r[1] if len(r) > 1 else "–")
             rw = clean_cell_value(r[2] if len(r) > 2 else "–")
             rt = clean_cell_value(r[3] if len(r) > 3 else "–")
-            rw_rt_map[r[0].strip().lower()] = [dusun, rw, rt]
+            rw_rt_map[row_label] = [dusun, rw, rt]
 
     t211_rows = []
     for d in desa_list:
-        v = rw_rt_map.get(d.lower(), ["–", "–", "–"])
+        v = match_village_row(rw_rt_map, d, ["–", "–", "–"])
         t211_rows.append([d, v[0], v[1], v[2]])
+
+    if tot_dusun is None or tot_dusun in ["–", "...", ""]:
+        try:
+            d_sum = sum(int(r[1]) for r in t211_rows if str(r[1]).isdigit())
+            rw_sum = sum(int(r[2]) for r in t211_rows if str(r[2]).isdigit())
+            rt_sum = sum(int(r[3]) for r in t211_rows if str(r[3]).isdigit())
+            tot_dusun = str(d_sum)
+            tot_rw = str(rw_sum)
+            tot_rt = str(rt_sum)
+        except Exception:
+            tot_dusun, tot_rw, tot_rt = "–", "–", "–"
+
+    t211_rows.append([f"Kecamatan {nama_singkat}", tot_dusun, tot_rw, tot_rt])
 
     t211_markup = render_typst_table(
         table_no="2.1.1",
@@ -83,7 +109,7 @@ def render_chapter2(cfg: Dict[str, Any], out_dir: Optional[Any] = None, fig_no: 
 
     t213_rows = []
     for idx, d in enumerate(desa_list, 1):
-        kades = kades_map.get(d.lower(), "–")
+        kades = match_village_row(kades_map, d, "–")
         t213_rows.append([str(idx), d, kades])
 
     t213_markup = render_typst_table(
@@ -115,8 +141,8 @@ def render_chapter2(cfg: Dict[str, Any], out_dir: Optional[Any] = None, fig_no: 
 
         t214_markup = render_typst_table(
             table_no="2.1.4",
-            title_id=f"Nama-Nama Kepala Dusun di {nama_resmi}",
-            title_en=f"Names of Hamlet Heads in {nama_en} District",
+            title_id=f"Nama-Nama Kepala Dusun di {nama_resmi}, 2025",
+            title_en=f"Names of Hamlet Heads in {nama_en} District, 2025",
             headers=["No", "Desa/Kelurahan\nVillage/Subdistrict", "Nama Dusun\nName of Hamlet", "Nama Kepala Dusun\nName of Hamlet Head"],
             col_numbers=["(1)", "(2)", "(3)", "(4)"],
             rows=t214_rows,
@@ -138,7 +164,7 @@ def render_chapter2(cfg: Dict[str, Any], out_dir: Optional[Any] = None, fig_no: 
 
     t215_rows = []
     for idx, d in enumerate(desa_list, 1):
-        v = klas_map.get(d.lower(), ["Desa", "Perdesaan"])
+        v = match_village_row(klas_map, d, ["Desa", "Perdesaan"])
         t215_rows.append([str(idx), d, v[0], v[1]])
 
     t215_markup = render_typst_table(
@@ -162,7 +188,7 @@ def render_chapter2(cfg: Dict[str, Any], out_dir: Optional[Any] = None, fig_no: 
 
     t216_rows = []
     for idx, d in enumerate(desa_list, 1):
-        status_idm = idm_map.get(d.lower(), "–")
+        status_idm = match_village_row(idm_map, d, "–")
         t216_rows.append([str(idx), d, status_idm])
 
     t216_markup = render_typst_table(
@@ -189,8 +215,7 @@ def render_chapter2(cfg: Dict[str, Any], out_dir: Optional[Any] = None, fig_no: 
                 t221_rows.append([pem, lk, pr, tot])
     if not t221_rows:
         t221_rows = [
-            [f"Pemerintah Daerah Kecamatan {nama_singkat}\n{nama_en} District Government", "–", "–", "–"],
-            ["Jumlah / Total", "–", "–", "–"]
+            [f"Pemerintah Daerah Kecamatan {nama_singkat}\n{nama_en} District Government", "–", "–", "–"]
         ]
 
     t221_markup = render_typst_table(
@@ -239,9 +264,15 @@ def render_chapter2(cfg: Dict[str, Any], out_dir: Optional[Any] = None, fig_no: 
     )
 
     # --- Ulasan dan Penjelasan Teknis Bab 2 Sesuai Publikasi BPS ---
-    tot_rw = sum(int(rw_rt_map[d.lower()][1]) for d in desa_list if d.lower() in rw_rt_map and rw_rt_map[d.lower()][1].isdigit())
-    tot_rt = sum(int(rw_rt_map[d.lower()][2]) for d in desa_list if d.lower() in rw_rt_map and rw_rt_map[d.lower()][2].isdigit())
-    tot_dusun = sum(int(rw_rt_map[d.lower()][0]) for d in desa_list if d.lower() in rw_rt_map and rw_rt_map[d.lower()][0].isdigit())
+    tot_rw = 0
+    tot_rt = 0
+    tot_dusun = 0
+    for d in desa_list:
+        v = match_village_row(rw_rt_map, d)
+        if v:
+            if v[0].isdigit(): tot_dusun += int(v[0])
+            if v[1].isdigit(): tot_rw += int(v[1])
+            if v[2].isdigit(): tot_rt += int(v[2])
 
     camat_first = t212_rows[0][1] if t212_rows and t212_rows[0][1] != "–" else ""
     camat_first_p = t212_rows[0][2] if t212_rows and len(t212_rows[0]) > 2 and t212_rows[0][2] != "–" else ""

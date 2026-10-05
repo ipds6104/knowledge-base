@@ -261,6 +261,29 @@
   - Tautan Spreadsheet: https://docs.google.com/spreadsheets/d/1XrnJEuJi5Se34K21j83S8VmcDlaMBXeO4O4EJ-2m6cY/edit?usp=sharing
   - Memuat 4 lembar kerja: `1. Kendali Verifikasi Berkas` (QC Visual Magang), `2. Draf Input FRS Online` (Bahan Baku Bang Ihza input FRS-MFDOnline), `3. Progres Per Kecamatan` (Rekapitulasi 9 kecamatan), dan `Panduan & SOP Verifikasi`.
 
+## Penyesuaian & Koreksi Final Tabel Publikasi KCDA 2026 (05 Oktober 2026)
+- **Status Publikasi**: Selesai direvisi dan seluruh berkas PDF (9 kecamatan) telah dikompilasi ulang serta diperbarui in-place di Google Drive (`1l1rmVCaZay_1BTJOAMjkadHuAVof8GyJ`).
+- **Rincian Penyesuaian yang Diterapkan (Feedback Review Akma Batrisyia & Tim BPS)**:
+  1. **Tabel 1.1 & 1.2**: Penyesuaian sumber, header dwibahasa, dan sinkronisasi data jarak/luas wilayah resmi.
+  2. **Tabel 2.1.1**: Penambahan baris total kecamatan untuk seluruh 9 kecamatan sesuai Google Sheet master.
+  3. **Tabel 2.1.4**: Penambahan tahun data 2025 pada judul dan TOC; dikecualikan untuk Mempawah Hilir & Sungai Pinyuh.
+  4. **Tabel 2.2.1**: Penyesuaian rujukan bilingual pegawai pemerintah daerah, koreksi data Anjongan (8 laki-laki), serta penyesuaian baris kecamatan Toho (6 L, 2 P, 8 total).
+  5. **Tabel 3.1**:
+     - Sumber diubah menjadi `Dinas Kependudukan dan Pencatatan Sipil Kabupaten Mempawah/Population and Civil Registration Service of Mempawah Regency` (tanpa keterangan semester).
+     - Judul disesuaikan menjadi `Penduduk, Distribusi Persentase Penduduk, Kepadatan Penduduk, Rasio Jenis Kelamin Penduduk Menurut Desa/Kelurahan di Kecamatan [Nama], 2025` (ID) dan `Population, Percentage Distribution of Population, Population Density, and Population Sex Ratio by Villages/Subdistricts in [Nama] District, 2025` (EN).
+     - Header kolom di halaman lanjutan diganti menjadi `Distribusi Penduduk / Population Distribution (%)`.
+     - Baris terbawah dihapus kata "Total", menyisakan nama kecamatan saja (contoh: `Kecamatan Mempawah Hilir`).
+  6. **Tabel 4.1.2**:
+     - Sumber diperbarui menjadi 2 rujukan resmi: `¹ Kementerian Pendidikan Dasar dan Menengah; Sistem Data Pokok Pendidikan; data semester ganjil laporan sampai dengan 30 November` dan `² Kementerian Agama; EMIS; data semester genap laporan sampai dengan 30 Juni`.
+     - Angka penanda 1 dan 2 pada kolom tingkat pendidikan diformat sebagai footnote superskrip (`¹`, `²`).
+  7. **Tabel 4.1.3**:
+     - Judul tabel dan TOC diubah menjadi `Jumlah Kepala Sekolah dan Pendidik Menurut Tingkat Pendidikan di Kecamatan [Nama], 2024/2025 dan 2025/2026` (ID) dan `Number of Headmasters and Teachers by Educational Level in [Nama] District, 2024/2025 dan 2025/2026` (EN).
+     - Sumber diperbarui menjadi 2 rujukan resmi yang sama.
+     - Angka 1 dan 2 pada kolom tingkat pendidikan diformat sebagai footnote superskrip, dan footnote nomor 3 dihapus bersih.
+  8. **Tabel 4.1.4**:
+     - Sumber diperbarui menjadi 2 rujukan resmi yang sama.
+     - Angka 1 dan 2 pada kolom tingkat pendidikan diformat sebagai footnote superskrip.
+
 
 
 

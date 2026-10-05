@@ -122,3 +122,4 @@ kegiatan/**/assets/covers/
 # Ekspor Kontak & Dokumen Lampiran Chat (PII)
 *.vcf
 data/chats/**/documents/
+shared_data

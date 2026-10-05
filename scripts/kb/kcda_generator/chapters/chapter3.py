@@ -2,7 +2,7 @@
 
 from typing import Dict, Any, List, Optional
 from pathlib import Path
-from ..data_loader import get_kecamatan_tab_rows, clean_cell_value
+from ..data_loader import get_kecamatan_tab_rows, clean_cell_value, match_village_row
 from ..table_renderer import render_typst_table
 from ..chart_generator import get_chapter3_charts
 from ..config import get_regency_info
@@ -59,13 +59,15 @@ def render_chapter3(cfg: Dict[str, Any], out_dir: Optional[Any] = None, fig_no: 
             t31_p2_map[d_name.lower()] = [d_name, pct, kpd, rasio]
 
     valid_kpd = []
-    for d, row in t31_p2_map.items():
-        try:
-            kpd_f = float(row[2].replace('.', '').replace(',', '.'))
-            pct_f = float(row[1].replace(',', '.'))
-            valid_kpd.append((row[0], kpd_f, row[2], pct_f, row[1]))
-        except Exception:
-            pass
+    for d in desa_list:
+        row = match_village_row(t31_p2_map, d)
+        if row:
+            try:
+                kpd_f = float(row[2].replace('.', '').replace(',', '.'))
+                pct_f = float(row[1].replace(',', '.'))
+                valid_kpd.append((d, kpd_f, row[2], pct_f, row[1]))
+            except Exception:
+                pass
 
     if valid_kpd:
         valid_kpd.sort(key=lambda x: x[1])
@@ -137,21 +139,23 @@ def render_chapter3(cfg: Dict[str, Any], out_dir: Optional[Any] = None, fig_no: 
     t31_p1_rows = []
     t31_p2_rows = []
     for d in desa_list:
-        v1 = t31_p1_map.get(d.lower(), [d, "–", "–", "–"])
-        v2 = t31_p2_map.get(d.lower(), [d, "–", "–", "–"])
+        row1 = match_village_row(t31_p1_map, d)
+        row2 = match_village_row(t31_p2_map, d)
+        v1 = [d, row1[1], row1[2], row1[3]] if row1 else [d, "–", "–", "–"]
+        v2 = [d, row2[1], row2[2], row2[3]] if row2 else [d, "–", "–", "–"]
         t31_p1_rows.append(v1)
         t31_p2_rows.append(v2)
 
-    t31_p1_rows.append([f"Kecamatan {nama_singkat} / Total", tot_lk, tot_pr, tot_all])
-    t31_p2_rows.append([f"Kecamatan {nama_singkat} / Total", "100,00", tot_kpd, tot_rasio])
+    t31_p1_rows.append([f"Kecamatan {nama_singkat}", tot_lk, tot_pr, tot_all])
+    t31_p2_rows.append([f"Kecamatan {nama_singkat}", "100,00", tot_kpd, tot_rasio])
 
-    source_txt = f"Dinas Kependudukan dan Pencatatan Sipil {nama_kab} (Semester II 2025) / Population and Civil Registration Service of {nama_kab_en} (Semester II 2025)"
+    source_txt = f"Dinas Kependudukan dan Pencatatan Sipil {nama_kab}/Population and Civil Registration Service of {nama_kab_en}"
 
     # Halaman 1 dari Tabel 3.1
     t31_p1_markup = render_typst_table(
         table_no="3.1",
-        title_id=f"Penduduk Menurut Desa/Kelurahan dan Jenis Kelamin di {nama_resmi}, 2025",
-        title_en=f"Population by Villages/Subdistricts and Sex in {nama_en} District, 2025",
+        title_id=f"Penduduk, Distribusi Persentase Penduduk, Kepadatan Penduduk, Rasio Jenis Kelamin Penduduk Menurut Desa/Kelurahan di {nama_resmi}, 2025",
+        title_en=f"Population, Percentage Distribution of Population, Population Density, and Population Sex Ratio by Villages/Subdistricts in {nama_en} District, 2025",
         headers=[
             "Desa/Kelurahan\nVillage/Subdistrict",
             "Laki-laki\nMale",
@@ -171,7 +175,7 @@ def render_chapter3(cfg: Dict[str, Any], out_dir: Optional[Any] = None, fig_no: 
         title_en="",
         headers=[
             "Desa/Kelurahan\nVillage/Subdistrict",
-            "Persentase Penduduk\nPercentage of Total Population (%)",
+            "Distribusi Penduduk\nPopulation Distribution (%)",
             "Kepadatan Penduduk (per km²)\nPopulation Density per sq.km",
             "Rasio Jenis Kelamin Penduduk\nPopulation Sex Ratio"
         ],

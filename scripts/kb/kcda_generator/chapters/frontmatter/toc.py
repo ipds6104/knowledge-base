@@ -23,7 +23,7 @@ def render_toc_and_notes(cfg: Dict[str, Any]) -> str:
     tno_idm = "2.1.6" if has_214 else "2.1.5"
 
     toc_214_entry = f"""#v(5pt)
-#toc_table_entry("2.1.4", "Nama-Nama Kepala Dusun di Kecamatan {nama_singkat}", "Names of Hamlet Heads in {nama_en} District", get_page_arabic(<tab_2_1_4>))""" if has_214 else ""
+#toc_table_entry("2.1.4", "Nama-Nama Kepala Dusun di Kecamatan {nama_singkat}, 2025", "Names of Hamlet Heads in {nama_en} District, 2025", get_page_arabic(<tab_2_1_4>))""" if has_214 else ""
 
     figs = get_subdistrict_figures(slug, nama_singkat, nama_en)
     fig_entries = []
@@ -311,7 +311,7 @@ def render_toc_and_notes(cfg: Dict[str, Any]) -> str:
 #v(5pt)
 #toc_table_entry("4.1.2", "Jumlah Satuan Pendidikan Menurut Tingkat Pendidikan di Kecamatan {nama_singkat}, 2024/2025 dan 2025/2026", "Number of Schools by Educational Level in {nama_en} District, 2024/2025 and 2025/2026", get_page_arabic(<tab_4_1_2>))
 #v(5pt)
-#toc_table_entry("4.1.3", "Jumlah Pendidik Menurut Tingkat Pendidikan di Kecamatan {nama_singkat}, 2024/2025 dan 2025/2026", "Number of Teachers by Educational Level in {nama_en} District, 2024/2025 and 2025/2026", get_page_arabic(<tab_4_1_3>))
+#toc_table_entry("4.1.3", "Jumlah Kepala Sekolah dan Pendidik Menurut Tingkat Pendidikan di Kecamatan {nama_singkat}, 2024/2025 dan 2025/2026", "Number of Headmasters and Teachers by Educational Level in {nama_en} District, 2024/2025 and 2025/2026", get_page_arabic(<tab_4_1_3>))
 #v(5pt)
 #toc_table_entry("4.1.4", "Jumlah Peserta Didik Menurut Tingkat Pendidikan di Kecamatan {nama_singkat}, 2024/2025 dan 2025/2026", "Number of Pupils by Educational Level in {nama_en} District, 2024/2025 and 2025/2026", get_page_arabic(<tab_4_1_4>))
 
