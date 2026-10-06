@@ -284,19 +284,21 @@
      - Sumber diperbarui menjadi 2 rujukan resmi yang sama.
      - Angka 1 dan 2 pada kolom tingkat pendidikan diformat sebagai footnote superskrip.
 
-## Penyesuaian KCDA 2026 Kecamatan Toho (06 Oktober 2026)
+## Penyesuaian KCDA 2026 Kecamatan Toho & Jongkat (06 Oktober 2026)
 - **Sumber Arahan**: Kak Sukma (Staff IPDS BPS Mempawah).
 - **Rincian Penyesuaian**:
-  1. **Tabel 2.1.2**: 
-     - Sinkronisasi data Camat terbaru dari Google Sheet (No. 20: `Bennidiktus, S.IP., M.AP` - Periode: `Oktober 2026 - saat ini`).
+  1. **Tabel 2.1.2 (Toho)**: 
+     - Sinkronisasi data Camat terbaru dari Google Sheet (No. 20: `Bennidiktus, S.IP., M.AP` - Periode: `Oktober 2025 - saat ini`).
      - Judul tabel dan entri Daftar Tabel (TOC) disesuaikan menjadi tahun **2026** (`Nama-Nama Camat yang Pernah/Masih Menjabat di Kecamatan Toho, 2026`).
-  2. **Tabel 2.1.3, 2.1.4, 2.2.1, dan 2.2.2**:
+  2. **Tabel 2.1.3, 2.1.4, 2.2.1, dan 2.2.2 (Toho)**:
      - Seluruh sel data yang tidak tersedia diisi tanda titik tiga (`...`) sesuai notasi baku statistik BPS untuk data tidak tersedia.
      - Tabel 2.1.3: Kolom nama kepala desa untuk seluruh 8 desa diisi `...`.
      - Tabel 2.1.4: Kolom nama kepala dusun untuk seluruh 21 dusun diisi `...`.
      - Tabel 2.2.1: Baris Pemerintah Daerah Kecamatan Toho (Laki-laki, Perempuan, Jumlah) diisi `...`.
      - Tabel 2.2.2: Seluruh jenjang tingkat pendidikan PNS kecamatan diisi `...`.
-- **Status Berkas**: Naskah Typst telah dikompilasi ulang menjadi PDF (`kcda-toho.pdf`), diperbarui secara in-place di Google Drive (`KCDA_TOHO_2026.pdf` - File ID `1KS43U8M4MDpZZuv5LY5Oucn5twg43eK-`), dan perubahan kode generator telah di-push ke GitHub repo `ipds6104/kcda-agent`.
+  3. **Tabel 1.4 (Toho & Jongkat)**:
+     - Baris "Makam Juang Mandor" dihapus pada publikasi Kecamatan Toho dan Kecamatan Jongkat, serta penomoran baris diselaraskan kembali secara berurutan.
+- **Status Berkas**: Naskah Typst telah dikompilasi ulang menjadi PDF (`kcda-toho.pdf` dan `kcda-jongkat.pdf`), diperbarui secara in-place di Google Drive (`KCDA_TOHO_2026.pdf` - File ID `1KS43U8M4MDpZZuv5LY5Oucn5twg43eK-` dan `KCDA_JONGKAT_2026.pdf` - File ID `1uF6fPvITm41SdJxGOEV6-aOhJTB4MWwx`), serta perubahan kode generator telah di-push ke GitHub repo `ipds6104/kcda-agent`.
 
 
 
