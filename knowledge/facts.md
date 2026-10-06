@@ -298,7 +298,24 @@
      - Tabel 2.2.2: Seluruh jenjang tingkat pendidikan PNS kecamatan diisi `...`.
   3. **Tabel 1.4 (Toho & Jongkat)**:
      - Baris "Makam Juang Mandor" dihapus pada publikasi Kecamatan Toho dan Kecamatan Jongkat, serta penomoran baris diselaraskan kembali secara berurutan.
-- **Status Berkas**: Naskah Typst telah dikompilasi ulang menjadi PDF (`kcda-toho.pdf` dan `kcda-jongkat.pdf`), diperbarui secara in-place di Google Drive (`KCDA_TOHO_2026.pdf` - File ID `1KS43U8M4MDpZZuv5LY5Oucn5twg43eK-` dan `KCDA_JONGKAT_2026.pdf` - File ID `1uF6fPvITm41SdJxGOEV6-aOhJTB4MWwx`), serta perubahan kode generator telah di-push ke GitHub repo `ipds6104/kcda-agent`.
+
+## Penyesuaian Tabel 4.2.1 & Pengembangan Ulasan Naratif Seluruh Bab KCDA 2026 (06 Oktober 2026)
+- **Sumber Arahan**: Kak Sukma (Staff IPDS BPS Mempawah).
+- **Rincian Pekerjaan**:
+  1. **Sinkronisasi Tabel 4.2.1**: Sinkronisasi data sarana kesehatan terbaru tahun 2025 untuk seluruh 9 kecamatan dari Google Sheet master ke `tabel_4_2_1_banyaknya_desa_kelurahan_yang.json`. Angka tahun 2025 (Rumah Sakit, Puskesmas rawat inap, Puskesmas tanpa rawat inap, Apotek) telah terisi data terbaru tanpa simbol placeholder `...` atau nilai 0.
+  2. **Pengembangan Ulasan Naratif Bab 1 s.d. Bab 7 Seluruh Kecamatan**:
+     - *Bab 1 (Geografi & Iklim)*: Menambahkan analisis aksesibilitas dan jarak antarwilayah (desa terjauh dan terdekat ke ibukota kecamatan dari Tabel 1.2 serta jarak kantor camat ke ibukota kabupaten dari Tabel 1.4).
+     - *Bab 2 (Pemerintahan)*: Memperkaya ulasan dengan rekapitulasi status Indeks Desa Membangun (IDM: Mandiri, Maju, Berkembang) dan data aparatur sipil negara (PNS) dari Tabel 2.2.1.
+     - *Bab 3 (Kependudukan)*: Memperkaya analisis kependudukan dengan rincian jumlah penduduk menurut jenis kelamin, rasio jenis kelamin, tingkat kepadatan antardesa, serta desa dengan konsentrasi penduduk terbesar dan terkecil.
+     - *Bab 4 (Sosial & Kesejahteraan Rakyat)*: Memperbarui narasi fasilitas kesehatan secara dinamis merujuk Tabel 4.2.1 (keberadaan Rumah Sakit, Puskesmas rawat inap & non-rawat inap, serta Apotek) dan memperkaya ulasan pendidikan yang mencakup SD/MI, SMP/MTs, dan SMA/SMK/MA.
+     - *Bab 5 (Pertanian)*: Mengembangkan ulasan hortikultura dengan ekstraksi komoditas unggulan 2025 (sayuran semusim, biofarmaka, buah tahunan) dengan penamaan dwibahasa yang rapi dan kontekstual.
+     - *Bab 6 (Pariwisata, Transportasi & Komunikasi)*: Memperkaya ulasan akomodasi (hotel/penginapan), moda transportasi antardesa (darat vs air), dan sarana komunikasi/kantor pos/agen ekspedisi swasta.
+     - *Bab 7 (Perbankan, Koperasi & Perdagangan)*: Menghadirkan ulasan perbankan dan koperasi aktif serta sarana perdagangan (pasar permanen/semi-permanen, kelompok pertokoan, minimarket).
+  3. **Kompilasi & Pembaruan Google Drive**:
+     - Seluruh 9 kecamatan berhasil dikompilasi ulang dengan Typst menjadi PDF resmi BPS.
+     - Seluruh berkas PDF telah diperbarui secara in-place di Google Drive folder `1l1rmVCaZay_1BTJOAMjkadHuAVof8GyJ` menggunakan HTTP PATCH media sehingga File ID dan tautan view tetap terjaga.
+  4. **Repositori Git**: Perubahan kode generator dan berkas tabel telah di-commit dan di-push ke GitHub repo `ipds6104/kcda-agent` (branch `main`).
+
 
 
 
