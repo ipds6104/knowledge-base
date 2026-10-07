@@ -182,6 +182,7 @@
 ## Pengolahan Peta Wilkerstat SE2026 BPS Kabupaten Mempawah
 - **Status Pelatihan Petugas Pengolahan Peta**: **SELESAI** per 25 September 2026.
 - **Deadline Laporan & Administrasi Inda**: **Rabu, 7 Oktober 2026** (Penyelesaian berkas administrasi dan laporan Instruktur Daerah oleh Bang Ihza Karunia untuk proses pencairan honor).
+- **Template Laporan Inda**: Tersimpan di `kegiatan/sensus-ekonomi-2026/2026/docs/template-laporan-inda-wilkerstat-se2026.md` dan `.docx`. Terdiri dari surat laporan ke Pusdiklat BPS serta 5 lampiran wajib (bahan ajar 4 slide, presensi harian mengajar, jadwal, notulensi/Q&A, dan foto dokumentasi).
 
 ## Perawatan Perangkat IT - Pelengkapan Aplikasi Mania TW 3 2026
 - **Tenggat Waktu**: **Rabu, 30 September 2026** (akhir Triwulan 3 TA 2026).
@@ -315,6 +316,15 @@
      - Seluruh 9 kecamatan berhasil dikompilasi ulang dengan Typst menjadi PDF resmi BPS.
      - Seluruh berkas PDF telah diperbarui secara in-place di Google Drive folder `1l1rmVCaZay_1BTJOAMjkadHuAVof8GyJ` menggunakan HTTP PATCH media sehingga File ID dan tautan view tetap terjaga.
   4. **Repositori Git**: Perubahan kode generator dan berkas tabel telah di-commit dan di-push ke GitHub repo `ipds6104/kcda-agent` (branch `main`).
+
+## Pembaruan Angka Tabel 4.1.1 KCDA 2026 (07 Oktober 2026)
+- **Status Publikasi**: Selesai diperbarui, dikompilasi ulang dengan Typst, dan disinkronkan langsung (_in-place_) ke Google Drive (`1l1rmVCaZay_1BTJOAMjkadHuAVof8GyJ`).
+- **Rincian Perubahan**:
+  - Mengupdate angka pada **Tabel 4.1.1** (_Banyaknya Desa/Kelurahan yang Memiliki Fasilitas Sekolah Menurut Tingkat Pendidikan, 2023–2025_) merujuk tabel bagian bawah (**"Template yang dipakai"**) pada spreadsheet master.
+  - Pembaruan mencakup seluruh 9 kecamatan di Kabupaten Mempawah: Mempawah Hilir, Mempawah Timur, Sungai Pinyuh, Sungai Kunyit, Segedong, Toho, Jongkat, Anjongan, dan Sadaniang.
+  - Nilai 2023, 2024, dan 2025 kini sepenuhnya selaras dengan angka template master.
+  - Kode generator dan data tabel `data/raw_tables/tabel_4_1_1_banyaknya_desa1_kelurahan_yang.json` di `ipds6104/kcda-agent` telah disinkronkan dan di-push ke GitHub.
+
 
 
 
