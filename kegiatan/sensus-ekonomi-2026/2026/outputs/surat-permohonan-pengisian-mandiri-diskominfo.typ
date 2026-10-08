@@ -21,7 +21,7 @@
       columns: (58pt, 1fr, 95pt),
       gutter: 10pt,
       align: (center + horizon, left + horizon, right + horizon),
-      image("/app/workspaces/bps-mempawah/kegiatan/kecamatan-dalam-angka/2026/assets/logo_bps.png", width: 56pt),
+      [#v(7pt)#image("/app/workspaces/bps-mempawah/kegiatan/kecamatan-dalam-angka/2026/assets/logo_bps.png", width: 54pt)],
       [
         #text(13.8pt, weight: "bold", style: "italic", font: "Metropolis", fill: black)[BADAN PUSAT STATISTIK] \
         #text(13.8pt, weight: "bold", style: "italic", font: "Metropolis", fill: black)[KABUPATEN MEMPAWAH] \
@@ -73,7 +73,7 @@ Dengan hormat,
 
 Sehubungan dengan pelaksanaan rangkaian kegiatan Sensus Ekonomi 2026 (SE2026) dan pemadanan data di wilayah Kabupaten Mempawah, Badan Pusat Statistik (BPS) Kabupaten Mempawah bermaksud memohon bantuan dan fasilitasi Bapak/Ibu Kepala Dinas Komunikasi dan Informatika Kabupaten Mempawah untuk mengimbau seluruh Organisasi Perangkat Daerah (OPD) di lingkungan Pemerintah Kabupaten Mempawah agar pegawai yang bersangkutan dapat melakukan pengisian mandiri (*Computer Assisted Web Interviewing / CAWI*).
 
-Adapun tata cara dan panduan langkah-langkah pengisian mandiri tersebut dapat diakses secara daring melalui tautan resmi berikut:
+Adapun tautan/link pengisian mandiri tersebut dapat diakses secara daring melalui tautan resmi berikut:
 
 #v(2pt)
 #align(center)[
@@ -83,7 +83,7 @@ Adapun tata cara dan panduan langkah-langkah pengisian mandiri tersebut dapat di
     radius: 4pt,
     stroke: 0.8pt + rgb("#3B82F6")
   )[
-    #text(10pt, weight: "bold", fill: rgb("#1E40AF"))[Tautan Panduan & Langkah Pengisian Mandiri:] \
+    #text(10pt, weight: "bold", fill: rgb("#1E40AF"))[Tautan Pengisian Mandiri:] \
     #v(2pt)
     #link("https://s.bps.go.id/61_ECKalbar")[#text(11pt, weight: "bold", fill: rgb("#2563EB"))[https://s.bps.go.id/61_ECKalbar]]
   ]
