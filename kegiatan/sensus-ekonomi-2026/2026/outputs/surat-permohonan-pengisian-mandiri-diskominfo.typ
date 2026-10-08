@@ -21,7 +21,7 @@
       columns: (58pt, 1fr, 95pt),
       gutter: 10pt,
       align: (center + horizon, left + horizon, right + horizon),
-      [#v(7pt)#image("/app/workspaces/bps-mempawah/kegiatan/kecamatan-dalam-angka/2026/assets/logo_bps.png", width: 54pt)],
+      [#move(dy: 17pt)[#image("/app/workspaces/bps-mempawah/kegiatan/kecamatan-dalam-angka/2026/assets/logo_bps.png", width: 54pt)]],
       [
         #text(13.8pt, weight: "bold", style: "italic", font: "Metropolis", fill: black)[BADAN PUSAT STATISTIK] \
         #text(13.8pt, weight: "bold", style: "italic", font: "Metropolis", fill: black)[KABUPATEN MEMPAWAH] \
@@ -344,6 +344,3 @@ Demikian permohonan ini kami sampaikan, atas perhatian, dukungan, dan kerja sama
   [190], [TENNY MUTIA ASTARIE], [SEKRETARIAT DEWAN PERWAKILAN RAKYAT DAERAH],
   [191], [SYAWAL ALEX], [SEKRETARIAT DEWAN PERWAKILAN RAKYAT DAERAH],
 )
-
-#v(6pt)
-#text(8pt, style: "italic", fill: rgb("#4B5563"))[Catatan: Daftar pegawai di atas disaring dari basis data pemadanan SE2026 (Data OPEN Match) khusus Organisasi Perangkat Daerah (OPD) di lingkungan Pemerintah Kabupaten Mempawah.]

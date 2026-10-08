@@ -89,7 +89,7 @@ def build_typst_content(records: list) -> str:
       columns: (58pt, 1fr, 95pt),
       gutter: 10pt,
       align: (center + horizon, left + horizon, right + horizon),
-      [#v(7pt)#image("{ASSETS_DIR}/logo_bps.png", width: 54pt)],
+      [#move(dy: 17pt)[#image("{ASSETS_DIR}/logo_bps.png", width: 54pt)]],
       [
         #text(13.8pt, weight: "bold", style: "italic", font: "Metropolis", fill: black)[BADAN PUSAT STATISTIK] \\
         #text(13.8pt, weight: "bold", style: "italic", font: "Metropolis", fill: black)[KABUPATEN MEMPAWAH] \\
@@ -222,9 +222,6 @@ Demikian permohonan ini kami sampaikan, atas perhatian, dukungan, dan kerja sama
   ),
 {table_rows_str}
 )
-
-#v(6pt)
-#text(8pt, style: "italic", fill: rgb("#4B5563"))[Catatan: Daftar pegawai di atas disaring dari basis data pemadanan SE2026 (Data OPEN Match) khusus Organisasi Perangkat Daerah (OPD) di lingkungan Pemerintah Kabupaten Mempawah.]
 '''
     return typst_code
 
@@ -266,7 +263,7 @@ def generate_docx(records: list, docx_path: Path):
     # Col 0: Logo BPS
     p_logo = row.cells[0].paragraphs[0]
     p_logo.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_logo.paragraph_format.space_before = Pt(6)
+    p_logo.paragraph_format.space_before = Pt(16)
     logo_bps_path = str(ASSETS_DIR / "logo_bps.png")
     if os.path.exists(logo_bps_path):
         p_logo.add_run().add_picture(logo_bps_path, width=Inches(0.95))
@@ -542,16 +539,6 @@ def generate_docx(records: list, docx_path: Path):
         b.set(qn('w:color'), 'D1D5DB') # Light gray
         tblBorders.append(b)
     tblPr.append(tblBorders)
-    
-    p_note = doc.add_paragraph()
-    p_note.paragraph_format.space_before = Pt(8)
-    r_nt = p_note.add_run(
-        "Catatan: Daftar pegawai di atas disaring dari basis data pemadanan SE2026 (Data OPEN Match) "
-        "khusus Organisasi Perangkat Daerah (OPD) di lingkungan Pemerintah Kabupaten Mempawah."
-    )
-    r_nt.italic = True
-    r_nt.font.size = Pt(8)
-    r_nt.font.color.rgb = RGBColor(0x4B, 0x55, 0x63)
     
     doc.save(docx_path)
 
