@@ -6,8 +6,13 @@ Script otomasi pembuatan Surat Dinas Resmi BPS Kabupaten Mempawah
 kepada Dinas Komunikasi dan Informatika Kabupaten Mempawah terkait
 permohonan pengisian mandiri (CAWI) SE2026 untuk pegawai OPD.
 
-Lampiran ditarik langsung dari sheet "Data OPEN Match" pada Google Spreadsheet master:
+Nomor Surat: B-1143/61046/HM.310/2026
+Lampiran: Nama Pegawai (Kolom G) dan Instansi BKSDM (Kolom AT)
+Filter: Kolom AV == '1' (Adalah OPD)
+
+Sumber Data: Google Spreadsheet master:
 ID: 1ZpwvQLXJUCwB5yqp7Y5mFMFv1JnHWw3WYP1ebcNsI1U
+Sheet: "Data OPEN Match"
 """
 
 import json
@@ -25,7 +30,8 @@ OUTPUT_DIR = REPO_ROOT / "kegiatan" / "sensus-ekonomi-2026" / "2026" / "outputs"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 SPREADSHEET_ID = "1ZpwvQLXJUCwB5yqp7Y5mFMFv1JnHWw3WYP1ebcNsI1U"
-SHEET_RANGE = "'Data OPEN Match'!A1:H1200"
+SHEET_RANGE = "'Data OPEN Match'!A1:AZ1200"
+NOMOR_SURAT = "B-1143/61046/HM.310/2026"
 
 def get_google_token() -> str:
     token_file = Path("/app/data/google_token.json")
@@ -118,7 +124,7 @@ def build_typst_content(records: list) -> str:
     #grid(
       columns: (60pt, 8pt, 1fr),
       gutter: 3pt,
-      [Nomor], [:], [B- #h(30pt) /61046/HM.310/10/2026],
+      [Nomor], [:], [{NOMOR_SURAT}],
       [Sifat], [:], [Biasa],
       [Lampiran], [:], [1 (satu) Berkas],
       [Hal], [:], [#par(justify: false)[*Permohonan Fasilitasi Pengisian Mandiri (CAWI) Data Sensus Ekonomi 2026*]]
@@ -185,19 +191,19 @@ Demikian permohonan ini kami sampaikan, atas perhatian, dukungan, dan kerja sama
   columns: (60pt, 8pt, 1fr),
   gutter: 3pt,
   [Lampiran], [:], [1 (satu) Berkas],
-  [Nomor], [:], [B- #h(30pt) /61046/HM.310/10/2026],
+  [Nomor], [:], [{NOMOR_SURAT}],
   [Tanggal], [:], [8 Oktober 2026]
 )
 
 #v(8pt)
 #align(center)[
-  #text(10.5pt, weight: "bold")[Daftar Nama Pegawai dan Instansi/OPD Sasaran Pengisian Mandiri Sensus Ekonomi 2026]
+  #text(10.5pt, weight: "bold")[Daftar Nama Pegawai dan Organisasi Perangkat Daerah (OPD) Sasaran Pengisian Mandiri SE2026]
 ]
 #v(4pt)
 
 #set text(size: 8.5pt)
 #table(
-  columns: (35pt, 1.4fr, 1.6fr),
+  columns: (35pt, 1.4fr, 1.8fr),
   inset: 4.5pt,
   align: (center, left, left),
   stroke: (col, row) => {{
@@ -218,13 +224,13 @@ Demikian permohonan ini kami sampaikan, atas perhatian, dukungan, dan kerja sama
   table.header(
     [*No*],
     [*Nama Pegawai*],
-    [*Instansi / Perangkat Daerah*]
+    [*Organisasi Perangkat Daerah (OPD)*]
   ),
 {table_rows_str}
 )
 
 #v(6pt)
-#text(8pt, style: "italic", fill: rgb("#4B5563"))[Catatan: Data ditarik dari basis data pemadanan SE2026 (Data OPEN Match) Kabupaten Mempawah.]
+#text(8pt, style: "italic", fill: rgb("#4B5563"))[Catatan: Daftar pegawai di atas disaring dari basis data pemadanan SE2026 (Data OPEN Match) khusus Organisasi Perangkat Daerah (OPD) di lingkungan Pemerintah Kabupaten Mempawah.]
 '''
     return typst_code
 
@@ -236,13 +242,17 @@ def main():
     rows = fetch_sheet_data(token)
     
     records = []
+    # Kolom G = index 6 (Nama Pegawai)
+    # Kolom AT = index 45 (Instansi BKSDM)
+    # Kolom AV = index 47 (Adalah OPD == '1')
     for r in rows[1:]:
         nama = r[6].strip() if len(r) > 6 else ""
-        inst = r[7].strip() if len(r) > 7 else ""
-        if nama:
+        inst = r[45].strip() if len(r) > 45 else ""
+        is_opd = r[47].strip() if len(r) > 47 else ""
+        if is_opd == "1" and nama:
             records.append((nama, inst))
             
-    print(f"✅ Berhasil memuat {len(records)} pegawai.")
+    print(f"✅ Berhasil memuat {len(records)} pegawai dengan kriteria AV = 1.")
     
     typ_path = OUTPUT_DIR / "surat-permohonan-pengisian-mandiri-diskominfo.typ"
     pdf_path = OUTPUT_DIR / "surat-permohonan-pengisian-mandiri-diskominfo.pdf"
