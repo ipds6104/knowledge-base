@@ -158,6 +158,8 @@ Adapun tautan/link pengisian mandiri tersebut dapat diakses secara daring melalu
 ]
 #v(2pt)
 
+Perlu kami sampaikan bahwa apabila pegawai yang bersangkutan telah didatangi dan dilakukan pendataan secara langsung oleh petugas BPS, maka yang bersangkutan tidak perlu melakukan pengisian mandiri kembali.
+
 Bersama surat ini, kami lampirkan daftar nama pegawai beserta instansi/OPD terkait (sejumlah {total_records} pegawai) yang menjadi sasaran pengisian mandiri. Untuk koordinasi teknis, pertanyaan, dan konfirmasi lebih lanjut, Bapak/Ibu dapat menghubungi narahubung kami, *Sarah Pratiwi* (WhatsApp: *0856-4121-9375*).
 
 Demikian permohonan ini kami sampaikan, atas perhatian, dukungan, dan kerja sama yang baik kami ucapkan terima kasih.
@@ -416,9 +418,19 @@ def generate_docx(records: list, docx_path: Path):
     r_bxlink.font.size = Pt(11)
     r_bxlink.font.color.rgb = RGBColor(0x25, 0x63, 0xEB)
     
+    # Paragraf Penjelasan Pendataan BPS
+    p_bps_info = doc.add_paragraph()
+    p_bps_info.paragraph_format.space_before = Pt(8)
+    p_bps_info.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+    p_bps_info.paragraph_format.line_spacing = 1.15
+    p_bps_info.add_run(
+        "Perlu kami sampaikan bahwa apabila pegawai yang bersangkutan telah didatangi dan dilakukan pendataan "
+        "secara langsung oleh petugas BPS, maka yang bersangkutan tidak perlu melakukan pengisian mandiri kembali."
+    )
+    
     # Paragraf Penutup & PIC
     p_isi2 = doc.add_paragraph()
-    p_isi2.paragraph_format.space_before = Pt(10)
+    p_isi2.paragraph_format.space_before = Pt(8)
     p_isi2.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
     p_isi2.paragraph_format.line_spacing = 1.15
     p_isi2.add_run(

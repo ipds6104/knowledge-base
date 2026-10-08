@@ -90,6 +90,8 @@ Adapun tautan/link pengisian mandiri tersebut dapat diakses secara daring melalu
 ]
 #v(2pt)
 
+Perlu kami sampaikan bahwa apabila pegawai yang bersangkutan telah didatangi dan dilakukan pendataan secara langsung oleh petugas BPS, maka yang bersangkutan tidak perlu melakukan pengisian mandiri kembali.
+
 Bersama surat ini, kami lampirkan daftar nama pegawai beserta instansi/OPD terkait (sejumlah 191 pegawai) yang menjadi sasaran pengisian mandiri. Untuk koordinasi teknis, pertanyaan, dan konfirmasi lebih lanjut, Bapak/Ibu dapat menghubungi narahubung kami, *Sarah Pratiwi* (WhatsApp: *0856-4121-9375*).
 
 Demikian permohonan ini kami sampaikan, atas perhatian, dukungan, dan kerja sama yang baik kami ucapkan terima kasih.
