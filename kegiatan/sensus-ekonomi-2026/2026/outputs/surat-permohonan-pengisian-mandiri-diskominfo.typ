@@ -36,8 +36,8 @@
   ]
 )
 
-#set text(font: "Arial", size: 11pt, lang: "id")
-#set par(justify: true, leading: 0.6em)
+#set text(font: "Arial", size: 10.5pt, lang: "id")
+#set par(justify: true, leading: 0.55em)
 
 // =============================================================================
 // METADATA SURAT DINAS (HALAMAN 1)
@@ -63,47 +63,79 @@
   ]
 )
 
-#v(8pt)
+#v(6pt)
 Yth. *Kepala Dinas Komunikasi dan Informatika* \
 #h(20pt)*Kabupaten Mempawah* \
 di Mempawah
 
-#v(8pt)
+#v(6pt)
 Dengan hormat,
 
 Sehubungan dengan pelaksanaan rangkaian kegiatan Sensus Ekonomi 2026 (SE2026) dan pemadanan data di wilayah Kabupaten Mempawah, Badan Pusat Statistik (BPS) Kabupaten Mempawah bermaksud memohon bantuan dan fasilitasi Bapak/Ibu Kepala Dinas Komunikasi dan Informatika Kabupaten Mempawah untuk mengimbau seluruh Organisasi Perangkat Daerah (OPD) di lingkungan Pemerintah Kabupaten Mempawah agar pegawai yang bersangkutan dapat melakukan pengisian mandiri (*Computer Assisted Web Interviewing / CAWI*).
 
-Adapun tautan/link pengisian mandiri tersebut dapat diakses secara daring melalui tautan resmi berikut:
+Adapun tautan pengisian mandiri serta tautan panduan/tutorial tahapannya dapat diakses secara daring melalui tautan resmi berikut:
 
 #v(2pt)
-#align(center)[
-  #block(
-    fill: rgb("#EFF6FF"),
-    inset: (x: 16pt, y: 7pt),
-    radius: 4pt,
-    stroke: 0.8pt + rgb("#3B82F6")
-  )[
-    #text(10pt, weight: "bold", fill: rgb("#1E40AF"))[Tautan Pengisian Mandiri:] \
-    #v(2pt)
-    #link("https://s.bps.go.id/61_ECKalbar")[#text(11pt, weight: "bold", fill: rgb("#2563EB"))[https://s.bps.go.id/61_ECKalbar]]
+#grid(
+  columns: (1fr, 1fr),
+  gutter: 8pt,
+  [
+    #block(
+      fill: rgb("#EFF6FF"),
+      inset: (x: 10pt, y: 6pt),
+      radius: 4pt,
+      stroke: 0.8pt + rgb("#3B82F6"),
+      width: 100%
+    )[
+      #align(center)[
+        #text(9.5pt, weight: "bold", fill: rgb("#1E40AF"))[Tautan Pengisian Mandiri:] \
+        #v(1.5pt)
+        #link("https://s.bps.go.id/61_ECKalbar")[#text(10pt, weight: "bold", fill: rgb("#2563EB"))[s.bps.go.id/61_ECKalbar]]
+      ]
+    ]
+  ],
+  [
+    #block(
+      fill: rgb("#F0FDF4"),
+      inset: (x: 10pt, y: 6pt),
+      radius: 4pt,
+      stroke: 0.8pt + rgb("#16A34A"),
+      width: 100%
+    )[
+      #align(center)[
+        #text(9.5pt, weight: "bold", fill: rgb("#166534"))[Tutorial & Panduan Tahapan:] \
+        #v(1.5pt)
+        #link("http://s.bps.go.id/Tutorial_cawi_keluarga")[#text(10pt, weight: "bold", fill: rgb("#15803D"))[s.bps.go.id/Tutorial_cawi_keluarga]]
+      ]
+    ]
   ]
-]
+)
 #v(2pt)
 
-Perlu kami sampaikan bahwa apabila pegawai yang bersangkutan telah didatangi dan dilakukan pendataan secara langsung oleh petugas BPS, maka yang bersangkutan tidak perlu melakukan pengisian mandiri kembali.
+Secara garis besar, tahapan pengisian mandiri (*CAWI*) meliputi:
+#enum(
+  tight: true,
+  spacing: 3.5pt,
+  [Akses tautan di atas dan masukkan Nomor KK serta NIK kepala keluarga / anggota keluarga;],
+  [Lakukan verifikasi identitas, registrasi data pelengkap, verifikasi kode OTP, dan pembuatan PIN;],
+  [Isi seluruh kuesioner pertanyaan SE2026 secara lengkap hingga konfirmasi pengiriman (*submit*);],
+  [Menerima Bukti Penerimaan Elektronik (BPE) melalui email sebagai konfirmasi pengisian selesai.]
+)
+
+Perlu kami sampaikan pula bahwa apabila pegawai yang bersangkutan telah didatangi dan dilakukan pendataan secara langsung oleh petugas BPS, maka yang bersangkutan tidak perlu melakukan pengisian mandiri kembali.
 
 Bersama surat ini, kami lampirkan daftar nama pegawai beserta instansi/OPD terkait (sejumlah 191 pegawai) yang menjadi sasaran pengisian mandiri. Untuk koordinasi teknis, pertanyaan, dan konfirmasi lebih lanjut, Bapak/Ibu dapat menghubungi narahubung kami, *Sarah Pratiwi* (WhatsApp: *0856-4121-9375*).
 
 Demikian permohonan ini kami sampaikan, atas perhatian, dukungan, dan kerja sama yang baik kami ucapkan terima kasih.
 
-#v(10pt)
+#v(8pt)
 
 #align(right)[
   #block(width: 220pt)[
     #align(center)[
       Kepala Badan Pusat Statistik \
       Kabupaten Mempawah,
-      #v(42pt)
+      #v(38pt)
       *Munawir*
     ]
   ]

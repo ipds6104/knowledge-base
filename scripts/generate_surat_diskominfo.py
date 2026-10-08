@@ -104,8 +104,8 @@ def build_typst_content(records: list) -> str:
   ]
 )
 
-#set text(font: "Arial", size: 11pt, lang: "id")
-#set par(justify: true, leading: 0.6em)
+#set text(font: "Arial", size: 10.5pt, lang: "id")
+#set par(justify: true, leading: 0.55em)
 
 // =============================================================================
 // METADATA SURAT DINAS (HALAMAN 1)
@@ -131,47 +131,79 @@ def build_typst_content(records: list) -> str:
   ]
 )
 
-#v(8pt)
+#v(6pt)
 Yth. *Kepala Dinas Komunikasi dan Informatika* \\
 #h(20pt)*Kabupaten Mempawah* \\
 di Mempawah
 
-#v(8pt)
+#v(6pt)
 Dengan hormat,
 
 Sehubungan dengan pelaksanaan rangkaian kegiatan Sensus Ekonomi 2026 (SE2026) dan pemadanan data di wilayah Kabupaten Mempawah, Badan Pusat Statistik (BPS) Kabupaten Mempawah bermaksud memohon bantuan dan fasilitasi Bapak/Ibu Kepala Dinas Komunikasi dan Informatika Kabupaten Mempawah untuk mengimbau seluruh Organisasi Perangkat Daerah (OPD) di lingkungan Pemerintah Kabupaten Mempawah agar pegawai yang bersangkutan dapat melakukan pengisian mandiri (*Computer Assisted Web Interviewing / CAWI*).
 
-Adapun tautan/link pengisian mandiri tersebut dapat diakses secara daring melalui tautan resmi berikut:
+Adapun tautan pengisian mandiri serta tautan panduan/tutorial tahapannya dapat diakses secara daring melalui tautan resmi berikut:
 
 #v(2pt)
-#align(center)[
-  #block(
-    fill: rgb("#EFF6FF"),
-    inset: (x: 16pt, y: 7pt),
-    radius: 4pt,
-    stroke: 0.8pt + rgb("#3B82F6")
-  )[
-    #text(10pt, weight: "bold", fill: rgb("#1E40AF"))[Tautan Pengisian Mandiri:] \\
-    #v(2pt)
-    #link("https://s.bps.go.id/61_ECKalbar")[#text(11pt, weight: "bold", fill: rgb("#2563EB"))[https://s.bps.go.id/61_ECKalbar]]
+#grid(
+  columns: (1fr, 1fr),
+  gutter: 8pt,
+  [
+    #block(
+      fill: rgb("#EFF6FF"),
+      inset: (x: 10pt, y: 6pt),
+      radius: 4pt,
+      stroke: 0.8pt + rgb("#3B82F6"),
+      width: 100%
+    )[
+      #align(center)[
+        #text(9.5pt, weight: "bold", fill: rgb("#1E40AF"))[Tautan Pengisian Mandiri:] \\
+        #v(1.5pt)
+        #link("https://s.bps.go.id/61_ECKalbar")[#text(10pt, weight: "bold", fill: rgb("#2563EB"))[s.bps.go.id/61_ECKalbar]]
+      ]
+    ]
+  ],
+  [
+    #block(
+      fill: rgb("#F0FDF4"),
+      inset: (x: 10pt, y: 6pt),
+      radius: 4pt,
+      stroke: 0.8pt + rgb("#16A34A"),
+      width: 100%
+    )[
+      #align(center)[
+        #text(9.5pt, weight: "bold", fill: rgb("#166534"))[Tutorial & Panduan Tahapan:] \\
+        #v(1.5pt)
+        #link("http://s.bps.go.id/Tutorial_cawi_keluarga")[#text(10pt, weight: "bold", fill: rgb("#15803D"))[s.bps.go.id/Tutorial_cawi_keluarga]]
+      ]
+    ]
   ]
-]
+)
 #v(2pt)
 
-Perlu kami sampaikan bahwa apabila pegawai yang bersangkutan telah didatangi dan dilakukan pendataan secara langsung oleh petugas BPS, maka yang bersangkutan tidak perlu melakukan pengisian mandiri kembali.
+Secara garis besar, tahapan pengisian mandiri (*CAWI*) meliputi:
+#enum(
+  tight: true,
+  spacing: 3.5pt,
+  [Akses tautan di atas dan masukkan Nomor KK serta NIK kepala keluarga / anggota keluarga;],
+  [Lakukan verifikasi identitas, registrasi data pelengkap, verifikasi kode OTP, dan pembuatan PIN;],
+  [Isi seluruh kuesioner pertanyaan SE2026 secara lengkap hingga konfirmasi pengiriman (*submit*);],
+  [Menerima Bukti Penerimaan Elektronik (BPE) melalui email sebagai konfirmasi pengisian selesai.]
+)
+
+Perlu kami sampaikan pula bahwa apabila pegawai yang bersangkutan telah didatangi dan dilakukan pendataan secara langsung oleh petugas BPS, maka yang bersangkutan tidak perlu melakukan pengisian mandiri kembali.
 
 Bersama surat ini, kami lampirkan daftar nama pegawai beserta instansi/OPD terkait (sejumlah {total_records} pegawai) yang menjadi sasaran pengisian mandiri. Untuk koordinasi teknis, pertanyaan, dan konfirmasi lebih lanjut, Bapak/Ibu dapat menghubungi narahubung kami, *Sarah Pratiwi* (WhatsApp: *0856-4121-9375*).
 
 Demikian permohonan ini kami sampaikan, atas perhatian, dukungan, dan kerja sama yang baik kami ucapkan terima kasih.
 
-#v(10pt)
+#v(8pt)
 
 #align(right)[
   #block(width: 220pt)[
     #align(center)[
       Kepala Badan Pusat Statistik \\
       Kabupaten Mempawah,
-      #v(42pt)
+      #v(38pt)
       *Munawir*
     ]
   ]
@@ -376,55 +408,102 @@ def generate_docx(records: list, docx_path: Path):
     r_cawi.bold = True
     p_isi1.add_run(".\n\n")
     p_isi1.add_run(
-        "Adapun tautan/link pengisian mandiri tersebut dapat diakses secara daring melalui tautan resmi berikut:"
+        "Adapun tautan pengisian mandiri serta tautan panduan/tutorial tahapannya dapat diakses secara daring melalui tautan resmi berikut:"
     )
     
-    # Box Link Pengisian
-    box_table = doc.add_table(rows=1, cols=1)
+    # Box Link 2 Kolom (Tautan Pengisian & Tautan Tutorial)
+    box_table = doc.add_table(rows=1, cols=2)
     box_table.alignment = WD_TABLE_ALIGNMENT.CENTER
-    b_cell = box_table.rows[0].cells[0]
-    b_cell.width = Inches(5.5)
+    box_table.autofit = False
     
-    # Background light blue
-    tcPr = b_cell._tc.get_or_add_tcPr()
-    shd = OxmlElement('w:shd')
-    shd.set(qn('w:val'), 'clear')
-    shd.set(qn('w:color'), 'auto')
-    shd.set(qn('w:fill'), 'EFF6FF')
-    tcPr.append(shd)
+    b_cell1 = box_table.rows[0].cells[0]
+    b_cell1.width = Inches(3.2)
+    b_cell2 = box_table.rows[0].cells[1]
+    b_cell2.width = Inches(3.2)
     
-    # Blue border
-    tcBorders = OxmlElement('w:tcBorders')
+    # Cell 1: Pengisian Mandiri (Blue)
+    tcPr1 = b_cell1._tc.get_or_add_tcPr()
+    shd1 = OxmlElement('w:shd')
+    shd1.set(qn('w:val'), 'clear')
+    shd1.set(qn('w:color'), 'auto')
+    shd1.set(qn('w:fill'), 'EFF6FF')
+    tcPr1.append(shd1)
+    
+    tcBorders1 = OxmlElement('w:tcBorders')
     for b_name in ['top', 'left', 'bottom', 'right']:
         b = OxmlElement(f'w:{b_name}')
         b.set(qn('w:val'), 'single')
         b.set(qn('w:sz'), '8')
         b.set(qn('w:space'), '0')
         b.set(qn('w:color'), '3B82F6')
-        tcBorders.append(b)
-    tcPr.append(tcBorders)
+        tcBorders1.append(b)
+    tcPr1.append(tcBorders1)
     
-    p_box = b_cell.paragraphs[0]
-    p_box.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_box.paragraph_format.space_before = Pt(6)
-    p_box.paragraph_format.space_after = Pt(6)
-    r_bxtitle = p_box.add_run("Tautan Pengisian Mandiri:\n")
-    r_bxtitle.bold = True
-    r_bxtitle.font.size = Pt(10)
-    r_bxtitle.font.color.rgb = RGBColor(0x1E, 0x40, 0xAF)
+    p_box1 = b_cell1.paragraphs[0]
+    p_box1.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_box1.paragraph_format.space_before = Pt(5)
+    p_box1.paragraph_format.space_after = Pt(5)
+    r_bx1_title = p_box1.add_run("Tautan Pengisian Mandiri:\n")
+    r_bx1_title.bold = True
+    r_bx1_title.font.size = Pt(9.5)
+    r_bx1_title.font.color.rgb = RGBColor(0x1E, 0x40, 0xAF)
     
-    r_bxlink = p_box.add_run("https://s.bps.go.id/61_ECKalbar")
-    r_bxlink.bold = True
-    r_bxlink.font.size = Pt(11)
-    r_bxlink.font.color.rgb = RGBColor(0x25, 0x63, 0xEB)
+    r_bx1_link = p_box1.add_run("https://s.bps.go.id/61_ECKalbar")
+    r_bx1_link.bold = True
+    r_bx1_link.font.size = Pt(10)
+    r_bx1_link.font.color.rgb = RGBColor(0x25, 0x63, 0xEB)
+    
+    # Cell 2: Tutorial & Panduan (Green)
+    tcPr2 = b_cell2._tc.get_or_add_tcPr()
+    shd2 = OxmlElement('w:shd')
+    shd2.set(qn('w:val'), 'clear')
+    shd2.set(qn('w:color'), 'auto')
+    shd2.set(qn('w:fill'), 'F0FDF4')
+    tcPr2.append(shd2)
+    
+    tcBorders2 = OxmlElement('w:tcBorders')
+    for b_name in ['top', 'left', 'bottom', 'right']:
+        b = OxmlElement(f'w:{b_name}')
+        b.set(qn('w:val'), 'single')
+        b.set(qn('w:sz'), '8')
+        b.set(qn('w:space'), '0')
+        b.set(qn('w:color'), '16A34A')
+        tcBorders2.append(b)
+    tcPr2.append(tcBorders2)
+    
+    p_box2 = b_cell2.paragraphs[0]
+    p_box2.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_box2.paragraph_format.space_before = Pt(5)
+    p_box2.paragraph_format.space_after = Pt(5)
+    r_bx2_title = p_box2.add_run("Tutorial & Panduan Tahapan:\n")
+    r_bx2_title.bold = True
+    r_bx2_title.font.size = Pt(9.5)
+    r_bx2_title.font.color.rgb = RGBColor(0x16, 0x65, 0x34)
+    
+    r_bx2_link = p_box2.add_run("http://s.bps.go.id/Tutorial_cawi_keluarga")
+    r_bx2_link.bold = True
+    r_bx2_link.font.size = Pt(10)
+    r_bx2_link.font.color.rgb = RGBColor(0x15, 0x80, 0x3D)
+    
+    # Paragraf Tahapan Pengisian CAWI
+    p_step = doc.add_paragraph()
+    p_step.paragraph_format.space_before = Pt(6)
+    p_step.paragraph_format.space_after = Pt(4)
+    p_step.paragraph_format.line_spacing = 1.15
+    p_step.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+    r_sth = p_step.add_run("Secara garis besar, tahapan pengisian mandiri (CAWI) meliputi:\n")
+    p_step.add_run("1. Akses tautan di atas dan masukkan Nomor KK serta NIK kepala keluarga / anggota keluarga;\n")
+    p_step.add_run("2. Lakukan verifikasi identitas, registrasi data pelengkap, verifikasi kode OTP, dan pembuatan PIN;\n")
+    p_step.add_run("3. Isi seluruh kuesioner pertanyaan SE2026 secara lengkap hingga konfirmasi pengiriman (submit);\n")
+    p_step.add_run("4. Menerima Bukti Penerimaan Elektronik (BPE) melalui email sebagai konfirmasi pengisian selesai.")
     
     # Paragraf Penjelasan Pendataan BPS
     p_bps_info = doc.add_paragraph()
-    p_bps_info.paragraph_format.space_before = Pt(8)
+    p_bps_info.paragraph_format.space_before = Pt(6)
     p_bps_info.paragraph_format.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
     p_bps_info.paragraph_format.line_spacing = 1.15
     p_bps_info.add_run(
-        "Perlu kami sampaikan bahwa apabila pegawai yang bersangkutan telah didatangi dan dilakukan pendataan "
+        "Perlu kami sampaikan pula bahwa apabila pegawai yang bersangkutan telah didatangi dan dilakukan pendataan "
         "secara langsung oleh petugas BPS, maka yang bersangkutan tidak perlu melakukan pengisian mandiri kembali."
     )
     
