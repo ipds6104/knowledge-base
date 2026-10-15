@@ -340,6 +340,14 @@
   - `kegiatan/spkrt-2027/2027/README.md`
   - Berkas surat & lampiran: `kegiatan/spkrt-2027/2027/docs/`
 
+## SBR pasca Sensus Ekonomi 2026 (15 Oktober 2026)
+- **Nama Kegiatan**: SBR pasca Sensus Ekonomi 2026
+- **Pengawasan & Pelaksanaan**: Pengisian dokumen Non-Disclosure Agreement (NDA) diawasi oleh Kak Sukma, pencetakan dibantu oleh Dwi.
+- **Deadline Kunci**:
+  - **Jumat, 16 Oktober 2026**: Batas akhir pengisian, penandatanganan, dan upload dokumen NDA bagi seluruh tim organik SBR dan rekan magang.
+- **Dokumentasi KB**: [`kegiatan/sbr-pasca-se2026/2026/README.md`](../kegiatan/sbr-pasca-se2026/2026/README.md).
+
+
 
 
 

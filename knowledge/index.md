@@ -26,6 +26,7 @@
 | `2026` | **Pembinaan Statistik Sektoral** | ketua | `aktif` | `2026-09-09` | [`README.md`](kegiatan/pembinaan-statistik-sektoral/2026/README.md) |
 | `2026` | **Pengisian Kinerja Pegawai (KipApp)** | anggota | `aktif` | `2026-10-02` | [`README.md`](kegiatan/kipapp/2026/README.md) |
 | `2026` | **Perawatan Perangkat IT** | ketua | `aktif` | `2026-09-30` | [`README.md`](kegiatan/perawatan-perangkat-it/2026/README.md) |
+| `2026` | **SBR pasca Sensus Ekonomi 2026** | anggota | `aktif` | `2026-10-16` | [`README.md`](kegiatan/sbr-pasca-se2026/2026/README.md) |
 | `2026` | **SERUTI Triwulan 3 2026** | anggota | `aktif` | `2026-09-30` | [`README.md`](kegiatan/seruti-tw3/2026/README.md) |
 | `2026` | **Sensus Ekonomi 2026** | ketua | `aktif` | `2026-09-30` | [`README.md`](kegiatan/sensus-ekonomi-2026/2026/README.md) |
 | `2026` | **Transisi dan Pengelolaan Infrastruktur TI SPBE 2026** | ketua | `aktif` | `2026-09-30` | [`README.md`](kegiatan/transisi-spbe-infra-ti/2026/README.md) |
@@ -47,13 +48,14 @@
 - **2026-09-30**: Sensus Ekonomi 2026 (Periode: `2026`, PIC: ketua)
 - **2026-09-30**: Transisi dan Pengelolaan Infrastruktur TI SPBE 2026 (Periode: `2026`, PIC: ketua)
 - **2026-10-02**: Pengisian Kinerja Pegawai (KipApp) (Periode: `2026`, PIC: anggota)
+- **2026-10-16**: SBR pasca Sensus Ekonomi 2026 (Periode: `2026`, PIC: anggota)
 - **2026-12-06**: Survei Pola Konsumsi Rumah Tangga (SPKRT) 2027 (Periode: `2027`, PIC: anggota)
 
 ## 4. Arsip Riwayat Obrolan WhatsApp (SQLite FTS5)
 
 | Nama Arsip | Total Pesan | Partisipan | Rentang Tanggal | Ukuran |
 |---|---|---|---|---|
-| **aina** | 6064 | 137 | `2026-09-11 10:54:02 s.d. 2026-10-15 09:28:50` | 7788.0 KB |
+| **aina** | 6066 | 137 | `2026-09-11 10:54:02 s.d. 2026-10-15 09:33:31` | 7788.0 KB |
 | **ipds-kalbar** | 1303 | 64 | `2023-01-08 19:44:00 s.d. 2026-12-09 06:34:00` | 744.0 KB |
 | **pic-spbe-kalbar** | 796 | 18 | `2026-01-05 21:42:00 s.d. 2026-12-08 10:11:00` | 348.0 KB |
 
