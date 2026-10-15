@@ -13,6 +13,7 @@
 
 | Periode | Nama Aktivitas | PIC / Peran | Status | Tenggat Waktu | Berkas |
 |---|---|---|---|---|---|
+| `2027` | **Survei Pola Konsumsi Rumah Tangga (SPKRT) 2027** | anggota | `aktif` | `2026-12-06` | [`README.md`](kegiatan/spkrt-2027/2027/README.md) |
 | `2026-09` | **Susenas September 2026** | anggota | `aktif` | `2026-06-30` | [`README.md`](kegiatan/susenas-september/2026-09/README.md) |
 | `2026-08` | **Sakernas** | ketua | `aktif` | `2026-07-25` | [`README.md`](kegiatan/sakernas/2026-08/README.md) |
 | `2026-05` | **Sakernas** | ketua | `selesai` | `2026-05-11` | [`README.md`](kegiatan/sakernas/2026-05/README.md) |
@@ -46,12 +47,13 @@
 - **2026-09-30**: Sensus Ekonomi 2026 (Periode: `2026`, PIC: ketua)
 - **2026-09-30**: Transisi dan Pengelolaan Infrastruktur TI SPBE 2026 (Periode: `2026`, PIC: ketua)
 - **2026-10-02**: Pengisian Kinerja Pegawai (KipApp) (Periode: `2026`, PIC: anggota)
+- **2026-12-06**: Survei Pola Konsumsi Rumah Tangga (SPKRT) 2027 (Periode: `2027`, PIC: anggota)
 
 ## 4. Arsip Riwayat Obrolan WhatsApp (SQLite FTS5)
 
 | Nama Arsip | Total Pesan | Partisipan | Rentang Tanggal | Ukuran |
 |---|---|---|---|---|
-| **aina** | 2592 | 113 | `2026-09-11 10:54:02 s.d. 2026-09-28 11:33:07` | 2584.0 KB |
+| **aina** | 6064 | 137 | `2026-09-11 10:54:02 s.d. 2026-10-15 09:28:50` | 7788.0 KB |
 | **ipds-kalbar** | 1303 | 64 | `2023-01-08 19:44:00 s.d. 2026-12-09 06:34:00` | 744.0 KB |
 | **pic-spbe-kalbar** | 796 | 18 | `2026-01-05 21:42:00 s.d. 2026-12-08 10:11:00` | 348.0 KB |
 

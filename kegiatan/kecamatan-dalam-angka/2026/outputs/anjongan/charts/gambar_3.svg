@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 131" width="100%" height="131pt" style="font-family: 'Liberation Sans', Arial, sans-serif;">
+<rect width="340" height="131" fill="#FAFAFA" rx="4"/>
+<line x1="100.0" y1="18" x2="100.0" y2="113" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="100.0" y="126" font-size="5.5" fill="#94A3B8" text-anchor="middle">0</text>
+<line x1="148.75" y1="18" x2="148.75" y2="113" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="148.75" y="126" font-size="5.5" fill="#94A3B8" text-anchor="middle">6</text>
+<line x1="197.5" y1="18" x2="197.5" y2="113" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="197.5" y="126" font-size="5.5" fill="#94A3B8" text-anchor="middle">13</text>
+<line x1="246.25" y1="18" x2="246.25" y2="113" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="246.25" y="126" font-size="5.5" fill="#94A3B8" text-anchor="middle">19</text>
+<line x1="295.0" y1="18" x2="295.0" y2="113" stroke="#F1F5F9" stroke-width="0.8" stroke-dasharray="2,2"/>
+<text x="295.0" y="126" font-size="5.5" fill="#94A3B8" text-anchor="middle">26</text>
+<line x1="100" y1="18" x2="100" y2="113" stroke="#CBD5E1" stroke-width="1"/>
+<text x="94" y="30.5" font-size="6.5" fill="#334155" text-anchor="end">Anjungan Melancar</text>
+<rect x="100" y="22" width="169.56521739130434" height="11" rx="2" fill="#0284C7"/>
+<text x="273.5652173913044" y="30.5" font-size="6" font-weight="bold" fill="#1E293B">23 RT</text>
+<text x="94" y="49.5" font-size="6.5" fill="#334155" text-anchor="end">Kepayang</text>
+<rect x="100" y="41" width="132.70321361058603" height="11" rx="2" fill="#0284C7"/>
+<text x="236.70321361058603" y="49.5" font-size="6" font-weight="bold" fill="#1E293B">18 RT</text>
+<text x="94" y="68.5" font-size="6.5" fill="#334155" text-anchor="end">Dema</text>
+<rect x="100" y="60" width="88.468809073724" height="11" rx="2" fill="#0284C7"/>
+<text x="192.468809073724" y="68.5" font-size="6" font-weight="bold" fill="#1E293B">12 RT</text>
+<text x="94" y="87.5" font-size="6.5" fill="#334155" text-anchor="end">Anjungan Dalam</text>
+<rect x="100" y="79" width="81.09640831758034" height="11" rx="2" fill="#0284C7"/>
+<text x="185.09640831758034" y="87.5" font-size="6" font-weight="bold" fill="#1E293B">11 RT</text>
+<text x="94" y="106.5" font-size="6.5" fill="#334155" text-anchor="end">Pak Bulu</text>
+<rect x="100" y="98" width="58.97920604914934" height="11" rx="2" fill="#0284C7"/>
+<text x="162.97920604914935" y="106.5" font-size="6" font-weight="bold" fill="#1E293B">8 RT</text>
+</svg>

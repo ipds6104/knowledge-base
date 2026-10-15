@@ -17,7 +17,7 @@ deadlines:
     status: "belum"
   - tanggal: "2026-10-07"
     kegiatan: "Penyelesaian Administrasi & Laporan Instruktur Daerah Wilkerstat (Ihza) untuk Pencairan Honor"
-    status: "belum"
+    status: "selesai"
   - tanggal: "2026-10-09"
     kegiatan: "Batas Akhir Preprocessing & Splitting Geotagging serta Finalisasi Master 2026_1 di BPS Pusat"
     status: "belum"
@@ -519,6 +519,10 @@ Berikut adalah daftar PPL dengan rasio usaha keluarga Non-Aktif (Closed / Not Fo
   Surat Dinas BPS Provinsi Kalbar No. B-713/61000/VS.190/2026 mengenai jadwal pelatihan BPS Kab/Kota (7–11 September 2026), beban 500 SLS/bulan per petugas, materi, serta format SPK dan BAST.
 * 📄 **[Surat Perubahan Jumlah Petugas dan Moda Pelatihan Wilkerstat SE2026](docs/surat-perubahan-petugas-dan-moda-pelatihan-wilkerstat-se2026.md)**  
   Surat Dinas BPS RI No. B-805/02100/VS.190/2026 mengenai ketentuan beban baku 500 SLS/bulan, koordinasi usulan perubahan jumlah petugas ke Dit. Metodologi Statistik & Sains Data, persetujuan moda pelatihan luring/tambahan hari (max honor mengajar 18 OJP), dan acuan revisi anggaran PMK 41/2026.
+* 📄 **[Template Laporan Fasilitator/Inda Pelatihan Pengolahan Wilkerstat SE2026](docs/template-laporan-inda-wilkerstat-se2026.md)** ([Berkas Docx](docs/template-laporan-inda-wilkerstat-se2026.docx))  
+  Format baku laporan pertanggungjawaban Instruktur Daerah (Inda) Pusdiklat BPS untuk pencairan honor mengajar Pelatihan Petugas Pengolahan Wilkerstat SE2026, mencakup format surat pengantar dan 5 lampiran wajib (bahan ajar 4 slide, presensi harian mengajar, jadwal, notulensi Q&A, dan dokumentasi foto kegiatan).
+* 📄 **[Surat Undangan & Jadwal Pelatihan Petugas Pengolahan Wilkerstat SE2026](docs/undangan-pelatihan-petugas-pengolahan-wilkerstat-se2026.md)** ([PDF](docs/pdf/Undangan_Pelatihan_Petugas_Pengolahan_Wilkerstat_SE2026.pdf))  
+  Surat Kepala BPS Kabupaten Mempawah No. B-1145/61040/VS.190/09/2026 mengenai jadwal pelatihan 23–24 September 2026, daftar 3 peserta mitra (Rohmi, Yusron, Septiana), dan rincian rundown jam pelajaran per sesi/hari.
 * 📚 **[Materi Lengkap Pengolahan Wilkerstat SE2026 (10 Modul)](materi-pengolahan/README.md)**  
   Arsip komprehensif materi pelatihan Inda & Petugas Pengolahan Wilkerstat SE2026 (10 modul PDF & Markdown LLM-ready, diagram alur kerja, standar beban kerja mitra, dan juknis pengolahan).
 * 📄 **[Audit Rekonsiliasi Prelist DTSEN Hilang ke Regsosek CETAR Kalbar](docs/audit-dtsen-hilang-regsosek-cetar.md)**  
@@ -595,6 +599,44 @@ node src/pull-progress-petugas.js
 ### 4. Berkas Hasil Akhir
 * **CSV Progres**: [progress_petugas_se2026_mempawah.csv](outputs/progress_petugas_se2026_mempawah.csv)
 * **Excel Progres (Premium Styled)**: [progress_petugas_se2026_mempawah.xlsx](outputs/progress_petugas_se2026_mempawah.xlsx)
+
+---
+
+## 🔍 Pengecekan Hasil Pendataan SE2026 Kabupaten/Kota (Surat B-407/03100/SS.030/2026)
+
+* **Dasar Surat**: Surat Direktur Metodologi Statistik dan Sains Data BPS RI Nomor `B-407/03100/SS.030/2026` tanggal 9 Oktober 2026.
+* **Perihal**: Pengecekan Hasil Pendataan SE2026 Kabupaten/Kota.
+* **Tautan Sumber Resmi**:
+  * Data Pemadanan SBR Daerah: `http://s.bps.go.id/hasilSBRuntukDaerah`
+  * Script Scraping & Template GC: `http://s.bps.go.id/Scraping_SE`
+
+### Alur Pelaksanaan Teknis Kab/Kota:
+1. **Unduh Data SBR Daerah**:
+   * Unduh data entitas Usaha Baru (UB) dan Usaha Menengah/Besar (UM) sesuai Kabupaten/Kota di `http://s.bps.go.id/hasilSBRuntukDaerah`.
+   * Cakupan status pemadanan:
+     * Kode 0: Tidak ditemukan
+     * Kode 4: Duplikat / ganda
+     * Kode 11: Pindah dan tidak dapat ditelusuri
+     * Kode 30: Tutup
+2. **Eksekusi Script Scraping Usaha**:
+   * Ambil script `scraping_usaha.py` dari folder `Scrip/Scraping` di tautan `http://s.bps.go.id/Scraping_SE`.
+   * Jalankan proses penuh (scraping + rekap):
+     ```bash
+     python scraping_usaha.py input.csv hasil.csv
+     ```
+3. **Filtering Hasil Scraping (`rekap_ubum.xlsx`)**:
+   * Buka file hasil `rekap_ubum.xlsx` pada sheet **`diproses`**.
+   * Terapkan 5 kriteria filter berikut:
+     * `maps_ditemukan` = `TRUE`
+     * `maps_nama_similarity` >= `0.8`
+     * `maps_alamat_similarity` >= `0.8`
+     * `maps_status_bisnis` != `"TUTUP PERMANEN"`
+     * `maps_review_terakhir_hari` <= `90 hari`
+4. **Ground Check (GC) Lapangan**:
+   * Gunakan daftar perusahaan/usaha hasil filter poin 3 sebagai target GC.
+   * Gunakan template dari folder `Hasil Scraping dan Ground Check Daerah` di `http://s.bps.go.id/Scraping_SE`.
+   * Unggah berkas hasil GC ke folder provinsi masing-masing.
+
 
 
 

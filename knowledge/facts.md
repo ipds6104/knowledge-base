@@ -325,6 +325,22 @@
   - Nilai 2023, 2024, dan 2025 kini sepenuhnya selaras dengan angka template master.
   - Kode generator dan data tabel `data/raw_tables/tabel_4_1_1_banyaknya_desa1_kelurahan_yang.json` di `ipds6104/kcda-agent` telah disinkronkan dan di-push ke GitHub.
 
+## Survei Pola Konsumsi Rumah Tangga (SPKRT) 2027 (15 Oktober 2026)
+- **Dasar Surat**: Surat BPS Provinsi Kalimantan Barat Nomor `B-852/61000/VS.300/2026` tanggal 15 Oktober 2026 hal *Pemberitahuan Jadwal Pelaksanaan Lapangan Identifikasi Rumah Tangga dan Spesifikasi Instrumen SPKRT 2027* (menindaklanjuti Surat Direktur Statistik Harga BPS RI No. `B-217/06200/VS.300/2026` tgl 14 Oktober 2026).
+- **Jadwal Pelaksanaan & Batas Akhir (Deadline)**:
+  - **06 – 12 Desember 2026**: Pelaksanaan pendataan lapangan kegiatan **Identifikasi Rumah Tangga Sampel SPKRT 2027 Triwulan I**.
+  - **Tahun 2027**: Pelaksanaan pencacahan lapangan berkala SPKRT 2027.
+- **Tautan Resmi**:
+  - Kuesioner siap cetak: http://s.bps.go.id/KuesionerSPKRT2027
+  - Alokasi sampel dan kebutuhan perlengkapan petugas: http://s.bps.go.id/Alokasi_Petugas_Kues_SPKRT2027
+- **Pengadaan Mandiri Satuan Kerja Daerah**:
+  1. **Pencetakan Kuesioner (7 Jenis)**: VPKRT27-BL (A4 booklet 16/8 hal), VPKRT27-BLp (A5 lipat 2 karton biru 160 gr), VPKRT27-HR (A4 blok note 10 lbr samson lem panas), VPKRT27-HRp (A5 lipat 2 karton hijau 160 gr), VPKRT27-LK (A4 booklet 99/50 hal), VPKRT27-KK (A4 2/1 hal), dan VPKRT27-S (A4 booklet 84/42 hal).
+  2. **Pengadaan Barang Lapangan**: Timbangan digital dapur (kapasitas 5 kg / 10 kg, ketelitian 1 gr, fitur tare/zero, layar LCD, daya baterai) dengan pagu harga satuan maksimal **Rp50.000,00 per unit** (termasuk pajak).
+- **Lokasi Dokumentasi Knowledge Base**:
+  - `kegiatan/spkrt-2027/2027/README.md`
+  - Berkas surat & lampiran: `kegiatan/spkrt-2027/2027/docs/`
+
+
 
 
 

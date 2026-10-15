@@ -61,6 +61,8 @@ kegiatan/evaluasi-epss/**/materi-pelatihan/
 *.db
 *.sqlite
 *.sqlite3
+*.db-shm
+*.db-wal
 test_*.png
 test_*.typ
 test_*.svg
@@ -76,6 +78,7 @@ sample_lembar_verifikasi_*
 *_cache*.json
 pdf_gdrive_links.json
 *.pdf
+!kegiatan/**/docs/**/*.pdf
 scratch/
 *.part
 *.tmp

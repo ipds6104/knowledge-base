@@ -1,15 +1,14 @@
-// Publikasi Resmi BPS Kabupaten Mempawah: Kecamatan Dalam Angka 2026 (Ukuran A5)
 
 #let in_frontmatter = state("in_frontmatter", true)
 #let active_chapter = state("active_chapter", "")
 #let active_chapter_en = state("active_chapter_en", "")
 #let is_chapter_page = state("is_chapter_page", false)
 
-// Warna Utama & Warna Running Title Resmi BPS (Pedoman KCDA 2026 Bagian B)
+// Warna Utama & Warna Running Title Resmi BPS (Pedoman KCDA)
 #let main_theme_color = cmyk(0%, 20%, 90%, 0%)
 #let running_title_color = cmyk(0%, 35%, 95%, 0%)
 
-// Badge pill numbering resmi BPS Pusat (Aturan KCDA 2026: main_theme_color, 49.2pt x 21pt)
+// Badge pill numbering resmi BPS Pusat (Aturan KCDA: main_theme_color, 49.2pt x 21pt)
 #let page_badge(val) = box(
   fill: main_theme_color,
   radius: 10.5pt,
@@ -28,99 +27,91 @@
 #show figure: it => [ #it #metadata("f") <page_marker> ]
 #show image: it => [ #it #metadata("i") <page_marker> ]
 
-#set page(
-  paper: "a5",
-  margin: (
-    inside: 2.0cm,
-    outside: 1.5cm,
-    top: 2.0cm,
-    bottom: 2.0cm,
-  ),
-  header-ascent: 40%,
-  footer-descent: 20%,
-  header: context {
-    let p = here().page()
-    let has_c = query(selector(<page_marker>)).any(m => {
-      let pos = m.location().position()
-      pos.page == p and pos.y > 1.4cm and pos.y < 19.4cm
-    })
-    let is_ch = query(selector(<chapter_page>)).any(m => m.location().page() == p)
-    if has_c and not in_frontmatter.get() and not is_ch {
-      let page_num = counter(page).get().first()
-      let titles = query(selector(<chapter_title>)).filter(m => m.location().page() <= p)
-      let chapter_title = if titles.len() > 0 { titles.last().value } else { "" }
-      if calc.even(page_num) {
-        // Halaman Genap (Verso/Kiri): Judul Publikasi Bahasa Indonesia (Metropolis, 8pt, running_title_color, bold)
-        align(left, text(8pt, font: ("Metropolis", "Liberation Sans", "Arial"), fill: running_title_color, weight: "bold")[KECAMATAN SUNGAI KUNYIT DALAM ANGKA 2026])
-      } else {
-        // Halaman Ganjil (Rekto/Kanan): Judul Bab Bahasa Indonesia (Metropolis, 8pt, running_title_color, bold)
-        let right_text = if chapter_title != "" { chapter_title } else { "BPS KABUPATEN MEMPAWAH" }
-        align(right, text(8pt, font: ("Metropolis", "Liberation Sans", "Arial"), fill: running_title_color, weight: "bold")[#right_text])
-      }
-    }
-  },
-  footer: context {
-    let p = here().page()
-    let has_c = query(selector(<page_marker>)).any(m => {
-      let pos = m.location().position()
-      pos.page == p and pos.y > 1.4cm and pos.y < 19.4cm
-    })
-    let is_ch = query(selector(<chapter_page>)).any(m => m.location().page() == p)
-    if not has_c or is_ch {
-      // Sesuai Pedoman Publikasi BPS 2023 Subbab 4.1.3 Poin 9 & Subbab 4.4.1 (Hal. 47, 88):
-      // Lembar pembatas bab dihitung sebagai halaman arab tetapi TANPA running title dan TANPA nomor halaman fisik.
-      // Halaman kosong sisipan juga TANPA running title dan nomor halaman fisik.
-      none
-    } else if in_frontmatter.get() {
-      let page_num = counter(page).get().first()
-      // Sesuai Pedoman Publikasi BPS 2023 Subbab 4.1.3 Poin 1 & 2 (Hal. 46) serta Subbab 4.3 (Hal. 75):
-      // - Halaman i (Judul Utama), ii (Katalog), iii (Tim Penyusun), iv (Kontributor) TIDAK dicetak nomornya.
-      // - Nomor fisik baru mulai dicetak pada Kata Pengantar (halaman v ke atas).
-      // - Mengikuti prinsip Rekto-Verso baku: Kiri untuk Genap (Verso) dan Kanan untuk Ganjil (Rekto).
-      if page_num >= 5 {
-        let display_val = counter(page).display("i")
-        if calc.even(page_num) {
-          align(left + top, text(7.5pt, font: ("Myriad Pro", "Liberation Sans", "Arial"), fill: rgb("#4B5563"), weight: "bold")[#v(3pt) #display_val])
-        } else {
-          align(right + top, text(7.5pt, font: ("Myriad Pro", "Liberation Sans", "Arial"), fill: rgb("#4B5563"), weight: "bold")[#v(3pt) #display_val])
-        }
-      }
-    } else {
-      let page_num = counter(page).get().first()
-      let display_val = counter(page).display("1")
-      let titles_en = query(selector(<chapter_title_en>)).filter(m => m.location().page() <= p)
-      let chapter_en = if titles_en.len() > 0 { titles_en.last().value } else { "" }
-      if calc.even(page_num) {
-        // Halaman Genap (Verso/Kiri): Badge No Halaman di kiri + Judul Publikasi Bahasa Inggris (Metropolis, 8pt, running_title_color, italic)
-        grid(
-          columns: (auto, auto),
-          align: horizon,
-          column-gutter: 8pt,
-          page_badge(display_val),
-          text(8pt, font: ("Metropolis", "Liberation Sans", "Arial"), style: "italic", fill: running_title_color)[SUNGAI KUNYIT DISTRICT IN FIGURES 2026]
-        )
-      } else {
-        // Halaman Ganjil (Rekto/Kanan): Judul Bab Bahasa Inggris + Badge No Halaman di kanan (Metropolis, 8pt, running_title_color, italic)
-        let right_en_text = if chapter_en != "" { upper(chapter_en) } else { "SUNGAI KUNYIT DISTRICT IN FIGURES 2026" }
-        grid(
-          columns: (1fr, auto),
-          align: horizon,
-          column-gutter: 8pt,
-          align(right, text(8pt, font: ("Metropolis", "Liberation Sans", "Arial"), style: "italic", fill: running_title_color)[#right_en_text]),
-          page_badge(display_val)
-        )
-      }
-    }
-  }
+#let normal_margins = (
+  inside: 2.0cm,
+  outside: 1.5cm,
+  top: 2.0cm,
+  bottom: 2.0cm,
 )
 
-#set text(font: ("Myriad Pro", "Liberation Sans", "Arial"), size: 7.5pt, lang: "id")
+#let page_header = context {
+  let p = here().page()
+  let has_c = query(selector(<page_marker>)).any(m => {
+    let pos = m.location().position()
+    pos.page == p and pos.y > 1.4cm and pos.y < 19.4cm
+  })
+  if has_c and not in_frontmatter.get() {
+    let page_num = counter(page).get().first()
+    let titles = query(selector(<chapter_title>)).filter(m => m.location().page() <= p)
+    let chapter_title = if titles.len() > 0 { titles.last().value } else { "" }
+    if calc.even(page_num) {
+      // Halaman Genap (Verso/Kiri): Judul Publikasi Bahasa Indonesia
+      align(left, text(8pt, font: ("Metropolis", "Liberation Sans"), fill: running_title_color, weight: "bold")[KECAMATAN SUNGAI KUNYIT DALAM ANGKA 2026])
+    } else {
+      // Halaman Ganjil (Rekto/Kanan): Judul Bab Bahasa Indonesia
+      let right_text = if chapter_title != "" { chapter_title } else { "BPS KABUPATEN MEMPAWAH" }
+      align(right, text(8pt, font: ("Metropolis", "Liberation Sans"), fill: running_title_color, weight: "bold")[#right_text])
+    }
+  }
+}
+
+#let page_footer = context {
+  let p = here().page()
+  let has_c = query(selector(<page_marker>)).any(m => {
+    let pos = m.location().position()
+    pos.page == p and pos.y > 1.4cm and pos.y < 19.4cm
+  })
+  if not has_c {
+    none
+  } else if in_frontmatter.get() {
+    let page_num = counter(page).get().first()
+    if page_num >= 5 {
+      let display_val = counter(page).display("i")
+      if calc.even(page_num) {
+        align(left + top, text(7.5pt, font: ("Myriad Pro", "Liberation Sans"), fill: rgb("#4B5563"), weight: "bold")[#v(3pt) #display_val])
+      } else {
+        align(right + top, text(7.5pt, font: ("Myriad Pro", "Liberation Sans"), fill: rgb("#4B5563"), weight: "bold")[#v(3pt) #display_val])
+      }
+    }
+  } else {
+    let page_num = counter(page).get().first()
+    let display_val = counter(page).display("1")
+    let titles_en = query(selector(<chapter_title_en>)).filter(m => m.location().page() <= p)
+    let chapter_en = if titles_en.len() > 0 { titles_en.last().value } else { "" }
+    if calc.even(page_num) {
+      grid(
+        columns: (auto, auto),
+        align: horizon,
+        column-gutter: 8pt,
+        page_badge(display_val),
+        text(8pt, font: ("Metropolis", "Liberation Sans"), style: "italic", fill: running_title_color)[SUNGAI KUNYIT DISTRICT IN FIGURES 2026]
+      )
+    } else {
+      let right_en_text = if chapter_en != "" { upper(chapter_en) } else { "SUNGAI KUNYIT DISTRICT IN FIGURES 2026" }
+      grid(
+        columns: (1fr, auto),
+        align: horizon,
+        column-gutter: 8pt,
+        align(right, text(8pt, font: ("Metropolis", "Liberation Sans"), style: "italic", fill: running_title_color)[#right_en_text]),
+        page_badge(display_val)
+      )
+    }
+  }
+}
+
+#set page(
+  paper: "a5",
+  margin: normal_margins,
+  header-ascent: 40%,
+  footer-descent: 20%,
+  header: page_header,
+  footer: page_footer,
+)
+
+#set text(font: ("Myriad Pro", "Liberation Sans"), size: 7.5pt, lang: "id")
 #set par(justify: true, leading: 0.5em)
 
-// Matikan justify pada seluruh sel tabel agar spasi antar kata di header & data tabel tidak meregang
 #show table.cell: set par(justify: false)
-
-// Standarisasi Penulisan Judul Gambar BPS (Di Bawah Gambar tanpa prefix dobel)
 #show figure.where(kind: image): set figure(supplement: none)
 #show figure.where(kind: image): set figure.caption(separator: none)
 
@@ -133,7 +124,7 @@
   header: none,
   footer: none,
 )[
-  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/depan/Sungai Kunyit1.jpg", width: 100%, height: 100%)
+  #image("/assets/covers/depan/Sungai Kunyit1.jpg", width: 100%, height: 100%)
 ]
 
 // ==========================================
@@ -161,7 +152,7 @@
   header: none,
   footer: none,
 )[
-  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/depan/Sungai Kunyit2.jpg", width: 100%, height: 100%)
+  #image("/assets/covers/depan/Sungai Kunyit2.jpg", width: 100%, height: 100%)
 ]
 
 // ==========================================
@@ -173,7 +164,7 @@
 #v(1pt)
 #text(9pt, style: "italic", fill: black)[SUNGAI KUNYIT DISTRICT IN FIGURES 2026] \
 #v(2pt)
-#text(7.5pt, fill: black)[Volume 48, 2026]
+#text(7.5pt, fill: black)[Volume 17, 2026]
 
 #let total_frontmatter_pages = context {
   let elems = query(<transisi_isi>)
@@ -199,7 +190,9 @@
 
 #v(9pt)
 #text(7.5pt)[
-  #text(weight: "bold")[Katalog/Catalogue:] 1102001.6104060
+  #text(weight: "bold")[Katalog/Catalogue:] 1102001.6104060 \
+  #v(2pt)
+  #text(weight: "bold")[ISSN:] 3064-5441 \
   #v(2pt)
   #text(weight: "bold")[Nomor Publikasi/Publication Number:] 61040.26005
 ]
@@ -208,7 +201,7 @@
 #text(7.5pt)[
   #text(weight: "bold")[Ukuran Buku/Book Size:] 14,8 cm x 21,0 cm \
   #v(2pt)
-  #text(weight: "bold")[Jumlah Halaman/Number of Pages:] #total_frontmatter_pages+#total_arabic_pages Halaman/Pages
+  #text(weight: "bold")[Jumlah Halaman/Number of Pages:] #total_frontmatter_pages \+ #total_arabic_pages Halaman/Pages
 ]
 
 #v(7pt)
@@ -235,7 +228,7 @@
 #v(5pt)
 #text(7.5pt)[
   #text(weight: "bold")[Sumber Ilustrasi/Illustration Source:] \
-  magnific.com, unsplash.com, BPS Kabupaten Mempawah
+  Canva.com
 ]
 
 #v(5pt)
@@ -257,6 +250,9 @@
 // ==========================================
 // 4. TIM PENYUSUN / COMPILERS (HALAMAN iii)
 // ==========================================
+#align(right)[
+  #text(8pt)[ISSN 3064-5441]
+]
 #v(0.6cm)
 
 #align(center)[
@@ -264,7 +260,7 @@
   #v(2pt)
   #text(8.5pt, weight: "bold")[Kecamatan Sungai Kunyit Dalam Angka 2026] \
   #text(8pt, style: "italic")[Sungai Kunyit District in Figures 2026] \
-  #text(7.5pt)[Volume 48, 2026]
+  #text(7.5pt)[Volume 17, 2026]
   
   #v(16pt)
   #text(8.5pt, weight: "bold")[Pengarah/_Director_] \
@@ -276,54 +272,58 @@
   
   #v(11pt)
   #text(8.5pt, weight: "bold")[Penyunting/_Editors_] \
-  #text(8pt)[Kurniawan #sym.circle.filled.small Sukma Andini]
+  #text(8pt)[Sukma Andini]
   
   #v(11pt)
   #text(8.5pt, weight: "bold")[Pengolah Data dan Penulis Naskah/_Data Processor and Writers_] \
-  #text(8pt)[Sarah Pratiwi]
+  #text(8pt)[Ihza Fikri Zaki Karunia]
   
   #v(11pt)
   #text(8.5pt, weight: "bold")[Penata Letak/_Layouters_] \
-  #text(8pt)[Tim IPDS BPS Kabupaten Mempawah]
+  #text(8pt)[Akma Batrisyia Jazima]
   
   #v(11pt)
   #text(8.5pt, weight: "bold")[Penerjemah/_Translators_] \
-  #text(8pt)[Tim IPDS BPS Kabupaten Mempawah]
+  #text(8pt)[Ihza Fikri Zaki Karunia]
 ]
 
 #pagebreak()
 
 // ==========================================
-// 5. KONTRIBUTOR DATA (HALAMAN iv)
+// 5. KONTRIBUTOR DATA / DATA CONTRIBUTORS (HALAMAN iv)
 // ==========================================
+#v(0.6cm)
 #align(center)[
-  #text(10.5pt, weight: "bold")[KONTRIBUTOR DATA/]#text(10.5pt, weight: "bold", style: "italic")[DATA CONTRIBUTORS]
+  #text(10.5pt, weight: "bold")[KONTRIBUTOR DATA/_DATA CONTRIBUTORS_] \
+  #v(2pt)
+  #text(8.5pt, weight: "bold")[Kecamatan Sungai Kunyit Dalam Angka 2026] \
+  #text(8pt, style: "italic")[Sungai Kunyit District in Figures 2026] \
+  #text(7.5pt)[Volume 17, 2026]
 ]
-#v(14pt)
+#v(16pt)
 
-#set enum(indent: 0pt, body-indent: 7pt, spacing: 9.5pt)
-#text(8pt)[
-+ Kantor Camat Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office]
-+ Kementerian Agama/#text(style: "italic")[Ministry of Religious Affairs]
-+ Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi/#text(style: "italic")[Ministry of Education, Culture, Research, and Technology]
-+ Badan Pusat Statistik/#text(style: "italic")[BPS-Statistics Indonesia]
-+ Dinas Kependudukan dan Pencatatan Sipil Kabupaten Mempawah/#text(style: "italic")[Population and Civil Registration Service of Mempawah Regency]
-+ Dinas Pendidikan, Pemuda, Olahraga dan Pariwisata Kabupaten Mempawah/#text(style: "italic")[Education, Youth, Sports, and Tourism Office of Mempawah Regency]
-+ Dinas Pertanian, Ketahanan Pangan dan Perikanan Kabupaten Mempawah/#text(style: "italic")[Agriculture, Food Security, and Fisheries Office of Mempawah Regency]
-+ Dinas Kesehatan, Pengendalian Penduduk dan Keluarga Berencana Kabupaten Mempawah/#text(style: "italic")[Health, Population Control, and Family Planning Office of Mempawah Regency]
-+ Dinas Perindustrian, Perdagangan dan Tenaga Kerja Kabupaten Mempawah/#text(style: "italic")[Industry, Trade, and Manpower Office of Mempawah Regency]
-+ Bagian Tata Pemerintahan Sekretariat Daerah Kabupaten Mempawah/#text(style: "italic")[Governance Division of Regional Secretariat of Mempawah Regency]
-+ Pemerintah Desa/Kelurahan se-Kecamatan Sungai Kunyit/#text(style: "italic")[Village/Subdistrict Administrations throughout Sungai Kunyit District]
+#align(center)[
+  #block(width: 88%)[
+    #set align(left)
+    #set text(8pt)
+    1. Kementerian Agama/#text(style: "italic")[Ministry of Religious Affair]
+    #v(4pt)
+    2. Kementerian Pendidikan dan Kebudayaan/#text(style: "italic")[Ministry of Education and Culture]
+    #v(4pt)
+    3. Badan Pusat Statistik/#text(style: "italic")[BPS–Statistics Indonesia]
+    #v(4pt)
+    4. Dinas Kependudukan dan Pencatatan Sipil Kabupaten Mempawah/#text(style: "italic")[Population and Civil Registration Service of Mempawah Regency]
+    #v(4pt)
+    5. Badan Perencanaan Pembangunan, Riset dan Inovasi Daerah Kabupaten Mempawah/#text(style: "italic")[Regional Development, Research and Innovation Agency of Mempawah Regency]
+    #v(4pt)
+    6. Kantor Kecamatan Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office]
+  ]
 ]
 
-#pagebreak()
-
-// ==========================================
-// 6. KATA PENGANTAR (HALAMAN v - INDONESIA)
-// ==========================================
 // ------------------------------------------
 // KATA PENGANTAR (kata_pengantar)
 // ------------------------------------------
+#pagebreak()
 #metadata("kata_pengantar") <kata_pengantar>
 
 #block(width: 100%)[
@@ -335,7 +335,7 @@
 
 #import "@preview/meander:0.2.2"
 
-#let profile = (0.000, 0.000, 0.000, 0.541, 0.582, 0.602, 0.626, 0.639, 0.644, 0.644, 0.655, 0.651, 0.644, 0.624, 0.614, 0.626, 0.699, 0.781, 0.827, 0.842, 0.852, 0.861, 0.870, 0.879, 0.888, 0.897, 0.906, 0.915, 0.925, 0.927, 0.886, 0.882, 0.876, 0.861, 0.809, 0.800, 0.803, 0.808, 0.815, 0.819, 0.821, 0.822, 0.823, 0.823, 0.823, 0.823, 0.823, 0.823, 0.823, 0.823)
+#let profile = (0.000, 0.000, 0.000, 0.598, 0.625, 0.640, 0.649, 0.654, 0.655, 0.655, 0.665, 0.664, 0.661, 0.655, 0.637, 0.628, 0.637, 0.692, 0.762, 0.820, 0.841, 0.852, 0.861, 0.868, 0.876, 0.883, 0.889, 0.896, 0.904, 0.911, 0.917, 0.925, 0.934, 0.940, 0.941, 0.919, 0.895, 0.891, 0.886, 0.879, 0.840, 0.810, 0.813, 0.816, 0.820, 0.826, 0.829, 0.831, 0.831, 0.832)
 
 #block[
   #set text(hyphenate: false, size: 8pt)
@@ -359,50 +359,43 @@
       box(
         width: 10.68cm,
         height: 12.5cm,
-        image("/kegiatan/kecamatan-dalam-angka/2026/assets/kepala_bps.png", width: 100%, height: 100%)
+        image("/assets/kepala_bps.png", width: 100%, height: 100%)
       )
     )
 
     container()
     content[
-      
-        #text(fill: rgb("#EA580C"), weight: "bold")[Publikasi Kecamatan Sungai Kunyit Dalam Angka 2026] merupakan seri publikasi tahunan BPS Kabupaten Mempawah yang menyajikan beragam data statistik sektoral bersumber dari instansi pemerintah daerah, kantor camat, desa/kelurahan, serta survei dan sensus BPS. Publikasi ini memuat gambaran umum mengenai geografi, pemerintahan, serta perkembangan kondisi sosial-demografi dan perekonomian di wilayah Kecamatan Sungai Kunyit secara menyeluruh.
+      #text(fill: rgb("#EA580C"), weight: "bold")[Publikasi Kecamatan Sungai Kunyit Dalam Angka 2026] merupakan seri publikasi tahunan BPS Kabupaten Mempawah yang menyajikan beragam data statistik sektoral bersumber dari instansi pemerintah daerah, kantor camat, desa/kelurahan, serta survei dan sensus BPS. Publikasi ini memuat gambaran umum mengenai geografi, pemerintahan, serta perkembangan kondisi sosial-demografi dan perekonomian di wilayah Kecamatan Sungai Kunyit secara menyeluruh.
 
-        #v(3.5pt)
-        Data yang disajikan diharapkan dapat menjadi rujukan empiris dan indikator penting dalam mendukung perencanaan, pemantauan, serta evaluasi kebijakan pembangunan daerah demi terwujudnya Satu Data Indonesia. Seiring dinamika pembangunan dan kebutuhan data berkualitas, publikasi ini terus disempurnakan baik sistematika penyajian maupun visualisasinya.
+      #v(3.5pt)
+      Data yang disajikan diharapkan dapat menjadi rujukan empiris dan indikator penting dalam mendukung perencanaan, pemantauan, serta evaluasi kebijakan pembangunan daerah demi terwujudnya Satu Data Indonesia. Seiring dinamika pembangunan dan kebutuhan data berkualitas, publikasi ini terus disempurnakan baik sistematika penyajian maupun visualisasinya.
 
-        #v(3.5pt)
-        Ucapan terima kasih dan penghargaan setinggi-tingginya kami sampaikan kepada Camat Sungai Kunyit, para Kepala Desa dan Lurah se-Kecamatan Sungai Kunyit, serta pimpinan Organisasi Perangkat Daerah atas koordinasi dan kontribusi data yang diberikan sehingga penyusunan publikasi ini selesai tepat waktu.
+      #v(3.5pt)
+      Ucapan terima kasih dan penghargaan setinggi-tingginya kami sampaikan kepada Camat Sungai Kunyit, para Kepala Desa dan Lurah se-Kecamatan Sungai Kunyit, serta pimpinan Organisasi Perangkat Daerah atas koordinasi dan kontribusi data yang diberikan sehingga penyusunan publikasi ini selesai tepat waktu.
 
-        #v(3.5pt)
-        Kami menyadari publikasi ini masih memiliki ruang penyempurnaan. Oleh karena itu, saran dan masukan konstruktif sangat kami harapkan guna perbaikan edisi mendatang. Semoga publikasi ini memberikan manfaat nyata bagi seluruh pemangku kepentingan.
+      #v(3.5pt)
+      Kami menyadari publikasi ini masih memiliki ruang penyempurnaan. Oleh karena itu, saran dan masukan konstruktif sangat kami harapkan guna perbaikan edisi mendatang. Semoga publikasi ini memberikan manfaat nyata bagi seluruh pemangku kepentingan.
 
-        #v(6pt)
-        #align(right)[
-          #block(width: 4.8cm)[
-            #set align(left)
-            Mempawah, September 2026 \
-            Kepala BPS Kabupaten Mempawah \
-            #v(3pt)
-            #image("/kegiatan/kecamatan-dalam-angka/2026/assets/ttd_kepala_bps.png", height: 26pt) \
-            #v(2pt)
-            *MUNAWIR*
-          ]
+      #v(6pt)
+      #align(right)[
+        #block(width: 4.8cm)[
+          #set align(left)
+          Mempawah, September 2026 \
+          Kepala BPS Kabupaten Mempawah \
+          #v(3pt)
+          #image("/assets/ttd_kepala_bps.png", height: 26pt) \
+          #v(2pt)
+          *MUNAWIR*
         ]
-      
+      ]
       #metadata("p") <page_marker>
     ]
   })
 ]
-
-#pagebreak()
-
-// ==========================================
-// 7. PREFACE (HALAMAN vi - ENGLISH)
-// ==========================================
 // ------------------------------------------
 // PREFACE (preface)
 // ------------------------------------------
+#pagebreak()
 #metadata("preface") <preface>
 
 #block(width: 100%)[
@@ -414,7 +407,7 @@
 
 #import "@preview/meander:0.2.2"
 
-#let profile = (0.000, 0.000, 0.000, 0.541, 0.582, 0.602, 0.626, 0.639, 0.644, 0.644, 0.655, 0.651, 0.644, 0.624, 0.614, 0.626, 0.699, 0.781, 0.827, 0.842, 0.852, 0.861, 0.870, 0.879, 0.888, 0.897, 0.906, 0.915, 0.925, 0.927, 0.886, 0.882, 0.876, 0.861, 0.809, 0.800, 0.803, 0.808, 0.815, 0.819, 0.821, 0.822, 0.823, 0.823, 0.823, 0.823, 0.823, 0.823, 0.823, 0.823)
+#let profile = (0.000, 0.000, 0.000, 0.598, 0.625, 0.640, 0.649, 0.654, 0.655, 0.655, 0.665, 0.664, 0.661, 0.655, 0.637, 0.628, 0.637, 0.692, 0.762, 0.820, 0.841, 0.852, 0.861, 0.868, 0.876, 0.883, 0.889, 0.896, 0.904, 0.911, 0.917, 0.925, 0.934, 0.940, 0.941, 0.919, 0.895, 0.891, 0.886, 0.879, 0.840, 0.810, 0.813, 0.816, 0.820, 0.826, 0.829, 0.831, 0.831, 0.832)
 
 #block[
   #set text(hyphenate: false, size: 8pt)
@@ -438,48 +431,50 @@
       box(
         width: 10.68cm,
         height: 12.5cm,
-        image("/kegiatan/kecamatan-dalam-angka/2026/assets/kepala_bps.png", width: 100%, height: 100%)
+        image("/assets/kepala_bps.png", width: 100%, height: 100%)
       )
     )
 
     container()
     content[
-      #text(style: "italic")[
-        #text(fill: rgb("#EA580C"), weight: "bold")[Sungai Kunyit District in Figures 2026] is an annual publication series issued by BPS-Statistics of Mempawah Regency, presenting various sectoral statistical data sourced from regional government institutions, the subdistrict office, village administrations, as well as surveys and censuses conducted by BPS. This publication provides a comprehensive overview of geography, governance, and socio-demographic and economic development in Sungai Kunyit District.
+#text(style: "italic")[
+      #text(fill: rgb("#EA580C"), weight: "bold")[Sungai Kunyit Subdistrict in Figures 2026] is an annual publication series issued by BPS-Statistics of Mempawah Regency, presenting various sectoral statistical data sourced from regional government institutions, the subdistrict office, village administrations, as well as surveys and censuses conducted by BPS. This publication provides a comprehensive overview of geography, governance, and socio-demographic and economic development in Sungai Kunyit Subdistrict.
 
-        #v(3.5pt)
-        The statistical indicators presented are expected to serve as essential empirical references to support evidence-based regional development planning, monitoring, and evaluation within the framework of Satu Data Indonesia (One Data Indonesia). In line with the growing need for high-quality data, this publication continues to be refined.
+      #v(3.5pt)
+      The statistical indicators presented are expected to serve as essential empirical references and benchmarks in supporting regional development planning, monitoring, and policy evaluation towards the realization of One Data Indonesia. Concurrently with regional development dynamics and the growing demand for quality statistics, continuous enhancements have been made in both presentation structure and data visualization.
 
-        #v(3.5pt)
-        We would like to express our highest gratitude and appreciation to the Head of Sungai Kunyit District, Village Heads throughout Sungai Kunyit District, and all collaborating regional agencies for their valuable data contributions and seamless cooperation.
+      #v(3.5pt)
+      We express our highest appreciation and gratitude to the Head of Sungai Kunyit Subdistrict (Camat), Village Heads across Sungai Kunyit Subdistrict, and the heads of regional government agencies for their invaluable cooperation and data contributions that enabled the timely completion of this publication.
 
-        #v(3.5pt)
-        We realize that there is still room for improvement in this publication. Therefore, constructive suggestions and feedback are warmly welcomed to enhance future editions. It is our hope that this publication will be beneficial for policy makers, researchers, and the public.
+      #v(3.5pt)
+      We acknowledge that there remains room for refinement in this publication. Therefore, constructive feedback and suggestions are warmly welcomed for the improvement of future editions. May this publication provide meaningful benefits to all stakeholders and data users.
 
-        #v(6pt)
-        #align(right)[
-          #block(width: 4.8cm)[
-            #set align(left)
-            Mempawah, September 2026 \
-            Chief Statistician of Mempawah Regency \
-            #v(3pt)
-            #image("/kegiatan/kecamatan-dalam-angka/2026/assets/ttd_kepala_bps.png", height: 26pt) \
-            #v(2pt)
-            #text(weight: "bold", style: "normal")[MUNAWIR]
-          ]
+      #v(6pt)
+      #align(right)[
+        #block(width: 4.8cm)[
+          #set align(left)
+          Mempawah, September 2026 \
+          Chief Statistician of Mempawah Regency \
+          #v(3pt)
+          #image("/assets/ttd_kepala_bps.png", height: 26pt) \
+          #v(2pt)
+          #text(weight: "bold", style: "normal")[MUNAWIR]
         ]
       ]
-      #metadata("p") <page_marker>
+
+]      #metadata("p") <page_marker>
     ]
   })
 ]
 
-#pagebreak()
-
 // ==========================================
 // 8. DAFTAR ISI / CONTENTS
 // ==========================================
+#pagebreak()
 #metadata("daftar_isi") <daftar_isi>
+
+#set text(font: "Liberation Sans", size: 7.4pt, fill: rgb("#1F2937"), hyphenate: false)
+#set par(leading: 0.42em)
 
 #let get_page_roman(lbl, default: "-") = context {
   let elems = query(lbl)
@@ -503,7 +498,7 @@
   }
 }
 
-// Helper functions for Dot Leaders
+// Helper functions for Dot Leaders in DAFTAR ISI
 #let toc_chapter(no, id_title, en_title, page_val) = {
   grid(
     columns: (16pt, 1fr, auto),
@@ -517,86 +512,177 @@
   )
 }
 
-#let toc_section(title_markup, page_val) = {
+#let toc_subchapter(no, id_title, en_title, page_val) = {
+  grid(
+    columns: (14pt, 24pt, 1fr, auto),
+    column-gutter: (0pt, 4pt, 6pt),
+    align: (top + left, top + left, top + left, bottom + right),
+    [],
+    [#no],
+    [
+      #id_title/#text(style: "italic")[#en_title] #box(width: 1fr, repeat[ . ])
+    ],
+    [#page_val]
+  )
+}
+
+#let toc_section(id_title, en_title, page_val) = {
   grid(
     columns: (1fr, auto),
     column-gutter: 6pt,
     align: (bottom + left, bottom + right),
-    [#title_markup #box(width: 1fr, repeat[ . ])],
+    [#id_title/#text(style: "italic")[#en_title] #box(width: 1fr, repeat[ . ])],
     [#page_val]
   )
 }
 
-#let toc_subchapter(no, id_title, en_title, page_val) = {
+// Helper functions for Dot Leaders in DAFTAR TABEL
+#let toc_table_chapter(no, id_title, en_title, page_val) = {
   grid(
-    columns: (24pt, 1fr, auto),
-    column-gutter: (4pt, 6pt),
+    columns: (30pt, 1fr, auto),
+    column-gutter: 6pt,
     align: (top + left, top + left, bottom + right),
+    [#text(weight: "bold")[#no]],
+    [#text(weight: "bold")[#upper(id_title)/#text(style: "italic")[#upper(en_title)]]],
+    [#text(weight: "bold")[#page_val]]
+  )
+}
+
+#let toc_table_subchapter(no, id_title, en_title, page_val) = {
+  grid(
+    columns: (30pt, 1fr, auto),
+    column-gutter: 6pt,
+    align: (top + left, top + left, bottom + right),
+    [#text(weight: "bold")[#no]],
+    [#text(weight: "bold")[#id_title/#text(style: "italic")[#en_title]]],
+    [#text(weight: "bold")[#page_val]]
+  )
+}
+
+#let toc_table_entry(no, id_title, en_title, page_val) = {
+  grid(
+    columns: (30pt, 1fr),
+    column-gutter: 6pt,
+    align: (top + left, top + left),
     [#no],
     [
-      #id_title/#text(style: "italic")[#en_title] #box(width: 1fr, repeat[ . ])
-    ],
-    [#page_val]
+      #grid(
+        columns: (1fr, auto),
+        column-gutter: 4pt,
+        align: (bottom + left, bottom + right),
+        [#id_title #box(width: 1fr, repeat[ . ])],
+        [#page_val]
+      )
+      #v(2pt)
+      #grid(
+        columns: (1fr, auto),
+        column-gutter: 4pt,
+        align: (bottom + left, bottom + right),
+        [#text(style: "italic")[#en_title] #box(width: 1fr, repeat[ . ])],
+        [#text(style: "italic")[#page_val]]
+      )
+    ]
   )
 }
 
-#let toc_entry_item(no, id_title, en_title, page_val) = {
+// Helper functions for Dot Leaders in DAFTAR GAMBAR
+#let toc_figure_entry(no, id_title, en_title, page_val) = {
   grid(
-    columns: (24pt, 1fr, auto),
-    column-gutter: (4pt, 6pt),
-    align: (top + left, top + left, bottom + right),
+    columns: (26pt, 1fr),
+    column-gutter: 6pt,
+    align: (top + left, top + left),
     [#no],
     [
-      #id_title/#text(style: "italic")[#en_title] #box(width: 1fr, repeat[ . ])
-    ],
-    [#page_val]
+      #grid(
+        columns: (1fr, auto),
+        column-gutter: 4pt,
+        align: (bottom + left, bottom + right),
+        [#id_title #box(width: 1fr, repeat[ . ])],
+        [#page_val]
+      )
+      #v(2pt)
+      #grid(
+        columns: (1fr, auto),
+        column-gutter: 4pt,
+        align: (bottom + left, bottom + right),
+        [#text(style: "italic")[#en_title] #box(width: 1fr, repeat[ . ])],
+        [#text(style: "italic")[#page_val]]
+      )
+    ]
   )
 }
 
+#align(right)[#text(8pt)[ISSN 3064-5441]]
+#v(4pt)
 #align(center)[
-  #text(10pt, weight: "bold")[DAFTAR ISI/CONTENTS] \
+  #text(10pt, weight: "bold")[DAFTAR ISI/]#text(10pt, weight: "bold", style: "italic")[CONTENTS]
+
   #v(2pt)
-  #text(9pt, weight: "bold")[Kecamatan Sungai Kunyit Dalam Angka 2026] \
-  #text(8.5pt, style: "italic")[Sungai Kunyit District in Figures 2026] \
+  #text(9pt, weight: "bold")[Kecamatan Sungai Kunyit Dalam Angka 2026]
+
+  #text(8.5pt, style: "italic")[Sungai Kunyit District in Figures 2026]
+
   #v(1pt)
-  #text(7.5pt)[Volume 48, 2026]
+  #text(7.5pt)[Volume 17, 2026]
 ]
 
-#v(8pt)
+#v(3pt)
 #align(right)[
-  #text(7.5pt)[Halaman] \
-  #text(7pt, style: "italic")[Page]
+  #text(7.5pt)[halaman]   #text(7pt, style: "italic")[page]
 ]
-#v(4pt)
+#v(1.5pt)
 
-#toc_section([Kata Pengantar], get_page_roman(<kata_pengantar>))
-#v(4pt)
-#toc_section([_Preface_], get_page_roman(<preface>))
-#v(4pt)
-#toc_section([Daftar Isi/_Contents_], get_page_roman(<daftar_isi>))
-#v(4pt)
-#toc_section([Daftar Tabel/_List of Tables_], get_page_roman(<daftar_tabel>))
-#v(4pt)
-#toc_section([Daftar Gambar/_List of Figures_], get_page_roman(<daftar_gambar>))
-#v(4pt)
-#toc_section([Penjelasan Umum/_Explanatory Notes_], get_page_roman(<penjelasan_umum>))
-#v(6pt)
+#toc_section("Kata Pengantar", "Preface", get_page_roman(<kata_pengantar>))
+#v(1.8pt)
+#toc_section("Daftar Isi", "Contents", get_page_roman(<daftar_isi>))
+#v(1.8pt)
+#toc_section("Daftar Tabel", "List of Tables", get_page_roman(<daftar_tabel>))
+#v(1.8pt)
+#toc_section("Daftar Gambar", "List of Figures", get_page_roman(<daftar_gambar>))
+#v(1.8pt)
+#toc_section("Penjelasan Umum", "Explanatory Notes", get_page_roman(<penjelasan_umum>))
 
-#toc_chapter("1.", "Geografi dan Iklim", "Geography and Climate", get_page_arabic(<bab1>))
-#v(4pt)
-#toc_chapter("2.", "Pemerintahan", "Government", get_page_arabic(<bab2>))
-#v(4pt)
-#toc_chapter("3.", "Penduduk", "Population", get_page_arabic(<bab3>))
-#v(4pt)
-#toc_chapter("4.", "Sosial dan Kesejahteraan Rakyat", "Social and Welfare", get_page_arabic(<bab4>))
-#v(4pt)
-#toc_chapter("5.", "Pertanian, Kehutanan, Perikanan, dan Peternakan", "Agriculture, Forestry, Livestock, & Fishery", get_page_arabic(<bab5>))
-#v(4pt)
-#toc_chapter("6.", "Pariwisata, Transportasi, dan Komunikasi", "Tourism, Transportation, and Communication", get_page_arabic(<bab6>))
-#v(4pt)
-#toc_chapter("7.", "Perbankan, Koperasi, dan Perdagangan", "Banking, Cooperative, and Trade", get_page_arabic(<bab7>))
-#v(6pt)
-#toc_section([Daftar Pustaka/_Bibliography_], get_page_arabic(<daftar_pustaka>))
+#v(4.5pt)
+#toc_chapter("1", "Geografi", "Geography", get_page_arabic(<bab1>))
+
+#v(4.5pt)
+#toc_chapter("2", "Pemerintahan", "Government", get_page_arabic(<bab2>))
+#v(1.5pt)
+#toc_subchapter("2.1", "Wilayah Administratif", "Administrative Area", get_page_arabic(<tab_2_1_1>))
+#v(1.5pt)
+#toc_subchapter("2.2", "Sumber Daya Manusia", "Human Resources", get_page_arabic(<tab_2_2_1>))
+
+#v(4.5pt)
+#toc_chapter("3", "Penduduk", "Population", get_page_arabic(<bab3>))
+
+#v(4.5pt)
+#toc_chapter("4", "Sosial dan Kesejahteraan Rakyat", "Social And Welfare", get_page_arabic(<bab4>))
+#v(1.5pt)
+#toc_subchapter("4.1", "Pendidikan", "Education", get_page_arabic(<tab_4_1_1>))
+#v(1.5pt)
+#toc_subchapter("4.2", "Kesehatan", "Health", get_page_arabic(<tab_4_2_1>))
+#v(1.5pt)
+#toc_subchapter("4.3", "Perumahan dan Lingkungan", "Housing and Environment", get_page_arabic(<tab_4_3_1>))
+#v(1.5pt)
+#toc_subchapter("4.4", "Sosial Lainnya", "Religion and Other Social Affairs", get_page_arabic(<tab_4_4_1>))
+
+#v(4.5pt)
+#toc_chapter("5", "Pertanian", "Agriculture", get_page_arabic(<bab5>))
+
+#v(4.5pt)
+#toc_chapter("6", "Pariwisata, Transportasi, dan Komunikasi", "Tourism, Transportation, and Communication", get_page_arabic(<bab6>))
+#v(1.5pt)
+#toc_subchapter("6.1", "Pariwisata", "Tourism", get_page_arabic(<tab_6_1_1>))
+#v(1.5pt)
+#toc_subchapter("6.2", "Transportasi", "Transportation", get_page_arabic(<tab_6_2_1>))
+#v(1.5pt)
+#toc_subchapter("6.3", "Komunikasi", "Communication", get_page_arabic(<tab_6_3_1>))
+
+#v(4.5pt)
+#toc_chapter("7", "Perbankan, Koperasi, dan Perdagangan", "Banking, Cooperative, and Trade", get_page_arabic(<bab7>))
+
+#v(4.5pt)
+#toc_section("Daftar Pustaka", "Bibliography", get_page_arabic(<daftar_pustaka>))
 
 #pagebreak()
 
@@ -604,43 +690,133 @@
 // 9. DAFTAR TABEL / LIST OF TABLES
 // ==========================================
 #metadata("daftar_tabel") <daftar_tabel>
+#align(right)[#text(8pt)[ISSN 3064-5441]]
+#v(4pt)
 #align(center)[
   #text(10pt, weight: "bold")[DAFTAR TABEL/]#text(10pt, weight: "bold", style: "italic")[LIST OF TABLES]
 ]
 
-#v(10pt)
+#v(8pt)
 #grid(
-  columns: (24pt, 1fr, auto),
-  column-gutter: (4pt, 6pt),
-  [*Tabel*\ _Table_], [], [*Halaman*\ _Page_]
+  columns: (30pt, 1fr, auto),
+  column-gutter: 6pt,
+  [Tabel \ #text(style: "italic")[Table]],
+  [],
+  [#align(right)[halaman \ #text(style: "italic")[page]]]
 )
 #v(6pt)
 
-#toc_entry_item("1.1", "Luas Daerah Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025", "Total Area by Village/Subdistrict in Sungai Kunyit District, 2025", get_page_arabic(<tab_1_1>))
+#toc_table_chapter("1", "Geografi", "Geography", get_page_arabic(<bab1>))
 #v(5pt)
-#toc_entry_item("1.2", "Jarak ke Ibukota Kecamatan dan Ibukota Kabupaten Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025", "Distance to Subdistrict and Regency Capital by Village in Sungai Kunyit District, 2025", get_page_arabic(<tab_1_2>))
+#toc_table_entry("1.1", "Luas Daerah Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025", "Area by Villages/Subdistricts in Sungai Kunyit District, 2025", get_page_arabic(<tab_1_1>))
 #v(5pt)
-#toc_entry_item("1.3", "Batas Administrasi Kecamatan Sungai Kunyit Menurut Arah Mata Angin, 2025", "Administrative Borders of Sungai Kunyit District by Cardinal Direction, 2025", get_page_arabic(<tab_1_3>))
+#toc_table_entry("1.2", "Jarak ke Ibukota Kecamatan dan Ibukota Kabupaten/Kota Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit (km), 2025", "Distance to District Capital and Regency Capital by Villages/Subdistricts in Sungai Kunyit District (km), 2025", get_page_arabic(<tab_1_2>))
 #v(5pt)
-#toc_entry_item("1.4", "Jarak Kantor Camat Sungai Kunyit dengan Kota dan Tempat Penting Lainnya, 2025", "Distance from Sungai Kunyit Subdistrict Office to Other Important Places, 2025", get_page_arabic(<tab_1_4>))
+#toc_table_entry("1.3", "Batas Administrasi Kecamatan Sungai Kunyit Menurut Arah Mata Angin, 2025", "Administrative Borders of Sungai Kunyit District by Cardinal Direction, 2025", get_page_arabic(<tab_1_3>))
 #v(5pt)
-#toc_entry_item("2.1.1", "Jumlah Dusun, Rukun Warga (RW), dan Rukun Tetangga (RT) Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025", "Number of Hamlets, RW, and RT by Village/Subdistrict in Sungai Kunyit District, 2025", get_page_arabic(<tab_2_1_1>))
+#toc_table_entry("1.4", "Jarak Kantor Camat Sungai Kunyit dengan Kota dan Tempat Penting Lainnya, 2025", "Distance from Sungai Kunyit Subdistrict Office to Other Important Places, 2025", get_page_arabic(<tab_1_4>))
+
+#v(7pt)
+#toc_table_chapter("2", "Pemerintahan", "Government", get_page_arabic(<bab2>))
+#v(4pt)
+#toc_table_subchapter("2.1", "Wilayah Administratif", "Administrative Area", get_page_arabic(<tab_2_1_1>))
+#v(4pt)
+#toc_table_entry("2.1.1", "Jumlah Dusun, Rukun Warga (RW), dan Rukun Tetangga (RT) Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025", "Number of Hamlets, Rukun Warga and Rukun Tetangga by Villages/Subdistricts in Sungai Kunyit District, 2025", get_page_arabic(<tab_2_1_1>))
 #v(5pt)
-#toc_entry_item("2.1.2", "Nama-Nama Camat yang Pernah/Masih Menjabat di Kecamatan Sungai Kunyit", "Names of District Heads of Sungai Kunyit District", get_page_arabic(<tab_2_1_2>))
+#toc_table_entry("2.1.2", "Nama-Nama Camat yang Pernah/Masih Menjabat di Kecamatan Sungai Kunyit, 2025", "Names of Last and Current Who Have/Still Served in Sungai Kunyit District, 2025", get_page_arabic(<tab_2_1_2>))
 #v(5pt)
-#toc_entry_item("2.1.3", "Nama-Nama Kepala Desa di Kecamatan Sungai Kunyit, 2025", "Names of Village Heads in Sungai Kunyit District, 2025", get_page_arabic(<tab_2_1_3>))
+#toc_table_entry("2.1.3", "Nama-Nama Kepala Desa/Lurah di Kecamatan Sungai Kunyit, 2026", "Names of Village Heads in Sungai Kunyit District, 2026", get_page_arabic(<tab_2_1_3>))
 #v(5pt)
-#toc_entry_item("3.1", "Penduduk, Distribusi Persentase, Kepadatan, dan Rasio Jenis Kelamin Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025", "Population, Percentage Distribution, Density, and Sex Ratio by Village in Sungai Kunyit District, 2025", get_page_arabic(<tab_3_1>))
+#toc_table_entry("2.1.4", "Nama-Nama Kepala Dusun di Kecamatan Sungai Kunyit, 2025", "Names of Hamlet Heads in Sungai Kunyit District, 2025", get_page_arabic(<tab_2_1_4>))
 #v(5pt)
-#toc_entry_item("4.1.1", "Banyaknya Desa/Kelurahan yang Memiliki Fasilitas Sekolah Menurut Tingkat Pendidikan di Kecamatan Sungai Kunyit, 2023–2025", "Number of Villages Having Educational Facilities by Level in Sungai Kunyit District, 2023–2025", get_page_arabic(<tab_4_1_1>))
+#toc_table_entry("2.1.5", "Klasifikasi Desa/Kelurahan Perdesaan dan Perkotaan di Kecamatan Sungai Kunyit, 2024", "Urban and Rural Classification of Village/Subdistrict in Sungai Kunyit District, 2024", get_page_arabic(<tab_2_1_5>))
 #v(5pt)
-#toc_entry_item("4.2.1", "Banyaknya Sarana Kesehatan Menurut Jenis Sarana di Kecamatan Sungai Kunyit, 2023–2025", "Number of Health Facilities by Type in Sungai Kunyit District, 2023–2025", get_page_arabic(<tab_4_2_1>))
+#toc_table_entry("2.1.6", "Status Desa Berdasarkan Indeks Desa Membangun (IDM) di Kecamatan Sungai Kunyit, 2024", "Village Status Based on Developing Village Index (IDM) in Sungai Kunyit District, 2024", get_page_arabic(<tab_2_1_6>))
+
+#v(6pt)
+#toc_table_subchapter("2.2", "Sumber Daya Manusia", "Human Resources", get_page_arabic(<tab_2_2_1>))
+#v(4pt)
+#toc_table_entry("2.2.1", "Jumlah Pegawai Negeri Sipil Menurut Pemerintah Daerah dan Jenis Kelamin di Kecamatan Sungai Kunyit, 2025", "Number of Government Employee by Local Government and Sex in Sungai Kunyit District, 2025", get_page_arabic(<tab_2_2_1>))
 #v(5pt)
-#toc_entry_item("5.1", "Luas Panen Tanaman Sayuran dan Buah-buahan Semusim Menurut Jenis di Kecamatan Sungai Kunyit (ha), 2022–2025", "Harvested Area of Vegetables and Seasonal Fruits by Type in Sungai Kunyit District (ha), 2022–2025", get_page_arabic(<tab_5_1>))
+#toc_table_entry("2.2.2", "Jumlah Pegawai Negeri Sipil Pemerintah Kecamatan Sungai Kunyit Menurut Tingkat Pendidikan dan Jenis Kelamin, 2025", "Number of Government Employee of Sungai Kunyit District Government by Educational Level and Sex, 2025", get_page_arabic(<tab_2_2_2>))
+
+#v(7pt)
+#toc_table_chapter("3", "Penduduk", "Population", get_page_arabic(<bab3>))
 #v(5pt)
-#toc_entry_item("6.1.1", "Keberadaan Sarana Akomodasi Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025", "Accommodation Facilities by Village/Subdistrict in Sungai Kunyit District, 2025", get_page_arabic(<tab_6_1_1>))
+#toc_table_entry("3.1", "Penduduk, Distribusi Persentase Penduduk, Kepadatan Penduduk, Rasio Jenis Kelamin Penduduk Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025", "Population, Percentage Distribution of Population, Population Density, and Population Sex Ratio by Villages/Subdistricts in Sungai Kunyit District, 2025", get_page_arabic(<tab_3_1>))
+
+#v(7pt)
+#toc_table_chapter("4", "Sosial dan Kesejahteraan Rakyat", "Social and Welfare", get_page_arabic(<bab4>))
+#v(4pt)
+#toc_table_subchapter("4.1", "Pendidikan", "Education", get_page_arabic(<tab_4_1_1>))
+#v(4pt)
+#toc_table_entry("4.1.1", "Banyaknya Desa/Kelurahan yang Memiliki Fasilitas Sekolah Menurut Tingkat Pendidikan di Kecamatan Sungai Kunyit, 2023–2025", "Number of Villages/Subdistricts Having Educational Facilities by Educational Level in Sungai Kunyit District, 2023–2025", get_page_arabic(<tab_4_1_1>))
 #v(5pt)
-#toc_entry_item("7.1", "Keberadaan Lembaga Keuangan Bank Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025", "Banking Financial Institutions by Village/Subdistrict in Sungai Kunyit District, 2025", get_page_arabic(<tab_7_1>))
+#toc_table_entry("4.1.2", "Jumlah Satuan Pendidikan Menurut Tingkat Pendidikan di Kecamatan Sungai Kunyit, 2024/2025 dan 2025/2026", "Number of Schools by Educational Level in Sungai Kunyit District, 2024/2025 and 2025/2026", get_page_arabic(<tab_4_1_2>))
+#v(5pt)
+#toc_table_entry("4.1.3", "Jumlah Kepala Sekolah dan Pendidik Menurut Tingkat Pendidikan di Kecamatan Sungai Kunyit, 2024/2025 dan 2025/2026", "Number of Headmasters and Teachers by Educational Level in Sungai Kunyit District, 2024/2025 and 2025/2026", get_page_arabic(<tab_4_1_3>))
+#v(5pt)
+#toc_table_entry("4.1.4", "Jumlah Peserta Didik Menurut Tingkat Pendidikan di Kecamatan Sungai Kunyit, 2024/2025 dan 2025/2026", "Number of Pupils by Educational Level in Sungai Kunyit District, 2024/2025 and 2025/2026", get_page_arabic(<tab_4_1_4>))
+
+#v(6pt)
+#toc_table_subchapter("4.2", "Kesehatan", "Health", get_page_arabic(<tab_4_2_1>))
+#v(4pt)
+#toc_table_entry("4.2.1", "Banyaknya Desa/Kelurahan yang Memiliki Sarana Kesehatan Menurut Jenis Sarana Kesehatan di Kecamatan Sungai Kunyit, 2023–2025", "Number of Villages/Subdistricts Health Facilities by Type of Health Facilities in Sungai Kunyit District, 2023–2025", get_page_arabic(<tab_4_2_1>))
+
+#v(6pt)
+#toc_table_subchapter("4.3", "Perumahan dan Lingkungan", "Housing and Environment", get_page_arabic(<tab_4_3_1>))
+#v(4pt)
+#toc_table_entry("4.3.1", "Banyaknya Desa/Kelurahan Menurut Sumber Penerangan Jalan Utama Desa/Kelurahan di Kecamatan Sungai Kunyit, 2023–2025", "Number of Villages/Subdistricts by Source of Main Street Illumination in Sungai Kunyit District, 2023–2025", get_page_arabic(<tab_4_3_1>))
+#v(5pt)
+#toc_table_entry("4.3.2", "Banyaknya Desa/Kelurahan Menurut Jenis Bahan Bakar untuk Memasak yang Digunakan Sebagian Besar Keluarga di Kecamatan Sungai Kunyit, 2025", "Number of Villages/Subdistricts by Type of Cooking Fuel Used by Majority Family in Sungai Kunyit District, 2025", get_page_arabic(<tab_4_3_2>))
+
+#v(6pt)
+#toc_table_subchapter("4.4", "Sosial Lainnya", "Religion and Other Social Affairs", get_page_arabic(<tab_4_4_1>))
+#v(4pt)
+#toc_table_entry("4.4.1", "Banyaknya Desa/Kelurahan yang Mengalami Kejadian Bencana Alam Menurut Jenis Bencana Alam di Kecamatan Sungai Kunyit, 2025", "Number of Villages/Subdistricts with Natural Disaster Events by Type of Natural Disaster in Sungai Kunyit District, 2025", get_page_arabic(<tab_4_4_1>))
+#v(5pt)
+#toc_table_entry("4.4.2", "Banyaknya Desa/Kelurahan dengan Keberadaan Fasilitas/Upaya Antisipasi/Mitigasi Bencana Alam Menurut Jenis Fasilitas/Upaya Antisipasi/Mitigasi di Kecamatan Sungai Kunyit, 2025", "Number of Villages/Subdistricts with Availability of Facilities/Efforts for Anticipation/Mitigation of Natural Disasters by Type of Facilities/Efforts for Anticipation/Mitigation in Sungai Kunyit District, 2025", get_page_arabic(<tab_4_4_2>))
+
+#v(7pt)
+#toc_table_chapter("5", "Pertanian", "Agriculture", get_page_arabic(<bab5>))
+#v(5pt)
+#toc_table_entry("5.1", "Luas Panen Tanaman Sayuran dan Buah-buahan Semusim Menurut Jenis Tanaman di Kecamatan Sungai Kunyit (ha), 2022–2025", "Harvested Area of Temporary Vegetables and Fruit Crops by Type of Crops in Sungai Kunyit District (ha), 2022–2025", get_page_arabic(<tab_5_1>))
+#v(5pt)
+#toc_table_entry("5.2", "Produksi Tanaman Sayuran dan Buah-buahan Semusim Menurut Jenis Tanaman di Kecamatan Sungai Kunyit (kuintal), 2022–2025", "Production of Temporary Vegetables and Fruit Crops by Type of Crops in Sungai Kunyit District (quintal), 2022–2025", get_page_arabic(<tab_5_2>))
+#v(5pt)
+#toc_table_entry("5.3", "Luas Panen Tanaman Biofarmaka Menurut Jenis Tanaman di Kecamatan Sungai Kunyit (m2), 2022–2025", "Harvested Area of Medicinal Crops by Type of Crops in Sungai Kunyit District (m2), 2022–2025", get_page_arabic(<tab_5_3>))
+#v(5pt)
+#toc_table_entry("5.4", "Produksi Tanaman Biofarmaka Menurut Jenis Tanaman di Kecamatan Sungai Kunyit (kg), 2022–2025", "Production of Medicinal Crops by Type of Crops in Sungai Kunyit District (kg), 2022–2025", get_page_arabic(<tab_5_4>))
+#v(5pt)
+#toc_table_entry("5.5", "Luas Panen Tanaman Hias Menurut Jenis Tanaman di Kecamatan Sungai Kunyit (m2), 2022–2025", "Harvested Area of Ornamental Crops by Type of Crops in Sungai Kunyit District (m2), 2022–2025", get_page_arabic(<tab_5_5>))
+#v(5pt)
+#toc_table_entry("5.6", "Produksi Tanaman Hias Menurut Jenis Tanaman di Kecamatan Sungai Kunyit (tangkai), 2022–2025", "Production of Ornamental Crops by Type of Crops in Sungai Kunyit District (stalks), 2022–2025", get_page_arabic(<tab_5_6>))
+#v(5pt)
+#toc_table_entry("5.7", "Produksi Buah-buahan dan Sayuran Tahunan Menurut Jenis Tanaman di Kecamatan Sungai Kunyit (kuintal), 2022–2025", "Production of Permanent Fruit and Vegetable by Type of Crops (quintal), 2022–2025", get_page_arabic(<tab_5_7>))
+
+#v(7pt)
+#toc_table_chapter("6", "Pariwisata, Transportasi, dan Komunikasi", "Tourism, Transportation, and Communication", get_page_arabic(<bab6>))
+#v(4pt)
+#toc_table_subchapter("6.1", "Pariwisata", "Tourism", get_page_arabic(<tab_6_1_1>))
+#v(4pt)
+#toc_table_entry("6.1.1", "Banyaknya Desa/Kelurahan dengan Keberadaan Sarana Akomodasi Menurut Jenis Akomodasi di Kecamatan Sungai Kunyit, 2025", "Number of Villages/Subdistricts with Availability of Accommodation Facilities by Type of Accommodation in Sungai Kunyit District, 2025", get_page_arabic(<tab_6_1_1>))
+#v(6pt)
+#toc_table_subchapter("6.2", "Transportasi", "Transportation", get_page_arabic(<tab_6_2_1>))
+#v(4pt)
+#toc_table_entry("6.2.1", "Banyaknya Desa/Kelurahan Menurut Prasarana dan Sarana Transportasi Antardesa/Kelurahan di Kecamatan Sungai Kunyit, 2025", "Number of Villages/Subdistricts by Inter-Village/ Subdistricts Transportation Infrastructure and Facilities in Sungai Kunyit District, 2025", get_page_arabic(<tab_6_2_1>))
+#v(6pt)
+#toc_table_subchapter("6.3", "Komunikasi", "Communication", get_page_arabic(<tab_6_3_1>))
+#v(4pt)
+#toc_table_entry("6.3.1", "Banyaknya Desa/Kelurahan Menurut Keberadaan Kantor Pos/Pos Pembantu/Rumah Pos, Pos Keliling, dan Perusahaan/Agen Jasa Ekspedisi Swasta di Kecamatan Sungai Kunyit, 2025", "Number of Villages/Subdistricts with Postal and Expedition Services in Sungai Kunyit District, 2025", get_page_arabic(<tab_6_3_1>))
+
+#v(7pt)
+#toc_table_chapter("7", "Perbankan, Koperasi, dan Perdagangan", "Banking, Cooperative, and Trade", get_page_arabic(<bab7>))
+#v(5pt)
+#toc_table_entry("7.1", "Banyaknya Desa/Kelurahan dengan Keberadaan Sarana Lembaga Keuangan Bank Menurut Jenis Bank di Kecamatan Sungai Kunyit, 2025", "Number of Villages/Subdistricts with Availability of Bank by Type of Bank in Sungai Kunyit District, 2025", get_page_arabic(<tab_7_1>))
+#v(5pt)
+#toc_table_entry("7.2", "Banyaknya Desa/Kelurahan dengan Keberadaan Koperasi Aktif Menurut Jenis Koperasi di Kecamatan Sungai Kunyit, 2025", "Number of Villages/Subdistricts with Availability of Cooperative by Type of Cooperative in Sungai Kunyit District, 2025", get_page_arabic(<tab_7_2>))
+#v(5pt)
+#toc_table_entry("7.3", "Banyaknya Desa/Kelurahan dengan Keberadaan Sarana Perdagangan Menurut Jenis Sarana Perdagangan di Kecamatan Sungai Kunyit, 2025", "Number of Villages/Subdistricts with Availability of Trade Facilities by Type of Trade Facilities in Sungai Kunyit District, 2025", get_page_arabic(<tab_7_3>))
 
 #pagebreak()
 
@@ -648,33 +824,31 @@
 // 10. DAFTAR GAMBAR / LIST OF FIGURES
 // ==========================================
 #metadata("daftar_gambar") <daftar_gambar>
+#align(right)[#text(8pt)[ISSN 3064-5441]]
+#v(4pt)
 #align(center)[
   #text(10pt, weight: "bold")[DAFTAR GAMBAR/]#text(10pt, weight: "bold", style: "italic")[LIST OF FIGURES]
 ]
 
-#v(10pt)
+#v(8pt)
 #grid(
-  columns: (24pt, 1fr, auto),
-  column-gutter: (4pt, 6pt),
-  [*Gambar*\ _Figure_], [], [*Halaman*\ _Page_]
+  columns: (26pt, 1fr, auto),
+  column-gutter: 6pt,
+  [Gambar \ #text(style: "italic")[Figure]],
+  [],
+  [#align(right)[halaman \ #text(style: "italic")[page]]]
 )
 #v(6pt)
 
-#toc_entry_item("1.1", "Jarak dari Desa/Kelurahan ke Ibukota Kecamatan di Kecamatan Sungai Kunyit, 2025", "Distance from Village/Subdistrict to District Capital in Sungai Kunyit District, 2025", get_page_arabic(<fig_1_1>))
+#toc_figure_entry("1", "Peta Wilayah Kecamatan Sungai Kunyit, 2025", "Map of Sungai Kunyit District, 2025", get_page_arabic(<fig_1>))
 #v(5pt)
-#toc_entry_item("1.2", "Luas Wilayah Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025", "Total Area by Village/Subdistrict in Sungai Kunyit District, 2025", get_page_arabic(<fig_1_2>))
+#toc_figure_entry("2", "Jarak ke Ibukota Kecamatan Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit (km), 2025", "Distance to District Capital by Village/Subdistrict in Sungai Kunyit District (km), 2025", get_page_arabic(<fig_2>))
 #v(5pt)
-#toc_entry_item("2.1", "Jumlah Rukun Tetangga (RT) Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025", "Number of RT by Village in Sungai Kunyit District, 2025", get_page_arabic(<fig_2_1>))
+#toc_figure_entry("3", "Jumlah Rukun Tetangga (RT) Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025", "Number of RT by Village in Sungai Kunyit District, 2025", get_page_arabic(<fig_3>))
 #v(5pt)
-#toc_entry_item("3.1", "Jumlah Penduduk Menurut Jenis Kelamin di Kecamatan Sungai Kunyit, 2025", "Population by Sex in Sungai Kunyit District, 2025", get_page_arabic(<fig_3_1>))
+#toc_figure_entry("4", "Jumlah Penduduk Menurut Jenis Kelamin di Kecamatan Sungai Kunyit, 2025", "Population by Sex in Sungai Kunyit District, 2025", get_page_arabic(<fig_4>))
 #v(5pt)
-#toc_entry_item("4.1", "Banyaknya Fasilitas Sekolah Menurut Tingkat Pendidikan di Kecamatan Sungai Kunyit, 2025", "Number of School Facilities by Level in Sungai Kunyit District, 2025", get_page_arabic(<fig_4_1>))
-#v(5pt)
-#toc_entry_item("5.1", "Produksi Tanaman Hortikultura Unggulan di Kecamatan Sungai Kunyit, 2025", "Production of Leading Horticulture Crops in Sungai Kunyit District, 2025", get_page_arabic(<fig_5_1>))
-#v(5pt)
-#toc_entry_item("6.1", "Prasarana dan Sarana Komunikasi Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025", "Communication Infrastructure by Village in Sungai Kunyit District, 2025", get_page_arabic(<fig_6_1>))
-#v(5pt)
-#toc_entry_item("7.1", "Keberadaan Sarana Perdagangan dan Koperasi Aktif di Kecamatan Sungai Kunyit, 2025", "Trading Facilities and Active Cooperatives in Sungai Kunyit District, 2025", get_page_arabic(<fig_7_1>))
+#toc_figure_entry("5", "Produksi Tanaman Hortikultura Unggulan di Kecamatan Sungai Kunyit, 2025", "Production of Leading Horticulture Crops in Sungai Kunyit District, 2025", get_page_arabic(<fig_5>))
 
 #pagebreak()
 
@@ -682,71 +856,230 @@
 // 11. PENJELASAN UMUM / EXPLANATORY NOTES
 // ==========================================
 #metadata("penjelasan_umum") <penjelasan_umum>
+#align(right)[#text(8pt)[ISSN 3064-5441]]
+#v(4pt)
 #align(center)[
   #text(10pt, weight: "bold")[PENJELASAN UMUM/]#text(10pt, weight: "bold", style: "italic")[EXPLANATORY NOTES]
 ]
 
-#v(10pt)
+#v(8pt)
 #text(8pt)[
-Tanda-tanda khusus, singkatan, serta kesepakatan penulisan yang digunakan dalam publikasi ini adalah sebagai berikut: \
-_Special signs, abbreviations, and conventions used in this publication are as follows:_
+Tanda-tanda, satuan-satuan, dan lain-lainnya yang digunakan dalam publikasi ini adalah sebagai berikut: \
+#text(style: "italic")[Symbols, measurement units, and acronyms which are used in this publication, are as follows:]
 ]
 
-#v(8pt)
+#v(6pt)
+#text(8.5pt, weight: "bold")[1. TANDA-TANDA/]#text(8.5pt, weight: "bold", style: "italic")[SYMBOLS]
+#v(3pt)
 #grid(
-  columns: (32pt, 1fr),
-  row-gutter: 6pt,
-  [*...*], [Data belum tersedia / _Data not yet available_],
-  [*–*], [Data tidak ada atau bernilai nol / _Data not available or zero value_],
-  [*0 / 0,0*], [Angka lebih kecil dari 0,5 / _Figure less than 0.5_],
-  [*x*], [Data dirahasiakan untuk menjaga kerahasiaan individu/unit usaha / _Confidential data_],
-  [*ha*], [Hektar / _Hectare_],
-  [*km*], [Kilometer / _Kilometer_],
-  [*km²*], [Kilometer persegi / _Square kilometer_],
-  [*RT/RW*], [Rukun Tetangga / Rukun Warga (_Neighborhood / Hamlet units_)]
+  columns: (34pt, auto, 1fr),
+  row-gutter: 4.5pt,
+  [*...*], [ : ], [Data tidak tersedia / #text(style: "italic")[Data not available]],
+  [*–*], [ : ], [Tidak ada atau nol / #text(style: "italic")[Null or zero]],
+  [*0*], [ : ], [Data dapat diabaikan / #text(style: "italic")[Data negligible]],
+  [*,*], [ : ], [Tanda desimal / #text(style: "italic")[Decimal point]],
+  [*NA*], [ : ], [Data tidak dapat ditampilkan / #text(style: "italic")[Not applicable]],
+  [*e*], [ : ], [Angka perkiraan / #text(style: "italic")[Estimated figures]],
+  [*x*], [ : ], [Angka sementara / #text(style: "italic")[Preliminary figures]],
+  [*xx*], [ : ], [Angka sangat sementara / #text(style: "italic")[Very preliminary figures]],
+  [*r*], [ : ], [Angka diperbaiki / #text(style: "italic")[Revised figures]]
 )
 
-#v(12pt)
-#text(8pt)[
-Catatan Pembulatan: Karena adanya pembulatan, angka-angka dalam penjumlahan baris/kolom mungkin tidak selalu sama persis dengan total penjumlahan. \
-_Rounding Note: Due to rounding, figures in line/column totals may not strictly equal the sum of constituent elements._
+#v(8pt)
+#text(8.5pt, weight: "bold")[2. SATUAN/]#text(8.5pt, weight: "bold", style: "italic")[UNITS]
+#v(3pt)
+#text(7.5pt)[
+barel / #text(style: "italic")[barrel] : 158,99 liter/litres = 1/6,2898 m³ \
+hektar (ha) / #text(style: "italic")[hectare (ha)] : 10.000 m² \
+kilometer (km) / #text(style: "italic")[kilometres (km)] : 1.000 meter/meters (m) \
+knot / #text(style: "italic")[knot] : 1,8523 km/jam (km/hour) \
+kuintal / #text(style: "italic")[quintal] : 100 kg \
+KWh : 1.000 Watt hour \
+MWh : 1.000 KWh \
+liter (untuk beras) / #text(style: "italic")[litre (for rice)] : 0,80 kg \
+ons / #text(style: "italic")[ounce] : 28,31 gram/grams \
+ton : 1.000 kg \
+#v(3pt)
+Satuan lain: buah, dus, butir, helai/lembar, kaleng, batang, pulsa, ton kilometer (ton-km), jam, menit, persen (%). \
+#text(style: "italic")[Other units: unit, pack, pieces, sheet, tin, pulse, ton-kilometres (ton-km), hour, minute, percent (%).] \
+#v(3pt)
+Perbedaan angka di belakang koma disebabkan oleh pembulatan angka. \
+#text(style: "italic")[The difference in decimal numbers is caused by rounding.]
 ]
 
+
 #metadata("transisi_isi") <transisi_isi>
-// --- TRANSISI KE ARABIC NUMBERING ---
-#pagebreak(to: "odd")
+
+
+// ==========================================
+// BAB 1: GEOGRAFI (PEMBATAS, ULASAN & PENJELASAN TEKNIS)
+// ==========================================
+
+// ----------------------------------------------------
+// BAB 1: GEOGRAFI (GEOGRAPHY)
+// ----------------------------------------------------
+#pagebreak()
+
 #in_frontmatter.update(false)
 #counter(page).update(1)
-
-// ==========================================
-// LEMBAR PEMBATAS BAB 1 (FULL-BLEED A5)
-// ==========================================
-#page(
-  paper: "a5",
-  margin: 0cm,
-  header: none,
-  footer: none,
-)[
-  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/pembatas/Bab 1.jpg", width: 100%, height: 100%)
-] <chapter_page>
-
-#metadata("1. GEOGRAFI DAN IKLIM") <chapter_title>
-#metadata("Geography and Climate") <chapter_title_en>
+#set page(margin: 0pt, header: none, footer: none)
 #metadata("bab1") <bab1>
+#image("/assets/dividers/Bab_1.jpg", width: 100%, height: 100%)
 
-// ==========================================
-// BAB 1: GEOGRAFI DAN IKLIM (INFOGRAFIS & NARASI)
-// ==========================================
+#pagebreak()
+#set page(
+  margin: normal_margins,
+  header: page_header,
+  footer: page_footer,
+)
+#metadata("GEOGRAFI") <chapter_title>
+#metadata("GEOGRAPHY") <chapter_title_en>
+
+// --- HALAMAN PENJELASAN TEKNIS / TECHNICAL NOTES ---
+#set text(font: "Liberation Sans", size: 8.5pt)
+#set par(justify: true, leading: 0.9em)
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 14pt,
+  [
+    #align(center)[#text(9pt, weight: "bold")[PENJELASAN TEKNIS]]
+    #v(10pt)
+    #grid(
+      columns: (12pt, 1fr),
+      column-gutter: 3pt,
+      row-gutter: 12pt,
+      [1.], [Luas wilayah merujuk pada batas geografis suatu daerah yang mencakup daratan, perairan, dan ruang udara di atasnya. Luas wilayah merupakan ukuran area geografis yang mencakup semua aspek yang menjadi bagian dari suatu entitas administratif, dan penting dalam pengelolaan sumber daya serta perencanaan pembangunan di suatu daerah.],
+      [2.], [Ibu kota merujuk pada kota yang menjadi pusat pemerintahan suatu negara atau daerah, di mana terdapat kantor pemerintahan, lembaga legislatif, dan institusi penting lainnya. Ibu kota berfungsi sebagai simbol kedaulatan dan identitas suatu daerah, serta pusat administrasi dan pengambilan keputusan.],
+      [3.], [Batas administrasi merujuk pada garis atau daerah yang menentukan wilayah administratif suatu entitas, seperti desa, kecamatan, kabupaten, atau provinsi. Batas administrasi adalah batas wilayah yang memisahkan satu daerah otonom dengan daerah otonom lainnya.]
+    )
+  ],
+  [
+    #align(center)[#text(9pt, weight: "bold", style: "italic")[TECHNICAL NOTES]]
+    #v(10pt)
+    #set text(style: "italic")
+    #grid(
+      columns: (12pt, 1fr),
+      column-gutter: 3pt,
+      row-gutter: 12pt,
+      [1.], [The area of the area refers to the geographical boundaries of an area that includes land, waters, and airspace on it. The area is a size of the geographical area that covers all aspects of an administrative entity, and is important in the management of resources and development planning in an area],
+      [2.], [The capital refers to the city that is the center of government of a country or region, where there are government offices, legislative institutions, and other important institutions. The capital serves as a symbol of the sovereignty and identity of an area, as well as the administrative and decision–making centers.],
+      [3.], [Administration Limits refer to the lines or areas that determine the administrative territory of an entity, such as villages, sub– districts, districts, or provinces. The administrative limit is the boundary of the region that separates one autonomous region from another autonomous region]
+    )
+  ]
+)
+
+#pagebreak()
+
+// --- HALAMAN ULASAN / DESCRIPTION ---
+#set text(font: "Liberation Sans", size: 8.5pt)
+#set par(justify: true, leading: 0.9em)
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 14pt,
+  [
+    #align(center)[#text(9pt, weight: "bold")[ULASAN]]
+    #v(10pt)
+    #block[
+  #text(8pt, weight: "bold")[1. #h(2pt) Letak Wilayah] \
+  #v(2pt)
+  Kecamatan Sungai Kunyit adalah salah satu kecamatan di Kabupaten Mempawah. Secara administratif, batas wilayah Kecamatan Sungai Kunyit adalah:\
+Utara : Kabupaten Bengkayang/ Bengkayang Regency\
+Selatan : Kecamatan Mempawah Hilir/ Mempawah Hilir District\
+Barat : Laut Natuna/ Natuna Sea\
+Timur : Kecamatan Sadaniang/ Sadaniang District
+]
+#v(6pt)
+#block[
+  #text(8pt, weight: "bold")[2. #h(2pt) Luas Wilayah] \
+  #v(2pt)
+  Luas wilayah Kecamatan Sungai Kunyit mencapai 129,23 km². Kecamatan Sungai Kunyit terdiri dari 12 desa/kelurahan. Bukit Batu menjadi desa terluas di Kecamatan Sungai Kunyit dengan luas mencapai 43,06 km² atau sekitar 33,32 persen dari luas Kecamatan Sungai Kunyit. Sementara, Sungai Duri I menjadi desa dengan luas terkecil yaitu 1,72 km² atau sekitar 1,33 persen dari luas Kecamatan Sungai Kunyit.
+]
+#v(6pt)
+#block[
+  #text(8pt, weight: "bold")[3. #h(2pt) Aksesibilitas Wilayah] \
+  #v(2pt)
+  Aksesibilitas antarwilayah desa ke pusat pemerintahan kecamatan cukup bervariasi. Desa dengan jarak terjauh ke ibukota kecamatan adalah Semparong Parit Raden dengan jarak sekitar 12,00 km, sedangkan desa terdekat adalah Sungai Kunyit Laut (0,15 km). 
+]
+  ],
+  [
+    #align(center)[#text(9pt, weight: "bold", style: "italic")[DESCRIPTION]]
+    #v(10pt)
+    #set text(style: "italic")
+    #block[
+  #text(8pt, weight: "bold", style: "italic")[1. #h(2pt) Area Location] \
+  #v(2pt)
+  Sungai Kunyit District is one of the districts in Mempawah Regency. Administratively, the boundaries of Sungai Kunyit District are:\
+North : Kabupaten Bengkayang/ Bengkayang Regency\
+South : Kecamatan Mempawah Hilir/ Mempawah Hilir District\
+West : Laut Natuna/ Natuna Sea\
+East : Kecamatan Sadaniang/ Sadaniang District
+]
+#v(6pt)
+#block[
+  #text(8pt, weight: "bold", style: "italic")[2. #h(2pt) Total Area] \
+  #v(2pt)
+  The area of Sungai Kunyit District reaches 129,23 sq.km. Sungai Kunyit District consists of 12 villages. Bukit Batu became the largest village in Sungai Kunyit District with an area of 43,06 sq.km or about 33,32 percent of the area of Sungai Kunyit District. Meanwhile, Sungai Duri I became the smallest village with the smallest area of 1,72 sq.km or about 1,33 percent of the area of Sungai Kunyit District.
+]
+#v(6pt)
+#block[
+  #text(8pt, weight: "bold", style: "italic")[3. #h(2pt) Regional Accessibility] \
+  #v(2pt)
+  Accessibility between villages and the district capital varies. The village with the farthest distance to the district capital is Semparong Parit Raden (12,00 km), while the nearest village is Sungai Kunyit Laut (0,15 km). 
+]
+  ]
+)
+
+#pagebreak()
+
+
+#metadata("fig_peta") <fig_peta>
+#v(0.3cm)
+#align(center)[
+  #box(width: 95%, stroke: 0.5pt + rgb("#CBD5E1"), radius: 4pt)[
+    #image("/assets/maps/sungai-kunyit.jpg", width: 100%)
+  ]
+]
+#v(6pt)
+#metadata("fig_1") <fig_1>
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 4.5pt,
+      align: (top + center, horizon),
+      [
+        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
+          #text(7.5pt, weight: "bold")[Gambar]
+        ] \
+        #v(-3.5pt)
+        #text(6.5pt, style: "italic")[Figures]
+      ],
+      [
+        #text(8.5pt, weight: "bold")[1]
+      ]
+    )
+  ],
+  [
+    #text(7.5pt, weight: "bold")[Peta Wilayah Kecamatan Sungai Kunyit, 2025] \
+    #v(-2pt)
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Map of Sungai Kunyit District, 2025]
+  ]
+)
+#pagebreak()
+
 
 
 #v(6pt)
 #align(center)[
-  #image("charts/gambar_1_1.svg", width: 100%)
+  #image("charts/gambar_2.svg", width: 100%)
 ]
 #v(-2pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office]]
 #v(4pt)
-#metadata("fig_1_1") <fig_1_1>
+#metadata("fig_2") <fig_2>
 #grid(
   columns: (auto, 1fr),
   column-gutter: 8pt,
@@ -764,52 +1097,14 @@ _Rounding Note: Due to rounding, figures in line/column totals may not strictly 
         #text(6.5pt, style: "italic")[Figures]
       ],
       [
-        #text(8.5pt, weight: "bold")[1.1]
+        #text(8.5pt, weight: "bold")[2]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Jarak dari Desa/Kelurahan ke Ibukota Kecamatan di Sungai Kunyit, 2025 (km)] \
+    #text(7.5pt, weight: "bold")[Jarak ke Ibukota Kecamatan Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit (km), 2025] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Distance from Village/Subdistrict to District Capital in Sungai Kunyit Subdistrict, 2025 (km)]
-  ]
-)
-#v(10pt)
-
-
-#v(6pt)
-#align(center)[
-  #image("charts/gambar_1_2.svg", width: 100%)
-]
-#v(-2pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Dinas Kependudukan dan Pencatatan Sipil/BAPEDDA Kabupaten Mempawah/#text(style: "italic")[Population and Civil Registration Service/Regional Development Planning Agency of Mempawah Regency]]
-#v(4pt)
-#metadata("fig_1_2") <fig_1_2>
-#grid(
-  columns: (auto, 1fr),
-  column-gutter: 8pt,
-  align: (top + left, top + left),
-  [
-    #grid(
-      columns: (auto, auto),
-      column-gutter: 4.5pt,
-      align: (top + center, horizon),
-      [
-        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Gambar]
-        ] \
-        #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Figures]
-      ],
-      [
-        #text(8.5pt, weight: "bold")[1.2]
-      ]
-    )
-  ],
-  [
-    #text(7.5pt, weight: "bold")[Luas Wilayah menurut Desa/Kelurahan di Sungai Kunyit, 2025 (km²)] \
-    #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Total Area by Village/Subdistrict in Sungai Kunyit Subdistrict, 2025 (sq.km)]
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Distance to District Capital by Village/Subdistrict in Sungai Kunyit District (km), 2025]
   ]
 )
 #v(10pt)
@@ -817,12 +1112,8 @@ _Rounding Note: Due to rounding, figures in line/column totals may not strictly 
 #pagebreak()
 
 // ==========================================
-// ISI BAB 1: ULASAN NARASI & TABEL DATA
+// TABEL DATA BAB 1 (1 HALAMAN 1 TABEL)
 // ==========================================
-#text(8.5pt)[
-Kecamatan Sungai Kunyit secara astronomis dan geografis terletak di wilayah pesisir dan daratan Kabupaten Mempawah, Provinsi Kalimantan Barat dengan ibukota kecamatan berada di Sungai Kunyit Laut. Wilayah ini terbagi ke dalam 12 desa/kelurahan dengan akses perhubungan darat dan air yang menghubungkan pusat-pusat kegiatan ekonomi lokal dengan ibukota kabupaten.
-]
-#v(12pt)
 
 
 #metadata("tab_1_1") <tab_1_1>
@@ -838,57 +1129,68 @@ Kecamatan Sungai Kunyit secara astronomis dan geografis terletak di wilayah pesi
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[1.1]
+        #text(10pt, weight: "bold")[1.1]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Luas Daerah Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025] \
+    #text(10pt, weight: "bold")[Luas Daerah Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Total Area by Village/Subdistrict in Sungai Kunyit Subdistrict, 2025]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Area by Village/Subdistrict in Sungai Kunyit District, 2025]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
-  columns: (2.2fr, 1.1fr, 1.0fr, 1.3fr),
+  columns: (1.9fr, 1.1fr, 1.8fr, 1.2fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
                       else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], [#strong[Luas Daerah] \ #text(6pt, weight: "bold", style: "italic")[Total Area (km²)]], [#strong[Persentase] \ #text(6pt, weight: "bold", style: "italic")[Percentage (%)]], [#strong[Status Batas] \ #text(6pt, weight: "bold", style: "italic")[Boundary Status]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Semudun], [9,89], [7,66], [Indikatif],
-  [Semparong Parit Raden], [19,77], [15,30], [Indikatif],
-  [Mendalok], [5,36], [4,15], [Definitif],
-  [Sungai Dungun], [7,19], [5,56], [Definitif],
-  [Sungai Limau], [2,05], [1,59], [Definitif],
-  [Sungai Kunyit Laut], [3,06], [2,37], [Definitif],
-  [Sungai Kunyit Dalam], [3,97], [3,07], [Definitif],
-  [Sungai Kunyit Hulu], [23,09], [17,87], [Definitif],
-  [Bukit Batu], [43,06], [33,32], [Definitif],
-  [Sungai Bundung Laut], [4,83], [3,74], [Definitif],
-  [Sungai Duri I], [1,72], [1,33], [Definitif],
-  [Sungai Duri II], [5,24], [4,05], [Definitif],
-  [Kecamatan Sungai Kunyit/_Total_], [129,23], [100,00], []
+  table.header(table.cell(align: center + horizon)[#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], table.cell(align: center + horizon)[#strong[Luas Daerah] \ #text(6pt, weight: "bold", style: "italic")[Area (km²)]], table.cell(align: center + horizon)[#strong[Persentase terhadap Luas Kecamatan] \ #text(6pt, weight: "bold", style: "italic")[Percentage to District Area]], table.cell(align: center + horizon)[#strong[Status Batas] \ #text(6pt, weight: "bold", style: "italic")[Boundary Status]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]], table.cell(align: center + horizon)[#strong[(3)]], table.cell(align: center + horizon)[#strong[(4)]]),
+  table.cell(align: left + horizon)[Semudun], table.cell(align: center + horizon)[9,893], table.cell(align: center + horizon)[7,66], table.cell(align: center + horizon)[Indikatif],
+  table.cell(align: left + horizon)[Semparong Parit Raden], table.cell(align: center + horizon)[19,767], table.cell(align: center + horizon)[15,30], table.cell(align: center + horizon)[Indikatif],
+  table.cell(align: left + horizon)[Mendalok], table.cell(align: center + horizon)[5,36], table.cell(align: center + horizon)[4,15], table.cell(align: center + horizon)[Definitif],
+  table.cell(align: left + horizon)[Sungai Dungun], table.cell(align: center + horizon)[7,19], table.cell(align: center + horizon)[5,56], table.cell(align: center + horizon)[Definitif],
+  table.cell(align: left + horizon)[Sungai Limau], table.cell(align: center + horizon)[2,05], table.cell(align: center + horizon)[1,59], table.cell(align: center + horizon)[Definitif],
+  table.cell(align: left + horizon)[Sungai Kunyit Laut], table.cell(align: center + horizon)[3,06], table.cell(align: center + horizon)[2,37], table.cell(align: center + horizon)[Definitif],
+  table.cell(align: left + horizon)[Sungai Kunyit Dalam], table.cell(align: center + horizon)[3,97], table.cell(align: center + horizon)[3,07], table.cell(align: center + horizon)[Definitif],
+  table.cell(align: left + horizon)[Sungai Kunyit Hulu], table.cell(align: center + horizon)[23,09], table.cell(align: center + horizon)[17,87], table.cell(align: center + horizon)[Definitif],
+  table.cell(align: left + horizon)[Bukit Batu], table.cell(align: center + horizon)[43,06], table.cell(align: center + horizon)[33,32], table.cell(align: center + horizon)[Definitif],
+  table.cell(align: left + horizon)[Sungai Bundung Laut], table.cell(align: center + horizon)[4,83], table.cell(align: center + horizon)[3,74], table.cell(align: center + horizon)[Definitif],
+  table.cell(align: left + horizon)[Sungai Duri I], table.cell(align: center + horizon)[1,72], table.cell(align: center + horizon)[1,33], table.cell(align: center + horizon)[Definitif],
+  table.cell(align: left + horizon)[Sungai Duri II], table.cell(align: center + horizon)[5,24], table.cell(align: center + horizon)[4,05], table.cell(align: center + horizon)[Definitif],
+  table.cell(align: left + horizon)[Kecamatan Sungai Kunyit], table.cell(align: center + horizon)[129,23], table.cell(align: center + horizon)[100,00], table.cell(align: center + horizon)[]
 )
 #v(-2pt)
-#text(6pt, fill: luma(60))[Catatan/#text(style: "italic")[Note] : Untuk desa/kelurahan dengan status Indikatif masih perlu dilakukan pelacakan ke lapangan dan kesepakatan batas antarwilayah yang berbatasan. / For villages/subdistricts with Indicative status, field tracking and boundary agreements between adjacent areas are still required.]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Catatan/#text(style: "italic")[Note] :]],
+  [#text(6.5pt, fill: black)[Untuk desa/kelurahan dengan status Indikatif masih perlu dilakukan pelacakan ke lapangan dan kesepakatan batas antarwilayah yang berbatasan./#text(style: "italic")[For villages/subdistricts with Indicative status, field tracking and boundary agreements between adjacent areas are still required.]]]
+)
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Dinas Kependudukan dan Pencatatan Sipil/BAPEDDA Kabupaten Mempawah / Population and Civil Registration Service/#text(style: "italic")[Regional Development Planning Agency of Mempawah Regency]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Badan Perencanaan Pembangunan, Riset dan Inovasi Daerah Kabupaten Mempawah/#text(style: "italic")[Regional Development, Research and Innovation Agency of Mempawah Regency]]]
+)
 #v(8pt)
 
 #pagebreak()
+
 
 
 #metadata("tab_1_2") <tab_1_2>
@@ -904,54 +1206,60 @@ Kecamatan Sungai Kunyit secara astronomis dan geografis terletak di wilayah pesi
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[1.2]
+        #text(10pt, weight: "bold")[1.2]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Jarak ke Ibukota Kecamatan dan Ibukota Kabupaten Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025] \
+    #text(10pt, weight: "bold")[Jarak ke Ibukota Kecamatan dan Ibukota Kabupaten/Kota Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit (km), 2025] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Distance to Subdistrict and Regency Capital by Village in Sungai Kunyit Subdistrict, 2025]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Distance to District Capital and Regency Capital by Village in Sungai Kunyit District (km), 2025]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
-  columns: (2.5fr, 1.3fr, 1.3fr),
+  columns: (1.8fr, 1.7fr, 1.9fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
                       else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], [#strong[Ke Ibukota Kec.] \ #text(6pt, weight: "bold", style: "italic")[To District Capital (km)]], [#strong[Ke Ibukota Kab.] \ #text(6pt, weight: "bold", style: "italic")[To Regency Capital (km)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]]),
-  [Semudun], [6,20], [13,00],
-  [Semparong Parit Raden], [12,00], [17,00],
-  [Mendalok], [5,10], [14,00],
-  [Sungai Dungun], [3,20], [16,00],
-  [Sungai Limau], [0,85], [18,00],
-  [Sungai Kunyit Laut], [0,15], [19,00],
-  [Sungai Kunyit Dalam], [3,00], [21,00],
-  [Sungai Kunyit Hulu], [5,60], [18,00],
-  [Bukit Batu], [7,60], [27,00],
-  [Sungai Bundung Laut], [2,70], [22,00],
-  [Sungai Duri I], [6,40], [25,00],
-  [Sungai Duri II], [3,80], [23,00]
+  table.header(table.cell(align: center + horizon)[#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], table.cell(align: center + horizon)[#strong[Jarak ke Ibukota Kecamatan] \ #text(6pt, weight: "bold", style: "italic")[Distance to District Capital]], table.cell(align: center + horizon)[#strong[Jarak ke Ibukota Kabupaten/Kota] \ #text(6pt, weight: "bold", style: "italic")[Distance to Regency/Municipal Capital]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]], table.cell(align: center + horizon)[#strong[(3)]]),
+  table.cell(align: left + horizon)[Semudun], table.cell(align: center + horizon)[6,20], table.cell(align: center + horizon)[13,00],
+  table.cell(align: left + horizon)[Semparong Parit Raden], table.cell(align: center + horizon)[12,00], table.cell(align: center + horizon)[17,00],
+  table.cell(align: left + horizon)[Mendalok], table.cell(align: center + horizon)[5,10], table.cell(align: center + horizon)[14,00],
+  table.cell(align: left + horizon)[Sungai Dungun], table.cell(align: center + horizon)[3,20], table.cell(align: center + horizon)[16,00],
+  table.cell(align: left + horizon)[Sungai Limau], table.cell(align: center + horizon)[0,85], table.cell(align: center + horizon)[18,00],
+  table.cell(align: left + horizon)[Sungai Kunyit Laut], table.cell(align: center + horizon)[0,15], table.cell(align: center + horizon)[19,00],
+  table.cell(align: left + horizon)[Sungai Kunyit Dalam], table.cell(align: center + horizon)[3,00], table.cell(align: center + horizon)[21,00],
+  table.cell(align: left + horizon)[Sungai Kunyit Hulu], table.cell(align: center + horizon)[5,60], table.cell(align: center + horizon)[18,00],
+  table.cell(align: left + horizon)[Bukit Batu], table.cell(align: center + horizon)[7,60], table.cell(align: center + horizon)[27,00],
+  table.cell(align: left + horizon)[Sungai Bundung Laut], table.cell(align: center + horizon)[2,70], table.cell(align: center + horizon)[22,00],
+  table.cell(align: left + horizon)[Sungai Duri I], table.cell(align: center + horizon)[6,40], table.cell(align: center + horizon)[25,00],
+  table.cell(align: left + horizon)[Sungai Duri II], table.cell(align: center + horizon)[3,80], table.cell(align: center + horizon)[23,00]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Kantor Camat Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office]]]
+)
 #v(8pt)
 
-#v(10pt)
+#pagebreak()
+
+
 
 #metadata("tab_1_3") <tab_1_3>
 #v(6pt)
@@ -966,46 +1274,51 @@ Kecamatan Sungai Kunyit secara astronomis dan geografis terletak di wilayah pesi
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[1.3]
+        #text(10pt, weight: "bold")[1.3]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Batas Administrasi Kecamatan Sungai Kunyit Menurut Arah Mata Angin, 2025] \
+    #text(10pt, weight: "bold")[Batas Administrasi Kecamatan Sungai Kunyit Menurut Arah Mata Angin, 2025] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Administrative Borders of Sungai Kunyit Subdistrict by Cardinal Direction, 2025]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Administrative Borders of Sungai Kunyit District by Cardinal Direction, 2025]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
   columns: (0.6fr, 1.8fr, 3.0fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
                       else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[No]], [#strong[Arah Mata Angin] \ #text(6pt, weight: "bold", style: "italic")[Wind Direction]], [#strong[Berbatasan Dengan] \ #text(6pt, weight: "bold", style: "italic")[Bordering With]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]]),
-  [1], [Utara/North], [...],
-  [2], [Selatan/South], [...],
-  [3], [Barat/West], [...],
-  [4], [Timur/East], [...]
+  table.header(table.cell(align: center + horizon)[#strong[No]], table.cell(align: center + horizon)[#strong[Arah Mata Angin] \ #text(6pt, weight: "bold", style: "italic")[Wind Direction]], table.cell(align: center + horizon)[#strong[Berbatasan Dengan] \ #text(6pt, weight: "bold", style: "italic")[Bordering With]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]], table.cell(align: center + horizon)[#strong[(3)]]),
+  table.cell(align: center + horizon)[1], table.cell(align: left + horizon)[Utara/#text(style: "italic")[North]], table.cell(align: left + horizon)[Kabupaten Bengkayang/#text(style: "italic")[Bengkayang Regency]],
+  table.cell(align: center + horizon)[2], table.cell(align: left + horizon)[Selatan/#text(style: "italic")[South]], table.cell(align: left + horizon)[Kecamatan Mempawah Hilir/#text(style: "italic")[Mempawah Hilir District]],
+  table.cell(align: center + horizon)[3], table.cell(align: left + horizon)[Barat/#text(style: "italic")[West]], table.cell(align: left + horizon)[Laut Natuna/#text(style: "italic")[Natuna Sea]],
+  table.cell(align: center + horizon)[4], table.cell(align: left + horizon)[Timur/#text(style: "italic")[East]], table.cell(align: left + horizon)[Kecamatan Sadaniang/#text(style: "italic")[Sadaniang District]]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Sungai Kunyit/Bagian Tata Pemerintahan Setda Mempawah/#text(style: "italic")[Sungai Kunyit District Office/Regional Secretariat Governance Division of Mempawah Regency]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Kantor Camat Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office]]]
+)
 #v(8pt)
 
 #pagebreak()
+
 
 
 #metadata("tab_1_4") <tab_1_4>
@@ -1021,78 +1334,180 @@ Kecamatan Sungai Kunyit secara astronomis dan geografis terletak di wilayah pesi
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[1.4]
+        #text(10pt, weight: "bold")[1.4]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Jarak Kantor Camat Sungai Kunyit dengan Kota dan Tempat Penting Lainnya, 2025] \
+    #text(10pt, weight: "bold")[Jarak Kantor Camat Sungai Kunyit dengan Kota dan Tempat Penting Lainnya, 2025] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Distance from Sungai Kunyit Subdistrict Office to Other Important Places, 2025]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Distance from Sungai Kunyit Subdistrict Office to Other Important Places, 2025]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
   columns: (0.6fr, 3.2fr, 1.2fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
                       else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[No]], [#strong[Nama Kota dan Tempat Penting] \ #text(6pt, weight: "bold", style: "italic")[Other Important Places]], [#strong[Jarak] \ #text(6pt, weight: "bold", style: "italic")[Distance (km)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]]),
-  [1], [Ibukota Provinsi Kalimantan Barat 
-(Kota Pontianak)], [94,00],
-  [2], [Pusat Pemerintahan Kabupaten 
-Mempawah (Mempawah Hilir)], [19,00],
-  [3], [Makam Juang Mandor], [...]
+  table.header(table.cell(align: center + horizon)[#strong[No]], table.cell(align: center + horizon)[#strong[Nama Kota dan Tempat Penting] \ #text(6pt, weight: "bold", style: "italic")[Other Important Places]], table.cell(align: center + horizon)[#strong[Jarak] \ #text(6pt, weight: "bold", style: "italic")[Distance (km)]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]], table.cell(align: center + horizon)[#strong[(3)]]),
+  table.cell(align: center + horizon)[1], table.cell(align: left + horizon)[Ibukota Provinsi Kalimantan Barat/#text(style: "italic")[(Kota Pontianak)]], table.cell(align: center + horizon)[94,00],
+  table.cell(align: center + horizon)[2], table.cell(align: left + horizon)[Pusat Pemerintahan Kabupaten/#text(style: "italic")[Mempawah (Mempawah Hilir)]], table.cell(align: center + horizon)[19,00],
+  table.cell(align: center + horizon)[3], table.cell(align: left + horizon)[Makam Juang Mandor], table.cell(align: center + horizon)[66,00],
+  table.cell(align: center + horizon)[4], table.cell(align: left + horizon)[Kecamatan Sungai Pinyuh], table.cell(align: center + horizon)[35,00]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Kantor Camat Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office]]]
+)
 #v(8pt)
 
 
-#pagebreak(to: "odd")
 
 // ==========================================
-// LEMBAR PEMBATAS BAB 2 (FULL-BLEED A5)
+// BAB 2: PEMERINTAHAN (PEMBATAS, ULASAN & PENJELASAN TEKNIS)
 // ==========================================
-#page(
-  paper: "a5",
-  margin: 0cm,
-  header: none,
-  footer: none,
-)[
-  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/pembatas/Bab 2.jpg", width: 100%, height: 100%)
-] <chapter_page>
 
-#metadata("2. PEMERINTAHAN") <chapter_title>
-#metadata("Government") <chapter_title_en>
+// ----------------------------------------------------
+// BAB 2: PEMERINTAHAN (GOVERNMENT)
+// ----------------------------------------------------
+#pagebreak()
+#set page(margin: 0pt, header: none, footer: none)
 #metadata("bab2") <bab2>
+#image("/assets/dividers/Bab_2.jpg", width: 100%, height: 100%)
 
-// ==========================================
-// BAB 2: PEMERINTAHAN (INFOGRAFIS & NARASI)
-// ==========================================
+#pagebreak()
+#set page(
+  margin: normal_margins,
+  header: page_header,
+  footer: page_footer,
+)
+#metadata("PEMERINTAHAN") <chapter_title>
+#metadata("GOVERNMENT") <chapter_title_en>
+
+// --- HALAMAN PENJELASAN TEKNIS / TECHNICAL NOTES ---
+#set text(font: "Liberation Sans", size: 8.5pt)
+#set par(justify: true, leading: 0.9em)
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 14pt,
+  [
+    #align(center)[#text(9pt, weight: "bold")[PENJELASAN TEKNIS]]
+    #v(10pt)
+    #grid(
+      columns: (12pt, 1fr),
+      column-gutter: 3pt,
+      row-gutter: 12pt,
+      [1.], [Kecamatan adalah bagian wilayah dari daerah kabupaten/kota yang dipimpin oleh Camat. Kecamatan diatur sesuai dengan ketentuan Undang-Undang Nomor 23 Tahun 2014 tentang Pemerintahan Daerah.],
+      [2.], [Desa/Kelurahan adalah wilayah yang dipimpin oleh kepala desa/kepala kelurahan (lurah) yang berada di bawah koordinasi camat.],
+      [3.], [Rukun Tetangga (RT) dan Rukun Warga (RW) digunakan untuk mengidentifikasi satuan lingkungan setempat. RT dan RW merupakan organisasi yang dibentuk melalui musyawarah oleh masyarakat setempat serta diakui dan dibina oleh Pemerintah untuk menjadi mitra dalam pemberdayaan masyarakat. Pembentukan RT dan RW sejalan dengan besaran jumlah penduduk di suatu wilayah.],
+      [4.], [Klasifikasi Wilayah adalah golongan suatu wilayah administrasi setingkat desa/kelurahan yang ditentukan berdasarkan standar atau ciri wilayah perkotaan dan perdesaan.],
+      [5.], [Indeks Desa Membangun (IDM) merupakan indeks komposit yang dibentuk dari tiga indeks, yaitu Indeks Ketahanan Sosial (IKS), Indeks Ketahanan Ekonomi (IKE), dan Indeks Ketahanan Ekologi/Lingkungan (IKL). Nilai IDM yang semakin tinggi menunjukkan kondisi desa yang semakin baik dari segi sosial, ekonomi, dan ekologi. IDM dapat menentukan status desa menjadi Desa Mandiri, Maju, Berkembang, Tertinggal, dan Sangat Tertinggal berdasarkan nilai dari indeks-indeks tersebut.],
+      [6.], [Pegawai Negeri Sipil (PNS) adalah setiap warga negara Republik Indonesia yang telah memenuhi syarat yang ditentukan, diangkat oleh pejabat yang berwenang dan diserahi tugas dalam jabatan negeri, atau diserahi tugas negara lainnya, dan digaji berdasarkan peraturan perundang-undangan yang berlaku. PNS terdiri dari PNS pusat dan PNS daerah.]
+    )
+  ],
+  [
+    #align(center)[#text(9pt, weight: "bold", style: "italic")[TECHNICAL NOTES]]
+    #v(10pt)
+    #set text(style: "italic")
+    #grid(
+      columns: (12pt, 1fr),
+      column-gutter: 3pt,
+      row-gutter: 12pt,
+      [1.], [District is part of the region of the district / city led by Camat. District is regulated in accordance with the provisions of Law No. 23 of 2014 on Regional Government.],
+      [2.], [Village/Subdistrict is a region led by the village head/subdistrict head (lurah) who is under the coordination of district head.],
+      [3.], [RT and RW are used to identify local environmental units. RT and RW are organisations formed through deliberation by local communities and recognized and built by the Government to become partners in community empowerment. The formation of RT and RW is in line with the size of the population in a region.],
+      [4.], [Regional Classification is a group of administrative regions as high as village/subdistrict specified based on standards or characteristics of urban and rural areas.],
+      [5.], [Index of Developing Village is a composite index formed from three indices, namely Social Resilience Index, Economic Resilience Index, and Ecological/Environmental.Resilience Index. The higher Index of Developing Village values indicate the better of the village in terms of social, economic, and ecological terms. Index of Developing Village can determine the status of the village to be \"Mandiri\", \"Maju\", \"Berkembang\", \"Tertinggal\" and \"Sangat Tertinggal\" Village based on the value of these indexes.],
+      [6.], [Civil Service (PNS) is any citizen of the Republic of Indonesia who has qualified as specified, appointed by the authorized officials and assigned duties in state office, or assigned to other state duties, and paid under applicable legislation. The PNS consists of the central PNS and the local PNS.]
+    )
+  ]
+)
+
+#pagebreak()
+
+// --- HALAMAN ULASAN / DESCRIPTION ---
+#set text(font: "Liberation Sans", size: 8.5pt)
+#set par(justify: true, leading: 0.9em)
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 14pt,
+  [
+    #align(center)[#text(9pt, weight: "bold")[ULASAN]]
+    #v(10pt)
+    #block[
+  #text(8pt, weight: "bold")[1. #h(2pt) Kepala Daerah] \
+  #v(2pt)
+  Sejak awal berdirinya, Kecamatan Sungai Kunyit sudah banyak mengalami pergantian pemimpin. Jabatan Camat Sungai Kunyit pertama dijabat oleh M. Kasim Basok (1962 – 1963). Dalam perkembangannya, kepemimpinan kecamatan terus berlanjut hingga saat ini dijabat oleh Feri Ramadhani, S. STP., M.A.P (2024-sekarang).
+]
+#v(6pt)
+#block[
+  #text(8pt, weight: "bold")[2. #h(2pt) Pemerintah Desa] \
+  #v(2pt)
+  Kecamatan Sungai Kunyit pada tahun 2025 terdiri dari 12 desa/kelurahan yang terbagi menjadi 37 dusun, 44 RW, dan 131 RT. Berdasarkan klasifikasi perdesaan dan perkotaan, 3 desa/kelurahan yaitu Semudun, Sungai Limau, Sungai Duri I merupakan wilayah perkotaan, sedangkan 9 desa lainnya merupakan wilayah perdesaan.\
+\
+Berdasarkan status Indeks Desa Membangun (IDM), capaian kemandirian desa mencakup 11 desa berstatus Mandiri, 1 desa Maju.
+]
+#v(6pt)
+#block[
+  #text(8pt, weight: "bold")[3. #h(2pt) Pegawai Negeri Sipil] \
+  #v(2pt)
+  Penyelenggaraan pelayanan publik di lingkungan Pemerintah Kecamatan Sungai Kunyit didukung oleh 27 orang Pegawai Negeri Sipil (PNS), yang terdiri dari 20 orang laki-laki dan 7 orang perempuan. Aparatur kecamatan berperan penting dalam koordinasi administrasi kewilayahan dan fasilitasi pembangunan desa.
+]
+  ],
+  [
+    #align(center)[#text(9pt, weight: "bold", style: "italic")[DESCRIPTION]]
+    #v(10pt)
+    #set text(style: "italic")
+    #block[
+  #text(8pt, weight: "bold", style: "italic")[1. #h(2pt) Regional Head] \
+  #v(2pt)
+  Since its inception, Sungai Kunyit District has experienced many changes in leadership. The first position of Head of Sungai Kunyit District was held by M. Kasim Basok (1962 – 1963). Over time, district leadership has continued through to the present term held by Feri Ramadhani, S. STP., M.A.P (2024-sekarang).
+]
+#v(6pt)
+#block[
+  #text(8pt, weight: "bold", style: "italic")[2. #h(2pt) Village Government] \
+  #v(2pt)
+  Sungai Kunyit District in 2025 consists of 12 villages/subdistricts divided into 37 dusun, 44 RW, and 131 RT. Based on the classification of rural and urban areas, 3 village(s) (Semudun, Sungai Limau, Sungai Duri I) are urban areas, while 9 other villages are rural areas.\
+\
+Based on the Developing Village Index (IDM), village autonomy achievements include 11 Independent Village(s), 1 Advanced Village(s).
+]
+#v(6pt)
+#block[
+  #text(8pt, weight: "bold", style: "italic")[3. #h(2pt) Civil Service] \
+  #v(2pt)
+  Public service delivery within Sungai Kunyit District Government is supported by 27 Civil Servants (PNS), consisting of 20 males and 7 females. District officials play an essential role in regional administrative coordination and village development facilitation.
+]
+  ]
+)
+
+#pagebreak()
+
 
 
 #v(6pt)
 #align(center)[
-  #image("charts/gambar_2_1.svg", width: 100%)
+  #image("charts/gambar_3.svg", width: 100%)
 ]
 #v(-2pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office]]
 #v(4pt)
-#metadata("fig_2_1") <fig_2_1>
+#metadata("fig_3") <fig_3>
 #grid(
   columns: (auto, 1fr),
   column-gutter: 8pt,
@@ -1110,14 +1525,14 @@ Mempawah (Mempawah Hilir)], [19,00],
         #text(6.5pt, style: "italic")[Figures]
       ],
       [
-        #text(8.5pt, weight: "bold")[2.1]
+        #text(8.5pt, weight: "bold")[3]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Jumlah Rukun Tetangga (RT) menurut Desa/Kelurahan di Sungai Kunyit, 2025] \
+    #text(7.5pt, weight: "bold")[Jumlah Rukun Tetangga (RT) Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Neighborhood Units (RT) by Village/Subdistrict in Sungai Kunyit Subdistrict, 2025]
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of RT by Village/Subdistrict in Sungai Kunyit District, 2025]
   ]
 )
 #v(10pt)
@@ -1125,12 +1540,12 @@ Mempawah (Mempawah Hilir)], [19,00],
 #pagebreak()
 
 // ==========================================
-// ISI BAB 2: ULASAN NARASI & TABEL DATA
+// TABEL DATA BAB 2 (1 HALAMAN 1 TABEL)
 // ==========================================
-#text(8.5pt)[
-Secara administratif, Kecamatan Sungai Kunyit terbagi menjadi 12 desa/kelurahan yang dipimpin oleh kepala desa dan lurah definitif, didukung oleh aparatur pemerintah desa, Badan Permusyawaratan Desa (BPD), serta kelembagaan RT dan RW sebagai garda terdepan pelayanan kemasyarakatan.
-]
-#v(12pt)
+
+#v(0.2cm)
+#text(9pt, font: ("Metropolis", "Liberation Sans", "Arial"), weight: "bold")[2.1 WILAYAH ADMINISTRATIF/]#text(9pt, font: ("Metropolis", "Liberation Sans", "Arial"), weight: "bold", style: "italic")[ADMINISTRATIVE AREA]
+#v(6pt)
 
 
 #metadata("tab_2_1_1") <tab_2_1_1>
@@ -1146,54 +1561,60 @@ Secara administratif, Kecamatan Sungai Kunyit terbagi menjadi 12 desa/kelurahan 
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[2.1.1]
+        #text(10pt, weight: "bold")[2.1.1]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Jumlah Dusun, Rukun Warga (RW), dan Rukun Tetangga (RT) Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025] \
+    #text(10pt, weight: "bold")[Jumlah Dusun, Rukun Warga (RW), dan Rukun Tetangga (RT) Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Hamlets, RW, and RT by Village/Subdistrict in Sungai Kunyit Subdistrict, 2025]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Number of Hamlets, Rukun Warga and Rukun Tetangga by Villages/Subdistricts in Sungai Kunyit District, 2025]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
-  columns: (2.2fr, 1.0fr, 1.0fr, 1.0fr),
+  columns: (2.2fr, 0.9fr, 1.0fr, 1.0fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
                       else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], [#strong[Jumlah Dusun] \ #text(6pt, weight: "bold", style: "italic")[Hamlets]], [#strong[Rukun Warga] \ #text(6pt, weight: "bold", style: "italic")[(RW)]], [#strong[Rukun Tetangga] \ #text(6pt, weight: "bold", style: "italic")[(RT)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Semudun], [4], [8], [16],
-  [Semparong Parit Raden], [3], [3], [9],
-  [Mendalok], [3], [3], [11],
-  [Sungai Dungun], [3], [3], [9],
-  [Sungai Limau], [3], [3], [9],
-  [Sungai Kunyit Laut], [3], [6], [13],
-  [Sungai Kunyit Dalam], [3], [3], [9],
-  [Sungai Kunyit Hulu], [3], [3], [10],
-  [Bukit Batu], [3], [3], [10],
-  [Sungai Bundung Laut], [3], [3], [12],
-  [Sungai Duri I], [3], [3], [12],
-  [Sungai Duri II], [3], [3], [11]
+  table.header(table.cell(align: center + horizon)[#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], table.cell(align: center + horizon)[#strong[Dusun] \ #text(6pt, weight: "bold", style: "italic")[Hamlet]], table.cell(align: center + horizon)[#strong[Rukun Warga] \ #text(6pt, weight: "bold", style: "italic")[(RW)]], table.cell(align: center + horizon)[#strong[Rukun Tetangga] \ #text(6pt, weight: "bold", style: "italic")[(RT)]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]], table.cell(align: center + horizon)[#strong[(3)]], table.cell(align: center + horizon)[#strong[(4)]]),
+  table.cell(align: left + horizon)[Semudun], table.cell(align: center + horizon)[4], table.cell(align: center + horizon)[8], table.cell(align: center + horizon)[16],
+  table.cell(align: left + horizon)[Semparong Parit Raden], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[9],
+  table.cell(align: left + horizon)[Mendalok], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[11],
+  table.cell(align: left + horizon)[Sungai Dungun], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[9],
+  table.cell(align: left + horizon)[Sungai Limau], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[9],
+  table.cell(align: left + horizon)[Sungai Kunyit Laut], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[6], table.cell(align: center + horizon)[13],
+  table.cell(align: left + horizon)[Sungai Kunyit Dalam], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[9],
+  table.cell(align: left + horizon)[Sungai Kunyit Hulu], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[10],
+  table.cell(align: left + horizon)[Bukit Batu], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[10],
+  table.cell(align: left + horizon)[Sungai Bundung Laut], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[12],
+  table.cell(align: left + horizon)[Sungai Duri I], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[12],
+  table.cell(align: left + horizon)[Sungai Duri II], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[11],
+  table.cell(align: left + horizon)[Kecamatan Sungai Kunyit], table.cell(align: center + horizon)[37], table.cell(align: center + horizon)[44], table.cell(align: center + horizon)[131]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Master SLS Badan Pusat Statistik/#text(style: "italic")[Master SLS BPS-Statistics Indonesia]]]
+)
 #v(8pt)
 
 #pagebreak()
+
 
 
 #metadata("tab_2_1_2") <tab_2_1_2>
@@ -1209,43 +1630,69 @@ Secara administratif, Kecamatan Sungai Kunyit terbagi menjadi 12 desa/kelurahan 
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[2.1.2]
+        #text(10pt, weight: "bold")[2.1.2]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Nama-Nama Camat yang Pernah/Masih Menjabat di Kecamatan Sungai Kunyit] \
+    #text(10pt, weight: "bold")[Nama-Nama Camat yang Pernah/Masih Menjabat di Kecamatan Sungai Kunyit, 2025] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Names of District Heads of Sungai Kunyit Subdistrict]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Names of Last and Current Who Have/Still Served in Sungai Kunyit District, 2025]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
+#set text(size: 6.8pt)
 #table(
   columns: (0.6fr, 2.8fr, 1.6fr),
-  inset: (x: 3.5pt, y: 4.5pt),
+  inset: (x: 3.5pt, y: 2.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
                       else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[No]], [#strong[Nama Camat] \ #text(6pt, weight: "bold", style: "italic")[Name of District Head]], [#strong[Periode Menjabat] \ #text(6pt, weight: "bold", style: "italic")[Period]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]]),
-  [22], [Ir. Teddy Prawoto, M.Si], [2023 – 2024]
+  table.header(table.cell(align: center + horizon)[#strong[No]], table.cell(align: center + horizon)[#strong[Nama Camat] \ #text(6pt, weight: "bold", style: "italic")[Name of District Head]], table.cell(align: center + horizon)[#strong[Periode Menjabat] \ #text(6pt, weight: "bold", style: "italic")[Period]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]], table.cell(align: center + horizon)[#strong[(3)]]),
+  table.cell(align: center + horizon)[1], table.cell(align: left + horizon)[M. Kasim Basok], table.cell(align: center + horizon)[1962 – 1963],
+  table.cell(align: center + horizon)[2], table.cell(align: left + horizon)[M. Djamil Achmad], table.cell(align: center + horizon)[1963 – 1969],
+  table.cell(align: center + horizon)[3], table.cell(align: left + horizon)[Drs. Uray Roekiyat], table.cell(align: center + horizon)[1969 – 1973],
+  table.cell(align: center + horizon)[4], table.cell(align: left + horizon)[Sinyor Mantar], table.cell(align: center + horizon)[1973 – 1979],
+  table.cell(align: center + horizon)[5], table.cell(align: left + horizon)[M. Oesman Akad], table.cell(align: center + horizon)[1979 – 1981],
+  table.cell(align: center + horizon)[6], table.cell(align: left + horizon)[Drs. Sadri Ilyas], table.cell(align: center + horizon)[1981 – 1987],
+  table.cell(align: center + horizon)[7], table.cell(align: left + horizon)[Pahlevie Alhani, BA], table.cell(align: center + horizon)[1987 – 1990],
+  table.cell(align: center + horizon)[8], table.cell(align: left + horizon)[Drs. Idrus], table.cell(align: center + horizon)[1990 – 1995],
+  table.cell(align: center + horizon)[9], table.cell(align: left + horizon)[Dra. Syarkiah Sani], table.cell(align: center + horizon)[1995 – 1999],
+  table.cell(align: center + horizon)[10], table.cell(align: left + horizon)[Drs. Fauzi Kasim], table.cell(align: center + horizon)[1999 – 2001],
+  table.cell(align: center + horizon)[11], table.cell(align: left + horizon)[Drs. Nuradi], table.cell(align: center + horizon)[2001 – 2002],
+  table.cell(align: center + horizon)[12], table.cell(align: left + horizon)[Bachtiar K, S.Sos], table.cell(align: center + horizon)[2002 – 2003],
+  table.cell(align: center + horizon)[13], table.cell(align: left + horizon)[Drs. H. Muchrizal], table.cell(align: center + horizon)[2004 – 2006],
+  table.cell(align: center + horizon)[14], table.cell(align: left + horizon)[Sudiono, S.Sos], table.cell(align: center + horizon)[2006 – 2007],
+  table.cell(align: center + horizon)[15], table.cell(align: left + horizon)[Drs. Sudjoko, M.Si], table.cell(align: center + horizon)[2007 – 2009],
+  table.cell(align: center + horizon)[16], table.cell(align: left + horizon)[Iwan Supardi, S.Sos], table.cell(align: center + horizon)[2009 – 2020],
+  table.cell(align: center + horizon)[17], table.cell(align: left + horizon)[Drs. R. Suhartono, M.Si], table.cell(align: center + horizon)[2020 – 2022],
+  table.cell(align: center + horizon)[18], table.cell(align: left + horizon)[Drs. M. Erfiza, M.Si], table.cell(align: center + horizon)[2022 – 2023],
+  table.cell(align: center + horizon)[19], table.cell(align: left + horizon)[Ir. Teddy Prawoto, M.Si], table.cell(align: center + horizon)[2023 – 2024],
+  table.cell(align: center + horizon)[20], table.cell(align: left + horizon)[Feri Ramadhani, S. STP., M.A.P], table.cell(align: center + horizon)[2024-sekarang]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Kantor Camat Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office]]]
+)
 #v(8pt)
 
-#v(10pt)
+#pagebreak()
+
+
 
 #metadata("tab_2_1_3") <tab_2_1_3>
 #v(6pt)
@@ -1260,51 +1707,149 @@ Secara administratif, Kecamatan Sungai Kunyit terbagi menjadi 12 desa/kelurahan 
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[2.1.3]
+        #text(10pt, weight: "bold")[2.1.3]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Nama-Nama Kepala Desa/Lurah di Kecamatan Sungai Kunyit, 2025] \
+    #text(10pt, weight: "bold")[Nama-Nama Kepala Desa/Lurah di Kecamatan Sungai Kunyit, 2026] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Names of Village Heads in Sungai Kunyit Subdistrict, 2025]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Names of Village Heads in Sungai Kunyit District, 2026]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
   columns: (0.6fr, 2.2fr, 2.8fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
                       else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[No]], [#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], [#strong[Nama Kepala Desa / Lurah] \ #text(6pt, weight: "bold", style: "italic")[Name of Village Head]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]]),
-  [1], [Semudun], [...],
-  [2], [Semparong Parit Raden], [...],
-  [3], [Mendalok], [...],
-  [4], [Sungai Dungun], [...],
-  [5], [Sungai Limau], [...],
-  [6], [Sungai Kunyit Laut], [...],
-  [7], [Sungai Kunyit Dalam], [...],
-  [8], [Sungai Kunyit Hulu], [...],
-  [9], [Bukit Batu], [...],
-  [10], [Sungai Bundung Laut], [...],
-  [11], [Sungai Duri I], [...],
-  [12], [Sungai Duri II], [...]
+  table.header(table.cell(align: center + horizon)[#strong[No]], table.cell(align: center + horizon)[#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], table.cell(align: center + horizon)[#strong[Nama Kepala Desa / Lurah] \ #text(6pt, weight: "bold", style: "italic")[Name of Village Head]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]], table.cell(align: center + horizon)[#strong[(3)]]),
+  table.cell(align: center + horizon)[1], table.cell(align: left + horizon)[Semudun], table.cell(align: left + horizon)[Wahdah],
+  table.cell(align: center + horizon)[2], table.cell(align: left + horizon)[Semparong Parit Raden], table.cell(align: left + horizon)[Mujib],
+  table.cell(align: center + horizon)[3], table.cell(align: left + horizon)[Mendalok], table.cell(align: left + horizon)[Mardianto],
+  table.cell(align: center + horizon)[4], table.cell(align: left + horizon)[Sungai Dungun], table.cell(align: left + horizon)[Karnain A.],
+  table.cell(align: center + horizon)[5], table.cell(align: left + horizon)[Sungai Limau], table.cell(align: left + horizon)[Bambang Irawan/#text(style: "italic")[Pj Kades Sungai Limau]],
+  table.cell(align: center + horizon)[6], table.cell(align: left + horizon)[Sungai Kunyit Laut], table.cell(align: left + horizon)[Suhaimi],
+  table.cell(align: center + horizon)[7], table.cell(align: left + horizon)[Sungai Kunyit Dalam], table.cell(align: left + horizon)[Ardi],
+  table.cell(align: center + horizon)[8], table.cell(align: left + horizon)[Sungai Kunyit Hulu], table.cell(align: left + horizon)[M. Harun],
+  table.cell(align: center + horizon)[9], table.cell(align: left + horizon)[Bukit Batu], table.cell(align: left + horizon)[Harianto],
+  table.cell(align: center + horizon)[10], table.cell(align: left + horizon)[Sungai Bundung Laut], table.cell(align: left + horizon)[H. Rusdiono],
+  table.cell(align: center + horizon)[11], table.cell(align: left + horizon)[Sungai Duri I], table.cell(align: left + horizon)[Ana Suryana, S.Pd.SD],
+  table.cell(align: center + horizon)[12], table.cell(align: left + horizon)[Sungai Duri II], table.cell(align: left + horizon)[Langgeng Bayu Irawan, S.Kom]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Kantor Camat Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office]]]
+)
+#v(8pt)
+
+#pagebreak()
+
+
+
+#metadata("tab_2_1_4") <tab_2_1_4>
+#v(6pt)
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 4.5pt,
+      align: (top + center, horizon),
+      [
+        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
+          #text(10pt, weight: "bold")[Tabel]
+        ] \
+        #v(-3.5pt)
+        #text(8pt, style: "italic")[Table]
+      ],
+      [
+        #text(10pt, weight: "bold")[2.1.4]
+      ]
+    )
+  ],
+  [
+    #text(10pt, weight: "bold")[Nama-Nama Kepala Dusun di Kecamatan Sungai Kunyit, 2025] \
+    #v(-2pt)
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Names of Hamlet Heads in Sungai Kunyit District, 2025]
+  ]
+)
+#v(3pt)
+
+#show table.cell: set par(justify: false)
+#set text(size: 6.8pt)
+#table(
+  columns: (0.6fr, 1.8fr, 1.6fr, 2.0fr),
+  inset: (x: 3.5pt, y: 2.5pt),
+  stroke: none,
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
+                      else if calc.even(row) { rgb("#FFF8E7") }
+                      else { rgb("#FFF4D4") },
+  table.header(table.cell(align: center + horizon)[#strong[No]], table.cell(align: center + horizon)[#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], table.cell(align: center + horizon)[#strong[Nama Dusun] \ #text(6pt, weight: "bold", style: "italic")[Name of Hamlet]], table.cell(align: center + horizon)[#strong[Nama Kepala Dusun] \ #text(6pt, weight: "bold", style: "italic")[Name of Hamlet Head]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]], table.cell(align: center + horizon)[#strong[(3)]], table.cell(align: center + horizon)[#strong[(4)]]),
+  table.cell(align: center + horizon)[1], table.cell(align: left + horizon)[Semudun], table.cell(align: left + horizon)[Dusun Indah], table.cell(align: left + horizon)[A. Fahrurrozi, ST],
+  table.cell(align: center + horizon)[2], table.cell(align: left + horizon)[Semudun], table.cell(align: left + horizon)[Dusun Permai], table.cell(align: left + horizon)[Zainal Abidin],
+  table.cell(align: center + horizon)[3], table.cell(align: left + horizon)[Semudun], table.cell(align: left + horizon)[Dusun Sejahtera], table.cell(align: left + horizon)[Marsela Artha Maharani],
+  table.cell(align: center + horizon)[4], table.cell(align: left + horizon)[Semudun], table.cell(align: left + horizon)[Dusun Lestari], table.cell(align: left + horizon)[Mustahdi],
+  table.cell(align: center + horizon)[5], table.cell(align: left + horizon)[Semparong Parit Raden], table.cell(align: left + horizon)[Dusun Taufik], table.cell(align: left + horizon)[Mahmudin],
+  table.cell(align: center + horizon)[6], table.cell(align: left + horizon)[Semparong Parit Raden], table.cell(align: left + horizon)[Dusun Hidayah], table.cell(align: left + horizon)[Sapriadi],
+  table.cell(align: center + horizon)[7], table.cell(align: left + horizon)[Semparong Parit Raden], table.cell(align: left + horizon)[Dusun Palangkeran], table.cell(align: left + horizon)[Paisal],
+  table.cell(align: center + horizon)[8], table.cell(align: left + horizon)[Mendalok], table.cell(align: left + horizon)[Dusun Mandala], table.cell(align: left + horizon)[Herman Jasa],
+  table.cell(align: center + horizon)[9], table.cell(align: left + horizon)[Mendalok], table.cell(align: left + horizon)[Dusun Durian], table.cell(align: left + horizon)[Morkan],
+  table.cell(align: center + horizon)[10], table.cell(align: left + horizon)[Mendalok], table.cell(align: left + horizon)[Dusun Telaga Putih], table.cell(align: left + horizon)[Yemin, S.Pd.I],
+  table.cell(align: center + horizon)[11], table.cell(align: left + horizon)[Sungai Dungun], table.cell(align: left + horizon)[Dusun Satria], table.cell(align: left + horizon)[Dobiansyah],
+  table.cell(align: center + horizon)[12], table.cell(align: left + horizon)[Sungai Dungun], table.cell(align: left + horizon)[Dusun Duta], table.cell(align: left + horizon)[Zainal Ilmi],
+  table.cell(align: center + horizon)[13], table.cell(align: left + horizon)[Sungai Dungun], table.cell(align: left + horizon)[Dusun Beringin], table.cell(align: left + horizon)[Amiril],
+  table.cell(align: center + horizon)[14], table.cell(align: left + horizon)[Sungai Limau], table.cell(align: left + horizon)[Dusun Nelayan], table.cell(align: left + horizon)[Muhadab],
+  table.cell(align: center + horizon)[15], table.cell(align: left + horizon)[Sungai Limau], table.cell(align: left + horizon)[Dusun Pembangunan], table.cell(align: left + horizon)[Ilham],
+  table.cell(align: center + horizon)[16], table.cell(align: left + horizon)[Sungai Limau], table.cell(align: left + horizon)[Dusun Tani], table.cell(align: left + horizon)[Hamdani],
+  table.cell(align: center + horizon)[17], table.cell(align: left + horizon)[Sungai Kunyit Laut], table.cell(align: left + horizon)[Dusun Sabar], table.cell(align: left + horizon)[Zulhairi],
+  table.cell(align: center + horizon)[18], table.cell(align: left + horizon)[Sungai Kunyit Laut], table.cell(align: left + horizon)[Dusun Tenang], table.cell(align: left + horizon)[Heriansyah],
+  table.cell(align: center + horizon)[19], table.cell(align: left + horizon)[Sungai Kunyit Laut], table.cell(align: left + horizon)[Dusun Mufakat], table.cell(align: left + horizon)[Abdul Ghafur],
+  table.cell(align: center + horizon)[20], table.cell(align: left + horizon)[Sungai Kunyit Dalam], table.cell(align: left + horizon)[Dusun Melati], table.cell(align: left + horizon)[Amirudin],
+  table.cell(align: center + horizon)[21], table.cell(align: left + horizon)[Sungai Kunyit Dalam], table.cell(align: left + horizon)[Dusun Mawar], table.cell(align: left + horizon)[Budiono],
+  table.cell(align: center + horizon)[22], table.cell(align: left + horizon)[Sungai Kunyit Dalam], table.cell(align: left + horizon)[Dusun Cempaka], table.cell(align: left + horizon)[Sintia Febiola],
+  table.cell(align: center + horizon)[23], table.cell(align: left + horizon)[Sungai Kunyit Hulu], table.cell(align: left + horizon)[Dusun Sekip I], table.cell(align: left + horizon)[Abdul Hakim],
+  table.cell(align: center + horizon)[24], table.cell(align: left + horizon)[Sungai Kunyit Hulu], table.cell(align: left + horizon)[Dusun Sekip II], table.cell(align: left + horizon)[Muji],
+  table.cell(align: center + horizon)[25], table.cell(align: left + horizon)[Sungai Kunyit Hulu], table.cell(align: left + horizon)[Dusun Semayar], table.cell(align: left + horizon)[Sy. Sodikin],
+  table.cell(align: center + horizon)[26], table.cell(align: left + horizon)[Bukit Batu], table.cell(align: left + horizon)[Dusun Karya Utama], table.cell(align: left + horizon)[Jarkasih],
+  table.cell(align: center + horizon)[27], table.cell(align: left + horizon)[Bukit Batu], table.cell(align: left + horizon)[Dusun Serai Wangi], table.cell(align: left + horizon)[Yusmin],
+  table.cell(align: center + horizon)[28], table.cell(align: left + horizon)[Bukit Batu], table.cell(align: left + horizon)[Dusun Kembang Lada], table.cell(align: left + horizon)[Natalis Yoti],
+  table.cell(align: center + horizon)[29], table.cell(align: left + horizon)[Sungai Bundung Laut], table.cell(align: left + horizon)[Dusun Maya Sari], table.cell(align: left + horizon)[Nuraye],
+  table.cell(align: center + horizon)[30], table.cell(align: left + horizon)[Sungai Bundung Laut], table.cell(align: left + horizon)[Dusun Suka Tani], table.cell(align: left + horizon)[Eef Niza],
+  table.cell(align: center + horizon)[31], table.cell(align: left + horizon)[Sungai Bundung Laut], table.cell(align: left + horizon)[Dusun Tujuh Ratus], table.cell(align: left + horizon)[M. Ridho Fahmi, S. PD],
+  table.cell(align: center + horizon)[32], table.cell(align: left + horizon)[Sungai Duri I], table.cell(align: left + horizon)[Dusun Sutera], table.cell(align: left + horizon)[Wildan Firdaus],
+  table.cell(align: center + horizon)[33], table.cell(align: left + horizon)[Sungai Duri I], table.cell(align: left + horizon)[Dusun Subur], table.cell(align: left + horizon)[Deo Osandi],
+  table.cell(align: center + horizon)[34], table.cell(align: left + horizon)[Sungai Duri I], table.cell(align: left + horizon)[Dusun Sabar], table.cell(align: left + horizon)[Robi Wahyudi],
+  table.cell(align: center + horizon)[35], table.cell(align: left + horizon)[Sungai Duri II], table.cell(align: left + horizon)[Dusun Karya], table.cell(align: left + horizon)[Saiman, S. I.Pust],
+  table.cell(align: center + horizon)[36], table.cell(align: left + horizon)[Sungai Duri II], table.cell(align: left + horizon)[Dusun Taruna], table.cell(align: left + horizon)[Roby],
+  table.cell(align: center + horizon)[37], table.cell(align: left + horizon)[Sungai Duri II], table.cell(align: left + horizon)[Dusun Damai], table.cell(align: left + horizon)[Tabi'i]
+)
+#v(-3pt)
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Kantor Camat Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office]]]
+)
 #v(8pt)
 
 #pagebreak()
@@ -1323,54 +1868,60 @@ Secara administratif, Kecamatan Sungai Kunyit terbagi menjadi 12 desa/kelurahan 
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[2.1.5]
+        #text(10pt, weight: "bold")[2.1.5]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Klasifikasi Desa/Kelurahan Perdesaan dan Perkotaan di Kecamatan Sungai Kunyit, 2024] \
+    #text(10pt, weight: "bold")[Klasifikasi Desa/Kelurahan Perdesaan dan Perkotaan di Kecamatan Sungai Kunyit, 2024] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Urban and Rural Classification of Village/Subdistrict in Sungai Kunyit Subdistrict, 2024]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Urban and Rural Classification of Village/Subdistrict in Sungai Kunyit District, 2024]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
   columns: (0.6fr, 2.2fr, 1.6fr, 1.6fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
                       else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[No]], [#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], [#strong[Wilayah Administratif] \ #text(6pt, weight: "bold", style: "italic")[Administrative Area]], [#strong[Klasifikasi Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Urban/Rural Classification]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [1], [Semudun], [Desa], [Perkotaan],
-  [2], [Semparong Parit Raden], [Desa], [Perdesaan],
-  [3], [Mendalok], [Desa], [Perdesaan],
-  [4], [Sungai Dungun], [Desa], [Perdesaan],
-  [5], [Sungai Limau], [Desa], [Perkotaan],
-  [6], [Sungai Kunyit Laut], [Desa], [Perdesaan],
-  [7], [Sungai Kunyit Dalam], [Desa], [Perdesaan],
-  [8], [Sungai Kunyit Hulu], [Desa], [Perdesaan],
-  [9], [Bukit Batu], [Desa], [Perdesaan],
-  [10], [Sungai Bundung Laut], [Desa], [Perdesaan],
-  [11], [Sungai Duri I], [Desa], [Perkotaan],
-  [12], [Sungai Duri II], [Desa], [Perdesaan]
+  table.header(table.cell(align: center + horizon)[#strong[No]], table.cell(align: center + horizon)[#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], table.cell(align: center + horizon)[#strong[Wilayah Administratif] \ #text(6pt, weight: "bold", style: "italic")[Administrative Area]], table.cell(align: center + horizon)[#strong[Klasifikasi Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Urban/Rural Classification]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]], table.cell(align: center + horizon)[#strong[(3)]], table.cell(align: center + horizon)[#strong[(4)]]),
+  table.cell(align: center + horizon)[1], table.cell(align: left + horizon)[Semudun], table.cell(align: center + horizon)[Desa], table.cell(align: left + horizon)[Perkotaan],
+  table.cell(align: center + horizon)[2], table.cell(align: left + horizon)[Semparong Parit Raden], table.cell(align: center + horizon)[Desa], table.cell(align: left + horizon)[Perdesaan],
+  table.cell(align: center + horizon)[3], table.cell(align: left + horizon)[Mendalok], table.cell(align: center + horizon)[Desa], table.cell(align: left + horizon)[Perdesaan],
+  table.cell(align: center + horizon)[4], table.cell(align: left + horizon)[Sungai Dungun], table.cell(align: center + horizon)[Desa], table.cell(align: left + horizon)[Perdesaan],
+  table.cell(align: center + horizon)[5], table.cell(align: left + horizon)[Sungai Limau], table.cell(align: center + horizon)[Desa], table.cell(align: left + horizon)[Perkotaan],
+  table.cell(align: center + horizon)[6], table.cell(align: left + horizon)[Sungai Kunyit Laut], table.cell(align: center + horizon)[Desa], table.cell(align: left + horizon)[Perdesaan],
+  table.cell(align: center + horizon)[7], table.cell(align: left + horizon)[Sungai Kunyit Dalam], table.cell(align: center + horizon)[Desa], table.cell(align: left + horizon)[Perdesaan],
+  table.cell(align: center + horizon)[8], table.cell(align: left + horizon)[Sungai Kunyit Hulu], table.cell(align: center + horizon)[Desa], table.cell(align: left + horizon)[Perdesaan],
+  table.cell(align: center + horizon)[9], table.cell(align: left + horizon)[Bukit Batu], table.cell(align: center + horizon)[Desa], table.cell(align: left + horizon)[Perdesaan],
+  table.cell(align: center + horizon)[10], table.cell(align: left + horizon)[Sungai Bundung Laut], table.cell(align: center + horizon)[Desa], table.cell(align: left + horizon)[Perdesaan],
+  table.cell(align: center + horizon)[11], table.cell(align: left + horizon)[Sungai Duri I], table.cell(align: center + horizon)[Desa], table.cell(align: left + horizon)[Perkotaan],
+  table.cell(align: center + horizon)[12], table.cell(align: left + horizon)[Sungai Duri II], table.cell(align: center + horizon)[Desa], table.cell(align: left + horizon)[Perdesaan]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Peraturan Kepala BPS No. 120 Tahun 2020 / Chief of BPS Regulation No. 120 of 2020/#text(style: "italic")[Peraturan Kepala BPS No. 120 Tahun 2020 / Chief of BPS Regulation No. 120 of 2020]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Peraturan Kepala Badan Pusat Statistik Nomor 120 Tahun 2020 Tentang Klasifikasi Desa Perkotaan dan Perdesaan di Indonesia Tahun 2020/#text(style: "italic")[Regulation of the Chief Statistician Number 120 of 2020 Concerning the Classification of Urban and Rural Villages in Indonesia in 2020]]]
+)
 #v(8pt)
 
-#v(10pt)
+#pagebreak()
+
+
 
 #metadata("tab_2_1_6") <tab_2_1_6>
 #v(6pt)
@@ -1385,54 +1936,63 @@ Secara administratif, Kecamatan Sungai Kunyit terbagi menjadi 12 desa/kelurahan 
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[2.1.6]
+        #text(10pt, weight: "bold")[2.1.6]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Status Desa Berdasarkan Indeks Desa Membangun (IDM) di Kecamatan Sungai Kunyit, 2024] \
+    #text(10pt, weight: "bold")[Status Desa berdasarkan Indeks Desa Membangun di Kecamatan Sungai Kunyit, 2024] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Village Status Based on Developing Village Index (IDM) in Sungai Kunyit Subdistrict, 2024]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Village Status Based on Developing Village Index in Sungai Kunyit District, 2024]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
   columns: (0.6fr, 2.5fr, 2.5fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
                       else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[No]], [#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], [#strong[Status Indeks Desa Membangun] \ #text(6pt, weight: "bold", style: "italic")[Developing Village Index Status]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]]),
-  [1], [Semudun], [Mandiri],
-  [2], [Semparong Parit Raden], [Maju],
-  [3], [Mendalok], [Mandiri],
-  [4], [Sungai Dungun], [Mandiri],
-  [5], [Sungai Limau], [Mandiri],
-  [6], [Sungai Kunyit Laut], [Mandiri],
-  [7], [Sungai Kunyit Dalam], [Mandiri],
-  [8], [Sungai Kunyit Hulu], [Mandiri],
-  [9], [Bukit Batu], [Mandiri],
-  [10], [Sungai Bundung Laut], [Mandiri],
-  [11], [Sungai Duri I], [Mandiri],
-  [12], [Sungai Duri II], [Mandiri]
+  table.header(table.cell(align: center + horizon)[#strong[No]], table.cell(align: center + horizon)[#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], table.cell(align: center + horizon)[#strong[Status Indeks Desa Membangun] \ #text(6pt, weight: "bold", style: "italic")[Developing Village Index Status]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]], table.cell(align: center + horizon)[#strong[(3)]]),
+  table.cell(align: center + horizon)[1], table.cell(align: left + horizon)[Semudun], table.cell(align: center + horizon)[Mandiri],
+  table.cell(align: center + horizon)[2], table.cell(align: left + horizon)[Semparong Parit Raden], table.cell(align: center + horizon)[Maju],
+  table.cell(align: center + horizon)[3], table.cell(align: left + horizon)[Mendalok], table.cell(align: center + horizon)[Mandiri],
+  table.cell(align: center + horizon)[4], table.cell(align: left + horizon)[Sungai Dungun], table.cell(align: center + horizon)[Mandiri],
+  table.cell(align: center + horizon)[5], table.cell(align: left + horizon)[Sungai Limau], table.cell(align: center + horizon)[Mandiri],
+  table.cell(align: center + horizon)[6], table.cell(align: left + horizon)[Sungai Kunyit Laut], table.cell(align: center + horizon)[Mandiri],
+  table.cell(align: center + horizon)[7], table.cell(align: left + horizon)[Sungai Kunyit Dalam], table.cell(align: center + horizon)[Mandiri],
+  table.cell(align: center + horizon)[8], table.cell(align: left + horizon)[Sungai Kunyit Hulu], table.cell(align: center + horizon)[Mandiri],
+  table.cell(align: center + horizon)[9], table.cell(align: left + horizon)[Bukit Batu], table.cell(align: center + horizon)[Mandiri],
+  table.cell(align: center + horizon)[10], table.cell(align: left + horizon)[Sungai Bundung Laut], table.cell(align: center + horizon)[Mandiri],
+  table.cell(align: center + horizon)[11], table.cell(align: left + horizon)[Sungai Duri I], table.cell(align: center + horizon)[Mandiri],
+  table.cell(align: center + horizon)[12], table.cell(align: left + horizon)[Sungai Duri II], table.cell(align: center + horizon)[Mandiri]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kementerian Desa, Pembangunan Daerah Tertinggal, dan Transmigrasi/#text(style: "italic")[Ministry of Villages, Disadvantaged Regions Development, and Transmigration]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Indeks Desa Membangun (IDM) Tahun 2024 per Desa, Kementerian Desa, PDT dan Transmigrasi/#text(style: "italic")[Index of Developing Village 2024 for each Village, Ministry of Villages, Development of Disadvantaged Regions, and Transmigration]]]
+)
 #v(8pt)
 
 #pagebreak()
+
+
+#v(0.2cm)
+#text(9pt, font: ("Metropolis", "Liberation Sans", "Arial"), weight: "bold")[2.2 SUMBER DAYA MANUSIA/]#text(9pt, font: ("Metropolis", "Liberation Sans", "Arial"), weight: "bold", style: "italic")[HUMAN RESOURCES]
+#v(6pt)
 
 
 #metadata("tab_2_2_1") <tab_2_2_1>
@@ -1448,47 +2008,61 @@ Secara administratif, Kecamatan Sungai Kunyit terbagi menjadi 12 desa/kelurahan 
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[2.2.1]
+        #text(10pt, weight: "bold")[2.2.1]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Jumlah Pegawai Negeri Sipil Pemerintah Daerah Kecamatan Menurut Golongan di Kecamatan Sungai Kunyit, 2025] \
+    #text(10pt, weight: "bold")[Jumlah Pegawai Negeri Sipil Menurut Pemerintah Daerah dan Jenis Kelamin di Kecamatan Sungai Kunyit, 2025] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Civil Servants in Sungai Kunyit Subdistrict Office by Rank/Class, 2025]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Number of Government Employee by Local Government and Sex in Sungai Kunyit District, 2025]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
-  columns: (2.2fr, 1.0fr, 1.0fr, 1.0fr),
+  columns: (2.6fr, 0.9fr, 0.9fr, 0.9fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
                       else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[Golongan] \ #text(6pt, weight: "bold", style: "italic")[Rank / Class]], [#strong[Laki-laki] \ #text(6pt, weight: "bold", style: "italic")[Male]], [#strong[Perempuan] \ #text(6pt, weight: "bold", style: "italic")[Female]], [#strong[Jumlah] \ #text(6pt, weight: "bold", style: "italic")[Total]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Golongan I], [...], [...], [...],
-  [Golongan II], [...], [...], [...],
-  [Golongan III], [...], [...], [...],
-  [Golongan IV], [...], [...], [...],
-  [Jumlah/_Total_], [...], [...], [...]
+  table.header(table.cell(align: center + horizon)[#strong[Pemerintah Daerah] \ #text(6pt, weight: "bold", style: "italic")[Local Government]], table.cell(align: center + horizon)[#strong[Laki-laki] \ #text(6pt, weight: "bold", style: "italic")[Male]], table.cell(align: center + horizon)[#strong[Perempuan] \ #text(6pt, weight: "bold", style: "italic")[Female]], table.cell(align: center + horizon)[#strong[Jumlah] \ #text(6pt, weight: "bold", style: "italic")[Total]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]], table.cell(align: center + horizon)[#strong[(3)]], table.cell(align: center + horizon)[#strong[(4)]]),
+  table.cell(align: left + horizon)[Pemerintah Daerah Kecamatan Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Government]], table.cell(align: center + horizon)[20], table.cell(align: center + horizon)[7], table.cell(align: center + horizon)[27],
+  table.cell(align: left + horizon)[Pemerintah Desa Semudun/#text(style: "italic")[Semudun Village Government]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Pemerintah Desa Semparong Parit Raden/#text(style: "italic")[Semparong Parit Raden Village Government]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Pemerintah Desa Mendalok/#text(style: "italic")[Mendalok Village Government]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Pemerintah Desa Sungai Dungun/#text(style: "italic")[Sungai Dungun Village Government]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Pemerintah Desa Sungai Limau/#text(style: "italic")[Sungai Limau Village Government]], table.cell(align: center + horizon)[1], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[1],
+  table.cell(align: left + horizon)[Pemerintah Desa Sungai Kunyit Laut/#text(style: "italic")[Sungai Kunyit Laut Village Government]], table.cell(align: center + horizon)[1], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[1],
+  table.cell(align: left + horizon)[Pemerintah Desa Sungai Kunyit Dalam/#text(style: "italic")[Sungai Kunyit Dalam Village Government]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Pemerintah Desa Sungai Kunyit Hulu/#text(style: "italic")[Sungai Kunyit Hulu Village Government]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Pemerintah Desa Bukit Batu/#text(style: "italic")[Bukit Batu Village Government]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Pemerintah Desa Sungai Bundung Laut/#text(style: "italic")[Sungai Bundung Laut Village Government]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Pemerintah Desa Sungai Duri I/#text(style: "italic")[Sungai Duri I Village Government]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Pemerintah Desa Sungai Duri Ii/#text(style: "italic")[Sungai Duri Ii Village Government]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Kantor Camat Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office]]]
+)
 #v(8pt)
 
-#v(10pt)
+#pagebreak()
+
+
 
 #metadata("tab_2_2_2") <tab_2_2_2>
 #v(6pt)
@@ -1503,79 +2077,167 @@ Secara administratif, Kecamatan Sungai Kunyit terbagi menjadi 12 desa/kelurahan 
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[2.2.2]
+        #text(10pt, weight: "bold")[2.2.2]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Jumlah Pegawai Negeri Sipil Pemerintah Daerah Kecamatan Menurut Tingkat Pendidikan di Kecamatan Sungai Kunyit, 2025] \
+    #text(10pt, weight: "bold")[Jumlah Pegawai Negeri Sipil Pemerintah Daerah Kecamatan Sungai Kunyit Menurut Tingkat Pendidikan dan Jenis Kelamin, 2025] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Civil Servants in Sungai Kunyit Subdistrict Office by Education Level, 2025]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Number of Government Employee of Sungai Kunyit District Local Government by Educational Level and Sex, 2025]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
-  columns: (2.2fr, 1.0fr, 1.0fr, 1.0fr),
+  columns: (2.6fr, 0.9fr, 0.9fr, 0.9fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
                       else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[Tingkat Pendidikan] \ #text(6pt, weight: "bold", style: "italic")[Education Level]], [#strong[Laki-laki] \ #text(6pt, weight: "bold", style: "italic")[Male]], [#strong[Perempuan] \ #text(6pt, weight: "bold", style: "italic")[Female]], [#strong[Jumlah] \ #text(6pt, weight: "bold", style: "italic")[Total]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [≤ SMP/Junior High], [...], [...], [...],
-  [SMA/Senior High], [...], [...], [...],
-  [Diploma I/II/III], [...], [...], [...],
-  [S1/D-IV (Bachelor)], [...], [...], [...],
-  [S2/Master], [...], [...], [...],
-  [Jumlah/_Total_], [...], [...], [...]
+  table.header(table.cell(align: center + horizon)[#strong[Tingkat Pendidikan] \ #text(6pt, weight: "bold", style: "italic")[Educational Level]], table.cell(align: center + horizon)[#strong[Laki-laki] \ #text(6pt, weight: "bold", style: "italic")[Male]], table.cell(align: center + horizon)[#strong[Perempuan] \ #text(6pt, weight: "bold", style: "italic")[Female]], table.cell(align: center + horizon)[#strong[Jumlah] \ #text(6pt, weight: "bold", style: "italic")[Total]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]], table.cell(align: center + horizon)[#strong[(3)]], table.cell(align: center + horizon)[#strong[(4)]]),
+  table.cell(align: left + horizon)[Sekolah Dasar (SD)/#text(style: "italic")[Primary School]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[SMP/#text(style: "italic")[Sederajat Junior High School]], table.cell(align: center + horizon)[1], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[1],
+  table.cell(align: left + horizon)[SMA/#text(style: "italic")[Sederajat Senior High School]], table.cell(align: center + horizon)[9], table.cell(align: center + horizon)[2], table.cell(align: center + horizon)[11],
+  table.cell(align: left + horizon)[Diploma I/Akta I Diploma I/#text(style: "italic")[Akta I]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Diploma II/Akta II Diploma II/#text(style: "italic")[Akta II]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Diploma III/Akta III Diploma III/#text(style: "italic")[Akta III]], table.cell(align: center + horizon)[1], table.cell(align: center + horizon)[1], table.cell(align: center + horizon)[2],
+  table.cell(align: left + horizon)[Diploma IV/Akta IV Diploma IV/#text(style: "italic")[Akta IV]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[S1/Sarjana Under Graduate/#text(style: "italic")[Bachelor]], table.cell(align: center + horizon)[8], table.cell(align: center + horizon)[4], table.cell(align: center + horizon)[12],
+  table.cell(align: left + horizon)[S2/#text(style: "italic")[Pasca Sarjana Graduate]], table.cell(align: center + horizon)[1], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[1],
+  table.cell(align: left + horizon)[S3/Doktor/#text(style: "italic")[Ph.D Post Graduate]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Jumlah], table.cell(align: center + horizon)[20], table.cell(align: center + horizon)[7], table.cell(align: center + horizon)[27]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kantor Camat Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Kantor Camat Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office]]]
+)
 #v(8pt)
 
 
-#pagebreak(to: "odd")
 
 // ==========================================
-// LEMBAR PEMBATAS BAB 3 (FULL-BLEED A5)
+// BAB 3: PENDUDUK (PEMBATAS, ULASAN & PENJELASAN TEKNIS)
 // ==========================================
-#page(
-  paper: "a5",
-  margin: 0cm,
-  header: none,
-  footer: none,
-)[
-  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/pembatas/Bab 3.jpg", width: 100%, height: 100%)
-] <chapter_page>
 
-#metadata("3. KEPENDUDUKAN") <chapter_title>
-#metadata("Population") <chapter_title_en>
+// ----------------------------------------------------
+// BAB 3: PENDUDUK (POPULATION)
+// ----------------------------------------------------
+#pagebreak()
+#set page(margin: 0pt, header: none, footer: none)
 #metadata("bab3") <bab3>
+#image("/assets/dividers/Bab_3.jpg", width: 100%, height: 100%)
 
-// ==========================================
-// BAB 3: KEPENDUDUKAN (INFOGRAFIS & NARASI)
-// ==========================================
+#pagebreak()
+#set page(
+  margin: normal_margins,
+  header: page_header,
+  footer: page_footer,
+)
+#metadata("PENDUDUK") <chapter_title>
+#metadata("POPULATION") <chapter_title_en>
+
+// --- HALAMAN PENJELASAN TEKNIS / TECHNICAL NOTES ---
+#set text(font: "Liberation Sans", size: 8.5pt)
+#set par(justify: true, leading: 0.9em)
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 14pt,
+  [
+    #align(center)[#text(9pt, weight: "bold")[PENJELASAN TEKNIS]]
+    #v(10pt)
+    #grid(
+      columns: (12pt, 1fr),
+      column-gutter: 3pt,
+      row-gutter: 12pt,
+      [1.], [Kepadatan penduduk adalah angka yang menyatakan banyaknya penduduk per kilometer persegi, dihitung dengan perbandingan antara banyaknya penduduk terhadap luas wilayah.],
+      [2.], [Rasio jenis kelamin adalah perbandingan antara jumlah penduduk laki-laki dan jumlah penduduk perempuan pada suatu daerah dan waktu tertentu, yang biasanya dinyatakan dalam banyaknya penduduk laki-laki perseratus penduduk perempuan.]
+    )
+  ],
+  [
+    #align(center)[#text(9pt, weight: "bold", style: "italic")[TECHNICAL NOTES]]
+    #v(10pt)
+    #set text(style: "italic")
+    #grid(
+      columns: (12pt, 1fr),
+      column-gutter: 3pt,
+      row-gutter: 12pt,
+      [1.], [The population density is a figure that states the number of residents per square kilometer, calculated by comparison between the population of the area.],
+      [2.], [Sex ratio is a comparison between the number of male population and the number of female population at a given area and time, which is usually expressed in the number of male population per hundred female population.]
+    )
+  ]
+)
+
+#pagebreak()
+
+// --- HALAMAN ULASAN / DESCRIPTION ---
+#set text(font: "Liberation Sans", size: 8.5pt)
+#set par(justify: true, leading: 0.9em)
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 14pt,
+  [
+    #align(center)[#text(9pt, weight: "bold")[ULASAN]]
+    #v(10pt)
+    #block[
+  #text(8pt, weight: "bold")[1. #h(2pt) Perkembangan Penduduk dan Rasio Jenis Kelamin] \
+  #v(2pt)
+  Penduduk Kecamatan Sungai Kunyit pada tahun 2025 tercatat sebanyak 31.235 jiwa, terdiri atas 15.999 jiwa laki-laki dan 15.236 jiwa perempuan. Komposisi ini menghasilkan rasio jenis kelamin sebesar 105,01, yang mengindikasikan terdapat sekitar 105 penduduk laki-laki untuk setiap 100 penduduk perempuan di wilayah ini.
+]
+#v(6pt)
+#block[
+  #text(8pt, weight: "bold")[2. #h(2pt) Distribusi dan Kepadatan Penduduk] \
+  #v(2pt)
+  Kepadatan penduduk di Kecamatan Sungai Kunyit mencapai rata-rata sekitar 241,70 jiwa per kilometer persegi. Penyebaran penduduk belum merata antardesa, di mana Desa Sungai Duri I memiliki kepadatan tertinggi mencapai 1.497,67 jiwa/km², sedangkan Desa Bukit Batu mencatat kepadatan terendah sebesar 70,83 jiwa/km².\
+\
+Dari sisi konsentrasi penduduk, Sungai Kunyit Hulu merupakan desa dengan proporsi penduduk terbesar (12,82 persen), sementara proporsi penduduk terkecil berada di Sungai Kunyit Dalam (5,42 persen).
+]
+  ],
+  [
+    #align(center)[#text(9pt, weight: "bold", style: "italic")[DESCRIPTION]]
+    #v(10pt)
+    #set text(style: "italic")
+    #block[
+  #text(8pt, weight: "bold", style: "italic")[1. #h(2pt) Population Growth and Sex Ratio] \
+  #v(2pt)
+  The population of Sungai Kunyit District in 2025 was recorded at 31.235 people, comprising 15.999 males and 15.236 females. This composition yields a sex ratio of 105,01, indicating approximately 105 males for every 100 females in this district.
+]
+#v(6pt)
+#block[
+  #text(8pt, weight: "bold", style: "italic")[2. #h(2pt) Population Distribution and Density] \
+  #v(2pt)
+  The average population density in Sungai Kunyit District reaches approximately 241,70 people per square kilometer. Population distribution is not evenly distributed across villages; Sungai Duri I village has the highest density at 1.497,67 people/sq.km, while Bukit Batu village records the lowest at 70,83 people/sq.km.\
+\
+In terms of population concentration, Sungai Kunyit Hulu has the largest share (12,82 percent), whereas the smallest share is found in Sungai Kunyit Dalam (5,42 percent).
+]
+  ]
+)
+
+#pagebreak()
+
 
 
 #v(6pt)
 #align(center)[
-  #image("charts/gambar_3_1.svg", width: 100%)
+  #image("charts/gambar_4.svg", width: 100%)
 ]
 #v(-2pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Dinas Kependudukan dan Pencatatan Sipil Kabupaten Mempawah (Semester II 2025)/#text(style: "italic")[Population and Civil Registration Service of Mempawah Regency (Semester II 2025)]]
 #v(4pt)
-#metadata("fig_3_1") <fig_3_1>
+#metadata("fig_4") <fig_4>
 #grid(
   columns: (auto, 1fr),
   column-gutter: 8pt,
@@ -1593,14 +2255,14 @@ Secara administratif, Kecamatan Sungai Kunyit terbagi menjadi 12 desa/kelurahan 
         #text(6.5pt, style: "italic")[Figures]
       ],
       [
-        #text(8.5pt, weight: "bold")[3.1]
+        #text(8.5pt, weight: "bold")[4]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Jumlah Penduduk menurut Jenis Kelamin dan Desa/Kelurahan di Sungai Kunyit, 2025] \
+    #text(7.5pt, weight: "bold")[Jumlah Penduduk Menurut Jenis Kelamin dan Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Population by Sex and Village/Subdistrict in Sungai Kunyit Subdistrict, 2025]
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Population by Sex and Village/Subdistrict in Sungai Kunyit District, 2025]
   ]
 )
 #v(10pt)
@@ -1608,12 +2270,8 @@ Secara administratif, Kecamatan Sungai Kunyit terbagi menjadi 12 desa/kelurahan 
 #pagebreak()
 
 // ==========================================
-// ISI BAB 3: ULASAN NARASI & TABEL DATA
+// TABEL DATA BAB 3 (FORMAT 2 HALAMAN)
 // ==========================================
-#text(8.5pt)[
-Berdasdasarkan data registrasi semester II tahun 2025 dari Dinas Kependudukan dan Pencatatan Sipil Kabupaten Mempawah, jumlah penduduk Kecamatan Sungai Kunyit terdistribusi di 12 desa/kelurahan dengan struktur demografi yang produktif. Komposisi penduduk laki-laki dan perempuan relatif berimbang, mencerminkan kestabilan demografis wilayah.
-]
-#v(12pt)
 
 
 #metadata("tab_3_1") <tab_3_1>
@@ -1629,85 +2287,228 @@ Berdasdasarkan data registrasi semester II tahun 2025 dari Dinas Kependudukan da
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[3.1]
+        #text(10pt, weight: "bold")[3.1]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Penduduk, Distribusi Persentase, dan Kepadatan Penduduk Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025] \
+    #text(10pt, weight: "bold")[Penduduk, Distribusi Persentase Penduduk, Kepadatan Penduduk, Rasio Jenis Kelamin Penduduk Menurut Desa/Kelurahan di Kecamatan Sungai Kunyit, 2025] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Population, Percentage Distribution, and Density by Village/Subdistrict in Sungai Kunyit Subdistrict, 2025]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Population, Percentage Distribution of Population, Population Density, and Population Sex Ratio by Villages/Subdistricts in Sungai Kunyit District, 2025]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
-  columns: (2.0fr, 1.0fr, 1.0fr, 1.1fr, 1.0fr, 1.2fr),
+  columns: (2.6fr, 1.1fr, 1.1fr, 1.2fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
                       else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], [#strong[Laki-laki] \ #text(6pt, weight: "bold", style: "italic")[Male]], [#strong[Perempuan] \ #text(6pt, weight: "bold", style: "italic")[Female]], [#strong[Jumlah] \ #text(6pt, weight: "bold", style: "italic")[Total]], [#strong[Persentase] \ #text(6pt, weight: "bold", style: "italic")[Percentage (%)]], [#strong[Kepadatan] \ #text(6pt, weight: "bold", style: "italic")[Density (jiwa/km²)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]], [#strong[(5)]], [#strong[(6)]]),
-  [Semudun], [1.527], [1.411], [2.938], [9,51], [262,20],
-  [Semparong Parit Raden], [1.085], [1.111], [2.196], [7,11], [118,93],
-  [Mendalok], [1.103], [1.021], [2.124], [6,88], [396,58],
-  [Sungai Dungun], [1.202], [1.149], [2.351], [7,61], [327,00],
-  [Sungai Limau], [1.108], [1.087], [2.195], [7,11], [1.068,23],
-  [Sungai Kunyit Laut], [1.672], [1.583], [3.255], [10,54], [1.065,36],
-  [Sungai Kunyit Dalam], [843], [839], [1.682], [5,44], [423,54],
-  [Sungai Kunyit Hulu], [1.991], [1.909], [3.900], [12,62], [168,93],
-  [Bukit Batu], [1.538], [1.434], [2.972], [9,62], [69,01],
-  [Sungai Bundung Laut], [1.140], [1.101], [2.241], [7,25], [464,00],
-  [Sungai Duri I], [1.326], [1.277], [2.603], [8,43], [1.517,08],
-  [Sungai Duri II], [1.277], [1.159], [2.436], [7,89], [465,25]
+  table.header(table.cell(align: center + horizon)[#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], table.cell(align: center + horizon)[#strong[Laki-laki] \ #text(6pt, weight: "bold", style: "italic")[Male]], table.cell(align: center + horizon)[#strong[Perempuan] \ #text(6pt, weight: "bold", style: "italic")[Female]], table.cell(align: center + horizon)[#strong[Jumlah] \ #text(6pt, weight: "bold", style: "italic")[Total]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]], table.cell(align: center + horizon)[#strong[(3)]], table.cell(align: center + horizon)[#strong[(4)]]),
+  table.cell(align: left + horizon)[Semudun], table.cell(align: center + horizon)[1.533], table.cell(align: center + horizon)[1.415], table.cell(align: center + horizon)[2.948],
+  table.cell(align: left + horizon)[Semparong Parit Raden], table.cell(align: center + horizon)[1.103], table.cell(align: center + horizon)[1.123], table.cell(align: center + horizon)[2.226],
+  table.cell(align: left + horizon)[Mendalok], table.cell(align: center + horizon)[1.108], table.cell(align: center + horizon)[1.048], table.cell(align: center + horizon)[2.156],
+  table.cell(align: left + horizon)[Sungai Dungun], table.cell(align: center + horizon)[1.175], table.cell(align: center + horizon)[1.128], table.cell(align: center + horizon)[2.303],
+  table.cell(align: left + horizon)[Sungai Limau], table.cell(align: center + horizon)[1.123], table.cell(align: center + horizon)[1.079], table.cell(align: center + horizon)[2.202],
+  table.cell(align: left + horizon)[Sungai Kunyit Laut], table.cell(align: center + horizon)[1.718], table.cell(align: center + horizon)[1.635], table.cell(align: center + horizon)[3.353],
+  table.cell(align: left + horizon)[Sungai Kunyit Dalam], table.cell(align: center + horizon)[844], table.cell(align: center + horizon)[848], table.cell(align: center + horizon)[1.692],
+  table.cell(align: left + horizon)[Sungai Kunyit Hulu], table.cell(align: center + horizon)[2.046], table.cell(align: center + horizon)[1.957], table.cell(align: center + horizon)[4.003],
+  table.cell(align: left + horizon)[Bukit Batu], table.cell(align: center + horizon)[1.576], table.cell(align: center + horizon)[1.474], table.cell(align: center + horizon)[3.050],
+  table.cell(align: left + horizon)[Sungai Bundung Laut], table.cell(align: center + horizon)[1.150], table.cell(align: center + horizon)[1.112], table.cell(align: center + horizon)[2.262],
+  table.cell(align: left + horizon)[Sungai Duri I], table.cell(align: center + horizon)[1.322], table.cell(align: center + horizon)[1.254], table.cell(align: center + horizon)[2.576],
+  table.cell(align: left + horizon)[Sungai Duri II], table.cell(align: center + horizon)[1.301], table.cell(align: center + horizon)[1.163], table.cell(align: center + horizon)[2.464],
+  table.cell(align: left + horizon)[Kecamatan Sungai Kunyit], table.cell(align: center + horizon)[15.999], table.cell(align: center + horizon)[15.236], table.cell(align: center + horizon)[31.235]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Dinas Kependudukan dan Pencatatan Sipil Kabupaten Mempawah (Semester II 2025)/#text(style: "italic")[Population and Civil Registration Service of Mempawah Regency (Semester II 2025)]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Dinas Kependudukan dan Pencatatan Sipil Kabupaten Mempawah/#text(style: "italic")[Population and Civil Registration Service of Mempawah Regency]]]
+)
+#v(8pt)
+
+#pagebreak()
+
+
+
+#metadata("tab_3_1_Lanjutan") <tab_3_1_Lanjutan>
+#v(6pt)
+#text(10pt, weight: "bold")[Lanjutan Tabel 3.1 / #text(style: "italic")[Continued Table 3.1]]
+#v(4pt)
+
+#show table.cell: set par(justify: false)
+#table(
+  columns: (2.4fr, 1.2fr, 1.2fr, 1.2fr),
+  inset: (x: 3.5pt, y: 4.5pt),
+  stroke: none,
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
+                      else if calc.even(row) { rgb("#FFF8E7") }
+                      else { rgb("#FFF4D4") },
+  table.header(table.cell(align: center + horizon)[#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], table.cell(align: center + horizon)[#strong[Distribusi Penduduk] \ #text(6pt, weight: "bold", style: "italic")[Population Distribution (%)]], table.cell(align: center + horizon)[#strong[Kepadatan Penduduk (per km²)] \ #text(6pt, weight: "bold", style: "italic")[Population Density per sq.km]], table.cell(align: center + horizon)[#strong[Rasio Jenis Kelamin Penduduk] \ #text(6pt, weight: "bold", style: "italic")[Population Sex Ratio]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]], table.cell(align: center + horizon)[#strong[(3)]], table.cell(align: center + horizon)[#strong[(4)]]),
+  table.cell(align: left + horizon)[Semudun], table.cell(align: center + horizon)[9,44], table.cell(align: center + horizon)[297,99], table.cell(align: center + horizon)[108,34],
+  table.cell(align: left + horizon)[Semparong Parit Raden], table.cell(align: center + horizon)[7,13], table.cell(align: center + horizon)[112,61], table.cell(align: center + horizon)[98,22],
+  table.cell(align: left + horizon)[Mendalok], table.cell(align: center + horizon)[6,90], table.cell(align: center + horizon)[402,24], table.cell(align: center + horizon)[105,73],
+  table.cell(align: left + horizon)[Sungai Dungun], table.cell(align: center + horizon)[7,37], table.cell(align: center + horizon)[320,31], table.cell(align: center + horizon)[104,17],
+  table.cell(align: left + horizon)[Sungai Limau], table.cell(align: center + horizon)[7,05], table.cell(align: center + horizon)[1.074,15], table.cell(align: center + horizon)[104,08],
+  table.cell(align: left + horizon)[Sungai Kunyit Laut], table.cell(align: center + horizon)[10,73], table.cell(align: center + horizon)[1.095,75], table.cell(align: center + horizon)[105,08],
+  table.cell(align: left + horizon)[Sungai Kunyit Dalam], table.cell(align: center + horizon)[5,42], table.cell(align: center + horizon)[426,20], table.cell(align: center + horizon)[99,53],
+  table.cell(align: left + horizon)[Sungai Kunyit Hulu], table.cell(align: center + horizon)[12,82], table.cell(align: center + horizon)[173,37], table.cell(align: center + horizon)[104,55],
+  table.cell(align: left + horizon)[Bukit Batu], table.cell(align: center + horizon)[9,76], table.cell(align: center + horizon)[70,83], table.cell(align: center + horizon)[106,92],
+  table.cell(align: left + horizon)[Sungai Bundung Laut], table.cell(align: center + horizon)[7,24], table.cell(align: center + horizon)[468,32], table.cell(align: center + horizon)[103,42],
+  table.cell(align: left + horizon)[Sungai Duri I], table.cell(align: center + horizon)[8,25], table.cell(align: center + horizon)[1.497,67], table.cell(align: center + horizon)[105,42],
+  table.cell(align: left + horizon)[Sungai Duri II], table.cell(align: center + horizon)[7,89], table.cell(align: center + horizon)[470,23], table.cell(align: center + horizon)[111,87],
+  table.cell(align: left + horizon)[Kecamatan Sungai Kunyit], table.cell(align: center + horizon)[100,00], table.cell(align: center + horizon)[241,70], table.cell(align: center + horizon)[105,01]
+)
+#v(-3pt)
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Dinas Kependudukan dan Pencatatan Sipil Kabupaten Mempawah/#text(style: "italic")[Population and Civil Registration Service of Mempawah Regency]]]
+)
 #v(8pt)
 
 
-#pagebreak(to: "odd")
 
 // ==========================================
-// LEMBAR PEMBATAS BAB 4 (FULL-BLEED A5)
+// BAB 4: SOSIAL DAN KESEJAHTERAAN RAKYAT
 // ==========================================
-#page(
-  paper: "a5",
-  margin: 0cm,
-  header: none,
-  footer: none,
-)[
-  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/pembatas/Bab 4.jpg", width: 100%, height: 100%)
-] <chapter_page>
 
-#metadata("4. SOSIAL DAN KESEJAHTERAAN RAKYAT") <chapter_title>
-#metadata("Social and Welfare") <chapter_title_en>
+// ----------------------------------------------------
+// BAB 4: SOSIAL DAN KESEJAHTERAAN RAKYAT (SOCIAL AND WELFARE)
+// ----------------------------------------------------
+#pagebreak()
+#set page(margin: 0pt, header: none, footer: none)
 #metadata("bab4") <bab4>
+#image("/assets/dividers/Bab_4.jpg", width: 100%, height: 100%)
 
-// ==========================================
-// BAB 4: SOSIAL DAN KESEJAHTERAAN RAKYAT (INFOGRAFIS & NARASI)
-// ==========================================
+#pagebreak()
+#set page(
+  margin: normal_margins,
+  header: page_header,
+  footer: page_footer,
+)
+#metadata("SOSIAL DAN KESEJAHTERAAN RAKYAT") <chapter_title>
+#metadata("SOCIAL AND WELFARE") <chapter_title_en>
 
-#v(8pt)
+// --- HALAMAN PENJELASAN TEKNIS / TECHNICAL NOTES ---
+#set text(font: "Liberation Sans", size: 8.5pt)
+#set par(justify: true, leading: 0.9em)
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 14pt,
+  [
+    #align(center)[#text(9pt, weight: "bold")[PENJELASAN TEKNIS]]
+    #v(10pt)
+    #grid(
+      columns: (12pt, 1fr),
+      column-gutter: 3pt,
+      row-gutter: 12pt,
+      [1.], [Jenjang Pendidikan Formal terdiri atas pendidikan dasar, pendidikan menengah, dan pendidikan tinggi. Jenis pendidikan yang diajarkan mencakup pendidikan umum, kejuruan, akademik, profesi, vokasi, keagamaan, dan khusus.
 
-// ==========================================
-// ISI BAB 4: ULASAN NARASI & TABEL DATA
-// ==========================================
-#text(8.5pt)[
-Pembangunan bidang sosial kemasyarakatan di Kecamatan Sungai Kunyit ditopang oleh perluasan aksesibilitas sarana pendidikan dasar hingga menengah, peningkatan mutu fasilitas kesehatan masyarakat, ketersediaan energi penerangan rumah tangga, serta kesiapsiagaan dalam menghadapi potensi bencana lingkungan hidup.
+a. Pendidikan Dasar berbentuk Sekolah Dasar (SD) dan Madrasah Ibtidaiyah (MI) atau bentuk lain yang sederajat serta Sekolah Menengah Pertama (SMP) dan Madrasah Tsanawiyah (MTs) atau bentuk lain yang sederajat.
+
+b. Pendidikan Menengah berbentuk Sekolah Menengah Atas (SMA), Madrasah Aliyah (MA), Sekolah Menengah Kejuruan (SMK), dan Madrasah Aliyah Kejuruan (MAK), atau bentuk lain yang sederajat.
+
+c. Pendidikan Tinggi merupakan jenjang Pendidikan setelah pendidikan menengah yang mencakup program pendidikan diploma, sarjana, magister, spesialis, dan doktor yang diselenggarakan oleh perguruan tinggi. Perguruan tinggi dapat berbentuk akademi, politeknik, sekolah tinggi, atau institut.],
+      [2.], [Rumah Sakit adalah tempat pemeriksaan dan perawatan kesehatan, biasanya berada di bawah pengawasan dokter/tenaga medis, yang melayani penderita yang sakit untuk berobat rawat jalan atau rawat inap. Undang-undang RI No. 44 Tahun 2009 tentang rumah sakit mengelompokkan rumah sakit berdasarkan jenis pelayanan yang diberikan menjadi:
+
+Rumah Sakit Umum adalah rumah sakit yang memberikan pelayanan kesehatan pada semua bidang dan jenis penyakit.
+
+Rumah Sakit khusus adalah rumah sakit yang memberikan pelayanan utama pada satu bidang atau satu jenis penyakit tertentu berdasarkan disiplin ilmu, golongan umur, organ, jenis penyakit, atau kekhususan lainnya.],
+      [3.], [Pusat Kesehatan Masyarakat (Puskesmas) adalah unit pelaksana teknis dinas kesehatan kabupaten/kota yang mempunyai fungsi utama sebagai penyelenggara pelayanan kesehatan tingkat pertama. Wilayah kerja puskesmas maksimal adalah satu kecamatan. Untuk dapat menjangkau wilayah kerjanya, puskesmas mempunyai jaringan pelayanan yang meliputi unit Puskesmas Pembantu (Pustu), unit Puskesmas Keliling (Puskel), dan unit bidan desa/komunitas (Peraturan Menteri Kesehatan RI No. 75 Tahun 2014 tentang Pusat Kesehatan Masyarakat).]
+    )
+  ],
+  [
+    #align(center)[#text(9pt, weight: "bold", style: "italic")[TECHNICAL NOTES]]
+    #v(10pt)
+    #set text(style: "italic")
+    #grid(
+      columns: (12pt, 1fr),
+      column-gutter: 3pt,
+      row-gutter: 12pt,
+      [1.], [The Formal Education Level consists of primary education, secondary education, and high education. The kind of education that taught consists of general education, vocational, academic, professional, religious, and specific education.
+
+a. The Primary Education consists of Elementary School and Islamic Elementary School or other equivalent forms and Junior High School and MTs or other equivalent forms.
+
+b. The Secondary Education consists of the senior high school, Madrasah Aliyah, Vocational School, and Vocational Madrasah Aliyah, or other equivalent forms.
+
+c. The Tertiary Education consists of the education level after the secondary education that consists of diplomas, bachelor, master, specialist, and doctoral degrees that are held by the college. The universities can be academy, polytechnic, college, or institute.],
+      [2.], [Hospital is a place for health check, usually controlled/supervised by doctors/medical personnel to serve the ill patients to get outpatient or inpatient treatment services. The law of the Republic of Indonesia Number 44 year 2009 concerning about hospital have been grouping hospital based on the type of service being given into:
+
+General Hospital is a hospital that provides health services in all areas and types of diseases.
+
+Special Hospital is a hospital that provides primary care in one area or one particular type of disease base on dicipline, age group, organ, type of disease, or other specificity.],
+      [3.], [Public Health Center is technical implementation unit of regency health department that have the primary function as a first-level health care providers. The working area standard of public health center is one district and to reach their working areas, public health centers have a service network covering subsidiary of public health center, mobile public health center units, and midwife units (Regulation of the Minister of Health of Indonesia Number 75 Year 2014 about Public Health Center).]
+    )
+  ]
+)
+
+#pagebreak()
+
+// --- HALAMAN ULASAN / DESCRIPTION ---
+#set text(font: "Liberation Sans", size: 8.5pt)
+#set par(justify: true, leading: 0.9em)
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 14pt,
+  [
+    #align(center)[#text(9pt, weight: "bold")[ULASAN]]
+    #v(10pt)
+    #block[
+  #text(8pt, weight: "bold")[1. #h(2pt) Pendidikan] \
+  #v(2pt)
+  Ketersediaan fasilitas pendidikan merupakan fondasi utama dalam meningkatkan mutu sumber daya manusia. Pada tahun ajaran 2025/2026, jenjang pendidikan dasar di Kecamatan Sungai Kunyit didukung oleh 23 Sekolah Dasar (SD) serta 3 Madrasah Ibtidaiyah (MI). Untuk jenjang pendidikan menengah pertama, tercatat keberadaan 5 Sekolah Menengah Pertama (SMP) serta 4 Madrasah Tsanawiyah (MTs). Sementara pada jenjang pendidikan menengah atas dan kejuruan, terdapat 1 SMA, 1 SMK, 3 MA guna menampung kelanjutan studi peserta didik.
 ]
-#v(12pt)
+#v(6pt)
+#block[
+  #text(8pt, weight: "bold")[2. #h(2pt) Kesehatan] \
+  #v(2pt)
+  Ketersediaan sarana pelayanan kesehatan yang memadai merupakan kebutuhan vital masyarakat. Pada tahun 2025, fasilitas kesehatan di Kecamatan Sungai Kunyit mencakup 2 unit Puskesmas tanpa rawat inap. Akses masyarakat terhadap obat-obatan dan perbekalan medis juga ditunjang oleh 2 desa/kelurahan yang memiliki sarana apotek/toko obat. Keberadaan sarana ini berperan strategis dalam memelihara dan meningkatkan derajat kesehatan masyarakat di seluruh wilayah kecamatan.
+]
+  ],
+  [
+    #align(center)[#text(9pt, weight: "bold", style: "italic")[DESCRIPTION]]
+    #v(10pt)
+    #set text(style: "italic")
+    #block[
+  #text(8pt, weight: "bold", style: "italic")[1. #h(2pt) Education] \
+  #v(2pt)
+  The availability of educational facilities is an essential foundation for enhancing human resource quality. In the 2025/2026 academic year, basic education in Sungai Kunyit District was supported by 23 primary schools (SD) and 3 Madrasah Ibtidaiyah (MI). At the junior secondary level, there were 5 junior high schools (SMP) and 4 Madrasah Tsanawiyah (MTs). Meanwhile, at the senior secondary and vocational level, there were 1 senior high school(s) (SMA), 1 vocational school(s) (SMK), 3 Madrasah Aliyah (MA) to accommodate continuing students.
+]
+#v(6pt)
+#block[
+  #text(8pt, weight: "bold", style: "italic")[2. #h(2pt) Health] \
+  #v(2pt)
+  The availability of adequate health service facilities is a vital necessity for the community. In 2025, health facilities in Sungai Kunyit District included 2 outpatient Public Health Center(s). Public access to medicines and medical supplies is also supported by 2 village(s) with pharmacies/drugstores. These facilities play a strategic role in maintaining and enhancing public health across the district.
+]
+  ]
+)
+
+#pagebreak()
+
+
+// ==========================================
+// TABEL DATA BAB 4 (1 HALAMAN 1 TABEL)
+// ==========================================
+
+#v(0.2cm)
+#text(9pt, font: ("Metropolis", "Liberation Sans", "Arial"), weight: "bold")[4.1 PENDIDIKAN/]#text(9pt, font: ("Metropolis", "Liberation Sans", "Arial"), weight: "bold", style: "italic")[EDUCATION]
+#v(6pt)
 
 
 #metadata("tab_4_1_1") <tab_4_1_1>
@@ -1723,52 +2524,62 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Sungai Kunyit ditopang ole
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[4.1.1]
+        #text(10pt, weight: "bold")[4.1.1]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Banyaknya Desa/Kelurahan yang Memiliki Fasilitas Sekolah Menurut Tingkat Pendidikan di Kecamatan Sungai Kunyit, 2023–2025] \
+    #text(10pt, weight: "bold")[Banyaknya Desa#super[1]/Kelurahan yang Memiliki Fasilitas Sekolah Menurut Tingkat Pendidikan di Kecamatan Sungai Kunyit, 2023–2025] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Villages Having Educational Facilities by Educational Level in Sungai Kunyit Subdistrict, 2023–2025]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Number of Villages#super[1]/Subdistricts Having Educational Facilities by Educational Level in Sungai Kunyit District, 2023–2025]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
   columns: (2.6fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
                       else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[Tingkat Pendidikan] \ #text(6pt, weight: "bold", style: "italic")[Educational Level]], [#strong[2023]], [#strong[2024]], [#strong[2025]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Taman Kanak-Kanak (TK)], [4], [6], [...],
-  [Raudatul Athfal (RA)], [3], [0], [...],
-  [Sekolah Dasar (SD)], [11], [11], [...],
-  [Madrasah Ibtidaiyah (MI)], [4], [0], [...],
-  [Sekolah Menengah Pertama (SMP)], [5], [9], [...],
-  [Madrasah Tsanawiyah (MTs)], [4], [0], [...],
-  [Sekolah Menengah Atas (SMA)], [1], [3], [...],
-  [Sekolah Menengah Kejuruan (SMK)], [1], [1], [...],
-  [Madrasah Aliyah (MA)], [3], [0], [...],
-  [Akademi/Perguruan Tinggi], [–], [0], [...]
+  table.header(table.cell(align: center + horizon)[#strong[Tingkat Pendidikan] \ #text(6pt, weight: "bold", style: "italic")[Educational Level]], table.cell(align: center + horizon)[#strong[2023#super[2]]], table.cell(align: center + horizon)[#strong[2024#super[3]]], table.cell(align: center + horizon)[#strong[2025#super[3]]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]], table.cell(align: center + horizon)[#strong[(3)]], table.cell(align: center + horizon)[#strong[(4)]]),
+  table.cell(align: left + horizon)[Taman Kanak-Kanak (TK)/Raudatul Athfal (RA)/#text(style: "italic")[Bustanul Athfal (BA) Kindergarten]], table.cell(align: center + horizon)[…], table.cell(align: center + horizon)[6], table.cell(align: center + horizon)[8],
+  table.cell(align: left + horizon)[Sekolah Dasar (SD)/#text(style: "italic")[Madrasah Ibtidaiyah (MI) Primary School]], table.cell(align: center + horizon)[…], table.cell(align: center + horizon)[11], table.cell(align: center + horizon)[11],
+  table.cell(align: left + horizon)[Sekolah Menengah Pertama (SMP)/#text(style: "italic")[Madrasah Tsanawiyah (MTs) Junior High School]], table.cell(align: center + horizon)[…], table.cell(align: center + horizon)[9], table.cell(align: center + horizon)[9],
+  table.cell(align: left + horizon)[Sekolah Menengah Atas (SMA)/#text(style: "italic")[Madrasah Aliyah (MA) Senior High School]], table.cell(align: center + horizon)[…], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[3],
+  table.cell(align: left + horizon)[Sekolah Menengah Kejuruan (SMK)/#text(style: "italic")[Vocational High School]], table.cell(align: center + horizon)[1], table.cell(align: center + horizon)[1], table.cell(align: center + horizon)[1],
+  table.cell(align: left + horizon)[Akademi/Perguruan Tinggi Academy/#text(style: "italic")[University]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–]
+)
+#v(-2pt)
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Catatan/#text(style: "italic")[Note] :]],
+  [#text(6.5pt, fill: black)[#super[1] Desa pada tabel ini termasuk Unit Permukiman Transmigrasi (UPT) yang masih dibina oleh kementerian terkait/#text(style: "italic")[Villages in this table include Transmigration Settlement Unit which is still fostered by the relevant ministries]]]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS, Pendataan Potensi Desa (Podes)/#text(style: "italic")[BPS-Statistics Indonesia, Village Potential Census (Podes)]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[#super[2] Kantor Camat Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office] \ 
+#super[3] Badan Pusat Statistik, Pendataan Potensi Desa (Podes)/#text(style: "italic")[BPS-Statistics Indonesia, Village Potential Data Collecting]]]
+)
 #v(8pt)
 
 #pagebreak()
+
 
 
 #metadata("tab_4_1_2") <tab_4_1_2>
@@ -1784,51 +2595,74 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Sungai Kunyit ditopang ole
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[4.1.2]
+        #text(10pt, weight: "bold")[4.1.2]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Jumlah Satuan Pendidikan Menurut Tingkat Pendidikan di Kecamatan Sungai Kunyit, 2024/2025–2025/2026] \
+    #text(10pt, weight: "bold")[Jumlah Satuan Pendidikan Menurut Tingkat Pendidikan di Kecamatan Sungai Kunyit, 2024/2025 dan 2025/2026] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Educational Units by Education Level in Sungai Kunyit Subdistrict, 2024/2025–2025/2026]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Number of Schools by Educational Level in Sungai Kunyit District, 2024/2025 and 2025/2026]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
-  columns: (2.5fr, 1.0fr, 1.0fr, 1.0fr),
+  columns: (1.9fr, 1.0fr, 1.0fr, 1.0fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
-                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
+  fill: (col, row) => if row < 2 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 2 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[Tingkat Pendidikan] \ #text(6pt, weight: "bold", style: "italic")[Educational Level]], [#strong[Negeri] \ #text(6pt, weight: "bold", style: "italic")[Public]], [#strong[Swasta] \ #text(6pt, weight: "bold", style: "italic")[Private]], [#strong[Jumlah] \ #text(6pt, weight: "bold", style: "italic")[Total]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Taman Kanak-Kanak (TK)1/Kindergarten1], [2], [2], [4],
-  [Raudatul Athfal (RA)2], [0], [1], [1],
-  [Sekolah Dasar (SD)1], [22], [1], [23],
-  [Madrasah Ibtidaiyah], [0], [3], [3],
-  [Sekolah Menengah Pertama (SMP)1], [5], [0], [5],
-  [Madrasah Tsanawiyah (MTs)2], [0], [4], [4],
-  [Sekolah Menengah Atas (SMA)1], [1], [0], [1],
-  [Sekolah Menengah Kejuruan (SMK)1], [1], [0], [1],
-  [Madrasah Aliyah (MA)2], [0], [3], [3]
+  table.header(table.cell(rowspan: 2, align: center + horizon)[#strong[Tingkat Pendidikan] \ #text(6pt, style: "italic", weight: "bold")[Educational Level]],
+    table.cell(colspan: 2, align: center + horizon, stroke: (bottom: 0.6pt + black))[#strong[Negeri]/#text(style: "italic", weight: "bold")[Public]],
+    table.cell(colspan: 2, align: center + horizon, stroke: (bottom: 0.6pt + black))[#strong[Swasta]/#text(style: "italic", weight: "bold")[Private]],
+    table.cell(colspan: 2, align: center + horizon, stroke: (bottom: 0.6pt + black))[#strong[Jumlah]/#text(style: "italic", weight: "bold")[Total]],
+    table.cell(align: center + horizon)[#text(5.5pt, weight: "bold")[2024/2025]],
+    table.cell(align: center + horizon)[#text(5.5pt, weight: "bold")[2025/2026]],
+    table.cell(align: center + horizon)[#text(5.5pt, weight: "bold")[2024/2025]],
+    table.cell(align: center + horizon)[#text(5.5pt, weight: "bold")[2025/2026]],
+    table.cell(align: center + horizon)[#text(5.5pt, weight: "bold")[2024/2025]],
+    table.cell(align: center + horizon)[#text(5.5pt, weight: "bold")[2025/2026]],
+    table.cell(align: center + horizon)[#strong[(1)]],
+    table.cell(align: center + horizon)[#strong[(2)]],
+    table.cell(align: center + horizon)[#strong[(3)]],
+    table.cell(align: center + horizon)[#strong[(4)]],
+    table.cell(align: center + horizon)[#strong[(5)]],
+    table.cell(align: center + horizon)[#strong[(6)]],
+    table.cell(align: center + horizon)[#strong[(7)]]),
+  table.cell(align: left + horizon)[Taman Kanak-Kanak (TK)#super[1]/#text(style: "italic")[Kindergarten#super[1]]], table.cell(align: center + horizon)[2], table.cell(align: center + horizon)[2], table.cell(align: center + horizon)[2], table.cell(align: center + horizon)[2], table.cell(align: center + horizon)[4], table.cell(align: center + horizon)[4],
+  table.cell(align: left + horizon)[Raudatul Athfal (RA)#super[2]/#text(style: "italic")[Raudatul Athfal (RA)#super[2]]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[1], table.cell(align: center + horizon)[1], table.cell(align: center + horizon)[1], table.cell(align: center + horizon)[1],
+  table.cell(align: left + horizon)[Sekolah Dasar (SD)#super[1]/#text(style: "italic")[Primary School#super[1]]], table.cell(align: center + horizon)[22], table.cell(align: center + horizon)[22], table.cell(align: center + horizon)[1], table.cell(align: center + horizon)[1], table.cell(align: center + horizon)[23], table.cell(align: center + horizon)[23],
+  table.cell(align: left + horizon)[Madrasah Ibtidaiyah (MI)#super[2]/#text(style: "italic")[Madrasah Ibtidaiyah (MI)#super[2]]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[3],
+  table.cell(align: left + horizon)[Sekolah Menengah Pertama (SMP)#super[1]/#text(style: "italic")[Junior High School#super[1]]], table.cell(align: center + horizon)[5], table.cell(align: center + horizon)[5], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[5], table.cell(align: center + horizon)[5],
+  table.cell(align: left + horizon)[Madrasah Tsanawiyah (MTs)#super[2]/#text(style: "italic")[Madrasah Tsanawiyah (MTs)#super[2]]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[4], table.cell(align: center + horizon)[4], table.cell(align: center + horizon)[4], table.cell(align: center + horizon)[4],
+  table.cell(align: left + horizon)[Sekolah Menengah Atas (SMA)#super[1]/#text(style: "italic")[Senior High School#super[1]]], table.cell(align: center + horizon)[1], table.cell(align: center + horizon)[1], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[1], table.cell(align: center + horizon)[1],
+  table.cell(align: left + horizon)[Sekolah Menengah Kejuruan (SMK)#super[1]/#text(style: "italic")[Vocational High School#super[1]]], table.cell(align: center + horizon)[1], table.cell(align: center + horizon)[1], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[1], table.cell(align: center + horizon)[1],
+  table.cell(align: left + horizon)[Madrasah Aliyah (MA)#super[2]/#text(style: "italic")[Madrasah Aliyah (MA)#super[2]]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[3]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi & Kementerian Agama/#text(style: "italic")[Ministry of Education, Culture, Research, and Technology & Ministry of Religious Affairs]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[#super[1] Kementerian Pendidikan Dasar dan Menengah; Sistem Data Pokok Pendidikan; data semester ganjil laporan sampai dengan 30 November/#text(style: "italic")[Ministry of Primary and Secondary Education; Sistem Data Pokok Pendidikan; odd semester report data up to 30 November] \ 
+#super[2] Kementerian Agama; EMIS; data semester genap laporan sampai dengan 30 Juni/#text(style: "italic")[Ministry of Religious Affairs; EMIS; even semester report data up to 30 June]]]
+)
 #v(8pt)
 
-#v(10pt)
+#pagebreak()
+
+
 
 #metadata("tab_4_1_3") <tab_4_1_3>
 #v(6pt)
@@ -1843,51 +2677,73 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Sungai Kunyit ditopang ole
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[4.1.3]
+        #text(10pt, weight: "bold")[4.1.3]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Jumlah Kepala Sekolah dan Pendidik Menurut Tingkat Pendidikan di Kecamatan Sungai Kunyit, 2024/2025–2025/2026] \
+    #text(10pt, weight: "bold")[Jumlah Kepala Sekolah dan Pendidik Menurut Tingkat Pendidikan di Kecamatan Sungai Kunyit, 2024/2025 dan 2025/2026] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Principals and Teachers by Education Level in Sungai Kunyit Subdistrict, 2024/2025–2025/2026]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Number of Headmasters and Teachers by Educational Level in Sungai Kunyit District, 2024/2025 and 2025/2026]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
-  columns: (2.5fr, 1.0fr, 1.0fr, 1.0fr),
+  columns: (1.9fr, 1.0fr, 1.0fr, 1.0fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
-                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
+  fill: (col, row) => if row < 2 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 2 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[Tingkat Pendidikan] \ #text(6pt, weight: "bold", style: "italic")[Educational Level]], [#strong[Negeri] \ #text(6pt, weight: "bold", style: "italic")[Public]], [#strong[Swasta] \ #text(6pt, weight: "bold", style: "italic")[Private]], [#strong[Jumlah] \ #text(6pt, weight: "bold", style: "italic")[Total]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Taman Kanak-Kanak], [10], [8], [18],
-  [Raudatul Athfal (RA)2], [0], [6], [6],
-  [Sekolah Dasar (SD)1,3], [216], [5], [221],
-  [Madrasah Ibtidaiyah], [0], [45], [45],
-  [Sekolah Menengah], [65], [0], [65],
-  [Madrasah], [0], [44], [44],
-  [Sekolah Menengah], [25], [0], [25],
-  [Sekolah Menengah], [31], [0], [31],
-  [Madrasah Aliyah (MA)2], [0], [41], [41]
+  table.header(table.cell(rowspan: 2, align: center + horizon)[#strong[Tingkat Pendidikan] \ #text(6pt, style: "italic", weight: "bold")[Educational Level]],
+    table.cell(colspan: 2, align: center + horizon, stroke: (bottom: 0.6pt + black))[#strong[Negeri]/#text(style: "italic", weight: "bold")[Public]],
+    table.cell(colspan: 2, align: center + horizon, stroke: (bottom: 0.6pt + black))[#strong[Swasta]/#text(style: "italic", weight: "bold")[Private]],
+    table.cell(colspan: 2, align: center + horizon, stroke: (bottom: 0.6pt + black))[#strong[Jumlah]/#text(style: "italic", weight: "bold")[Total]],
+    table.cell(align: center + horizon)[#text(5.5pt, weight: "bold")[2024/2025]],
+    table.cell(align: center + horizon)[#text(5.5pt, weight: "bold")[2025/2026]],
+    table.cell(align: center + horizon)[#text(5.5pt, weight: "bold")[2024/2025]],
+    table.cell(align: center + horizon)[#text(5.5pt, weight: "bold")[2025/2026]],
+    table.cell(align: center + horizon)[#text(5.5pt, weight: "bold")[2024/2025]],
+    table.cell(align: center + horizon)[#text(5.5pt, weight: "bold")[2025/2026]],
+    table.cell(align: center + horizon)[#strong[(1)]],
+    table.cell(align: center + horizon)[#strong[(2)]],
+    table.cell(align: center + horizon)[#strong[(3)]],
+    table.cell(align: center + horizon)[#strong[(4)]],
+    table.cell(align: center + horizon)[#strong[(5)]],
+    table.cell(align: center + horizon)[#strong[(6)]],
+    table.cell(align: center + horizon)[#strong[(7)]]),
+  table.cell(align: left + horizon)[Taman Kanak-Kanak (TK)#super[1]/#text(style: "italic")[Kindergarten#super[1]]], table.cell(align: center + horizon)[12], table.cell(align: center + horizon)[10], table.cell(align: center + horizon)[8], table.cell(align: center + horizon)[8], table.cell(align: center + horizon)[20], table.cell(align: center + horizon)[18],
+  table.cell(align: left + horizon)[Raudatul Athfal (RA)#super[2]/#text(style: "italic")[Raudatul Athfal (RA)#super[2]]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[7], table.cell(align: center + horizon)[6], table.cell(align: center + horizon)[7], table.cell(align: center + horizon)[6],
+  table.cell(align: left + horizon)[Sekolah Dasar (SD)#super[1]/#text(style: "italic")[Primary School#super[1]]], table.cell(align: center + horizon)[222], table.cell(align: center + horizon)[216], table.cell(align: center + horizon)[5], table.cell(align: center + horizon)[5], table.cell(align: center + horizon)[227], table.cell(align: center + horizon)[221],
+  table.cell(align: left + horizon)[Madrasah Ibtidaiyah (MI)#super[2]/#text(style: "italic")[Madrasah Ibtidaiyah (MI)#super[2]]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[39], table.cell(align: center + horizon)[45], table.cell(align: center + horizon)[39], table.cell(align: center + horizon)[45],
+  table.cell(align: left + horizon)[Sekolah Menengah Pertama (SMP)#super[1]/#text(style: "italic")[Junior High School#super[1]]], table.cell(align: center + horizon)[66], table.cell(align: center + horizon)[65], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[66], table.cell(align: center + horizon)[65],
+  table.cell(align: left + horizon)[Madrasah Tsanawiyah (MTs)#super[2]/#text(style: "italic")[Madrasah Tsanawiyah (MTs)#super[2]]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[39], table.cell(align: center + horizon)[44], table.cell(align: center + horizon)[39], table.cell(align: center + horizon)[44],
+  table.cell(align: left + horizon)[Sekolah Menengah Atas (SMA)#super[1]/#text(style: "italic")[Senior High School#super[1]]], table.cell(align: center + horizon)[26], table.cell(align: center + horizon)[25], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[26], table.cell(align: center + horizon)[25],
+  table.cell(align: left + horizon)[Sekolah Menengah Kejuruan (SMK)#super[1]/#text(style: "italic")[Vocational High School#super[1]]], table.cell(align: center + horizon)[31], table.cell(align: center + horizon)[31], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[31], table.cell(align: center + horizon)[31],
+  table.cell(align: left + horizon)[Madrasah Aliyah (MA)#super[2]/#text(style: "italic")[Madrasah Aliyah (MA)#super[2]]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[43], table.cell(align: center + horizon)[41], table.cell(align: center + horizon)[43], table.cell(align: center + horizon)[41]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi & Kementerian Agama/#text(style: "italic")[Ministry of Education, Culture, Research, and Technology & Ministry of Religious Affairs]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[#super[1] Kementerian Pendidikan Dasar dan Menengah; Sistem Data Pokok Pendidikan; data semester ganjil laporan sampai dengan 30 November/#text(style: "italic")[Ministry of Primary and Secondary Education; Sistem Data Pokok Pendidikan; odd semester report data up to 30 November] \ 
+#super[2] Kementerian Agama; EMIS; data semester genap laporan sampai dengan 30 Juni/#text(style: "italic")[Ministry of Religious Affairs; EMIS; even semester report data up to 30 June]]]
+)
 #v(8pt)
 
 #pagebreak()
+
 
 
 #metadata("tab_4_1_4") <tab_4_1_4>
@@ -1903,51 +2759,78 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Sungai Kunyit ditopang ole
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[4.1.4]
+        #text(10pt, weight: "bold")[4.1.4]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Jumlah Peserta Didik Menurut Tingkat Pendidikan di Kecamatan Sungai Kunyit, 2024/2025–2025/2026] \
+    #text(10pt, weight: "bold")[Jumlah Peserta Didik Menurut Tingkat Pendidikan di Kecamatan Sungai Kunyit, 2024/2025 dan 2025/2026] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Students by Education Level in Sungai Kunyit Subdistrict, 2024/2025–2025/2026]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Number of Pupils by Educational Level in Sungai Kunyit District, 2024/2025 and 2025/2026]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
-  columns: (2.5fr, 1.0fr, 1.0fr, 1.0fr),
+  columns: (1.9fr, 1.0fr, 1.0fr, 1.0fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
-                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
+  fill: (col, row) => if row < 2 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 2 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[Tingkat Pendidikan] \ #text(6pt, weight: "bold", style: "italic")[Educational Level]], [#strong[Negeri] \ #text(6pt, weight: "bold", style: "italic")[Public]], [#strong[Swasta] \ #text(6pt, weight: "bold", style: "italic")[Private]], [#strong[Jumlah] \ #text(6pt, weight: "bold", style: "italic")[Total]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Taman Kanak-Kanak], [84], [75], [159],
-  [Raudatul Athfal (RA)2], [0], [52], [52],
-  [Sekolah Dasar (SD)1], [2.576], [51], [2.627],
-  [Madrasah Ibtidaiyah], [0], [389], [389],
-  [Sekolah Menengah], [683], [0], [683],
-  [Madrasah], [0], [466], [466],
-  [Sekolah Menengah], [385], [0], [385],
-  [Sekolah Menengah], [424], [0], [424],
-  [Madrasah Aliyah], [0], [246], [246]
+  table.header(table.cell(rowspan: 2, align: center + horizon)[#strong[Tingkat Pendidikan] \ #text(6pt, style: "italic", weight: "bold")[Educational Level]],
+    table.cell(colspan: 2, align: center + horizon, stroke: (bottom: 0.6pt + black))[#strong[Negeri]/#text(style: "italic", weight: "bold")[Public]],
+    table.cell(colspan: 2, align: center + horizon, stroke: (bottom: 0.6pt + black))[#strong[Swasta]/#text(style: "italic", weight: "bold")[Private]],
+    table.cell(colspan: 2, align: center + horizon, stroke: (bottom: 0.6pt + black))[#strong[Jumlah]/#text(style: "italic", weight: "bold")[Total]],
+    table.cell(align: center + horizon)[#text(5.5pt, weight: "bold")[2024/2025]],
+    table.cell(align: center + horizon)[#text(5.5pt, weight: "bold")[2025/2026]],
+    table.cell(align: center + horizon)[#text(5.5pt, weight: "bold")[2024/2025]],
+    table.cell(align: center + horizon)[#text(5.5pt, weight: "bold")[2025/2026]],
+    table.cell(align: center + horizon)[#text(5.5pt, weight: "bold")[2024/2025]],
+    table.cell(align: center + horizon)[#text(5.5pt, weight: "bold")[2025/2026]],
+    table.cell(align: center + horizon)[#strong[(1)]],
+    table.cell(align: center + horizon)[#strong[(2)]],
+    table.cell(align: center + horizon)[#strong[(3)]],
+    table.cell(align: center + horizon)[#strong[(4)]],
+    table.cell(align: center + horizon)[#strong[(5)]],
+    table.cell(align: center + horizon)[#strong[(6)]],
+    table.cell(align: center + horizon)[#strong[(7)]]),
+  table.cell(align: left + horizon)[Taman Kanak-Kanak (TK)#super[1]/#text(style: "italic")[Kindergarten#super[1]]], table.cell(align: center + horizon)[92], table.cell(align: center + horizon)[84], table.cell(align: center + horizon)[74], table.cell(align: center + horizon)[75], table.cell(align: center + horizon)[166], table.cell(align: center + horizon)[159],
+  table.cell(align: left + horizon)[Raudatul Athfal (RA)#super[2]/#text(style: "italic")[Raudatul Athfal (RA)#super[2]]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[66], table.cell(align: center + horizon)[52], table.cell(align: center + horizon)[66], table.cell(align: center + horizon)[52],
+  table.cell(align: left + horizon)[Sekolah Dasar (SD)#super[1]/#text(style: "italic")[Primary School#super[1]]], table.cell(align: center + horizon)[2.587], table.cell(align: center + horizon)[2.576], table.cell(align: center + horizon)[49], table.cell(align: center + horizon)[51], table.cell(align: center + horizon)[2.636], table.cell(align: center + horizon)[2.627],
+  table.cell(align: left + horizon)[Madrasah Ibtidaiyah (MI)#super[2]/#text(style: "italic")[Madrasah Ibtidaiyah (MI)#super[2]]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[382], table.cell(align: center + horizon)[389], table.cell(align: center + horizon)[382], table.cell(align: center + horizon)[389],
+  table.cell(align: left + horizon)[Sekolah Menengah Pertama (SMP)#super[1]/#text(style: "italic")[Junior High School#super[1]]], table.cell(align: center + horizon)[692], table.cell(align: center + horizon)[683], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[692], table.cell(align: center + horizon)[683],
+  table.cell(align: left + horizon)[Madrasah Tsanawiyah (MTs)#super[2]/#text(style: "italic")[Madrasah Tsanawiyah (MTs)#super[2]]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[462], table.cell(align: center + horizon)[466], table.cell(align: center + horizon)[462], table.cell(align: center + horizon)[466],
+  table.cell(align: left + horizon)[Sekolah Menengah Atas (SMA)#super[1]/#text(style: "italic")[Senior High School#super[1]]], table.cell(align: center + horizon)[408], table.cell(align: center + horizon)[385], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[408], table.cell(align: center + horizon)[385],
+  table.cell(align: left + horizon)[Sekolah Menengah Kejuruan (SMK)#super[1]/#text(style: "italic")[Vocational High School#super[1]]], table.cell(align: center + horizon)[399], table.cell(align: center + horizon)[424], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[399], table.cell(align: center + horizon)[424],
+  table.cell(align: left + horizon)[Madrasah Aliyah (MA)#super[2]/#text(style: "italic")[Madrasah Aliyah (MA)#super[2]]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[272], table.cell(align: center + horizon)[246], table.cell(align: center + horizon)[272], table.cell(align: center + horizon)[246]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi & Kementerian Agama/#text(style: "italic")[Ministry of Education, Culture, Research, and Technology & Ministry of Religious Affairs]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[#super[1] Kementerian Pendidikan Dasar dan Menengah; Sistem Data Pokok Pendidikan; data semester ganjil laporan sampai dengan 30 November/#text(style: "italic")[Ministry of Primary and Secondary Education; Sistem Data Pokok Pendidikan; odd semester report data up to 30 November] \ 
+#super[2] Kementerian Agama; EMIS; data semester genap laporan sampai dengan 30 Juni/#text(style: "italic")[Ministry of Religious Affairs; EMIS; even semester report data up to 30 June]]]
+)
 #v(8pt)
 
-#v(10pt)
+#pagebreak()
+
+
+#v(0.2cm)
+#text(9pt, font: ("Metropolis", "Liberation Sans", "Arial"), weight: "bold")[4.2 KESEHATAN/]#text(9pt, font: ("Metropolis", "Liberation Sans", "Arial"), weight: "bold", style: "italic")[HEALTH]
+#v(6pt)
+
 
 #metadata("tab_4_2_1") <tab_4_2_1>
 #v(6pt)
@@ -1962,48 +2845,64 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Sungai Kunyit ditopang ole
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[4.2.1]
+        #text(10pt, weight: "bold")[4.2.1]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Banyaknya Sarana Kesehatan Menurut Jenis Sarana di Kecamatan Sungai Kunyit, 2023–2025] \
+    #text(10pt, weight: "bold")[Banyaknya Desa#super[1]/Kelurahan yang Memiliki Sarana Kesehatan Menurut Jenis Sarana Kesehatan di Kecamatan Sungai Kunyit, 2023–2025] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Health Facilities by Type in Sungai Kunyit Subdistrict, 2023–2025]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Number of Villages#super[1]/Subdistricts Having Health Facilities by Type of Health Facilities in Sungai Kunyit District, 2023–2025]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
-  columns: (2.5fr, 1.0fr, 1.0fr, 1.0fr),
+  columns: (2.6fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
                       else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[Jenis Sarana Kesehatan] \ #text(6pt, weight: "bold", style: "italic")[Type of Health Facility]], [#strong[2023]], [#strong[2024]], [#strong[2025]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Rumah Sakit/_Hospital_], [...], [...], [...],
-  [Puskesmas Rawat Inap/_Inpatient PHC_], [...], [...], [...],
-  [Puskesmas Tanpa Rawat Inap/_Outpatient PHC_], [...], [...], [...],
-  [Puskesmas Pembantu (Pustu)], [...], [...], [...],
-  [Poliklinik/Balai Pengobatan], [...], [...], [...],
-  [Apotek/_Pharmacy_], [...], [...], [...]
+  table.header(table.cell(align: center + horizon)[#strong[Jenis Sarana Kesehatan] \ #text(6pt, weight: "bold", style: "italic")[Type of Health Facilities]], table.cell(align: center + horizon)[#strong[2023#super[2]]], table.cell(align: center + horizon)[#strong[2024#super[3]]], table.cell(align: center + horizon)[#strong[2025#super[3]]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]], table.cell(align: center + horizon)[#strong[(3)]], table.cell(align: center + horizon)[#strong[(4)]]),
+  table.cell(align: left + horizon)[Rumah Sakit/#text(style: "italic")[Hospital]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Puskesmas Rawat Inap/#text(style: "italic")[Public Health Center with Inpatient Care]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Puskesmas Tanpa Rawat Inap/#text(style: "italic")[Public Health Center without Inpatient Care]], table.cell(align: center + horizon)[2], table.cell(align: center + horizon)[2], table.cell(align: center + horizon)[2],
+  table.cell(align: left + horizon)[Apotek/#text(style: "italic")[Pharmacy]], table.cell(align: center + horizon)[2], table.cell(align: center + horizon)[2], table.cell(align: center + horizon)[2]
+)
+#v(-2pt)
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Catatan/#text(style: "italic")[Note] :]],
+  [#text(6.5pt, fill: black)[#super[1] Desa pada tabel ini termasuk Unit Permukiman Transmigrasi (UPT) yang masih dibina oleh kementerian terkait/#text(style: "italic")[Villages in this table include Transmigration Settlement Unit which is still fostered by the relevant ministries]]]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Dinas Kesehatan, Pengendalian Penduduk dan KB Kabupaten Mempawah/Podes 2025/#text(style: "italic")[Health, Population Control, and Family Planning Service of Mempawah Regency/Podes 2025]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[#super[2] Kantor Camat Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office] \ 
+#super[3] Badan Pusat Statistik, Pendataan Potensi Desa (Podes)/#text(style: "italic")[BPS–Statistics Indonesia, Village Potential Data Collecting]]]
+)
 #v(8pt)
 
 #pagebreak()
+
+
+#v(0.2cm)
+#text(9pt, font: ("Metropolis", "Liberation Sans", "Arial"), weight: "bold")[4.3 PERUMAHAN DAN LINGKUNGAN/]#text(9pt, font: ("Metropolis", "Liberation Sans", "Arial"), weight: "bold", style: "italic")[HOUSING AND ENVIRONMENT]
+#v(6pt)
 
 
 #metadata("tab_4_3_1") <tab_4_3_1>
@@ -2019,54 +2918,140 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Sungai Kunyit ditopang ole
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[4.3.1]
+        #text(10pt, weight: "bold")[4.3.1]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Banyaknya Keluarga Menurut Sumber Penerangan Utama di Kecamatan Sungai Kunyit, 2025] \
+    #text(10pt, weight: "bold")[Banyaknya Desa#super[1]/Kelurahan Menurut Sumber Penerangan Jalan Utama Desa/Kelurahan di Kecamatan Sungai Kunyit, 2023–2025] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Families by Main Electricity Source in Sungai Kunyit Subdistrict, 2025]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Number of Villages#super[1]/Subdistricts by Source of Main Street Illumination in Sungai Kunyit District, 2023–2025]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
-  columns: (2.2fr, 1.0fr, 1.0fr, 1.0fr),
+  columns: (2.6fr, 1.0fr, 1.0fr, 1.0fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
                       else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], [#strong[Listrik PLN] \ #text(6pt, weight: "bold", style: "italic")[PLN Electricity]], [#strong[Listrik Non-PLN] \ #text(6pt, weight: "bold", style: "italic")[Non-PLN Electricity]], [#strong[Bukan Listrik] \ #text(6pt, weight: "bold", style: "italic")[Non-Electricity]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Semudun], [...], [...], [...],
-  [Semparong Parit Raden], [...], [...], [...],
-  [Mendalok], [...], [...], [...],
-  [Sungai Dungun], [...], [...], [...],
-  [Sungai Limau], [...], [...], [...],
-  [Sungai Kunyit Laut], [...], [...], [...],
-  [Sungai Kunyit Dalam], [...], [...], [...],
-  [Sungai Kunyit Hulu], [...], [...], [...],
-  [Bukit Batu], [...], [...], [...],
-  [Sungai Bundung Laut], [...], [...], [...],
-  [Sungai Duri I], [...], [...], [...],
-  [Sungai Duri II], [...], [...], [...]
+  table.header(table.cell(align: center + horizon)[#strong[Sumber Penerangan Jalan Utama] \ #text(6pt, weight: "bold", style: "italic")[Source of Main Street Illumination]], table.cell(align: center + horizon)[#strong[2023#super[2]]], table.cell(align: center + horizon)[#strong[2024#super[3]]], table.cell(align: center + horizon)[#strong[2025#super[3]]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]], table.cell(align: center + horizon)[#strong[(3)]], table.cell(align: center + horizon)[#strong[(4)]]),
+  table.cell(align: left + horizon)[Listrik Pemerintah/#text(style: "italic")[State Electricity]], table.cell(align: center + horizon)[…], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[11],
+  table.cell(align: left + horizon)[Listrik Non-Pemerintah/#text(style: "italic")[Non-State Electricity]], table.cell(align: center + horizon)[…], table.cell(align: center + horizon)[9], table.cell(align: center + horizon)[1],
+  table.cell(align: left + horizon)[Non Listrik/#text(style: "italic")[Non-Electric]], table.cell(align: center + horizon)[…], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[–]
+)
+#v(-2pt)
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Catatan/#text(style: "italic")[Note] :]],
+  [#text(6.5pt, fill: black)[#super[1] Desa pada tabel ini termasuk Unit Permukiman Transmigrasi (UPT) yang masih dibina oleh kementerian terkait/#text(style: "italic")[Villages in this table include Transmigration Settlement Unit which is still fostered by the relevant ministries]]]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS, Pendataan Potensi Desa (Podes) 2025/#text(style: "italic")[BPS-Statistics Indonesia, Village Potential Census (Podes) 2025]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[#super[2] Kantor Camat Sungai Kunyit/#text(style: "italic")[Sungai Kunyit District Office] \ 
+#super[3] Badan Pusat Statistik, Pendataan Potensi Desa (Podes)/#text(style: "italic")[BPS–Statistics Indonesia, Village Potential Data Collecting]]]
+)
 #v(8pt)
 
-#v(10pt)
+#pagebreak()
+
+
+
+#metadata("tab_4_3_2") <tab_4_3_2>
+#v(6pt)
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 4.5pt,
+      align: (top + center, horizon),
+      [
+        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
+          #text(10pt, weight: "bold")[Tabel]
+        ] \
+        #v(-3.5pt)
+        #text(8pt, style: "italic")[Table]
+      ],
+      [
+        #text(10pt, weight: "bold")[4.3.2]
+      ]
+    )
+  ],
+  [
+    #text(10pt, weight: "bold")[Banyaknya Desa#super[1]/Kelurahan Menurut Jenis Bahan Bakar untuk Memasak yang Digunakan Sebagian Besar Keluarga di Kecamatan Sungai Kunyit, 2025] \
+    #v(-2pt)
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Number of Villages#super[1]/Subdistricts by Type of Cooking Fuel Used by Majority Family in Sungai Kunyit District, 2025]
+  ]
+)
+#v(3pt)
+
+#show table.cell: set par(justify: false)
+#table(
+  columns: (3.4fr, 1.4fr),
+  inset: (x: 3.5pt, y: 4.5pt),
+  stroke: none,
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
+                      else if calc.even(row) { rgb("#FFF8E7") }
+                      else { rgb("#FFF4D4") },
+  table.header(table.cell(align: center + horizon)[#strong[Jenis Bahan Bakar Memasak] \ #text(6pt, weight: "bold", style: "italic")[Type of Cooking Fuel]], table.cell(align: center + horizon)[#strong[2025]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]]),
+  table.cell(align: left + horizon)[Listrik/#text(style: "italic")[Electric]], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Elpiji 5,5 kg/#text(style: "italic")[5.5 kg-LPG]], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Elpiji 12 kg/#text(style: "italic")[12 kg-LPG]], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Elpiji 3 kg/#text(style: "italic")[3 kg-LPG]], table.cell(align: center + horizon)[12],
+  table.cell(align: left + horizon)[Gas Kota/#text(style: "italic")[City Gas]], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Biogas/#text(style: "italic")[Biogas]], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Minyak Tanah/#text(style: "italic")[Kerosene]], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Briket/#text(style: "italic")[Briquettes]], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Arang/#text(style: "italic")[Charcoal]], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Kayu Bakar/#text(style: "italic")[Firewood]], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Lainnya/#text(style: "italic")[Others]], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Jumlah/#text(style: "italic")[Total]], table.cell(align: center + horizon)[12]
+)
+#v(-2pt)
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Catatan/#text(style: "italic")[Note] :]],
+  [#text(6.5pt, fill: black)[#super[1] Desa pada tabel ini termasuk Unit Permukiman Transmigrasi (UPT) yang masih dibina oleh kementerian terkait/#text(style: "italic")[Villages in this table include Transmigration Settlement Unit which is still fostered by the relevant ministries]]]
+)
+#v(-3pt)
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Badan Pusat Statistik, Pendataan Potensi Desa (Podes)/#text(style: "italic")[BPS–Statistics Indonesia, Village Potential Data Collecting]]]
+)
+#v(8pt)
+
+#pagebreak()
+
+
+#v(0.2cm)
+#text(9pt, font: ("Metropolis", "Liberation Sans", "Arial"), weight: "bold")[4.4 SOSIAL LAINNYA/]#text(9pt, font: ("Metropolis", "Liberation Sans", "Arial"), weight: "bold", style: "italic")[RELIGION AND OTHER SOCIAL AFFAIRS]
+#v(6pt)
+
 
 #metadata("tab_4_4_1") <tab_4_4_1>
 #v(6pt)
@@ -2081,80 +3066,262 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Sungai Kunyit ditopang ole
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[4.4.1]
+        #text(10pt, weight: "bold")[4.4.1]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Banyaknya Kejadian Bencana Alam Menurut Jenis Bencana di Kecamatan Sungai Kunyit, 2023–2025] \
+    #text(10pt, weight: "bold")[Banyaknya Desa#super[1]/Kelurahan yang Mengalami Kejadian Bencana Alam Menurut Jenis Bencana Alam di Kecamatan Sungai Kunyit, 2025#super[2]] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Natural Disaster Events by Type in Sungai Kunyit Subdistrict, 2023–2025]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Number of Villages#super[1]/Subdistricts with Natural Disaster Events by Type of Natural Disaster in Sungai Kunyit District, 2025#super[2]]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
-  columns: (2.6fr, 1.0fr, 1.0fr, 1.0fr),
+  columns: (3.4fr, 1.4fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
                       else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[Jenis Bencana Alam] \ #text(6pt, weight: "bold", style: "italic")[Type of Disaster]], [#strong[2023]], [#strong[2024]], [#strong[2025]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Tanah Longsor/_Landslide_], [...], [...], [...],
-  [Banjir/_Flood_], [...], [...], [...],
-  [Banjir Bandang/_Flash Flood_], [...], [...], [...],
-  [Gempa Bumi/_Earthquake_], [...], [...], [...],
-  [Gelombang Pasang Laut/_Tidal Wave_], [...], [...], [...],
-  [Angin Puyuh/Puting Beliung], [...], [...], [...],
-  [Kebakaran Hutan dan Lahan/_Forest Fire_], [...], [...], [...]
+  table.header(table.cell(align: center + horizon)[#strong[Jenis Bencana Alam] \ #text(6pt, weight: "bold", style: "italic")[Type of Natural Disaster]], table.cell(align: center + horizon)[#strong[2025]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]]),
+  table.cell(align: left + horizon)[Gempa Bumi/#text(style: "italic")[Earthquake]], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Tsunami], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Gunung Meletus/#text(style: "italic")[Volcanic Eruption]], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Tanah Longsor/#text(style: "italic")[Landslide]], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Banjir/#text(style: "italic")[Floods]], table.cell(align: center + horizon)[5],
+  table.cell(align: left + horizon)[Banjir Bandang/#text(style: "italic")[Flash Floods]], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Kekeringan/#text(style: "italic")[Drought]], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Kebakaran Hutan dan Lahan/#text(style: "italic")[Forest and Land Fires]], table.cell(align: center + horizon)[1],
+  table.cell(align: left + horizon)[Angin Puyuh/Puting Beliung/Topan/#text(style: "italic")[Tornado/Typhoon]], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Gelombang Pasang/#text(style: "italic")[Tidal Wave]], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Abrasi/#text(style: "italic")[Abrasion]], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Tidak Ada Bencana Alam/No Natural Disaster], table.cell(align: center + horizon)[7]
+)
+#v(-2pt)
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Catatan/#text(style: "italic")[Note] :]],
+  [#text(6.5pt, fill: black)[#super[1] Desa pada tabel ini termasuk Unit Permukiman Transmigrasi (UPT) yang masih dibina oleh kementerian terkait/#text(style: "italic")[Villages in this table include Transmigration Settlement Unit which is still fostered by the relevant ministries] \ 
+#super[2] Periode Januari–Mei 2025/#text(style: "italic")[During January–May 2025]]]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Badan Penanggulangan Bencana Daerah (BPBD) Kabupaten Mempawah/Podes 2025/#text(style: "italic")[Regional Disaster Management Agency (BPBD) of Mempawah Regency/Podes 2025]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Badan Pusat Statistik, Pendataan Potensi Desa (Podes)/#text(style: "italic")[BPS-Statistics Indonesia, Village Potential Data Collecting]]]
+)
+#v(8pt)
+
+#pagebreak()
+
+
+
+#metadata("tab_4_4_2") <tab_4_4_2>
+#v(6pt)
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 4.5pt,
+      align: (top + center, horizon),
+      [
+        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
+          #text(10pt, weight: "bold")[Tabel]
+        ] \
+        #v(-3.5pt)
+        #text(8pt, style: "italic")[Table]
+      ],
+      [
+        #text(10pt, weight: "bold")[4.4.2]
+      ]
+    )
+  ],
+  [
+    #text(10pt, weight: "bold")[Banyaknya Desa#super[1]/Kelurahan dengan Keberadaan Fasilitas/Upaya Antisipasi/Mitigasi Bencana Alam Menurut Jenis Fasilitas/Upaya Antisipasi/Mitigasi di Kecamatan Sungai Kunyit, 2025] \
+    #v(-2pt)
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Number of Villages#super[1]/Subdistricts with Availability of Facilities/Efforts for Anticipation/Mitigation of Natural Disasters by Type of Facilities/Efforts for Anticipation/Mitigation in Sungai Kunyit District, 2025]
+  ]
+)
+#v(3pt)
+
+#show table.cell: set par(justify: false)
+#table(
+  columns: (3.4fr, 1.4fr),
+  inset: (x: 3.5pt, y: 4.5pt),
+  stroke: none,
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
+                      else if calc.even(row) { rgb("#FFF8E7") }
+                      else { rgb("#FFF4D4") },
+  table.header(table.cell(align: center + horizon)[#strong[Jenis Fasilitas/Upaya Antisipasi/Mitigasi] \ #text(6pt, weight: "bold", style: "italic")[Type of Facilities/Efforts for Anticipation/Mitigation]], table.cell(align: center + horizon)[#strong[2025]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]]),
+  table.cell(align: left + horizon)[Sistem peringatan dini bencana alam/#text(style: "italic")[Natural disaster early warning system]], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Sistem peringatan dini khusus tsunami/#text(style: "italic")[Tsunami early warning system]], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Perlengkapan keselamatan/#text(style: "italic")[Safety equipment]], table.cell(align: center + horizon)[2],
+  table.cell(align: left + horizon)[Rambu‐Rambu dan jalur evakuasi bencana/#text(style: "italic")[Sign and evacuation route]], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Pembuatan, perawatan, atau normalisasi sungai, kanal, tanggul, dll/#text(style: "italic")[Manufacture, maintenance, or normalization of rivers, canals, etc]], table.cell(align: center + horizon)[7]
+)
+#v(-2pt)
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Catatan/#text(style: "italic")[Note] :]],
+  [#text(6.5pt, fill: black)[#super[1] Desa pada tabel ini termasuk Unit Permukiman Transmigrasi (UPT) yang masih dibina oleh kementerian terkait/#text(style: "italic")[Villages in this table include Transmigration Settlement Unit which is still fostered by the relevant ministries]]]
+)
+#v(-3pt)
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Badan Pusat Statistik, Pendataan Potensi Desa (Podes)/#text(style: "italic")[BPS-Statistics Indonesia, Village Potential Data Collecting]]]
+)
 #v(8pt)
 
 
-#pagebreak(to: "odd")
 
 // ==========================================
-// LEMBAR PEMBATAS BAB 5 (FULL-BLEED A5)
+// BAB 5: PERTANIAN (PENJELASAN TEKNIS & GAMBAR)
 // ==========================================
-#page(
-  paper: "a5",
-  margin: 0cm,
-  header: none,
-  footer: none,
-)[
-  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/pembatas/Bab 5.jpg", width: 100%, height: 100%)
-] <chapter_page>
 
-#metadata("5. PERTANIAN") <chapter_title>
-#metadata("Agriculture") <chapter_title_en>
+// ----------------------------------------------------
+// BAB 5: PERTANIAN (AGRICULTURE)
+// ----------------------------------------------------
+#pagebreak()
+#set page(margin: 0pt, header: none, footer: none)
 #metadata("bab5") <bab5>
+#image("/assets/dividers/Bab_5.jpg", width: 100%, height: 100%)
 
-// ==========================================
-// BAB 5: PERTANIAN (INFOGRAFIS & NARASI)
-// ==========================================
+#pagebreak()
+#set page(
+  margin: normal_margins,
+  header: page_header,
+  footer: page_footer,
+)
+#metadata("PERTANIAN") <chapter_title>
+#metadata("AGRICULTURE") <chapter_title_en>
+
+// --- HALAMAN PENJELASAN TEKNIS / TECHNICAL NOTES ---
+#set text(font: "Liberation Sans", size: 8.5pt)
+#set par(justify: true, leading: 0.9em)
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 14pt,
+  [
+    #align(center)[#text(9pt, weight: "bold")[PENJELASAN TEKNIS]]
+    #v(10pt)
+    #grid(
+      columns: (12pt, 1fr),
+      column-gutter: 3pt,
+      row-gutter: 12pt,
+      [1.], [Tanaman sayuran dan buah-buahan semusim
+
+a. Tanaman sayuran semusim adalah tanaman yang bermanfaat sebagai sayur, sebagai sumber vitamin, mineral, dan lain-lain yang berumur kurang dari satu tahun. Pada umumnya bagian yang digunakan sebagai sayur berupa daun, bunga, buah, dan umbi.
+
+b. Tanaman buah-buahan semusim adalah tanaman yang menghasilkan buah segar sebagai sumber vitamin, mineral, dan lain-lain yang berumur kurang dari satu tahun dan berbatang lunak. Pada umumnya buah yang dihasilkan dapat dikonsumsi tanpa dimasak terlebih dahulu.],
+      [2.], [Tanaman buah-buahan dan sayuran tahunan
+
+a. Tanaman buah-buahan tahunan adalah tanaman yang menghasilkan buah segar sebagai sumber vitamin, mineral, dan lain-lain yang berumur satu tahun atau lebih dan berbatang keras. Pada umumnya buah yang dihasilkan dapat dikonsumsi tanpa dimasak terlebih dahulu.
+
+b. Tanaman sayuran tahunan adalah tanaman yang bermanfaat sebagai sayur, sebagai sumber vitamin, mineral, dan lain-lain yang berumur satu tahun atau lebih. Pada umumnya bagian yang digunakan sebagai sayur berupa daun, bunga, buah, dan umbi.],
+      [3.], [Tanaman biofarmaka adalah tanaman yang bermanfaat untuk obat-obatan, kosmetik, dan kesehatan yang dikonsumsi atau digunakan dari bagian-bagian tanaman, seperti daun, batang, buah, umbi (rimpang) ataupun akar.],
+      [4.], [Tanaman hias adalah tanaman yang mempunyai nilai keindahan baik bentuk, warna daun, tajuk maupun bunganya, sering digunakan untuk penghias pekarangan dan lain sebagainya.],
+      [5.], [Luas panen untuk tanaman sayuran: luas tanaman yang dipanen sekaligus/habis/dibongkar dan luas tanaman yang dipanen berkali-kali (lebih dari satu kali)/belum habis.
+
+a. Tanaman yang dipanen sekaligus/habis/dibongkar adalah tanaman yang sehabis panen langsung dibongkar/dicabut, terdiri dari bawang merah, bawang putih, bawang daun, kentang, kol/kubis, kembang kol, petsai/sawi, wortel, lobak, dan kacang merah.
+
+b. Tanaman yang dipanen berkali-kali (lebih dari satu kali)/belum habis adalah tanaman yang pemanenannya lebih dari satu kali dan biasanya dibongkar apabila panenan terakhir sudah tidak memadai lagi, terdiri dari: kacang panjang, cabai besar, cabai rawit, jamur, tomat, terung, buncis, ketimun, labu siam, kangkung, bayam, melon, semangka, dan blewah.],
+      [6.], [Produksi adalah hasil menurut bentuk produk dari setiap tanaman sayuran, buah-buahan, biofarmaka, dan tanaman hias yang diambil berdasarkan luas yang dipanen/tanaman yang menghasilkan pada bulan/triwulan laporan.]
+    )
+  ],
+  [
+    #align(center)[#text(9pt, weight: "bold", style: "italic")[TECHNICAL NOTES]]
+    #v(10pt)
+    #set text(style: "italic")
+    #grid(
+      columns: (12pt, 1fr),
+      column-gutter: 3pt,
+      row-gutter: 12pt,
+      [1.], [Seasonal vegetable and fruit plants
+
+a. Seasonal vegetable plants are used/consumed as vegetables, which are the sources of vitamin, mineral, etc that are aged less than 1 year. In general, parts that consumed are in the form of leaves, flower, fruits, and tubers.
+
+b. Seasonal fruit plants are plants that produce fresh fruit as a sources of vitamin, mineral, etc that aged less than 1 year and soft trunked. Generally, the fruit produced can be consumed without being cooked first.],
+      [2.], [Annual fruit and vegetable plants
+
+a. Annual fruit plants are plants that produce fresh fruit as sources of vitamin, mineral, etc that are aged more than 1 year and hard trunked. Generally, the fruit produced can be consumed without being cooked first.
+
+b. Annual vegetable plants are plants used as vegetables as sources of vitamin, mineral, etc that is aged more than 1 year. In general, the parts that consumed are in the form of leaves, flower, fruits, and tubers.],
+      [3.], [Medicinal plants are plants that are beneficial for medicines, cosmetics, and health which are consumed or used from parts of plants, such as leaves, stems, fruits, tubers (rhizomes) or roots.],
+      [4.], [Ornamental plants are plants which have an aesthetic value, either in shape, leaf colour, canopy or flower, and are often used as yard decorators.],
+      [5.], [Harvested area of vegetables: area of entirely harvested/demolished plant and plant that is harvested several times/undemolished.
+
+a. Entirely harvested/demolished plants are plants usually harvested once and demolished to be substituted by other plants, consisting of: shallots, garlic, welsh onion, potato, cabbage, cauliflower, chinese cabbage, carrots, radish, and red beans.
+
+b. Plants that are harvested several times/undemolished are plants usually harvested more than once and demolished in the case that the last harvest was economically not profitable. They consist of: yard long beans, chili, small chili, mushroom, tomatoes, eggplant, green beans, cucumber, chayote, water spinach, spinach, melon, watermelon, and cantaloupe.],
+      [6.], [Production is the standard production quantity form of vegetable, fruit, medicinal and ornamental plant based on harvested area/the number of production plants reported monthly/quarterly.]
+    )
+  ]
+)
+
+#pagebreak()
+
+// --- HALAMAN ULASAN / DESCRIPTION ---
+#set text(font: "Liberation Sans", size: 8.5pt)
+#set par(justify: true, leading: 0.9em)
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 14pt,
+  [
+    #align(center)[#text(9pt, weight: "bold")[ULASAN]]
+    #v(10pt)
+    #block[
+  #text(8pt, weight: "bold")[Hortikultura] \
+  #v(2pt)
+  Sektor pertanian memegang peranan penting dalam perekonomian masyarakat Kecamatan Sungai Kunyit, khususnya budidaya aneka tanaman hortikultura semusim dan tahunan. Pada tahun 2025, produksi tanaman sayuran semusim terbesar dicatat oleh komoditas Ketimun dengan produksi mencapai 810 kuintal; produksi tanaman biofarmaka didominasi oleh Jahe sebesar 18.000 kg; produksi buah-buahan tahunan tertinggi diraih oleh komoditas Pisang sebanyak 3.092 kuintal. Hasil panen komoditas ini menjadi pasokan pangan penting bagi konsumsi masyarakat lokal maupun dipasarkan ke luar wilayah kecamatan.
+]
+  ],
+  [
+    #align(center)[#text(9pt, weight: "bold", style: "italic")[DESCRIPTION]]
+    #v(10pt)
+    #set text(style: "italic")
+    #block[
+  #text(8pt, weight: "bold", style: "italic")[Horticulture] \
+  #v(2pt)
+  The agricultural sector plays a crucial role in the economy of Sungai Kunyit District, particularly the cultivation of seasonal and annual horticultural crops. In 2025, the largest seasonal vegetable crop production was recorded by Cucumber reaching 810 quintals; medicinal plants production was dominated by Ginger amounting to 18.000 kg; the highest annual fruit crop production was achieved by Banana with 3.092 quintals. These harvest yields serve as important food supplies for local consumption and are traded to surrounding markets.
+]
+  ]
+)
+
+#pagebreak()
+
 
 
 #v(6pt)
 #align(center)[
-  #image("charts/gambar_5_1.svg", width: 100%)
+  #image("charts/gambar_5.svg", width: 100%)
 ]
 #v(-2pt)
 #text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-BST)/#text(style: "italic")[BPS-Statistics Indonesia - Ministry of Agriculture, Horticultural Agricultural Survey (SPH-BST)]]
 #v(4pt)
-#metadata("fig_5_1") <fig_5_1>
+#metadata("fig_5") <fig_5>
 #grid(
   columns: (auto, 1fr),
   column-gutter: 8pt,
@@ -2172,14 +3339,14 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Sungai Kunyit ditopang ole
         #text(6.5pt, style: "italic")[Figures]
       ],
       [
-        #text(8.5pt, weight: "bold")[5.1]
+        #text(8.5pt, weight: "bold")[5]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Produksi Buah-buahan Utama di Sungai Kunyit, 2025 (Kuintal)] \
+    #text(7.5pt, weight: "bold")[Produksi Buah-buahan Utama di Kecamatan Sungai Kunyit, 2025 (Kuintal)] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Production of Major Fruits in Sungai Kunyit Subdistrict, 2025 (Quintal)]
+    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Production of Major Fruits in Sungai Kunyit District, 2025 (Quintal)]
   ]
 )
 #v(10pt)
@@ -2187,12 +3354,8 @@ Pembangunan bidang sosial kemasyarakatan di Kecamatan Sungai Kunyit ditopang ole
 #pagebreak()
 
 // ==========================================
-// ISI BAB 5: ULASAN NARASI & TABEL DATA
+// TABEL DATA BAB 5 (1 HALAMAN 1 TABEL)
 // ==========================================
-#text(8.5pt)[
-Sektor pertanian merupakan salah satu pilar penopang perekonomian masyarakat di Kecamatan Sungai Kunyit. Komoditas sayuran semusim, tanaman biofarmaka, serta buah-buahan tahunan dibudidayakan secara intensif oleh rumah tangga petani guna memenuhi kebutuhan pasar domestik dan regional Kabupaten Mempawah.
-]
-#v(12pt)
 
 
 #metadata("tab_5_1") <tab_5_1>
@@ -2208,56 +3371,63 @@ Sektor pertanian merupakan salah satu pilar penopang perekonomian masyarakat di 
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[5.1]
+        #text(10pt, weight: "bold")[5.1]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Luas Panen Tanaman Sayuran dan Buah-buahan Semusim Menurut Jenis Tanaman di Kecamatan Sungai Kunyit, 2022–2025] \
+    #text(10pt, weight: "bold")[Luas Panen Tanaman Sayuran dan Buah-buahan Semusim Menurut Jenis Tanaman di Kecamatan Sungai Kunyit (ha), 2022–2025] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Harvested Area of Seasonal Vegetables and Fruits by Kind of Plants in Sungai Kunyit Subdistrict, 2022–2025]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Harvested Area of Temporary Vegetables and Fruit Crops by Type of Crops in Sungai Kunyit District (ha), 2022–2025]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
   columns: (2.6fr, 0.9fr, 0.9fr, 0.9fr, 0.9fr),
-  inset: (x: 3.5pt, y: 4.5pt),
+  inset: (x: 3.5pt, y: 2.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
                       else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[Jenis Tanaman] \ #text(6pt, weight: "bold", style: "italic")[Kind of Plants]], [#strong[2022 (ha)]], [#strong[2023 (ha)]], [#strong[2024 (ha)]], [#strong[2025 (ha)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]], [#strong[(5)]]),
-  [Bawang Merah/Shallots], [...], [...], [...], [...],
-  [Cabai Besar/TW/Teropong Chili/Big Chili], [...], [1], [2], [1],
-  [Cabai Keiting Curly Chili], [...], [...], [...], [...],
-  [Cabai Rawit Chili/Cayenne Pepper], [3], [25], [10], [3],
-  [Kentang/Potato], [...], [...], [...], [...],
-  [Kubis/Cabbage], [...], [...], [...], [...],
-  [Tomat/Tomato], [...], [2], [4], [3],
-  [Bawang Putih/Garlic], [...], [...], [...], [...],
-  [Kacang Panjang/ Long Beans], [5], [2], [4], [5],
-  [Kangkung/ Water Spinach], [2], [7], [3], [6],
-  [Ketimun/ Cucumber], [11], [5], [7], [5],
-  [Petsai/Sawi/ Chinese Cabbage/ mustard green], [12], [3], [...], [...],
-  [Terung/ Eggplant], [5], [5], [3], [3],
-  [Semangka/ Water Melon], [...], [1], [5], [6]
+  table.header(table.cell(align: center + horizon)[#strong[Jenis Tanaman] \ #text(6pt, weight: "bold", style: "italic")[Kind of Plants]], table.cell(align: center + horizon)[#strong[2022]], table.cell(align: center + horizon)[#strong[2023]], table.cell(align: center + horizon)[#strong[2024]], table.cell(align: center + horizon)[#strong[2025]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]], table.cell(align: center + horizon)[#strong[(3)]], table.cell(align: center + horizon)[#strong[(4)]], table.cell(align: center + horizon)[#strong[(5)]]),
+  table.cell(colspan: 5, align: left + horizon)[#strong[Sayuran] / #text(weight: "bold", style: "italic")[Vegetables:]],
+  table.cell(align: left + horizon)[Bawang Merah/#text(style: "italic")[Shallots]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Cabai Besar/TW/Teropong Chili/#text(style: "italic")[Big Chili]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[1], table.cell(align: center + horizon)[2], table.cell(align: center + horizon)[1],
+  table.cell(align: left + horizon)[Cabai keriting/#text(style: "italic")[Curly Chili]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Cabai Rawit Chili/#text(style: "italic")[Cayenne Pepper]], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[25], table.cell(align: center + horizon)[10], table.cell(align: center + horizon)[3],
+  table.cell(align: left + horizon)[Kentang/#text(style: "italic")[Potato]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Kubis/#text(style: "italic")[Cabbage]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Tomat/#text(style: "italic")[Tomato]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[2], table.cell(align: center + horizon)[4], table.cell(align: center + horizon)[3],
+  table.cell(align: left + horizon)[Bawang Putih/#text(style: "italic")[Garlic]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Kacang Panjang/#text(style: "italic")[Long Beans]], table.cell(align: center + horizon)[5], table.cell(align: center + horizon)[2], table.cell(align: center + horizon)[4], table.cell(align: center + horizon)[5],
+  table.cell(align: left + horizon)[Kangkung/#text(style: "italic")[Water Spinach]], table.cell(align: center + horizon)[2], table.cell(align: center + horizon)[7], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[6],
+  table.cell(align: left + horizon)[Ketimun/#text(style: "italic")[Cucumber]], table.cell(align: center + horizon)[11], table.cell(align: center + horizon)[5], table.cell(align: center + horizon)[7], table.cell(align: center + horizon)[5],
+  table.cell(align: left + horizon)[Petsai/Sawi/ Chinese Cabbage/#text(style: "italic")[mustard green]], table.cell(align: center + horizon)[12], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Terung/#text(style: "italic")[Eggplant]], table.cell(align: center + horizon)[5], table.cell(align: center + horizon)[5], table.cell(align: center + horizon)[3], table.cell(align: center + horizon)[3],
+  table.cell(colspan: 5, align: left + horizon)[#strong[Buah–buahan] / #text(weight: "bold", style: "italic")[Fruits:]],
+  table.cell(align: left + horizon)[Semangka/#text(style: "italic")[Water Melon]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[1], table.cell(align: center + horizon)[5], table.cell(align: center + horizon)[6]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-SBS)/#text(style: "italic")[BPS-Statistics Indonesia - Ministry of Agriculture, Horticultural Agricultural Survey (SPH-SBS)]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Badan Pusat Statistik-Kementerian Pertanian (Direktorat Jenderal Hortikultura)/#text(style: "italic")[BPS-Statistics Indonesia-Ministry of Agriculture (Directorate General of Horticulture)]]]
+)
 #v(8pt)
 
 #pagebreak()
+
 
 
 #metadata("tab_5_2") <tab_5_2>
@@ -2273,56 +3443,63 @@ Sektor pertanian merupakan salah satu pilar penopang perekonomian masyarakat di 
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[5.2]
+        #text(10pt, weight: "bold")[5.2]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Produksi Tanaman Sayuran dan Buah-buahan Semusim Menurut Jenis Tanaman di Kecamatan Sungai Kunyit, 2022–2025] \
+    #text(10pt, weight: "bold")[Produksi Tanaman Sayuran dan Buah-buahan Semusim Menurut Jenis Tanaman di Kecamatan Sungai Kunyit (kuintal), 2022–2025] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Production of Seasonal Vegetables and Fruits by Kind of Plants in Sungai Kunyit Subdistrict, 2022–2025]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Production of Temporary Vegetables and Fruit Crops by Type of Crops in Sungai Kunyit District (quintal), 2022–2025]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
   columns: (2.6fr, 0.9fr, 0.9fr, 0.9fr, 0.9fr),
-  inset: (x: 3.5pt, y: 4.5pt),
+  inset: (x: 3.5pt, y: 2.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
                       else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[Jenis Tanaman] \ #text(6pt, weight: "bold", style: "italic")[Kind of Plants]], [#strong[2022 (ku)]], [#strong[2023 (ku)]], [#strong[2024 (ku)]], [#strong[2025 (ku)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]], [#strong[(5)]]),
-  [Bawang Merah/Shallots], [...], [...], [...], [...],
-  [Cabai Besar/TW/Teropong Chili/Big Chili], [...], [24], [86], [48],
-  [Cabai Keiting Curly Chili], [...], [...], [...], [...],
-  [Cabai Rawit Chili/Cayenne Pepper], [35], [215], [874], [745],
-  [Kentang/Potato], [...], [...], [...], [...],
-  [Kubis/Cabbage], [...], [...], [...], [...],
-  [Tomat/Tomato], [...], [40], [417], [549],
-  [Bawang Putih/Garlic], [...], [...], [...], [...],
-  [Kacang Panjang/ Long Beans], [32], [193], [344], [728],
-  [Kangkung/ Water Spinach], [4], [106], [102], [214],
-  [Ketimun/ Cucumber], [237], [264], [861], [810],
-  [Petsai/Sawi/ Chinese Cabbage/ mustard green], [260], [64], [...], [...],
-  [Terung/ Eggplant], [85], [144], [263], [760],
-  [Semangka/ Water Melon], [...], [150], [553], [750]
+  table.header(table.cell(align: center + horizon)[#strong[Jenis Tanaman] \ #text(6pt, weight: "bold", style: "italic")[Kind of Plants]], table.cell(align: center + horizon)[#strong[2022]], table.cell(align: center + horizon)[#strong[2023]], table.cell(align: center + horizon)[#strong[2024]], table.cell(align: center + horizon)[#strong[2025]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]], table.cell(align: center + horizon)[#strong[(3)]], table.cell(align: center + horizon)[#strong[(4)]], table.cell(align: center + horizon)[#strong[(5)]]),
+  table.cell(colspan: 5, align: left + horizon)[#strong[Sayuran] / #text(weight: "bold", style: "italic")[Vegetables:]],
+  table.cell(align: left + horizon)[Bawang Merah/#text(style: "italic")[Shallots]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Cabai Besar/TW/Teropong Chili/#text(style: "italic")[Big Chili]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[24], table.cell(align: center + horizon)[86], table.cell(align: center + horizon)[48],
+  table.cell(align: left + horizon)[Cabai keriting/#text(style: "italic")[Curly Chili]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Cabai Rawit Chili/#text(style: "italic")[Cayenne Pepper]], table.cell(align: center + horizon)[35], table.cell(align: center + horizon)[215], table.cell(align: center + horizon)[874], table.cell(align: center + horizon)[745],
+  table.cell(align: left + horizon)[Kentang/#text(style: "italic")[Potato]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Kubis/#text(style: "italic")[Cabbage]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Tomat/#text(style: "italic")[Tomato]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[40], table.cell(align: center + horizon)[417], table.cell(align: center + horizon)[549],
+  table.cell(align: left + horizon)[Bawang Putih/#text(style: "italic")[Garlic]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Kacang Panjang/#text(style: "italic")[Long Beans]], table.cell(align: center + horizon)[32], table.cell(align: center + horizon)[193], table.cell(align: center + horizon)[344], table.cell(align: center + horizon)[728],
+  table.cell(align: left + horizon)[Kangkung/#text(style: "italic")[Water Spinach]], table.cell(align: center + horizon)[4], table.cell(align: center + horizon)[106], table.cell(align: center + horizon)[102], table.cell(align: center + horizon)[214],
+  table.cell(align: left + horizon)[Ketimun/#text(style: "italic")[Cucumber]], table.cell(align: center + horizon)[237], table.cell(align: center + horizon)[264], table.cell(align: center + horizon)[861], table.cell(align: center + horizon)[810],
+  table.cell(align: left + horizon)[Petsai/Sawi/ Chinese Cabbage/#text(style: "italic")[mustard green]], table.cell(align: center + horizon)[260], table.cell(align: center + horizon)[64], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Terung/#text(style: "italic")[Eggplant]], table.cell(align: center + horizon)[85], table.cell(align: center + horizon)[144], table.cell(align: center + horizon)[263], table.cell(align: center + horizon)[760],
+  table.cell(colspan: 5, align: left + horizon)[#strong[Buah–buahan] / #text(weight: "bold", style: "italic")[Fruits:]],
+  table.cell(align: left + horizon)[Semangka/#text(style: "italic")[Water Melon]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[150], table.cell(align: center + horizon)[553], table.cell(align: center + horizon)[750]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-SBS)/#text(style: "italic")[BPS-Statistics Indonesia - Ministry of Agriculture, Horticultural Agricultural Survey (SPH-SBS)]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Badan Pusat Statistik-Kementerian Pertanian (Direktorat Jenderal Hortikultura)/#text(style: "italic")[BPS-Statistics Indonesia-Ministry of Agriculture (Directorate General of Horticulture)]]]
+)
 #v(8pt)
 
 #pagebreak()
+
 
 
 #metadata("tab_5_3") <tab_5_3>
@@ -2338,46 +3515,52 @@ Sektor pertanian merupakan salah satu pilar penopang perekonomian masyarakat di 
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[5.3]
+        #text(10pt, weight: "bold")[5.3]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Luas Panen Tanaman Biofarmaka Menurut Jenis Tanaman di Kecamatan Sungai Kunyit, 2022–2025] \
+    #text(10pt, weight: "bold")[Luas Panen Tanaman Biofarmaka Menurut Jenis Tanaman di Kecamatan Sungai Kunyit (m2), 2022–2025] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Harvested Area of Medicinal Plants by Kind of Plants in Sungai Kunyit Subdistrict, 2022–2025]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Harvested Area of Medicinal Crops by Type of Crops in Sungai Kunyit District (m2), 2022–2025]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
   columns: (2.6fr, 0.9fr, 0.9fr, 0.9fr, 0.9fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
                       else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[Jenis Tanaman] \ #text(6pt, weight: "bold", style: "italic")[Kind of Plants]], [#strong[2022 (m²)]], [#strong[2023 (m²)]], [#strong[2024 (m²)]], [#strong[2025 (m²)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]], [#strong[(5)]]),
-  [Jahe/Ginger], [...], [5.000], [8.000], [6.000],
-  [Laos/Lengkuas/Galanga], [...], [...], [...], [...],
-  [Kencur/East Indian Galangal], [...], [300], [600], [1000],
-  [Kunyit/Turmeric], [...], [1000], [1650], [1000]
+  table.header(table.cell(align: center + horizon)[#strong[Jenis Tanaman] \ #text(6pt, weight: "bold", style: "italic")[Kind of Plants]], table.cell(align: center + horizon)[#strong[2022]], table.cell(align: center + horizon)[#strong[2023]], table.cell(align: center + horizon)[#strong[2024]], table.cell(align: center + horizon)[#strong[2025]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]], table.cell(align: center + horizon)[#strong[(3)]], table.cell(align: center + horizon)[#strong[(4)]], table.cell(align: center + horizon)[#strong[(5)]]),
+  table.cell(align: left + horizon)[Jahe/#text(style: "italic")[Ginger]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[5.000], table.cell(align: center + horizon)[8.000], table.cell(align: center + horizon)[6.000],
+  table.cell(align: left + horizon)[Laos/Lengkuas/#text(style: "italic")[Galanga]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Kencur/#text(style: "italic")[East Indian Galangal]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[300], table.cell(align: center + horizon)[600], table.cell(align: center + horizon)[1.000],
+  table.cell(align: left + horizon)[Kunyit/#text(style: "italic")[Turmeric]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[1.000], table.cell(align: center + horizon)[1.650], table.cell(align: center + horizon)[1.000]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-TBF)/#text(style: "italic")[BPS-Statistics Indonesia - Ministry of Agriculture, Horticultural Agricultural Survey (SPH-TBF)]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Badan Pusat Statistik-Kementerian Pertanian (Direktorat Jenderal Hortikultura)/#text(style: "italic")[BPS-Statistics Indonesia-Ministry of Agriculture (Directorate General of Horticulture)]]]
+)
 #v(8pt)
 
-#v(10pt)
+#pagebreak()
+
+
 
 #metadata("tab_5_4") <tab_5_4>
 #v(6pt)
@@ -2392,46 +3575,183 @@ Sektor pertanian merupakan salah satu pilar penopang perekonomian masyarakat di 
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[5.4]
+        #text(10pt, weight: "bold")[5.4]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Produksi Tanaman Biofarmaka Menurut Jenis Tanaman di Kecamatan Sungai Kunyit, 2022–2025] \
+    #text(10pt, weight: "bold")[Produksi Tanaman Biofarmaka Menurut Jenis Tanaman di Kecamatan Sungai Kunyit (kg), 2022–2025] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Production of Medicinal Plants by Kind of Plants in Sungai Kunyit Subdistrict, 2022–2025]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Production of Medicinal Crops by Type of Crops in Sungai Kunyit District (kg), 2022–2025]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
   columns: (2.6fr, 0.9fr, 0.9fr, 0.9fr, 0.9fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
                       else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[Jenis Tanaman] \ #text(6pt, weight: "bold", style: "italic")[Kind of Plants]], [#strong[2022 (kg)]], [#strong[2023 (kg)]], [#strong[2024 (kg)]], [#strong[2025 (kg)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]], [#strong[(5)]]),
-  [Jahe/Ginger], [...], [9.600], [24.000], [18.000],
-  [Laos/Lengkuas/Galanga], [...], [...], [...], [...],
-  [Kencur/East Indian Galangal], [...], [810], [1090], [3300],
-  [Kunyit/Turmeric], [...], [2200], [3564], [1400]
+  table.header(table.cell(align: center + horizon)[#strong[Jenis Tanaman] \ #text(6pt, weight: "bold", style: "italic")[Kind of Plants]], table.cell(align: center + horizon)[#strong[2022]], table.cell(align: center + horizon)[#strong[2023]], table.cell(align: center + horizon)[#strong[2024]], table.cell(align: center + horizon)[#strong[2025]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]], table.cell(align: center + horizon)[#strong[(3)]], table.cell(align: center + horizon)[#strong[(4)]], table.cell(align: center + horizon)[#strong[(5)]]),
+  table.cell(align: left + horizon)[Jahe/#text(style: "italic")[Ginger]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[9.600], table.cell(align: center + horizon)[24.000], table.cell(align: center + horizon)[18.000],
+  table.cell(align: left + horizon)[Laos/Lengkuas/#text(style: "italic")[Galanga]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Kencur/#text(style: "italic")[East Indian Galangal]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[810], table.cell(align: center + horizon)[1.090], table.cell(align: center + horizon)[3.300],
+  table.cell(align: left + horizon)[Kunyit/#text(style: "italic")[Turmeric]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[2.200], table.cell(align: center + horizon)[3.564], table.cell(align: center + horizon)[1.400]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-TBF)/#text(style: "italic")[BPS-Statistics Indonesia - Ministry of Agriculture, Horticultural Agricultural Survey (SPH-TBF)]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Badan Pusat Statistik-Kementerian Pertanian (Direktorat Jenderal Hortikultura)/#text(style: "italic")[BPS-Statistics Indonesia-Ministry of Agriculture (Directorate General of Horticulture)]]]
+)
 #v(8pt)
 
 #pagebreak()
+
+
+
+#metadata("tab_5_5") <tab_5_5>
+#v(6pt)
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 4.5pt,
+      align: (top + center, horizon),
+      [
+        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
+          #text(10pt, weight: "bold")[Tabel]
+        ] \
+        #v(-3.5pt)
+        #text(8pt, style: "italic")[Table]
+      ],
+      [
+        #text(10pt, weight: "bold")[5.5]
+      ]
+    )
+  ],
+  [
+    #text(10pt, weight: "bold")[Luas Panen Tanaman Hias Menurut Jenis Tanaman di Kecamatan Sungai Kunyit (m2), 2022–2025] \
+    #v(-2pt)
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Harvested Area of Ornamental Crops by Type of Crops in Sungai Kunyit District (m2), 2022–2025]
+  ]
+)
+#v(3pt)
+
+#show table.cell: set par(justify: false)
+#table(
+  columns: (2.6fr, 0.9fr, 0.9fr, 0.9fr, 0.9fr),
+  inset: (x: 3.5pt, y: 4.5pt),
+  stroke: none,
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
+                      else if calc.even(row) { rgb("#FFF8E7") }
+                      else { rgb("#FFF4D4") },
+  table.header(table.cell(align: center + horizon)[#strong[Jenis Tanaman] \ #text(6pt, weight: "bold", style: "italic")[Kind of Plants]], table.cell(align: center + horizon)[#strong[2022]], table.cell(align: center + horizon)[#strong[2023]], table.cell(align: center + horizon)[#strong[2024]], table.cell(align: center + horizon)[#strong[2025]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]], table.cell(align: center + horizon)[#strong[(3)]], table.cell(align: center + horizon)[#strong[(4)]], table.cell(align: center + horizon)[#strong[(5)]]),
+  table.cell(align: left + horizon)[Anggrek Pot#super[1]/#text(style: "italic")[Pot Orchid#super[1]]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Anggrek Potong/#text(style: "italic")[Cut Orchid]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Krisan/#text(style: "italic")[Chrysantemum]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Mawar/#text(style: "italic")[Rose]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Sedap Malam/#text(style: "italic")[Tuberose]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Bugenvil], table.cell(align: center + horizon)[2.500], table.cell(align: center + horizon)[7.000], table.cell(align: center + horizon)[8.000], table.cell(align: center + horizon)[6.000]
+)
+#v(-3pt)
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Badan Pusat Statistik-Kementerian Pertanian (Direktorat Jenderal Hortikultura)/#text(style: "italic")[BPS-Statistics Indonesia-Ministry of Agriculture (Directorate General of Horticulture)]]]
+)
+#v(8pt)
+
+#pagebreak()
+
+
+
+#metadata("tab_5_6") <tab_5_6>
+#v(6pt)
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 8pt,
+  align: (top + left, top + left),
+  [
+    #grid(
+      columns: (auto, auto),
+      column-gutter: 4.5pt,
+      align: (top + center, horizon),
+      [
+        #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
+          #text(10pt, weight: "bold")[Tabel]
+        ] \
+        #v(-3.5pt)
+        #text(8pt, style: "italic")[Table]
+      ],
+      [
+        #text(10pt, weight: "bold")[5.6]
+      ]
+    )
+  ],
+  [
+    #text(10pt, weight: "bold")[Produksi Tanaman Hias Menurut Jenis Tanaman di Kecamatan Sungai Kunyit (tangkai), 2022–2025] \
+    #v(-2pt)
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Production of Ornamental Crops by Type of Crops in Sungai Kunyit District (stalks), 2022–2025]
+  ]
+)
+#v(3pt)
+
+#show table.cell: set par(justify: false)
+#table(
+  columns: (2.6fr, 0.9fr, 0.9fr, 0.9fr, 0.9fr),
+  inset: (x: 3.5pt, y: 4.5pt),
+  stroke: none,
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
+                      else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
+                      else if calc.even(row) { rgb("#FFF8E7") }
+                      else { rgb("#FFF4D4") },
+  table.header(table.cell(align: center + horizon)[#strong[Jenis Tanaman] \ #text(6pt, weight: "bold", style: "italic")[Kind of Plants]], table.cell(align: center + horizon)[#strong[2022]], table.cell(align: center + horizon)[#strong[2023]], table.cell(align: center + horizon)[#strong[2024]], table.cell(align: center + horizon)[#strong[2025]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]], table.cell(align: center + horizon)[#strong[(3)]], table.cell(align: center + horizon)[#strong[(4)]], table.cell(align: center + horizon)[#strong[(5)]]),
+  table.cell(align: left + horizon)[Anggrek Pot#super[1]/#text(style: "italic")[Pot Orchid#super[1]]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Anggrek Potong/#text(style: "italic")[Cut Orchid]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Krisan/#text(style: "italic")[Chrysantemum]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Mawar/#text(style: "italic")[Rose]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Sedap Malam/#text(style: "italic")[Tuberose]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Bugenvil], table.cell(align: center + horizon)[5.000], table.cell(align: center + horizon)[33.500], table.cell(align: center + horizon)[54.000], table.cell(align: center + horizon)[55.700]
+)
+#v(-2pt)
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Catatan/#text(style: "italic")[Note] :]],
+  [#text(6.5pt, fill: black)[#super[1] Satuan produksi dalam pohon/#text(style: "italic")[The unit of production is tree]]]
+)
+#v(-3pt)
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Badan Pusat Statistik-Kementerian Pertanian (Direktorat Jenderal Hortikultura)/#text(style: "italic")[BPS-Statistics Indonesia-Ministry of Agriculture (Directorate General of Horticulture)]]]
+)
+#v(8pt)
+
+#pagebreak()
+
 
 
 #metadata("tab_5_7") <tab_5_7>
@@ -2447,81 +3767,186 @@ Sektor pertanian merupakan salah satu pilar penopang perekonomian masyarakat di 
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[5.7]
+        #text(10pt, weight: "bold")[5.7]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Produksi Buah-Buahan dan Sayuran Tahunan Menurut Jenis Tanaman di Kecamatan Sungai Kunyit, 2022–2025] \
+    #text(10pt, weight: "bold")[Produksi Buah-buahan dan Sayuran Tahunan Menurut Jenis Tanaman di Kecamatan Sungai Kunyit (kuintal), 2022–2025] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Production of Annual Fruits and Vegetables by Kind of Plants in Sungai Kunyit Subdistrict, 2022–2025]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Production of Permanent Fruit and Vegetable by Type of Crops (quintal), 2022–2025]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
   columns: (2.6fr, 0.9fr, 0.9fr, 0.9fr, 0.9fr),
-  inset: (x: 3.5pt, y: 4.5pt),
+  inset: (x: 3.5pt, y: 2.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
                       else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[Jenis Tanaman] \ #text(6pt, weight: "bold", style: "italic")[Kind of Plants]], [#strong[2022 (ku)]], [#strong[2023 (ku)]], [#strong[2024 (ku)]], [#strong[2025 (ku)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]], [#strong[(5)]]),
-  [Mangga/Mango], [1.260], [238], [1.198], [975],
-  [Durian/Durian], [250], [30], [25], [105],
-  [Jeruk Siam/Keprok/Orange/Tangerine], [2.200], [...], [1.284], [941],
-  [Pisang/Banana], [29.000], [1.450], [6.444], [3.092],
-  [Pepaya/Papaya], [...], [...], [...], [...],
-  [Salak/Snakefruit], [...], [...], [...], [...],
-  [Sawo/ Sapodilla/Sawo], [8.088], [100], [1.919], [469],
-  [Rambutan/ Rambutan], [3.325], [...], [513], [130],
-  [Jeruk Besar/ Pomelo], [...], [...], [...], [...],
-  [Nangka/Cempedak/ Jackfruit], [...], [...], [...], [...],
-  [Nenas/ Pineapple], [...], [...], [...], [...],
-  [Lengkeng/ Dimocarpus Longan], [...], [24], [314], [42],
-  [Sukun/ Breadfruit], [144], [...], [60], [70],
-  [Petai/ Twisted Cluster Bean], [600], [36], [163], [70]
+  table.header(table.cell(align: center + horizon)[#strong[Jenis Tanaman] \ #text(6pt, weight: "bold", style: "italic")[Kind of Plants]], table.cell(align: center + horizon)[#strong[2022]], table.cell(align: center + horizon)[#strong[2023]], table.cell(align: center + horizon)[#strong[2024]], table.cell(align: center + horizon)[#strong[2025]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]], table.cell(align: center + horizon)[#strong[(3)]], table.cell(align: center + horizon)[#strong[(4)]], table.cell(align: center + horizon)[#strong[(5)]]),
+  table.cell(colspan: 5, align: left + horizon)[#strong[Buah–Buahan] / #text(weight: "bold", style: "italic")[Fruits:]],
+  table.cell(align: left + horizon)[Mangga/#text(style: "italic")[Mango]], table.cell(align: center + horizon)[1.260], table.cell(align: center + horizon)[238], table.cell(align: center + horizon)[1.198], table.cell(align: center + horizon)[975],
+  table.cell(align: left + horizon)[Durian/#text(style: "italic")[Durian]], table.cell(align: center + horizon)[250], table.cell(align: center + horizon)[30], table.cell(align: center + horizon)[25], table.cell(align: center + horizon)[105],
+  table.cell(align: left + horizon)[Jeruk Siam/Keprok/Orange/#text(style: "italic")[Tangerine]], table.cell(align: center + horizon)[2.200], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[1.284], table.cell(align: center + horizon)[941],
+  table.cell(align: left + horizon)[Pisang/#text(style: "italic")[Banana]], table.cell(align: center + horizon)[29.000], table.cell(align: center + horizon)[1.450], table.cell(align: center + horizon)[6.444], table.cell(align: center + horizon)[3.092],
+  table.cell(align: left + horizon)[Pepaya/#text(style: "italic")[Papaya]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Salak/#text(style: "italic")[Snakefruit]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Sawo/ Sapodilla/#text(style: "italic")[Sawo]], table.cell(align: center + horizon)[8.088], table.cell(align: center + horizon)[100], table.cell(align: center + horizon)[1.919], table.cell(align: center + horizon)[469],
+  table.cell(align: left + horizon)[Rambutan/#text(style: "italic")[Rambutan]], table.cell(align: center + horizon)[3.325], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[513], table.cell(align: center + horizon)[130],
+  table.cell(align: left + horizon)[Jeruk Besar/#text(style: "italic")[Pomelo]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Nangka/Cempedak/#text(style: "italic")[Jackfruit]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Nenas/#text(style: "italic")[Pineapple]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Lengkeng/#text(style: "italic")[Dimocarpus Longan]], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[24], table.cell(align: center + horizon)[314], table.cell(align: center + horizon)[42],
+  table.cell(align: left + horizon)[Sukun/#text(style: "italic")[Breadfruit]], table.cell(align: center + horizon)[144], table.cell(align: center + horizon)[–], table.cell(align: center + horizon)[60], table.cell(align: center + horizon)[70],
+  table.cell(colspan: 5, align: left + horizon)[#strong[Sayuran] / #text(weight: "bold", style: "italic")[Vegetables:]],
+  table.cell(align: left + horizon)[Petai/#text(style: "italic")[Twisted Cluster Bean]], table.cell(align: center + horizon)[600], table.cell(align: center + horizon)[36], table.cell(align: center + horizon)[163], table.cell(align: center + horizon)[70]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS - Kementerian Pertanian, Survei Pertanian Hortikultura (SPH-BST)/#text(style: "italic")[BPS-Statistics Indonesia - Ministry of Agriculture, Horticultural Agricultural Survey (SPH-BST)]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Badan Pusat Statistik-Kementerian Pertanian (Direktorat Jenderal Hortikultura)/#text(style: "italic")[BPS-Statistics Indonesia-Ministry of Agriculture (Directorate General of Horticulture)]]]
+)
 #v(8pt)
 
 
-#pagebreak(to: "odd")
-
-// ==========================================
-// LEMBAR PEMBATAS BAB 6 (FULL-BLEED A5)
-// ==========================================
-#page(
-  paper: "a5",
-  margin: 0cm,
-  header: none,
-  footer: none,
-)[
-  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/pembatas/Bab 6.jpg", width: 100%, height: 100%)
-] <chapter_page>
-
-#metadata("6. PARIWISATA, TRANSPORTASI, DAN KOMUNIKASI") <chapter_title>
-#metadata("Tourism, Transportation, and Communication") <chapter_title_en>
-#metadata("bab6") <bab6>
 
 // ==========================================
 // ISI BAB 6: ULASAN NARASI & TABEL DATA
 // ==========================================
-#text(8.5pt)[
-Konektivitas wilayah di Kecamatan Sungai Kunyit terhubung oleh jaringan jalan darat antardesa yang dapat dilalui kendaraan roda empat sepanjang tahun. Selain itu, penetrasi infrastruktur telekomunikasi bergerak (seluler) dan jaringan internet berkecepatan tinggi terus meluas, mempercepat arus informasi dan transaksi digital masyarakat.
+
+// ----------------------------------------------------
+// BAB 6: PARIWISATA, TRANSPORTASI, DAN KOMUNIKASI (TOURISM, TRANSPORTATION, AND COMMUNICATION)
+// ----------------------------------------------------
+#pagebreak()
+#set page(margin: 0pt, header: none, footer: none)
+#metadata("bab6") <bab6>
+#image("/assets/dividers/Bab_6.jpg", width: 100%, height: 100%)
+
+#pagebreak()
+#set page(
+  margin: normal_margins,
+  header: page_header,
+  footer: page_footer,
+)
+#metadata("PARIWISATA, TRANSPORTASI, DAN KOMUNIKASI") <chapter_title>
+#metadata("TOURISM, TRANSPORTATION, AND COMMUNICATION") <chapter_title_en>
+
+// --- HALAMAN PENJELASAN TEKNIS / TECHNICAL NOTES ---
+#set text(font: "Liberation Sans", size: 8.5pt)
+#set par(justify: true, leading: 0.9em)
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 14pt,
+  [
+    #align(center)[#text(9pt, weight: "bold")[PENJELASAN TEKNIS]]
+    #v(10pt)
+    #grid(
+      columns: (12pt, 1fr),
+      column-gutter: 3pt,
+      row-gutter: 12pt,
+      [1.], [Hotel adalah jenis akomodasi yang mempergunakan sebagian atau keseluruhan bangunan untuk jasa pelayanan penginapan, penyedia makanan dan minuman serta jasa lainnya (seperti restoran, binatu, d.l.l) bagi masyarakat umum yang dikelola secara komersial dengan izin usaha sebagai hotel.],
+      [2.], [Penginapan (Hostel/Motel/Losmen/Wisma) adalah jenis akomodasi yang mempergunakan sebagian atau keseluruhan bangunan untuk jasa pelayanan penginapan bagi umum, biasanya tanpa fasilitas pelayanan makan minum yang dikelola secara komersial dengan izin usaha bukan hotel.],
+      [3.], [Prasarana Transportasi adalah sarana penunjang lalu lintas pemindahan orang dan atau barang, yang terdiri atas jalan, jembatan, dermaga, pelabuhan, dan lain-lain yang digunakan oleh warga desa untuk mobilitas dari dan ke desa terdekat.],
+      [4.], [Kantor Pos adalah tempat pemberi pelayanan komunikasi tertulis dan atau surat elektronik, layanan paket, layanan logistik, layanan transaksi keuangan, dan layanan keagenan pos untuk kepentingan umum. Rumah pos berfungsi sama seperti kantor pos dan kantor pos pembantu, bedanya rumah pos biasanya terletak di daerah terpencil.],
+      [5.], [Pos Keliling adalah pelayanan pos (menjual, mengirim, dan menerima benda pos) keliling dengan menggunakan mobil atau sarana angkutan yang berfungsi sama seperti kantor pos atau kantor pos pembantu.],
+      [6.], [Perusahaan Jasa Agen Ekspedisi Swasta adalah pelayanan pengiriman paket maupun dokumen yang dikelola oleh pihak swasta, misalnya Tiki, JNE, ESL, d.l.l.]
+    )
+  ],
+  [
+    #align(center)[#text(9pt, weight: "bold", style: "italic")[TECHNICAL NOTES]]
+    #v(10pt)
+    #set text(style: "italic")
+    #grid(
+      columns: (12pt, 1fr),
+      column-gutter: 3pt,
+      row-gutter: 12pt,
+      [1.], [Hotel is the kind of accommodation that use part or the whole building for lodging services, food and beverage and other services (such as restaurants, laundry, etc.) for the public which is commercially managed with a business license of hotel.],
+      [2.], [Inn is a type of accommodation that use part or the whole building for lodging services to the public, usually without eating and drinking facilities which is commercially managed with a business license of non-hotel.],
+      [3.], [Transportation Infrastructure is a facility of supporting the transfer of people and or goods, which consists of roads, bridges, docks, harbors, etc used by villagers for mobility to and from the nearest village.],
+      [4.], [Post Office is a service provider place of written communication and or electronic mail, parcel service, logistics services, financial transaction services, postal and agency services to the public. Postal house has the same function as the post office and subsidiary of post office, the difference is that postal house usually located in remote areas.],
+      [5.], [Mobile Postal Service is nomadic postal service (to sell, send, and receive postal stationery) by car or transportation facility that the functions are the same as the post office or subsidiary of post office.],
+      [6.], [Private Expedition Service Company is packages and documents delivery service managed by privates, for example Tiki, JNE, ESL, etc.]
+    )
+  ]
+)
+
+#pagebreak()
+
+// --- HALAMAN ULASAN / DESCRIPTION ---
+#set text(font: "Liberation Sans", size: 8.5pt)
+#set par(justify: true, leading: 0.9em)
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 14pt,
+  [
+    #align(center)[#text(9pt, weight: "bold")[ULASAN]]
+    #v(10pt)
+    #block[
+  #text(8pt, weight: "bold")[1. #h(2pt) Pariwisata dan Akomodasi] \
+  #v(2pt)
+  Ketersediaan sarana akomodasi pariwisata di Kecamatan Sungai Kunyit tercatat sebanyak 7 penginapan/losmen guna menunjang mobilitas wisatawan dan perjalanan dinas.
 ]
-#v(12pt)
+#v(6pt)
+#block[
+  #text(8pt, weight: "bold")[2. #h(2pt) Transportasi Antardesa] \
+  #v(2pt)
+  Seluruh desa/kelurahan di Kecamatan Sungai Kunyit (12 desa/kelurahan) telah terhubung dan dapat diakses dengan mudah melalui prasarana dan sarana transportasi darat.
+]
+#v(6pt)
+#block[
+  #text(8pt, weight: "bold")[3. #h(2pt) Komunikasi dan Pos] \
+  #v(2pt)
+  Layanan komunikasi dan pengiriman logistik kian berkembang dengan 1 desa memiliki kantor pos/pos pembantu serta 3 desa dilayani agen ekspedisi swasta yang mempermudah sirkulasi barang dan perniagaan masyarakat.
+]
+  ],
+  [
+    #align(center)[#text(9pt, weight: "bold", style: "italic")[DESCRIPTION]]
+    #v(10pt)
+    #set text(style: "italic")
+    #block[
+  #text(8pt, weight: "bold", style: "italic")[1. #h(2pt) Tourism and Accommodation] \
+  #v(2pt)
+  The availability of tourism accommodation facilities in Sungai Kunyit District was recorded at 7 inn(s) to support visitor mobility and business travel.
+]
+#v(6pt)
+#block[
+  #text(8pt, weight: "bold", style: "italic")[2. #h(2pt) Inter-Village Transportation] \
+  #v(2pt)
+  All villages in Sungai Kunyit District (12 village(s)) are connected and readily accessible through land transportation infrastructure and facilities.
+]
+#v(6pt)
+#block[
+  #text(8pt, weight: "bold", style: "italic")[3. #h(2pt) Communication and Postal Services] \
+  #v(2pt)
+  Communication and courier logistics services continue to expand with 1 village(s) had post office facilities and 3 village(s) served by private courier agencies, facilitating the flow of goods and local commerce.
+]
+  ]
+)
+
+#pagebreak()
+
+// ==========================================
+// 6.1 PARIWISATA
+// ==========================================
+
+#v(0.2cm)
+#text(9pt, font: ("Metropolis", "Liberation Sans", "Arial"), weight: "bold")[6.1 PARIWISATA/]#text(9pt, font: ("Metropolis", "Liberation Sans", "Arial"), weight: "bold", style: "italic")[TOURISM]
+#v(6pt)
+
 
 
 #metadata("tab_6_1_1") <tab_6_1_1>
@@ -2537,54 +3962,65 @@ Konektivitas wilayah di Kecamatan Sungai Kunyit terhubung oleh jaringan jalan da
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[6.1.1]
+        #text(10pt, weight: "bold")[6.1.1]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Banyaknya Desa/Kelurahan Menurut Keberadaan Sarana Transportasi Antardesa di Kecamatan Sungai Kunyit, 2025] \
+    #text(10pt, weight: "bold")[Banyaknya Desa#super[1]/Kelurahan dengan Keberadaan Sarana Akomodasi Menurut Jenis Akomodasi di Kecamatan Sungai Kunyit, 2025] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Villages by Inter-Village Transportation Infrastructure in Sungai Kunyit Subdistrict, 2025]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Number of Villages#super[1]/Subdistricts with Availability of Accommodation Facilities by Type of Accommodation in Sungai Kunyit District, 2025]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
-  columns: (2.2fr, 1.1fr, 1.2fr, 1.1fr),
+  columns: (3.6fr, 1.2fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
                       else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], [#strong[Jenis Lalu Lintas] \ #text(6pt, weight: "bold", style: "italic")[Type of Traffic]], [#strong[Jenis Permukaan Jalan] \ #text(6pt, weight: "bold", style: "italic")[Type of Road Surface]], [#strong[Dapat Dilalui Roda 4+] \ #text(6pt, weight: "bold", style: "italic")[Passable by 4+ Wheels]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Semudun], [...], [...], [...],
-  [Semparong Parit Raden], [...], [...], [...],
-  [Mendalok], [...], [...], [...],
-  [Sungai Dungun], [...], [...], [...],
-  [Sungai Limau], [...], [...], [...],
-  [Sungai Kunyit Laut], [...], [...], [...],
-  [Sungai Kunyit Dalam], [...], [...], [...],
-  [Sungai Kunyit Hulu], [...], [...], [...],
-  [Bukit Batu], [...], [...], [...],
-  [Sungai Bundung Laut], [...], [...], [...],
-  [Sungai Duri I], [...], [...], [...],
-  [Sungai Duri II], [...], [...], [...]
+  table.header(table.cell(align: center + horizon)[#strong[Jenis Akomodasi] \ #text(6pt, weight: "bold", style: "italic")[Type of Accommodation]], table.cell(align: center + horizon)[#strong[2025]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]]),
+  table.cell(align: left + horizon)[Hotel], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Penginapan/#text(style: "italic")[Inn]], table.cell(align: center + horizon)[7]
+)
+#v(-2pt)
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Catatan/#text(style: "italic")[Note] :]],
+  [#text(6.5pt, fill: black)[#super[1]Desa pada tabel ini termasuk Unit Permukiman Transmigrasi (UPT) yang masih dibina oleh kementerian terkait/#text(style: "italic")[Villages in this table include Transmigration Settlement Unit which is still fostered by the relevant ministries]]]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS, Pendataan Potensi Desa (Podes) 2025/#text(style: "italic")[BPS-Statistics Indonesia, Village Potential Census (Podes) 2025]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Badan Pusat Statistik, Pendataan Potensi Desa (Podes)/#text(style: "italic")[BPS–Statistics Indonesia, Village Potential Data Collecting]]]
+)
 #v(8pt)
 
 #pagebreak()
+
+// ==========================================
+// 6.2 TRANSPORTASI
+// ==========================================
+
+#v(0.2cm)
+#text(9pt, font: ("Metropolis", "Liberation Sans", "Arial"), weight: "bold")[6.2 TRANSPORTASI/]#text(9pt, font: ("Metropolis", "Liberation Sans", "Arial"), weight: "bold", style: "italic")[TRANSPORTATION]
+#v(6pt)
+
 
 
 #metadata("tab_6_2_1") <tab_6_2_1>
@@ -2600,44 +4036,68 @@ Konektivitas wilayah di Kecamatan Sungai Kunyit terhubung oleh jaringan jalan da
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[6.2.1]
+        #text(10pt, weight: "bold")[6.2.1]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Banyaknya Desa/Kelurahan Menurut Keberadaan Kantor Pos dan Ekspedisi Swasta di Kecamatan Sungai Kunyit, 2023–2025] \
+    #text(10pt, weight: "bold")[Banyaknya Desa#super[1]/Kelurahan Menurut Prasarana dan Sarana Transportasi Antardesa/Kelurahan di Kecamatan Sungai Kunyit, 2025] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Villages by Availability of Post Office and Private Courier in Sungai Kunyit Subdistrict, 2023–2025]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Number of Villages#super[1]/Subdistricts by Inter-Village/ Subdistricts Transportation Infrastructure and Facilities in Sungai Kunyit District, 2025]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
-  columns: (2.8fr, 1.0fr, 1.0fr, 1.0fr),
+  columns: (3.6fr, 1.2fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
                       else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[Jenis Fasilitas Pos/Logistik] \ #text(6pt, weight: "bold", style: "italic")[Type of Postal/Courier Facility]], [#strong[2023]], [#strong[2024]], [#strong[2025]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Kantor Pos/Pos Pembantu/Rumah Pos], [...], [...], [...],
-  [Perusahaan/Agen Jasa Ekspedisi Swasta], [...], [...], [...]
+  table.header(table.cell(align: center + horizon)[#strong[Prasarana dan Sarana Transportasi Antardesa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Transportation Infrastructure and Facilities Between Villages/Subdistricts]], table.cell(align: center + horizon)[#strong[2025]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]]),
+  table.cell(align: left + horizon)[Darat/#text(style: "italic")[Land]], table.cell(align: center + horizon)[12],
+  table.cell(align: left + horizon)[Air/#text(style: "italic")[Water]], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Darat dan air/#text(style: "italic")[Land and water]], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Udara/#text(style: "italic")[Air]], table.cell(align: center + horizon)[–]
+)
+#v(-2pt)
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Catatan/#text(style: "italic")[Note] :]],
+  [#text(6.5pt, fill: black)[#super[1]Desa pada tabel ini termasuk Unit Permukiman Transmigrasi (UPT) yang masih dibina oleh kementerian terkait/#text(style: "italic")[Villages in this table include Transmigration Settlement Unit which is still fostered by the relevant ministries]]]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS, Pendataan Potensi Desa (Podes) 2025/#text(style: "italic")[BPS-Statistics Indonesia, Village Potential Census (Podes) 2025]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Badan Pusat Statistik, Pendataan Potensi Desa (Podes)/#text(style: "italic")[BPS–Statistics Indonesia, Village Potential Data Collecting]]]
+)
 #v(8pt)
 
-#v(10pt)
+#pagebreak()
+
+// ==========================================
+// 6.3 KOMUNIKASI
+// ==========================================
+
+#v(0.2cm)
+#text(9pt, font: ("Metropolis", "Liberation Sans", "Arial"), weight: "bold")[6.3 KOMUNIKASI/]#text(9pt, font: ("Metropolis", "Liberation Sans", "Arial"), weight: "bold", style: "italic")[COMMUNICATION]
+#v(6pt)
+
+
 
 #metadata("tab_6_3_1") <tab_6_3_1>
 #v(6pt)
@@ -2652,79 +4112,190 @@ Konektivitas wilayah di Kecamatan Sungai Kunyit terhubung oleh jaringan jalan da
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[6.3.1]
+        #text(10pt, weight: "bold")[6.3.1]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Banyaknya Menara BTS dan Kekuatan Sinyal Internet Seluler Menurut Desa di Kecamatan Sungai Kunyit, 2025] \
+    #text(10pt, weight: "bold")[Banyaknya Desa#super[1]/Kelurahan Menurut Keberadaan Kantor Pos/Pos Pembantu/Rumah Pos, Pos Keliling, dan Perusahaan/Agen Jasa Ekspedisi Swasta di Kecamatan Sungai Kunyit, 2025] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of BTS Towers and Cellular Internet Signal Strength by Village in Sungai Kunyit Subdistrict, 2025]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Number of Villages#super[1]/Subdistricts by Post Office/Subsidiary of Post Office, Mobile Postal Service, Private Expedition Service Company in Sungai Kunyit District, 2025]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
-  columns: (2.2fr, 1.0fr, 1.2fr, 1.2fr),
+  columns: (3.6fr, 1.2fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
                       else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[Desa/Kelurahan] \ #text(6pt, weight: "bold", style: "italic")[Village/Subdistrict]], [#strong[Jumlah Menara BTS] \ #text(6pt, weight: "bold", style: "italic")[Number of BTS Towers]], [#strong[Sinyal Telepon Seluler] \ #text(6pt, weight: "bold", style: "italic")[Cellular Signal]], [#strong[Sinyal Internet (4G/5G)] \ #text(6pt, weight: "bold", style: "italic")[Internet Signal (4G/5G)]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Semudun], [...], [...], [...],
-  [Semparong Parit Raden], [...], [...], [...],
-  [Mendalok], [...], [...], [...],
-  [Sungai Dungun], [...], [...], [...],
-  [Sungai Limau], [...], [...], [...],
-  [Sungai Kunyit Laut], [...], [...], [...],
-  [Sungai Kunyit Dalam], [...], [...], [...],
-  [Sungai Kunyit Hulu], [...], [...], [...],
-  [Bukit Batu], [...], [...], [...],
-  [Sungai Bundung Laut], [...], [...], [...],
-  [Sungai Duri I], [...], [...], [...],
-  [Sungai Duri II], [...], [...], [...]
+  table.header(table.cell(align: center + horizon)[#strong[Fasilitas Pos dan Ekspedisi] \ #text(6pt, weight: "bold", style: "italic")[Post and Expedition Facilities]], table.cell(align: center + horizon)[#strong[2025]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]]),
+  table.cell(align: left + horizon)[Kantor Pos/Pos Pembantu/Rumah Pos Post Office/#text(style: "italic")[Subsidiary of Post Office]], table.cell(align: center + horizon)[1],
+  table.cell(align: left + horizon)[Pos Keliling/#text(style: "italic")[Mobile Portal Service]], table.cell(align: center + horizon)[3],
+  table.cell(align: left + horizon)[Perusahaan/#text(style: "italic")[Agen Jasa Ekspedisi Swasta Private Expedition Service Company]], table.cell(align: center + horizon)[3]
+)
+#v(-2pt)
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Catatan/#text(style: "italic")[Note] :]],
+  [#text(6.5pt, fill: black)[#super[1]Desa pada tabel ini termasuk Unit Permukiman Transmigrasi (UPT) yang masih dibina oleh kementerian terkait/#text(style: "italic")[Villages in this table include Transmigration Settlement Unit which is still fostered by the relevant ministries]]]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : BPS, Pendataan Potensi Desa (Podes) 2025/#text(style: "italic")[BPS-Statistics Indonesia, Village Potential Census (Podes) 2025]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Badan Pusat Statistik, Pendataan Potensi Desa (Podes)/#text(style: "italic")[BPS–Statistics Indonesia, Village Potential Data Collecting]]]
+)
 #v(8pt)
 
 
-#pagebreak(to: "odd")
-
-// ==========================================
-// LEMBAR PEMBATAS BAB 7 (FULL-BLEED A5)
-// ==========================================
-#page(
-  paper: "a5",
-  margin: 0cm,
-  header: none,
-  footer: none,
-)[
-  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/pembatas/Bab 7.jpg", width: 100%, height: 100%)
-] <chapter_page>
-
-#metadata("7. PERBANKAN, KOPERASI, DAN PERDAGANGAN") <chapter_title>
-#metadata("Banking, Cooperative, and Trade") <chapter_title_en>
-#metadata("bab7") <bab7>
 
 // ==========================================
 // ISI BAB 7: ULASAN NARASI & TABEL DATA
 // ==========================================
-#text(8.5pt)[
-Aktivitas perniagaan di Kecamatan Sungai Kunyit berkembang dinamis didukung oleh sarana perdagangan tradisional (pasar dan warung rakyat) serta jaringan minimarket modern. Keberadaan lembaga perbankan, koperasi, dan lembaga keuangan mikro memegang peranan krusial dalam memperluas inklusi keuangan serta akses permodalan bagi usaha mikro, kecil, dan menengah (UMKM).
+
+// ----------------------------------------------------
+// BAB 7: PERBANKAN, KOPERASI, DAN PERDAGANGAN (BANKING, COOPERATIVE, AND TRADE)
+// ----------------------------------------------------
+#pagebreak()
+#set page(margin: 0pt, header: none, footer: none)
+#metadata("bab7") <bab7>
+#image("/assets/dividers/Bab_7.jpg", width: 100%, height: 100%)
+
+#pagebreak()
+#set page(
+  margin: normal_margins,
+  header: page_header,
+  footer: page_footer,
+)
+#metadata("PERBANKAN, KOPERASI, DAN PERDAGANGAN") <chapter_title>
+#metadata("BANKING, COOPERATIVE, AND TRADE") <chapter_title_en>
+
+// --- HALAMAN PENJELASAN TEKNIS / TECHNICAL NOTES ---
+#set text(font: "Liberation Sans", size: 8.5pt)
+#set par(justify: true, leading: 0.9em)
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 14pt,
+  [
+    #align(center)[#text(9pt, weight: "bold")[PENJELASAN TEKNIS]]
+    #v(10pt)
+    #grid(
+      columns: (12pt, 1fr),
+      column-gutter: 3pt,
+      row-gutter: 12pt,
+      [1.], [Bank adalah badan usaha yang menghimpun dana dari masyarakat dalam bentuk simpanan, dan menyalurkannya kepada masyarakat dalam rangka meningkatkan taraf hidup rakyat banyak.],
+      [2.], [Bank Umum adalah bank yang dapat memberikan jasa dalam lalu lintas pembayaran (Undang-Undang Nomor 7 Tahun 1992 Tentang Perbankan).],
+      [3.], [Bank Perkreditan Rakyat adalah bank yang menerima simpanan hanya dalam bentuk deposito berjangka, tabungan, dan/atau bentuk lainnya yang dipersamakan dengan itu.],
+      [4.], [Koperasi adalah badan usaha yang beranggotakan orang-seorang atau badan hukum koperasi dengan melandaskan kegiatannya berdasarkan prinsip:
+
+a. Keanggotaannya sukarela dan terbuka;
+
+b. Pengelolaannya dilakukan secara demokratis;
+
+c. Pembagian sisa hasil usahanya dilakukan secara adil, sebanding dengan besarnya jasa usaha masing-masing anggota;
+
+d. Pemberian balas jasa yang terbatas terhadap modal; dan
+
+e. Kemandirian, serta sekaligus sebagai gerakan ekonomi rakyat yang berdasarkan atas asas kekeluargaan.],
+      [5.], [Kelompok Pertokoan adalah sejumlah toko yang terdiri dari minimal sepuluh toko dan mengelompok. Dalam satu kelompok pertokoan, jumlah bangunan fisiknya bisa lebih dari satu.],
+      [6.], [Pasar dengan Bangunan Permanen/Semi Permanen adalah pasar yang menggunakan bangunan tetap dan memiliki lantai, atap, baik berdinding maupun tidak.],
+      [7.], [Pasar Tanpa Bangunan adalah pasar yang tidak berada dalam bangunan, termasuk pasar terapung.],
+      [8.], [Mini Market adalah tempat usaha yang menjual berbagai jenis barang secara eceran dengan sistem pelayanan mandiri dan semua barang memiliki label harga, dengan luas bangunan kurang dari 400 m².],
+      [9.], [Restoran adalah tempat usaha yang mempergunakan seluruh bangunan secara permanen untuk menyediakan jasa pangan yang pengolahannya dan penyajiannya secara langsung di tempat sesuai dengan keinginan para pengguna jasa.]
+    )
+  ],
+  [
+    #align(center)[#text(9pt, weight: "bold", style: "italic")[TECHNICAL NOTES]]
+    #v(10pt)
+    #set text(style: "italic")
+    #grid(
+      columns: (12pt, 1fr),
+      column-gutter: 3pt,
+      row-gutter: 12pt,
+      [1.], [Bank is business entity that raise funds from the public in deposits and distribute it to the public in order to improve the living standard of the people.],
+      [2.], [Commercial Bank is a bank that can provide services in payment transfer (Law Number 7 Year 1992 About Banking).],
+      [3.], [Rural bank is a bank that accepts saving in time deposits, savings, or others.],
+      [4.], [Cooperative is a business entity consisting of people or cooperative legal entities which activities are based on the principles:
+
+a. Membership is voluntary and open;
+
+b. Management is conducted democratically;
+
+c. Benefits are distributed proportionally according to the member’s share;
+
+d. Remuneration is limited to the capital; and
+
+e. Independence, as well as the people’s economic movement based on the principle of kinship.],
+      [5.], [Shopping Complex is a group of shops consisting at least ten stores and clumped. In one shopping complex, number of physical buildings can be more than one.],
+      [6.], [Market in the Permanent/Semi Permanent Building is a market that uses the permanent building and have floor, roof, whether it walled or not.],
+      [7.], [Market Without Building is a market that is not located within the building, including the floating market.],
+      [8.], [Mini Market is a place of business which sell various kinds of goods at retail by self-service system and everything has a price tag, with a building area of less than 400 m².],
+      [9.], [Restaurant is a place of business that use the entire building permanently to provide food processing services and presented directly in place in accordance with the wishes of service users.]
+    )
+  ]
+)
+
+#pagebreak()
+
+// --- HALAMAN ULASAN / DESCRIPTION ---
+#set text(font: "Liberation Sans", size: 8.5pt)
+#set par(justify: true, leading: 0.9em)
+#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 14pt,
+  [
+    #align(center)[#text(9pt, weight: "bold")[ULASAN]]
+    #v(10pt)
+    #block[
+  #text(8pt, weight: "bold")[1. #h(2pt) Perbankan dan Koperasi] \
+  #v(2pt)
+  Lembaga keuangan perbankan dan koperasi memegang peranan krusial dalam mendukung likuiditas permodalan dan pertumbuhan ekonomi wilayah. Keberadaan lembaga perbankan tercatat di mana 1 desa memiliki Bank Umum Pemerintah. Di sektor perkoperasian, terdapat Koperasi Unit Desa (KUD) di 2 desa dan Koperasi Simpan Pinjam di 3 desa yang berperan aktif memperkuat permodalan usaha warga.
 ]
-#v(12pt)
+#v(6pt)
+#block[
+  #text(8pt, weight: "bold")[2. #h(2pt) Sarana Perdagangan] \
+  #v(2pt)
+  Aktivitas perdagangan dan distribusi barang konsumsi di Kecamatan Sungai Kunyit berkembang dengan ketersediaan pasar permanen/semi permanen di 1 desa/kelurahan, kelompok pertokoan di 3 desa/kelurahan, minimarket/swalayan di 5 desa/kelurahan, restoran/rumah makan di 5 desa/kelurahan. Keberadaan sarana perniagaan ini memastikan kelancaran rantai pasok kebutuhan pokok bagi masyarakat.
+]
+  ],
+  [
+    #align(center)[#text(9pt, weight: "bold", style: "italic")[DESCRIPTION]]
+    #v(10pt)
+    #set text(style: "italic")
+    #block[
+  #text(8pt, weight: "bold", style: "italic")[1. #h(2pt) Banking and Cooperatives] \
+  #v(2pt)
+  Banking institutions and cooperatives play a vital role in supporting capital liquidity and regional economic growth. The presence of banking institutions was recorded where 1 village(s) had Government Commercial Banks. In the cooperative sector, there were Village Cooperative Units (KUD) in 2 village(s) and Savings and Loan Cooperatives in 3 village(s) actively strengthening capital for local businesses.
+]
+#v(6pt)
+#block[
+  #text(8pt, weight: "bold", style: "italic")[2. #h(2pt) Trade Facilities] \
+  #v(2pt)
+  Trade and consumer goods distribution activities in Sungai Kunyit District thrive with the availability of permanent/semi-permanent markets in 1 village(s), shopping complexes in 3 village(s), minimarkets/supermarkets in 5 village(s), restaurants/food stalls in 5 village(s). These commercial amenities ensure smooth supply chains of basic necessities for the community.
+]
+  ]
+)
+
+#pagebreak()
+
+// ==========================================
+// TABEL DATA BAB 7 (1 HALAMAN 1 TABEL)
+// ==========================================
 
 
 #metadata("tab_7_1") <tab_7_1>
@@ -2740,49 +4311,58 @@ Aktivitas perniagaan di Kecamatan Sungai Kunyit berkembang dinamis didukung oleh
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[7.1]
+        #text(10pt, weight: "bold")[7.1]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Banyaknya Sarana Perdagangan Menurut Jenis Sarana di Kecamatan Sungai Kunyit, 2023–2025] \
+    #text(10pt, weight: "bold")[Banyaknya Desa#super[1]/Kelurahan dengan Keberadaan Sarana Lembaga Keuangan Bank Menurut Jenis Bank di Kecamatan Sungai Kunyit, 2025] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Trade Facilities by Type in Sungai Kunyit Subdistrict, 2023–2025]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Number of Villages#super[1]/Subdistricts with Availability of Bank by Type of Bank in Sungai Kunyit District, 2025]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
-  columns: (2.6fr, 1.0fr, 1.0fr, 1.0fr),
+  columns: (3.6fr, 1.2fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
                       else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[Jenis Sarana Perdagangan] \ #text(6pt, weight: "bold", style: "italic")[Type of Trade Facility]], [#strong[2023]], [#strong[2024]], [#strong[2025]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Pasar dengan Bangunan Permanen], [...], [...], [...],
-  [Pasar dengan Bangunan Semi Permanen], [...], [...], [...],
-  [Pasar Tanpa Bangunan], [...], [...], [...],
-  [Kelompok Pertokoan/Ruko], [...], [...], [...],
-  [Minimarket/Supermarket], [...], [...], [...],
-  [Restoran/Rumah Makan / Warung Makan], [...], [...], [...],
-  [Hotel/Penginapan / Losmen], [...], [...], [...]
+  table.header(table.cell(align: center + horizon)[#strong[Jenis Bank] \ #text(6pt, weight: "bold", style: "italic")[Type of Bank]], table.cell(align: center + horizon)[#strong[2025]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]]),
+  table.cell(align: left + horizon)[Bank Umum Pemerintah/#text(style: "italic")[Government Bank]], table.cell(align: center + horizon)[1],
+  table.cell(align: left + horizon)[Bank Umum Swasta/#text(style: "italic")[Private Bank]], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Bank Perkreditan Rakyat (BPR)/#text(style: "italic")[Rural Bank]], table.cell(align: center + horizon)[–]
+)
+#v(-2pt)
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Catatan/#text(style: "italic")[Note] :]],
+  [#text(6.5pt, fill: black)[#super[1]Desa pada tabel ini termasuk Unit Permukiman Transmigrasi (UPT) yang masih dibina oleh kementerian terkait/#text(style: "italic")[Villages in this table include Transmigration Settlement Unit which is still fostered by the relevant ministries]]]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Dinas Perindagnaker Kab. Mempawah/Podes 2025/#text(style: "italic")[Industry, Trade, and Manpower Service of Mempawah Regency/Podes 2025]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Badan Pusat Statistik, Pendataan Potensi Desa (Podes)/#text(style: "italic")[BPS–Statistics Indonesia, Village Potential Data Collecting]]]
+)
 #v(8pt)
 
 #pagebreak()
+
 
 
 #metadata("tab_7_2") <tab_7_2>
@@ -2798,46 +4378,60 @@ Aktivitas perniagaan di Kecamatan Sungai Kunyit berkembang dinamis didukung oleh
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[7.2]
+        #text(10pt, weight: "bold")[7.2]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Banyaknya Koperasi Aktif Menurut Jenis Koperasi di Kecamatan Sungai Kunyit, 2023–2025] \
+    #text(10pt, weight: "bold")[Banyaknya Desa#super[1]/Kelurahan dengan Keberadaan Koperasi Aktif Menurut Jenis Koperasi di Kecamatan Sungai Kunyit, 2025] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Active Cooperatives by Type in Sungai Kunyit Subdistrict, 2023–2025]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Number of Villages#super[1]/Subdistricts with Availability of Cooperative by Type of Cooperative in Sungai Kunyit District, 2025]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
-  columns: (2.6fr, 1.0fr, 1.0fr, 1.0fr),
+  columns: (3.6fr, 1.2fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
                       else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[Jenis Koperasi] \ #text(6pt, weight: "bold", style: "italic")[Type of Cooperative]], [#strong[2023]], [#strong[2024]], [#strong[2025]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Koperasi Unit Desa (KUD)], [...], [...], [...],
-  [Koperasi Simpan Pinjam (KSP)], [...], [...], [...],
-  [Koperasi Lainnya (Non-KUD)], [...], [...], [...],
-  [Jumlah/_Total_], [...], [...], [...]
+  table.header(table.cell(align: center + horizon)[#strong[Jenis Koperasi] \ #text(6pt, weight: "bold", style: "italic")[Type of Cooperative]], table.cell(align: center + horizon)[#strong[2025]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]]),
+  table.cell(align: left + horizon)[Koperasi Unit Desa (KUD)/#text(style: "italic")[Village Cooperative Unit]], table.cell(align: center + horizon)[2],
+  table.cell(align: left + horizon)[Koperasi industri kecil dan kerajinan rakyat (Kopinkra)/#text(style: "italic")[Small industry and citizen handicraft cooperative]], table.cell(align: center + horizon)[2],
+  table.cell(align: left + horizon)[Koperasi simpan pinjam (kospin)/#text(style: "italic")[Savings and loan cooperative]], table.cell(align: center + horizon)[3],
+  table.cell(align: left + horizon)[Koperasi lainnya/#text(style: "italic")[Other cooperative]], table.cell(align: center + horizon)[5]
+)
+#v(-2pt)
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Catatan/#text(style: "italic")[Note] :]],
+  [#text(6.5pt, fill: black)[#super[1]Desa pada tabel ini termasuk Unit Permukiman Transmigrasi (UPT) yang masih dibina oleh kementerian terkait/#text(style: "italic")[Villages in this table include Transmigration Settlement Unit which is still fostered by the relevant ministries]]]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Dinas Perindagnaker Kab. Mempawah/Podes 2025/#text(style: "italic")[Industry, Trade, and Manpower Service of Mempawah Regency/Podes 2025]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Badan Pusat Statistik, Pendataan Potensi Desa (Podes)/#text(style: "italic")[BPS–Statistics Indonesia, Village Potential Data Collecting]]]
+)
 #v(8pt)
 
-#v(10pt)
+#pagebreak()
+
+
 
 #metadata("tab_7_3") <tab_7_3>
 #v(6pt)
@@ -2852,58 +4446,73 @@ Aktivitas perniagaan di Kecamatan Sungai Kunyit berkembang dinamis didukung oleh
       align: (top + center, horizon),
       [
         #box(stroke: (bottom: 0.6pt + black), inset: (x: 2pt, bottom: 2.5pt))[
-          #text(7.5pt, weight: "bold")[Tabel]
+          #text(10pt, weight: "bold")[Tabel]
         ] \
         #v(-3.5pt)
-        #text(6.5pt, style: "italic")[Tables]
+        #text(8pt, style: "italic")[Table]
       ],
       [
-        #text(8.5pt, weight: "bold")[7.3]
+        #text(10pt, weight: "bold")[7.3]
       ]
     )
   ],
   [
-    #text(7.5pt, weight: "bold")[Banyaknya Lembaga Keuangan Menurut Jenis Lembaga di Kecamatan Sungai Kunyit, 2023–2025] \
+    #text(10pt, weight: "bold")[Banyaknya Desa#super[1]/Kelurahan dengan Keberadaan Sarana Perdagangan Menurut Jenis Sarana Perdagangan di Kecamatan Sungai Kunyit, 2025] \
     #v(-2pt)
-    #text(6.5pt, weight: "bold", style: "italic", fill: rgb("#1E293B"))[Number of Financial Institutions by Type in Sungai Kunyit Subdistrict, 2023–2025]
+    #text(10pt, weight: "bold", style: "italic", fill: black)[Number of Villages#super[1]/Subdistricts with Availability of Trade Facilities by Type of Trade Facilities in Sungai Kunyit District, 2025]
   ]
 )
 #v(3pt)
+
 #show table.cell: set par(justify: false)
 #table(
-  columns: (2.8fr, 0.9fr, 0.9fr, 0.9fr),
+  columns: (3.6fr, 1.2fr),
   inset: (x: 3.5pt, y: 4.5pt),
   stroke: none,
-  fill: (col, row) => if row == 0 { cmyk(0%, 20%, 90%, 0%) }
+  fill: (col, row) => if row < 1 { cmyk(0%, 20%, 90%, 0%) }
                       else if row == 1 { cmyk(0%, 10%, 45%, 0%) }
                       else if calc.even(row) { rgb("#FFF8E7") }
                       else { rgb("#FFF4D4") },
-  align: (col, row) => if row <= 1 { center + horizon }
-                       else if col == 0 { left + horizon }
-                       else { right + horizon },
-  table.header([#strong[Jenis Lembaga Keuangan] \ #text(6pt, weight: "bold", style: "italic")[Type of Financial Institution]], [#strong[2023]], [#strong[2024]], [#strong[2025]], [#strong[(1)]], [#strong[(2)]], [#strong[(3)]], [#strong[(4)]]),
-  [Bank Umum Pemerintah (BRI, Mandiri, BNI, BTN, dll.)], [...], [...], [...],
-  [Bank Umum Swasta], [...], [...], [...],
-  [Bank Perekonomian Rakyat (BPR)], [...], [...], [...],
-  [Kantor Pegadaian], [...], [...], [...]
+  table.header(table.cell(align: center + horizon)[#strong[Jenis Sarana Perdagangan] \ #text(6pt, weight: "bold", style: "italic")[Type of Trade Facilities]], table.cell(align: center + horizon)[#strong[2025]], table.cell(align: center + horizon)[#strong[(1)]], table.cell(align: center + horizon)[#strong[(2)]]),
+  table.cell(align: left + horizon)[Kelompok pertokoan/#text(style: "italic")[Shopping complexs]], table.cell(align: center + horizon)[3],
+  table.cell(align: left + horizon)[Pasar dengan bangunan permanen/#text(style: "italic")[Markets in permanent building]], table.cell(align: center + horizon)[1],
+  table.cell(align: left + horizon)[Pasar dengan bangunan semi permanen/#text(style: "italic")[Market in semi permanent buildin]], table.cell(align: center + horizon)[–],
+  table.cell(align: left + horizon)[Pasar tanpa bangunan/#text(style: "italic")[Market without permanent building]], table.cell(align: center + horizon)[1],
+  table.cell(align: left + horizon)[Mini market/swalayan/#text(style: "italic")[supermarket]], table.cell(align: center + horizon)[5],
+  table.cell(align: left + horizon)[Restoran/rumah makan Restaurant/#text(style: "italic")[food stall]], table.cell(align: center + horizon)[5]
+)
+#v(-2pt)
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Catatan/#text(style: "italic")[Note] :]],
+  [#text(6.5pt, fill: black)[#super[1]Desa pada tabel ini termasuk Unit Permukiman Transmigrasi (UPT) yang masih dibina oleh kementerian terkait/#text(style: "italic")[Villages in this table include Transmigration Settlement Unit which is still fostered by the relevant ministries]]]
 )
 #v(-3pt)
-#text(6.5pt, fill: luma(60))[Sumber/#text(style: "italic")[Source] : Otoritas Jasa Keuangan (OJK)/Podes 2025/#text(style: "italic")[Financial Services Authority (OJK)/Podes 2025]]
+#grid(
+  columns: (auto, 1fr),
+  column-gutter: 4pt,
+  align: (top + left, top + left),
+  [#text(6.5pt, fill: black)[Sumber/#text(style: "italic")[Source] :]],
+  [#text(6.5pt, fill: black)[Badan Pusat Statistik, Pendataan Potensi Desa (Podes)/#text(style: "italic")[BPS–Statistics Indonesia, Village Potential Data Collecting]]]
+)
 #v(8pt)
 
 
-#pagebreak(to: "odd")
-#metadata("DAFTAR PUSTAKA") <chapter_title>
-#metadata("Bibliography") <chapter_title_en>
 
 // ==========================================
 // DAFTAR PUSTAKA (BIBLIOGRAPHY)
 // ==========================================
+#pagebreak()
+#metadata("DAFTAR PUSTAKA") <chapter_title>
+#metadata("BIBLIOGRAPHY") <chapter_title_en>
+#metadata("daftar_pustaka") <daftar_pustaka>
 #v(0.5cm)
-#block[
+#align(center)[#block[
   #text(12pt, weight: "bold")[DAFTAR PUSTAKA] \
   #text(9pt, style: "italic", fill: rgb("#4B5563"))[BIBLIOGRAPHY]
-] <chapter_page>
+]]
 #v(10pt)
 
 #text(8pt)[
@@ -2924,9 +4533,8 @@ Aktivitas perniagaan di Kecamatan Sungai Kunyit berkembang dinamis didukung oleh
   #v(8pt)
   Kementerian Pertanian & Badan Pusat Statistik. 2023. _Pedoman Statistik Pertanian Hortikultura (SPH)_. Jakarta: Kementerian Pertanian.
 ]
-
 #metadata("akhir_buku") <akhir_buku>
-#pagebreak(to: "even")
+
 // ==========================================
 // KOVER BELAKANG (BACK COVER) - DESAIN VISUAL RESMI
 // ==========================================
@@ -2936,5 +4544,5 @@ Aktivitas perniagaan di Kecamatan Sungai Kunyit berkembang dinamis didukung oleh
   header: none,
   footer: none,
 )[
-  #image("/kegiatan/kecamatan-dalam-angka/2026/assets/covers/belakang/Sungai Kunyit.jpg", width: 100%, height: 100%)
+  #image("/assets/covers/belakang/Sungai-Kunyit.jpg", width: 100%, height: 100%)
 ]
