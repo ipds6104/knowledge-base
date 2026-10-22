@@ -36,6 +36,15 @@ deadlines:
   - tanggal: "2026-10-23"
     kegiatan: "Mulai Unggah Peta Digital Periode 2026_1 ke Geospatial System (BPS Kab/Kota)"
     status: "belum"
+  - tanggal: "2026-10-25"
+    kegiatan: "SE2026: Batas Akhir Eksplorasi Data Processing IPAS & Penutupan Akses Fasih (Cut-off Data Lapangan)"
+    status: "belum"
+  - tanggal: "2026-10-29"
+    kegiatan: "SE2026: Selesai Persiapan Environment IPAS (26–29 Okt)"
+    status: "belum"
+  - tanggal: "2026-10-30"
+    kegiatan: "SE2026: Mulai Pelaksanaan Data Processing via IPAS (30 Okt – 15 Nov)"
+    status: "belum"
   - tanggal: "2026-11-02"
     kegiatan: "Mulai Rekonsiliasi Batas Antar Kab/Kota & Provinsi (Daring)"
     status: "belum"
@@ -44,6 +53,9 @@ deadlines:
     status: "belum"
   - tanggal: "2026-11-06"
     kegiatan: "Batas Akhir Pengolahan Geotagging & Pengolahan Peta BPS Kab/Kota"
+    status: "belum"
+  - tanggal: "2026-11-15"
+    kegiatan: "SE2026: Batas Akhir Pelaksanaan Data Processing via IPAS (15 Hari Pengolahan)"
     status: "belum"
   - tanggal: "2026-11-16"
     kegiatan: "Mulai Unggah Peta Geotagging Hasil Koreksi ke Geospatial System (BPS Kab/Kota)"
@@ -531,6 +543,8 @@ Berikut adalah daftar PPL dengan rasio usaha keluarga Non-Aktif (Closed / Not Fo
   SOP resmi cleanup assignment per device via FASIH-SM (http://s.bps.go.id/CleanUp_SE2026) sebagai syarat penarikan data ke BOS/SOBAT untuk pembuatan FP honor & BAST, tata cara perpindahan role PML ke PPL, serta manajemen alokasi petugas periode 17–30 September 2026.
 * 📄 **[Penyesuaian Petunjuk Teknis Pengolahan Wilkerstat SE2026](docs/penyesuaian-juknis-pengolahan-wilkerstat-se2026.md)**  
   Pedoman resmi Tim Wilkerstat DIT. MMSD BPS RI (18 September 2026): penyederhanaan alur pengolahan titik geotagging hanya pada SLS yang berubah (PSLS), pemangkasan model QGIS menjadi 2 model, sentralisasi perhitungan muatan 100% oleh BPS Pusat, rincian 22 atribut upload Geospatial System (GS), serta timeline batas maksimal upload peta digital (20 November 2026) dan upload geotagging (4 Desember 2026).
+* 📄 **[Paparan Kondisi NTB SE2026 & Timeline Data Processing IPAS](docs/kondisi-ntb-se2026-22-oktober-2026.md)** ([PDF](docs/pdf/2026-10-22_Kondisi_NTB_SE2026.pdf))  
+  Materi resmi Bidang Analisis dan Pengawalan Kualitas Data BPS RI (22 Oktober 2026): alur tahapan data processing GSBPM (3.2, 3.3, 3.4) via aplikasi IPAS, timeline cut-off penutupan Fasih (25 Okt) dan pelaksanaan pengolahan IPAS (30 Okt – 15 Nov 2026), evaluasi penurunan 82,6% anomali NTB negatif nasional, rasio upah terhadap NT, anomali faskes/sekolah negeri, KBLI luar cakupan, serta audit BUMD air minum (PDAM).
 * 📹 **[Briefing Perubahan Juknis Pengolahan Geotagging Wilkerstat SE2026]**  
   Pertemuan virtual Inda Pengolahan Wilkerstat SE2026 pada Selasa, 22 September 2026 pukul 09.00 WIB via Zoom: [s.bps.go.id/briefing-wilkerstat-6100](http://s.bps.go.id/briefing-wilkerstat-6100).
 

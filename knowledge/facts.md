@@ -358,3 +358,23 @@
 
 
 
+
+## Data Processing SE2026 & Kondisi NTB (22 Oktober 2026)
+- **Sumber Resmi**: Paparan *"Kondisi NTB SE 2026"*, Bidang Analisis dan Pengawalan Kualitas Data BPS RI (22 Oktober 2026).
+- **Aplikasi Resmi**: **IPAS (*Integrated Processing and Analysis System*)**.
+- **Jadwal Pelaksanaan Inti**: **30 Oktober – 15 November 2026** (~15 hari kalender).
+- **Milestone Kritis**:
+  - *21–22 Oktober 2026*: Workshop Data Processing.
+  - *23–25 Oktober 2026*: Eksplorasi Data Processing IPAS.
+  - *25 Oktober 2026*: **Penutupan Akses Fasih (Cut-off)** untuk sinkronisasi data lapangan.
+  - *26–29 Oktober 2026*: Persiapan Environment IPAS (setup database & migrasi data Fasih).
+  - *30 Oktober – 15 November 2026*: **Pelaksanaan Pengolahan IPAS** (editing, koding, imputasi, validasi, tabulasi).
+- **Kualitas Data & Evaluasi Nilai Tambah**:
+  - Tren penurunan agregat nilai tambah negatif nasional sebesar 82,6% (tersisa 29 temuan per 21 Okt siang).
+  - Benchmark Rasio NT/Output: PDB 2025 (`0,5063`), Tabel IO 2020 (`0,5243`). Posisi Kalbar: `0,5507` (mendekati benchmark).
+  - Benchmark Rasio Upah/NT: Tabel IO 2016 (`0,4490`), Tabel IO 2020 (`0,3861`). Posisi Kalbar: `0,1353`.
+  - Struktur NT SE2026 vs PDRB 2025 Kalbar: Rasio 80,18% (NT SE2026 Rp263,46 T / PDRB 2025 Rp328,57 T).
+  - Isu Anomali Perhatian: KBLI di luar cakupan (P, R, S, T, U), faskes/sekolah negeri dengan rincian pendapatan Rp0 & biaya tinggi, serta audit 135 PDAM/air minum.
+- **Rujukan Berkas**:
+  - Dokumen analisis: [`kegiatan/sensus-ekonomi-2026/2026/docs/kondisi-ntb-se2026-22-oktober-2026.md`](../kegiatan/sensus-ekonomi-2026/2026/docs/kondisi-ntb-se2026-22-oktober-2026.md)
+  - Berkas PDF resmi: [`kegiatan/sensus-ekonomi-2026/2026/docs/pdf/2026-10-22_Kondisi_NTB_SE2026.pdf`](../kegiatan/sensus-ekonomi-2026/2026/docs/pdf/2026-10-22_Kondisi_NTB_SE2026.pdf)
