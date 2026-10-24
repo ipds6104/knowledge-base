@@ -63,6 +63,16 @@ deadlines:
   - tanggal: "2026-09-05"
     kegiatan: "Batas Akhir Penyesuaian Nilai di SIMBATIK oleh TPB Pasca Pleno Provinsi"
     status: "belum"
+  - tanggal: "2026-10-23"
+    kegiatan: "Batas akhir pembuatan laporan akhir EPSS"
+    status: "selesai"
+  - tanggal: "2026-10-25"
+    kegiatan: "Batas waktu penyelesaian draf Surat Rekomendasi s.d. approval Eselon 2 (BPS Provinsi)"
+    status: "belum"
+  - tanggal: "2026-10-28"
+    kegiatan: "Deadline penyelesaian draf Surat Rekomendasi s.d. approval Eselon 2 oleh TPB KabKota di SIMBATIK"
+    status: "belum"
+
 ---
 # Evaluasi EPSS (2026)
 
@@ -105,3 +115,8 @@ Kegiatan ini mengacu pada **Surat Kepala BPS Provinsi Kalimantan Barat Nomor B-5
 
 
 
+
+### 📝 Update Penyesuaian Harmonisasi Nasional & Surat Rekomendasi (Oktober 2026)
+*   **20 Oktober 2026**: Nilai FINAL paska Kalibrasi di Pusat sudah bisa diakses di SIMBATIK (sifat rahasia/internal). Langkah berikutnya: menyusun narasi SR dengan mengisi Keunggulan, Kekurangan, serta Rekomendasi untuk masing-masing domain.
+*   **21 Oktober 2026**: Penyesuaian jadwal sehubungan jadwal Cleaning Data SE2026 dan perubahan penilaian hasil harmonisasi nasional. Deadline input narasi SR oleh TPB KabKota diundur menjadi **28 Oktober 2026** (sudah termasuk proses approval Eselon 2).
+*   **Format LK Analisis**: Tersedia template pendukung di [s.bps.go.id/LK-AnalisisHasilEPSS2026](https://s.bps.go.id/LK-AnalisisHasilEPSS2026) untuk pengerjaan draf sebelum diinput ke SIMBATIK.

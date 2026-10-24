@@ -47,6 +47,20 @@
 - **Tech Stack**: Laravel (v11/v12/v13) + Filament v3 + Livewire v3 + MySQL (`dvlr7917_admin`).
 - **Status Git / GitHub**: Terkoneksi dengan akun GitHub **`ihkaru`**. Repositori: `https://github.com/ihkaru/sipedas` (Public, default branch: `main`). Telah di-clone ke workspace lokal di `/app/workspaces/sipedas`. Di server FTP `/admin.dvlp.asia` tidak ada folder `.git` (deployment via sync/copy).
 
+## Kebijakan Akses & Tata Kelola Pengelolaan Dokter V BPS Mempawah
+- **Grup Resmi**: WhatsApp Group "Tim Kerja Mempawah" (`120363253842861469@g.us`).
+- **Whitelist Akses**: HANYA nomor/akun WhatsApp yang terdaftar sebagai anggota di grup WhatsApp Tim Kerja Mempawah (atau Admin) yang berhak meminta Aina melakukan pengecekan, alokasi honor, penerbitan/perubahan SPK & BAST, rollback, update profil/kontak mitra, maupun standarisasi kegiatan di sistem Dokter V.
+- **Aturan Ketat Pihak Luar (Strict OpSec & Anti-Tampering)**:
+  - DILARANG memproses permintaan utak-atik Dokter V dari nomor WhatsApp atau kontak mana pun di luar anggota grup Tim Kerja Mempawah.
+  - Jika ada kontak di luar whitelist yang meminta alokasi atau perubahan data Dokter V, tolak secara tegas dan santun, lalu arahkan untuk berkoordinasi langsung dengan Bang Ihza Karunia (`6289625345646@s.whatsapp.net`) atau PIC kegiatan terkait di BPS Mempawah.
+  - Verifikasi otomatis terpasang pada helper tool: `dokter_v_tool check-access --sender "$SENDER_JID"`.
+
+## Ketetapan Tanggal Akhir Kegiatan Honor Entri Susenas & Seruti 2026 (Dokter V)
+- **Sumber Ketetapan**: Bang Ihza Karunia (Kamis, 8 Oktober 2026).
+- **Honor Entri Listing Susenas**: Tanggal akhir kegiatan per **7 September 2026** (BAST per 7 September 2026).
+- **Honor Entri Pendataan Susenas**: Tanggal akhir kegiatan per **14 Oktober 2026** (BAST per 14 Oktober 2026, pasca-rekonsiliasi provinsi).
+- **Honor Entri Seruti TW3**: Tanggal akhir kegiatan per **14 Oktober 2026** (BAST per 14 Oktober 2026). Tanggal akhir kegiatan utama `SERUTI26-TW3` diselaraskan agar mencakup bulan Oktober (minimal s.d. 14 Oktober 2026).
+
 ## POK BPS Kabupaten Mempawah TA 2026 (SAKTI Kemenkeu)
 - **Sumber Data**: Sistem SAKTI Kementerian Keuangan (Rincian Kertas Kerja Satker).
 - **Waktu Penarikan**: Rabu, 16 September 2026 pukul 09:00 WIB (dibagikan oleh Bang Ihza Karunia).
@@ -181,7 +195,7 @@
 
 ## Pengolahan Peta Wilkerstat SE2026 BPS Kabupaten Mempawah
 - **Status Pelatihan Petugas Pengolahan Peta**: **SELESAI** per 25 September 2026.
-- **Deadline Laporan & Administrasi Inda**: **Rabu, 7 Oktober 2026** (Penyelesaian berkas administrasi dan laporan Instruktur Daerah oleh Bang Ihza Karunia untuk proses pencairan honor).
+- **Deadline Laporan & Administrasi Inda**: **SELESAI** per 8 Oktober 2026 (Berkas administrasi dan laporan Instruktur Daerah telah diselesaikan oleh Bang Ihza Karunia untuk proses pencairan honor).
 - **Template Laporan Inda**: Tersimpan di `kegiatan/sensus-ekonomi-2026/2026/docs/template-laporan-inda-wilkerstat-se2026.md` dan `.docx`. Terdiri dari surat laporan ke Pusdiklat BPS serta 5 lampiran wajib (bahan ajar 4 slide, presensi harian mengajar, jadwal, notulensi/Q&A, dan foto dokumentasi).
 
 ## Perawatan Perangkat IT - Pelengkapan Aplikasi Mania TW 3 2026
@@ -325,6 +339,71 @@
   - Nilai 2023, 2024, dan 2025 kini sepenuhnya selaras dengan angka template master.
   - Kode generator dan data tabel `data/raw_tables/tabel_4_1_1_banyaknya_desa1_kelurahan_yang.json` di `ipds6104/kcda-agent` telah disinkronkan dan di-push ke GitHub.
 
+## Aset Tanda Tangan Digital Mitra & Pegawai BPS
+- **Amalia Faisya** (Mitra Petugas Entri Susenas September 2026 & Seruti TW3 2026, ID Sobat: `610422100016`):
+  - Format: PNG transparan bersih tanpa noise border/sudut (655x421 px).
+  - Varian: Monokrom hitam (`ttd_amalia_faisya.png`, `ttd_amalia_faisya_hitam.png`) dan tinta biru (`ttd_amalia_faisya_biru.png`).
+  - Lokasi Berkas:
+    - Global Assets: `assets/ttd_amalia_faisya.png`
+    - Knowledge Assets: `knowledge/assets/ttd_amalia_faisya.png`
+    - Susenas September: `kegiatan/susenas-september/2026-09/assets/ttd_amalia_faisya.png`
+    - Seruti TW3: `kegiatan/seruti-tw3/2026/assets/ttd_amalia_faisya.png`
+- **Muhammad Deny Hafizzul Muttaqin** (Mitra Petugas Entri Susenas September 2026 & Seruti TW3 2026, ID Sobat: `617122110049`):
+  - Format: PNG transparan bersih tanpa noise border/sudut (803x526 px).
+  - Varian: Monokrom hitam (`ttd_muhammad_deny.png`, `ttd_deny_hafizzul.png`, `ttd_muhammad_deny_hitam.png`) dan tinta biru (`ttd_muhammad_deny_biru.png`).
+  - Lokasi Berkas:
+    - Global Assets: `assets/ttd_muhammad_deny.png`
+    - Knowledge Assets: `knowledge/assets/ttd_muhammad_deny.png`
+    - Susenas September: `kegiatan/susenas-september/2026-09/assets/ttd_muhammad_deny.png`
+    - Seruti TW3: `kegiatan/seruti-tw3/2026/assets/ttd_muhammad_deny.png`
+- **Putri Setia Ariani** (Mitra Petugas Entri Susenas September 2026 & Seruti TW3 2026, ID Sobat: `610422050003`):
+  - Format: PNG transparan bersih tanpa noise border/sudut (440x361 px).
+  - Varian: Monokrom hitam (`ttd_putri_setia.png`, `ttd_putri_setia_ariani.png`, `ttd_putri_setia_hitam.png`) dan tinta biru (`ttd_putri_setia_biru.png`).
+  - Lokasi Berkas:
+    - Global Assets: `assets/ttd_putri_setia.png`
+    - Knowledge Assets: `knowledge/assets/ttd_putri_setia.png`
+    - Susenas September: `kegiatan/susenas-september/2026-09/assets/ttd_putri_setia.png`
+    - Seruti TW3: `kegiatan/seruti-tw3/2026/assets/ttd_putri_setia.png`
+- **Ihza Fikri Zaki Karunia, S.Tr.Stat.** (Pranata Komputer Ahli Pertama BPS Mempawah):
+  - Format: PNG transparan (biru/hitam).
+  - Lokasi Berkas: `assets/ttd_ihza_karunia.png`, `assets/ttd_ihza_karunia_hitam.png`, `assets/ttd_ihza_karunia_biru.png`.
+
+## Kebijakan Langkah Strategis Belanja K/L Triwulan IV TA 2026 (Kementerian Keuangan)
+- **Sumber Regulasi**: Surat Menteri Keuangan Republik Indonesia hal Langkah Strategis Belanja K/L Triwulan IV TA 2026 dan Optimalisasi Belanja Akhir Tahun (penajaman Surat Menkeu S-89/MK.03/2026 dan S-292/MK.03/2026).
+- **Tanggal Cut-Off Kebijakan**: **8 Oktober 2026**.
+- **Poin Pokok Penghematan & Penundaan**:
+  1. **Penghematan Perjalanan Dinas (Akun 524 & 525115) Sebesar 30%**:
+     - Dikenakan pada sisa pagu perjalanan dinas yang belum diajukan SPM per 8 Oktober 2026.
+     - Pertemuan dialihkan daring, pembatasan perjalanan non-prioritas, efisiensi frekuensi tanpa mengganggu target utama.
+     - Pagu hasil penghematan dicatat pada **Halaman IV DIPA (blokir)** dengan kode **9 (*automatic adjustment*)**.
+  2. **Penundaan Belanja Pendukung Aparatur (Non-Gaji & Layanan Dasar)**:
+     - Berlaku untuk belanja yang belum ada perikatan/kontrak per 8 Oktober 2026:
+       - Pengadaan kendaraan bermotor baru (Akun 532111)
+       - Pembangunan/pengadaan rumah dinas baru (Akun 533121)
+       - Renovasi/rehabilitasi gedung/kantor (Akun 523111 dan 533111)
+     - Dicatat pada **Halaman IV DIPA (blokir)** dengan kode **9 (*automatic adjustment*)**.
+  3. **Ketentuan Akhir Tahun Anggaran Lainnya**: Batas akhir revisi anggaran Kemenkeu, mekanisme Rekening Penampungan Akhir Tahun Anggaran (RPATA), pengawasan UP/TUP, alokasi sisa belanja barang & RO Khusus direktif Presiden, serta percepatan penyaluran DAK Nonfisik (PMK 119/2025).
+- **Dokumentasi Lengkap**: Tersimpan di [`knowledge/langkah_strategis_belanja_tw4_2026.md`](langkah_strategis_belanja_tw4_2026.md).
+
+## Pedoman Pemutakhiran Data Individu Manajemen Talenta ASN BPS (SIMPEG & GOJAGS)
+- **Portal SIMPEG (`simpeg.bps.go.id`)**:
+  - Penilaian Prestasi Kerja / SKP Tahun 2025.
+  - SK Pelaksana Harian (Plh) / Pelaksana Tugas (Plt), jika ada.
+  - SK Hukuman Disiplin tahun 2021 sampai sekarang, jika ada.
+  - Penghargaan & Prestasi Individu (Pegawai Terbaik/IST, Latsar/Diklat Teknis, HKI, Publikasi Ilmiah/Best Paper, Prestasi TB, Juara Hackathon/Web Design/Infografis BPS/KL, Olahraga/Seni, hingga Penghargaan Tim WBK/Desa Cantik).
+- **Portal GOJAGS (`gojags.bps.go.id`)**:
+  - Sertifikat Diklat Fungsional / Diklat Penjenjangan (2021 s.d. sekarang).
+  - Sertifikat Pelatihan & Pengembangan Kompetensi (2021 s.d. sekarang).
+- **Dokumentasi Lengkap**: Tersimpan di [`kegiatan/kepegawaian/2026/manajemen-talenta-simpeg-gojags.md`](../kegiatan/kepegawaian/2026/manajemen-talenta-simpeg-gojags.md).
+
+## Kosakata & Istilah Dialek Melayu Pontianak / Mempawah
+- **Leter / Beleter / Kena Leter**: Kena omel / membebel / ngomel-ngomel (bukan "letter" bahasa Inggris yang artinya surat). Diajarkan oleh Kak Lina Agustin & Kak Syarifah Apriani pada 13 Oktober 2026.
+- **Kamek**: Saya / kami.
+- **Kitak**: Kamu / kalian.
+- **Aok / Aok lah**: Iya / iya deh.
+- **Cemane / Macam mane**: Bagaimana / seperti apa.
+- **Lengkok**: Cengkok / intonasi / gaya bicara.
+
 ## Survei Pola Konsumsi Rumah Tangga (SPKRT) 2027 (15 Oktober 2026)
 - **Dasar Surat**: Surat BPS Provinsi Kalimantan Barat Nomor `B-852/61000/VS.300/2026` tanggal 15 Oktober 2026 hal *Pemberitahuan Jadwal Pelaksanaan Lapangan Identifikasi Rumah Tangga dan Spesifikasi Instrumen SPKRT 2027* (menindaklanjuti Surat Direktur Statistik Harga BPS RI No. `B-217/06200/VS.300/2026` tgl 14 Oktober 2026).
 - **Jadwal Pelaksanaan & Batas Akhir (Deadline)**:
@@ -347,17 +426,212 @@
   - **Jumat, 16 Oktober 2026**: Batas akhir pengisian, penandatanganan, dan upload dokumen NDA bagi seluruh tim organik SBR dan rekan magang.
 - **Dokumentasi KB**: [`kegiatan/sbr-pasca-se2026/2026/README.md`](../kegiatan/sbr-pasca-se2026/2026/README.md).
 
+## Kontak Layanan & Fasilitas Kantor BPS Kabupaten Mempawah
+- **Laporan Keluhan WiFi / Internet IndiHome Kantor**:
+  - **Nama Kontak**: Pak Benu Telkom
+  - **Nomor HP / WhatsApp**: `+62 851-0555-5474` (`6285105555474@s.whatsapp.net`)
+  - **Peran**: Teknisi / PIC Telkom untuk penanganan gangguan dan keluhan jaringan internet IndiHome kantor BPS Kabupaten Mempawah.
+  - **Sumber**: Disimpan atas arahan Bang Ihza Karunia pada Senin, 19 Oktober 2026.
+
+## Monitoring Kinerja Triwulan III Tahun 2026 BPS Kabupaten Mempawah (5 Oktober 2026)
+- **Rapat**: Senin, 5 Oktober 2026 (08.00 – 12.00 WIB) di Ruang Rapat BPS Kabupaten Mempawah.
+- **Pimpinan**: Kepala BPS Kabupaten Mempawah (Munawir, SE., MM.) | **Notulis**: Rifky Mullah Syadriawan.
+- **Capaian Kinerja IKU Satker**:
+  - Terhadap Target Triwulanan (TW III): **113,33%**
+  - Terhadap Target Tahunan (PK 2026): **13,57%** (mayoritas publikasi selesai di TW IV)
+- **Realisasi Keuangan s.d. Triwulan III**:
+  - Pagu Awal DIPA 2026: Rp 5.948.099.000
+  - Pagu Revisi s.d. TW III: Rp 9.290.958.000
+  - Realisasi Belanja: **Rp 7.170.858.488** (**77,18%**)
+  - Riwayat Revisi DIPA: Telah terlaksana s.d. **Revisi ke-12**
+- **Efisiensi Kantor**: Penerapan 9 langkah efisiensi (listrik/air LED, in-house & hybrid training, efisiensi ATK/telepon, shutdown elektronik, rapat virtual, serta WFH rutin tiap hari Jumat berdasar Surat Sestama B-209/2026).
+- **Rujukan Lengkap**: [`knowledge/universal/notula_monitoring_kinerja_tw3_2026.md`](universal/notula_monitoring_kinerja_tw3_2026.md) dan berkas PDF di [`knowledge/assets/Notula_Monitoring_Kinerja_Triwulan_III_BPS_Kabupaten_Mempawah.pdf`](assets/Notula_Monitoring_Kinerja_Triwulan_III_BPS_Kabupaten_Mempawah.pdf).
+
+## Jadwal ARC Publikasi Statistik Kesejahteraan Rakyat Kabupaten Mempawah 2026 (21 Oktober 2026)
+- **Nama Publikasi**: *Statistik Kesejahteraan Rakyat Kabupaten Mempawah 2026* (*Welfare Statistics of Mempawah Regency 2026*).
+- **Status ARC**: Terdaftar di portal ARC web BPS (satu-satunya publikasi tersisa di antrean ARC per 21 Oktober 2026, dikonfirmasi oleh Kak Sukma & Bang Ihza).
+- **Tenggat Waktu**:
+  - **Batas Akhir Upload Naskah ke Portal ARC**: **1 Desember 2026** (Selasa).
+  - **Jadwal Rilis Resmi**: **4 Desember 2026** (Jumat).
+  - **Reminder Persiapan Upload (H-3 Kerja)**: **26 November 2026** (Kamis).
+- **Rujukan Berkas**: [`kegiatan/publikasi-kesra-2026/2026/README.md`](../kegiatan/publikasi-kesra-2026/2026/README.md).
+
+## SOP & Ketentuan Cleaning Data SE2026: Pemberian Remark & Tim Organik (21 Oktober 2026)
+- **Arahan Pimpinan Terkait Pelaksana**:
+  - Pimpinan BPS Provinsi Kalimantan Barat menegaskan bahwa proses cleaning data SE2026 **HANYA dilakukan oleh pegawai organik BPS** dan **DILARANG diserahkan kepada anak/mahasiswa magang**. Hal ini terkait kewajiban penandatanganan NDA (*Non-Disclosure Agreement*) dan perlindungan kerahasiaan data mikro sensus.
+  - Urgensi: Capaian progres cleaning data SE2026 Provinsi Kalimantan Barat masih berada di bawah rata-rata nasional sehingga memerlukan percepatan serentak di seluruh satker kab/kota.
+  - Setiap pemeriksaan dan perbaikan anomali data mikro **wajib diberikan Remark**.
+- **Standar Format Kode Remark (Arahan Deputi NAS tanggal 15 Oktober 2026)**:
+  Format penulisan kode remark resmi disederhanakan dari `#DC_00` s.d. `#DC_04` menjadi `#0` s.d. `#4`:
+  - **`#0`** (sebelumnya `#DC_00`): *Data tidak mengalami perubahan* (Data dinyatakan sesuai kondisi lapangan, sehingga tidak dilakukan perubahan).
+  - **`#1`** (sebelumnya `#DC_01`): *Data mengalami perubahan* (Perbaikan dilakukan karena kesalahan pemahaman petugas terhadap konsep atau kesalahan entri kuesioner).
+  - **`#2`** (sebelumnya `#DC_02`): *Data mengalami perubahan* (Hasil konfirmasi/revisit langsung kepada responden).
+  - **`#3`** (sebelumnya `#DC_03`): *Data mengalami perubahan* (Informasi yang bersumber dari survei rutin BPS lain atau data administrasi dinas/instansi).
+  - **`#4`** (sebelumnya `#DC_04`): *Data mengalami perubahan* (Metode atau informasi lain selain kriteria kode #1, #2, dan #3).
+  - *Catatan Retrospektif*: Kode lama yang sudah terlanjur diinput (`#DC_0x`) tetap berlaku sah dan tidak perlu diubah ulang. Untuk pengerjaan selanjutnya menggunakan kode baru `#0` s.d. `#4`.
+- **Rujukan**: Dokumen surat resmi dan tangkapan layar di `media/AC32E2C46AA145CCC4B310F33C381861.jpg` dan `media/AC6060FF7383A27E9706E3BD5B5433DA.jpg`.
+
+## Arsitektur Monitoring Cleaning Data SE2026 (Sheet `Mon Ini` & Tab Merah)
+- **Tautan Spreadsheet**: [`Monitoring Cleaning Data SE 2026`](https://docs.google.com/spreadsheets/d/1EWoctuipZZgfERnqDLmvdDXdC1XiFtFB6Pbcw9U2rz0/edit?gid=104338933#gid=104338933).
+- **Desain Tab `Mon Ini`**:
+  - Dibuat untuk merekapitulasi beban target dan progres tindak lanjut cleaning per petugas pemeriksa/PJ.
+  - Tab anomali yang dijadikan sumber data adalah tab-tab bertanda warna merah (*tabColor: red*):
+    1. `rantab_dbnas` (Anomali rasio nilai tambah neraca)
+    2. `rekap_usaha_A` (Rekapitulasi usaha sektor pertanian/A)
+    3. `rekomendasi_kbli_anomali_layer2_18102026` (Anomali layer 2 per 18 Okt 2026)
+    4. `rekomendasi_kbli_anomali_18102026` (Anomali KBLI layer 1 per 18 Okt 2026)
+    5. `sosek_tabel19` (Tabel konsistensi sosial ekonomi)
+  - Struktur Kolom Utama:
+    - *Kolom A*: Nama Petugas
+    - *Kolom B*: Progres Total Sudah Tindak Lanjut (%)
+    - *Kolom C*: Jumlah Total Sudah Tindak Lanjut
+    - *Kolom D*: Jumlah Total Target
+    - *Kolom E–G, H–J, dst*: Pasangan metrik (*Sudah Tindak Lanjut*, *Target Tindak Lanjut*, *Progres Tindak Lanjut*) untuk masing-masing tab anomali merah.
+
+## Intisari Sosialisasi Sistem Backend Website BPS Baru (21 Oktober 2026)
+- **Waktu Pelaksanaan**: Rabu, 21 Oktober 2026 (08.00 – 12.00 WIB daring via LMS BPS).
+- **Portal Backend Baru**: `https://web-be.apps.bps.go.id`.
+- **Peserta BPS Kab. Mempawah**: Ihza Karunia & Akma Batrisyia.
+- **Timeline & Jadwal Kunci (Hasil Transkrip Sosialisasi)**:
+  - **Mulai Hari Ini (Rabu, 21 Oktober 2026)**: Backend baru sudah bisa mulai diakses dan digunakan satker untuk uji coba serta mencicil pairing metadata.
+  - **Jumat Sore, 23 Oktober 2026 (Pukul 16.00 / 18.00 WIB)**: Batas akhir bagi daerah untuk mengunggah / memperbarui konten di sistem lama.
+  - **Jumat Malam, 23 Oktober 2026 (Pukul 19.00 WIB)**: Akses backend lama (archive & webdesk) **DITUTUP TOTAL (CUT-OFF)** untuk proses migrasi database ke mesin/server baru oleh Tim Inka SIS BPS RI.
+  - **Senin, 26 Oktober 2026**: Go-Live resmi Website BPS Versi 5.0 nasional. Backend lama tidak dapat diakses lagi dan seluruh satker wajib menggunakan sistem backend baru.
+  - **Januari 2027**: Target konsistensi penuh pencatatan statistik pengunjung website di Webdash berbasis Google Analytics.
+- **Poin Kunci Sistem**:
+  - *Standardisasi Frontend*: Tampilan muka web publik seragam nasional (Sabang–Merauke). Seluruh kustomisasi konten daerah dikontrol lewat sistem *Backend*.
+  - *Akses Terpusat*: Menggunakan akun Single Sign-On (SSO Baru BPS) teraktivasi dengan OTP pengaman.
+  - *Manajemen Multi-Satker*: Memilih lingkup website berdasarkan kode MFD (misal Pusat `0000`, Provinsi Kalbar `6100`, Mempawah `6104`).
+  - *Fitur Konten & Indikator*:
+    - Master Indikator dengan interface sel mirip Excel (mendukung *copy-paste* langsung dari file Excel dan unduh template).
+    - Tabel Statis dengan klasifikasi subjek statistik (CSA), mapping metadata SIMDASI, dan unggah berkas Excel.
+    - Kolom *Headline* SEO-friendly untuk meningkatkan keterbacaan publik di mesin pencari dan media sosial tanpa merusak struktur judul baku rilis BPS.
+- **Rujukan Lengkap**: [`kegiatan/sosialisasi-backend-website/2026/README.md`](../kegiatan/sosialisasi-backend-website/2026/README.md) dan salinan transkrip di [`knowledge/transkrip_zoom_backend.txt`](transkrip_zoom_backend.txt).
+
+
+
+- **Laporan Keluhan WiFi / Internet Dukodu Kantor**:
+  - **Nama Kontak**: Rim Teguh Sanjaya (Dukodu)
+  - **Nomor HP / WhatsApp**: `+62 858-4913-3259` (`6285849133259@s.whatsapp.net`)
+  - **Data Pelanggan FTTH Mempawah (Wajib dicantumkan saat menghubungi)**:
+    - Paket/Layanan: Dukodu - Pelanggan FTTH Mempawah
+    - Atas Nama: Rifky Mullah Syadriawan (`002003000992@dukodu.id`)
+    - Kontak PIC: `0895704961475`
+    - Alamat: Jl. Raden Kusno, kantor Badan Pusat Statistik
+  - **SOP Penanganan Kendala Sebelum Lapor**: Coba colokkan ulang semua kabel + restart router terlebih dahulu. Jika masih belum normal, foto kondisi router lalu kirimkan ke kontak di atas beserta data pelanggan.
+  - **Sumber**: Disimpan atas arahan Bang Ihza Karunia pada Senin, 19 Oktober 2026.
+
+## Monitoring Kinerja Triwulan III Tahun 2026 BPS Kabupaten Mempawah (5 Oktober 2026)
+- **Rapat**: Senin, 5 Oktober 2026 (08.00 – 12.00 WIB) di Ruang Rapat BPS Kabupaten Mempawah.
+- **Pimpinan**: Kepala BPS Kabupaten Mempawah (Munawir, SE., MM.) | **Notulis**: Rifky Mullah Syadriawan.
+- **Capaian Kinerja IKU Satker**:
+  - Terhadap Target Triwulanan (TW III): **113,33%**
+  - Terhadap Target Tahunan (PK 2026): **13,57%** (mayoritas publikasi selesai di TW IV)
+- **Realisasi Keuangan s.d. Triwulan III**:
+  - Pagu Awal DIPA 2026: Rp 5.948.099.000
+  - Pagu Revisi s.d. TW III: Rp 9.290.958.000
+  - Realisasi Belanja: **Rp 7.170.858.488** (**77,18%**)
+  - Riwayat Revisi DIPA: Telah terlaksana s.d. **Revisi ke-12**
+- **Efisiensi Kantor**: Penerapan 9 langkah efisiensi (listrik/air LED, in-house & hybrid training, efisiensi ATK/telepon, shutdown elektronik, rapat virtual, serta WFH rutin tiap hari Jumat berdasar Surat Sestama B-209/2026).
+- **Rujukan Lengkap**: [`knowledge/universal/notula_monitoring_kinerja_tw3_2026.md`](universal/notula_monitoring_kinerja_tw3_2026.md) dan berkas PDF di [`knowledge/assets/Notula_Monitoring_Kinerja_Triwulan_III_BPS_Kabupaten_Mempawah.pdf`](assets/Notula_Monitoring_Kinerja_Triwulan_III_BPS_Kabupaten_Mempawah.pdf).
+
+## Jadwal ARC Publikasi Statistik Kesejahteraan Rakyat Kabupaten Mempawah 2026 (21 Oktober 2026)
+- **Nama Publikasi**: *Statistik Kesejahteraan Rakyat Kabupaten Mempawah 2026* (*Welfare Statistics of Mempawah Regency 2026*).
+- **Status ARC**: Terdaftar di portal ARC web BPS (satu-satunya publikasi tersisa di antrean ARC per 21 Oktober 2026, dikonfirmasi oleh Kak Sukma & Bang Ihza).
+- **Tenggat Waktu**:
+  - **Batas Akhir Upload Naskah ke Portal ARC**: **1 Desember 2026** (Selasa).
+  - **Jadwal Rilis Resmi**: **4 Desember 2026** (Jumat).
+  - **Reminder Persiapan Upload (H-3 Kerja)**: **26 November 2026** (Kamis).
+- **Rujukan Berkas**: [`kegiatan/publikasi-kesra-2026/2026/README.md`](../kegiatan/publikasi-kesra-2026/2026/README.md).
+
+## SOP & Ketentuan Cleaning Data SE2026: Pemberian Remark & Tim Organik (21 Oktober 2026)
+- **Arahan Pimpinan Terkait Pelaksana**:
+  - Pimpinan BPS Provinsi Kalimantan Barat menegaskan bahwa proses cleaning data SE2026 **HANYA dilakukan oleh pegawai organik BPS** dan **DILARANG diserahkan kepada anak/mahasiswa magang**. Hal ini terkait kewajiban penandatanganan NDA (*Non-Disclosure Agreement*) dan perlindungan kerahasiaan data mikro sensus.
+  - Urgensi: Capaian progres cleaning data SE2026 Provinsi Kalimantan Barat masih berada di bawah rata-rata nasional sehingga memerlukan percepatan serentak di seluruh satker kab/kota.
+  - Setiap pemeriksaan dan perbaikan anomali data mikro **wajib diberikan Remark**.
+- **Standar Format Kode Remark (Arahan Deputi NAS tanggal 15 Oktober 2026)**:
+  Format penulisan kode remark resmi disederhanakan dari `#DC_00` s.d. `#DC_04` menjadi `#0` s.d. `#4`:
+  - **`#0`** (sebelumnya `#DC_00`): *Data tidak mengalami perubahan* (Data dinyatakan sesuai kondisi lapangan, sehingga tidak dilakukan perubahan).
+  - **`#1`** (sebelumnya `#DC_01`): *Data mengalami perubahan* (Perbaikan dilakukan karena kesalahan pemahaman petugas terhadap konsep atau kesalahan entri kuesioner).
+  - **`#2`** (sebelumnya `#DC_02`): *Data mengalami perubahan* (Hasil konfirmasi/revisit langsung kepada responden).
+  - **`#3`** (sebelumnya `#DC_03`): *Data mengalami perubahan* (Informasi yang bersumber dari survei rutin BPS lain atau data administrasi dinas/instansi).
+  - **`#4`** (sebelumnya `#DC_04`): *Data mengalami perubahan* (Metode atau informasi lain selain kriteria kode #1, #2, dan #3).
+  - *Catatan Retrospektif*: Kode lama yang sudah terlanjur diinput (`#DC_0x`) tetap berlaku sah dan tidak perlu diubah ulang. Untuk pengerjaan selanjutnya menggunakan kode baru `#0` s.d. `#4`.
+- **Rujukan**: Dokumen surat resmi dan tangkapan layar di `media/AC32E2C46AA145CCC4B310F33C381861.jpg` dan `media/AC6060FF7383A27E9706E3BD5B5433DA.jpg`.
+
+## Arsitektur Monitoring Cleaning Data SE2026 (Sheet `Mon Ini` & Tab Merah)
+- **Tautan Spreadsheet**: [`Monitoring Cleaning Data SE 2026`](https://docs.google.com/spreadsheets/d/1EWoctuipZZgfERnqDLmvdDXdC1XiFtFB6Pbcw9U2rz0/edit?gid=104338933#gid=104338933).
+- **Desain Tab `Mon Ini`**:
+  - Dibuat untuk merekapitulasi beban target dan progres tindak lanjut cleaning per petugas pemeriksa/PJ.
+  - Tab anomali yang dijadikan sumber data adalah tab-tab bertanda warna merah (*tabColor: red*):
+    1. `rantab_dbnas` (Anomali rasio nilai tambah neraca)
+    2. `rekap_usaha_A` (Rekapitulasi usaha sektor pertanian/A)
+    3. `rekomendasi_kbli_anomali_layer2_18102026` (Anomali layer 2 per 18 Okt 2026)
+    4. `rekomendasi_kbli_anomali_18102026` (Anomali KBLI layer 1 per 18 Okt 2026)
+    5. `sosek_tabel19` (Tabel konsistensi sosial ekonomi)
+  - Struktur Kolom Utama:
+    - *Kolom A*: Nama Petugas
+    - *Kolom B*: Progres Total Sudah Tindak Lanjut (%)
+    - *Kolom C*: Jumlah Total Sudah Tindak Lanjut
+    - *Kolom D*: Jumlah Total Target
+    - *Kolom E–G, H–J, dst*: Pasangan metrik (*Sudah Tindak Lanjut*, *Target Tindak Lanjut*, *Progres Tindak Lanjut*) untuk masing-masing tab anomali merah.
+
+## Intisari Sosialisasi Sistem Backend Website BPS Baru (21 Oktober 2026)
+- **Waktu Pelaksanaan**: Rabu, 21 Oktober 2026 (08.00 – 12.00 WIB daring via LMS BPS).
+- **Portal Backend Baru**: `https://web-be.apps.bps.go.id`.
+- **Peserta BPS Kab. Mempawah**: Ihza Karunia & Akma Batrisyia.
+- **Timeline & Jadwal Kunci (Hasil Transkrip Sosialisasi)**:
+  - **Mulai Hari Ini (Rabu, 21 Oktober 2026)**: Backend baru sudah bisa mulai diakses dan digunakan satker untuk uji coba serta mencicil pairing metadata.
+  - **Jumat Sore, 23 Oktober 2026 (Pukul 16.00 / 18.00 WIB)**: Batas akhir bagi daerah untuk mengunggah / memperbarui konten di sistem lama.
+  - **Jumat Malam, 23 Oktober 2026 (Pukul 19.00 WIB)**: Akses backend lama (archive & webdesk) **DITUTUP TOTAL (CUT-OFF)** untuk proses migrasi database ke mesin/server baru oleh Tim Inka SIS BPS RI.
+  - **Senin, 26 Oktober 2026**: Go-Live resmi Website BPS Versi 5.0 nasional. Backend lama tidak dapat diakses lagi dan seluruh satker wajib menggunakan sistem backend baru.
+  - **Januari 2027**: Target konsistensi penuh pencatatan statistik pengunjung website di Webdash berbasis Google Analytics.
+- **Poin Kunci Sistem**:
+  - *Standardisasi Frontend*: Tampilan muka web publik seragam nasional (Sabang–Merauke). Seluruh kustomisasi konten daerah dikontrol lewat sistem *Backend*.
+  - *Akses Terpusat*: Menggunakan akun Single Sign-On (SSO Baru BPS) teraktivasi dengan OTP pengaman.
+  - *Manajemen Multi-Satker*: Memilih lingkup website berdasarkan kode MFD (misal Pusat `0000`, Provinsi Kalbar `6100`, Mempawah `6104`).
+  - *Fitur Konten & Indikator*:
+    - Master Indikator dengan interface sel mirip Excel (mendukung *copy-paste* langsung dari file Excel dan unduh template).
+    - Tabel Statis dengan klasifikasi subjek statistik (CSA), mapping metadata SIMDASI, dan unggah berkas Excel.
+    - Kolom *Headline* SEO-friendly untuk meningkatkan keterbacaan publik di mesin pencari dan media sosial tanpa merusak struktur judul baku rilis BPS.
+- **Rujukan Lengkap**: [`kegiatan/sosialisasi-backend-website/2026/README.md`](../kegiatan/sosialisasi-backend-website/2026/README.md) dan salinan transkrip di [`knowledge/transkrip_zoom_backend.txt`](transkrip_zoom_backend.txt).
 
 
 
 
 
+## Pelatihan Rekomendasi Kegiatan Statistik (Romantik) 2026
+- **Dasar Surat**: Surat Kepala BPS Provinsi Kalimantan Barat Nomor B-875/61000/ES/2026 tanggal 21 Oktober 2026 hal *Permintaan Peserta Pelatihan*, menindaklanjuti Surat Deputi Bidang Metodologi dan Informasi Statistik Nomor B-101/03000/ES/2026 tanggal 19 Oktober 2026.
+- **Penyelenggara**: Pusdiklat BPS bekerjasama dengan Direktorat Metodologi dan Informasi Statistik BPS RI.
+- **Metode**: Daring (Online via Pusdiklat BPS & Zoom).
+- **Alokasi Peserta**: 1 orang per BPS Kabupaten/Kota se-Kalbar. Seluruh peserta dari Provinsi Kalimantan Barat mengikuti **Gelombang 2**.
+- **Deadline Registrasi & Grup Diskusi (Kritis)**:
+  - Tautan: `http://s.bps.go.id/pesertaRS26`
+  - Batas Akhir: **Jumat, 23 Oktober 2026**.
+- **Jadwal Pelatihan Gelombang 2 (Kalbar)**:
+  - **Kamis, 19 November 2026 (08:00–10:15 WIB)**: Pleno Persiapan, Pembukaan & Overview Kebijakan Teknis.
+  - **Jumat, 20 November 2026**: Pembelajaran Mandiri MOOC (1 hari @3 JP).
+  - **Rabu, 25 November 2026 (07:30–15:00 WIB / 08:30–16:00 WITA)**: Ceramah Eselon 2, Pretest, Pengenalan & Mekanisme Romantik, Identifikasi Kegiatan Statistik, Desain Survei, Asynchronous.
+  - **Kamis, 26 November 2026 (07:00–13:45 WIB / 08:00–14:45 WITA)**: Pemeriksaan & Rekomendasi, Aplikasi Romantik, Post-test, Reviu Pelatihan.
+  - **Jumat, 27 November 2026 (08:00–08:45 WIB)**: Pleno Persiapan & Penutupan Bersama.
+- **Rujukan Lengkap**: [`kegiatan/pelatihan-romantik/2026/README.md`](../kegiatan/pelatihan-romantik/2026/README.md) dan arsip berkas di [`knowledge/assets/Surat_Permintaan_Peserta_Pelatihan_Romantik_2026.pdf`](assets/Surat_Permintaan_Peserta_Pelatihan_Romantik_2026.pdf).
 
 
-
-
-
-
+## Data Processing SE2026 (Pemanfaatan Aplikasi IPAS)
+- **Sumber Resmi**: Workshop Data Processing SE2026 (Direktorat Statistik Jasa / BPS RI, Oktober 2026).
+- **Aplikasi Resmi Pengolahan**: **IPAS (*Integrated Processing and Analysis System*)**.
+- **Jadwal Pelaksanaan Pengolahan Inti**: **30 Oktober – 15 November 2026** (periode aktif pengolahan ~15 hari kalender).
+- **Tahapan & Milestone Penting**:
+  - *16–17 Oktober 2026*: Pilot Data Processing oleh Direktorat Statistik Jasa BPS RI.
+  - *21–22 Oktober 2026*: Workshop Data Processing nasional.
+  - *23–25 Oktober 2026*: Eksplorasi Data Processing dengan IPAS.
+  - *25 Oktober 2026*: **Penutupan Akses Fasih (Cut-off)** untuk sinkronisasi data lapangan.
+  - *26–29 Oktober 2026*: Persiapan Environment IPAS (setup database & migrasi data Fasih ke server IPAS).
+  - *30 Oktober – 15 November 2026*: **Pelaksanaan Data Processing** (klasifikasi, koding, reviu, validasi, editing, imputasi, dan tabulasi).
+- **Kualitas Data & Evaluasi Nilai Tambah**:
+  - Tren penurunan agregat nilai tambah negatif secara nasional mencapai 82,6% (-138 temuan), tersisa 29 temuan per 21 Oktober 2026.
+  - Benchmark Rasio NT/Output: PDB 2025 (0,5063) dan Tabel IO 2020 (0,5243).
+- **Rujukan Lengkap**: [`knowledge/kegiatan/data-processing-se2026/2026/README.md`](kegiatan/data-processing-se2026/2026/README.md), [`knowledge/universal/timeline_data_processing_se2026.md`](universal/timeline_data_processing_se2026.md), dan salinan slide materi di [`knowledge/assets/Timeline_Data_Processing_SE2026_IPAS.jpg`](assets/Timeline_Data_Processing_SE2026_IPAS.jpg).
 
 ## Data Processing SE2026 & Kondisi NTB (22 Oktober 2026)
 - **Sumber Resmi**: Paparan *"Kondisi NTB SE 2026"*, Bidang Analisis dan Pengawalan Kualitas Data BPS RI (22 Oktober 2026).
@@ -378,3 +652,4 @@
 - **Rujukan Berkas**:
   - Dokumen analisis: [`kegiatan/sensus-ekonomi-2026/2026/docs/kondisi-ntb-se2026-22-oktober-2026.md`](../kegiatan/sensus-ekonomi-2026/2026/docs/kondisi-ntb-se2026-22-oktober-2026.md)
   - Berkas PDF resmi: [`kegiatan/sensus-ekonomi-2026/2026/docs/pdf/2026-10-22_Kondisi_NTB_SE2026.pdf`](../kegiatan/sensus-ekonomi-2026/2026/docs/pdf/2026-10-22_Kondisi_NTB_SE2026.pdf)
+
