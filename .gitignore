@@ -63,6 +63,8 @@ kegiatan/evaluasi-epss/**/materi-pelatihan/
 *.sqlite3
 *.db-shm
 *.db-wal
+*.parquet
+data/podes-2026/
 test_*.png
 test_*.typ
 test_*.svg
