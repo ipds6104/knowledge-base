@@ -145,7 +145,7 @@ Seluruh berkas fisik (PDF, pedoman teknis, dan materi presentasi PPTX) telah diu
 ### Struktur Berkas Tersedia
 1. **Dokumen Pokok & Juknis**:
    - `01. Juknis Pembinaan Statistik Sektoral 2026.pdf` (Pedoman resmi mekanisme, TPSS, dan SPESIAL)
-   - `02. Identifikasi Kegiatan Statistik.pdf`
+   - `02. Identifikasi Kegiatan Statistik.pdf` ([Transkripsi Markdown Lengkap](docs/identifikasi-kegiatan-statistik.md))
    - `03. Proses Bisnis Statistik.pdf`
    - `04. Sistem Statistik Nasional (SSN).pdf`
    - `05. Rekomendasi Kegiatan Statistik_PSS26.pdf`
