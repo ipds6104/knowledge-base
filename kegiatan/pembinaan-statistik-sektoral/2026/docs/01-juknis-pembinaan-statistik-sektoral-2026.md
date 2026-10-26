@@ -1,9 +1,10 @@
-# Petunjuk Teknis Pembinaan Statistik Sektoral 2026 (Materi Pembinaan Statistik Sektoral 2026)
+# 01. Juknis Pembinaan Statistik Sektoral 2026 (Materi Pembinaan Statistik Sektoral 2026)
 
 > [!NOTE]
 > **Sumber**: Sekretariat Pembinaan Statistik Sektoral BPS RI  
 > **Acara**: Pelatihan Pembinaan Statistik Sektoral (PSS) 2026, Jakarta, 10–11 Februari 2026  
-> **Berkas Asli**: `shared_data/pembinaan_statistik_sektoral_2026/01. Juknis Pembinaan Statistik Sektoral 2026.pdf`
+> **Berkas Asli GDrive**: `01. Juknis Pembinaan Statistik Sektoral 2026.pdf`  
+> **Jalur Penyimpanan Lokal**: `shared_data/pembinaan_statistik_sektoral_2026/01. Juknis Pembinaan Statistik Sektoral 2026.pdf`
 
 ---
 

@@ -1,9 +1,10 @@
-# Penjaminan Kualitas Statistik & Quality Gates (Materi Pembinaan Statistik Sektoral 2026)
+# 06. Penjaminan Kualitas Statistik & Quality Gates (Materi Pembinaan Statistik Sektoral 2026)
 
 > [!NOTE]
 > **Sumber**: Sekretariat Pembinaan Statistik Sektoral BPS RI  
 > **Acara**: Pelatihan Pembinaan Statistik Sektoral (PSS) 2026, Jakarta, 10–11 Februari 2026  
-> **Berkas Asli**: `shared_data/pembinaan_statistik_sektoral_2026/06. Kualitas Data_PSS26.pdf`
+> **Berkas Asli GDrive**: `06. Kualitas Data_PSS26.pdf`  
+> **Jalur Penyimpanan Lokal**: `shared_data/pembinaan_statistik_sektoral_2026/06. Kualitas Data_PSS26.pdf`
 
 ---
 

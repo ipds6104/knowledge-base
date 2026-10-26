@@ -144,13 +144,13 @@ Seluruh berkas fisik (PDF, pedoman teknis, dan materi presentasi PPTX) telah diu
 
 ### Struktur Berkas Tersedia
 1. **Dokumen Pokok & Juknis**:
-   - `01. Juknis Pembinaan Statistik Sektoral 2026.pdf` ([Transkripsi Markdown Lengkap](docs/juknis-pembinaan-statistik-sektoral-2026.md))
-   - `02. Identifikasi Kegiatan Statistik.pdf` ([Transkripsi Markdown Lengkap](docs/identifikasi-kegiatan-statistik.md))
-   - `03. Proses Bisnis Statistik.pdf` ([Transkripsi Markdown Lengkap](docs/proses-bisnis-statistik.md))
-   - `04. Sistem Statistik Nasional (SSN).pdf` ([Transkripsi Markdown Lengkap](docs/sistem-statistik-nasional.md))
-   - `05. Rekomendasi Kegiatan Statistik_PSS26.pdf` ([Transkripsi Markdown Lengkap](docs/rekomendasi-kegiatan-statistik.md))
-   - `06. Kualitas Data_PSS26.pdf` ([Transkripsi Markdown Lengkap](docs/kualitas-data.md))
-   - `07. Standar Data Statistik.pdf` ([Transkripsi Markdown Lengkap](docs/standar-data-statistik.md))
+   - `01. Juknis Pembinaan Statistik Sektoral 2026.pdf` ([Transkripsi Markdown Lengkap](docs/01-juknis-pembinaan-statistik-sektoral-2026.md))
+   - `02. Identifikasi Kegiatan Statistik.pdf` ([Transkripsi Markdown Lengkap](docs/02-identifikasi-kegiatan-statistik.md))
+   - `03. Proses Bisnis Statistik.pdf` ([Transkripsi Markdown Lengkap](docs/03-proses-bisnis-statistik.md))
+   - `04. Sistem Statistik Nasional (SSN).pdf` ([Transkripsi Markdown Lengkap](docs/04-sistem-statistik-nasional-ssn.md))
+   - `05. Rekomendasi Kegiatan Statistik_PSS26.pdf` ([Transkripsi Markdown Lengkap](docs/05-rekomendasi-kegiatan-statistik-pss26.md))
+   - `06. Kualitas Data_PSS26.pdf` ([Transkripsi Markdown Lengkap](docs/06-kualitas-data-pss26.md))
+   - `07. Standar Data Statistik.pdf` ([Transkripsi Markdown Lengkap](docs/07-standar-data-statistik.md))
    - `Paparan Kepala BPS Kalbar - Kolaborasi Perumusan Kebijakan Berbasis Data.pptx`
 2. **Subdirektori Pedoman (`Pedoman/`)**:
    - `[Ver 2026] Juknis Pembinaan.pdf`
