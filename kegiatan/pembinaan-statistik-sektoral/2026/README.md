@@ -144,13 +144,13 @@ Seluruh berkas fisik (PDF, pedoman teknis, dan materi presentasi PPTX) telah diu
 
 ### Struktur Berkas Tersedia
 1. **Dokumen Pokok & Juknis**:
-   - `01. Juknis Pembinaan Statistik Sektoral 2026.pdf` (Pedoman resmi mekanisme, TPSS, dan SPESIAL)
+   - `01. Juknis Pembinaan Statistik Sektoral 2026.pdf` ([Transkripsi Markdown Lengkap](docs/juknis-pembinaan-statistik-sektoral-2026.md))
    - `02. Identifikasi Kegiatan Statistik.pdf` ([Transkripsi Markdown Lengkap](docs/identifikasi-kegiatan-statistik.md))
-   - `03. Proses Bisnis Statistik.pdf`
-   - `04. Sistem Statistik Nasional (SSN).pdf`
-   - `05. Rekomendasi Kegiatan Statistik_PSS26.pdf`
-   - `06. Kualitas Data_PSS26.pdf`
-   - `07. Standar Data Statistik.pdf`
+   - `03. Proses Bisnis Statistik.pdf` ([Transkripsi Markdown Lengkap](docs/proses-bisnis-statistik.md))
+   - `04. Sistem Statistik Nasional (SSN).pdf` ([Transkripsi Markdown Lengkap](docs/sistem-statistik-nasional.md))
+   - `05. Rekomendasi Kegiatan Statistik_PSS26.pdf` ([Transkripsi Markdown Lengkap](docs/rekomendasi-kegiatan-statistik.md))
+   - `06. Kualitas Data_PSS26.pdf` ([Transkripsi Markdown Lengkap](docs/kualitas-data.md))
+   - `07. Standar Data Statistik.pdf` ([Transkripsi Markdown Lengkap](docs/standar-data-statistik.md))
    - `Paparan Kepala BPS Kalbar - Kolaborasi Perumusan Kebijakan Berbasis Data.pptx`
 2. **Subdirektori Pedoman (`Pedoman/`)**:
    - `[Ver 2026] Juknis Pembinaan.pdf`
