@@ -29,19 +29,22 @@ deadlines:
     status: "belum"
   - tanggal: "2026-09-21"
     kegiatan: "KCDA 2026: Batas Akhir Penerimaan Data Sesuai Surat Dinas (B-1091 s.d. B-1100)"
-    status: "belum"
+    status: "selesai"
   - tanggal: "2026-09-22"
     kegiatan: "KCDA 2026: Upload Draft KCDA Semua Kecamatan (Deadline Internal Tim)"
-    status: "belum"
+    status: "selesai"
   - tanggal: "2026-09-22"
     kegiatan: "KCDA 2026: Target Penyelesaian Desain Cover Depan KCDA"
-    status: "belum"
+    status: "selesai"
   - tanggal: "2026-09-22"
     kegiatan: "KCDA 2026: Target Penyelesaian Tampilan Pembatas Bab KCDA"
-    status: "belum"
-  - tanggal: "2026-09-25"
+    status: "selesai"
+  - tanggal: "2026-09-23"
     kegiatan: "KCDA 2026: Batas Akhir Upload Publikasi ke Portal Web (Sistem ARC)"
-    status: "belum"
+    status: "selesai"
+  - tanggal: "2026-09-27"
+    kegiatan: "KCDA 2026: Koreksi Ulang & Quality Control (QC) Akhir Naskah Sebelum Rilis"
+    status: "aktif"
   - tanggal: "2026-09-28"
     kegiatan: "KCDA 2026: Batas Akhir Rilis Resmi Publikasi di Website"
     status: "belum"
@@ -67,9 +70,9 @@ Kegiatan ini didasarkan pada Surat Dinas BPS Provinsi Kalimantan Barat Nomor **B
 | **Pemeriksaan Silang (Peer)** | **7–11 September 2026**| Saling Silang PIC | Peer review wajib rampung sebelum CPNS klasikal Latsar (12 Sep). |
 | **Batas Konfirmasi Camat (WA)** | **18 September 2026** | Pihak Kantor Camat & PIC | Batas akhir pengisian/konfirmasi data via Google Sheets sesuai pesan WA. |
 | **Batas Resmi Surat Dinas** | **21 September 2026** | Kantor Camat 9 Wilayah | Batas akhir penerimaan data sesuai Surat BPS No. B-1091 s.d. B-1100. |
-| **Upload Draft KCDA Internal** | **22 September 2026** | Seluruh PIC Kecamatan | Batas internal upload draft publikasi KCDA 2026 semua kecamatan ke Google Drive tim. |
-| **Cover & Batas Bab KCDA** | **22 September 2026** | Tim IPDS / Penyusun KCDA | Target penyelesaian desain cover depan dan tampilan pembatas bab KCDA. |
-| **Batas Akhir Upload (ARC)** | **25 September 2026** | Operator/Penyusun KCDA | Batas akhir pengunggahan file publikasi KCDA 2026 ke portal web (sistem ARC, maksimal upload H-3 rilis). |
+| **Upload Draft KCDA Internal** | **22 September 2026** | Seluruh PIC Kecamatan | Selesai. Seluruh draft publikasi KCDA 2026 9 kecamatan telah terunggah ke Google Drive tim. |
+| **Cover & Batas Bab KCDA** | **22 September 2026** | Tim IPDS / Penyusun KCDA | Selesai. Desain cover depan dan tampilan pembatas bab KCDA siap pakai. |
+| **Batas Akhir Upload (ARC)** | **23 September 2026** | Operator/Penyusun KCDA | **Selesai (100%)**. Seluruh file publikasi KCDA 2026 (9 kecamatan) telah berhasil diunggah ke sistem ARC portal web. |
 | **Batas Akhir Rilis (Publikasi)**| **28 September 2026** | Kepala BPS Kabupaten/Kota | Rilis resmi publikasi KCDA 2026 di website BPS Kabupaten/Kota masing-masing. |
 
 ---
@@ -91,8 +94,8 @@ Proses penyusunan publikasi KCDA 2026 mengikuti alur kerja sistematis berikut de
 9. **Permintaan & Konfirmasi Data ke Kantor Camat** (*17–21 September 2026*):
    * Penerbitan Surat Dinas Resmi BPS Kab. Mempawah Nomor `B-1091` s.d. `B-1100` per tanggal 17 September 2026 dengan batas akhir resmi **21 September 2026**.
    * Penyampaian pengingat/reminder via WhatsApp dengan batas pengisian dipercepat hingga **18 September 2026** melalui Google Sheets per kecamatan (`s.bps.go.id/kcda26-<slug>`).
-10. **Batas Akhir Upload ke Web / ARC (H-3 Rilis)** (*25 September 2026*): Mengunggah file publikasi KCDA ke sistem ARC pada tanggal **25 September 2026** (maksimal upload 3 hari sebelum jadwal rilis resmi).
-11. **Revisi Pasca Upload & Rilis Resmi** (*26–28 September 2026*): Melakukan revisi akhir jika ditemukan kesalahan teknis dan persiapan rilis serentak di website pada tanggal **28 September 2026**.
+10. **Batas Akhir Upload ke Web / ARC** (*23 September 2026*): Mengunggah file publikasi KCDA ke sistem ARC pada hari Rabu, **23 September 2026** (diralat dari sebelumnya 25 September).
+11. **Revisi Pasca Upload & Rilis Resmi** (*24–28 September 2026*): Melakukan revisi akhir jika ditemukan kesalahan teknis dan persiapan rilis serentak di website pada tanggal **28 September 2026**.
 
 ---
 
@@ -180,4 +183,35 @@ Daftar 9 publikasi Kecamatan Dalam Angka 2026 Kabupaten Mempawah beserta estimas
 | 7 | Kecamatan Jongkat Dalam Angka 2026 | `61040.26008` | 25 Sep 2026 | 28 Sep 2026 | `belum` |
 | 8 | Kecamatan Anjongan Dalam Angka 2026 | `61040.26009` | 25 Sep 2026 | 28 Sep 2026 | `belum` |
 | 9 | Kecamatan Sadaniang Dalam Angka 2026 | `61040.26007` | 25 Sep 2026 | 28 Sep 2026 | `belum` |
+
+---
+
+## 🎨 Asset Desain Publikasi KCDA 2026 (Cover & Pembatas Bab)
+
+Telah diinisiasi dan disiapkan oleh tim (PIC: Sukma) pada Google Drive:
+- **Folder Induk**: [`182Ecq9Z5FWjFLx99C9Me9_7wUCnunr5G`](https://drive.google.com/drive/folders/182Ecq9Z5FWjFLx99C9Me9_7wUCnunr5G)
+
+### 1. Cover Depan & Cover Dalam (Halaman Judul)
+- **Folder ID**: [`1nttcjS-mISNHWVsrkmpt2fHxBx9xJSAQ`](https://drive.google.com/drive/folders/1nttcjS-mISNHWVsrkmpt2fHxBx9xJSAQ)
+- Penamaan:
+  - `<Kecamatan>1.png`: Desain Cover Depan Luar (Full Color)
+  - `<Kecamatan>2.png`: Desain Cover Dalam / Halaman Judul setelah cover depan
+- Tersedia lengkap 9 kecamatan:
+  1. **Mempawah Hilir**: `Mempawah Hilir1.png`, `Mempawah Hilir2.png`
+  2. **Mempawah Timur**: `Mempawah Timur1.png`, `Mempawah Timur2.png`
+  3. **Sungai Pinyuh**: `Sungai Pinyuh1.png`, `Sungai Pinyuh2.png`
+  4. **Sungai Kunyit**: `Sungai Kunyit1.png`, `Sungai Kunyit2.png`
+  5. **Segedong**: `Segedong1.png`, `Segedong2.png`
+  6. **Jongkat**: `Jongkat1.png`, `Jongkat2.png`
+  7. **Anjongan**: `Anjongan1.png`, `Anjongan2.png`
+  8. **Toho**: `Toho1.png`, `Toho2.png`
+  9. **Sadaniang**: `Sadaniang1.png`, `Sadaniang2.png`
+
+### 2. Pembatas Bab
+- **Folder ID**: [`1OPECj_mMJJ_iBxsxLw6UWOkj_7_9O-Iw`](https://drive.google.com/drive/folders/1OPECj_mMJJ_iBxsxLw6UWOkj_7_9O-Iw)
+- Berkas lengkap dari `Bab 1.png` hingga `Bab 7.png`.
+
+### 3. Cover Belakang
+- **Folder ID**: [`1HcDPXE5Q-kGc3mD-BOKVV11IznuHXaW1`](https://drive.google.com/drive/folders/1HcDPXE5Q-kGc3mD-BOKVV11IznuHXaW1)
+- Tersedia lengkap `<Kecamatan>.png` untuk 9 kecamatan.
 

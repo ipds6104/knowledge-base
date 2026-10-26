@@ -62,20 +62,21 @@
 - **Honor Entri Seruti TW3**: Tanggal akhir kegiatan per **14 Oktober 2026** (BAST per 14 Oktober 2026). Tanggal akhir kegiatan utama `SERUTI26-TW3` diselaraskan agar mencakup bulan Oktober (minimal s.d. 14 Oktober 2026).
 
 ## POK BPS Kabupaten Mempawah TA 2026 (SAKTI Kemenkeu)
-- **Sumber Data**: Sistem SAKTI Kementerian Keuangan (Rincian Kertas Kerja Satker).
-- **Waktu Penarikan**: Rabu, 16 September 2026 pukul 09:00 WIB (dibagikan oleh Bang Ihza Karunia).
-- **Berkas Data Lokal**: `data/POK_BPS_Mempawah_2026_SAKTI.xlsx`
-- **Total Pagu Satker**: **Rp 9.224.066.000,-**
+- **Sumber Data**: Sistem SAKTI Kementerian Keuangan (Rincian Kertas Kerja Satker - Multiyear).
+- **Waktu Pemutakhiran**: Senin, 26 Oktober 2026 pukul 08:22 WIB (dibagikan oleh Kak Sukma atas arahan Bang Ihza Karunia).
+- **Rujukan Lengkap**: [`knowledge/universal/pok_bps_mempawah_2026.md`](universal/pok_bps_mempawah_2026.md)
+- **Berkas Data Lokal**: `data/POK_BPS_Mempawah_2026_SAKTI.xlsx` dan `knowledge/assets/POK_BPS_Mempawah_2026_SAKTI.xlsx` (Arsip versi 16 September: `data/POK_BPS_Mempawah_2026_SAKTI_Rev20260916.xlsx`).
+- **Total Pagu Satker**: **Rp 9.292.276.000,-** (naik **+Rp 68.210.000,-** dari versi 16 September 2026).
 - **Ringkasan Program**:
-  1. **Program Penyediaan dan Pelayanan Informasi Statistik (054.01.GG)**: **Rp 5.113.471.000,-**
-     - Alokasi Terbesar: Kegiatan 2902 (Statistik Distribusi / Sensus Ekonomi 2026) sebesar **Rp 3.610.255.000,-**.
+  1. **Program Penyediaan dan Pelayanan Informasi Statistik (054.01.GG)**: **Rp 5.181.681.000,-** (naik +Rp 68.210.000,-).
+     - Alokasi Terbesar: Kegiatan 2902 (Statistik Distribusi / Sensus Ekonomi 2026) sebesar **Rp 3.666.305.000,-** (naik +Rp 56.050.000,-, termasuk Belanja Modal TIK Rp 45 jt di `2902.CAN.004`).
      - Sub-alokasi SE2026:
-       - 2902.BMA.006 (Publikasi/Laporan Sensus Ekonomi baseline): Rp 348.639.000,-
+       - 2902.BMA.006 (Publikasi/Laporan Sensus Ekonomi baseline): Rp 359.689.000,-
        - 2902.BMA.006 (Penambahan alokasi dari SABA): Rp 2.564.322.000,-
        - 2902.FAN.ZZ1 (Pemenuhan Prioritas Direktif Presiden - SE2026): Rp 691.694.000,-
-     - Kegiatan Statistik Lainnya: Statistik Harga (2903: Rp 495,2 jt), Kesra/Susenas (2906: Rp 385,2 jt), Pertanian (2910: Rp 211 jt), Kependudukan/Ketenagakerjaan (2905: Rp 141,1 jt), Industri (2904: Rp 87,3 jt), Peternakan/Perikanan (2909: Rp 69,1 jt), dll.
+     - Kegiatan Statistik Lainnya: Statistik Harga (2903: Rp 506,9 jt, naik +Rp 11,7 jt), Kesra/Susenas (2906: Rp 385,2 jt), Pertanian (2910: Rp 211 jt), Kependudukan/Ketenagakerjaan (2905: Rp 141,1 jt), Industri (2904: Rp 87,3 jt), Peternakan/Perikanan (2909: Rp 69,1 jt), Sumber Daya Hayati (8130: Rp 12,2 jt, naik +Rp 472 rb), dll.
   2. **Program Dukungan Manajemen (054.01.WA / 2886)**: **Rp 4.110.595.000,-**
-     - Gaji, tunjangan operasional, dan pemeliharaan perkantoran BPS Kabupaten Mempawah.
+     - Gaji, tunjangan operasional, dan pemeliharaan perkantoran BPS Kabupaten Mempawah (penataan akun operasional, honor satker, dan efisiensi perjalanan dinas).
 
 ## Kebijakan Akses & Tata Kelola Data Sensus Ekonomi (SE2026) BPS Mempawah
 - **Grup Resmi**: WhatsApp Group "Tim Kerja Mempawah" (`120363253842861469@g.us`).

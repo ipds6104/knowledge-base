@@ -56,7 +56,7 @@ deadlines:
     status: "belum"
   - tanggal: "2026-10-09"
     kegiatan: "Batas Akhir Pengolahan Data (Entri & Validasi Aplikasi) BPS Kab/Kota"
-    status: "belum"
+    status: "selesai"
   - tanggal: "2026-10-12"
     kegiatan: "Batas Akhir Umpan Balik Entri Data Bermasalah ke Fungsi Statistik Sosial"
     status: "belum"
@@ -66,11 +66,17 @@ deadlines:
   - tanggal: "2026-10-12"
     kegiatan: "Batas Akhir Pengiriman Data dari BPS Kab/Kota ke BPS Provinsi"
     status: "belum"
+  - tanggal: "2026-10-14"
+    kegiatan: "Batas Akhir Pengiriman Data Final (Backup Entri) ke BPS Provinsi (Pukul 09.00 WIB)"
+    status: "belum"
   - tanggal: "2026-10-20"
     kegiatan: "Batas Akhir Evaluasi Kualitas & Kelengkapan Data oleh BPS Provinsi"
     status: "belum"
   - tanggal: "2026-10-20"
     kegiatan: "Batas Akhir Pengiriman Raw Data ke Direktorat SIS BPS RI"
+    status: "belum"
+  - tanggal: "2026-10-31"
+    kegiatan: "Batas Akhir Pengisian Form Fenomena Sosial Ekonomi Susenas September 2026 (s.bps.go.id/fenomenasept61_2026)"
     status: "belum"
 ---
 # Susenas September 2026 (dan Seruti 2026)
@@ -116,3 +122,8 @@ Sumber jadwal: Dokumen resmi **Rancangan Jadwal Susenas 2026 dan Seruti 2026 (Su
 5. **Pengiriman data ke BPS Provinsi**: 8 – 12 Oktober 2026
 6. **Evaluasi kualitas data dan kelengkapan data oleh BPS Provinsi**: 11 – 20 Oktober 2026
 7. **Pengiriman raw data ke Direktorat SIS BPS RI**: 14 – 20 Oktober 2026
+
+### D. Tindak Lanjut Pasca Rekonsiliasi (Hasil Rekon 7 Oktober 2026)
+1. **Batas akhir pengiriman data final ke BPS Provinsi**: 14 Oktober 2026 pukul 09.00 WIB
+2. **Pengisian form fenomena sosial ekonomi dan kondisi lapangan**: tautan `s.bps.go.id/fenomenasept61_2026`
+3. **Batas akhir pengisian fenomena**: 31 Oktober 2026
