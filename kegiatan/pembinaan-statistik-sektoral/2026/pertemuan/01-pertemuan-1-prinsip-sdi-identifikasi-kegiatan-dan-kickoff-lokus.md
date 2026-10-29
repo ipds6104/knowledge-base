@@ -78,8 +78,8 @@ flowchart LR
 ### 3.1 Materi 1: Empat Prinsip Satu Data Indonesia (Pemateri: Mbak Uma - 20 Menit)
 1. **Standar Data Statistik (SDS):** Konsep, definisi, satuan, ukuran, dan klasifikasi baku. Data tidak boleh ambigu (misal: PAD vs Belanja, NIB Berusaha vs Non-Berusaha).
 2. **Metadata Statistik:** Identitas pelabel data (MS-Keg dan MS-Var) yang wajib diregistrasikan di Portal INDAH BPS.
-3. **Interoperabilitas Data:** Format data terbuka tabular (.xlsx, .csv) yang siap terintegrasi via REST-API Portal Satu Data Mempawah.
-4. **Kode Referensi & Data Induk:** Menggunakan kode wilayah baku Kemendagri 9 kecamatan dan 67 desa/kelurahan di Kabupaten Mempawah.
+3. **Interoperabilitas Data (Level 5 Terpenuhi):** Format data terbuka tabular (.csv, .xlsx) yang telah aktif dan dapat diakses publik via REST API Portal CKAN Satu Data Mempawah di **`https://satudata.mempawahkab.go.id/api/3/action/package_search`**.
+4. **Kode Referensi & Data Induk:** Menggunakan kode wilayah ganda Kemendagri (`6102`) dan BPS (`6104`) yang telah terbukti tertanam rapi di dalam berkas CSV publik BPKAD dan DPMPTSPKUKM pada portal CKAN Mempawah.
 
 ### 3.2 Materi 2: Identifikasi Kegiatan Statistik & Rotasi 2 Lokus Baru (Pemateri: Ihza - 25 Menit)
 Ihza memaparkan materi inti dengan bahasa lugas dan to-the-point:

@@ -27,7 +27,7 @@ Sesi 4 adalah puncak pembinaan yang mengunci **Domain 4 (Kelembagaan - Bobot 26%
 - **Indikator 40102 (Penjaminan Netralitas & Objektivitas - Target Level 4):** Surat Pernyataan Komitmen Netralitas Penyelenggaraan bermeterai Rp10.000 ditandatangani Kepala OPD.
 - **Indikator 40103 (Penjaminan Kualitas oleh Walidata - Target Level 4):** Lembar Checklist & Berita Acara Pemeriksaan Mutu Data Walidata Diskominfo (Template B).
 - **Indikator 40302 (Forum Satu Data Indonesia - Target Level 4):** Notula Lengkap & Berita Acara Kesepakatan Sidang Pleno Forum SDI Mempawah 2026.
-- **Indikator 50101 & 50102 (Penyebarluasan & Aksesibilitas Data - Target Level 4):** Publikasi kalender rilis resmi (ARC) di portal Satu Data Mempawah.
+- **Indikator 50101 & 50102 (Penyebarluasan & Aksesibilitas Data - Target Level 5):** Pemanfaatan operasional Portal CKAN Satu Data Mempawah (`https://satudata.mempawahkab.go.id`) yang memuat 426+ dataset publik dengan unduhan CSV/XLSX terbuka dan machine-to-machine REST API publik.
 - **Indikator 50103 (Literasi Statistik Publik & Inovasi - Target Level 5):** Inovasi Live Workspace "Radar EPSS Mempawah" dan paket 5 infografis diseminasi publik.
 - **Indikator 50303 (Rencana Aksi SDI Daerah - Target Level 4):** Dokumen Matriks Rencana Aksi SDI Kabupaten Mempawah Periode 2026–2028.
 
@@ -133,9 +133,14 @@ Ihza memimpin review komprehensif di depan seluruh hadirin melalui layar proyekt
 1. **Pengecekan Dashboard Google Sheets "Radar EPSS Mempawah 2026–2028":**
    - Menunjukkan bahwa tab **Lokus 1 (BPKAD)** dan **Lokus 2 (DPMPTSPKUKM)** telah memiliki **100% lampu indikator HIJAU** (seluruh 38 indikator telah memiliki tautan dokumen fisik/digital di Google Drive).
    - Menunjukkan bahwa seluruh 23 OPD telah memiliki nama kegiatan baku dan kamus standar data.
-2. **Eksekusi Mesin Audit EPSS (`scripts/kb_pss_automation.py`):**
+2. **Eksekusi Mesin Audit EPSS & Penelusuran Portal CKAN (`scripts/kb_pss_automation.py`):**
    ```bash
+   # Audit kesiapan 38 indikator EPSS:
    python3 scripts/kb_pss_automation.py audit-epss
+
+   # Audit kesiapan live portal CKAN Satu Data Mempawah untuk 2 Lokus Emas:
+   python3 scripts/kb_pss_automation.py fetch-ckan --opd bpkad
+   python3 scripts/kb_pss_automation.py fetch-ckan --opd dpmptsp
    ```
 3. **Pengumuman Hasil Proyeksi Kinerja:**
    - Di hadapan Kepala BPS, Kadiskominfo, Kepala Bapperida, dan seluruh operator OPD, Ihza menampilkan hasil proyeksi resmi EPSS Mempawah:

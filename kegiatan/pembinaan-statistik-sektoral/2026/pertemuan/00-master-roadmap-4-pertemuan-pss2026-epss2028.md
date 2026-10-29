@@ -156,11 +156,25 @@ python3 scripts/kb_pss_automation.py generate-analysis \
   --output Bab3_Analisis_Perizinan_DPMPTSP.md
 ```
 
-### 4.4 Nilai Inovasi Jangka Panjang (*Sustainable Long-Term System*)
+### 4.4 Integrasi Nyata: Portal CKAN Satu Data Mempawah (`https://satudata.mempawahkab.go.id`)
+Pemerintah Kabupaten Mempawah telah mengoperasikan portal data berbasis platform standar industri terbuka (CKAN) di **`https://satudata.mempawahkab.go.id/`** yang dikelola langsung oleh Diskominfo sebagai Walidata Daerah:
+1. **Kekayaan Data Terverifikasi:** Memuat lebih dari **426 dataset** aktif dari **23 OPD**, termasuk kedua Lokus Emas:
+   - **BPKAD (`badan-pengelola-keuangan-dan-aset-daerah`):** Realisasi Pendapatan Daerah, Realisasi Pembiayaan, dan Realisasi Belanja Daerah.
+   - **DPMPTSPKUKM (`dinas-penanaman-modal-koperasi-ukm-dan-pelayanan-terpadu-satu-pintu`):** 25 dataset mencakup Realisasi Pelayanan Perizinan, Perizinan OSS, Jumlah NIB Terbit, dan Data UMKM/Koperasi.
+2. **Kepatuhan Interoperabilitas Level 5 (Machine-to-Machine API):**  
+   Portal CKAN Mempawah menyediakan REST API publik (`/api/3/action/package_search`, `/api/3/action/package_show`) serta format data terbuka (CSV dan XLSX) dengan kode wilayah ganda Kemendagri (`6102`) dan BPS (`6104`). Ini menjadi modal tak terbantahkan untuk mengunci **Indikator 10301 (Interoperabilitas Data) pada Level 5**.
+3. **Audit Otomatis via Toolkit PSS:**  
+   Toolkit otomasi `scripts/kb_pss_automation.py` telah dilengkapi fitur penelusuran live:
+   ```bash
+   python3 scripts/kb_pss_automation.py fetch-ckan --opd bpkad
+   python3 scripts/kb_pss_automation.py fetch-ckan --opd dpmptsp
+   ```
+
+### 4.5 Nilai Inovasi Jangka Panjang (*Sustainable Long-Term System*)
 Sistem ini tidak bubar saat pembinaan 4 hari selesai, melainkan terus hidup sebagai **Pusat Pemantauan Penyelenggaraan Statistik Sektoral Kabupaten Mempawah**:
 1. Menjadi arsip terpusat bukti dukung (*Evidence Vault*) di Google Drive bersama antara BPS dan Diskominfo.
-2. Saat penilaian mandiri dan interview EPSS 2028 dibuka, Diskominfo dan BPS tinggal menyalin tautan berkas yang sudah rapi tanpa perlu pontang-panting mencari arsip lama.
-3. Inovasi ini secara mandiri menjadi bukti fisik otentik Level 5 untuk **Indikator 50103 (Literasi Statistik & Inovasi Pembinaan)** dan **Indikator 40103 (Penjaminan Kualitas Data oleh Walidata)**.
+2. Saat penilaian mandiri dan interview EPSS 2028 dibuka, Diskominfo dan BPS tinggal menyalin tautan berkas dan URL dataset portal CKAN yang sudah rapi tanpa perlu pontang-panting mencari arsip lama.
+3. Inovasi ini secara mandiri menjadi bukti fisik otentik Level 5 untuk **Indikator 50101 (Penyebarluasan Data)**, **Indikator 50102 (Aksesibilitas Data)**, **Indikator 50103 (Literasi Statistik & Inovasi Pembinaan)**, dan **Indikator 40103 (Penjaminan Kualitas Data oleh Walidata)**.
 
 ---
 
