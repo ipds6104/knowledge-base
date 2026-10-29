@@ -18,6 +18,9 @@ deadlines:
   - tanggal: "2026-03-31"
     kegiatan: "Batas Akhir Penyusunan Rencana Kerja Pembinaan Statistik Sektoral di SPESIAL"
     status: "selesai"
+  - tanggal: "2026-04-28"
+    kegiatan: "ESENSIAL Series #1: Sosialisasi Mekanisme Aliran Data & Fitur SPESIAL"
+    status: "selesai"
   - tanggal: "2026-06-30"
     kegiatan: "Monev Mandiri Semester 1 & Pengunggahan Berkas ke SPESIAL (1-30 Juni)"
     status: "selesai"
@@ -130,6 +133,7 @@ $$\text{IKU} = \textbf{Tingkat Penyelenggaraan Pembinaan Statistik Sektoral sesu
 | **5 – 11 Feb 2026** | Pelatihan Pembina Statistik Sektoral | Pembekalan teknis seluruh tim pembina BPS |
 | **19 Feb 2026** | Internalisasi Satker | Notula, materi, daftar hadir internalisasi |
 | **16 – 31 Mar 2026** | Kick Off & Penyusunan Rencana Kerja | Input minimal 6 RK per Pemda di SPESIAL |
+| **28 Apr 2026** | ESENSIAL Series #1 (Aliran Data) | Sosialisasi mekanisme aliran data & fitur modul SPESIAL |
 | **1 – 30 Jun 2026** | Monev Mandiri Semester 1 | Lembar Kerja Monev Semester 1 diunggah |
 | **Jul – Nov 2026** | Realisasi Pembinaan & Pendampingan | Pelaksanaan materi 5 domain & kelengkapan 5 dokumen |
 | **1 – 31 Des 2026** | Monev Mandiri Semester 2 & Aliran Data | Laporan akhir monev, verifikasi aliran data, rekap TPSS |
@@ -165,6 +169,8 @@ Seluruh berkas fisik (PDF, pedoman teknis, dan materi presentasi PPTX) telah diu
    - `05. Rekomendasi Kegiatan Statistik_PSS26.pdf` ([Transkripsi Markdown Lengkap](docs/05-rekomendasi-kegiatan-statistik-pss26.md))
    - `06. Kualitas Data_PSS26.pdf` ([Transkripsi Markdown Lengkap](docs/06-kualitas-data-pss26.md))
    - `07. Standar Data Statistik.pdf` ([Transkripsi Markdown Lengkap](docs/07-standar-data-statistik.md))
+   - `08. Lembar Kerja Dasar Hitung TPSS Rekalibrasi` ([Dokumen Analisis](docs/08-lk-dasar-hitung-tpss-rekalibrasi.md))
+   - `09. ESENSIAL #1 - Mekanisme Aliran Data & Fitur SPESIAL` ([Notula & Transkrip Lengkap](docs/09-internalisasi-mekanisme-aliran-data-esensial-1.md))
    - `Paparan Kepala BPS Kalbar - Kolaborasi Perumusan Kebijakan Berbasis Data.pptx`
 2. **Subdirektori Pedoman (`Pedoman/`)**:
    - `[Ver 2026] Juknis Pembinaan.pdf`
