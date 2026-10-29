@@ -171,6 +171,8 @@ Seluruh berkas fisik (PDF, pedoman teknis, dan materi presentasi PPTX) telah diu
    - `07. Standar Data Statistik.pdf` ([Transkripsi Markdown Lengkap](docs/07-standar-data-statistik.md))
    - `08. Lembar Kerja Dasar Hitung TPSS Rekalibrasi` ([Dokumen Analisis](docs/08-lk-dasar-hitung-tpss-rekalibrasi.md))
    - `09. ESENSIAL #1 - Mekanisme Aliran Data & Fitur SPESIAL` ([Notula & Transkrip Lengkap](docs/09-internalisasi-mekanisme-aliran-data-esensial-1.md))
+   - `10. Rekapitulasi Realisasi Capaian TPSS Triwulan 3 2026` ([Bedah Indikator & Baseline](docs/10-rekap-capaian-tpss-realisasi-triwulan3-2026.md))
+   - `11. Matriks Akselerasi TPSS 2026 & Mitigasi Aliran Data 103 Slot` ([Strategi Pemenuhan Sisa Waktu](docs/11-matriks-akselerasi-tpss-2026-dan-mitigasi-aliran-data.md))
    - `Paparan Kepala BPS Kalbar - Kolaborasi Perumusan Kebijakan Berbasis Data.pptx`
 2. **Subdirektori Pedoman (`Pedoman/`)**:
    - `[Ver 2026] Juknis Pembinaan.pdf`
