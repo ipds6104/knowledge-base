@@ -345,22 +345,22 @@ def cmd_audit_epss(args):
     print("✅ Seluruh berkas bukti dukung memenuhi kriteria penilaian mandiri SIMBATIK BPS RI.\n")
 
 def cmd_generate_radar(args):
-    """Menghasilkan struktur Matriks Radar Google Sheets untuk 23 OPD & 2 Lokus Utama."""
+    """Menghasilkan struktur Matriks Radar Google Sheets untuk 23 OPD & 2 Lokus Utama (BPKAD & DPMPTSPKUKM)."""
     rows = [
         ["No", "Nama OPD", "Tim Pendamping", "Ketua Pendamping", "Status Lokus EPSS 2028", "Usulan Kegiatan Statistik Baku 2026", "Status Berkas", "Tautan Folder GDrive"],
-        ["1", "Dinas Kesehatan, Pengendalian Penduduk dan KB", "Tim 2", "Ihza", "⭐ LOKUS UTAMA 1 (PRIORITAS TINGGI)", "Kompilasi Data Profil Kesehatan Kabupaten Mempawah Tahun 2026", "🟢 LENGKAP", "drive.google.com/drive/folders/dinkes-epss28"],
-        ["2", "Dinas Perindustrian, Perdagangan dan Tenaga Kerja", "Tim 3", "Listio", "⭐ LOKUS UTAMA 2 (PRIORITAS TINGGI)", "Kompilasi Data Pencari Kerja Terdaftar (AK-1) dan Penempatan Tenaga Kerja Kabupaten Mempawah Tahun 2026", "🟢 LENGKAP", "drive.google.com/drive/folders/disperindag-epss28"],
+        ["1", "Badan Pengelola Keuangan dan Aset Daerah (BPKAD)", "Tim 1", "Sukma (Supervisi: Ihza)", "⭐ LOKUS UTAMA 1 (PIC: ihzakarunia)", "Kompilasi Data Laporan Keuangan Pemerintah Daerah Yang Di Audit Tahun 2026", "🟢 LENGKAP", "drive.google.com/drive/folders/bpkad-epss28"],
+        ["2", "Dinas Penanaman Modal, KUKM dan PTSP (DPMPTSPKUKM)", "Tim 2", "Ihza", "⭐ LOKUS UTAMA 2 (PIC: ihzakarunia)", "Kompilasi Data Realisasi Pelayanan Perizinan Kabupaten Mempawah Tahun 2026", "🟢 LENGKAP", "drive.google.com/drive/folders/dpmptsp-epss28"],
         ["3", "Dinas Komunikasi dan Informatika", "Tim 5", "Aul & Uma", "🏛️ WALIDATA DAERAH", "Pemeriksaan Mutu Data Walidata & Pengelolaan Portal Satu Data Mempawah", "🟢 LENGKAP", "drive.google.com/drive/folders/diskominfo-epss28"],
         ["4", "Badan Perencanaan Pembangunan, Riset dan Inovasi Daerah", "Tim 5", "Aul & Uma", "🏛️ KOORDINATOR FORUM SDI", "Penyusunan Rencana Aksi Satu Data Indonesia Kabupaten Mempawah 2026–2028", "🟢 LENGKAP", "drive.google.com/drive/folders/bapperida-epss28"],
-        ["5", "RSUD dr. Rubini", "Tim 2", "Ihza", "Produsen Data", "Kompilasi Data Pelayanan Rawat Jalan dan Rawat Inap RSUD dr. Rubini 2026", "🟡 DRAFT", "drive.google.com/drive/folders/rsud-epss28"],
-        ["6", "Dinas Sosial, P3APMPD", "Tim 2", "Ihza", "Produsen Data", "Kompilasi Data Pemerlu Pelayanan Kesejahteraan Sosial (PPKS) Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/dinsos-epss28"],
-        ["7", "Dinas Kependudukan dan Pencatatan Sipil", "Tim 2", "Ihza", "Produsen Data", "Kompilasi Data Agregat Kependudukan dan Kepemilikan KIA Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/disdukcapil-epss28"],
-        ["8", "Dinas Pertanian, Ketahanan Pangan dan Perikanan", "Tim 3", "Listio", "Produsen Data (Lokus Cadangan)", "Kompilasi Data Luas Panen dan Produksi Padi Kabupaten Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/dpkp-epss28"],
-        ["9", "Dinas Penanaman Modal, KUKM dan PTSP", "Tim 3", "Listio", "Produsen Data", "Kompilasi Data Realisasi Investasi dan Penerbitan NIB Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/dpmptsp-epss28"],
-        ["10", "Dinas Perhubungan dan Lingkungan Hidup", "Tim 3", "Listio", "Produsen Data", "Kompilasi Data Uji Kelayakan Kendaraan Bermotor (KIR) Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/dishub-epss28"],
-        ["11", "Badan Kepegawaian dan Pengembangan SDM", "Tim 1", "Sukma", "Produsen Data", "Kompilasi Data Profil ASN dan Kebutuhan Diklat Pemkab Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/bkpsdm-epss28"],
-        ["12", "Badan Kesatuan Bangsa dan Politik", "Tim 1", "Sukma", "Produsen Data", "Kompilasi Data Organisasi Kemasyarakatan Terdaftar Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/kesbangpol-epss28"],
-        ["13", "Badan Pengelola Keuangan dan Aset Daerah", "Tim 1", "Sukma", "Produsen Data", "Kompilasi Data Realisasi APBD dan Neraca Aset Daerah Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/bpkad-epss28"],
+        ["5", "Dinas Kesehatan, Pengendalian Penduduk dan KB", "Tim 2", "Ihza", "Produsen Data (Lokus 2024 / Rotasi EPSS)", "Kompilasi Data Profil Kesehatan Kabupaten Mempawah Tahun 2026", "🟢 LENGKAP", "drive.google.com/drive/folders/dinkes-epss28"],
+        ["6", "Dinas Perindustrian, Perdagangan dan Tenaga Kerja", "Tim 3", "Listio", "Produsen Data (Lokus 2024 / Rotasi EPSS)", "Kompilasi Data Pencari Kerja Terdaftar (AK-1) dan Dinamika Harga Bapok 2026", "🟢 LENGKAP", "drive.google.com/drive/folders/disperindag-epss28"],
+        ["7", "Dinas Pertanian, Ketahanan Pangan dan Perikanan", "Tim 3", "Listio", "Produsen Data", "Kompilasi Data Luas Panen dan Produksi Padi Kabupaten Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/dpkp-epss28"],
+        ["8", "RSUD dr. Rubini", "Tim 2", "Ihza", "Produsen Data", "Kompilasi Data Pelayanan Rawat Jalan dan Rawat Inap RSUD dr. Rubini 2026", "🟡 DRAFT", "drive.google.com/drive/folders/rsud-epss28"],
+        ["9", "Dinas Sosial, P3APMPD", "Tim 2", "Ihza", "Produsen Data", "Kompilasi Data Pemerlu Pelayanan Kesejahteraan Sosial (PPKS) Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/dinsos-epss28"],
+        ["10", "Dinas Kependudukan dan Pencatatan Sipil", "Tim 2", "Ihza", "Produsen Data", "Kompilasi Data Agregat Kependudukan dan Kepemilikan KIA Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/disdukcapil-epss28"],
+        ["11", "Dinas Perhubungan dan Lingkungan Hidup", "Tim 3", "Listio", "Produsen Data", "Kompilasi Data Uji Kelayakan Kendaraan Bermotor (KIR) Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/dishub-epss28"],
+        ["12", "Badan Kepegawaian dan Pengembangan SDM", "Tim 1", "Sukma", "Produsen Data", "Kompilasi Data Profil ASN dan Kebutuhan Diklat Pemkab Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/bkpsdm-epss28"],
+        ["13", "Badan Kesatuan Bangsa dan Politik", "Tim 1", "Sukma", "Produsen Data", "Kompilasi Data Organisasi Kemasyarakatan Terdaftar Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/kesbangpol-epss28"],
         ["14", "Badan Pengelola Pajak dan Retribusi Daerah", "Tim 1", "Sukma", "Produsen Data", "Kompilasi Data Penerimaan Pajak Daerah dan Retribusi Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/bpprd-epss28"],
         ["15", "Inspektorat Daerah", "Tim 1", "Sukma", "Produsen Data", "Kompilasi Data Tindak Lanjut Hasil Pengawasan (TLHP) Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/inspektorat-epss28"],
         ["16", "Dinas Pekerjaan Umum dan Penataan Ruang", "Tim 4", "Aller", "Produsen Data", "Kompilasi Data Kondisi Kemantapan Jalan Kabupaten Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/dpupr-epss28"],
@@ -390,19 +390,19 @@ def main():
 
     # Command: generate-kak
     p_kak = subparsers.add_parser("generate-kak", help="Generate KAK resmi ber-klausul batas waktu rilis")
-    p_kak.add_argument("--opd", required=True, help="Nama OPD (contoh: 'Dinas Kesehatan')")
+    p_kak.add_argument("--opd", required=True, help="Nama OPD (contoh: 'BPKAD' atau 'DPMPTSPKUKM')")
     p_kak.add_argument("--kegiatan", required=True, help="Nama Kegiatan Statistik Baku")
-    p_kak.add_argument("--deadline", default="31 Oktober 2026", help="Batas Akhir Waktu Rilis (contoh: '31 Oktober 2026')")
-    p_kak.add_argument("--kadis", default="dr. David V. R. Sianipar, M.Kes", help="Nama Lengkap Kepala Dinas")
-    p_kak.add_argument("--nip", default="19750101 200003 1 001", help="NIP Kepala Dinas")
+    p_kak.add_argument("--deadline", default="31 Agustus 2026", help="Batas Akhir Waktu Rilis (contoh: '31 Agustus 2026' atau '30 November 2026')")
+    p_kak.add_argument("--kadis", default="Kepala BPKAD / DPMPTSPKUKM", help="Nama Lengkap Kepala Dinas/Badan")
+    p_kak.add_argument("--nip", default="19750101 200003 1 001", help="NIP Kepala Dinas/Badan")
     p_kak.add_argument("-o", "--output", help="Jalur file keluaran (.md)")
 
     # Command: generate-netralitas
     p_net = subparsers.add_parser("generate-netralitas", help="Generate Template A Surat Pernyataan Netralitas bermeterai")
     p_net.add_argument("--opd", required=True, help="Nama OPD")
     p_net.add_argument("--kegiatan", required=True, help="Nama Kegiatan Statistik Baku")
-    p_net.add_argument("--kadis", default="Johana Saragih, S.H.", help="Nama Lengkap Kepala Dinas")
-    p_net.add_argument("--nip", default="19720512 199803 2 003", help="NIP Kepala Dinas")
+    p_net.add_argument("--kadis", default="Kepala BPKAD / DPMPTSPKUKM", help="Nama Lengkap Kepala Dinas/Badan")
+    p_net.add_argument("--nip", default="19750101 200003 1 001", help="NIP Kepala Dinas/Badan")
     p_net.add_argument("-o", "--output", help="Jalur file keluaran (.md)")
 
     # Command: generate-analysis

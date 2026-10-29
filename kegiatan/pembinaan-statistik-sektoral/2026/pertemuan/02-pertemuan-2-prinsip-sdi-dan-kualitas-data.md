@@ -113,20 +113,21 @@ Ihza membedah secara jujur catatan Tim Penilai Provinsi EPSS 2026 agar tidak ter
 - Mengunggah draf MS-Var hasil ekspor sheet dan mencetak Bukti Registrasi Metadata.
 
 ### 5.2 Praktik 2: Penyusunan Bukti Akurasi & Uji Konsistensi 2 Lokus Utama (45 Menit)
-- **Lokus 1 (Dinkes-PPKB):**
-  - Bersama Tim 2 (Ihza), operator Dinkes menyusun dokumen:
-    1. *Berita Acara Pemeriksaan Akurasi Data Pelayanan Puskesmas:* Berisi rekapitulasi data dari 14 Puskesmas dan catatan verifikasi uji petik lapangan (*ground check*) di Puskesmas Mempawah Hilir dan Sungai Pinyuh.
-    2. *Lembar Uji Konsistensi Data:* Memadankan variabel **Jumlah Kunjungan Balita ke Posyandu (K4)** dengan **Cakupan Penimbangan Balita (D/S)**.
-- **Lokus 2 (Disperindagnaker):**
-  - Bersama Tim 3 (Listio), operator Disperindag menyusun dokumen:
-    1. *Berita Acara Rekonsiliasi Data AK-1 Pencari Kerja:* Sandingan register fisik loket pelayanan naker vs rekapitulasi digital bulanan.
-    2. *Lembar Uji Konsistensi Data Tenaga Kerja:* Memadankan variabel **Jumlah Pencari Kerja Terdaftar** dengan **Jumlah Penempatan Tenaga Kerja Antarkerja Antardaerah (AKAD/AKAL)**.
+- **Lokus 1 (BPKAD - PIC: ihzakarunia):**
+  - Bersama Tim 1 (Sukma & Ihza), operator BPKAD menyusun dokumen:
+    1. *Berita Acara Pemeriksaan Akurasi Data Keuangan Daerah:* Berisi rekonsiliasi data realisasi anggaran seluruh SKPD dengan Rekening Kas Umum Daerah (RKUD) dan Laporan Hasil Pemeriksaan (LHP) BPK RI ter-audit.
+    2. *Lembar Uji Konsistensi Data Keuangan:* Memadankan variabel **Realisasi Pendapatan Asli Daerah (PAD)** dengan **Realisasi Belanja Modal Pembangunan** (korelasi searah logis kapasitas fiskal daerah).
+- **Lokus 2 (DPMPTSPKUKM - PIC: ihzakarunia):**
+  - Bersama Tim 2 (Ihza), operator DPMPTSPKUKM menyusun dokumen:
+    1. *Berita Acara Rekonsiliasi Data Perizinan:* Sandingan data transaksi sistem OSS-RBA Kementerian Investasi/BKPM vs register pelayanan izin non-berusaha SiCANTIK Cloud dan loket fisik PTSP Mempawah.
+    2. *Lembar Uji Konsistensi Data Perizinan & Investasi:* Memadankan variabel **Jumlah Penerbitan NIB Usaha Mikro Kecil (UMK)** dengan **Nilai Realisasi Investasi PMDN Sektor UMKM**.
 - **Eksekusi Generator Otomasi:**
   ```bash
   python3 scripts/kb_pss_automation.py generate-consistency \
-    --opd "Dinas Kesehatan" \
-    --variabel "Cakupan Imunisasi Dasar vs Penurunan Kasus PD3I" \
-    --output Berkas_Uji_Konsistensi_Dinkes.md
+    --opd "DPMPTSPKUKM" \
+    --var1 "Jumlah Penerbitan NIB UMK via OSS" \
+    --var2 "Nilai Realisasi Investasi PMDN" \
+    --output Berkas_Uji_Konsistensi_DPMPTSP.md
   ```
 
 ---
@@ -137,9 +138,9 @@ Ihza membedah secara jujur catatan Tim Penilai Provinsi EPSS 2026 agar tidak ter
    Mengunci **Indikator 10101 pada Level 4/5**.
 2. **Tanda Bukti Registrasi Metadata Variabel (MS-Var) di Portal INDAH BPS:**  
    Mengunci **Indikator 10201 pada Level 4**.
-3. **Laporan 4 Tahap Pengujian Akurasi Data + Berita Acara Sampling Ground Check (Dinkes & Disperindag):**  
+3. **Laporan 4 Tahap Pengujian Akurasi Data + Berita Acara Sampling Ground Check (BPKAD & DPMPTSPKUKM):**  
    Mengunci **Indikator 20201 pada Level 4**.
-4. **Lembar Hasil Uji Konsistensi Internal Logis Searah (Dinkes & Disperindag):**  
+4. **Lembar Hasil Uji Konsistensi Internal Logis Searah (BPKAD & DPMPTSPKUKM):**  
    Mengunci **Indikator 20502 pada Level 4**.
 5. **Paket Dokumentasi Lengkap Sesi 2:**  
    Presensi 37 peserta, Notula, Foto Dokumentasi Irfan, dan Bukti Juara Kahoot Vaniya.
@@ -147,5 +148,5 @@ Ihza membedah secara jujur catatan Tim Penilai Provinsi EPSS 2026 agar tidak ter
 ---
 
 ## 📌 7. Arahan Menuju Pertemuan 3 (Rabu, 11 November 2026)
-1. Operator Lokus Dinkes dan Disperindag membawa tabel data deret waktu (*time-series*) 5 tahun terakhir (2021–2025) untuk diolah menjadi publikasi analitis berbantuan AI.
+1. Operator Lokus BPKAD dan DPMPTSPKUKM membawa tabel data deret waktu (*time-series*) 5 tahun terakhir (2021–2025) untuk diolah menjadi publikasi analitis berbantuan AI.
 2. Membawa nomor DPA / SK Tim Pelaksana Kegiatan untuk penyusunan KAK berstandar ROMANTIK BPS bersama Kak Aul.

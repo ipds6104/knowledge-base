@@ -384,9 +384,11 @@ Nomor: ... / BA-FORUM-SDI / 2026
 
 Pada hari ini, ................ tanggal ..... bulan ............... tahun 2026, bertempat di Aula Bapperida Kabupaten Mempawah, telah disepakati DAFTAR DATA PRIORITAS DAERAH TAHUN 2026:
 
-1. Dinas Kesehatan, PPKB: Data Profil Kesehatan dan Prevalensi Stunting (Jadwal Rilis: Oktober 2026).
-2. Disperindagnaker: Data Pendaftaran Pencari Kerja dan Penempatan Tenaga Kerja (Jadwal Rilis: Oktober 2026).
+1. Badan Pengelola Keuangan dan Aset Daerah (BPKAD): Kompilasi Data Laporan Keuangan Pemerintah Daerah Yang Di Audit Tahun 2026 (Jadwal Rilis: 31 Agustus 2026 - Lokus Utama 1).
+2. Dinas Penanaman Modal, KUKM dan PTSP (DPMPTSPKUKM): Kompilasi Data Realisasi Pelayanan Perizinan Kabupaten Mempawah Tahun 2026 (Jadwal Rilis: 30 November 2026 - Lokus Utama 2).
 3. Dinas Pertanian, KPP: Data Luas Panen dan Produksi Tanaman Pangan (Jadwal Rilis: November 2026).
+4. Dinas Kesehatan, PPKB: Data Profil Kesehatan dan Prevalensi Stunting (Jadwal Rilis: Oktober 2026).
+5. Disperindagnaker: Data Pendaftaran Pencari Kerja dan Penempatan Tenaga Kerja (Jadwal Rilis: Oktober 2026).
 [... Daftar Lengkap 50+ Dataset Terlampir ...]
 
 Seluruh produsen data wajib mematuhi 4 Prinsip SDI dan mengajukan Rekomendasi Statistik (ROMANTIK).

@@ -58,7 +58,7 @@ flowchart LR
 | 08.40 – 09.10 | 30 Mnt | **Paparan Materi: Identifikasi Kegiatan Statistik Sektoral** (Slide Ringkas & Lugas) | **Ihza** (Operator: Akma) |
 | 09.10 – 09.15 | 5 Mnt | **Ice-Breaking: Kuis Kahoot Interaktif Sesi 1** (Hadiah Rp40.000 untuk 1 Pemenang) | Akma & Vaniya |
 | 09.15 – 10.35 | 80 Mnt | **SESI SPESIAL KAWALAN IHZA: Live Action Lab Google Sheets & Docs**<br>• Pembagian tautan QR Code Google Sheets "Radar EPSS Mempawah"<br>• Pendampingan serentak 23 OPD oleh 5 Tim BPS<br>• Pengisian Form 1-Lembar Inventarisasi Kegiatan Statistik | **Ihza** & 5 Tim Pendamping (Sukma, Ihza, Listio, Aller, Aul) |
-| 10.35 – 11.15 | 40 Mnt | **Bedah 1 Contoh Nyata & Pleno Penetapan 2 Lokus Emas EPSS 2028:**<br>• Live demo pengisian dossier Profil Kesehatan Dinkes di Google Docs<br>• Pleno penetapan Dinkes-PPKB & Disperindagnaker sebagai Lokus Emas | Ihza, Walidata Diskominfo, & Bapperida |
+| 10.35 – 11.15 | 40 Mnt | **Bedah 1 Contoh Nyata & Pleno Penetapan 2 Lokus Emas EPSS 2028:**<br>• Live demo pengisian dossier Pelayanan Perizinan DPMPTSPKUKM di Google Docs<br>• Pleno pengesahan BPKAD & DPMPTSPKUKM sebagai 2 Lokus Emas Resmi Terdaftar BPS | Ihza, Walidata Diskominfo, & Bapperida |
 | 11.15 – 11.30 | 15 Mnt | Penandatanganan Berita Acara Penetapan Lokus, foto bersama, & arahan Sesi 2 | Vaniya, Irfan (Foto), & Sukma |
 
 ---
@@ -75,24 +75,27 @@ Ihza memaparkan materi inti menggunakan slide padat (maksimal 6 slide), bahasa m
 ### Slide 2: Mengenal 3 Cara Pengumpulan Statistik Sektoral
 - **Survei:** Mengambil sebagian sampel responden (misal: Survei Kepuasan Pasien di RSUD dr. Rubini).
 - **Sensus:** Mencacah seluruh populasi target tanpa kecuali (misal: Pendataan seluruh pabrik industri di Mempawah).
-- **Kompilasi Produk Administrasi (KOMPROMIN):** Mengolah dan merekapitulasi buku register pelayanan harian dinas menjadi data agregat tahunan (misal: Kompilasi Profil Kesehatan dari puskesmas, Kompilasi Data AK-1 Pencari Kerja).  
+- **Kompilasi Produk Administrasi (KOMPROMIN):** Mengolah dan merekapitulasi buku register pelayanan harian dinas menjadi data agregat tahunan (misal: Kompilasi Realisasi Pelayanan Perizinan OSS-RBA, Kompilasi LKPD Pemda).  
   > *Catatan Emas:* **90% kegiatan statistik di OPD Pemkab Mempawah adalah Kompromin!**
 
 ### Slide 3: Formula Baku Penulisan Judul Kegiatan Statistik (Standar BPS)
 Banyak judul kegiatan OPD ditolak BPS karena rancu dengan nomenklatur kegiatan anggaran. Gunakan rumus baku 4 elemen:
 $$\mathbf{[Cara\ Pengumpulan]} + \mathbf{[Objek\ Data]} + \mathbf{[Cakupan\ Wilayah]} + \mathbf{[Tahun]}$$
-- *Contoh Salah:* Kegiatan Pelayanan Kesehatan Masyarakat (Ini nama program APBD, bukan nama data!).
-- *Contoh Benar 1:* **Kompilasi Data Profil Kesehatan Kabupaten Mempawah Tahun 2026** (Dinkes).
-- *Contoh Benar 2:* **Kompilasi Data Pencari Kerja Terdaftar dan Penempatan Tenaga Kerja Kabupaten Mempawah Tahun 2026** (Disperindagnaker).
+- *Contoh Salah:* Pelayanan Perizinan Satu Pintu Terpadu (Ini nama seksi dinas / nama program APBD, bukan nama data!).
+- *Contoh Benar 1:* **Kompilasi Data Laporan Keuangan Pemerintah Daerah Yang Di Audit Tahun 2026** (BPKAD).
+- *Contoh Benar 2:* **Kompilasi Data Realisasi Pelayanan Perizinan Kabupaten Mempawah Tahun 2026** (DPMPTSPKUKM).
 
-### Slide 4: Doktrin "2 Lokus Utama dari 23 OPD" Menuju Nilai Maksimal
+### Slide 4: Aturan Rotasi Lokus & Doktrin "2 Lokus Utama dari 23 OPD"
 - BPS RI dalam penilaian EPSS hanya mengambil sampel **2 Kegiatan Statistik Sektoral** dari Pemerintah Daerah.
-- Seluruh 23 OPD hari ini kita bina agar tertib administrasi dan paham Satu Data Indonesia.
-- Namun, energi pengawalan berkas tebal akan kita fokuskan pada **2 OPD Lokus Utama (Golden Lokus)** agar nilai bukti dukungnya tembus Skor 4 dan 5 sempurna!
+- **Aturan Rotasi EPSS:** Dinas Kesehatan dan Disperindagnaker telah dinilai pada data 2024 sehingga tidak boleh diulang berturut-turut pada 2026.
+- Oleh karena itu, BPS Kabupaten Mempawah secara resmi menetapkan dan mendaftarkan 2 lokus baru di sistem BPS wilayah 6104 (dengan PIC `ihzakarunia`):
+  1. **BPKAD:** Akuntabilitas Keuangan, Neraca Aset, & Realisasi APBD Audited.
+  2. **DPMPTSPKUKM:** Realisasi Investasi PMA/PMDN, Perizinan Berusaha OSS-RBA, & Koperasi UKM.
+- Seluruh 23 OPD dibina literasinya, tetapi energi pengawalan berkas tebal difokuskan 100% pada **2 OPD Lokus Utama** ini agar nilai bukti dukungnya tembus Skor 4 dan 5 sempurna!
 
 ### Slide 5: Kriteria Pemilihan 2 Lokus Utama
-1. **Dukungan Prioritas Daerah:** Mendukung Indikator Kinerja Utama (IKU) Bupati atau target RPJMD (misal: Penurunan Stunting, Penyerapan Tenaga Kerja, Pengendalian Inflasi).
-2. **Keteraturan & Rutinitas:** Diterbitkan secara berkala setiap tahun dan memiliki rekapitulasi data historis minimal 3–5 tahun terakhir.
+1. **Dukungan Prioritas Daerah:** Mendukung Indikator Kinerja Utama (IKU) Bupati (WTP BPK RI, Realisasi Investasi, & Kemudahan Berusaha).
+2. **Keteraturan & Rutinitas:** Bersumber dari sistem administrasi resmi (LKPD ter-audit BPK RI dan Sistem OSS-RBA/SiCANTIK Cloud).
 3. **Cakupan Wilayah:** Mencakup seluruh 9 kecamatan di Kabupaten Mempawah.
 4. **Komitmen Pimpinan & Operator:** Siap menandatangani KAK, SOP, dan Surat Pernyataan Netralitas bersama BPS.
 
@@ -128,26 +131,26 @@ Inilah sesi inti di mana Ihza mengambil alih panggung dan menggerakkan seluruh 2
 
 ### 5.2 Pendampingan Serentak oleh 5 Tim BPS (40 Menit)
 Setiap tim mendampingi 4–5 OPD dampingannya untuk mengisi Form 1-Lembar LK-01 langsung di Google Sheets:
-- **Tim 1 (Sukma & Nadya):** Mendampingi BKPSDM, Bakesbangpol, BPKAD, BPPRD, dan Inspektorat.
-- **Tim 2 (Ihza & Magang 1):** Mendampingi **Dinkes-PPKB (Lokus 1)**, RSUD dr. Rubini, Dinsos-P3APMPD, dan Disdukcapil.
-- **Tim 3 (Listio & Irfan):** Mendampingi **Disperindagnaker (Lokus 2)**, DPMPTSP-KUKM, DPKP (Pertanian), dan Dishub-LH.
+- **Tim 1 (Sukma & Nadya - Supervisi: Ihza):** Mendampingi **BPKAD (LOKUS 1 - PIC: ihzakarunia)**, BKPSDM, Bakesbangpol, BPPRD, dan Inspektorat.
+- **Tim 2 (Ihza & Magang 1):** Mendampingi **DPMPTSPKUKM (LOKUS 2 - PIC: ihzakarunia)**, Dinas Kesehatan (Eks-Lokus 2024), RSUD dr. Rubini, Dinsos-P3APMPD, dan Disdukcapil.
+- **Tim 3 (Listio & Irfan):** Mendampingi Disperindagnaker (Eks-Lokus 2024), DPMPTSP-KUKM, Dinas Pertanian (DPKP), dan Dishub-LH.
 - **Tim 4 (Aller & Rara):** Mendampingi DPUPR, BPBD, Satpol PP, Dispersip, dan Setwan.
 - **Tim 5 (Aul & Uma):** Mendampingi Bapperida, Diskominfo, Disdikporapar, dan Setda.
 
 ### 5.3 Live Typed Demonstration: Bedah 1 Contoh Nyata di Google Docs (40 Menit)
-- Ihza membuka file Google Docs Master di proyektor: **"Dossier Bukti Dukung: Kompilasi Data Profil Kesehatan Kabupaten Mempawah 2026"**.
-- Ihza memandu operator Dinkes (dan disaksikan seluruh 22 OPD lainnya) cara mengisi komponen penting:
-  1. *Menulis Identitas Variabel Utama:* Jumlah Balita Stunting, Angka Kematian Ibu, Cakupan Imunisasi Dasar Lengkap.
-  2. *Menyusun Alur Pengumpulan Data Rutin dari Puskesmas.*
-  3. *Menetapkan Jadwal Rilis Diseminasi Resmi (ARC):* Dikunci pada 31 Oktober 2026.
+- Ihza membuka file Google Docs Master di proyektor: **"Dossier Bukti Dukung: Kompilasi Data Realisasi Pelayanan Perizinan Kabupaten Mempawah Tahun 2026 (DPMPTSPKUKM)"**.
+- Ihza memandu operator DPMPTSPKUKM dan BPKAD (dan disaksikan seluruh 21 OPD lainnya) cara mengisi komponen penting:
+  1. *Menulis Identitas Variabel Utama:* Jumlah NIB Terbit via OSS-RBA, Realisasi Investasi PMDN/PMA, dan Realisasi APBD/Aset.
+  2. *Menyusun Alur Pengumpulan Data Rutin dari Sistem OSS / Aplikasi SiCANTIK Cloud dan Laporan Keuangan SKPD.*
+  3. *Menetapkan Jadwal Rilis Diseminasi Resmi (ARC):* Dikunci pada 31 Agustus 2026 (BPKAD) dan 30 November 2026 (DPMPTSPKUKM).
 - Menunjukkan bahwa proses ini **tidak rumit dan tidak memakan waktu lama** jika menggunakan template standar BPS.
 
 ### 5.4 Pleno Kilat Pengesahan 2 Lokus Utama Calon EPSS 2028 (20 Menit)
-BPS Mempawah bersama Dinas Kominfo (Walidata) dan Bapperida menetapkan secara resmi 2 Lokus Utama:
-1. **Lokus Utama 1:** **Dinas Kesehatan, Pengendalian Penduduk dan KB (Dinkes-PPKB)**  
-   *Nama Kegiatan:* **Kompilasi Data Profil Kesehatan Kabupaten Mempawah Tahun 2026**
-2. **Lokus Utama 2:** **Dinas Perindustrian, Perdagangan, dan Tenaga Kerja (Disperindagnaker)**  
-   *Nama Kegiatan:* **Kompilasi Data Pencari Kerja Terdaftar (AK-1) dan Penempatan Tenaga Kerja Kabupaten Mempawah Tahun 2026**
+BPS Mempawah bersama Dinas Kominfo (Walidata) dan Bapperida menetapkan secara resmi 2 Lokus Utama yang telah terdaftar di sistem BPS:
+1. **Lokus Utama 1:** **Badan Pengelola Keuangan dan Aset Daerah (BPKAD)**  
+   *Nama Kegiatan:* **Kompilasi Data Laporan Keuangan Pemerintah Daerah Yang Di Audit Tahun 2026** (Kompromin - PIC: `ihzakarunia`)
+2. **Lokus Utama 2:** **Dinas Penanaman Modal, Koperasi UKM dan Pelayanan Terpadu Satu Pintu (DPMPTSPKUKM)**  
+   *Nama Kegiatan:* **Kompilasi Data Realisasi Pelayanan Perizinan Kabupaten Mempawah Tahun 2026** (Kompromin - PIC: `ihzakarunia`)
 
 ---
 
@@ -156,7 +159,7 @@ BPS Mempawah bersama Dinas Kominfo (Walidata) dan Bapperida menetapkan secara re
 1. **Rekapitulasi Inventarisasi Kegiatan Statistik Sektoral 23 OPD di Google Sheets:**  
    Menjadi bukti fisik mutlak untuk **Indikator 20102** (Identifikasi Kebutuhan Data) dan **30101** (Pendefinisian Kebutuhan Statistik).
 2. **Berita Acara Penetapan 2 Kegiatan Prioritas Calon Lokus EPSS 2028:**  
-   Ditandatangani oleh Kepala BPS, Kadiskominfo, Kepala Bapperida, Kadinkes, dan Kadisperindag. Mengunci **Indikator 20101** (Relevansi Data) dan **40301** (Kerja Sama Sektoral).
+   Ditandatangani oleh Kepala BPS, Kadiskominfo, Kepala Bapperida, Kepala BPKAD, dan Kepala DPMPTSPKUKM. Mengunci **Indikator 20101** (Relevansi Data) dan **40301** (Kerja Sama Sektoral).
 3. **Dokumentasi Lengkap Sesi 1 untuk Portal SPESIAL:**  
    Undangan, Daftar Hadir (37 peserta fisik), Notula Rapat resmi, Slide Materi Ihza, Hasil Tangkapan Layar Kuis Kahoot (Juara 1), dan Foto Dokumentasi oleh Irfan.
 

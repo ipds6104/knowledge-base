@@ -64,7 +64,7 @@ flowchart LR
 | 08.40 – 09.15 | 35 Mnt | **Paparan Materi: Proses Bisnis Statistik (GSBPM) & Standar KAK Ber-Rekomendasi BPS** | **Aul** (Operator: Akma) |
 | 09.15 – 09.20 | 5 Mnt | **Ice-Breaking: Kuis Kahoot Interaktif Sesi 3** (Hadiah Rp40.000 untuk Juara 1) | Akma & Vaniya |
 | 09.20 – 10.15 | 55 Mnt | **WORKSHOP 1: Penyusunan KAK Plug-and-Play Ber-klausul Batas Rilis Resmi**<br>• Pengisian template KAK standar BPS di Google Docs<br>• Pengisian draf instrumen ROMANTIK BPS (FS3) | Aul, Sukma, Listio, Aller, & Uma |
-| 10.15 – 11.15 | 60 Mnt | **WORKSHOP 2 (KAWALAN IHZA): AI-Driven Descriptive Analytics Engine**<br>• Input data time-series 5 tahun 2 Lokus Emas (Dinkes & Disperindag)<br>• Eksekusi tool AI Generator (`scripts/kb_pss_automation.py`)<br>• Pembentukan naskah Bab III Analisis Deskriptif Lengkap 4 Subbab | **Ihza** & Tim 2 (Dinkes) serta Tim 3 (Disperindag) |
+| 10.15 – 11.15 | 60 Mnt | **WORKSHOP 2 (KAWALAN IHZA): AI-Driven Descriptive Analytics Engine**<br>• Input data time-series 5 tahun 2 Lokus Emas (BPKAD & DPMPTSPKUKM)<br>• Eksekusi tool AI Generator (`scripts/kb_pss_automation.py`)<br>• Pembentukan naskah Bab III Analisis Deskriptif Lengkap 4 Subbab | **Ihza** & Tim 1 (BPKAD) serta Tim 2 (DPMPTSPKUKM) |
 | 11.15 – 11.30 | 15 Mnt | Penandatanganan KAK oleh operator/pejabat, pengesahan draf rekomendasi, & penutupan | Aul, Ihza, & Sukma |
 
 ---
@@ -86,11 +86,11 @@ Aul memaparkan standar baku internasional GSBPM (*Generic Statistical Business P
 ### Slide 3: Kunci Sukses KAK: Klausul Batas Rilis Diseminasi Resmi
 - Kesalahan fatal Mempawah di masa lalu: KAK tidak mencantumkan kapan buku profil harus terbit, atau jarak rilisnya molor setahun lebih dari pengumpulan data.
 - Mulai hari ini, setiap KAK OPD wajib menyematkan **Klausul Mengikat:**
-  > *"Penyelenggara menjamin publikasi data diseminasi akan diterbitkan dan dapat diakses publik selambat-lambatnya tanggal **30 November 2026** (atau selambat-lambatnya 6 bulan setelah berakhirnya periode pencacahan/kompilasi data)."*
+  > *"Penyelenggara menjamin publikasi data diseminasi akan diterbitkan dan dapat diakses publik selambat-lambatnya tanggal **31 Agustus 2026 (BPKAD)** / **30 November 2026 (DPMPTSPKUKM)** (atau selambat-lambatnya 6 bulan setelah berakhirnya periode pencacahan/kompilasi data)."*
 - Klausul ini langsung mengunci **Indikator 20301 (Aktualitas)** dan **20302 (Ketepatan Waktu)**!
 
 ### Slide 4: Mengapa Indikator 30302 (Analisis Data) Anjlok ke Skor 1 di 2026?
-- Di pleno 2026, buku profil kesehatan dan ketenagakerjaan Mempawah dinilai TPB **hanya berupa kompilasi tabel angka** (*tabel buta*).
+- Di pleno 2026, buku profil data dinas Mempawah dinilai TPB **hanya berupa kompilasi tabel angka** (*tabel buta*).
 - Syarat Level 4/5 EPSS: Publikasi harus memiliki **ulasan naratif** yang menjelaskan:
   1. Tren perubahan angka selama 3–5 tahun terakhir (naik/turun berapa persen).
   2. Perbandingan spasial antar-kecamatan (kecamatan mana tertinggi dan terendah).
@@ -123,24 +123,23 @@ Operator OPD tidak perlu panik harus menulis esai statistik puluhan lembar. BPS 
   - Mengisi Nama Program APBD / DPA 2026.
   - Mengisi Judul Baku Kegiatan Statistik.
   - Memilih Cara Pengumpulan (Kompromin / Survei).
-  - Mengunci Klausul Batas Rilis: **31 Oktober 2026 (Dinkes)** dan **30 November 2026 (Disperindag)**.
+  - Mengunci Klausul Batas Rilis: **31 Agustus 2026 (BPKAD)** dan **30 November 2026 (DPMPTSPKUKM)**.
 - Menghasilkan naskah KAK resmi siap dicetak dan ditandatangani Kepala OPD.
 
 ### 5.2 Workshop 2 (Kawalan Ihza): AI-Driven Analytics Generator (Ihza - 60 Menit)
 Ihza mendemonstrasikan secara langsung cara kerja generator AI kepada seluruh peserta:
-1. Operator Dinkes dan Disperindag menyalin tabel angka historis 5 tahun ke dalam format tabel sederhana.
+1. Operator BPKAD dan DPMPTSPKUKM menyalin tabel angka historis 5 tahun ke dalam format tabel sederhana.
 2. Ihza menjalankan perintah otomasi CLI:
    ```bash
    python3 scripts/kb_pss_automation.py generate-analysis \
-     --opd "Dinas Kesehatan" \
-     --judul "Profil Kesehatan Ibu dan Anak Kabupaten Mempawah Tahun 2026" \
-     --data-csv /root/projects/knowledge-base/kegiatan/evaluasi-epss/2026/data_dinkes_5th.csv \
-     --output Bab3_Analisis_Deskriptif_Dinkes.md
+     --opd "DPMPTSPKUKM" \
+     --kegiatan "Kompilasi Data Realisasi Pelayanan Perizinan Kabupaten Mempawah Tahun 2026" \
+     --output Bab3_Analisis_Perizinan_DPMPTSP.md
    ```
 3. Dalam hitungan detik, naskah Bab III Analisis Deskriptif tersusun lengkap dengan 4 subbab:
-   - **Subbab 3.1:** Analisis Perkembangan & Tren Historis 5 Tahun (disertai perhitungan pertumbuhan tahunan).
-   - **Subbab 3.2:** Disagregasi Spasial Antar-Kecamatan (pemetaan zona prioritas 9 kecamatan Mempawah).
-   - **Subbab 3.3:** Ulasan Faktor Determinan Sebab-Akibat.
+   - **Subbab 3.1:** Analisis Perkembangan & Tren Historis 5 Tahun (pertumbuhan NIB OSS / Realisasi LKPD).
+   - **Subbab 3.2:** Disagregasi Spasial Antar-Kecamatan (sebaran unit usaha dan realisasi belanja per wilayah).
+   - **Subbab 3.3:** Ulasan Faktor Determinan Sebab-Akibat (dampak proyek strategis smelter Sungai Kunyit & efisiensi perizinan OSS).
    - **Subbab 3.4:** Rekomendasi Kebijakan Konkret bagi Pimpinan Pemkab Mempawah.
 4. Naskah langsung disalin ke draf dokumen publikasi dinas di Google Docs bersama.
 
@@ -148,7 +147,7 @@ Ihza mendemonstrasikan secara langsung cara kerja generator AI kepada seluruh pe
 
 ## 📦 6. Deliverables Bukti Fisik yang Dihasilkan pada Sesi 3
 
-1. **Dokumen KAK Final 2 Lokus Utama (Dinkes & Disperindag) Ber-klausul Batas Rilis Diseminasi:**  
+1. **Dokumen KAK Final 2 Lokus Utama (BPKAD & DPMPTSPKUKM) Ber-klausul Batas Rilis Diseminasi:**  
    Mengunci **Indikator 20301 (Aktualitas)**, **20302 (Ketepatan Waktu)**, dan **50301 (Perencanaan Statistik)** pada Level 4.
 2. **Draf Pengajuan Surat Rekomendasi Statistik Layak (ROMANTIK BPS):**  
    Mengunci **Indikator 50201 pada Level 4/5**.

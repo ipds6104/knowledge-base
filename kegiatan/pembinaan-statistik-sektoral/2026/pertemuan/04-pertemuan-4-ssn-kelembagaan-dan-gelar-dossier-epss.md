@@ -114,12 +114,12 @@ Aller membedah 2 indikator kelembagaan yang menjadi ganjalan di evaluasi masa la
 
 ### 5.1 Pengisian Quality Gate Walidata & Penandatanganan Pakta Netralitas (50 Menit)
 1. **Diskominfo sebagai Walidata Daerah (Template B):**
-   - Tim Diskominfo (4 personil) bersama Tim 5 BPS memeriksa draf publikasi Profil Kesehatan (Dinkes) dan Profil Naker/Bapok (Disperindag).
+   - Tim Diskominfo (4 personil) bersama Tim 5 BPS memeriksa draf publikasi LKPD Audited 2026 (BPKAD) dan Realisasi Pelayanan Perizinan 2026 (DPMPTSPKUKM).
    - Mengisi Checklist Mutu: Kesesuaian SDS (Ada), Kesesuaian Metadata (Ada), Interoperabilitas (Format .csv siap), Kode Referensi Kemendagri (Sesuai), dan Jadwal Rilis (Tepat Waktu).
    - Penandatanganan Berita Acara Quality Gate oleh Kepala Diskominfo Mempawah.
 2. **Penjaminan Netralitas Kepala OPD (Template A):**
-   - Menempelkan meterai Rp10.000 pada draf Surat Pernyataan Netralitas Dinkes dan Disperindag.
-   - Ditandatangani resmi oleh Kepala OPD untuk menjamin pengumpulan data bebas intervensi.
+   - Menempelkan meterai Rp10.000 pada draf Surat Pernyataan Netralitas BPKAD dan DPMPTSPKUKM.
+   - Ditandatangani resmi oleh Kepala BPKAD dan Kepala DPMPTSPKUKM untuk menjamin integritas angka bebas intervensi.
 
 ### 5.2 Simulasi Sidang Pleno Forum SDI Mempawah 2026 (30 Menit)
 - BPS Mempawah, Bapperida, Diskominfo, dan seluruh 23 OPD memformalkan kesepakatan:
@@ -130,7 +130,7 @@ Aller membedah 2 indikator kelembagaan yang menjadi ganjalan di evaluasi masa la
 ### 5.3 SESI SPESIAL GELAR PASUKAN KAWALAN IHZA: Zero-Gap Audit & Simulasi Skor Akhir (40 Menit)
 Ihza memimpin review komprehensif di depan seluruh hadirin melalui layar proyektor aula:
 1. **Pengecekan Dashboard Google Sheets "Radar EPSS Mempawah 2026–2028":**
-   - Menunjukkan bahwa tab **Lokus 1 (Dinkes)** dan **Lokus 2 (Disperindag)** telah memiliki **100% lampu indikator HIJAU** (seluruh 38 indikator telah memiliki tautan dokumen fisik/digital di Google Drive).
+   - Menunjukkan bahwa tab **Lokus 1 (BPKAD)** dan **Lokus 2 (DPMPTSPKUKM)** telah memiliki **100% lampu indikator HIJAU** (seluruh 38 indikator telah memiliki tautan dokumen fisik/digital di Google Drive).
    - Menunjukkan bahwa seluruh 23 OPD telah memiliki nama kegiatan baku dan kamus standar data.
 2. **Eksekusi Mesin Audit EPSS (`scripts/kb_pss_automation.py`):**
    ```bash
