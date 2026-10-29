@@ -22,9 +22,16 @@
 
 ---
 
-## 🎯 1. Target Kinerja Sesi 1 & Bukti Dukung EPSS Terkunci
+## 🎯 1. Target Kinerja Sesi 1: Dual Impact (TPSS 2026 x EPSS 2028)
 
-Pertemuan 1 meletakkan fondasi seluruh kegiatan statistik daerah dan mengunci indikator kunci EPSS:
+Pertemuan 1 meletakkan fondasi kegiatan statistik daerah dan mengunci indikator kunci secara simultan:
+
+### A. Penguncian Indikator IKU TPSS BPS Mempawah (Menuju Target Satker 99.09)
+- **Indikator U231 (Materi Wajib SDI):** Langsung bernilai **100% (Membuka Poin Penuh)** begitu paparan Mbak Uma disajikan.
+- **Indikator U241 & U242 (Keterlibatan Walidata & Produsen Data):** Langsung bernilai **100%** dengan hadirnya 4 tim Diskominfo dan 23 operator OPD di MCC.
+- **Poin Kenaikan TPSS:** Bertambah **+6.00%**, mengerek posisi TPSS dari **67.71% menjadi 73.71%** (memangkas defisit menuju target **99.09**).
+
+### B. Penguncian Bukti Dukung EPSS Pemkab Mempawah 2028
 - **Indikator 10101 & 10201 (SDI & Metadata - Target Level 4):** Pemahaman 4 Prinsip SDI dan inisiasi Standar Data & Metadata INDAH BPS.
 - **Indikator 20101 (Relevansi Data - Target Level 4):** Berita Acara Penetapan 2 Kegiatan Prioritas Baru (BPKAD & DPMPTSPKUKM) yang selaras dengan IKU Kepala Daerah.
 - **Indikator 20102 (Identifikasi Kebutuhan Data - Target Level 4):** Dokumen inventarisasi kebutuhan data rutin dari 23 tenaga entri data OPD.

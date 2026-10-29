@@ -15,11 +15,12 @@
 - Konsumsi Snack: Rp2.720.000 (17.000 × 40 porsi × 4 pertemuan)
 - Hadiah Kuis Kahoot Interaktif: Rp160.000 (Maksimal Rp40.000 per pertemuan / 1 pemenang per sesi)
 
-**Target Evaluasi:** Evaluasi Penyelenggaraan Statistik Sektoral (EPSS) Tahun 2028 (Predikat **SANGAT BAIK**, Proyeksi IPS $\ge \mathbf{3.970}$)
+**Target Kinerja Satker BPS Mempawah:** Indikator Kinerja Utama (IKU) TPSS 2026 Target Wajib **99.09** (Mengejar Defisit -31.38 Poin dari Baseline TW III: **67.71%**)  
+**Target Kinerja Pemkab Mempawah:** Evaluasi Penyelenggaraan Statistik Sektoral (EPSS) Tahun 2028 (Predikat **SANGAT BAIK**, Proyeksi IPS $\ge \mathbf{3.970}$)  
 
 ---
 
-## 📌 1. Urgensi & Filosofi Strategi: "2 Lokus Utama dari 23 OPD"
+## 📌 1. Urgensi & Filosofi Strategi: "Dual Engine (TPSS 99.09 x EPSS IPS 3.970) & 2 Lokus Utama"
 
 ### 1.1 Realita Penilaian EPSS & Aturan Rotasi Lokus Sektoral
 Berdasarkan Peraturan BPS No. 3 Tahun 2022 tentang Tata Kelola Evaluasi Penyelenggaraan Statistik Sektoral (EPSS), Tim Penilai Badan (TPB) BPS RI dan BPS Provinsi **hanya menilai 2 (dua) Kegiatan Statistik Sektoral** yang diselenggarakan oleh Pemerintah Daerah sebagai sampel lokus evaluasi domain hulu-ke-hilir (Domain 1 Prinsip SDI, Domain 2 Kualitas Data, dan Domain 3 Proses Bisnis Statistik).
@@ -33,6 +34,25 @@ Berdasarkan Peraturan BPS No. 3 Tahun 2022 tentang Tata Kelola Evaluasi Penyelen
 >    *Kegiatan:* **Kompilasi Data Laporan Keuangan Pemerintah Daerah Yang Di Audit Tahun 2026** (Kompromin).
 > 2. **Dinas Penanaman Modal, Koperasi UKM dan PTSP (DPMPTSPKUKM):**  
 >    *Kegiatan:* **Kompilasi Data Realisasi Pelayanan Perizinan Kabupaten Mempawah Tahun 2026** (Kompromin).
+
+### 1.2 Dual Engine Matrix: Sinergi TPSS BPS (Target 99.09) dan Bukti Dukung EPSS Pemda (Target IPS 3.970)
+
+Pembinaan Statistik Sektoral (PSS) di Mempawah Command Center (MCC) menggerakkan dua mesin evaluasi sekaligus:
+1. **Mesin Evaluasi Eksternal (EPSS Pemda):** Mengarahkan OPD menghasilkan berkas bukti dukung 38 indikator agar Pemkab Mempawah meraih nilai IPS $\ge 3.970$.
+2. **Mesin Evaluasi Internal (TPSS BPS Satker 6104):** Mengamankan pencapaian target IKU BPS Kabupaten Mempawah sebesar **99.09** yang hingga Triwulan III masih berada di posisi **67.71%** akibat penundaan jadwal pasca-Sensus Ekonomi.
+
+| Pertemuan MCC | Pemateri & Topik | Yang Dihasilkan OPD untuk EPSS 2028 | Yang Diunggah ke SPESIAL untuk TPSS BPS 2026 | Poin Tambahan TPSS | Akumulasi Skor TPSS |
+|:---:|:---|:---|:---|:---:|:---:|
+| **Baseline** | *Posisi Triwulan III (30 Oktober 2026)* | Evaluasi EPSS 2026: IPS 2.558 (Cukup) | Persiapan U1 & RK lengkap di SPESIAL | - | **67.71%** |
+| **Sesi 1**<br>(4 Nov) | **Uma** (Prinsip SDI)<br>**Ihza** (Identifikasi & Kickoff) | Identifikasi 23 OPD + Kickoff Berita Acara Lokus BPKAD & DPMPTSP (`10101`, `10201`, `20101`) | Materi SDI (`U231`), Undangan, Hadir, Notula, Foto (`U241`, `U242`) | **+6.00%** | **73.71%** |
+| **Sesi 2**<br>(5 Nov) | **Ihza** (Kualitas Data) | Kamus SDS disahkan BPS + Laporan Akurasi 4 Tahap BPKAD & DPMPTSP (`20201`, `20501`, `20502`) | Materi Kualitas Data (`U232`), Berkas Sesi 2 | **+3.00%** | **76.71%** |
+| **Sesi 3**<br>(11 Nov) | **Aul** (Probis GSBPM)<br>**Ihza** (AI Analytics) | Draft KAK ber-klausul rilis + Bab III Analisis Deskriptif AI (`20301`, `20302`, `30302`) | Materi GSBPM (`U233`), Berkas Sesi 3 | **+3.00%** | **79.71%** |
+| **Sesi 4**<br>(17 Nov) | **Listio** (SSN)<br>**Aller** (Kelembagaan) | Pakta Netralitas bermeterai + Quality Gate Walidata Diskominfo (`40102`, `40103`, `50101`) | Materi SSN & Lembaga (`U234`, `U235`), Realisasi 6 RK (`U215`) | **+18.00%** | **97.71%** |
+| **Pasca-Sesi**<br>(Desember) | **Tim Pembina & Nerwilis** | Dossier Lengkap 38 Indikator EPSS tersimpan di Google Drive bersama | Monev Smt 2 (`U411`) + Metadata (`O1.1`) + 21 Aliran Data (`O1.2`) | **+49.79%** | **147.50%**<br>*(Target 99.09 Terlampaui)* |
+
+> [!NOTE]
+> Terlihat jelas bahwa **cukup dengan pelaksanaan 4 pertemuan di MCC dan pengunggahan berkas Monev Semester 2**, nilai TPSS BPS Mempawah sudah otomatis mencapai **100.21%** (langsung **MELAMPAUI TARGET IKU 99.09**).  
+> Dengan dimasukkannya verifikasi aliran data (O1.2), skor akhir melonjak hingga **147.50%**!
 
 Jika kita memaksakan ke-23 OPD semua membuat berkas tebal, energi tim pembina dan OPD akan terpecah (*burnout*), berkas tidak tuntas, dan risiko ketimpangan berkas terulang seperti EPSS 2026.
 

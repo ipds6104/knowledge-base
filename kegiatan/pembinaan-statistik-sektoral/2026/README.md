@@ -60,9 +60,9 @@ Pembinaan Statistik Sektoral adalah kegiatan atau aktivitas yang dilakukan oleh 
 
 ---
 
-## 2. Struktur IKU & Formula Nilai TPSS (Rekalibrasi 2026)
+## 2. Struktur IKU & Formula Nilai TPSS (Target IKU Satker 6104: 99.09)
 
-Indikator Kinerja Utama (IKU) untuk BPS Provinsi dan BPS Kabupaten/Kota adalah:
+Indikator Kinerja Utama (IKU) untuk BPS Kabupaten Mempawah (Satker 6104) berpedoman pada Kepka BPS No. 996 Tahun 2025 dengan **Target IKU Satker Resmi Tahun 2026 sebesar 99.09**:
 $$\text{IKU} = \textbf{Tingkat Penyelenggaraan Pembinaan Statistik Sektoral sesuai Standar (TPSS)}$$
 
 ### Komponen Penilaian TPSS
@@ -70,9 +70,13 @@ $$\text{IKU} = \textbf{Tingkat Penyelenggaraan Pembinaan Statistik Sektoral sesu
    - **Komponen Utama**: Standar wajib yang harus dipenuhi oleh setiap satker pembina (bobot dasar 100%).
    - **Komponen Tambahan**: Inisiatif mandiri tim pembina di luar rencana kerja wajib (bobot pengungkit hingga 10%).
 2. **Level Output (Komponen Utama)**:
-   - **Rata-Rata Capaian Output Kuantitatif Rencana Kerja (O1.1.1)**: Capaian terukur riil dari setiap rencana kerja yang disepakati dengan instansi daerah.
-   - **Persentase Data Statistik Sektoral yang Mengalir (O1.1.2)**: Rasio data statistik sektoral yang berhasil dihimpun BPS dibanding target aliran data yang ditagging oleh PJK Teknis BPS RI.
-3. **Nilai Maksimal**: Dapat mencapai **150%** bila seluruh komponen utama proses dan output tercapai optimal serta didukung aktivitas tambahan inisiatif.
+   - **Rata-Rata Capaian Output Kuantitatif Rencana Kerja (O1.1.1)**: Capaian terukur riil dari setiap rencana kerja yang disepakati dengan instansi daerah (bobot hingga 20%).
+   - **Persentase Data Statistik Sektoral yang Mengalir (O1.1.2)**: Rasio data statistik sektoral yang berhasil dihimpun BPS dibanding target 21 kelompok aliran data di SPESIAL (bobot hingga 20%).
+3. **Keterkaitan Simbiotik Dual-Track (TPSS BPS vs EPSS Pemda)**:
+   - **TPSS (Target IKU BPS: 99.09)**: Mengukur kinerja Satker 6104. Baseline TW III (67.71%) menyisakan gap **31.38 poin** yang dipulihkan melalui realisasi 4 pertemuan di MCC pada November 2026.
+   - **EPSS (Target IPS Pemda: 3.970 - Sangat Baik)**: Mengukur kematangan statistik sektoral Pemkab Mempawah pada objek evaluasi tahun 2028 berbasis bukti dukung 2 Lokus Utama (BPKAD & DPMPTSPKUKM).
+   - Seluruh bukti dukung EPSS yang diproduksi bersama OPD di MCC secara langsung diunggah sebagai pembilang capaian output dan pelaporan pada sistem SPESIAL untuk mengunci kelulusan IKU TPSS 99.09.
+4. **Nilai Maksimal**: Dapat mencapai **150%** bila seluruh komponen utama proses dan output tercapai optimal serta didukung aktivitas tambahan inisiatif.
 
 ---
 

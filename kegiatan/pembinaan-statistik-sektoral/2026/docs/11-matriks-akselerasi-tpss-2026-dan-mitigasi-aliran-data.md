@@ -1,11 +1,64 @@
 # MATRIKS AKSELERASI TPSS 2026 & MITIGASI PENYELAMATAN 103 SLOT ALIRAN DATA
-## Rencana Aksi Pemulihan Pasca-Sensus Ekonomi Menuju Target TPSS 147.50% & IPS EPSS 3.970
+## Rencana Aksi Pemulihan Pasca-Sensus Ekonomi Menembus Target IKU Satker 99.09 & Mengunci Bukti Dukung IPS EPSS 3.970
 
 > **Kode Dokumen:** `PSS2026-DOC-RECOVERY-TPSS`  
 > **Satker Pelaksana:** BPS Kabupaten Mempawah (Kode: `6104`)  
-> **Status Posisi Baseline:** 30 Oktober 2026 (Triwulan III: **67.71%** / Peringkat Terbawah)  
-> **Target Akhir Tahun 2026:** **147.50%** (Predikat Sangat Memuaskan / Target Nasional: 120.33%)  
+> **Status Posisi Baseline:** 30 Oktober 2026 (Triwulan III: **67.71%** / Defisit: **-31.38 poin**)  
+> **Target Mutlak IKU Satker 2026:** **99.09** (Batas Kelulusan Perjanjian Kinerja BPS Mempawah)  
+> **Proyeksi Capaian Optimal:** **147.50%** (Predikat Sangat Memuaskan / Melampaui Standar Nasional)  
 > **Target Jangka Panjang:** Nilai Indeks Pembangunan Statistik (IPS) EPSS 2028: **3.970 (Sangat Baik)**  
+
+---
+
+## 🧭 HUBUNGAN SIMBIOTIK: BUKTI DUKUNG EPSS (PEMDA) vs IKU TPSS (BPS MEMPAWAH)
+
+Sebelum melangkah ke rencana aksi teknis, penting untuk membedah perbedaan mendasar dan keterkaitan simbiotik antara **EPSS** dan **TPSS**:
+
+```mermaid
+flowchart LR
+    subgraph PSS["PEMBINAAN STATISTIK SEKTORAL (MCC NOV 2026)"]
+        PEMATERI["5 Tim Pembina BPS Mempawah
+        (Ihza, Sukma, Listio, Aller, Aul, Uma)"]
+        OPD23["23 OPD Pemkab Mempawah
+        (Khusus 2 Lokus: BPKAD & DPMPTSPKUKM)"]
+    end
+
+    subgraph DUAL_OUTPUT["DUAL OUTPUT PENILAIAN"]
+        direction TB
+        subgraph EPSS_BOX["EPSS 2028 (Objek: PEMKAB MEMPAWAH)"]
+            IPS["Output: INDEKS PEMBANGUNAN STATISTIK (IPS)
+            Target: IPS 3.970 (Sangat Baik)
+            Bukti: 38 Indikator Domain 1 s.d. 5"]
+        end
+        subgraph TPSS_BOX["TPSS 2026 (Objek: BPS MEMPAWAH SATKER 6104)"]
+            IKU["Output: TINGKAT PEMBINAAN STATISTIK (TPSS)
+            Target IKU Satker: 99.09 (Wajib Lulus)
+            Komponen: U1-U4 (Proses) + O1.1 & O1.2 (Output)"]
+        end
+    end
+
+    PEMATERI -->|Membimbing Pembuatan Bukti Fisik| OPD23
+    OPD23 -->|Menghasilkan Bukti Dukung Riil| IPS
+    OPD23 -->|File Data & Berkas Diunggah ke SPESIAL| IKU
+
+    IPS -.->|Bukti Dukung EPSS adalah Input Output TPSS| IKU
+```
+
+1. **EPSS (Evaluasi Penyelenggaraan Statistik Sektoral)**:
+   - **Yang Dinilai:** Pemerintah Daerah Kabupaten Mempawah (OPD produsen data & Diskominfo walidata).
+   - **Indeks Keberhasilan:** **Indeks Pembangunan Statistik (IPS)** skala 1.00 – 5.00.
+   - **Fungsi Pembinaan:** BPS mengarahkan 23 OPD (khususnya 2 Lokus Utama: BPKAD & DPMPTSPKUKM) untuk memproduksi **bukti dukung fisik dan digital** (Kamus Standar Data, Metadata INDAH, KAK Rilis, Laporan Akurasi, Pakta Netralitas, dan BAST Data) agar nilai IPS 2028 melonjak ke predikat **Sangat Baik (3.970)**.
+2. **TPSS (Tingkat Penyelenggaraan Pembinaan Statistik Sektoral)**:
+   - **Yang Dinilai:** **BPS Kabupaten Mempawah (Satker 6104)** sendiri!
+   - **Indeks Keberhasilan:** Nilai persentase TPSS yang merupakan **Indikator Kinerja Utama (IKU) resmi Satker**.
+   - **Target Mutlak Kinerja Satker:** **99.09**!
+   - **Kondisi Kritis Saat Ini:** Sampai Triwulan III baru mencapai **67.71%**, menyisakan gap **31.38 poin** yang harus dipenuhi di sisa 2 bulan kalender (November–Desember 2026).
+3. **Kunci Simbiotik (Satu Dayung Dua Pulau Terlampaui):**
+   - Bukti dukung EPSS yang dikerjakan bersama OPD di Mempawah Command Center (MCC) **adalah bahan bakar langsung yang diunggah ke aplikasi SPESIAL** untuk menutup indikator TPSS BPS Mempawah:
+     - Form Metadata INDAH OPD -> Menjadi pembilang indikator TPSS **O1.1 (Capaian Output RK)** (+20.00%).
+     - File dataset sektoral OPD & portal CKAN -> Menjadi pembilang indikator TPSS **O1.2 (Aliran Data Sektoral)** (+17.50%).
+     - Daftar hadir, notula, dan materi 4 sesi MCC -> Menjadi dokumen wajib domain **U2 (Pelaksanaan)** (+30.00%) dan **U3 (Pelaporan)** (+0.62%).
+     - Monev evaluasi mandiri akhir tahun -> Menutup domain **U4 (Monev Mandiri)** (+2.50%).
 
 ---
 
@@ -169,25 +222,30 @@ Setiap tahapan dirancang memiliki **Dual-Impact**: Mengunci poin **TPSS 2026** s
 
 ## 📈 6. PROYEKSI MATEMATIS NILAI TPSS & IPS EPSS KABUPATEN MEMPAWAH
 
-### 6.1 Rekonstruksi Skor IKU TPSS 2026 (Model Rekalibrasi Kepka 996/2025)
+### 6.1 Rekonstruksi Skor IKU TPSS 2026 Menembus Target Satker 99.09
 
 $$\text{Total Nilai TPSS} = \text{Level Proses (Utama + Tambahan)} + \text{Level Output (O1.1 + O1.2)}$$
 
-| Komponen Penilaian | Bobot Maksimal | Realisasi TW III (30 Okt 2026) | Target Akhir Pasca-Eksekusi (Des 2026) | Poin Kenaikan |
-|:---|:---:|:---:|:---:|:---:|
-| **A. Komponen Utama Proses (U1 + U2 + U3 + U4)** | 100.00% | 66.88% | **100.00%** | **+33.12%** |
-| • *Domain Persiapan (U1)* | 25.00% | 25.00% | 25.00% | - |
-| • *Domain Pelaksanaan (U2: Rencana & Materi 5 Domain)* | 45.00% | 15.00% | 45.00% | +30.00% |
-| • *Domain Pelaporan (U3: Kelengkapan Berkas)* | 15.00% | 14.38% | 15.00% | +0.62% |
-| • *Domain Monitoring & Evaluasi (U4: Monev Smt 1 & 2)* | 15.00% | 12.50% | 15.00% | +2.50% |
-| **B. Komponen Tambahan Proses (T1 & T2 Inisiatif)** | 10.00% | 1.67% | **10.00%** | **+8.33%** |
-| • *Inisiatif Live Workspace Google Sheets Radar EPSS* | 5.00% | 1.67% | 5.00% | +3.33% |
-| • *Inovasi AI Analytics Engine (`kb_pss_automation.py`)* | 5.00% | 0.00% | 5.00% | +5.00% |
-| **C. Level Output Kuantitatif (O1.1 & O1.2)** | 40.00% | 0.00% | **37.50%** | **+37.50%** |
-| • *O1.1 (Capaian Output Kuantitatif RK: 12 Metadata INDAH)* | 20.00% | 0.00% | 20.00% | +20.00% |
-| • *O1.2 (Persentase Data Statistik Sektoral Mengalir: 21 Kelompok)* | 20.00% | 0.00% | 17.50% | +17.50% |
-| **TOTAL TINGKAT CAPAIAN TPSS AKHIR TAHUN 2026** | **150.00%** | **67.71%** | **147.50%** | **+79.79%** |
-| **PREDIKAT KINERJA PENYELENGGARAAN PEMBINAAN** | - | *Tertinggal* | **SANGAT MEMUASKAN** | *(Target Nasional: 120.33%)* |
+| Komponen Penilaian | Bobot Maksimal | Realisasi TW III (30 Okt 2026) | Target Minimal Lolos IKU Satker (**99.09**) | Target Akhir Pasca-Eksekusi (Des 2026) | Kenaikan Dari Baseline |
+|:---|:---:|:---:|:---:|:---:|:---:|
+| **A. Komponen Utama Proses (U1 + U2 + U3 + U4)** | 100.00% | 66.88% | **97.50%** | **100.00%** | **+33.12%** |
+| • *Domain Persiapan (U1)* | 25.00% | 25.00% | 25.00% | 25.00% | - |
+| • *Domain Pelaksanaan (U2: Rencana & Materi 5 Domain)* | 45.00% | 15.00% | 45.00% | 45.00% | +30.00% |
+| • *Domain Pelaporan (U3: Kelengkapan Berkas)* | 15.00% | 14.38% | 15.00% | 15.00% | +0.62% |
+| • *Domain Monitoring & Evaluasi (U4: Monev Smt 1 & 2)* | 15.00% | 12.50% | 12.50% | 15.00% | +2.50% |
+| **B. Komponen Tambahan Proses (T1 & T2 Inisiatif)** | 10.00% | 1.67% | **1.67%** | **10.00%** | **+8.33%** |
+| • *Inisiatif Live Workspace Google Sheets Radar EPSS* | 5.00% | 1.67% | 1.67% | 5.00% | +3.33% |
+| • *Inovasi AI Analytics Engine (`kb_pss_automation.py`)* | 5.00% | 0.00% | 0.00% | 5.00% | +5.00% |
+| **C. Level Output Kuantitatif (O1.1 & O1.2)** | 40.00% | 0.00% | **0.00%** | **37.50%** | **+37.50%** |
+| • *O1.1 (Capaian Output Kuantitatif RK: 12 Metadata INDAH)* | 20.00% | 0.00% | 0.00% | 20.00% | +20.00% |
+| • *O1.2 (Persentase Data Statistik Sektoral Mengalir: 21 Kelompok)* | 20.00% | 0.00% | 0.00% | 17.50% | +17.50% |
+| **TOTAL TINGKAT CAPAIAN TPSS AKHIR TAHUN 2026** | **150.00%** | **67.71%** | **99.17% (LOLOS IKU SATKER)** | **147.50% (SANGAT MEMUASKAN)** | **+79.79%** |
+| **STATUS TERHADAP TARGET IKU SATKER (99.09)** | - | *Kurang 31.38 Poin* | **TERLAMPAUI (+0.08 Poin)** | **MELAMPAUI JAUH (+48.41 Poin)** | - |
+
+> [!IMPORTANT]
+> **Fakta Kritis Pencapaian Target IKU 99.09:**  
+> Untuk menembus target mutlak IKU Satker **99.09**, BPS Kabupaten Mempawah secara matematis **hanya membutuhkan penyelesaian Level Proses (U2 realisasi 4 pertemuan di MCC + U4 Monev Semester 2)** yang menghasilkan angka **99.17%**!  
+> Artinya, target IKU 99.09 dijamin 100% aman tercapai begitu pertemuan ke-4 di MCC selesai pada 17 November 2026. Seluruh capaian output (O1.1 dan O1.2) setelahnya akan mengantarkan skor akhir melesat hingga **147.50%**, menempatkan BPS Kabupaten Mempawah di jajaran Satker berkinerja tertinggi.
 
 ---
 

@@ -21,9 +21,17 @@
 
 ---
 
-## 🎯 1. Target Kinerja Sesi 4 & Bukti Dukung EPSS Terkunci
+## 🎯 1. Target Kinerja Sesi 4: Dual Impact (TPSS 2026 x EPSS 2028)
 
-Sesi 4 adalah puncak pembinaan yang mengunci **Domain 4 (Kelembagaan - Bobot 26%)** dan **Domain 5 (Statistik Nasional - Bobot 20%)**:
+Sesi 4 adalah puncak pembinaan yang menuntaskan materi wajib dan mengunci capaian kedua sistem evaluasi:
+
+### A. Penguncian Indikator IKU TPSS BPS Mempawah (Menembus Target Satker 99.09)
+- **Indikator U234 (Materi Kelembagaan Statistik):** Bernilai **100% Penuh** setelah paparan Aller.
+- **Indikator U235 (Materi Sistem Statistik Nasional / SSN):** Bernilai **100% Penuh** setelah paparan Listio.
+- **Indikator U215 (Realisasi 6 Rencana Kerja Pembinaan):** Bernilai **100% Penuh** dengan tuntasnya seluruh agenda RK di SPESIAL.
+- **Poin Kenaikan TPSS:** Bertambah **+18.00%**, mengerek posisi kumulatif TPSS dari **79.71% menjadi 97.71%** (hanya butuh unggah Monev Smt 2 di Desember untuk menembus **100.21%**, melampaui target wajib IKU **99.09**).
+
+### B. Penguncian Bukti Dukung EPSS Pemkab Mempawah 2028
 - **Indikator 40102 (Penjaminan Netralitas & Objektivitas - Target Level 4):** Surat Pernyataan Komitmen Netralitas Penyelenggaraan bermeterai Rp10.000 ditandatangani Kepala OPD.
 - **Indikator 40103 (Penjaminan Kualitas oleh Walidata - Target Level 4):** Lembar Checklist & Berita Acara Pemeriksaan Mutu Data Walidata Diskominfo (Template B).
 - **Indikator 40302 (Forum Satu Data Indonesia - Target Level 4):** Notula Lengkap & Berita Acara Kesepakatan Sidang Pleno Forum SDI Mempawah 2026.

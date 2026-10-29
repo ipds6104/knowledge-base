@@ -20,9 +20,15 @@
 
 ---
 
-## 🎯 1. Target Kinerja Sesi 3 & Bukti Dukung EPSS Terkunci
+## 🎯 1. Target Kinerja Sesi 3: Dual Impact (TPSS 2026 x EPSS 2028)
 
-Sesi 3 mengunci **Domain 3 (Proses Bisnis Statistik - Bobot 19%)** dan membalikkan 3 indikator kritis EPSS:
+Sesi 3 mengunci proses bisnis statistik dan membalikkan indikator kritis kedua sistem evaluasi:
+
+### A. Penguncian Indikator IKU TPSS BPS Mempawah (Menuju Target Satker 99.09)
+- **Indikator U233 (Materi Wajib Proses Bisnis GSBPM):** Langsung bernilai **100% (Membuka Poin Penuh)** setelah paparan Aul disajikan.
+- **Poin Kenaikan TPSS:** Bertambah **+3.00%**, mengerek posisi kumulatif TPSS dari **76.71% menjadi 79.71%** (semakin mendekati target **99.09**).
+
+### B. Penguncian Bukti Dukung EPSS Pemkab Mempawah 2028
 - **Indikator 20301 (Aktualitas Data - Target Level 4):** Penyelenggaraan rilis data dengan rentang waktu $\le 6$ bulan pasca periode data berakhir.
 - **Indikator 20302 (Ketepatan Waktu Diseminasi - Target Level 4):** Adanya klausul batas rilis di KAK dan dokumen pemantauan kesesuaian jadwal.
 - **Indikator 30102 (Desain Statistik - Target Level 4):** Dokumen rancangan kerangka sampel dan metodologi baku.

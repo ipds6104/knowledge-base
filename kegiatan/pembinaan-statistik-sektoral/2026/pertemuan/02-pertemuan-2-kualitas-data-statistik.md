@@ -19,9 +19,15 @@
 
 ---
 
-## 🎯 1. Target Kinerja Sesi 2 & Bukti Dukung EPSS Terkunci
+## 🎯 1. Target Kinerja Sesi 2: Dual Impact (TPSS 2026 x EPSS 2028)
 
-Sesi 2 menyelesaikan tuntas **Domain 2 (Kualitas Data - Bobot 23%)** dan pengesahan **Domain 1 (Prinsip SDI)**:
+Sesi 2 menyelesaikan tuntas indikator kualitas data statistik dan mengunci poin kedua sistem evaluasi:
+
+### A. Penguncian Indikator IKU TPSS BPS Mempawah (Menuju Target Satker 99.09)
+- **Indikator U232 (Materi Wajib Kualitas Data Statistik):** Langsung bernilai **100% (Membuka Poin Penuh)** begitu paparan Ihza selesai disajikan.
+- **Poin Kenaikan TPSS:** Bertambah **+3.00%**, mengerek posisi kumulatif TPSS dari **73.71% menjadi 76.71%** (semakin memangkas defisit menuju target **99.09**).
+
+### B. Penguncian Bukti Dukung EPSS Pemkab Mempawah 2028
 - **Indikator 10101 (Standar Data Statistik - Level 4):** Dokumen Kamus SDS resmi disahkan Pembina Data BPS.
 - **Indikator 10201 (Metadata Statistik - Level 4):** Registrasi Metadata Kegiatan (MS-Keg) dan Metadata Variabel (MS-Var) di Portal INDAH BPS.
 - **Indikator 10301 (Interoperabilitas Data - Level 4):** Penyediaan data dalam format terstruktur dan terbuka (.csv/.xlsx).
