@@ -460,6 +460,20 @@ def cmd_fetch_ckan(args):
     except Exception as e:
         print(f"❌ Terjadi kesalahan saat mengakses portal: {e}")
 
+def cmd_verify_plan(args):
+    """Menjalankan mesin verifikasi menyeluruh target TPSS 2026 & EPSS 2028."""
+    try:
+        from verify_pss_outcomes import PSSPlanVerifier
+    except ImportError:
+        sys.path.append(str(Path(__file__).resolve().parent))
+        from verify_pss_outcomes import PSSPlanVerifier
+
+    verifier = PSSPlanVerifier()
+    if getattr(args, "json", False):
+        print(json.dumps(verifier.generate_full_audit(), indent=2, ensure_ascii=False))
+    else:
+        verifier.print_text_report()
+
 def main():
     parser = argparse.ArgumentParser(description="Toolkit Otomasi Pembinaan Statistik Sektoral 2026 Menuju EPSS 2028")
     subparsers = parser.add_subparsers(dest="command", help="Perintah yang tersedia")
@@ -509,6 +523,10 @@ def main():
     p_ckan.add_argument("--opd", help="Filter OPD (contoh: 'bpkad', 'dpmptsp', 'dpupr', 'diskominfo')")
     p_ckan.add_argument("-q", help="Kata kunci pencarian dataset")
 
+    # Command: verify-plan
+    p_ver = subparsers.add_parser("verify-plan", aliases=["verify-outcomes"], help="Verifikasi deterministik pencapaian target TPSS Satker (>=99.09) dan EPSS IPS (>=3.970)")
+    p_ver.add_argument("--json", action="store_true", help="Cetak hasil dalam format JSON murni")
+
     args = parser.parse_args()
     if not args.command:
         parser.print_help()
@@ -528,6 +546,8 @@ def main():
         cmd_generate_radar(args)
     elif args.command == "fetch-ckan":
         cmd_fetch_ckan(args)
+    elif args.command in ("verify-plan", "verify-outcomes"):
+        cmd_verify_plan(args)
 
 if __name__ == "__main__":
     main()
