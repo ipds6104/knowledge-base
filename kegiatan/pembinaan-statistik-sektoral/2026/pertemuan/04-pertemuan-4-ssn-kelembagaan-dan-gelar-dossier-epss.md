@@ -2,8 +2,9 @@
 ## Sesi 4 dari 4: Mengunci Domain 4 (Kelembagaan) & Domain 5 (SSN), Quality Gate Walidata, Pakta Netralitas, dan Audit Final Proyeksi Sangat Baik (IPS 3.970)
 
 **Kode Dokumen:** `PSS2026-PLAN-S4`  
-**Waktu Pelaksanaan:** Selasa, 17 November 2026 (08.30 – 11.30 WIB / 180 Menit)  
-**Tempat:** Mempawah Command Centre (MCC) Diskominfo / Aula Praja Utama Kantor Bupati Mempawah  
+**Waktu Pelaksanaan:** Selasa, 17 November 2026 (08.00 – 11.00 WIB / 180 Menit)  
+**Tempat:** Mempawah Command Center (MCC), Kantor Bupati Mempawah  
+**Dasar Surat Resmi:** Surat Sekretaris Daerah Kabupaten Mempawah Nomor `500.14.1/7358/DISKOMINFO-C`  
 **Pemateri Resmi:**
 - **Materi 1 (Sistem Statistik Nasional / SSN):** **Listio, S.Tr.Stat. (Bg Tio)**
 - **Materi 2 (Kelembagaan Statistik Sektoral):** **Aller, S.Tr.Stat.**
@@ -62,14 +63,14 @@ flowchart LR
 
 | Rentang Waktu | Durasi | Agenda Kegiatan | Penanggung Jawab / Fasilitator |
 |:---:|:---:|:---|:---|
-| 08.30 – 08.40 | 10 Mnt | Pembukaan oleh MC (Vaniya), doa mandiri, dan pengantar puncak pembinaan | Vaniya |
-| 08.40 – 08.55 | 15 Mnt | **Materi 1: Penguatan Sistem Statistik Nasional (SSN) & Ekosistem Data Daerah** | **Listio** (Operator: Akma) |
-| 08.55 – 09.15 | 20 Mnt | **Materi 2: Kelembagaan Statistik Sektoral, Penjaminan Netralitas, & Peran Walidata** | **Aller** (Operator: Akma) |
-| 09.15 – 09.20 | 5 Mnt | **Ice-Breaking: Kuis Kahoot Interaktif Sesi 4** (Hadiah Rp40.000 untuk Juara 1) | Akma & Vaniya |
-| 09.20 – 10.10 | 50 Mnt | **WORKSHOP 1: Quality Gate Walidata Diskominfo & Pakta Netralitas Kepala OPD**<br>• Pengisian Berita Acara Pemeriksaan Mutu Walidata 5 Kriteria (Template B)<br>• Penempelan meterai & penandatanganan Surat Pernyataan Netralitas (Template A) | Aller, Tim Diskominfo, & 5 Tim Pendamping |
-| 10.10 – 10.40 | 30 Mnt | **WORKSHOP 2: Simulasi Sidang Pleno Forum SDI Mempawah 2026**<br>• Penetapan Daftar Data Prioritas Daerah Tahun 2026<br>• Penyusunan Dokumen Rencana Aksi SDI 2026–2028 (Template K) | Bapperida, Diskominfo, BPS, & 23 OPD |
-| 10.40 – 11.20 | 40 Mnt | **SESI SPESIAL GELAR PASUKAN KAWALAN IHZA: Zero-Gap Audit & Simulasi Skor EPSS**<br>• Proyeksi Live Dashboard Google Sheets "Radar EPSS Mempawah"<br>• Verifikasi 100% lampu hijau untuk 38 indikator 2 Lokus Emas<br>• Eksekusi simulasi kalkulator resmi EPSS: **Proyeksi IPS 3.970 (Sangat Baik)** | **Ihza Fikri Zaki Karunia** & Seluruh Tim BPS |
-| 11.20 – 11.30 | 10 Mnt | Penyerahan Piagam Apresiasi Pembinaan, foto bersama seluruh peserta, & penutupan | Vaniya, Sukma (SPJ), & Irfan (Foto) |
+| 08.00 – 08.10 | 10 Mnt | Pembukaan oleh MC (Vaniya), doa mandiri, dan pengantar puncak pembinaan | Vaniya |
+| 08.10 – 08.25 | 15 Mnt | **Materi 1: Penguatan Sistem Statistik Nasional (SSN) & Ekosistem Data Daerah** | **Listio** (Operator: Akma) |
+| 08.25 – 08.45 | 20 Mnt | **Materi 2: Kelembagaan Statistik Sektoral, Penjaminan Netralitas, & Peran Walidata** | **Aller** (Operator: Akma) |
+| 08.45 – 08.50 | 5 Mnt | **Ice-Breaking: Kuis Kahoot Interaktif Sesi 4** (Hadiah Rp40.000 untuk Juara 1) | Akma & Vaniya |
+| 08.50 – 09.40 | 50 Mnt | **WORKSHOP 1: Quality Gate Walidata Diskominfo & Pakta Netralitas Kepala OPD**<br>• Pengisian Berita Acara Pemeriksaan Mutu Walidata 5 Kriteria (Template B)<br>• Penempelan meterai & penandatanganan Surat Pernyataan Netralitas (Template A) | Aller, Tim Diskominfo, & 5 Tim Pendamping |
+| 09.40 – 10.10 | 30 Mnt | **WORKSHOP 2: Simulasi Sidang Pleno Forum SDI Mempawah 2026**<br>• Penetapan Daftar Data Prioritas Daerah Tahun 2026<br>• Penyusunan Dokumen Rencana Aksi SDI 2026–2028 (Template K) | Bapperida, Diskominfo, BPS, & 23 OPD |
+| 10.10 – 10.50 | 40 Mnt | **SESI SPESIAL GELAR PASUKAN KAWALAN IHZA: Zero-Gap Audit & Simulasi Skor EPSS**<br>• Proyeksi Live Dashboard Google Sheets "Radar EPSS Mempawah"<br>• Verifikasi 100% lampu hijau untuk 38 indikator 2 Lokus Emas<br>• Eksekusi simulasi kalkulator resmi EPSS: **Proyeksi IPS 3.970 (Sangat Baik)** | **Ihza Fikri Zaki Karunia** & Seluruh Tim BPS |
+| 10.50 – 11.00 | 10 Mnt | Penyerahan Piagam Apresiasi Pembinaan, foto bersama seluruh peserta, & penutupan | Vaniya, Sukma (SPJ), & Irfan (Foto) |
 
 ---
 

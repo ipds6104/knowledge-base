@@ -2,8 +2,10 @@
 ## Sesi 3 dari 4: Penerapan GSBPM, KAK Ber-klausul Batas Rilis (ROMANTIK), & AI-Driven Descriptive Analytics
 
 **Kode Dokumen:** `PSS2026-PLAN-S3`  
-**Waktu Pelaksanaan:** Rabu, 11 November 2026 (08.30 – 11.30 WIB / 180 Menit)  
-**Tempat:** Ruang Rapat BPS / Mempawah Command Centre (MCC) Diskominfo  
+**Dasar Surat Resmi:** Surat Sekretaris Daerah Kabupaten Mempawah Nomor `500.14.1/7358/DISKOMINFO-C`  
+**Waktu Pelaksanaan:** **Rabu, 11 November 2026 (09.00 – 12.00 WIB / 180 Menit)**  
+**Tempat Penyelenggaraan:** **Mempawah Command Center (MCC)**, Dinas Komunikasi dan Informatika Kabupaten Mempawah  
+**Sasaran Peserta (37 Orang):** 23 Tenaga Entri Data OPD, 4 Tim Walidata Diskominfo, 7 Pegawai Organik BPS, dan 3 Mahasiswa Magang BPS.  
 **Pemateri Utama:** **Aulia, S.Tr.Stat. (Aul)**  
 **Fasilitator Pendamping Analisis AI:** **Ihza Fikri Zaki Karunia, S.Tr.Stat.**  
 
@@ -14,7 +16,7 @@
 - **Dokumentasi Foto/Video:** Irfan
 - **Pengadaan Snack & Hadiah Kahoot:** Vaniya
 - **Rekapitulasi Berkas & SPJ:** Sukma
-- **Tim Pendamping Teknis:** Tim 1 (Sukma), Tim 2 (Ihza), Tim 3 (Listio), Tim 4 (Aller), Tim 5 (Aul & Uma)
+- **Tim Pendamping Teknis:** Tim 1 (Sukma & Nadya), Tim 2 (Ihza & Magang 1), Tim 3 (Listio & Irfan), Tim 4 (Aller & Rara), Tim 5 (Aul & Uma)
 
 ---
 
@@ -36,36 +38,37 @@ Sesi 3 mengunci **Domain 3 (Proses Bisnis Statistik - Bobot 19%)** dan membalikk
 
 ```mermaid
 flowchart LR
-    A["00 - 10 Mnt:
+    A["09.00 - 09.10:
     Pembukaan &
-    Doa Mandiri Vaniya"] --> B["10 - 45 Mnt:
+    Doa Mandiri Vaniya"] --> B["09.10 - 09.45:
     Materi Inti GSBPM,
     ROMANTIK, & Klausul Rilis
     (Pemateri: Aul)"]
-    B --> C["45 - 50 Mnt:
+    B --> C["09.45 - 09.50:
+    Ice-Breaking
     Kuis Kahoot Sesi 3
     (Akma & Vaniya)"]
-    C --> D["50 - 105 Mnt:
+    C --> D["09.50 - 10.45:
     WORKSHOP KAK &
     ROMANTIK PLUG-AND-PLAY
     (Aul & 5 Tim)"]
-    D --> E["105 - 165 Mnt:
+    D --> E["10.45 - 11.45:
     AI-DRIVEN ANALYTICS:
     Generate Bab 3 Publikasi
     (Ihza & Mesin AI)"]
-    E --> F["165 - 180 Mnt:
+    E --> F["11.45 - 12.00:
     Penyerahan Rekomendasi
     & Penutup"]
 ```
 
-| Rentang Waktu | Durasi | Agenda Kegiatan | Penanggung Jawab / Fasilitator |
+| Rentang Waktu | Durasi | Agenda Kegiatan di Mempawah Command Center (MCC) | Penanggung Jawab / Fasilitator |
 |:---:|:---:|:---|:---|
-| 08.30 – 08.40 | 10 Mnt | Pembukaan oleh MC (Vaniya), doa mandiri, dan kilas balik progres Sesi 2 | Vaniya |
-| 08.40 – 09.15 | 35 Mnt | **Paparan Materi: Proses Bisnis Statistik (GSBPM) & Standar KAK Ber-Rekomendasi BPS** | **Aul** (Operator: Akma) |
-| 09.15 – 09.20 | 5 Mnt | **Ice-Breaking: Kuis Kahoot Interaktif Sesi 3** (Hadiah Rp40.000 untuk Juara 1) | Akma & Vaniya |
-| 09.20 – 10.15 | 55 Mnt | **WORKSHOP 1: Penyusunan KAK Plug-and-Play Ber-klausul Batas Rilis Resmi**<br>• Pengisian template KAK standar BPS di Google Docs<br>• Pengisian draf instrumen ROMANTIK BPS (FS3) | Aul, Sukma, Listio, Aller, & Uma |
-| 10.15 – 11.15 | 60 Mnt | **WORKSHOP 2 (KAWALAN IHZA): AI-Driven Descriptive Analytics Engine**<br>• Input data time-series 5 tahun 2 Lokus Emas (BPKAD & DPMPTSPKUKM)<br>• Eksekusi tool AI Generator (`scripts/kb_pss_automation.py`)<br>• Pembentukan naskah Bab III Analisis Deskriptif Lengkap 4 Subbab | **Ihza** & Tim 1 (BPKAD) serta Tim 2 (DPMPTSPKUKM) |
-| 11.15 – 11.30 | 15 Mnt | Penandatanganan KAK oleh operator/pejabat, pengesahan draf rekomendasi, & penutupan | Aul, Ihza, & Sukma |
+| 09.00 – 09.10 | 10 Mnt | Pembukaan oleh MC (Vaniya), doa mandiri, dan kilas balik progres Sesi 2 | Vaniya |
+| 09.10 – 09.45 | 35 Mnt | **Paparan Materi: Proses Bisnis Statistik (GSBPM) & Standar KAK Ber-Rekomendasi BPS** | **Aul** (Operator: Akma) |
+| 09.45 – 09.50 | 5 Mnt | **Ice-Breaking: Kuis Kahoot Interaktif Sesi 3** (Hadiah Rp40.000 untuk Juara 1) | Akma & Vaniya |
+| 09.50 – 10.45 | 55 Mnt | **WORKSHOP 1: Penyusunan KAK Plug-and-Play Ber-klausul Batas Rilis Resmi**<br>• Pengisian template KAK standar BPS di Google Docs<br>• Pengisian draf instrumen ROMANTIK BPS (FS3) | Aul, Sukma, Listio, Aller, & Uma |
+| 10.45 – 11.45 | 60 Mnt | **WORKSHOP 2 (KAWALAN IHZA): AI-Driven Descriptive Analytics Engine**<br>• Input data time-series 5 tahun 2 Lokus Emas (BPKAD & DPMPTSPKUKM)<br>• Eksekusi tool AI Generator (`scripts/kb_pss_automation.py`)<br>• Pembentukan naskah Bab III Analisis Deskriptif Lengkap 4 Subbab | **Ihza** & Tim 1 (BPKAD) serta Tim 2 (DPMPTSPKUKM) |
+| 11.45 – 12.00 | 15 Mnt | Penandatanganan KAK oleh operator/pejabat, pengesahan draf rekomendasi, & penutupan | Aul, Ihza, & Sukma |
 
 ---
 
