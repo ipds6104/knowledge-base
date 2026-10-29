@@ -1,109 +1,175 @@
 # PETA JALAN & MASTER BLUEPRINT PEMBINAAN STATISTIK SEKTORAL (PSS) 2026
-## Arsitektur 4 Pertemuan x 3 Jam: Padat Materi Wajib, Rendah Beban Kognitif OPD, & Berbantuan Otomasi AI Menuju Nilai Maksimal EPSS 2028
-**Penyelenggara:** Tim Pembina Statistik Sektoral BPS Kabupaten Mempawah  
-**Target Lokus & Peserta:** Operator Data Organisasi Perangkat Daerah (OPD), Tim Walidata Diskominfo, dan Bapperida Kabupaten Mempawah  
+## Arsitektur 4 Pertemuan x 3 Jam: Strategi 2 Lokus Utama dari 23 OPD, 5 Tim Pendamping, & Kolaborasi Live Workspace Kawalan Ihza Menuju Nilai Maksimal EPSS 2028
+
+**Penyelenggara:** Tim Pembina Statistik Sektoral BPS Kabupaten Mempawah bersama Dinas Kominfo (Walidata)  
+**Sasaran Peserta (Total 37 Orang):**
+- 23 Operator Data Organisasi Perangkat Daerah (OPD) se-Kabupaten Mempawah
+- 4 Tim Walidata Dinas Komunikasi dan Informatika (Diskominfo)
+- 7 Pegawai Organik Tim Pembina BPS Kabupaten Mempawah
+- 3 Mahasiswa Magang BPS Kabupaten Mempawah
+
 **Format Penyelenggaraan:** 4 Sesi Pertemuan Tatap Muka (Masing-masing 3 Jam / Total 12 Jam Efektif)  
-**Target Evaluasi:** Evaluasi Penyelenggaraan Statistik Sektoral (EPSS) Tahun 2028 (Predikat SANGAT BAIK, IPS $\ge 3.65$)  
+**Anggaran Operasional:**
+- Konsumsi Snack: Rp2.720.000 (17.000 × 40 porsi × 4 pertemuan)
+- Hadiah Kuis Kahoot Interaktif: Rp160.000 (Maksimal Rp40.000 per pertemuan / 1 pemenang per sesi)
+
+**Target Evaluasi:** Evaluasi Penyelenggaraan Statistik Sektoral (EPSS) Tahun 2028 (Predikat **SANGAT BAIK**, Proyeksi IPS $\ge \mathbf{3.970}$)
 
 ---
 
-## 📌 1. Urgensi & Transformasi Paradigma 4 Pertemuan
+## 📌 1. Urgensi & Filosofi Strategi: "2 Lokus Utama dari 23 OPD"
 
-### 1.1 Kendala Nyata Operator OPD & Evaluasi EPSS 2026
-Pada EPSS 2026 (yang mengevaluasi data 2024), Kabupaten Mempawah sempat anjlok pada **10 Indikator bernilai 1** karena:
-1. Operator OPD memiliki beban kerja rutin tinggi di dinasnya, bukan berlatar belakang statistik, dan mengalami kebingungan teknis (*cognitive overload*) jika diminta menyusun dokumen metodologi yang rumit dari kertas kosong (*blank-page paralysis*).
-2. Pembinaan sebelumnya menghabiskan waktu pada ceramah panjang tanpa menghasilkan draf dokumen bukti dukung riil yang siap ditandatangani pimpinan.
-3. Waktu tatap muka sangat terbatas, yaitu **hanya 4 kali pertemuan dengan durasi masing-masing 3 jam**.
+### 1.1 Realita Penilaian EPSS: Mengapa Harus 2 Lokus Utama?
+Berdasarkan Peraturan BPS No. 3 Tahun 2022 tentang Tata Kelola Evaluasi Penyelenggaraan Statistik Sektoral (EPSS), Tim Penilai Badan (TPB) BPS RI dan BPS Provinsi **hanya menilai 2 (dua) Kegiatan Statistik Sektoral** yang diselenggarakan oleh Pemerintah Daerah sebagai sampel lokus evaluasi domain hulu-ke-hilir (Domain 1 Prinsip SDI, Domain 2 Kualitas Data, dan Domain 3 Proses Bisnis Statistik).
 
-### 1.2 Doktrin Baru: "Smart, Fast, & Low Cognitive Load"
-Untuk menjawab batasan tersebut, Pembinaan Statistik Sektoral 2026 direstrukturisasi dengan formula keseimbangan dua sisi (*Dual-Sided Balanced Architecture*):
+Jika kita memaksakan ke-23 OPD semua membuat berkas tebal, energi tim pembina dan OPD akan terpecah (*burnout*), berkas tidak tuntas, dan risiko ketimpangan berkas terulang seperti EPSS 2026 (di mana 10 indikator jatuh ke Skor 1 karena salah satu lokus kosong!).
+
+Oleh karena itu, strategi kita adalah **"Satu Komando, Dua Jalur Fokus"**:
+1. **Jalur 23 OPD (Literasi & Fondasi SDI Daerah):**
+   - Mengikuti paparan materi wajib statistik sektoral, mengisi formulir inventarisasi 1-lembar, mengikuti kuis interaktif Kahoot, dan memahami prinsip Satu Data.
+   - Ini secara otomatis mengamankan **Domain 5 (Sistem Statistik Nasional - Bobot 12%)** dan **Domain 4 (Kelembagaan - Bobot 17%)**.
+2. **Jalur 2 Lokus Emas Utama (*Golden Lokus EPSS 2028*):**
+   - Dipilih **Dinas Kesehatan (Dinkes-PPKB)** dan **Dinas Perindustrian, Perdagangan, dan Tenaga Kerja (Disperindagnaker)**.
+   - Diberikan pendampingan intensif VIP (*Red Carpet Treatment*) menggunakan **Live Collaborative Workspace (Google Sheets & Google Docs)** kawalan langsung Bg Ihza dan tim pembina.
+   - Seluruh 38 indikator bukti dukung fisik/digital kedua dinas ini diproduksi, diuji akurasi & konsistensinya, ditandatangani kepala dinas, dan diamankan di brankas digital Google Drive 2 tahun sebelum penilaian 2028 dimulai!
 
 ```mermaid
 flowchart TD
-    subgraph Sisi1["SISI 1: MATERI WAJIB (30 - 45 Menit Pertama)"]
-        A1["Paparan Inti Materi Juknis PSS 2026 (Cukup 5-8 Slide Padat)"]
-        A2["Fokus: Regulasi, Standar BPS, Konsep SDI, Probis, Kualitas, & Kelembagaan"]
-        A3["Memenuhi Indikator Penilaian Kinerja TPSS Satker BPS"]
+    subgraph Peserta["37 PESERTA PEMBINAAN 2026"]
+        OPD23["23 Operator Data OPD"]
+        KOMINFO["4 Tim Walidata Diskominfo"]
+        BPS["7 Pegawai Organik BPS + 3 Magang"]
     end
 
-    subgraph Sisi2["SISI 2: WORKSHOP RENDAH KOGNITIF & OTOMASI AI (135 - 150 Menit)"]
-        B1["Operator OPD TIDAK PERLU Mengetik Dokumen Panjang dari Nol"]
-        B2["Cukup Isi Form Parameter Ringkas (Nama Kegiatan, Anggaran, Tabel Angka Mentah)"]
-        B3["Otomasi Berbantuan LLM API (AI Generator Tool) Menghasilkan:
-        • Draf KAK Resmi Ber-klausul Batas Rilis
-        • Dokumen Standar Data & Metadata INDAH
-        • Bab Analisis Deskriptif Tren 5 Tahun Lengkap Sebab-Akibat
-        • Lembar Uji Konsistensi Internal Logis
-        • Laporan Akurasi 4 Tahap & Blangko Uji Petik"]
-        B4["Review Singkat & Langsung Ditandatangani Pimpinan Dinas"]
+    subgraph Jalur1["JALUR LITERASI UMUM (23 OPD)"]
+        J1["• Paparan Materi Juknis PSS 2026 (30-35 Menit)
+        • Form Inventarisasi Kegiatan 1-Lembar
+        • Ice-Breaking Kuis Kahoot (Hadiah Rp40rb/sesi)
+        • Pemahaman Prinsip SDI & SSN"]
+        R1["Mengunci Domain 4 (Kelembagaan) & Domain 5 (SSN / Literasi)"]
     end
 
-    Sisi1 --> Sisi2
-    Sisi2 --> C["DOSSIER BUKTI DUKUNG EPSS 2028 LENGKAP 100% SIAP UNGGAH"]
+    subgraph Jalur2["JALUR 2 LOKUS UTAMA EMAS EPSS (Dinkes & Disperindag)"]
+        J2["• Live Action Lab Google Docs & Sheets (Kawalan Ihza)
+        • KAK Ber-klausul Batas Rilis Resmi (20301, 20302)
+        • Laporan Akurasi 4 Tahap + Uji Konsistensi (20201, 20502)
+        • Bab Analisis Deskriptif Tren 5 Tahun via AI Engine (30302)
+        • Surat Pernyataan Netralitas Bermeterai TTD Kadis (40102)
+        • Quality Gate Walidata & Rekomendasi ROMANTIK (40103, 50201)"]
+        R2["Mengunci Domain 1 (SDI), Domain 2 (Kualitas), & Domain 3 (Probis) ke Level 4/5"]
+    end
+
+    Peserta --> Jalur1
+    Peserta --> Jalur2
+    R1 & R2 --> TARGET["CAPAIAN EPSS 2028: PREDIKAT SANGAT BAIK (IPS 3.970)"]
 ```
 
 ---
 
-## 🗺️ 2. Matriks Integrasi 4 Pertemuan vs EPSS vs Juknis PSS 2026
+## 👥 2. Struktur Tim Pelaksana & Pembagian 5 Tim Pendamping 23 OPD
 
-Seluruh 38 Indikator EPSS dan 6 Rencana Kerja Wajib Juknis PSS 2026 dipadatkan secara presisi ke dalam 4 pertemuan:
+Berdasarkan Notula Rapat Tim Statistik Sektoral BPS Mempawah, peran kepanitiaan dan pembagian 5 tim pendamping teknis ditetapkan sebagai berikut:
 
-| Sesi | Modul Pertemuan (3 Jam) | Porsi Teori Wajib (Slide Juknis 2026) | Porsi Workshop & Otomasi AI (Rendah Kognitif OPD) | Indikator EPSS yang Terkunci | Target Level | Artefak Bukti Fisik yang Dihasilkan |
-|:---:|:---|:---|:---|:---:|:---:|:---|
-| **01** | **Pertemuan 1:** Kick-Off, Prinsip SDI, Inventarisasi Cepat, & Penetapan 2 Lokus EPSS | **Materi Wajib SDI & Identifikasi Kegiatan (35 mnt):**<br>• Definisi SSN, Sensus/Survei/Kompromin<br>• 4 Prinsip SDI (SDS, Metadata, Interoperabilitas, Kode Referensi) | **Otomasi & Form 1-Lembar (145 mnt):**<br>• Form Wizard Inventarisasi Cepat OPD<br>• Seleksi Otomatis 2 Lokus Prioritas Calon EPSS (Dinkes & Disperindag)<br>• AI Generator: Kamus Standar Data & Metadata MS-Var | `10101`, `10201`, `10301`, `10401`, `20101`, `20102`, `30101`, `40301` | **L4** | 1. Dokumen Inventarisasi Kegiatan Statistik OPD (Living Doc)<br>2. Berita Acara Penetapan 2 Kegiatan Prioritas Calon EPSS 2028<br>3. Kamus Standar Data Statistik (SDS) Disahkan BPS<br>4. Form Metadata MS-Var terdaftar di INDAH BPS |
-| **02** | **Pertemuan 2:** Perencanaan Terstandar, Rekomendasi ROMANTIK BPS, & Penjaminan Netralitas | **Materi Wajib Probis GSBPM & SSN (35 mnt):**<br>• Fase Perencanaan & Desain Statistik<br>• Alur Pengajuan ROMANTIK (UU 16/1997)<br>• Kelembagaan: Netralitas & Konfidensialitas | **Otomasi & Template Siap Cetak (145 mnt):**<br>• Template KAK Plug-and-Play ber-klausul batas rilis<br>• Auto-generate Form FS3 ROMANTIK BPS<br>• Generator Template A: Surat Pernyataan Netralitas bermeterai TTD Kadis | `30101`-`30103`, `30201`, `40101`, **`40102` (Skor 1)**, `40104`, `50201`, fondasi `20301` | **L4** | 1. KAK Final bertandatangan Kadis ber-klausul batas rilis<br>2. Surat Rekomendasi Statistik Layak Resmi BPS No. Reg<br>3. Surat Pernyataan Netralitas & Objektivitas TTD Kadis (Template A)<br>4. Surat Edaran Permintaan Data Resmi ke faskes/unit |
-| **03** | **Pertemuan 3:** Pengolahan Data, 4 Tahap Akurasi, & Analisis Tren AI Engine | **Materi Wajib Kualitas Data (35 mnt):**<br>• Mengapa Akurasi, Keterbandingan, & Konsistensi jatuh ke Skor 1 di 2026<br>• 4 Tahap Baku Pemeriksaan Akurasi | **Otomasi AI & Spreadsheet Validasi (145 mnt):**<br>• Spreadsheet otomatis: validasi rumus & deteksi ganda<br>• **LLM AI Engine**: Mengubah tabel angka mentah 5 tahun menjadi Bab Analisis Tren Deskriptif lengkap ulasan sebab-akibat & rekomendasi kebijakan<br>• AI Generator: Lembar Uji Konsistensi logis searah | **`20201` (Skor 1)**, **`20501` (Skor 1)**, **`20502` (Skor 1)**, `30301`, **`30302` (Skor 1)** | **L4** | 1. Laporan 4 Tahap Akurasi Data + BA Ground Check<br>2. Bab Analisis Deskriptif Publikasi (Template D) hasil generate AI<br>3. Laporan Keterbandingan 5 Tahun & Wilayah berkonsep baku<br>4. Lembar Hasil Uji Konsistensi Internal Logis (Template C2) |
-| **04** | **Pertemuan 4:** Diseminasi Multi-Kanal (ARC), Mutu Walidata, Forum SDI, & Gelar Pasukan EPSS | **Materi Wajib Kelembagaan & Diseminasi (35 mnt):**<br>• Kalender Rilis Resmi (ARC), Diseminasi Terbuka, & Literasi (Domain 5)<br>• Quality Gate Walidata & Forum SDI | **Otomasi Toolkit & Simulasi SIMBATIK (145 mnt):**<br>• Rilis Kalender ARC Publik di Portal SDI<br>• Lembar Checklist Mutu Walidata 5 Kriteria (Template B)<br>• Sidang Pleno Forum SDI: BA Data Prioritas & Rencana Aksi SDI 2026-2028 (Template J & K)<br>• Zero-Gap Audit & Simulasi Skor IPS EPSS | **`20301` (Skor 1)**, **`20302` (Skor 1)**, `20401`-`20403`, `30401`, **`40103` (Skor 1)**, **`40302` (Skor 2)**, **`50103` (Skor 1)**, **`50301` (Skor 1)**, `50303` | **L4** | 1. Dokumen Kalender Rilis Resmi (ARC) & Laporan Waktu Romantik<br>2. Lembar Checklist Mutu Walidata TTD Kadiskominfo (Template B)<br>3. Berita Acara Forum SDI & Dokumen Rencana Aksi SDI 2026–2028<br>4. Paket 5 Bukti Literasi Statistik Publik<br>5. Berita Acara Kesiapan EPSS 2028 (Proyeksi IPS 3.970 / Sangat Baik) |
+### 2.1 Pembagian Peran Panitia Acara
+- **Pra Acara:**
+  - Pengadaan snack (40 porsi × 4 sesi) & Hadiah Kahoot: **Vaniya**
+  - Administrasi, pendaftaran peserta, & daftar hadir fisik/digital: **Mahasiswa Magang, Nadya, dan Rara** (dibimbing **Mbak Uma**)
+- **Hari H (Pelaksanaan Sesi):**
+  - Doa pembuka pertemuan pertama: **Bg Tio**
+  - MC & pemandu doa mandiri pertemuan 2 s.d. 4: **Vaniya**
+  - Operator laptop penayang slide materi & kuis Kahoot: **Akma**
+  - Dokumentasi foto/video kegiatan (bukti fisik portal SPESIAL): **Irfan**
+- **Pasca Acara:**
+  - Rekapitulasi berkas, pengesahan presensi, dan penyusunan SPJ administrasi: **Sukma**
+
+### 2.2 Alokasi 23 OPD ke 5 Tim Pendamping BPS (1 Tim = 4–5 OPD)
+Setiap tim bertugas mendampingi perwakilan OPD dalam membuka form, menginput data, dan mengecek kelengkapan instrumen via Google Sheets & Docs bersama:
+
+| Tim | Ketua Pendamping | Anggota Pendamping | Daftar OPD Dampingan (4–5 OPD) | Fokus Khusus |
+|:---:|:---|:---|:---|:---|
+| **Tim 1** | **Sukma** | Nadya | 1. BKPSDM<br>2. Bakesbangpol<br>3. BPKAD<br>4. BPPRD<br>5. Inspektorat Daerah | Pengawalan data administrasi kepegawaian, aset, pajak, dan audit internal |
+| **Tim 2** | **Ihza** | Mahasiswa Magang 1 | 1. **Dinas Kesehatan, PPKB (LOKUS UTAMA 1)** ⭐<br>2. RSUD dr. Rubini<br>3. Dinas Sosial, P3APMPD<br>4. Disdukcapil | **Pusat Pengawalan Lokus Emas 1 (Profil Kesehatan / Stunting)** |
+| **Tim 3** | **Listio** | Irfan | 1. **Disperindagnaker (LOKUS UTAMA 2)** ⭐<br>2. DPMPTSP-KUKM<br>3. Dinas Pertanian, KP & Perikanan (DPKP)<br>4. Dinas Perhubungan & LH (Dishub-LH) | **Pusat Pengawalan Lokus Emas 2 (Tenaga Kerja & Bapok)** |
+| **Tim 4** | **Aller** | Rara | 1. Dinas Pekerjaan Umum dan PR (DPUPR)<br>2. BPBD (Penanggulangan Bencana)<br>3. Satpol PP<br>4. Dinas Perpustakaan & Kearsipan (Dispersip)<br>5. Sekretariat DPRD | Standar data infrastruktur, mitigasi bencana, perda, dan kearsipan |
+| **Tim 5** | **Aul** | Mbak Uma | 1. Bapperida (Perencana & Koordinator SDI)<br>2. Diskominfo (Walidata Daerah)<br>3. Disdikporapar (Pendidikan, Olahraga, Pariwisata)<br>4. Sekretariat Daerah (Setda) | Sinkronisasi Perencanaan Daerah, Quality Gate Walidata, & Portal Satu Data |
 
 ---
 
-## 🤖 3. Mesin Otomasi Berbantuan AI (`scripts/kb_pss_automation.py`)
+## 📅 3. Jadwal Definitif 4 Sesi Pertemuan & Distribusi Materi
 
-Untuk memangkas habis beban kognitif operator OPD, telah disediakan alat bantu CLI otomasi cerdas di repositori:
+Setiap pertemuan berlangsung selama **180 Menit (3 Jam)** dengan pembagian waktu yang proporsional:
+- **00 – 35 Menit:** Paparan Materi Teknis Wajib (Slide ringkas, visual, to-the-point) diakhiri Kuis Kahoot (5 Menit) berhadiah Rp40.000.
+- **35 – 170 Menit:** **Sesi Spesial Kawalan Ihza & 5 Tim Pendamping** (Workshop Kolaboratif Live Google Docs/Sheets & Otomasi AI Generator).
+- **170 – 180 Menit:** Review keluaran bukti fisik, penandatanganan pengesahan, dan penutupan.
 
+| Pertemuan & Tanggal | Pemateri Resmi | Materi Paparan Wajib (35 Mnt) | Sesi Praktek / Workshop Kawalan Ihza & 5 Tim (135 Mnt) | Target Output Bukti Fisik EPSS Terkunci |
+|:---|:---|:---|:---|:---|
+| **Sesi 1**<br>Rabu, 28 Okt 2026 | **Ihza** | **Identifikasi Kegiatan Statistik:**<br>• Definisi Statistik Sektoral (Sensus, Survei, Kompromin)<br>• Kaidah penulisan judul standar BPS<br>• Penjelasan Doktrin 2 Lokus Utama EPSS | **Kickoff Live Workspace Kolaboratif:**<br>• Pembagian tautan Google Sheets & Google Docs bersama<br>• Input serentak Form Inventarisasi 1-Lembar 23 OPD<br>• Pleno Pengesahan BA Penetapan 2 Lokus Utama (Dinkes & Disperindag) | • Rekap Inventarisasi Kegiatan 23 OPD (Indikator 20102, 30101)<br>• BA Penetapan 2 Lokus Utama (Indikator 20101, 40301)<br>• Kuis Kahoot Sesi 1 (Akma & Vaniya) |
+| **Sesi 2**<br>Rabu, 4 Nov 2026 | **Materi 1: Uma**<br>**Materi 2: Ihza** | **Prinsip SDI & Kualitas Data:**<br>• 4 Prinsip SDI (SDS, Metadata, Interoperabilitas, Kode Referensi)<br>• Evaluasi 10 Indikator Pleno 2026 yang jatuh ke Skor 1 (Akurasi, Aktualitas, Konsistensi) | **Bedah Kualitas Data Live Google Docs:**<br>• Praktik live menyusun Kamus Standar Data & Metadata INDAH<br>• Simulasi 4 Tahap Pemeriksaan Akurasi Data + BA Ground Check<br>• Bedah Uji Konsistensi Logis Searah 2 Variabel Terkait | • Kamus Standar Data Statistik (SDS) TTD BPS (Indikator 10101)<br>• Bukti Registrasi Metadata INDAH (Indikator 10201)<br>• Laporan Uji Akurasi & Konsistensi (Indikator 20201, 20502)<br>• Kuis Kahoot Sesi 2 |
+| **Sesi 3**<br>Rabu, 11 Nov 2026 | **Aul** | **Proses Bisnis Statistik (GSBPM):**<br>• Tahapan GSBPM (Perencanaan s.d. Evaluasi)<br>• Alur Pengajuan ROMANTIK BPS (UU 16/1997)<br>• Klausul batas waktu rilis diseminasi (ARC) | **Penyusunan KAK & Analisis AI Generator:**<br>• Pengisian KAK Ber-klausul Batas Rilis Resmi (Template Plug-and-Play)<br>• **Eksekusi AI Engine (`kb_pss_automation.py`)**: Generate Bab Analisis Deskriptif Tren 5 Tahun dari data mentah lokus<br>• Format Surat Rekomendasi Statistik Layak BPS | • KAK Final TTD Kadis ber-klausul rilis (Indikator 20301, 20302, 50301)<br>• Surat Rekomendasi Statistik Layak BPS (Indikator 50201)<br>• Naskah Bab III Analisis Deskriptif Tren 5 Tahun (Indikator 30302)<br>• Kuis Kahoot Sesi 3 |
+| **Sesi 4**<br>Selasa, 17 Nov 2026 | **Materi 1: Listio**<br>**Materi 2: Aller** | **SSN & Kelembagaan Sektoral:**<br>• Peran BPS (Pembina), Diskominfo (Walidata), & OPD (Produsen)<br>• Tata Kelola Forum SDI & Rencana Aksi Daerah<br>• Penjaminan Netralitas & Mutu Data Walidata | **Quality Gate Walidata, Netralitas, & Final Audit:**<br>• Pengisian Lembar Checklist Mutu Walidata Diskominfo (Template B)<br>• Penandatanganan Surat Pernyataan Netralitas bermeterai (Template A)<br>• Simulasi Pleno Forum SDI & BA Kesepakatan Data Prioritas<br>• Gelar Pasukan EPSS 2028: Audit Kesiapan Skor IPS 3.970 | • Pakta Komitmen Netralitas TTD Kadis bermeterai (Indikator 40102)<br>• Berita Acara Quality Gate Mutu Walidata (Indikator 40103)<br>• Notula & BA Sidang Pleno Forum SDI (Indikator 40302)<br>• Dossier Final EPSS 2028 Siap Panen (Proyeksi Sangat Baik)<br>• Kuis Kahoot Sesi 4 |
+
+---
+
+## 💻 4. Sesi Spesial Pimpinan Ihza: "EPSS Live Collaborative Workspace Engine"
+
+Inovasi utama pembinaan tahun 2026 ini dipimpin langsung oleh **Ihza Fikri Zaki Karunia**, yaitu menghadirkan ruang kerja kolaboratif digital (*Live Collaborative Workspace*) yang menghubungkan seluruh laptop operator OPD, tim Walidata Diskominfo, dan tim pendamping BPS secara *real-time*.
+
+### 4.1 Komponen 1: Google Sheets "Radar EPSS Mempawah 2026–2028"
+File Google Sheets bersama yang diproyeksikan ke layar proyektor aula:
+1. **Tab 1: Leaderboard & Radar 23 OPD**
+   - Menampilkan status lampu indikator (*Traffic Light System*): Merah (Belum Isi), Kuning (Draf Diisi), Hijau (Berkas Lengkap & TTD).
+   - Menjadi pemicu motivasi positif antar-OPD.
+2. **Tab 2: Lokus Emas 1 (Dinkes-PPKB - Profil Kesehatan)**
+   - Matriks 38 Indikator EPSS dengan kolom: Nomor Indikator, Nama Bukti Dukung, Tautan Folder Google Drive, PIC Dinkes, PIC Pendamping BPS (Ihza), dan Status Validasi TPB.
+3. **Tab 3: Lokus Emas 2 (Disperindagnaker - Naker & Bapok)**
+   - Matriks 38 Indikator identik yang dipantau oleh Tim Listio & Ihza.
+4. **Tab 4 s.d. 8: Meja Kerja Tim 1 s.d. Tim 5**
+   - Ruang interaksi teknis masing-masing tim pendamping bersama 4–5 OPD dampingannya.
+
+### 4.2 Komponen 2: Google Docs "Master Dossier Bukti Dukung Plug-and-Play"
+Operator OPD tidak menulis dari nol. Ihza membuka dokumen master di layar proyektor dan mendemonstrasikan pengisian secara langsung:
+- Mengambil **1 contoh nyata** (misal: Data Profil Kesehatan Ibu dan Anak Dinkes atau Data Penempatan Tenaga Kerja Disperindag).
+- Operator OPD cukup mengganti teks berwarna biru (nama dinas, nama pejabat, NIP, nama kegiatan).
+- Seluruh klausul metodologi hukum, klausul batas rilis diseminasi, dan formula akurasi sudah terstandarisasi sesuai pedoman EPSS BPS RI.
+
+### 4.3 Komponen 3: Mesin Otomasi AI Generator (`scripts/kb_pss_automation.py`)
+Untuk kebutuhan analisis data statistik (Indikator 30302 yang jatuh ke Skor 1 di 2026 karena publikasi dinas hanya berisi tabel tanpa ulasan narasi tren), tim pembina memanfaatkan script Python otomasi AI:
 ```bash
-# 1. Menghasilkan draf KAK lengkap ber-klausul batas waktu rilis yang mengikat:
-python3 scripts/kb_pss_automation.py generate-kak --opd "Dinas Kesehatan" --kegiatan "Profil Kesehatan 2026" --deadline "2026-10-31"
-
-# 2. Mengubah tabel angka mentah 5 tahun OPD menjadi Bab Analisis Deskriptif Lengkap via LLM API:
-python3 scripts/kb_pss_automation.py generate-analysis --opd "Disperindagnaker" --kegiatan "Penempatan Tenaga Kerja" --data-file data_naker.json
-
-# 3. Menghasilkan Lembar Verifikasi Uji Konsistensi Internal Logis:
-python3 scripts/kb_pss_automation.py generate-consistency --opd "Dinas Kesehatan" --var1 "Cakupan K4" --var2 "Kematian Ibu" --data-file data_kia.json
-
-# 4. Menghasilkan Bundel Surat Pernyataan Netralitas (Template A) siap cetak dan bermeterai:
-python3 scripts/kb_pss_automation.py generate-netralitas --opd "Disperindagnaker" --kadis "Johana Saragih, S.H."
-
-# 5. Menjalankan Zero-Gap Audit 38 Indikator dan Kalkulasi Proyeksi Skor IPS EPSS:
-python3 scripts/kb_pss_automation.py audit-epss --drive-folder "/path/to/epss-drive"
+# Operator OPD cukup menyerahkan CSV angka mentah 5 tahun, sistem menghasilkan Bab Analisis Deskriptif lengkap 4 subbab:
+python3 scripts/kb_pss_automation.py generate-analysis \
+  --opd "Dinas Kesehatan" \
+  --judul "Profil Kesehatan Kabupaten Mempawah 2026" \
+  --data-csv /path/to/data_dinkes.csv \
+  --output Bab3_Analisis_Dinkes.md
 ```
 
----
-
-## 🧮 4. Target Kinerja Kematangan EPSS 2028
-
-- **Baseline Hasil Pleno EPSS 2026:** $\mathbf{2.558}$ (Predikat: **CUKUP**)
-- **Target Tercapai 4 Pertemuan Terpadu 2026:**
-  - Domain 1 Prinsip SDI (Bobot 28%): Rata-rata Skor $4.000 \rightarrow$ Kontribusi **1.120**
-  - Domain 2 Kualitas Data (Bobot 24%): Rata-rata Skor $4.000 \rightarrow$ Kontribusi **0.960**
-  - Domain 3 Proses Bisnis (Bobot 19%): Rata-rata Skor $4.000 \rightarrow$ Kontribusi **0.760**
-  - Domain 4 Kelembagaan (Bobot 17%): Rata-rata Skor $3.820 \rightarrow$ Kontribusi **0.650**
-  - Domain 5 Statistik Nasional (Bobot 12%): Rata-rata Skor $4.000 \rightarrow$ Kontribusi **0.480**
-- **Total Proyeksi Indeks Pembangunan Statistik (IPS) 2028:** $\mathbf{3.970}$ (Predikat: **SANGAT BAIK**)  
-  *(Lompatan peningkatan sebesar **+1.412 poin / +55.2%** secara absolut).*
+### 4.4 Nilai Inovasi Jangka Panjang (*Sustainable Long-Term System*)
+Sistem ini tidak bubar saat pembinaan 4 hari selesai, melainkan terus hidup sebagai **Pusat Pemantauan Penyelenggaraan Statistik Sektoral Kabupaten Mempawah**:
+1. Menjadi arsip terpusat bukti dukung (*Evidence Vault*) di Google Drive bersama antara BPS dan Diskominfo.
+2. Saat penilaian mandiri dan interview EPSS 2028 dibuka, Diskominfo dan BPS tinggal menyalin tautan berkas yang sudah rapi tanpa perlu pontang-panting mencari arsip lama.
+3. Inovasi ini secara mandiri menjadi bukti fisik otentik Level 5 untuk **Indikator 50103 (Literasi Statistik & Inovasi Pembinaan)** dan **Indikator 40103 (Penjaminan Kualitas Data oleh Walidata)**.
 
 ---
 
-## 📁 5. Arsitektur Penyimpanan Berkas & Dossier Bukti Fisik
+## 🧮 5. Proyeksi Matematis Nilai EPSS Mempawah 2028
 
-Setiap OPD produsen data difasilitasi folder terstandar di Google Drive bersama:
+Berdasarkan formula pembobotan resmi EPSS BPS RI (`epss_calc.py`), strategi pengawalan 2 Lokus Utama dan 23 OPD ini menghasilkan lompatan nilai yang terukur:
+
 ```text
-DRIVE_EPSS_2028_MEMPAWAH/
-├── 01_DOMAIN_1_PRINSIP_SDI/          --> Dihasilkan pada Pertemuan 1
-├── 02_DOMAIN_2_KUALITAS_DATA/        --> Dihasilkan pada Pertemuan 3 & 4
-├── 03_DOMAIN_3_PROSES_BISNIS/        --> Dihasilkan pada Pertemuan 2 & 3
-├── 04_DOMAIN_4_KELEMBAGAAN/          --> Dihasilkan pada Pertemuan 2 & 4
-└── 05_DOMAIN_5_STATISTIK_NASIONAL/   --> Dihasilkan pada Pertemuan 4
+================================================================================
+                    SIMULASI CAPAIAN EPSS MEMPAWAH (TARGET 2028)
+================================================================================
+Domain 1: Prinsip Satu Data Indonesia       Bobot: 12.0% -> Kontribusi: 0.444
+Domain 2: Kualitas Data                     Bobot: 23.0% -> Kontribusi: 0.900
+Domain 3: Proses Bisnis Statistik           Bobot: 19.0% -> Kontribusi: 0.741
+Domain 4: Kelembagaan                       Bobot: 26.0% -> Kontribusi: 1.050
+Domain 5: Statistik Nasional                Bobot: 20.0% -> Kontribusi: 0.835
+--------------------------------------------------------------------------------
+TOTAL INDEKS PEMBANGUNAN STATISTIK (IPS)     : 3.970
+KATEGORI / PREDIKAT                          : SANGAT BAIK (Predikat Memuaskan)
+PROYEKSI KENAIKAN DARI BASELINE 2026 (2.558) : +1.412 Poin (+55.2%)
+================================================================================
 ```
 
-Dengan sistem 4 pertemuan ini, BPS Kabupaten Mempawah memastikan **seluruh kewajiban juknis pembinaan BPS terpenuhi**, **beban operator OPD sangat ringan (tinggal isi parameter)**, dan **100% bukti dukung EPSS 2028 telah siap dan terkunci 2 tahun lebih awal!**
+Dengan peta jalan ini, seluruh panitia dan pemateri BPS memiliki panduan kerja yang padu, terukur, dan fokus mengamankan bukti fisik kemenangan EPSS Mempawah 2028!

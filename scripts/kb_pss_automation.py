@@ -344,6 +344,46 @@ def cmd_audit_epss(args):
     print("=" * 80)
     print("✅ Seluruh berkas bukti dukung memenuhi kriteria penilaian mandiri SIMBATIK BPS RI.\n")
 
+def cmd_generate_radar(args):
+    """Menghasilkan struktur Matriks Radar Google Sheets untuk 23 OPD & 2 Lokus Utama."""
+    rows = [
+        ["No", "Nama OPD", "Tim Pendamping", "Ketua Pendamping", "Status Lokus EPSS 2028", "Usulan Kegiatan Statistik Baku 2026", "Status Berkas", "Tautan Folder GDrive"],
+        ["1", "Dinas Kesehatan, Pengendalian Penduduk dan KB", "Tim 2", "Ihza", "⭐ LOKUS UTAMA 1 (PRIORITAS TINGGI)", "Kompilasi Data Profil Kesehatan Kabupaten Mempawah Tahun 2026", "🟢 LENGKAP", "drive.google.com/drive/folders/dinkes-epss28"],
+        ["2", "Dinas Perindustrian, Perdagangan dan Tenaga Kerja", "Tim 3", "Listio", "⭐ LOKUS UTAMA 2 (PRIORITAS TINGGI)", "Kompilasi Data Pencari Kerja Terdaftar (AK-1) dan Penempatan Tenaga Kerja Kabupaten Mempawah Tahun 2026", "🟢 LENGKAP", "drive.google.com/drive/folders/disperindag-epss28"],
+        ["3", "Dinas Komunikasi dan Informatika", "Tim 5", "Aul & Uma", "🏛️ WALIDATA DAERAH", "Pemeriksaan Mutu Data Walidata & Pengelolaan Portal Satu Data Mempawah", "🟢 LENGKAP", "drive.google.com/drive/folders/diskominfo-epss28"],
+        ["4", "Badan Perencanaan Pembangunan, Riset dan Inovasi Daerah", "Tim 5", "Aul & Uma", "🏛️ KOORDINATOR FORUM SDI", "Penyusunan Rencana Aksi Satu Data Indonesia Kabupaten Mempawah 2026–2028", "🟢 LENGKAP", "drive.google.com/drive/folders/bapperida-epss28"],
+        ["5", "RSUD dr. Rubini", "Tim 2", "Ihza", "Produsen Data", "Kompilasi Data Pelayanan Rawat Jalan dan Rawat Inap RSUD dr. Rubini 2026", "🟡 DRAFT", "drive.google.com/drive/folders/rsud-epss28"],
+        ["6", "Dinas Sosial, P3APMPD", "Tim 2", "Ihza", "Produsen Data", "Kompilasi Data Pemerlu Pelayanan Kesejahteraan Sosial (PPKS) Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/dinsos-epss28"],
+        ["7", "Dinas Kependudukan dan Pencatatan Sipil", "Tim 2", "Ihza", "Produsen Data", "Kompilasi Data Agregat Kependudukan dan Kepemilikan KIA Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/disdukcapil-epss28"],
+        ["8", "Dinas Pertanian, Ketahanan Pangan dan Perikanan", "Tim 3", "Listio", "Produsen Data (Lokus Cadangan)", "Kompilasi Data Luas Panen dan Produksi Padi Kabupaten Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/dpkp-epss28"],
+        ["9", "Dinas Penanaman Modal, KUKM dan PTSP", "Tim 3", "Listio", "Produsen Data", "Kompilasi Data Realisasi Investasi dan Penerbitan NIB Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/dpmptsp-epss28"],
+        ["10", "Dinas Perhubungan dan Lingkungan Hidup", "Tim 3", "Listio", "Produsen Data", "Kompilasi Data Uji Kelayakan Kendaraan Bermotor (KIR) Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/dishub-epss28"],
+        ["11", "Badan Kepegawaian dan Pengembangan SDM", "Tim 1", "Sukma", "Produsen Data", "Kompilasi Data Profil ASN dan Kebutuhan Diklat Pemkab Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/bkpsdm-epss28"],
+        ["12", "Badan Kesatuan Bangsa dan Politik", "Tim 1", "Sukma", "Produsen Data", "Kompilasi Data Organisasi Kemasyarakatan Terdaftar Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/kesbangpol-epss28"],
+        ["13", "Badan Pengelola Keuangan dan Aset Daerah", "Tim 1", "Sukma", "Produsen Data", "Kompilasi Data Realisasi APBD dan Neraca Aset Daerah Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/bpkad-epss28"],
+        ["14", "Badan Pengelola Pajak dan Retribusi Daerah", "Tim 1", "Sukma", "Produsen Data", "Kompilasi Data Penerimaan Pajak Daerah dan Retribusi Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/bpprd-epss28"],
+        ["15", "Inspektorat Daerah", "Tim 1", "Sukma", "Produsen Data", "Kompilasi Data Tindak Lanjut Hasil Pengawasan (TLHP) Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/inspektorat-epss28"],
+        ["16", "Dinas Pekerjaan Umum dan Penataan Ruang", "Tim 4", "Aller", "Produsen Data", "Kompilasi Data Kondisi Kemantapan Jalan Kabupaten Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/dpupr-epss28"],
+        ["17", "Badan Penanggulangan Bencana Daerah", "Tim 4", "Aller", "Produsen Data", "Kompilasi Data Kejadian Bencana Alam dan Luas Terdampak Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/bpbd-epss28"],
+        ["18", "Satuan Polisi Pamong Praja", "Tim 4", "Aller", "Produsen Data", "Kompilasi Data Pelanggaran Peraturan Daerah Kabupaten Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/satpolpp-epss28"],
+        ["19", "Dinas Perpustakaan dan Kearsipan", "Tim 4", "Aller", "Produsen Data", "Kompilasi Data Tingkat Gemar Membaca dan Kunjungan Perpustakaan 2026", "🟡 DRAFT", "drive.google.com/drive/folders/dispersip-epss28"],
+        ["20", "Sekretariat DPRD", "Tim 4", "Aller", "Produsen Data", "Kompilasi Data Produk Hukum Daerah (Perda/Perbup Inisiatif) Mempawah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/setwan-epss28"],
+        ["21", "Dinas Pendidikan, Pemuda, Olahraga dan Pariwisata", "Tim 5", "Aul & Uma", "Produsen Data", "Kompilasi Data Angka Partisipasi Sekolah dan Sarana Pendidikan 2026", "🟡 DRAFT", "drive.google.com/drive/folders/disdik-epss28"],
+        ["22", "Sekretariat Daerah (Bagian Perekonomian & SDA)", "Tim 5", "Aul & Uma", "Produsen Data", "Kompilasi Data BUMD dan Perkembangan Indikator Makro Daerah 2026", "🟡 DRAFT", "drive.google.com/drive/folders/setda-epss28"],
+        ["23", "Kecamatan se-Kabupaten Mempawah (9 Kecamatan)", "Tim 5", "Aul & Uma", "Produsen Data", "Kompilasi Data Pelayanan Administrasi Terpadu Kecamatan (PATEN) 2026", "🟡 DRAFT", "drive.google.com/drive/folders/paten-epss28"]
+    ]
+
+    import csv
+    output_path = args.output or "radar_epss_mempawah_2026.csv"
+    with open(output_path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerows(rows)
+
+    print(f"✅ Matriks Radar EPSS Mempawah untuk 23 OPD & 2 Lokus Emas berhasil digenerate:")
+    print(f"   Jalur File : {output_path}")
+    print(f"   Format     : CSV (Siap diimpor langsung ke Google Sheets Aula)")
+    print(f"   Total Baris: {len(rows)-1} Instansi / OPD")
+
 def main():
     parser = argparse.ArgumentParser(description="Toolkit Otomasi Pembinaan Statistik Sektoral 2026 Menuju EPSS 2028")
     subparsers = parser.add_subparsers(dest="command", help="Perintah yang tersedia")
@@ -384,6 +424,10 @@ def main():
     p_aud = subparsers.add_parser("audit-epss", help="Audit Zero-Gap Dossier EPSS dan hitung skor IPS")
     p_aud.add_argument("--drive-folder", help="Jalur folder master bukti dukung")
 
+    # Command: generate-radar
+    p_rad = subparsers.add_parser("generate-radar", help="Generate Matriks Radar Google Sheets 23 OPD & 2 Lokus Utama")
+    p_rad.add_argument("-o", "--output", help="Jalur file CSV keluaran (default: radar_epss_mempawah_2026.csv)")
+
     args = parser.parse_args()
     if not args.command:
         parser.print_help()
@@ -399,6 +443,8 @@ def main():
         cmd_generate_consistency(args)
     elif args.command == "audit-epss":
         cmd_audit_epss(args)
+    elif args.command == "generate-radar":
+        cmd_generate_radar(args)
 
 if __name__ == "__main__":
     main()
