@@ -1,81 +1,202 @@
 ---
 nama: "Survei Pola Konsumsi Rumah Tangga (SPKRT) 2027"
-kategori: "survey"
-rutinitas: "rutin"
+kategori: "survei"
+rutinitas: "non-rutin"
 frekuensi: "tahunan"
 peran: "anggota"
 status: "aktif"
 deadlines:
-  - tanggal: "2026-12-06"
-    kegiatan: "Awal Pelaksanaan Lapangan Identifikasi Rumah Tangga SPKRT 2027 Triwulan I"
+  - tanggal: "2026-10-29"
+    kegiatan: "Batas Akhir Penugasan & Pengisian Biodata Calon INDA Pengolahan VPKRT27-BL (http://s.bps.go.id/Calon_Innas_Inda_Olah_SPKRT)"
+    status: "selesai"
+  - tanggal: "2026-10-31"
+    kegiatan: "Target Pengiriman Daftar Sampel SLS SPKRT 2027 Seluruh Triwulan / TW 1 dari Pusat"
     status: "belum"
-  - tanggal: "2026-12-12"
-    kegiatan: "Batas Akhir Pelaksanaan Lapangan Identifikasi Rumah Tangga SPKRT 2027 Triwulan I"
+  - tanggal: "2026-11-02"
+    kegiatan: "Batas Akhir Pengisian Jadwal Pelatihan Petugas Pencacahan SPKRT 2027 (http://s.bps.go.id/Jadwal_Pelatihan_Petugas_SPKRT27)"
+    status: "belum"
+  - tanggal: "2026-11-03"
+    kegiatan: "Pelatihan INNAS Pengolahan Kuesioner VPKRT27-BL (3 s.d. 6 November 2026)"
+    status: "belum"
+  - tanggal: "2026-11-09"
+    kegiatan: "Pelatihan INDA Pengolahan Kuesioner VPKRT27-BL: MOOC Mandiri Asynchronous (9–10 November 2026)"
+    status: "belum"
+  - tanggal: "2026-11-11"
+    kegiatan: "Pelatihan INDA Pengolahan Kuesioner VPKRT27-BL: Synchronous PJJ via GOJAGS (Pre & Post Test)"
+    status: "belum"
+  - tanggal: "2026-11-15"
+    kegiatan: "Mulai Rentang Prioritas Pelatihan Petugas Pencacahan Lapangan SPKRT 2027 (15 s.d. 30 November 2026)"
+    status: "belum"
+  - tanggal: "2026-11-16"
+    kegiatan: "Pelatihan Petugas Pengolahan Dokumen Kuesioner VPKRT27-BL (16 s.d. 20 November 2026)"
+    status: "belum"
+  - tanggal: "2026-11-30"
+    kegiatan: "Batas Akhir Rentang Pelatihan Petugas Pencacahan Lapangan SPKRT 2027"
+    status: "belum"
+  - tanggal: "2026-12-01"
+    kegiatan: "Mulai Identifikasi & Pemutakhiran Daftar Rumah Tangga Triwulan I (Tahapan Penarikan Sampel)"
+    status: "belum"
+  - tanggal: "2026-12-06"
+    kegiatan: "Pendataan Lapangan Identifikasi Rumah Tangga Sampel SPKRT 2027 Triwulan I (6 s.d. 12 Desember 2026)"
+    status: "belum"
+  - tanggal: "2027-01-01"
+    kegiatan: "Mulai Pelaksanaan Lapangan Triwulan I (Kuesioner VPKRT27-BL & BLp: Jan–Mar 2027) & Pencacahan Harga Komoditas Tahun Dasar (Sepanjang 2027)"
+    status: "belum"
+  - tanggal: "2027-01-15"
+    kegiatan: "Pelatihan INNAS & INDA Pengolahan Dokumen VPKRT27-LK dan VPKRT27-S (Januari 2027)"
+    status: "belum"
+  - tanggal: "2027-02-01"
+    kegiatan: "Identifikasi / Penarikan Sampel Triwulan II & Mulai Entri Kuesioner VPKRT27-BL Triwulan I (Feb–Apr 2027)"
+    status: "belum"
+  - tanggal: "2027-02-15"
+    kegiatan: "Pelatihan Petugas Pengolahan Dokumen VPKRT27-LK dan VPKRT27-S (Februari 2027)"
+    status: "belum"
+  - tanggal: "2027-02-22"
+    kegiatan: "Pencacahan HR & S Triwulan I Minggu 1: 22 s.d. 28 Februari 2027 (Jadwal Khusus Ramadhan & Idulfitri)"
+    status: "belum"
+  - tanggal: "2027-03-01"
+    kegiatan: "Mulai Rekapitulasi & Entri Kuesioner VPKRT27-LK Triwulan I (Mar–Apr 2027)"
+    status: "belum"
+  - tanggal: "2027-03-15"
+    kegiatan: "Pencacahan HR & S Triwulan I Minggu 2: 15 s.d. 21 Maret 2027"
+    status: "belum"
+  - tanggal: "2027-03-22"
+    kegiatan: "Pencacahan HR & S Triwulan I Minggu 3: 22 s.d. 28 Maret 2027"
+    status: "belum"
+  - tanggal: "2027-03-29"
+    kegiatan: "Pencacahan HR & S Triwulan I Minggu 4: 29 Maret s.d. 04 April 2027"
+    status: "belum"
+  - tanggal: "2027-04-01"
+    kegiatan: "Mulai Entri Kuesioner VPKRT27-S Triwulan I & Pelaksanaan Lapangan Triwulan II (Apr–Jun 2027)"
+    status: "belum"
+  - tanggal: "2027-05-01"
+    kegiatan: "Identifikasi / Penarikan Sampel Triwulan III & Mulai Entri Kuesioner VPKRT27-BL Triwulan II (Mei–Jul 2027)"
+    status: "belum"
+  - tanggal: "2027-06-01"
+    kegiatan: "Pencacahan HR & S Triwulan II & Rekapitulasi/Entri Kuesioner VPKRT27-LK Triwulan II (Jun–Jul 2027)"
+    status: "belum"
+  - tanggal: "2027-07-01"
+    kegiatan: "Refreshing Petugas Lapangan SPKRT 2027 (Evaluasi Pertengahan Tahun), Entri VPKRT27-S TW II & Lapangan TW III (Jul–Sep 2027)"
+    status: "belum"
+  - tanggal: "2027-08-01"
+    kegiatan: "Identifikasi / Penarikan Sampel Triwulan IV & Mulai Entri Kuesioner VPKRT27-BL Triwulan III (Ags–Okt 2027)"
+    status: "belum"
+  - tanggal: "2027-09-01"
+    kegiatan: "Pencacahan HR & S Triwulan III & Rekapitulasi/Entri Kuesioner VPKRT27-LK Triwulan III (Sep–Okt 2027)"
+    status: "belum"
+  - tanggal: "2027-10-01"
+    kegiatan: "Mulai Entri Kuesioner VPKRT27-S Triwulan III & Pelaksanaan Lapangan Triwulan IV (Okt–Des 2027)"
+    status: "belum"
+  - tanggal: "2027-11-01"
+    kegiatan: "Mulai Entri Kuesioner VPKRT27-BL Triwulan IV (Nov 2027–Jan 2028)"
+    status: "belum"
+  - tanggal: "2027-12-01"
+    kegiatan: "Pencacahan HR & S Triwulan IV & Rekapitulasi/Entri Kuesioner VPKRT27-LK Triwulan IV (Des 2027–Jan 2028)"
+    status: "belum"
+  - tanggal: "2028-01-01"
+    kegiatan: "Mulai Entri Kuesioner VPKRT27-S Triwulan IV & Pengolahan Data Lengkap SPKRT 2027 (Januari s.d. November 2028)"
+    status: "belum"
+  - tanggal: "2028-12-01"
+    kegiatan: "Diseminasi Data SPKRT 2027 (Penyusunan Diagram Timbang Baru IHK 2027=100)"
     status: "belum"
 ---
 
 # Survei Pola Konsumsi Rumah Tangga (SPKRT) 2027
 
 > [!IMPORTANT]
-> **Survei Pola Konsumsi Rumah Tangga (SPKRT) Tahun 2027** di bawah koordinasi Tim Statistik Distribusi dan Jasa / PJK Harga BPS.
-> Tahap awal pendataan lapangan: **Identifikasi Rumah Tangga Sampel SPKRT 2027 Triwulan I** dijadwalkan pada **6 - 12 Desember 2026**.
+> **Dasar Hukum, Regulasi & Sumber Resmi**:
+> 1. **Surat Kepala BPS Provinsi Kalimantan Barat** Nomor `B-888/61000/VS.200/2026` tanggal 27 Oktober 2026 hal *Permohonan Calon INDA Pengolahan Kuesioner VPKRT27-BL serta Pengisian Jadwal Pelatihan Petugas Pencacahan SPKRT 2027* (menindaklanjuti Surat Direktur Statistik Harga BPS RI Nomor `B-229/06200/VS.200/2026` tanggal 27 Oktober 2026).
+> 2. **Surat Kepala BPS Provinsi Kalimantan Barat** Nomor `B-852/61000/VS.300/2026` tanggal 15 Oktober 2026 hal *Pemberitahuan Jadwal Pelaksanaan Lapangan Identifikasi Rumah Tangga dan Spesifikasi Instrumen SPKRT 2027*.
+> 3. **Materi & Instrumen Master BPS RI**: [Folder Google Drive Bahan Ajar & Instrumen SPKRT 2027](https://drive.google.com/drive/folders/1DtWG1k2m1c7FhX9z4IstMwq9miYGx04S).
 
 ---
 
-## 1. Deskripsi & Ruang Lingkup
-Survei Pola Konsumsi Rumah Tangga (SPKRT) 2027 dilaksanakan untuk memetakan dan mengumpulkan data pola konsumsi rumah tangga secara komprehensif sebagai basis pembobotan diagram timbang dan indikator harga/konsumsi.
+## 1. Dokumen Terkait dalam Knowledge Base
 
-Kegiatan persiapan lapangan dimulai pada Triwulan IV 2026 dengan agenda utama:
-1. Identifikasi rumah tangga sampel untuk Triwulan I 2027.
-2. Pengadaan mandiri instrumen kuesioner dan barang pendukung (timbangan digital).
-3. Penyiapan alokasi petugas dan distribusi perlengkapan lapangan.
-
----
-
-## 2. Dasar Kebijakan & Rujukan Surat Resmi
-- **Surat BPS Provinsi Kalimantan Barat**:
-  - Nomor: `B-852/61000/VS.300/2026`
-  - Tanggal: 15 Oktober 2026
-  - Hal: *Pemberitahuan Jadwal Pelaksanaan Lapangan Identifikasi Rumah Tangga dan Spesifikasi Instrumen SPKRT 2027*
-  - Ditandatangani oleh: Muh Saichudin (Kepala BPS Provinsi Kalimantan Barat) & Sri Suyatmi (Ketua Tim Statistik Distribusi dan Jasa).
-- **Rujukan Pusat**: Surat Direktur Statistik Harga BPS RI Nomor `B-217/06200/VS.300/2026` tanggal 14 Oktober 2026.
+- **Poin Penegasan Innas (Substantif & Metodologi)**: [`poin_penegasan_innas.md`](poin_penegasan_innas.md)
+- **Alokasi Sampel & Kebutuhan Petugas se-Kalbar**: [`alokasi_dan_beban_kerja.md`](alokasi_dan_beban_kerja.md)
+- **Struktur Buku Pedoman & Kuesioner**: [`pedoman_dan_instrumen.md`](pedoman_dan_instrumen.md)
+- **Berkas Kuesioner & Surat Resmi**: Direktori [`docs/`](docs/)
 
 ---
 
-## 3. Jadwal Kunci & Deadline Pelaksanaan
-- **6 - 12 Desember 2026**: Pelaksanaan pendataan lapangan kegiatan Identifikasi Rumah Tangga Sampel SPKRT 2027 Triwulan I.
-- **Tahun 2027**: Pelaksanaan pencacahan lapangan berkala SPKRT 2027.
+## 2. Ringkasan Alokasi BPS Kabupaten Mempawah (6104)
+
+Berdasarkan penetapan alokasi BPS RI, Kabupaten Mempawah mendapatkan alokasi:
+- **Jumlah Sampel SLS**: **242 SLS** setahun (**61 SLS** per triwulan)
+- **Jumlah Sampel Rumah Tangga**: **610 RT** per triwulan (Total **2.440 RT** setahun)
+- **Petugas Pencacah Lapangan (PCL)**: **61 Orang**
+- **Petugas Pengawas Lapangan (PML)**: **31 Orang**
+- **Petugas Pengolahan**: **21 Orang** (setahun)
+- **INDA Pencacahan**: **4 Orang**
+- **INDA Pengolahan**: **1 Orang**
 
 ---
 
-## 4. Tautan Penting & Berkas Digital
-- **Kuesioner Siap Cetak**: http://s.bps.go.id/KuesionerSPKRT2027
-- **Rincian Alokasi Sampel & Kebutuhan Perlengkapan Petugas**: http://s.bps.go.id/Alokasi_Petugas_Kues_SPKRT2027
-- **Dokumen Surat Resmi di KB**: [`docs/B-852_Pemberitahuan_Jadwal_Identifikasi_Ruta_dan_Spesifikasi_Instrumen_SPKRT_2027.md`](docs/B-852_Pemberitahuan_Jadwal_Identifikasi_Ruta_dan_Spesifikasi_Instrumen_SPKRT_2027.md)
-- **Arsip PDF Surat**: [`docs/B-852_Pemberitahuan_Jadwal_Identifikasi_Ruta_dan_Spesifikasi_Instrumen_SPKRT_2027.pdf`](docs/B-852_Pemberitahuan_Jadwal_Identifikasi_Ruta_dan_Spesifikasi_Instrumen_SPKRT_2027.pdf)
+## 3. Matriks Garis Waktu Lengkap Pelaksanaan & Pengolahan
+
+### A. Persiapan dan Pelatihan (2026–2027)
+1. **Penyusunan & Finalisasi Instrumen**: Feb - Ags 2026
+2. **Workshop Instruktur Utama**: September 2026
+3. **Pelatihan INNAS Pencacahan Lapangan**: Oktober 2026
+4. **Pelatihan INDA Pencacahan Lapangan**: Oktober 2026
+5. **Pelatihan Petugas Pencacahan SPKRT 2027**: 1 s.d. 30 November 2026 (Prioritas: 15–30 Nov 2026)
+6. **Pelatihan INNAS Pengolahan VPKRT27-BL**: 3 s.d. 6 November 2026
+7. **Pelatihan INDA Pengolahan VPKRT27-BL**: 9 s.d. 13 November 2026 (MOOC 9–10 Nov, Synchronous 11 Nov)
+8. **Pelatihan Petugas Pengolahan VPKRT27-BL**: 16 s.d. 20 November 2026
+9. **Penarikan Sampel & Pemutakhiran RT per Triwulan**:
+   - Triwulan I: Desember 2026
+   - Triwulan II: Februari 2027
+   - Triwulan III: Mei 2027
+   - Triwulan IV: Agustus 2027
+10. **Pelatihan INNAS Pengolahan VPKRT27-LK & S**: Januari 2027
+11. **Pelatihan INDA Pengolahan VPKRT27-LK & S**: Januari 2027
+12. **Pelatihan Petugas Pengolahan VPKRT27-LK & S**: Februari 2027
+13. **Refreshing Petugas Lapangan**: Juli 2027
+
+### B. Pelaksanaan Lapangan (2027)
+- **VPKRT27-BL & BLp**:
+  - TW I: Jan – Mar 2027
+  - TW II: Apr – Jun 2027
+  - TW III: Jul – Sep 2027
+  - TW IV: Okt – Des 2027
+- **VPKRT27-HR, HRp & S**:
+  - TW I: Maret 2027 *(Jadwal Khusus: M4 Feb: 22–28 Feb, M3 Mar: 15–21 Mar, M4 Mar: 22–28 Mar, M5 Mar: 29 Mar–4 Apr)*
+  - TW II: Juni 2027
+  - TW III: September 2027
+  - TW IV: Desember 2027
+- **Rekapitulasi VPKRT27-LK**:
+  - TW I: Mar – Apr 2027
+  - TW II: Jun – Jul 2027
+  - TW III: Sep – Okt 2027
+  - TW IV: Des 2027 – Jan 2028
+- **Pencacahan Harga Komoditas Tahun Dasar**:
+  - Berlangsung sepanjang tahun (Januari – Desember 2027) di pasar/outlet terpilih se-Kabupaten/Kota.
+
+### C. Pengolahan & Diseminasi Data (2027–2028)
+- **Entri VPKRT27-BL**:
+  - TW I: Feb – Apr 2027
+  - TW II: Mei – Jul 2027
+  - TW III: Ags – Okt 2027
+  - TW IV: Nov 2027 – Jan 2028
+- **Entri VPKRT27-LK**:
+  - TW I: Mar – Apr 2027
+  - TW II: Jun – Jul 2027
+  - TW III: Sep – Okt 2027
+  - TW IV: Des 2027 – Jan 2028
+- **Entri VPKRT27-S**:
+  - TW I: April 2027
+  - TW II: Juli 2027
+  - TW III: Oktober 2027
+  - TW IV: Januari 2028
+- **Pengolahan Data Lengkap**: Januari – November 2028
+- **Diseminasi Data (Diagram Timbang IHK 2027=100)**: Desember 2028
 
 ---
 
-## 5. Spesifikasi Pengadaan Mandiri Satker Daerah
+## 4. Tautan Penting Registrasi & Monitoring
 
-### A. Spesifikasi Pencetakan Kuesioner (Lampiran 1)
-| No | Nama Kuesioner | Sampul (Cover) | Bagian Isi | Ukuran Kertas | Jumlah Isi Halaman/Lembar |
-|---|---|---|---|---|---|
-| 1 | **VPKRT27-BL** | HVS Putih 80 gr; format booklet; cetak hitam putih; jahit kawat | HVS 80 gr; cetak hitam putih | A4 (21 x 29,7 cm) | 16/8 |
-| 2 | **VPKRT27-BLp** | - | Manila Karton BC Biru 160 gr; cetak hitam putih; lipat 2 | A5 (14,8 x 21 cm) | 2/1 |
-| 3 | **VPKRT27-HR** | Kertas Samson 80 gr; format blok note; cetak hitam putih; lem panas atas; perforasi/cacah isi; punggung belakang Board Paper No.100 | HVS 80 gr; cetak hitam putih | A4 (21 x 29,7 cm) | 10 lembar (tidak bolak-balik) |
-| 4 | **VPKRT27-HRp** | - | Manila Karton BC Hijau 160 gr; cetak hitam putih; lipat 2 | A5 (14,8 x 21 cm) | 2/1 |
-| 5 | **VPKRT27-LK** | HVS Putih 80 gr; format booklet; cetak hitam putih; jahit kawat | HVS 80 gr; cetak hitam putih | A4 (21 x 29,7 cm) | 99/50 |
-| 6 | **VPKRT27-KK** | - | HVS 80 gr; cetak hitam putih | A4 (21 x 29,7 cm) | 2/1 |
-| 7 | **VPKRT27-S** | HVS Putih 80 gr; format booklet; cetak hitam putih; jahit kawat | HVS 80 gr; cetak hitam putih | A4 (21 x 29,7 cm) | 84/42 |
-
-### B. Spesifikasi Pengadaan Barang Lapangan (Lampiran 2)
-- **Nama Barang**: Timbangan Digital Dapur
-- **Spesifikasi Teknis**:
-  - Tipe: Timbangan dapur digital
-  - Kapasitas maksimal: 5 kg atau 10 kg
-  - Tingkat ketelitian: 1 gr
-  - Fitur wajib: Fungsi tare/zero (pengurang berat wadah)
-  - Tampilan layar: LCD / digital display
-  - Sumber daya: Baterai
-- **Standar Biaya**: Pagu harga satuan maksimal **Rp50.000,00 per unit** (termasuk pajak yang berlaku).
+- Pendaftaran Calon INDA Pengolahan: `http://s.bps.go.id/Calon_Innas_Inda_Olah_SPKRT` (Deadline: 29 Okt 2026)
+- Pengisian Jadwal Pelatihan Petugas Pencacahan: `http://s.bps.go.id/Jadwal_Pelatihan_Petugas_SPKRT27` (Deadline: 02 Nov 2026)
+- Alokasi Innas & Inda Pengolahan BL: `http://s.bps.go.id/Innas_Inda_Pengolahan_BL`
+- Narahubung Teknis: Elly Nurmawati (089656449001)

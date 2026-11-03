@@ -45,7 +45,8 @@
 - **FTP User**: `ihza@dvlp.asia`
 - **Direktori Server**: `/admin.dvlp.asia` (cPanel user: `dvlr7917`)
 - **Tech Stack**: Laravel (v11/v12/v13) + Filament v3 + Livewire v3 + MySQL (`dvlr7917_admin`).
-- **Status Git / GitHub**: Terkoneksi dengan akun GitHub **`ihkaru`**. Repositori: `https://github.com/ihkaru/sipedas` (Public, default branch: `main`). Telah di-clone ke workspace lokal di `/app/workspaces/sipedas`. Di server FTP `/admin.dvlp.asia` tidak ada folder `.git` (deployment via sync/copy).
+- **Status Git / GitHub & Resolusi Kredensial**: Terkoneksi dengan akun GitHub **`ihkaru`**. Repositori: `https://github.com/ihkaru/sipedas` (Public, default branch: `main`). Telah di-clone ke workspace lokal di `/app/workspaces/sipedas`. Di server FTP `/admin.dvlp.asia` tidak ada folder `.git` (deployment via sync/copy).
+  - *Catatan Kredensial & Merge*: Bila ada kendala permission / error saat merge PR di GitHub, selalu periksa kredensial/token di **Infisical Vault** (`GH_TOKEN` / akun `ihkaru` dengan hak admin & push di `~/.config/gh/hosts.yml`).
 
 ## Kebijakan Akses & Tata Kelola Pengelolaan Dokter V BPS Mempawah
 - **Grup Resmi**: WhatsApp Group "Tim Kerja Mempawah" (`120363253842861469@g.us`).
@@ -213,6 +214,11 @@
   - Banyak bukti upload Office 365 ditolak pusat (pastikan screenshot valid dan menunjukkan akun BPS aktif).
   - Lisensi Office 365 berisiko ditarik pusat bila tidak aktif/tidak digunakan.
   - Himbauan mencicil dokumen di sela padatnya lapangan Sensus Ekonomi 2026 (SE2026).
+
+## Perawatan Perangkat IT - Pengecekan Kondisi Printer Kantor
+- **Tenggat Waktu**: **Kamis, 29 Oktober 2026**.
+- **PIC / Pelapor**: Mba Akma Batrisyia (Staff BPS Kabupaten Mempawah).
+- **Uraian Kegiatan**: Pengecekan kondisi fisik dan operasional seluruh unit printer kantor (konektivitas jaringan/WiFi printer, kelancaran cetak, dan ketersediaan tinta/toner) guna mendukung kesiapan administrasi dan publikasi.
 
 ## Target Kualitas Data Susenas September 2026 & SERUTI TW 3 2026
 - **Tenggat Waktu**: **Rabu, 30 September 2026**.
@@ -405,20 +411,49 @@
 - **Cemane / Macam mane**: Bagaimana / seperti apa.
 - **Lengkok**: Cengkok / intonasi / gaya bicara.
 
-## Survei Pola Konsumsi Rumah Tangga (SPKRT) 2027 (15 Oktober 2026)
-- **Dasar Surat**: Surat BPS Provinsi Kalimantan Barat Nomor `B-852/61000/VS.300/2026` tanggal 15 Oktober 2026 hal *Pemberitahuan Jadwal Pelaksanaan Lapangan Identifikasi Rumah Tangga dan Spesifikasi Instrumen SPKRT 2027* (menindaklanjuti Surat Direktur Statistik Harga BPS RI No. `B-217/06200/VS.300/2026` tgl 14 Oktober 2026).
-- **Jadwal Pelaksanaan & Batas Akhir (Deadline)**:
+## Survei Pola Konsumsi Rumah Tangga (SPKRT) 2027 (Update 27 Oktober 2026)
+- **Dasar Surat**:
+  1. Surat Kepala BPS Provinsi Kalimantan Barat Nomor `B-888/61000/VS.200/2026` tanggal 27 Oktober 2026 hal *Permohonan Calon INDA Pengolahan Kuesioner VPKRT27-BL serta Pengisian Jadwal Pelatihan Petugas Pencacahan SPKRT 2027* (menindaklanjuti Surat Direktur Statistik Harga BPS RI No. `B-229/06200/VS.200/2026` tgl 27 Oktober 2026).
+  2. Surat BPS Provinsi Kalimantan Barat Nomor `B-852/61000/VS.300/2026` tanggal 15 Oktober 2026 hal *Pemberitahuan Jadwal Pelaksanaan Lapangan Identifikasi Rumah Tangga dan Spesifikasi Instrumen SPKRT 2027*.
+- **Tenggat Waktu Kritis & Jadwal Pelatihan**:
+  - **Kamis, 29 Oktober 2026**: Batas akhir penugasan dan pengisian formulir biodata Calon INDA Pengolahan VPKRT27-BL (`http://s.bps.go.id/Calon_Innas_Inda_Olah_SPKRT`) - *(Selesai diisi oleh Bang Ihza pada 27 Oktober 2026)*.
+  - **Senin, 02 November 2026**: Batas akhir pengisian rencana jadwal Pelatihan Petugas Pencacahan SPKRT 2027 (`http://s.bps.go.id/Jadwal_Pelatihan_Petugas_SPKRT27`).
+  - **03 – 06 November 2026**: Pelatihan INNAS Pengolahan VPKRT27-BL (1 hari efektif).
+  - **09 – 13 November 2026**: Pelatihan INDA Pengolahan VPKRT27-BL (09–10 Nov MOOC Asynchronous, 11 Nov Synchronous Tatap Muka Online PJJ via GOJAGS, Pre/Post Test).
+  - **15 – 30 November 2026**: Rentang prioritas Pelatihan Petugas Pencacahan Lapangan SPKRT 2027 (2 hari efektif).
+  - **16 – 20 November 2026**: Pelatihan Petugas Pengolahan Kuesioner VPKRT27-BL (1 hari efektif).
   - **06 – 12 Desember 2026**: Pelaksanaan pendataan lapangan kegiatan **Identifikasi Rumah Tangga Sampel SPKRT 2027 Triwulan I**.
+  - **Januari 2027**: Pelatihan INNAS & INDA Pengolahan VPKRT27-LK dan VPKRT27-S.
+  - **Februari 2027**: Pelatihan Petugas Pengolahan VPKRT27-LK dan VPKRT27-S.
   - **Tahun 2027**: Pelaksanaan pencacahan lapangan berkala SPKRT 2027.
 - **Tautan Resmi**:
+  - Formulir Calon INDA Pengolahan: http://s.bps.go.id/Calon_Innas_Inda_Olah_SPKRT
+  - Formulir Jadwal Pelatihan Pencacahan: http://s.bps.go.id/Jadwal_Pelatihan_Petugas_SPKRT27
+  - Alokasi Kebutuhan Calon INDA: http://s.bps.go.id/Innas_Inda_Pengolahan_BL
   - Kuesioner siap cetak: http://s.bps.go.id/KuesionerSPKRT2027
   - Alokasi sampel dan kebutuhan perlengkapan petugas: http://s.bps.go.id/Alokasi_Petugas_Kues_SPKRT2027
 - **Pengadaan Mandiri Satuan Kerja Daerah**:
   1. **Pencetakan Kuesioner (7 Jenis)**: VPKRT27-BL (A4 booklet 16/8 hal), VPKRT27-BLp (A5 lipat 2 karton biru 160 gr), VPKRT27-HR (A4 blok note 10 lbr samson lem panas), VPKRT27-HRp (A5 lipat 2 karton hijau 160 gr), VPKRT27-LK (A4 booklet 99/50 hal), VPKRT27-KK (A4 2/1 hal), dan VPKRT27-S (A4 booklet 84/42 hal).
   2. **Pengadaan Barang Lapangan**: Timbangan digital dapur (kapasitas 5 kg / 10 kg, ketelitian 1 gr, fitur tare/zero, layar LCD, daya baterai) dengan pagu harga satuan maksimal **Rp50.000,00 per unit** (termasuk pajak).
 - **Lokasi Dokumentasi Knowledge Base**:
-  - `kegiatan/spkrt-2027/2027/README.md`
-  - Berkas surat & lampiran: `kegiatan/spkrt-2027/2027/docs/`
+  - Dokumentasi Kegiatan: [`kegiatan/spkrt-2027/2027/README.md`](kegiatan/spkrt-2027/2027/README.md)
+  - Surat Resmi: [`universal/surat_permohonan_calon_inda_dan_jadwal_pelatihan_spkrt_2027.md`](universal/surat_permohonan_calon_inda_dan_jadwal_pelatihan_spkrt_2027.md)
+  - Berkas PDF: `knowledge/assets/Surat_Permohonan_Calon_INDA_Jadwal_Pelatihan_SPKRT_2027.pdf`
+
+## Survei Penyusunan Diagram Timbang Nilai Tukar Petani (SPDT NTP) 2026 (Update 27 Oktober 2026)
+- **Dasar Penyesuaian**: Pengumuman Perubahan Jadwal Kegiatan Umum SPDT NTP 2026 (pelaksanaan lapangan semula 1–31 Oktober 2026 diundur menjadi 12 Oktober – 12 November 2026).
+- **Jadwal Tahapan & Deadline**:
+  - **22 September – 5 Oktober 2026**: Pencetakan Kuesioner dan Buku Pedoman (Selesai).
+  - **22 – 26 September 2026**: Rekrutmen Petugas (Selesai).
+  - **23 September – 10 Oktober 2026**: Pelatihan Petugas (Selesai).
+  - **12 Oktober – 12 November 2026**: **Pencacahan Lapangan** (Sedang Berlangsung - deadline 12 November 2026).
+  - **Minggu III Oktober – 30 November 2026**: **Entri Data** (Sedang Berlangsung - deadline 30 November 2026).
+- **Tautan Pendukung**:
+  - Review Sampel: http://s.bps.go.id/ReviewSampelSPDTNTP2026
+  - Alokasi & Nominatif Petugas Satker 6104: http://s.bps.go.id/alokasi_spdtntp6104 (9 PML - 569 dokumen, 29 PPL - 591 dokumen kuesioner konsumsi).
+- **Lokasi Dokumentasi Knowledge Base**:
+  - Dokumentasi Kegiatan: [`kegiatan/spdt-ntp-2026/2026/README.md`](kegiatan/spdt-ntp-2026/2026/README.md)
+  - Arsip Gambar Jadwal: `knowledge/assets/Jadwal_Perubahan_Kegiatan_SPDT_NTP_2026.jpg`
 
 ## SBR pasca Sensus Ekonomi 2026 (15 Oktober 2026)
 - **Nama Kegiatan**: SBR pasca Sensus Ekonomi 2026
@@ -634,23 +669,19 @@
   - Benchmark Rasio NT/Output: PDB 2025 (0,5063) dan Tabel IO 2020 (0,5243).
 - **Rujukan Lengkap**: [`knowledge/kegiatan/data-processing-se2026/2026/README.md`](kegiatan/data-processing-se2026/2026/README.md), [`knowledge/universal/timeline_data_processing_se2026.md`](universal/timeline_data_processing_se2026.md), dan salinan slide materi di [`knowledge/assets/Timeline_Data_Processing_SE2026_IPAS.jpg`](assets/Timeline_Data_Processing_SE2026_IPAS.jpg).
 
-## Data Processing SE2026 & Kondisi NTB (22 Oktober 2026)
-- **Sumber Resmi**: Paparan *"Kondisi NTB SE 2026"*, Bidang Analisis dan Pengawalan Kualitas Data BPS RI (22 Oktober 2026).
-- **Aplikasi Resmi**: **IPAS (*Integrated Processing and Analysis System*)**.
-- **Jadwal Pelaksanaan Inti**: **30 Oktober – 15 November 2026** (~15 hari kalender).
-- **Milestone Kritis**:
-  - *21–22 Oktober 2026*: Workshop Data Processing.
-  - *23–25 Oktober 2026*: Eksplorasi Data Processing IPAS.
-  - *25 Oktober 2026*: **Penutupan Akses Fasih (Cut-off)** untuk sinkronisasi data lapangan.
-  - *26–29 Oktober 2026*: Persiapan Environment IPAS (setup database & migrasi data Fasih).
-  - *30 Oktober – 15 November 2026*: **Pelaksanaan Pengolahan IPAS** (editing, koding, imputasi, validasi, tabulasi).
-- **Kualitas Data & Evaluasi Nilai Tambah**:
-  - Tren penurunan agregat nilai tambah negatif nasional sebesar 82,6% (tersisa 29 temuan per 21 Okt siang).
-  - Benchmark Rasio NT/Output: PDB 2025 (`0,5063`), Tabel IO 2020 (`0,5243`). Posisi Kalbar: `0,5507` (mendekati benchmark).
-  - Benchmark Rasio Upah/NT: Tabel IO 2016 (`0,4490`), Tabel IO 2020 (`0,3861`). Posisi Kalbar: `0,1353`.
-  - Struktur NT SE2026 vs PDRB 2025 Kalbar: Rasio 80,18% (NT SE2026 Rp263,46 T / PDRB 2025 Rp328,57 T).
-  - Isu Anomali Perhatian: KBLI di luar cakupan (P, R, S, T, U), faskes/sekolah negeri dengan rincian pendapatan Rp0 & biaya tinggi, serta audit 135 PDAM/air minum.
-- **Rujukan Berkas**:
-  - Dokumen analisis: [`kegiatan/sensus-ekonomi-2026/2026/docs/kondisi-ntb-se2026-22-oktober-2026.md`](../kegiatan/sensus-ekonomi-2026/2026/docs/kondisi-ntb-se2026-22-oktober-2026.md)
-  - Berkas PDF resmi: [`kegiatan/sensus-ekonomi-2026/2026/docs/pdf/2026-10-22_Kondisi_NTB_SE2026.pdf`](../kegiatan/sensus-ekonomi-2026/2026/docs/pdf/2026-10-22_Kondisi_NTB_SE2026.pdf)
 
+## Jadwal & Ketentuan Pembinaan Statistik Sektoral 2026 (Pemkab Mempawah & BPS)
+- **Dasar Surat**: Surat Sekretariat Daerah Pemerintah Kabupaten Mempawah Nomor `500.14.1/7358/DISKOMINFO-C` tanggal 21 Oktober 2026 hal *Undangan*, menindaklanjuti Surat Kepala BPS Kabupaten Mempawah Nomor `B-1170/61046/HM.310/2026`.
+- **Lokasi Kegiatan**: Mempawah Command Center (MCC).
+- **Peserta**: 23 Tenaga Entri Data dari 23 Organisasi Perangkat Daerah (OPD) Produsen Data Kabupaten Mempawah.
+- **Jadwal 4 Pertemuan Pembinaan (Update Resmi November 2026)**:
+  - **Pertemuan 1 (Rabu, 4 November 2026 - 08:00 WIB s.d. Selesai)**:
+    - Materi: Prinsip Satu Data Indonesia (SDI) & Identifikasi Kegiatan Statistik.
+  - **Pertemuan 2 (Kamis, 5 November 2026 - 09:00 WIB s.d. Selesai)**:
+    - Materi: Kualitas Data Statistik.
+  - **Pertemuan 3 (Rabu, 11 November 2026 - 09:00 WIB s.d. Selesai)**:
+    - Materi: Proses Bisnis Statistik (GSBPM).
+    - *Catatan Mitigasi*: Bentrok dengan sesi tatap muka Pelatihan INDA Pengolahan SPKRT 2027 via GOJAGS (08.00–14.00 WIB). Rencana pembagian tugas/mitigasi dibahas saat briefing pada Senin, 9 November 2026 (arahan Bang Ihza pada 27 Okt 2026).
+  - **Pertemuan 4 (Selasa, 17 November 2026 - 08:00 WIB s.d. Selesai)**:
+    - Materi: Sistem Statistik Nasional (SSN) & Kelembagaan Statistik Sektoral.
+- **Rujukan Lengkap**: [`knowledge/kegiatan/pembinaan-statistik-sektoral/2026/README.md`](kegiatan/pembinaan-statistik-sektoral/2026/README.md), [`knowledge/universal/surat_pembinaan_statistik_sektoral_2026.md`](universal/surat_pembinaan_statistik_sektoral_2026.md), dan arsip berkas surat di [`knowledge/assets/Surat_Undangan_Pembinaan_Statistik_Sektoral_Mempawah_2026.pdf`](assets/Surat_Undangan_Pembinaan_Statistik_Sektoral_Mempawah_2026.pdf).
