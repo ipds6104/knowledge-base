@@ -40,29 +40,31 @@ Pertemuan 1 meletakkan fondasi kegiatan statistik daerah dan mengunci indikator 
 
 ---
 
-## ⏱️ 2. Susunan Acara & Alokasi Waktu (180 Menit / 3 Jam)
+## ⏱️ 2. Susunan Acara & Alokasi Waktu (08.00 – 11.15 WIB)
+
+> 📑 **Berkas Rundown Resmi Mandiri:** [Rundown Lengkap Pertemuan 01](rundown/01-rundown-pertemuan-1-rabu-4-nov-2026.md)
 
 ```mermaid
 flowchart LR
-    A["08.00 - 08.15:
-    Pembukaan MC,
+    A["08.00 - 08.50:
+    Pembukaan Resmi,
     Doa Bg Tio,
-    & Sambutan"] --> B["08.15 - 08.35:
+    & Arahan Kadis Kominfo"] --> B["08.50 - 09.10:
     Materi 1: Prinsip SDI
     (Mbak Uma)"]
-    B --> C["08.35 - 09.00:
+    B --> C["09.10 - 09.35:
     Materi 2: Identifikasi &
     Rotasi 2 Lokus Baru
     (Ihza)"]
-    C --> D["09.00 - 09.05:
+    C --> D["09.35 - 09.40:
     Ice-Breaking
     Kuis Kahoot
     (Akma & Vaniya)"]
-    D --> E["09.05 - 10.45:
+    D --> E["09.40 - 10.35:
     SESI SPESIAL IHZA:
     Live Workspace Lab
     (Sheets & Docs 23 OPD)"]
-    E --> F["10.45 - 11.00:
+    E --> F["10.35 - 11.15:
     Pleno 2 Lokus Baru,
     Pengesahan BA,
     & Penutup"]
@@ -70,13 +72,19 @@ flowchart LR
 
 | Rentang Waktu | Durasi | Agenda Kegiatan di Mempawah Command Center (MCC) | Penanggung Jawab / Fasilitator |
 |:---:|:---:|:---|:---|
-| 08.00 – 08.15 | 15 Mnt | Registrasi peserta, pembagian snack (Vaniya), pembukaan oleh MC (Vaniya), Doa Pembuka oleh Bg Tio, dan Sambutan | Vaniya & Bg Tio |
-| 08.15 – 08.35 | 20 Mnt | **Materi 1: Empat Prinsip Satu Data Indonesia (Perpres No. 39/2019)** (Slide Ringkas & Visual) | **Mbak Uma** (Operator: Akma) |
-| 08.35 – 09.00 | 25 Mnt | **Materi 2: Identifikasi Kegiatan Statistik, Mengenal Kompromin, & Rotasi 2 Lokus Baru EPSS 2028** | **Ihza** (Operator: Akma) |
-| 09.00 – 09.05 | 5 Mnt | **Ice-Breaking: Kuis Kahoot Interaktif Sesi 1** (Hadiah Rp40.000 untuk 1 Pemenang Skor Tertinggi) | Akma & Vaniya |
-| 09.05 – 10.15 | 70 Mnt | **SESI SPESIAL KAWALAN IHZA: Live Action Lab Google Sheets "Radar EPSS Mempawah"**<br>• Pembagian tautan QR Code Google Sheets ke laptop seluruh operator OPD<br>• Pendampingan serentak 23 OPD oleh 5 Tim BPS<br>• Pengisian serentak Form 1-Lembar Inventarisasi Kegiatan Statistik (LK-01) | **Ihza** & 5 Tim Pendamping (Sukma, Ihza, Listio, Aller, Aul) |
-| 10.15 – 10.45 | 30 Mnt | **Bedah 1 Contoh Nyata di Google Docs & Pleno Pengesahan 2 Lokus Emas Baru:**<br>• Live demo pengisian dossier Pelayanan Perizinan DPMPTSPKUKM & LKPD BPKAD<br>• Pleno pengesahan BPKAD & DPMPTSPKUKM sebagai 2 Lokus Baru Resmi Terdaftar BPS | Ihza, Walidata Diskominfo, & Bapperida |
-| 10.45 – 11.00 | 15 Mnt | Penandatanganan Berita Acara Penetapan Lokus, foto bersama oleh Irfan, & arahan Sesi 2 | Vaniya, Irfan, & Sukma (SPJ) |
+| 07.30 – 08.00 | 30 Mnt | Registrasi peserta 23 OPD, pembagian snackbox pagi & kit materi | Magang, Nadya, Rara, & Vaniya |
+| 08.00 – 08.05 | 5 Mnt | Pembukaan acara oleh MC | **Vaniya** |
+| 08.05 – 08.10 | 5 Mnt | Menyanyikan Lagu Kebangsaan **Indonesia Raya** | Dipandu MC (Operator: **Akma**) |
+| 08.10 – 08.15 | 5 Mnt | Pembacaan Doa Pembuka Kegiatan | **Bg Tio (Listio, S.Tr.Stat.)** |
+| 08.15 – 08.25 | 10 Mnt | Sambutan Pengantar Kepala BPS Kab. Mempawah / Tim Pembina | Kepala BPS / Tim Pembina |
+| 08.25 – 08.45 | 20 Mnt | **Sambutan, Arahan Resmi, & Pembukaan Kegiatan** oleh **Kepala Dinas Komunikasi dan Informatika Kab. Mempawah** | **Kepala Dinas Kominfo Mempawah** |
+| 08.45 – 08.50 | 5 Mnt | Sesi Foto Bersama Pembukaan Resmi | Dipandu MC (Dokumentator: **Irfan**) |
+| 08.50 – 09.10 | 20 Mnt | **Materi 1: Empat Prinsip Satu Data Indonesia (Perpres No. 39/2019)** (Slide Ringkas & Visual) | **Mbak Uma** (Operator: Akma) |
+| 09.10 – 09.35 | 25 Mnt | **Materi 2: Identifikasi Kegiatan Statistik, Mengenal Kompromin, & Rotasi 2 Lokus Baru EPSS 2028** | **Ihza** (Operator: Akma) |
+| 09.35 – 09.40 | 5 Mnt | **Ice-Breaking: Kuis Kahoot Interaktif Sesi 1** (Hadiah Rp40.000 untuk 1 Pemenang Skor Tertinggi) | Akma & Vaniya |
+| 09.40 – 10.35 | 55 Mnt | **SESI SPESIAL KAWALAN IHZA: Live Action Lab Google Sheets "Radar EPSS Mempawah"**<br>• Akses live: [Google Sheets Master Radar EPSS & LK 23 OPD](https://docs.google.com/spreadsheets/d/19mp02bfJv3I_FPky6dUU9ZIRSbW7wEQlkgbXFdK6g6M/edit?usp=sharing)<br>• Pendampingan serentak 23 OPD oleh 5 Tim BPS<br>• Pengisian serentak Form 1-Lembar Inventarisasi Kegiatan Statistik (LK-01) | **Ihza** & 5 Tim Pendamping (Sukma, Ihza, Listio, Aller, Aul) |
+| 10.35 – 11.00 | 25 Mnt | **Bedah 1 Contoh Nyata di Google Docs & Pleno Pengesahan 2 Lokus Emas Baru:**<br>• Live demo pengisian dossier Pelayanan Perizinan DPMPTSPKUKM & LKPD BPKAD<br>• Pleno pengesahan BPKAD & DPMPTSPKUKM sebagai 2 Lokus Baru Resmi Terdaftar BPS | Ihza, Walidata Diskominfo, & Bapperida |
+| 11.00 – 11.15 | 15 Mnt | Penandatanganan Berita Acara Penetapan Lokus, foto bersama oleh Irfan, & arahan Sesi 2 | Vaniya, Irfan, & Sukma (SPJ) |
 
 ---
 

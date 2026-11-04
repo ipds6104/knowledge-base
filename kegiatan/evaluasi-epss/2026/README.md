@@ -81,6 +81,9 @@ Evaluasi Penyelenggaraan Statistik Sektoral (EPSS) di lingkungan Pemerintah Kabu
 Kegiatan ini mengacu pada **Surat Kepala BPS Provinsi Kalimantan Barat Nomor B-593/61000/TS.160/2026** tentang *Penjelasan Persiapan Penilaian Interviu*.
 
 *   **Tautan Materi EPSS 2026 (Pusat):** [http://s.bps.go.id/MateriEPSS_2026](http://s.bps.go.id/MateriEPSS_2026)
+*   **Petunjuk Teknis & Rubrik Penilaian EPSS (Asli - Google Docs):** [Petunjuk Teknis PenIlaian EPSS](https://docs.google.com/document/d/11ROiXur55QsFLbPYRsHIQKu4nesiRZz9NWfkutmZLk8/edit?tab=t.d61790etx17a)
+*   **Matriks Rubrik 38 Indikator & Ketentuan SIMBATIK (Interaktif - Google Sheets):** [Petunjuk Teknis & Rubrik Penilaian Bukti Dukung EPSS (38 Indikator)](https://docs.google.com/spreadsheets/d/1_sdYBPe1SYX8UY0HeVuuwX7L9gWalk03_b2XVyFx1IQ/edit)
+    > *Catatan Wajib Rujukan:* Spreadsheet di atas merupakan **Single Source of Truth** untuk syarat dan ketentuan penilaian bukti dukung EPSS (Tingkat Kematangan Level 1 s.d. 5 dan catatan spesifikasi bukti dukung asesor) yang wajib dirujuk oleh TPI, TPB, maupun Tim Pembina Statistik Sektoral (PSS).
 *   **SK TPI Kabupaten Mempawah 2026:** [Keputusan Bupati Mempawah Nomor 500.14.1/133/DISKOMINFO/2026](sk-tpi-mempawah-2026.md)
 *   **Modul Pelatihan & Pedoman Penilaian Domain 1 s.d. 5 (Markdown):** [materi-pelatihan/README.md](materi-pelatihan/README.md)
 *   **Dokumen Rencana Aksi Perbaikan Hasil Pleno:** [analisis-hasil-pleno-provinsi-epss-2026.md](analisis-hasil-pleno-provinsi-epss-2026.md)

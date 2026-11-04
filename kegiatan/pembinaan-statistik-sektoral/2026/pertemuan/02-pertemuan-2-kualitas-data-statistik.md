@@ -15,7 +15,7 @@
 - **Dokumentasi Foto/Video:** Irfan
 - **Pengadaan Snack & Hadiah Kahoot:** Vaniya
 - **Rekapitulasi Berkas & SPJ:** Sukma
-- **Tim Pendamping Teknis:** Tim 1 (Sukma & Nadya), Tim 2 (Ihza & Magang 1), Tim 3 (Listio & Irfan), Tim 4 (Aller & Rara), Tim 5 (Aul & Uma)
+- **Tim Pendamping Teknis:** Tim 1 (Kak Sukma), Tim 2 (Bang Ihza), Tim 3 (Bg Listio), Tim 4 (Akma), Tim 5 (Aul)
 
 ---
 
@@ -27,18 +27,19 @@ Sesi 2 menyelesaikan tuntas indikator kualitas data statistik dan mengunci poin 
 - **Indikator U232 (Materi Wajib Kualitas Data Statistik):** Langsung bernilai **100% (Membuka Poin Penuh)** begitu paparan Ihza selesai disajikan.
 - **Poin Kenaikan TPSS:** Bertambah **+3.00%**, mengerek posisi kumulatif TPSS dari **73.71% menjadi 76.71%** (semakin memangkas defisit menuju target **99.09**).
 
-### B. Penguncian Bukti Dukung EPSS Pemkab Mempawah 2028
-- **Indikator 10101 (Standar Data Statistik - Level 4):** Dokumen Kamus SDS resmi disahkan Pembina Data BPS.
-- **Indikator 10201 (Metadata Statistik - Level 4):** Registrasi Metadata Kegiatan (MS-Keg) dan Metadata Variabel (MS-Var) di Portal INDAH BPS.
-- **Indikator 10301 (Interoperabilitas Data - Level 4):** Penyediaan data dalam format terstruktur dan terbuka (.csv/.xlsx).
-- **Indikator 10401 (Kode Referensi & Data Induk - Level 4):** Pemadanan kode wilayah Kemendagri 9 kecamatan dan 67 desa/kelurahan Mempawah.
-- **Indikator 20201 (Akurasi Data - Level 4):** Laporan 4 Tahap Pemeriksaan Akurasi Data + Berita Acara Rekonsiliasi / Sampling Ground Check (BPKAD & DPMPTSPKUKM).
-- **Indikator 20501 (Keterbandingan Data - Level 4):** Laporan konsistensi metodologi tren data 3–5 tahun.
-- **Indikator 20502 (Konsistensi Data - Level 4):** Lembar Verifikasi Uji Konsistensi Logis Searah 2 Variabel Terkait.
+### B. Penguncian Bukti Dukung EPSS Pemkab Mempawah 2028 (Tangga Level 3 s.d. Level 5)
+- **Level 2 (Terkelola):** Tersedianya bukti pelaksanaan pengujian akurasi (kelengkapan faskes/perusahaan, deteksi duplikasi) dan pengujian konsistensi 2 variabel runtun waktu 2021–2026 pada 2 Lokus Utama.
+- **Level 3 (Terdefinisi):** Seluruh laporan akurasi (Template E) dan uji konsistensi (Template G) secara sah berlandaskan payung hukum resmi daerah: **SOP Kompilasi Produk Administrasi Pemkab Mempawah (SK Kepala Dinas Kominfo No. 03/SOP/DISKOMINFO/2023)** dan **Perbup Mempawah No. 71/2020 Pasal 14**.
+- **Level 4 (Terpadu & Terukur):** Tersedianya **Notula Rapat Reviu & Evaluasi Berkala Penerapan SOP Kualitas Data** oleh Walidata (Dinas Kominfo) bersama Pembina Data (BPS) yang mengevaluasi pelaksanaan proses penjaminan kualitas data secara periodik.
+- **Level 5 (Optimum):** Tersedianya **Matriks Laporan Tindak Lanjut Perbaikan Berkelanjutan (*Continuous Improvement*)** yang menyandingkan bukti konkret:
+  - *Before (Kondisi Awal 2025):* Format pelaporan ad-hoc, tanpa Kamus SDS, rawan salah hitung, belum ada formula validasi otomatis di Excel.
+  - *After (Kondisi Pasca-Pembinaan 2026):* Menggunakan Kamus SDS baku, klasifikasi KBLI/kodefikasi standar, dan formula validasi otomatis `=IF(L+P=Total, "VALID", "ERROR")`.
 
 ---
 
-## ⏱️ 2. Susunan Acara & Alokasi Waktu (180 Menit / 3 Jam)
+## ⏱️ 2. Susunan Acara & Alokasi Waktu (09.00 – 12.00 WIB / 180 Menit)
+
+> 📑 **Berkas Rundown Resmi Mandiri:** [Rundown Lengkap Pertemuan 02](rundown/02-rundown-pertemuan-2-kamis-5-nov-2026.md)
 
 ```mermaid
 flowchart LR
@@ -53,23 +54,23 @@ flowchart LR
     Kuis Kahoot Sesi 2
     (Akma & Vaniya)"]
     C --> D["09.50 - 11.45:
-    LIVE WORKSPACE LAB:
-    Kamus SDS, INDAH,
-    & Uji Akurasi/Konsistensi"]
+    3-TIER WORKSHOP:
+    21 OPD (Sheets) &
+    2 Lokus + Walidata (L3-L5)"]
     D --> E["11.45 - 12.00:
     Pengesahan Kamus SDS,
-    Foto Bersama,
+    Komitmen Reviu,
     & Penutup"]
 ```
 
 | Rentang Waktu | Durasi | Agenda Kegiatan di Mempawah Command Center (MCC) | Penanggung Jawab / Fasilitator |
 |:---:|:---:|:---|:---|
 | 09.00 – 09.10 | 10 Mnt | Pembukaan oleh MC (Vaniya), doa mandiri, dan review kilat progres penetapan lokus Sesi 1 | Vaniya & Ihza |
-| 09.10 – 09.45 | 35 Mnt | **Paparan Materi: Kualitas Data Statistik & Menghapus Rekam Jejak Skor 1 di Pleno 2026** | **Ihza** (Operator: Akma) |
+| 09.10 – 09.45 | 35 Mnt | **Paparan Materi: Kualitas Data Statistik & Tangga Menuju Level 4/5 EPSS** | **Ihza** (Operator: Akma) |
 | 09.45 – 09.50 | 5 Mnt | **Ice-Breaking: Kuis Kahoot Interaktif Sesi 2** (Hadiah Rp40.000 untuk Juara 1) | Akma & Vaniya |
-| 09.50 – 10.45 | 55 Mnt | **WORKSHOP LIVE 1: Penyusunan Kamus Standar Data Statistik (SDS) & INDAH BPS**<br>• Pengisian serentak Kamus Standar Data Statistik 23 OPD di Google Sheets bersama<br>• Pendampingan input form MS-Keg & MS-Var ke portal INDAH BPS | Mbak Uma, Ihza, & 5 Tim Pendamping |
-| 10.45 – 11.45 | 60 Mnt | **WORKSHOP LIVE 2: Rekonsiliasi Akurasi 4 Tahap & Uji Konsistensi (2 Lokus Emas)**<br>• Pembuatan Laporan Akurasi 4 Tahap & BA Rekonsiliasi Kas/Belanja BPKAD<br>• Pembuatan Lembar Uji Konsistensi NIB OSS vs Investasi PMDN DPMPTSPKUKM | Ihza, Tim 1 (BPKAD), & Tim 2 (DPMPTSPKUKM) |
-| 11.45 – 12.00 | 15 Mnt | Penandatanganan Lembar Pengesahan Kamus SDS oleh Pembina BPS & Penutupan | Ihza, Uma, & Sukma (SPJ) |
+| 09.50 – 10.35 | 45 Mnt | **WORKSHOP LIVE 1 (21 OPD Umum): Finalisasi Form LK-01 & Input Kamus Standar Data (SDS)**<br>• Pengisian cepat nama kegiatan di tab `Form LK-01` dan 2–3 variabel kunci di tab `Kamus SDS` Google Sheets<br>• Nol beban kertas; tuntas langsung di cloud | Mbak Uma, Ihza, & 5 Tim Pendamping |
+| 10.35 – 11.45 | 70 Mnt | **WORKSHOP LIVE 2 (2 Lokus Utama & Walidata): Kunci Level 3, 4, & 5 EPSS**<br>• BPKAD & DPMPTSP mengisi Template E (Akurasi) & Template G (Konsistensi) mengutip **SOP Kominfo No. 03/2023** (Level 3)<br>• Walidata Diskominfo & BPS menyusun **Notula Reviu Berkala SOP Kualitas Data (Level 4)** dan **Matriks Tindak Lanjut Perbaikan Before vs After (Level 5)** | Ihza, Tim 1 (BPKAD), Tim 2 (DPMPTSP), & Tim Diskominfo |
+| 11.45 – 12.00 | 15 Mnt | Penandatanganan Lembar Pengesahan Kamus SDS oleh Pembina BPS, Rekapitulasi Siklus Perbaikan, & Penutupan | Ihza, Uma, & Sukma (SPJ) |
 
 ---
 
@@ -114,45 +115,49 @@ Ihza membedah secara gamblang dan jujur catatan Tim Penilai Provinsi EPSS 2026 a
 
 ---
 
-## 🛠️ 5. Live Action Lab Google Workspace & Otomasi AI (115 Menit)
+## 🛠️ 5. Live Action Lab: Strategi 3 Lapis Penjaminan Kualitas (115 Menit)
 
-### 5.1 Praktik 1: Pengisian Kamus SDS & Pendaftaran Metadata INDAH (55 Menit)
-- Seluruh 23 tenaga entri data OPD membuka tab *Kamus SDS* di Google Sheets bersama.
-- 5 Tim Pendamping mendampingi pengisian parameter: Variabel, Definisi Operasional, Satuan (Rupiah / Unit / Berkas / Orang), dan Klasifikasi Baku.
-- Mbak Uma & Ihza memandu live pendaftaran akun dan submit Metadata Variabel (MS-Var) ke portal INDAH BPS (`indah.bps.go.id`).
+### 5.1 Lapis 1: 21 OPD Umum (45 Menit) — Single Entry di Google Sheets
+- **Fokus:** Melengkapi identifikasi kegiatan di tab `Form LK-01` dan 2–3 variabel kunci di tab `Kamus SDS` Google Sheets Master Radar.
+- **Karakteristik:** Tuntas dalam 30–45 menit, langsung tersimpan di cloud, **bebas beban cetak dokumen fisik**.
+- **Hasil:** Data hulu 21 OPD siap dijadikan dasar penyusunan metadata dan pemantauan aliran data daerah.
 
-### 5.2 Praktik 2: Rekonsiliasi Akurasi 4 Tahap & Uji Konsistensi (60 Menit)
+### 5.2 Lapis 2: Dua Lokus Utama (BPKAD & DPMPTSPKUKM) (70 Menit) — Mengunci Level 3 & Bahan Level 5
 - **Lokus 1 (BPKAD - PIC: ihzakarunia):**
-  - Bersama Tim 1 (Sukma & Ihza), operator BPKAD menyusun:
-    1. *Berita Acara Pemeriksaan Akurasi Data Keuangan Daerah:* Berisi rekonsiliasi data realisasi anggaran seluruh SKPD dengan Rekening Kas Umum Daerah (RKUD) dan Laporan Hasil Pemeriksaan (LHP) BPK RI ter-audit.
-    2. *Lembar Uji Konsistensi Data Keuangan:* Memadankan variabel **Realisasi Pendapatan Asli Daerah (PAD)** dengan **Realisasi Belanja Modal Pembangunan**.
+  - Menyusun **Template E Terpadu (Laporan Akurasi 4 Tahap Keuangan Daerah)**: Memuat tahapan pemeriksaan kelengkapan SKPD, deteksi anomali belanja modal, rekonsiliasi RKUD, dan audit BPK RI.
+  - Menyusun **Template G Terpadu (Uji Konsistensi Keuangan)**: Memadankan tren PAD vs Belanja Modal 2021–2026.
+  - **Payung Hukum:** Mencantumkan dasar hukum **SOP Kompilasi Produk Administrasi Pemkab Mempawah (SK Kadis Kominfo No. 03/SOP/DISKOMINFO/2023)**.
 - **Lokus 2 (DPMPTSPKUKM - PIC: ihzakarunia):**
-  - Bersama Tim 2 (Ihza), operator DPMPTSPKUKM menyusun:
-    1. *Berita Acara Rekonsiliasi Data Perizinan:* Sandingan data transaksi sistem OSS-RBA Kementerian Investasi/BKPM vs register pelayanan izin non-berusaha SiCANTIK Cloud dan loket fisik PTSP Mempawah.
-    2. *Lembar Uji Konsistensi Data Perizinan & Investasi:* Memadankan variabel **Jumlah Penerbitan NIB Usaha Mikro Kecil (UMK)** dengan **Nilai Realisasi Investasi PMDN Sektor UMKM**.
-- **Eksekusi Generator Otomasi:**
-  ```bash
-  python3 scripts/kb_pss_automation.py generate-consistency \
-    --opd "DPMPTSPKUKM" \
-    --var1 "Jumlah Penerbitan NIB UMK via OSS" \
-    --var2 "Nilai Realisasi Investasi PMDN" \
-    --output Berkas_Uji_Konsistensi_DPMPTSP.md
-  ```
+  - Menyusun **Template E Terpadu (Laporan Akurasi 4 Tahap Perizinan)**: Memuat tahapan verifikasi berkas permohonan, validasi KBLI 2020 5-digit, ground check penanaman modal, dan integrasi OSS-RBA.
+  - Menyusun **Template G Terpadu (Uji Konsistensi Perizinan)**: Memadankan tren Penerbitan NIB UMK vs Nilai Realisasi Investasi PMDN 2021–2026.
+  - **Payung Hukum:** Mengutip **SOP Kompilasi Produk Administrasi No. 03/2023** dan **Perbup Mempawah No. 71/2020 Pasal 14**.
+- **Penyelamatan Bukti Mentah (*Before*):**
+  - Operator BPKAD dan DPMPTSP menyerahkan 1 file rekapan lama (format 2024/2025 sebelum pembinaan) sebagai bahan bukti *Before* untuk penguncian Level 5.
+
+### 5.3 Lapis 3: Tim Walidata (Diskominfo) & Pembina (BPS) — Mengunci Level 4 & Level 5
+- **Instrumen Level 4 (Reviu Berkala):**
+  - Menyepakati draf **Notula Rapat Reviu & Evaluasi Berkala Penerapan SOP Kualitas Data Sektoral Kabupaten Mempawah**: Mencatat hasil monitoring terhadap kepatuhan proses pengumpulan dan pemeriksaan data pada produsen data.
+- **Instrumen Level 5 (Continuous Improvement / Before vs After):**
+  - Menyusun **Matriks Laporan Tindak Lanjut Perbaikan Kualitas Data**:
+    * *Before (Format 2025):* Format tidak seragam, tanpa Kamus SDS, rawan salah hitung, belum ada validasi formula.
+    * *After (Format 2026):* Menggunakan Kamus SDS baku, klasifikasi KBLI 2020 standar, dan formula validasi otomatis di spreadsheet.
 
 ---
 
 ## 📦 6. Deliverables Bukti Fisik yang Dihasilkan pada Sesi 2
 
-1. **Dokumen Kamus Standar Data Statistik (SDS) 23 OPD Disahkan Pembina Data BPS:**  
-   Mengunci **Indikator 10101 pada Level 4/5**.
-2. **Tanda Bukti Registrasi Metadata Variabel (MS-Var) di Portal INDAH BPS:**  
-   Mengunci **Indikator 10201 pada Level 4**.
-3. **Laporan 4 Tahap Pengujian Akurasi Data + Berita Acara Rekonsiliasi (BPKAD & DPMPTSPKUKM):**  
-   Mengunci **Indikator 20201 pada Level 4**.
-4. **Lembar Hasil Uji Konsistensi Internal Logis Searah (BPKAD & DPMPTSPKUKM):**  
-   Mengunci **Indikator 20502 pada Level 4**.
-5. **Paket Dokumentasi Lengkap Sesi 2:**  
-   Presensi 37 peserta, Notula, Foto Dokumentasi Irfan di MCC, dan Bukti Juara Kahoot Vaniya.
+1. **Kamus Standar Data Statistik (SDS) & Rekapitulasi Form LK-01 23 OPD:**  
+   Tuntas di Google Sheets bersama dan lembar 2 Lokus disahkan Pembina Data BPS (Indikator `10101` & `U2.2.1`).
+2. **Laporan 4 Tahap Akurasi & Uji Petik 2 Lokus (Template E Terpadu):**  
+   Sah berpayung hukum **SOP Kompilasi Produk Administrasi No. 03/2023** (Mengunci **Indikator 20201 pada Level 3**).
+3. **Lembar Evaluasi Keterbandingan & Konsistensi Logis 5 Tahun (Template G Terpadu):**  
+   Menyandingkan deret 2021–2026 bebas anomali (Mengunci **Indikator 20501 & 20502 pada Level 3**).
+4. **Notula Reviu & Evaluasi Berkala SOP Kualitas Data (Walidata Diskominfo & BPS):**  
+   Bukti reviu periodik terhadap proses SOP (Mengunci **Domain 2 Kualitas Data pada Level 4**).
+5. **Matriks Laporan Tindak Lanjut Perbaikan Berkelanjutan (*Before vs After*):**  
+   Menyandingkan screenshot/file format 2025 vs format 2026 (Mengunci **Domain 2 Kualitas Data pada Level 5**).
+6. **Paket Dokumentasi Rapat Alami Sesi 2:**  
+   Surat Undangan Sekda, Daftar Hadir MCC, Notula Sesi, dan Foto Kegiatan Irfan siap diunggah ke SPESIAL BPS (Indikator `40302` & `40303`).
 
 ---
 

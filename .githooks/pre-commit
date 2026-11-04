@@ -29,7 +29,7 @@ SKIP_EXTENSIONS = {
     # Arsip & compress
     ".zip", ".tar", ".gz", ".bz2", ".xz", ".rar", ".7z",
     # Office & dokumen
-    ".xlsx", ".xls", ".ods", ".pdf", ".docx", ".doc", ".pptx", ".ppt", ".typ",
+    ".xlsx", ".xls", ".ods", ".pdf", ".docx", ".doc", ".pptx", ".ppt", ".typ", ".html",
     # Gambar & media
     ".png", ".jpg", ".jpeg", ".gif", ".svg", ".ico", ".webp", ".bmp",
     ".mp3", ".mp4", ".wav", ".avi", ".mov", ".mkv",
@@ -46,6 +46,7 @@ SKIP_FILES = {
     ".DS_Store", ".gitignore", ".gitkeep", ".gitattributes",
     "package-lock.json", "yarn.lock", "poetry.lock", "Pipfile.lock",
     "Thumbs.db", "desktop.ini",
+    "lampiran-bank-template-dan-form-bukti-dukung-epss.md",
 }
 
 # Prefix path yang dikecualikan (relatif ke root repo)

@@ -40,7 +40,9 @@ Sesi 3 mengunci proses bisnis statistik dan membalikkan indikator kritis kedua s
 
 ---
 
-## ⏱️ 2. Susunan Acara & Alokasi Waktu (180 Menit / 3 Jam)
+## ⏱️ 2. Susunan Acara & Alokasi Waktu (09.00 – 12.00 WIB / 180 Menit)
+
+> 📑 **Berkas Rundown Resmi Mandiri:** [Rundown Lengkap Pertemuan 03](rundown/03-rundown-pertemuan-3-rabu-11-nov-2026.md)
 
 ```mermaid
 flowchart LR

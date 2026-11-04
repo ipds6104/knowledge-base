@@ -32,7 +32,7 @@ Sesi 4 adalah puncak pembinaan yang menuntaskan materi wajib dan mengunci capaia
 - **Poin Kenaikan TPSS:** Bertambah **+18.00%**, mengerek posisi kumulatif TPSS dari **79.71% menjadi 97.71%** (hanya butuh unggah Monev Smt 2 di Desember untuk menembus **100.21%**, melampaui target wajib IKU **99.09**).
 
 ### B. Penguncian Bukti Dukung EPSS Pemkab Mempawah 2028
-- **Indikator 40102 (Penjaminan Netralitas & Objektivitas - Target Level 4):** Surat Pernyataan Komitmen Netralitas Penyelenggaraan bermeterai Rp10.000 ditandatangani Kepala OPD.
+- **Indikator 40102 (Penjaminan Netralitas & Objektivitas - Target Level 4):** Surat Pernyataan Komitmen Netralitas Penyelenggaraan KOP Resmi ditandatangani Kepala OPD (bebas bea meterai sesuai UU No. 10/2020).
 - **Indikator 40103 (Penjaminan Kualitas oleh Walidata - Target Level 4):** Lembar Checklist & Berita Acara Pemeriksaan Mutu Data Walidata Diskominfo (Template B).
 - **Indikator 40302 (Forum Satu Data Indonesia - Target Level 4):** Notula Lengkap & Berita Acara Kesepakatan Sidang Pleno Forum SDI Mempawah 2026.
 - **Indikator 50101 & 50102 (Penyebarluasan & Aksesibilitas Data - Target Level 5):** Pemanfaatan operasional Portal CKAN Satu Data Mempawah (`https://satudata.mempawahkab.go.id`) yang memuat 426+ dataset publik dengan unduhan CSV/XLSX terbuka dan machine-to-machine REST API publik.
@@ -41,7 +41,9 @@ Sesi 4 adalah puncak pembinaan yang menuntaskan materi wajib dan mengunci capaia
 
 ---
 
-## ⏱️ 2. Susunan Acara & Alokasi Waktu (180 Menit / 3 Jam)
+## ⏱️ 2. Susunan Acara & Alokasi Waktu (08.00 – 11.15 WIB)
+
+> 📑 **Berkas Rundown Resmi Mandiri:** [Rundown Lengkap Pertemuan 04](rundown/04-rundown-pertemuan-4-selasa-17-nov-2026.md)
 
 ```mermaid
 flowchart LR
@@ -97,7 +99,7 @@ Listio menjelaskan ekosistem statistik Indonesia berdasarkan UU No. 16 Tahun 199
 Aller membedah 2 indikator kelembagaan yang menjadi ganjalan di evaluasi masa lalu:
 1. **Penjaminan Netralitas & Objektivitas (Indikator 40102 - Skor 1 di Pleno 2026):**
    - *Akar Masalah:* TPB menemukan belum ada komitmen tertulis dari pimpinan OPD bahwa angka statistik bebas dari intervensi politis atau manipulasi target.
-   - *Solusi Baku:* Setiap Kepala OPD lokus menandatangani **Surat Pernyataan Komitmen Penjaminan Netralitas Metodologi bermeterai Rp10.000** (Template A).
+   - *Solusi Baku:* Setiap Kepala OPD lokus menandatangani **Surat Pernyataan Komitmen Penjaminan Netralitas Metodologi KOP Resmi** (Template A - bebas bea meterai).
 2. **Quality Gate Walidata Daerah (Indikator 40103 - Skor 1 di Pleno 2026):**
    - *Akar Masalah:* Diskominfo belum memiliki bukti berita acara bahwa mereka benar-benar melakukan verifikasi kepatuhan prinsip SDI sebelum data dipublikasikan.
    - *Solusi Baku:* Diskominfo menerbitkan **Lembar Checklist Pemeriksaan Mutu Data Walidata (Template B)** yang mencakup 5 kriteria pengujian.
@@ -130,10 +132,10 @@ Aller membedah 2 indikator kelembagaan yang menjadi ganjalan di evaluasi masa la
    - Menempelkan meterai Rp10.000 pada draf Surat Pernyataan Netralitas BPKAD dan DPMPTSPKUKM.
    - Ditandatangani resmi oleh Kepala BPKAD dan Kepala DPMPTSPKUKM untuk menjamin integritas angka bebas intervensi.
 
-### 5.2 Simulasi Sidang Pleno Forum SDI Mempawah 2026 (30 Menit)
+### 5.2 Penyepakatan Forum SDI Mempawah 2026 (30 Menit)
 - BPS Mempawah, Bapperida, Diskominfo, dan seluruh 23 OPD memformalkan kesepakatan:
   1. Pengesahan **Daftar Data Statistik Prioritas Daerah Kabupaten Mempawah Tahun 2026** (mencakup 100+ variabel strategis dari 23 OPD).
-  2. Penandatanganan Berita Acara Kesepakatan Forum SDI 2026 (Template J).
+  2. Notula & Dokumentasi Resmi Kesepakatan Forum SDI 2026 (Surat Undangan Sekda, Daftar Hadir MCC, Notula Pembahasan, & Foto Bersama).
   3. Pengesahan **Dokumen Rencana Aksi SDI Kabupaten Mempawah Periode 2026–2028** (Template K).
 
 ### 5.3 SESI SPESIAL GELAR PASUKAN KAWALAN IHZA: Zero-Gap Audit & Simulasi Skor Akhir (40 Menit)
@@ -161,11 +163,11 @@ Ihza memimpin review komprehensif di depan seluruh hadirin melalui layar proyekt
 
 ## 📦 6. Deliverables Master Dossier EPSS 2028 yang Dikunci pada Sesi 4
 
-1. **Surat Pernyataan Komitmen Penjaminan Netralitas Kepala OPD bermeterai (Template A):**  
+1. **Surat Pernyataan Komitmen Penjaminan Netralitas Kepala OPD KOP Resmi (Template A):**  
    Mengunci **Indikator 40102 pada Level 4/5**.
-2. **Berita Acara Quality Gate Pemeriksaan Mutu Walidata Diskominfo (Template B):**  
+2. **Lembar Hasil Verifikasi Mutu Walidata Diskominfo (Template B):**  
    Mengunci **Indikator 40103 pada Level 4/5**.
-3. **Notula & Berita Acara Kesepakatan Sidang Pleno Forum SDI 2026 (Template J):**  
+3. **Paket Dokumentasi Lengkap Forum SDI 2026 (Undangan, Presensi, Notula, Foto):**  
    Mengunci **Indikator 40302 pada Level 4**.
 4. **Dokumen Matriks Rencana Aksi SDI Kabupaten Mempawah 2026–2028 (Template K):**  
    Mengunci **Indikator 50303 pada Level 4**.

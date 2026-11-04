@@ -6,26 +6,41 @@
 
 ---
 
-## 📑 DAFTAR ISI TEMPLAT DOKUMEN
+## 📑 DAFTAR TOOLKIT TEMPLAT DOKUMEN (PERAMPINGAN 7 DOKUMEN INTI)
 
+Toolkit ini telah dirampingkan secara terpadu (*streamlined*) berpegang pada prinsip: **"Effort Sekecil Mungkin, Nilai IPS Setinggi Mungkin"**. Dokumen yang bertetangga pada aspek yang sama digabungkan menjadi satu bundel naskah dinas 2 halaman agar memangkas birokrasi dan memudahkan penandatanganan:
+
+### 🏛️ Matriks Pembagian Beban Kerja Berbasis Peran:
+1. **21 OPD Pendampingan Umum (90% Peserta)**:
+   - **HANYA Mengisi Form LK-01** (Identifikasi Kegiatan Statistik) di Google Spreadsheet Master Radar.
+   - **Nol Beban Dokumen Tebal!**
+2. **2 Lokus Emas Utama EPSS (BPKAD & DPMPTSPKUKM)**:
+   - Fokus hanya pada 5 Dokumen Ringkas: **Template A, C, E, G, M**.
+3. **Walidata (Diskominfo) & Bapperida (Pusat Kabupaten)**:
+   - Mengawal Dokumen Payung Kebijakan: **Template B, Template K, dan Paket Forum SDI**.
+4. **Semua OPD (Umum & Lokus)**:
+   - **Blangko Universal Bukti Dukung Berbasis Screenshot (KOP Resmi)**: Cukup tempel tangkapan layar ROMANTIK, INDAH, Portal SDI, atau spreadsheet Excel. Bebas mengetik uraian panjang.
+
+---
+
+### 📂 Daftar Berkas Template Resmi:
 - [TEMPLATE A: Surat Pernyataan Komitmen Netralitas & Objektivitas Metodologi (Indikator 40102)](#template-a-surat-pernyataan-komitmen-netralitas--objektivitas-metodologi-indikator-40102)
 - [TEMPLATE B: Lembar Hasil Pemeriksaan Kualitas Data Walidata Daerah (Indikator 40103)](#template-b-lembar-hasil-pemeriksaan-kualitas-data-walidata-daerah-indikator-40103)
 - [TEMPLATE C: Format Kerangka Acuan Kerja (KAK) Ber-Klausul Batas Waktu Rilis (Indikator 30101 & 20301)](#template-c-format-kerangka-acuan-kerja-kak-ber-klausul-batas-waktu-rilis-indikator-30101--20301)
-- [TEMPLATE D: Panduan & Format Bab Analisis Statistik Deskriptif (Indikator 30302)](#template-d-panduan--format-bab-analisis-statistik-deskriptif-indikator-30302)
-- [TEMPLATE E: Laporan Resmi 4 Tahapan Pemeriksaan Akurasi Data (Indikator 20201)](#template-e-laporan-resmi-4-tahapan-pemeriksaan-akurasi-data-indikator-20201)
-- [TEMPLATE F: Berita Acara Uji Petik Faktual / Verifikasi Lapangan Ground Check (Indikator 20201)](#template-f-berita-acara-uji-petik-faktual--verifikasi-lapangan-ground-check-indikator-20201)
-- [TEMPLATE G: Lembar Hasil Verifikasi Uji Konsistensi Internal Data (Indikator 20502)](#template-g-lembar-hasil-verifikasi-uji-konsistensi-internal-data-indikator-20502)
-- [TEMPLATE H: Laporan Penjaminan Keterbandingan Data Antarwaktu & Antarwilayah (Indikator 20501)](#template-h-laporan-penjaminan-keterbandingan-data-antarwaktu--antarwilayah-indikator-20501)
-- [TEMPLATE I: Laporan Pemantauan Ketepatan Waktu Diseminasi berbasis ROMANTIK BPS (Indikator 20302)](#template-i-laporan-pemantauan-ketepatan-waktu-diseminasi-berbasis-romantik-bps-indikator-20302)
-- [TEMPLATE J: Berita Acara Kesepakatan Daftar Data Prioritas Daerah Forum SDI (Indikator 40302)](#template-j-berita-acara-kesepakatan-daftar-data-prioritas-daerah-forum-sdi-indikator-40302)
+- [TEMPLATE D: Panduan & Format Bab Analisis Statistik Deskriptif AI (Indikator 30302)](#template-d-panduan--format-bab-analisis-statistik-deskriptif-indikator-30302)
+- [TEMPLATE E: Laporan 4 Tahap Pemeriksaan Akurasi & Verifikasi Lapangan Ground Check (Indikator 20201 - Terpadu)](#template-e-laporan-4-tahap-pemeriksaan-akurasi--verifikasi-lapangan-ground-check-indikator-20201---terpadu)
+- [TEMPLATE G: Lembar Evaluasi Keterbandingan Deret Waktu & Konsistensi Data (Indikator 20501 & 20502 - Terpadu)](#template-g-lembar-evaluasi-keterbandingan-deret-waktu--konsistensi-data-indikator-20501--20502---terpadu)
+- [PAKET DOKUMENTASI FORUM SDI: 4 Dokumen Alami Penyelenggaraan Forum SDI (Indikator 40302)](#paket-dokumentasi-forum-sdi-4-dokumen-alami-penyelenggaraan-forum-sdi-indikator-40302)
 - [TEMPLATE K: Matriks Dokumen Rencana Aksi SDI Kabupaten Mempawah 2026–2028 (Indikator 50301)](#template-k-matriks-dokumen-rencana-aksi-sdi-kabupaten-mempawah-20262028-indikator-50301)
-- [TEMPLATE L: Berita Acara Serah Terima Data dari Produsen ke Walidata (Indikator 40304)](#template-l-berita-acara-serah-terima-data-dari-produsen-ke-walidata-indikator-40304)
 - [TEMPLATE M: Kamus Standar Data Statistik (SDS) dan Metadata Variabel MS-Var (Indikator 10101 & 10201)](#template-m-kamus-standar-data-statistik-sds-dan-metadata-variabel-ms-var-indikator-10101--10201)
+- [BLANGKO UNIVERSAL SCREENSHOT: Blangko Cepat Tempel Tangkapan Layar Ber-KOP Resmi](#blangko-universal-bukti-dukung-berbasis-screenshot-kop-resmi)
+- [TEMPLATE N: Notula Reviu & Evaluasi Berkala Penerapan SOP Kualitas Data (Indikator Domain 2 Level 4)](#template-n-notula-reviu--evaluasi-berkala-penerapan-sop-kualitas-data-level-4)
+- [TEMPLATE P: Matriks Laporan Tindak Lanjut Perbaikan Berkelanjutan / Before vs After (Indikator Domain 2 Level 5)](#template-p-matriks-laporan-tindak-lanjut-perbaikan-berkelanjutan-level-5)
 
 ---
 
 ## TEMPLATE A: Surat Pernyataan Komitmen Netralitas & Objektivitas Metodologi (Indikator 40102)
-*(Dicetak pada kertas berkop dinas resmi, diberi meterai Rp 10.000, ditandatangani basah oleh Kepala Dinas, dan dicap dinas)*
+*(Dicetak pada kertas berkop dinas resmi, ditandatangani basah oleh Kepala Dinas, dan dicap dinas resmi (bebas bea meterai sesuai UU No. 10/2020 Pasal 7))*
 
 ```markdown
 PEMERINTAH KABUPATEN MEMPAWAH
@@ -60,7 +75,7 @@ Mempawah, .............................. 2026
 
 Yang Membuat Pernyataan,
 Kepala Dinas ...................................,
-(Meterai Rp 10.000, tanda tangan basah & cap dinas)
+(Tanda tangan basah & cap dinas resmi)
 
 
 
@@ -198,85 +213,103 @@ Contoh: "Berdasarkan hasil kompilasi data tahun 2026, tercatat sebanyak ...... u
 
 ---
 
-## TEMPLATE E: Laporan Resmi 4 Tahapan Pemeriksaan Akurasi Data (Indikator 20201)
+## TEMPLATE E: Laporan 4 Tahap Pemeriksaan Akurasi & Verifikasi Lapangan Ground Check (Indikator 20201 - Terpadu)
+*(Format Terpadu 2 Halaman: Menggabungkan 4 Tahapan Kendali Mutu dan Berita Acara Uji Petik Faktual ke dalam 1 bundel naskah dinas)*
 
 ```markdown
-LAPORAN HASIL TAHAPAN PEMERIKSAAN AKURASI DATA STATISTIK SEKTORAL
-KEGIATAN: ................................................................
-DINAS ....................................................................
+PEMERINTAH KABUPATEN MEMPAWAH
+DINAS / BADAN ..............................................................
+Kompleks Perkantoran Pemerintah Kabupaten Mempawah, Jl. Raden Kusno, Mempawah, Kalimantan Barat
+Pos-el: dinas@mempawahkab.go.id
 
-I. DASAR PELAKSANAAN
-Mengacu pada Standar Operasional Prosedur (SOP) Penjaminan Akurasi Data Nomor ... tanggal ... .
+LAPORAN RESMI EMPAT TAHAPAN PEMERIKSAAN AKURASI DATA & VERIFIKASI LAPANGAN
+Nomor: ........ / ........ / DINAS-AKURASI / 2026
 
-II. TAHAPAN PEMERIKSAAN AKURASI
-1. Pemeriksaan Kelengkapan (Completeness Check):
-   Memeriksa 100% kelengkapan formulir dari seluruh unit sumber data (... unit pelapor). Seluruh kolom mandatori terverifikasi lengkap tanpa sel kosong.
-2. Verifikasi Lapangan dan Uji Petik Faktual (Ground Check):
-   Kunjungan uji petik langsung ke ... unit sampel lapangan pada tanggal ... s.d. ... . Hasil pencocokan register primer dengan laporan menunjukkan tingkat kesesuaian faktual sebesar ...% (Berita Acara Uji Petik terlampir).
-3. Pembersihan Data & Eliminasi Pencatatan Ganda (Data Cleaning & De-duplication):
-   Menerapkan formula deteksi nilai duplikat berbasis NIK/Nama pada spreadsheet pengolahan. Ditemukan sebanyak ... data ganda dan telah dieliminasi dari dataset final (Matriks Before-After terlampir).
-4. Agregasi dan Penguncian Formula Validasi (Formula Validation):
-   Penerapan aturan validasi kondisional pada sel perhitungan Excel untuk mencegah salah hitung matematis. Seluruh formula agregasi terkunci valid (Tangkapan layar terlampir).
+Dalam rangka menjamin akurasi, validitas, dan keandalan data pada kegiatan Kompilasi Data [Objek Data] Kabupaten Mempawah Tahun 2026, Tim Pengelola Data telah melaksanakan prosedur pemeriksaan akurasi data berjenjang berpedoman pada:
+1. Peraturan Presiden Nomor 39 Tahun 2019 tentang Satu Data Indonesia (Pasal 13 dan Pasal 14 tentang Pemeriksaan Data);
+2. Peraturan Bupati Mempawah Nomor 71 Tahun 2020 tentang Penyelenggaraan Satu Data Indonesia Kabupaten Mempawah (Pasal 14 tentang Pemeriksaan Keakuratan Data);
+3. Standar Operasional Prosedur (SOP) Kompilasi Produk Administrasi Pemerintah Kabupaten Mempawah (Keputusan Kepala Dinas Komunikasi dan Informatika Kabupaten Mempawah Nomor: 03/SOP/DISKOMINFO/2023).
 
-III. KESIMPULAN
-Data dinyatakan AKURAT, SAH, dan BEBAS DARI KESALAHAN PENGOLAHAN.
+I. MATRIKS EMPAT (4) TAHAPAN KENDALI MUTU AKURASI DATA:
++----+------------------------------------+---------------------------------------------------------------+----------------------------------+
+| No | Tahapan Pemeriksaan Akurasi        | Metode Pengujian & Uraian Aktivitas Faktual                   | Status Uji                       |
++----+------------------------------------+---------------------------------------------------------------+----------------------------------+
+| 1  | Pemeriksaan Kelengkapan             | Memverifikasi kelengkapan formulir/register laporan dari      | Lengkap (100%)                   |
+|    | (Completeness Check)               | seluruh unit sumber data (... unit pelapor). Seluruh kolom    |                                  |
+|    |                                    | mandatori terisi lengkap 100% tanpa ada data hilang.          |                                  |
+| 2  | Uji Petik Faktual & Ground Check   | Verifikasi sampling langsung ke lokasi unit sumber data       | Tervalidasi Sesuai Fisik         |
+|    |                                    | (Lampiran Berita Acara Uji Petik pada Bagian II).             |                                  |
+| 3  | Pembersihan Data & Anti-Duplikasi  | Penerapan algoritma de-duplication berbasis NIK/Nama/Register | Bebas Data Ganda (De-duplicated) |
+|    | (Data Cleaning & De-duplication)   | agar satu entitas hanya tercatat satu kali di tahun berjalan. |                                  |
+| 4  | Agregasi & Validasi Rumus          | Penguncian formula kalkulasi otomatis pada lembar kerja guna  | Formula Valid & Bebas Anomali    |
+|    | (Formula Validation)               | mencegah salah hitung matematis (logical errors).             |                                  |
++----+------------------------------------+---------------------------------------------------------------+----------------------------------+
 
-Mempawah, .............................. 2026
-Petugas Pengolah Data,                      Kepala Bidang ..........................,
-(tanda tangan)                              (tanda tangan)
+II. LAMPIRAN BERITA ACARA UJI PETIK FAKTUAL (GROUND CHECK):
+Pada hari ini, ................ tanggal ..... bulan ............... tahun 2026, telah dilaksanakan uji petik faktual (ground check) bertempat di:
+- Nama Unit Sumber / Lokasi : ...........................................................................................
+- Alamat Unit Pelapor       : ...........................................................................................
+- Penanggung Jawab Unit     : ...........................................................................................
 
-........................................    ........................................
+Hasil pencocokan register primer dengan laporan dinas:
++----+------------------------------------+------------------+-----------------+---------------+-----------------------+
+| No | Variabel Data yang Diuji           | Angka di Laporan | Angka Fisik     | Tingkat       | Keterangan Catatan    |
+|    |                                    | Dinas            | Faktual Primer  | Kesesuaian    | Faktual Lapangan      |
++----+------------------------------------+------------------+-----------------+---------------+-----------------------+
+| 1  | [Variabel Utama 1]                 | ................ | ............... | 100%          | Sesuai Dokumen Primer |
+| 2  | [Variabel Utama 2]                 | ................ | ............... | 100%          | Sesuai Dokumen Primer |
++----+------------------------------------+------------------+-----------------+---------------+-----------------------+
+
+III. KESIMPULAN HASIL EVALUASI AKURASI:
+Berdasarkan pelaksanaan 4 tahapan kendali mutu dan uji petik lapangan, data dinyatakan VALID, AKURAT, DAN BEBAS DARI KESALAHAN PENGOLAHAN, serta siap diajukan untuk pemeriksaan mutu Walidata Daerah (Indikator 20201 EPSS).
+
+Mempawah, 5 November 2026
+Mengetahui,                                 Petugas Pemeriksa Akurasi Data Dinas,
+Kepala Dinas / Badan .....................,
+
+(tanda tangan basah & cap dinas)            (tanda tangan)
+
+[NAMA KEPALA DINAS LENGKAP]                 [NAMA PETUGAS OPERATOR/STATISTISI]
 NIP. ...................................    NIP. ...................................
 ```
 
 ---
 
-## TEMPLATE F: Berita Acara Uji Petik Faktual / Verifikasi Lapangan Ground Check (Indikator 20201)
+## TEMPLATE G: Lembar Evaluasi Keterbandingan Deret Waktu & Konsistensi Data (Indikator 20501 & 20502 - Terpadu)
+*(Format Terpadu 2 Halaman: Menggabungkan Evaluasi Keterbandingan 5 Tahun & Kewilayahan serta Uji Konsistensi Internal 2 Variabel)*
 
 ```markdown
-BERITA ACARA UJI PETIK FAKTUAL (GROUND CHECK)
-DATA STATISTIK SEKTORAL KABUPATEN MEMPAWAH TAHUN 2026
+PEMERINTAH KABUPATEN MEMPAWAH
+DINAS / BADAN ..............................................................
+Kompleks Perkantoran Pemerintah Kabupaten Mempawah, Jl. Raden Kusno, Mempawah, Kalimantan Barat
+Pos-el: dinas@mempawahkab.go.id
 
-Pada hari ini, ................ tanggal ..... bulan ............... tahun 2026, telah dilaksanakan verifikasi lapangan dan uji petik faktual (ground check) bertempat di:
-Nama Unit Pelapor / Faskes / Perusahaan : ....................................................
-Alamat Lengkap                          : ....................................................
-Nama Pimpinan / Penanggung Jawab Unit   : ....................................................
+LEMBAR EVALUASI KETERBANDINGAN DERET WAKTU DAN UJI KONSISTENSI DATA
+Nomor: ........ / ........ / DINAS-KUALITAS / 2026
 
-Pemeriksaan dilakukan dengan membandingkan angka yang tercantum pada formulir laporan berkala dinas terhadap buku register catatan fisik primer di unit pelapor:
+Dalam rangka memenuhi prinsip kualitas data statistik sektoral (Aspek 2.5: Keterbandingan dan Konsistensi Statistik EPSS) serta berpedoman pada Standar Operasional Prosedur (SOP) Kompilasi Produk Administrasi Pemerintah Kabupaten Mempawah (SK Kepala Dinas Kominfo No. 03/SOP/DISKOMINFO/2023), telah dilaksanakan evaluasi keterbandingan dan pengujian konsistensi internal data statistik periode 2021-2026:
 
-+----+------------------------------------+------------------+-----------------+---------------+-----------------------+
-| No | Variabel Data yang Diuji           | Angka di Laporan | Angka Register  | Tingkat       | Keterangan Catatan    |
-|    |                                    | Dinas            | Fisik Faktual   | Kesesuaian    | Faktual Lapangan      |
-+----+------------------------------------+------------------+-----------------+---------------+-----------------------+
-| 1  | .................................. | ................ | ............... | ......... %   | Sesuai Dokumen Primer |
-| 2  | .................................. | ................ | ............... | ......... %   | Penyesuaian Catatan   |
-+----+------------------------------------+------------------+-----------------+---------------+-----------------------+
+I. EVALUASI KETERBANDINGAN DATA ANTARWAKTU & ANTARWILAYAH (INDIKATOR 20501)
+A. Keterbandingan Runtun Waktu (Time-Series 2021 - 2026):
++-------+----------------------------------+------------------------------------------------------------+
+| Tahun | Realisasi Capaian / Nilai Data   | Kepatuhan Konsep & Standar Operasional Baku                |
++-------+----------------------------------+------------------------------------------------------------+
+| 2021  | ...................... [Satuan]  | Definisi operasional baku konsisten tanpa perubahan konsep |
+| 2022  | ...................... [Satuan]  | Definisi operasional baku konsisten tanpa perubahan konsep |
+| 2023  | ...................... [Satuan]  | Definisi operasional baku konsisten tanpa perubahan konsep |
+| 2024  | ...................... [Satuan]  | Definisi operasional baku konsisten tanpa perubahan konsep |
+| 2025  | ...................... [Satuan]  | Definisi operasional baku konsisten tanpa perubahan konsep |
+| 2026  | ...................... [Satuan]  | Definisi operasional baku konsisten tanpa perubahan konsep |
++-------+----------------------------------+------------------------------------------------------------+
 
-Kesimpulan:
-Data operasional pada unit pelapor dinyatakan VALID dan SESUAI dengan fakta lapangan.
+B. Keterbandingan Kewilayahan Antar-Kecamatan:
+Penyajian data dirinci menurut 9 kecamatan di Kabupaten Mempawah menggunakan pengkodean wilayah resmi Kemendagri / BPS (Mempawah Hilir, Mempawah Timur, Sungai Pinyuh, Anjongan, Toho, Sadaniang, Sungai Kunyit, Segedong, Jungkat).
+*) Catatan Rujukan Standar Baku (Footnote): Seluruh variabel mengacu pada klasifikasi resmi nasional (KBLI 2020 / Permenkes / Kode Wilayah Kemendagri), menjamin keterbandingan antar-daerah dan antar-waktu secara sahih.
 
-Pihak Unit Sumber Data,                     Tim Pemeriksa Akurasi Data Dinas,
-(tanda tangan & cap stempel unit)           (tanda tangan)
-
-
-
-........................................    ........................................
-NIP. ...................................    NIP. ...................................
-```
-
----
-
-## TEMPLATE G: Lembar Hasil Verifikasi Uji Konsistensi Internal Data (Indikator 20502)
-
-```markdown
-LEMBAR HASIL VERIFIKASI UJI KONSISTENSI INTERNAL DATA STATISTIK
-DINAS ..............................................................
-PERIODE DATA: TAHUN 2021 - 2026
-
-I. TABEL PENYANDINGAN DUA VARIABEL BERKORELASI SECARA LOGIS
+II. HASIL VERIFIKASI UJI KONSISTENSI INTERNAL DUA VARIABEL (INDIKATOR 20502)
+Pengujian konsistensi dilakukan dengan menyandingkan dua variabel yang memiliki korelasi logis fungsional:
 +-------+----------------------------------+----------------------------------+----------------------------+
-| Tahun | Variabel A: .................... | Variabel B: .................... | Evaluasi Keselarasan Pola  |
-|       | [Sumber: ......................] | [Sumber: ......................] | Korelasi Arah Logis        |
+| Tahun | Variabel A: [Objek Utama]        | Variabel B: [Objek Penunjang]    | Evaluasi Logika Korelasi   |
 +-------+----------------------------------+----------------------------------+----------------------------+
 | 2021  | ................................ | ................................ | Pola Searah / Selaras      |
 | 2022  | ................................ | ................................ | Pola Searah / Selaras      |
@@ -286,58 +319,18 @@ I. TABEL PENYANDINGAN DUA VARIABEL BERKORELASI SECARA LOGIS
 | 2026  | ................................ | ................................ | Pola Searah / Selaras      |
 +-------+----------------------------------+----------------------------------+----------------------------+
 
-II. PENJELASAN NARATIF LOGIKA KONSISTENSI STATISTIK
-Berdasarkan analisis runtun waktu selama 6 tahun terakhir:
-1. Kedua indikator di atas menunjukkan hubungan logis yang konsisten ($r = ......$). Peningkatan pada Variabel A selaras secara rasional dengan perubahan pada Variabel B.
-2. Secara matematis, seluruh angka mematuhi batas kelayakan logika dan tidak ditemukan kontradiksi data atau anomali pencatatan.
+Ulasan Analisis Konsistensi: Berdasarkan data di atas, pergerakan pada Variabel A berbanding selaras secara rasional dengan Variabel B. Tidak ditemukan kontradiksi data, anomali ekstrem, maupun penyimpangan logika matematis.
 
-KESIMPULAN: Data dinyatakan MEMENUHI PRINSIP KONSISTENSI INTERNAL.
+III. KESIMPULAN
+Dataset dinyatakan MEMENUHI PRINSIP KETERBANDINGAN DATA (Indikator 20501) dan MEMENUHI PRINSIP KONSISTENSI INTERNAL STATISTIK (Indikator 20502).
 
-Mempawah, .............................. 2026
-Statistisi Pemeriksa,                       Kepala Bidang ..........................,
-(tanda tangan)                              (tanda tangan)
+Mempawah, 5 November 2026
+Mengetahui,                                 Petugas Verifikator / Statistisi Data Dinas,
+Kepala Bidang ............................,
 
-........................................    ........................................
-NIP. ...................................    NIP. ...................................
-```
+(tanda tangan basah)                        (tanda tangan)
 
----
-
-## TEMPLATE H: Laporan Penjaminan Keterbandingan Data Antarwaktu & Antarwilayah (Indikator 20501)
-
-```markdown
-LAPORAN PENJAMINAN KETERBANDINGAN DATA STATISTIK SEKTORAL
-DINAS ..............................................................
-
-I. KETERBANDINGAN RUNAT WAKTU (TIME-SERIES 2021 - 2026)
-Data disajikan dalam deret waktu 6 tahun berturut-turut menggunakan metodologi dan konsep operasional yang konsisten tanpa perubahan definisi:
-- Tahun 2021 : ...... (Satuan)
-- Tahun 2022 : ...... (Satuan)
-- Tahun 2023 : ...... (Satuan)
-- Tahun 2024 : ...... (Satuan)
-- Tahun 2025 : ...... (Satuan)
-- Tahun 2026 : ...... (Satuan)
-
-II. KETERBANDINGAN KEWILAYAHAN (ANTARKECAMATAN DI MEMPAWAH)
-Penyajian data mencakup perbandingan 9 kecamatan di Kabupaten Mempawah dengan kodefikasi wilayah baku Kemendagri:
-1. Kecamatan Mempawah Hilir : ......
-2. Kecamatan Mempawah Timur : ......
-3. Kecamatan Sungai Pinyuh  : ......
-4. Kecamatan Anjongan       : ......
-5. Kecamatan Toho           : ......
-6. Kecamatan Sadaniang      : ......
-7. Kecamatan Sungai Kunyit  : ......
-8. Kecamatan Segedong       : ......
-9. Kecamatan Siantan        : ......
-
-CATATAN KAKI RUJUKAN STANDAR BAKU (FOOTNOTE):
-*) Seluruh data di atas disusun mengacu pada klasifikasi standar nasional .................... (KBLI 2020 / Permenkes 1171/2011 / Kode Wilayah Kemendagri), sehingga menjamin keterbandingan data antarwaktu dan antardaerah secara sahih.
-
-Mempawah, .............................. 2026
-Statistisi / Pengelola Data,                Kepala Bidang ..........................,
-(tanda tangan)                              (tanda tangan)
-
-........................................    ........................................
+[NAMA KEPALA BIDANG LENGKAP]                [NAMA PETUGAS PENGELOLA DATA]
 NIP. ...................................    NIP. ...................................
 ```
 
@@ -373,47 +366,16 @@ NIP. ...................................    NIP. ...............................
 
 ---
 
-## TEMPLATE J: Berita Acara Kesepakatan Daftar Data Prioritas Daerah Forum SDI (Indikator 40302)
+## PAKET DOKUMENTASI FORUM SDI: 4 Dokumen Alami Penyelenggaraan Forum SDI (Indikator 40302)
 
-*(Ditandatangani oleh Sekda, Bapperida, Diskominfo, BPS, dan OPD pada Sidang Pleno Forum SDI)*
+*(Sesuai spesifikasi resmi Tim Asesor EPSS Nasional, bukti Forum SDI **TIDAK memerlukan Berita Acara khusus** yang membebani OPD, melainkan 4 berkas administrasi rapat resmi)*:
 
-```markdown
-BERITA ACARA KESEPAKATAN HASIL SIDANG PLENO FORUM SDI
-PENETAPAN DAFTAR DATA PRIORITAS KABUPATEN MEMPAWAH TAHUN 2026
-Nomor: ... / BA-FORUM-SDI / 2026
+1. **Surat Undangan Resmi Sekretaris Daerah** selaku Koordinator Forum SDI kepada seluruh Kepala OPD (mencantumkan agenda penyelenggaraan Satu Data Indonesia).
+2. **Daftar Hadir Resmi (Presensi)** peserta pertemuan di Mempawah Command Center (MCC) bertanda tangan peserta OPD, Diskominfo, Bapperida, dan BPS.
+3. **Notula Rapat Kesepakatan Forum SDI** yang merangkum poin-poin pembahasan data prioritas daerah dan komitmen pembagian peran produsen data.
+4. **Dokumentasi Foto Kegiatan** yang memperlihatkan interaksi forum di aula MCC.
 
-Pada hari ini, ................ tanggal ..... bulan ............... tahun 2026, bertempat di Aula Bapperida Kabupaten Mempawah, telah disepakati DAFTAR DATA PRIORITAS DAERAH TAHUN 2026:
-
-1. Badan Pengelola Keuangan dan Aset Daerah (BPKAD): Kompilasi Data Laporan Keuangan Pemerintah Daerah Yang Di Audit Tahun 2026 (Jadwal Rilis: 31 Agustus 2026 - Lokus Utama 1).
-2. Dinas Penanaman Modal, KUKM dan PTSP (DPMPTSPKUKM): Kompilasi Data Realisasi Pelayanan Perizinan Kabupaten Mempawah Tahun 2026 (Jadwal Rilis: 30 November 2026 - Lokus Utama 2).
-3. Dinas Pertanian, KPP: Data Luas Panen dan Produksi Tanaman Pangan (Jadwal Rilis: November 2026).
-4. Dinas Kesehatan, PPKB: Data Profil Kesehatan dan Prevalensi Stunting (Jadwal Rilis: Oktober 2026).
-5. Disperindagnaker: Data Pendaftaran Pencari Kerja dan Penempatan Tenaga Kerja (Jadwal Rilis: Oktober 2026).
-[... Daftar Lengkap 50+ Dataset Terlampir ...]
-
-Seluruh produsen data wajib mematuhi 4 Prinsip SDI dan mengajukan Rekomendasi Statistik (ROMANTIK).
-
-Mempawah, .............................. 2026
-
-SEKRETARIS DAERAH KABUPATEN MEMPAWAH
-Selaku Koordinator Forum SDI Daerah,
-(tanda tangan basah & cap dinas)
-
-...................................................
-NIP. ..............................................
-
-Kepala BPS Kabupaten Mempawah,              Kepala Diskominfo (Walidata),
-(tanda tangan & cap)                        (tanda tangan & cap)
-
-.......................................     .......................................
-NIP. ..................................     NIP. ..................................
-
-Kepala Bapperida (Sekretariat SDI),         Perwakilan Kepala OPD Produsen Data,
-(tanda tangan & cap)                        (tanda tangan & cap)
-
-.......................................     .......................................
-NIP. ..................................     NIP. ..................................
-```
+*Seluruh 4 dokumen di atas dibundel menjadi 1 file PDF: `40302_Paket_Forum_SDI_Mempawah_2026.pdf` dan diunggah ke Google Drive Master PSS 2026.*
 
 ---
 
@@ -491,6 +453,170 @@ Selaku Produsen Data,                       Selaku Pembina Data Statistik,
 
 ........................................    ........................................
 NIP. ...................................    NIP. ...................................
+```
+
+---
+
+## BLANGKO UNIVERSAL BUKTI DUKUNG BERBASIS SCREENSHOT (KOP RESMI)
+
+> **Tautan Google Docs Siap Pakai:** [Blangko Universal Bukti Dukung Berbasis Screenshot](https://docs.google.com/document/d/1wbM7rQB-2c0dBAqll0_wr1WdsuGoKWFBFgZqpFKw7Hg/edit)  
+> **Konsep:** *"Effort Sekecil Mungkin, Nilai IPS Setinggi Mungkin"*. Operator tidak perlu menyusun laporan tebal. Cukup salin blangko ini, tempelkan (*paste*) screenshot aplikasi ke dalam kotak garis putus-putus, isi 3 baris keterangan, dan mintakan tanda tangan pejabat pengelola data.
+
+```markdown
+                          PEMERINTAH KABUPATEN MEMPAWAH
+                   DINAS KOMUNIKASI DAN INFORMATIKA / [OPD ANDA]
+             Jalan Raden Kusno No. 1, Mempawah, Kalimantan Barat, Kode Pos 78912
+             Telepon: (0561) XXXXXX | Laman: https://mempawahkab.go.id | Pos-el: dinas@mempawahkab.go.id
+====================================================================================================
+
+                        LEMBAR VERIFIKASI BUKTI DUKUNG STATISTIK SEKTORAL
+                          EVALUASI PENYELENGGARAAN STATISTIK SEKTORAL (EPSS)
+                                   Nomor: 500.14.1 / ..... / 2026
+
+I. IDENTITAS KEGIATAN & INDIKATOR EPSS:
+Nama Perangkat Daerah  : Dinas ................................................................
+Nama Kegiatan Data     : .......................................................................
+Indikator EPSS Dinilai : [Contoh: Indikator 20302 - Pemantauan Jadwal Rilis Data]
+Nama Sistem / Sumber   : [Contoh: Portal Satu Data Mempawah (satudata.mempawahkab.go.id)]
+Tanggal & Waktu Akses  : [Contoh: 18 Oktober 2026, Pukul 14.25 WIB]
+
+II. TANGKAPAN LAYAR BUKTI SISTEM / APLIKASI (EVIDENCE SCREENSHOT):
++--------------------------------------------------------------------------------------------------+
+|                                                                                                  |
+|                                                                                                  |
+|                      [ TEMPELKAN TANGKAPAN LAYAR / SCREENSHOT DI SINI ]                          |
+|                     (Pastikan terlihat URL peramban, stempel tanggal/waktu,                      |
+|                               dan status rilis/rekomendasi/formula)                              |
+|                                                                                                  |
+|                                                                                                  |
++--------------------------------------------------------------------------------------------------+
+
+III. KETERANGAN & ULASAN TEKNIS BUKTI DUKUNG:
+Berdasarkan tangkapan layar di atas, dataset [Nama Kegiatan/Dataset] telah berhasil [dipublikasikan /
+diverifikasi / diregistrasikan nomor rekomendasi ROMANTIK BPS] pada tanggal [Tanggal Rilis/Aksi],
+sehingga membuktikan kepatuhan terhadap prinsip [Aktualitas / Standar Data / Validitas Akurasi].
+
+                                                          Mempawah, ......................... 2026
+Mengetahui,                                               Petugas Pengelola Data / Verifikator,
+Kepala Bidang ...................................,
+
+(tanda tangan basah & cap dinas)                          (tanda tangan)
+
+[NAMA KEPALA BIDANG LENGKAP]                              [NAMA PETUGAS PENGELOLA DATA]
+NIP. ............................................         NIP. ...................................
+```
+
+---
+
+## TEMPLATE N: Notula Reviu & Evaluasi Berkala Penerapan SOP Kualitas Data (Level 4)
+
+*(Dokumen Payung Tingkat Kabupaten yang disusun oleh Walidata Diskominfo bersama Pembina Data BPS. Mengunci syarat Asesor EPSS Level 4 untuk seluruh indikator Domain 2: Akurasi 20201, Aktualitas 20301, Ketepatan Waktu 20302, Keterbandingan 20501, dan Konsistensi 20502)*
+
+```markdown
+                          PEMERINTAH KABUPATEN MEMPAWAH
+                   DINAS KOMUNIKASI DAN INFORMATIKA (WALIDATA)
+                                BERSAMA DENGAN
+                   BADAN PUSAT STATISTIK KABUPATEN MEMPAWAH
+====================================================================================================
+
+                       NOTULA RAPAT REVIU DAN EVALUASI BERKALA
+              PENERAPAN STANDAR OPERASIONAL PROSEDUR (SOP) KUALITAS DATA
+                     STATISTIK SEKTORAL KABUPATEN MEMPAWAH
+                               Nomor: 500.14.1 / ..... / 2026
+
+Hari, Tanggal   : Kamis, 5 November 2026
+Waktu           : 10.35 – 12.00 WIB
+Tempat          : Mempawah Command Center (MCC), Dinas Kominfo Kab. Mempawah
+Agenda Rapat    : Reviu dan Evaluasi Pelaksanaan SOP Kompilasi Produk Administrasi (SK Kadis Kominfo No. 03/SOP/DISKOMINFO/2023) dan Penjaminan Kualitas Data pada Produsen Data Daerah
+Pimpinan Rapat  : Kepala Dinas Komunikasi dan Informatika Kab. Mempawah (Walidata)
+Narasumber      : Tim Pembina Statistik Sektoral BPS Kabupaten Mempawah
+Peserta Rapat   : Tim Walidata Diskominfo, Tim Pembina BPS, serta Pejabat Pengelola Data BPKAD dan DPMPTSPKUKM (Lokus Utama)
+
+I. LATAR BELAKANG EVALUASI PROSES (GSBPM)
+Berdasarkan hasil monitoring penyelenggaraan statistik sektoral semester sebelumnya, Walidata bersama Pembina Data BPS melaksanakan evaluasi berkala terhadap kepatuhan pelaksanaan tahapan SOP Kompilasi Produk Administrasi No. 03/SOP/DISKOMINFO/2023 pada produsen data daerah guna memastikan pemenuhan dimensi Akurasi, Aktualitas, Keterbandingan, dan Konsistensi data.
+
+II. POIN-POIN HASIL REVIU & IDENTIFIKASI MASALAH PROSES:
+1. Dimensi Akurasi (Indikator 20201):
+   - Temuan Reviu: Pada periode sebelumnya, pengujian akurasi pada unit pengolah data masih bersifat manual tanpa rule validasi otomatis pada spreadsheet, sehingga berisiko menimbulkan kesalahan hitung (human errors).
+   - Rekomendasi Reviu: Seluruh produsen data wajib menyematkan formula validasi logika otomatis pada spreadsheet pengolahan data (=IF(L+P=Total, "VALID", "ERROR")) serta melaksanakan uji petik faktual lapangan (ground check) minimal ke sampel unit sumber data.
+2. Dimensi Standar Data & Keterbandingan (Indikator 10101 & 20501):
+   - Temuan Reviu: Pelaporan data perizinan dan keuangan daerah di tahun-tahun sebelumnya belum sepenuhnya mengacu pada Klasifikasi Baku Jabatan/Lapangan Usaha (KBLI 2020) dan Kamus SDS yang disahkan BPS.
+   - Rekomendasi Reviu: BPS bersama Walidata menetapkan dokumen Kamus Standar Data Statistik (SDS) resmi yang memuat konsep, definisi operasional, satuan, dan ukuran baku yang wajib diacu produsen data dalam publikasi deret waktu 5 tahun.
+3. Dimensi Konsistensi Internal (Indikator 20502):
+   - Temuan Reviu: Belum ada prosedur tertulis untuk menguji keselarasan tren antar-dua variabel yang berelasi logis sebelum data dirilis ke portal Satu Data.
+   - Rekomendasi Reviu: Produsen data wajib menyusun Lembar Pengujian Konsistensi Internal Runtun Waktu (5 tahun) yang menyandingkan dua variabel fungsional guna membuktikan ketiadaan anomali pergerakan data.
+
+III. KESEPAKATAN RENCANA TINDAK LANJUT (ACTION PLAN):
+1. BPKAD dan DPMPTSPKUKM selaku Lokus Utama berkomitmen menerapkan rekomendasi perbaikan di atas pada rilis data tahun berjalan 2026.
+2. Walidata Diskominfo akan melakukan pemeriksaan kelayakan mutu data (quality gate) berdasarkan rekomendasi reviu ini sebelum data ditayangkan pada Portal Satu Data Mempawah.
+
+                                                          Mempawah, 5 November 2026
+Pimpinan Rapat,                                           Pembina Data Statistik,
+Kepala Dinas Komunikasi dan Informatika                   Kepala Badan Pusat Statistik
+Kabupaten Mempawah (Walidata),                            Kabupaten Mempawah,
+
+(tanda tangan basah & cap dinas)                          (tanda tangan & cap dinas)
+
+RUDI, S.H.                                                ...........................................
+Pembina Tingkat I (IV/b)                                  NIP. ......................................
+NIP. 19790907 199810 1 001
+```
+
+---
+
+## TEMPLATE P: Matriks Laporan Tindak Lanjut Perbaikan Berkelanjutan (Level 5)
+
+*(Dokumen Tingkat Optimum yang membuktikan Continuous Improvement dengan menyandingkan bukti konkret SEBELUM / Before vs SESUDAH / After perbaikan berdasarkan rekomendasi reviu/evaluasi. Mengunci syarat Asesor EPSS Level 5)*
+
+```markdown
+                          PEMERINTAH KABUPATEN MEMPAWAH
+                   DINAS KOMUNIKASI DAN INFORMATIKA / [OPD LOKUS]
+====================================================================================================
+
+               MATRIKS BUKTI TINDAK LANJUT PERBAIKAN BERKELANJUTAN
+              PENJAMINAN KUALITAS DATA STATISTIK SEKTORAL DAERAH
+                        (CONTINUOUS IMPROVEMENT REPORT)
+                               Nomor: 500.14.1 / ..... / 2026
+
+Nama Kegiatan Data : Kompilasi Data [Keuangan Daerah / Pelayanan Perizinan] Kabupaten Mempawah
+Produsen Data      : [Badan Pengelola Keuangan dan Aset Daerah / Dinas Penanaman Modal KUKM dan PTSP]
+Dasar Rekomendasi  : Notula Rapat Reviu dan Evaluasi Berkala Walidata & BPS Tanggal 5 November 2026
+
+I. MATRIKS PERBANDINGAN SEBELUM (BEFORE) DAN SESUDAH (AFTER) PERBAIKAN:
+
++----+---------------------------+--------------------------------------------+--------------------------------------------+--------------------------------------------+
+| No | Dimensi Kualitas Data     | Kondisi Sebelum Perbaikan (Before / 2025)  | Rekomendasi Reviu Walidata & BPS           | Kondisi Nyata Setelah Perbaikan (After)    |
++----+---------------------------+--------------------------------------------+--------------------------------------------+--------------------------------------------+
+| 1  | Akurasi Data              | Pemeriksaan angka rekapitulasi dilakukan   | Mewajibkan penerapan rule validasi rumus   | Spreadsheet pengolahan telah dilengkapi    |
+|    | (Indikator 20201)         | secara manual mata, belum ada formula      | otomatis pada spreadsheet pengolahan data  | formula validasi otomatis:                 |
+|    |                           | validasi otomatis di spreadsheet, rawan    | dan pelaksanaan sampling uji petik faktual | =IF(L+P=Total, "VALID", "ERROR") serta ada |
+|    |                           | terjadi salah hitung matematis.            | ke unit sumber pelapor.                    | Berita Acara Uji Petik Ground Check.       |
+|    |                           | *(Bukti: File Excel format lama terlampir)*|                                            | *(Bukti: File Excel ber-rule terlampir)*   |
++----+---------------------------+--------------------------------------------+--------------------------------------------+--------------------------------------------+
+| 2  | Standar Data Statistik    | Pencatatan klasifikasi sektor usaha/izin   | Mewajibkan adopsi kode klasifikasi baku    | Seluruh data perizinan telah menggunakan   |
+|    | (Indikator 10101)         | masih menggunakan penamaan bebas (ad-hoc)  | nasional KBLI 2020 (Perka BPS No. 2/2020)  | kodefikasi baku KBLI 2020 5-digit dan      |
+|    |                           | dan belum mengacu standar rujukan BPS.     | dan pengesahan Kamus Standar Data.         | memiliki Kamus SDS yang disahkan BPS.      |
+|    |                           | *(Bukti: Tabel izin lama tanpa KBLI)*      |                                            | *(Bukti: Lembar Kamus SDS terlampir)*      |
++----+---------------------------+--------------------------------------------+--------------------------------------------+--------------------------------------------+
+| 3  | Konsistensi Statistik     | Data time-series disajikan tanpa analisis  | Melakukan pengujian penyandingan 5 tahun   | Disusun Lembar Uji Konsistensi Runtun      |
+|    | (Indikator 20502)         | korelasi internal, sehingga potensi        | untuk mendeteksi anomali pergerakan data   | Waktu 2021-2026 yang membuktikan pola      |
+|    |                           | kontradiksi logika data tidak terdeteksi.  | dan memastikan hubungan logis searah.      | selaras bebas anomali matematis.           |
+|    |                           | *(Bukti: Grafik lama tanpa evaluasi tren)* |                                            | *(Bukti: Dokumen Template G terlampir)*    |
++----+---------------------------+--------------------------------------------+--------------------------------------------+--------------------------------------------+
+
+II. LAMPIRAN BUKTI FISIK / DIGITAL (TANGKAPAN LAYAR KOMPARASI):
+1. Lampiran A: Tangkapan Layar Format Pengolahan Data LAMA (Before - Tanpa Validasi Formula).
+2. Lampiran B: Tangkapan Layar Format Pengolahan Data BARU (After - Dilengkapi Formula Validasi & Kamus SDS).
+3. Lampiran C: Dokumen Berita Acara Uji Petik Lapangan Faktual Tahun 2026.
+
+                                                          Mempawah, ......................... 2026
+Mengetahui,                                               Petugas Verifikator / Pengelola Data,
+Kepala Perangkat Daerah Produsen Data,
+
+(tanda tangan basah & cap dinas)                          (tanda tangan)
+
+...................................................       ...........................................
+NIP. ..............................................       NIP. ......................................
 ```
 
 ---
