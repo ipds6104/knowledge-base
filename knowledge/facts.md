@@ -455,12 +455,23 @@
   - Dokumentasi Kegiatan: [`kegiatan/spdt-ntp-2026/2026/README.md`](kegiatan/spdt-ntp-2026/2026/README.md)
   - Arsip Gambar Jadwal: `knowledge/assets/Jadwal_Perubahan_Kegiatan_SPDT_NTP_2026.jpg`
 
-## SBR pasca Sensus Ekonomi 2026 (15 Oktober 2026)
+## SBR pasca Sensus Ekonomi 2026 (Update: 5 November 2026)
 - **Nama Kegiatan**: SBR pasca Sensus Ekonomi 2026
 - **Pengawasan & Pelaksanaan**: Pengisian dokumen Non-Disclosure Agreement (NDA) diawasi oleh Kak Sukma, pencetakan dibantu oleh Dwi.
+- **Rujukan Surat Terbaru**: Surat DMSSD BPS RI Nomor `B-458/03100/SS.400/2026` tanggal 5 November 2026 perihal *Tindak Lanjut Evaluasi Prelist SBR untuk SE2026 dengan Daerah dan K/L Terkait dan Briefing Matching Manual Data SBR*.
+- **Tautan Operasional Kunci**:
+  - Panduan Cleaning Data: http://s.bps.go.id/cleaningdatasbr5812
+  - Form Akun PJ SBR untuk Akses FASIH: http://s.bps.go.id/akun5812cleaningdata (paling lambat 6 November 2026)
+  - Zoom / Tautan Materi Briefing Matching Manual: http://s.bps.go.id/Briefing_MatchingManual_SBR2026 (Jumat, 6 November 2026 pukul 13.30 WIB)
 - **Deadline Kunci**:
-  - **Jumat, 16 Oktober 2026**: Batas akhir pengisian, penandatanganan, dan upload dokumen NDA bagi seluruh tim organik SBR dan rekan magang.
-- **Dokumentasi KB**: [`kegiatan/sbr-pasca-se2026/2026/README.md`](../kegiatan/sbr-pasca-se2026/2026/README.md).
+  - **Jumat, 16 Oktober 2026**: Batas akhir pengisian, penandatanganan, dan upload dokumen NDA bagi seluruh tim organik SBR dan rekan magang (selesai).
+  - **Jumat, 6 November 2026**: Kirim 1 akun Penanggungjawab SBR satker untuk akses FASIH cleaning data.
+  - **Jumat, 6 November 2026 (13.30 WIB)**: Briefing Matching Manual SBR bagi Pegawai Organik dan Magang.
+  - **Jumat, 20 November 2026**: Batas akhir cleaning data dan konfirmasi cakupan usaha SBR.
+- **Dokumentasi KB**:
+  - Dokumentasi Kegiatan: [`kegiatan/sbr-pasca-se2026/2026/README.md`](../kegiatan/sbr-pasca-se2026/2026/README.md)
+  - Rangkuman Surat Resmi: [`knowledge/universal/surat_tindak_lanjut_evaluasi_prelist_sbr_se2026.md`](universal/surat_tindak_lanjut_evaluasi_prelist_sbr_se2026.md)
+  - Arsip Berkas Surat: `knowledge/assets/Surat_Tindak_Lanjut_Evaluasi_Prelist_SBR_SE2026_Matching_Manual.pdf`
 
 ## Kontak Layanan & Fasilitas Kantor BPS Kabupaten Mempawah
 - **Laporan Keluhan WiFi / Internet IndiHome Kantor**:
